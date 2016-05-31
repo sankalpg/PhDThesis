@@ -12,7 +12,7 @@
 \usepackage[T1]{fontenc} 
 %\usepackage{ae,aecompl}
 \usepackage[UKenglish]{isodate}
-\usepackage[catalan,british]{babel}
+\usepackage[british]{babel}
 \usepackage{url}
 \usepackage{enumitem}
 \usepackage{amssymb,amsmath}
@@ -30,6 +30,10 @@
   pdfkeywords=Melody~Motifs~Patterns~Raga~Phrases
 ]{hyperref} % produeix enllacos clicables
 \usepackage[round,authoryear]{natbib}
+\usepackage{acronym}
+\usepackage[style=long,nonumberlist,toc,xindy,acronym,nomain]{glossaries}
+\makeglossaries
+
 %\usepackage{natbibspacing}
 %\setlength{\bibspacing}{0.3\baselineskip}
 % per les pagines a la bibliografia
@@ -226,14 +230,14 @@
 \cleartorecto\listoftables 
 \cleartorecto\include{ch00/listOfMathSymbols}
 
+\input{glossary/glossary.tex}
 
-%Custom Commands
-\newcommand{\raga}{r\={a}ga}
-\newcommand{\Raga}{R\={a}ga}
-\newcommand{\ragas}{r\={a}gas}
-\newcommand{\Ragas}{R\={a}gas}
+
+
+
 
 \mainmatter
+
 \cleartorecto\include{ch01_introduction/introduction}
 \cleartorecto\include{ch02_background/background}
 \cleartorecto\include{ch03_problems/problems}
@@ -245,12 +249,12 @@
 \cleartorecto\include{ch09_conclusions/conclusions}
 
 
-
+\printglossaries
 
 \backmatter
 \cleartorecto\include{ch99/finalpage}
 \bibliographystyle{apa_jserra2}
-\cleartorecto\bibliography{biblio_final}
+\cleartorecto\bibliography{sankalp.bib}
 %\cleartorecto\small\bibliography{ch99/jserra}\normalsize
 %\cleartorecto\footnotesize\bibliography{ch99/jserra}\normalsize
 
