@@ -1,14 +1,14 @@
 %!TEX root = ../thesis_a4.tex
 
-\chapter{Automatic \Gls{raga} Recognition}
+\chapter{\titlecap{Automatic \glsentrytext{raga} Recognition}}
 
 \section{Introduction}
 
 
-As described in XXX YYY is a core musical concept used in the composition, performance, organization, and pedagogy of Indian art music (IAM). Numerous compositions in Indian folk and film music are also based on r\={a}gas~\citep{ganti2013bollywood}. Despite its significance in IAM, there exists a large volume of audio content whose r\={a}ga is incorrectly labeled or, simply, unlabeled. This is partially because the vast majority of the tools and technologies that interact with the recordings' metadata fall short of fulfilling the specific needs of the Indian music tradition~\cite{XavierSerra2011}. A computational approach to automatic r\={a}ga recognition can enable r\={a}ga-based music retrieval from large audio collections, semantically-meaningful music discovery, musicologically-informed navigation, as well as several applications around music pedagogy. 
-%
-%
-%
+As described in Section~\ref{sec:music_background} \gls{raga} is a core musical concept used in the composition, performance, organization, and pedagogy of Indian art music (IAM). Numerous compositions in Indian folk and film music are also based on \glspl{raga}~\citep{ganti2013bollywood}. Despite its significance in IAM, there exists a large volume of audio content whose \gls{raga} is incorrectly labeled or, simply, unlabeled. This is partially because the vast majority of the tools and technologies that interact with the recordings' metadata fall short of fulfilling the specific needs of the Indian music tradition~\citep{XavierSerra2011}. A computational approach to automatic \gls{raga} recognition can enable \gls{raga}-based music retrieval from large audio collections, semantically-meaningful music discovery, musicologically-informed navigation, as well as several applications around music pedagogy. 
+
+\Gls{raga} recognition is one of the most researched topics within music information retrieval (MIR) of IAM. As a consequence, there exist a considerable amount of approaches utilizing different characteristic aspects of \glspl{raga}. A summary of these approaches is already provided in Section XXX. In this chapter we highlight the identified limitations in these approaches and propose two different methods to address their shortcomings. Our first proposed method exploits one of the most prominent cues for \gls{raga} recognition, its melodic motifs. To make the system further robust to pitch octave errors and overcome the challenges in discovering melodic patterns, we propose another method that exploits calan of a \gls{raga}. We evaluate these methods on representative and sizable collection of Hindustani and Carnatic music, both of which are made publicly available. In addition to evaluating our proposed method we also compare these methods with the state of the art methods by evaluating them under the same experimental conditions for the same data set. 
+
 %0) What is automatic raga identification
 %1) Motivation and relevance of the problem
 %2) References to thousands of papers that cater to this task
@@ -18,13 +18,25 @@ As described in XXX YYY is a core musical concept used in the composition, perfo
 %6) What are the papers which this chapter is based on
 %
 %
-\section{Method1: Phrase-based approach to raga recognition}
+\section{Phrase-based \glsentrytext{raga} recognition}
+
+
+A large number of approaches for \gls{raga} recognition use features derived from the pitch or pitch-class distribution as can be seen in Table~XXXX. Using these features they capture the overall usage of the tonal material in an audio recording. In general, PCD-based approaches are robust to pitch octave errors, which is one of the most frequent errors in the estimation of predominant melody from polyphonic music signals. Currently, the PCD-based approach represents the state-of-the-art in \gls{raga} recognition~\citep{chordia2013joint}.
+
+One of the major shortcomings of PCD-based approaches is that they completely disregard the temporal aspects of the melody, which are essential to \gls{raga} characterization~\cite{rao1999raga}. Temporal aspects are even more relevant in distinguishing phrase-based \glspl{raga}~\cite{krishna2012carnatic}, as their aesthetics and identity is largely defined by the usage of meandering melodic movements, called gamakas. Several approaches address this shortcoming by modeling the temporal aspects of a melody in a variety of ways~\cite{kumar2014identifying, shetty2009raga, rajkumar2011identification}. Such approaches typically use melodic progression templates~\cite{shetty2009raga}, n-gram distributions~\cite{kumar2014identifying}, or hidden Markov models~\cite{rajkumar2011identification} to capture the sequential information in the melody. With that, they primarily utilize the \={a}r\={o}hana-avr\={o}hana pattern of a \gls{raga}. In addition, most of them either transcribe the predominant melody in terms of a discrete svara sequence, or use only a single symbol/state per svara. Thus, they discard the characteristic melodic transitions between svaras, which are a representative and distinguishing aspect of a \gls{raga}~\cite{rao1999raga}. Furthermore, they often rely on an accurate transcription of the melody, which is still a challenging and an ill-defined task given the nature of IAM~\cite{rao2012culture, Suvarnalata2014}. 
+
+consider the continuous melody contour and 
+
+To the best of our knowledge there are only two approaches to \gls{raga} recognition that exploit its raw melodic patterns~\cite{shrey_ISMIR_2015, sridhar2009raga}. Their aim is to create dictionaries of characteristic melodic phrases and to exploit them in the recognition phase, as melodic phrases are prominent cues for the identification of a \gls{raga}~\cite{rao1999raga}. Such phrases capture both the svara sequence and the transition characteristics within the elements of the sequence. However, the automatic extraction of characteristic melodic phrases is a challenging task. 
+
+Some approaches show promising results~\cite{gulatiphrase_2016}, but they are still far from being perfect. 
+
 
 1) What is the motivation behind this method, what can be its advantages
 2) What is the analogy that we have considered to devise the methodology
 
 
-\section{Method2: Time delayed melodic surfaces}
+\section{Time delayed melodic surfaces for \glsentrytext{raga} recognition}
 
 1) Motivation behind this method
 2) Desired qualities of this method
