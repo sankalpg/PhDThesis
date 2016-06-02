@@ -36,6 +36,7 @@
 \usepackage{acronym}
 \usepackage[style=long,nonumberlist,toc,xindy,acronym,nomain]{glossaries}
 \makeglossaries
+\usepackage{mathtools}
 
 
 
@@ -180,16 +181,23 @@
 \newcommand{\figSizeSixty}{0.6\columnwidth}
 \newcommand{\figSizeFifty}{0.5\columnwidth}
 
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+
 % Variables matematiques i altres
 \usepackage{color}
 \definecolor{darkgreen}{rgb}{0,0.5,0}
 \newcommand{\TODO}[1]{{\color{red}{[{TODO:} #1}]}}
 \newcommand{\COMMENT}[1]{{\color{darkgreen}{[#1}]}}
+\newcommand{\ADD}[1]{{\color{blue}#1}}
+\newcommand{\REM}[1]{{\color{red}#1}}
 \newcommand{\XXX}[3]{{\color{blue}{{[#1$\rightarrow$#2:} #3{]}}}}
 % Uncomment next line to hide all comments
 %\renewcommand{\XXX}[3]{}
 %\renewcommand{\TODO}[1]{}
 %\renewcommand{\COMMENT}[1]{}
+%\renewcommand{\REM}[1]{}
+%\renewcommand{\ADD}[1]{#1}
 
 \def\mathLarge#1{\mbox{\LARGE $#1$}}
 

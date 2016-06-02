@@ -2,42 +2,199 @@
 
 \chapter{Data preprocessing}
 
-hello\\
-hello\\
-hello\\
-hello\\
-hello\\
-hello\\
-hello\\
-hello\\
-hello\\
-hello\\
-hello\\
-hello\\
-hello\\
-hello\\
-hello\\
-hello\\
-hello\\
-hello\\
-hello\\
-hello\\
-hello\\
-hello\\
-hello\\
-hello\\
-hello\\
-hello\\
-hello\\
-hello\\
-hello\\
-hello\\
+
 
 \subsection{Predominant melody estimation and post-processing}
 
 \subsection{Tonic Identification}
 
 \subsection{Nyas identification}
+
+
+\section{Method}
+\label{method}
+
+\begin{figure}[t]
+	\begin{center}
+		\includegraphics[scale=0.68]{fig/BlockDiagram.pdf}\vspace{-1.5em}
+	\end{center}
+	\caption{Block diagram of the proposed approach.}
+	\label{fig:BD_OverallApproach}
+\end{figure}
+
+\subsection{Predominant Pitch Estimation \& Representation}
+
+The proposed method is comprised of four main blocks (Figure~\ref{fig:BD_OverallApproach}): predominant pitch estimation and representation, segmentation, feature extraction, and segment classification and fusion. For estimating pitch of the the predominant melodic source\footnote{This task is also referred as predominant melody extraction in various contexts within Music Information Research.} we use the method by Salamon~\&~G\'omez~\cite{Salamon2012}, which scored very favorably in an international evaluation campaign featuring a variety of musical genres, including Indian art music\footnote{\url{http://nema.lis.illinois.edu/nema_out/mirex2011/results/ame/indian08/summary.html}}. For the pitch representation to be musically meaningful, we convert the pitch values to cents, normalized by the tonic frequency of the lead artist. Tonic of the lead artist is extracted automatically using the approach proposed by Gulati~\cite{SGulati_MThesis2012}. In a comparative evaluation of different tonic identification approaches for Indian art music, this approach consistently performed better for a variety of music material within Indian art music~\cite{Gulati2013Tonic}. For both predominant pitch estimation and tonic identification we use the implementations available in Essentia~\cite{essentia}, an open-source C++ library for audio analysis and content-based music information retrieval.
+
+
+\subsection{Segmentation}
+\label{sec:segmentation}
+
+Ny\={a}s segment is a rendition of a single svar and the aim of the segmentation process is to detect the svar boundaries. However, svars contain different alank\={a}rs as discussed before where pitch deviation with respect to the mean svar frequency can go roughly up to 200\,cents. This characteristic of a svar in Hindustani music poses a challenge to segmentation. To illustrate this, in Figure~\ref{fig:SegmentationIllustration} we present an example of a ny\={a}s segment (between $T_1-T_9$, centered around mean svar frequency $S_n=990$\,cents). The pitch deviation in this ny\={a}s segment with respect to the mean svar frequency reaches almost 100\,cents (between $T_5-T_6$). Note that the reference frequency, i.e. 0\,cent is the tonic pitch of the lead singer.
+
+
+\begin{figure}
+	\includegraphics[scale=0.47]{fig/SegmentationMethod.pdf}\vspace{-0.5em}
+	\caption{Fragment of a pitch contour containing a ny\={a}s segment ($T_1-T_9$), where $T_i$s denote time stamps and $S_n$s denote mean svar frequencies. The pitch deviation within the ny\={a}s segment ($T_1-T_9$) is almost 100\,cents ($T_5-T_6$).}
+	\label{fig:SegmentationIllustration}
+\end{figure}
+
+We experiment with two different methods for segmenting melodies: piece-wise linear segmentation (PLS), a classical, generic approach used for the segmentation of time series data~\cite{keogh2004segmenting}, and our proposed method, which incorporates domain knowledge to facilitate the detection of ny\={a}s boundaries. For PLS we use a bottom-up segmentation strategy as described in~\cite{keogh2004segmenting}. Bottom-up segmentation methods involve computation of residual error incrementally for each sample of time series. When the residual error satisfies a pre-defined criterion a new segment is created. Out of the two typical criteria used for segmentation, namely average and maximum error, we choose the latter because, ideally, a new segment should be created as soon as the melody progresses from one svar to the other. In order to select the optimal value of the allowed maximum error, which we denote by $\epsilon$, we iterated over four different values and chose the one which resulted in the best performance. Specifically, for $\epsilon=\lbrace 10, 25, 50, 75\rbrace$, $\epsilon=75$\,cents yielded the best performance (we rejected $\epsilon\geq 100$\,cents in early experimentation stages because few svars of a r\={a}g are separated by an interval of 100\,cents and, therefore, the segmentation output was clearly unsatisfactory).
+
+To make the segmentation process robust to pitch deviations, we propose a method based on empirically-derived thresholds. Unlike PLS, our proposed method computes a pitch histogram and uses that to estimate mean svar frequencies before the computation of residual error. This allows us to compute the residual error with respect to the mean svar frequency instead of computing it with respect to the previous segment boundary, as done in PLS.  In this way our proposed method utilizes the fact that the time series being segmented is a pitch contour where the values of the time series hover around mean svar frequencies. The mean svar frequencies for an excerpt are estimated as the peaks of the histogram computed from the estimated pitch values. An octave folded pitch histogram is computed using a 10\,cent resolution and subsequently smoothened using a Gaussian window with a variance of 15\,cents. Only the peaks of the normalized pitch histogram which have at least one peak-to-valley ratio greater than 0.01 are considered as svar locations. As peaks and valleys we simply take all local maximas and minimas over the whole histogram. In Figure \ref{fig:pitchHistogram} we show an example of an octave folded normalized  pitch histogram used for estimating mean svar frequencies. The estimated mean svar frequencies are indicated by circles. We notice that the pitch values corresponding to a svar span a frequency region and not a single value.
+
+\begin{figure}
+	\includegraphics[scale=0.45]{fig/swarOnHistogram.pdf}\vspace{-0.5em}
+	\caption{Normalized octave folded pitch histogram used for estimating mean svar frequencies. Estimated mean svar frequencies are indicated by circles.}
+	\label{fig:pitchHistogram}
+\end{figure}
+
+After we estimate mean frequencies of all the svars in a piece, we proceed with their refinement. For the $n$-th svar $S_n$, we search for contiguous segments within a deviation of $\varepsilon$ from $S_n$, that is, $\vert S_n-P_i \vert < \varepsilon$, for~$i\in[1,N]$, where $P_i$ is the fundamental frequency value (in cents) of the $i$-th sample of a segment of length $N$. In Figure~\ref{fig:SegmentationIllustration}, this corresponds to segments $[T_1,T_2]$, $[T_3,T_4]$, and $[T_7,T_8]$.
+
+Next, we concatenate two segments $[T_a,T_b]$ and $[T_e,T_f]$ if two conditions are met:
+\begin{enumerate}
+	\item $P_i-S_n < \rho_1$ and $S_n-P_i < \rho_2$, for $i\in[T_b,T_e]$, where $\rho_1 = S_{n+1}-S_n + \varepsilon$ and $\rho_2 = S_n-S_{n-1} + \varepsilon$. 
+	\item $T_c-T_d < \delta$, where $\delta$ is a temporal threshold and $[T_c,T_d]$ is a segment between $T_b, T_e$ such that $\vert S_m-P_i\vert <\varepsilon$ for $i\in[T_c,T_d]$ for $m\in [S_{n-1}, S_{n+1}]$ and $m \neq n$.
+\end{enumerate}
+In simple terms, we concatenate two segments if the fundamental frequency values between them do not deviate a lot (less than $\rho_1$ and $\rho_2$) and the time duration of the melody in close vicinity (less than $\epsilon$) of neighboring svars is not too large (less than $\delta$). We repeat this process for all svar locations. In our experiments, we use $\varepsilon = 25$\,cents and $\delta=50$\,ms, which were empirically obtained. In the example of Figure~\ref{fig:SegmentationIllustration}, we see that the two conditions apply for segments $[T_1,T_2]$ and $[T_3,T_4]$, and not for $[T_3,T_4]$ and $[T_7,T_8]$ because $T_6-T5>\delta$. Notice that we can already derive a simple binary flatness measure $\nu$ for $[T_a, T_b]$, $\nu=1$ if $\vert S_n-P_i \vert< \epsilon$ for $i \in [T_a, T_b]$ for any $n$ and $\nu=0$ otherwise. 
+
+\subsection{Feature Extraction}
+\label{sec:features}
+
+We extract musically motivated melodic features for segment classification, which resulted out of discussions with musicians. For every segment, three sets of melodic features are computed: local features~(L), which capture the pitch contour characteristics of the segment, contextual features~(C), which capture the melodic context of the segment, and a third set combining both of them~(L+C) in order to analyze if they complement each other. Initially, we considered 9 local features and 24 contextual features:
+
+\begin{description}
+	\item[Local Features:] segment length, mean and variance of the pitch values in a segment, mean and variance of the differences in adjacent peak locations of the pitch sequence in a segment, mean and variance of the  peak amplitudes of the pitch sequence in a segment, temporal centroid of the pitch sequence in a segment normalized by its length, and the above-mentioned flatness measure $\nu$ (we use the average segmentation error for the case of PLS).
+	\item[Contextual Features:] segment length normalized by the length of the longest segment within the same breath phrase\footnote{Melody segment between consecutive breaths of a singer. We consider every unvoiced segment (i.e.,~a value of 0 in the pitch sequence) greater than 100\,ms as breath pause.}, segment length normalized by the length of the breath phrase, length normalized with the length of the previous segment, length normalized by the length of the following segment, duration between the ending of the segment and succeeding silence, duration between the starting of the segment and preceding silence, and all the local features of the adjacent segments.
+\end{description}
+
+However, after preliminary analysis, we reduced these features to 3 local features and 15 contextual features. As local features we selected length, variance, and flatness measure ($\nu$). As contextual features we selected all of them except the local features of the posterior segment. This feature selection was done manually, performing different preliminary experiments with a subset of the data, using different combinations of features and selecting the ones that yielded the best accuracies.
+
+\subsection{Classification and Segment Fusion}
+
+Each segment obtained in Section~\ref{sec:segmentation} is classified into ny\={a}s or non-ny\={a}s based on the extracted features of Section~\ref{sec:features}. To demonstrate that the predictive power of the considered features is generic and independent of a particular classification scheme, we employ five different algorithms exploiting diverse classification strategies~\cite{Hastie09BOOK}: trees (Tree), $K$ nearest neighbors (KNN), naive Bayes (NB), logistic regression (LR), and support vector machines with a radial basis function kernel (SVM). We use the implementations available in scikit-learn~\cite{scikitlearn}, version 0.14.1. We use the default set of parameters with few exceptions in order to avoid over-fitting and to compensate for the uneven number of instances per class. Specifically, we set \texttt{min\_samples\_split=10} for Tree, \texttt{fit\_prior=False} for NB, \texttt{n\_neighbors=5} for KNN, and for LR and SVM \texttt{class\_weight=`auto'}.
+
+For out-of-sample testing we implement a cross-fold validation procedure. We split the data set into folds that contain an equal number of ny\={a}s segments, the minimum number of ny\={a}s segments in a musical excerpt (7 in our case). Furthermore, we make sure that no instance from the same artist and r\={a}g is used for training and testing in the same fold.
+
+After classification, boundaries of ny\={a}s and non-ny\={a}s segments are obtained by merging all the consecutive segments with the same segment label. During this step, the segments corresponding to the silence regions in the melody, which were removed during classification, are regarded as non-ny\={a}s segments.
+
+\section{Experimental Setup}
+\label{experimentalSetup}
+
+\subsection{Music Collection and Annotations}
+
+The music collection used for evaluation consists of 20 audio music recordings  of total duration of 1.5 hours, all of which are vocal \={a}l\={a}p performances of Hindustani music. \={A}l\={a}ps are unmetered melodic improvisational sections, usually performed as the opening of a raga rendition. We selected only \={a}l\={a}p performances because the concept of ny\={a}s is emphasized in these sections during a r\={a}g rendition. Of the 20 recordings, 15 are polyphonic commercially-available audio recordings compiled as a part of the CompMusic project\footnote{http://compmusic.upf.edu/corpora}~\cite{XavierSerra2011}. The other 5 audio recordings in the data set are monophonic in-house studio recordings of the \={a}l\={a}ps sung by a professional singer of Hindustani music. The in-house audio recordings are available under creative commons (CC) license in Freesound\footnote{http://www.freesound.org/people/sankalp/packs/12292/}. In total we have performances by 8 artists in 16 different r\={a}gs. In order avoid over-fitting of the learned model it is important to include different artists and r\={a}gs as the ny\={a}s characteristics highly depend on these aspects~\cite{Dey2008}.
+
+Ny\={a}s segments were annotated by a performing artist of Hindustani music (vocalist) who has received over 15 years of formal musical training. 
+The musician marked all the ny\={a}s segment boundaries and labeled them appropriately. After annotation, we obtained 1257 ny\={a}s svar segments. The duration of these segments vary from 150\,ms to 16.7\,s with a mean of 2.46\,s and median of 1.47\,s.
+
+\subsection{Evaluation Measures and Statistical Significance}
+
+For the evaluation of ny\={a}s boundary annotations we use hit rates as in a typical music structure boundary detection task~\cite{Ong05ICMC}. While calculating hit rate, segment boundaries are considered as correct if they fall within a certain threshold of a boundary in the ground-truth annotation. Using matched hits, we compute standard precision, recall, and F-score for every fold and average them over the whole data set. The choice of a threshold however depends on the specific application. Due to the lack of scientific studies on the just noticeable differences of ny\={a}s svar boundaries, we computed results using an arbitrary selected threshold of 100\,ms. Label annotations are evaluated using standard pairwise frame clustering method as described in~\cite{levy2008structural}. Fra\hyp{}mes with same duration as threshold value for the boundary evaluation (i.e. 100~ms) are considered while computing precision, recall, and F-score. For assessing statistical significance we use the Mann-Whitney U test~\cite{mann1947test} with $p<0.05$ and assuming an asymptotic normal distribution of the evaluation measures. To compensate for multiple comparisons we apply the Holm-Bonferroni method~\cite{holm1979simple}, a powerful method that also controls the so-called family-wise error rate. Thus, we end up using a much more stringent criteria than $p<0.05$ for measuring statistical significance.
+
+\subsection{Baselines}
+
+Apart from reporting the accuracies for the proposed meth\hyp{}od and its variants, we compare against some baseline approaches. In particular, we consider DTW together with a KNN classifier ($K=5$). For every segment, we compute its distance from all other segments and assign a label to it based on the labels of its $K$ nearest neighbors, using majority voting. As the proposed method also exploits contextual information, in order to make the comparison more meaningful, we consider the adjacent segments in the distance computation with linearly interpolated values in the region corresponding to the segment. For comparing with the variant of the proposed method that uses a combination of the local and contextual features, we consider adjacent segments together with the actual segment in the distance computation. As this approach does not consider any features, it will help us in estimating the benefits of extracting musically-relevant features from ny\={a}s segments. 
+
+In addition, to quantify the limitations of the adopted evaluation measures, we compute a few random baselines. The first one (RB1) is calculated by randomly planting boundaries (starting at 0\,s) according to the distribution of inter boundary intervals obtained using the ground-truth annotations. For each segment we assign the labels `ny\={a}s' with a a priory probability (same for all excerpts) computed using ground truth annotations of the whole data set. The second one (RB2) is calculated by planting boundaries (starting at 0\,s) at even intervals of 100\,ms and assigning class labels as in RB1. Finally, the third one (RB3) considers the exact ground-truth boundaries and assigns the class labels randomly as in RB1 and RB2. Thus, with RB3 we can directly assess the impact of the considered classification algorithms. We found that RB2 achieves the best accuracy and therefore, for all the following comparisons we only consider RB2.
+
+%\begin{table} 
+%\centering
+%\begin{tabular}{ c | c c c }
+%\hline\hline
+%  		&	RB1	&	RB2	&	RB3\\
+%\hline
+% 	ny\={a}s Boundary		&  0.10 & 0.17 &1.0  \\ 
+%%\hline 	
+%	ny\={a}s Region		& 0.56 & 0.69 & 0.64 \\
+%\hline\hline
+%\end{tabular}
+%
+%\caption{F-scores for ny\={a}s boundary estimation and ny\={a}s region
+%estimation using random baseline methods. \XXX{J}{S}{Why not adding a row or column in the general results tables??}}
+%	\label{tab:randombaseline}
+%\end{table}
+
+\section{Results and Discussion}
+\label{ResultsAndDiscussion}
+
+
+We evaluate two tasks, ny\={a}s segment boundary annotation, and ny\={a}s and non-ny\={a}s segment label annotation. For both the tasks, we report results obtained using two different segmentation methods (PLS and the proposed segmentation method), five classifiers (Tree, KNN, NB, LR, SVM), and three set of features (local (L), contextual(C) and local together with contextual (L+C)). In addition, we report results obtained using a baseline method (DTW) and a random baseline (RB2).
+
+
+In Table~\ref{tab:accuraciesboundary} we show the results of ny\={a}s boundary annotations. First, we see that every variant performs significantly better than the best random baseline. RB2 yields an F-score of 0.184 while the worst variant tested reaches 0.248. Next, we see that the proposed method achieves a notably higher accuracy compared to the DTW baseline. Such difference is found to be statistically significant, with the only exception of the NB classifier. For a given feature set, the performance differences across classifiers are not statistically significant. The only exceptions are Tree and NB, which yield relatively poor and inconsistent performances over different feature sets. We opted to not consider these two classifiers in the following comparisons. Among  feature sets, the performance differences are not statistically significant between PLS variants (Table~\ref{tab:accuraciesboundary}, top rows), whereas for the case of the proposed segmentation method (Table~\ref{tab:accuraciesboundary}, bottom rows), we find that the local features perform significantly better than the contextual features and their combination does not yield consistent improvements. Finally, we see that the best results are obtained using the proposed segmentation method together with the local features, with a statistically significant difference to its competitors. Furthermore, the worst accuracy obtained using the proposed segmentation method is notably higher than the best accuracy using PLS method, again with a statistically significant difference.
+
+
+\begin{table} 
+	\centering
+	\tabcolsep = 0.15cm
+	\renewcommand{\arraystretch}{1.15}
+	\begin{tabular}{ c|c|c| c c c c c c }
+		
+		\hline\hline
+		& Feat.		&	DTW & Tree	 &	KNN 	&	NB		& LR 	&	SVM\\
+		
+		\hline
+		\multirow{3}{*}{A} & 	L		&  0.356 & 0.407 & 0.447 & 0.248 & 0.449 & 0.453\\ 
+		%\hline 	
+		&	C		& 0.284 & 0.394 & 0.387 & 0.383 & 0.389 & 0.406 \\
+		%\hline	
+		&	L+C		& 0.289 & 0.414 & 0.426 & 0.409 &0.432 & 0.437 \\
+		\hline  		
+		\multirow{3}{*}{B} &	L		& \textbf{0.524} & 0.672 & \textbf{0.719} & 0.491 & \textbf{0.736} & \textbf{0.749}\\ 
+		%\hline 	
+		&	C		& 0.436 & 0.629 & 0.615 & \textbf{0.641} & 0.621 & 0.673 \\
+		%\hline	
+		&	L+C		& 0.446 & \textbf{0.682} & 0.708 & 0.591 & 0.725 & 0.735\\  		
+		\hline\hline
+		
+	\end{tabular}
+	
+	\caption{F-scores for ny\={a}s boundary detection using PLS method (A) and the proposed segmentation method (B). Results are shown for different classifiers (Tree, KNN, NB, LR, SVM) and local (L), contextual (C) and local together with contextual (L+C) features. DTW is the baseline method used for comparison. F-score for the random baseline obtained using RB2 is 0.184. }
+	\label{tab:accuraciesboundary}
+\end{table}
+
+In Table~\ref{tab:accuraciesRegion} we show the results for ny\={a}s and non-ny\={a}s label annotations. Basically, we can draw similar conclusions as with Table~\ref{tab:accuraciesboundary}: (1) all method variants perform significantly better than the random baselines, (2) all the proposed method variants yield significant accuracy increments over the DTW baseline, and (3) no statistically significant differences between classifiers (with the aforementioned exceptions). In label annotations, unlike the boundary annotations, we find that though the local features perform better than the contextual features, the differences are not statistically significant for all the proposed method variants. Furthermore, we also see that the proposed segmentation method consistently performs  better than PLS. However, the differences are not statistically significant.
+
+In addition, we also investigate per-class accuracies for label annotations. We find that the performance for ny\={a}s segments is considerably better than non-ny\={a}s segments. This could be attributed to the fact that even though the segment classification accuracy is balanced across classes, the differences in segment length of ny\={a}s and non-ny\={a}s segments (ny\={a}s segments being considerably longer than non-ny\={a}s segments) can result in more number of matched pairs for ny\={a}s segments.
+
+\begin{table} 
+	\centering
+	\tabcolsep = 0.15cm
+	\renewcommand{\arraystretch}{1.15}
+	\begin{tabular}{ c|c|c | c  c  c  c  c  c }
+		\hline\hline
+		& Feat.	&	DTW & Tree	 &	KNN 	&	NB		& LR 	&	SVM	\\
+		\hline
+		
+		\multirow{3}{*}{A} &   L		& \textbf{0.553} & 0.685 & 0.723 & 0.621 & 0.727 & 0.722	\\
+		%\hline         
+		&	C   		& 0.251 & 0.639 & 0.631  & 0.690 & 0.688 & 0.674	\\
+		%\hline 
+		& 	L+C		& 0.389 & 0.694 & 0.693 & 0.708 & 0.722 & 0.706	\\	
+		\hline
+		\multirow{3}{*}{B} & 	L		& 0.546 & \textbf{0.708} & \textbf{0.754} & 0.714 & \textbf{0.749} & \textbf{0.758} \\
+		%\hdashline 	
+		& 	C		&0.281 & 0.671 & 0.611 & 0.697 & 0.689 & 0.697\\
+		%\hline	
+		& 	L+C		& 0.332 & 0.672 & 0.710 & \textbf{0.730} & 0.743 & 0.731\\
+		\hline\hline        
+	\end{tabular}
+	\caption{F-scores for ny\={a}s and non-ny\={a}s label annotations task using PLS method (A) and the proposed segmentation method (B). Results are shown for different classifiers (Tree, KNN, NB, LR, SVM) and local (L), contextual (C) and local together with contextual (L+C) features. DTW is the baseline method used for comparison. The best random baseline F-score is  0.153 obtained using RB2. } 
+	\label{tab:accuraciesRegion}
+	%	\vspace{-1.5em}
+\end{table}
+
+
+In general, we see that the proposed segmentation method improves the performance over PLS method in both tasks, wherein the differences are statistically significant in the former case. Furthermore, the local feature set, when combined with the proposed segmentation method, yields the best accuracies. We also find that the contextual features do not complement the local features to further improve the performance. However, interestingly, they perform reasonably good considering that they only use contextual information.
+
+
+\section{Conclusions and Future work}
+\label{ConclusionAndFutureWork}
+
+We proposed a method for detecting ny\={a}s segments in mel\hyp{}odies of Hindustani music. We divided the task into two broad steps: melody segmentation and segment classification. For melody segmentation we proposed a method which incorporates domain knowledge to facilitate ny\={a}s boundary annotations. We evaluated three feature sets: local, contextual and the combination of both. We showed that the performance of the proposed method is significantly better compared to a baseline method using standard dynamic time warping based distance and a $K$ nearest neighbor classifier. Furthermore, we showed that the proposed segmentation method outperforms a standard approach based on piece-wise linear segmentation. A feature set that includes only the local features was found to perform best. However, we showed that using just the contextual information we could also achieve a reasonable accuracy. This indicates that ny\={a}s segments have a defined melodic context which can be learned automatically. In the future we plan to perform this task on Bandish performances, which is a compositional form in Hindustani music. We also plan to investigate other melodic landmarks and different evaluation measures for label annotations.
+
+
 
 
 

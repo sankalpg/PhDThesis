@@ -177,23 +177,23 @@ In Table~\ref{tab:accuracies_for_variants}, we present the results of our propos
 
 We start by analyzing the results of the variants of $M$. From Table~\ref{tab:accuracies_for_variants}, we see that the highest accuracy obtained by $M$ for DB10r\={a}ga is 91.7\%. Compared to DB10r\={a}ga, there is a significant drop in the performance of every variant of $M$ for DB40r\={a}ga. The best performing variant in the latter achieves 69.6\% accuracy. We also see that for both the datasets, the accuracy obtained by $M$ across the feature sets is nearly the same for each classifier, with no statistically significant difference. This suggests that, considering just the presence or the absence of a melodic phrase, irrespective of its frequency of occurrence, is sufficient for r\={a}ga recognition. Interestingly, this finding is consistent with the fact that characteristic melodic phrases are unique to a r\={a}ga and a single occurrence of such phrases is sufficient to identify the r\={a}ga~\cite{krishna2012carnatic}. As seen in Table~\ref{tab:accuracies_for_variants}, the performance of the proposed method is very sensitive to the choice of the classifier. We notice that for both the datasets, the best accuracy is obtained using the NBM classifier, and the difference in its performance compared to any other classifier is statistically significant. Note that, the NBM classifier outperforming other classifiers is also well recognized in the text classification community~\cite{mccallum1998comparison}. We, therefore, only consider the NBM classifier for comparing $M$ with the other methods. It is worth noting that the feature weights assigned by a classifier can be used to identify the relevant melodic phrases for r\={a}ga recognition. These phrases can serve as a dictionary of semantically-meaningful melodic units for many computational tasks in IAM.
 
-%In order to validate that the estimated similarity threshold $T_{s}^\star$ (Section~\ref{pattern_clustering}) produces the optimal results, we perform r\={a}ga recognition using different similarity thresholds $T_{s}$. 
+In order to validate that the estimated similarity threshold $T_{s}^\star$ (Section~\ref{pattern_clustering}) produces the optimal results, we perform r\={a}ga recognition using different similarity thresholds $T_{s}$. 
 
-%\begin{figure}
-%	\begin{center}
-%		\includegraphics[width=.92\columnwidth]{figures/accuracy_Vs_thresold.pdf}
-%	\end{center}
-%	\caption{Accuracy of $M$ and $C(\mathcal{G})-C(\mathcal{G}_r)$ for different similarity thresholds.}
-%	\label{fig:performance_across_thresholds}
-%\end{figure}
-%
-%\begin{figure}
-%	\begin{center}
-%		\includegraphics[width=\columnwidth]{figures/cnf_mtx_40raga_with_annotation.pdf}
-%	\end{center}
-%	\caption{Confusion matrix for the proposed method. The different shades of grey are mapped to different number of audio recordings.}
-%	\label{fig:confusion_matrix}
-%\end{figure}
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=\figSizeEighty]{ch07_ragaRecognition/figures/accuracy_Vs_thresold.pdf}
+	\end{center}
+	\caption{Accuracy of $M$ and $C(\mathcal{G})-C(\mathcal{G}_r)$ for different similarity thresholds.}
+	\label{fig:performance_across_thresholds}
+\end{figure}
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=\figSizeHundred]{ch07_ragaRecognition/figures/cnf_mtx_40raga_with_annotation.pdf}
+	\end{center}
+	\caption{Confusion matrix for the proposed method. The different shades of grey are mapped to different number of audio recordings.}
+	\label{fig:confusion_matrix}
+\end{figure}
 
 Before further analyses of our results, we verify here our approach to obtain the optimal similarity threshold $T_{s}^\star$ (Section~\ref{pattern_clustering}). In Figure~\ref{fig:performance_across_thresholds}, we show the accuracy obtained by $M$, and  $C(\mathcal{G})-C(\mathcal{G}_r)$ as a function of similarity threshold $T_{s}$. We see that these curves are highly correlated. Thus, the optimal threshold $T_{s}^\star$, which we defined in Section~\ref{pattern_clustering} as the distance that maximizes the difference $C(\mathcal{G})-C(\mathcal{G}_r)$, also results in the best accuracy for r\={a}ga recognition.
 
@@ -239,9 +239,64 @@ The approach described above for \gls{raga} recognition close to how humans iden
 
 The computation of a \gls{tdms} has three steps as shown in Figure~\ref{fig:bd_tdms_computation}: pre-processing, surface generation, and post-processing. In pre-processing, we obtain a representation of the melody of an audio recording, which is normalized by the tonic or base frequency of the music piece. In surface generation, we compute a two dimensional surface based on the concept of delay coordinates. Finally, in post-processing, we apply power compression and Gaussian smoothing to the computed surface. We subsequently detail these steps.
 
+\subsubsection{Pre-processing}
+\label{sec:tdms_preprocessing}
+
+In this step we process the audio collection to obtain representation of the melodies that is suitable for the task of \gls{raga} recognition. For the computation of the \gls{tdms} we represent melody of an audio excerpt by the pitch of the predominant melodic source. For predominant pitch estimation we follow the method described in Section~\TODO{XXX}. We use exactly the same set of parameter values for pitch estimation. We subsequently post-process the estimated pitch to smoothen it and remove spurious pitch jumps. For post-processing we follow the procedure described in Section~\TODO{XXX} and use the same set of parameter values.
+
+The base frequency chosen for a melody in IAM is the tonic pitch of the lead artist~\cite{Gulati2014Tonic}, to which all other accompanying instruments are tuned. Therefore, a musically meaningful feature for \gls{raga} recognition should be independent of the tonic of the lead artist. For this, we normalize the predominant melody of every recording by considering its tonic pitch as the reference frequency during the Hertz-to-cent-scale conversion. For automatically identifying tonic values and subsequently converting pitch from Hertz to cent scale we follow the procedure detailed in Section~\TODO{XXX}.
 
 
-\subsection{Classification and Evaluation Methodology}
+\subsubsection{Surface Generation}
+\label{sec:tdms_surface_generation}
+
+The next step is to construct a two-dimensional surface based on the concept of delay coordinates (also termed phase space embedding)~\cite{takens1981detecting, Kantz04BOOK}. In fact, such two-dimensional surface can be seen as a discretized histogram of the elements in a two-dimensional Poicar\'e map~\cite{Kantz04BOOK}. For a given recording, we generate a surface $\check{\mathbf{S}}$ of size $\eta\times\eta$ recursively, by computing
+\begin{equation*}
+%\label{eq:surface_computation1}	
+\check{s}_{ij} = \sum_{t=\tau}^{N-1} I\left(B\left(c_t\right),i\right)~ I\left(B\left(c_{t-\tau}\right),j\right) %\left(1-I\left(f_tf_{t-\tau},0\right)\right)
+\end{equation*}
+%\vspace{-2em}
+for $0 \leq i,j < \eta$, where $I$ is an indicator function such that $I(x,y)=1$ iff $x=y$, $I(x,y)=0$ otherwise, $B$ is an octave-wrapping integer binning operator defined by
+\begin{equation}	
+\label{eq:binning_function}	
+B(x) = \left\lfloor ~\left(\frac{\eta x}{1200}\right) \bmod \eta ~\right\rfloor,
+\end{equation}
+and $\tau$ is a time delay index (in frames) that is left as a parameter. Note that, as mentioned, the frames where a predominant pitch could not be obtained are excluded from any calculation. For the size of $\check{\mathbf{S}}$ we use $\eta = 120$. This value  corresponds to 10 cents per bin, an optimal pitch resolution reported in~\cite{chordia2013joint}. %The study showed that r\={a}ga recognition using PCDs with a bin width of 10~cents outperforms the PCDs with a bin width of 100~cents, and obtains comparable results to PCDs with a bin width of 5~cents.
+
+An example of the generated surface $\check{\mathbf{S}}$ for a music piece\footnote{http://musicbrainz.org/recording/e59642ca-72bc-466b-bf4b-d82bfbc7b4af} in r\={a}ga Yaman is shown in Figure~\ref{fig:phase_space_surface}\,(a). We see that the prominent peaks in the surface correspond to the svaras of r\={a}ga Yaman. We notice that these peaks are steep and that the dynamic range of the surface is high. This can be attributed to the nature of the melodies in these music traditions, particularly in Hindustani music, where the melodies often contain long held svaras. In addition, the dynamic range is high because the pitches in the stable svara regions are within a small range around the svara frequency compared to the pitches in the transitory melodic regions. Because of this, the frequency values in the stable regions are mapped to a smaller set of bins, making the prominent peaks more steep.
+
+\begin{figure}[t]
+	\begin{center}
+		\includegraphics[width=\figSizeEighty]{ch07_ragaRecognition/figures/PSfeature_e59642ca-72bc-466b-bf4b-d82bfbc7b4af.pdf}
+	\end{center}\vspace{-1.5em}
+	\caption{Generated surface for a music piece before (a) and after (b) applying post-processing ($\check{\mathbf{S}}$ and $\hat{\mathbf{S}}$, respectively). For ease of visualization, both matrices are normalized here between 0 and 1.}
+	\label{fig:phase_space_surface}
+	\vspace{-0.5em}
+\end{figure}
+
+\subsubsection{Post-processing}
+\label{sec:tdms_post_processing}
+
+In order to accentuate the values corresponding to the transitory regions in the melody and reduce the dynamic range of the surface, we apply an element-wise power compression %$\overline{\mathbf{S}}= \mathbf{S}^\alpha$ %described in \eqnref{eq:power_compression}. 
+\begin{equation*}
+%\label{eq:power_compression}	
+\overline{\mathbf{S}}= \check{\mathbf{S}}^\alpha ,
+\end{equation*}
+where $\alpha$ is an exponent that is left as a parameter. Once a more compact (in terms of the dynamic range) surface is obtained, we apply Gaussian smoothing. With that, we attempt to attenuate the subtle differences in $\overline{\mathbf{S}}$ corresponding to the different melodies within the same r\={a}ga, while retaining the attributes that characterize that r\={a}ga. 
+
+We perform Gaussian smoothing by circularly convolving $\overline{\mathbf{S}}$ with a two-dimensional Gaussian kernel. We choose a circular convolution because of the cyclic (or octave-folded) nature of the \gls{tdms} (Equation~\ref{eq:binning_function}), which mimics the cyclic nature of pitch classes. The standard deviation of this kernel is $\sigma$ bins (samples). The length of the kernel is truncated to $8\sigma + 1$ bins in each dimension, after which the values are negligible (below $0.01\%$ of the kernel's maximum amplitude). We experiment with different values of $\sigma$, and also with a method variant excluding the Gaussian smoothing (loosely denoted by $\sigma = -1$), so that we can quantify its influence on the accuracy of the system. 
+%
+%After convolution we retain the same dimensionality of the surface as before by discarding $4\sigma$ number of samples from the start and the end of each dimension (i.e.~the border). 
+
+Once we have the smoothed surface $\hat{\mathbf{S}}$, there is only one step remaining to obtain the final \gls{tdms}. Since the overall duration of the recordings and of the voiced regions within them is different, the computed surface $\hat{\mathbf{S}}$ needs to be normalized. To do so, we divide $\hat{\mathbf{S}}$ by its $L_1$ matrix norm:
+\begin{equation*}
+\mathbf{S} = \hat{\mathbf{S}}/\norm{\hat{\mathbf{S}}}_{1} .
+\end{equation*}
+This also yields values of $\mathbf{S}$, the final TDMS, that are interpretable in terms of discrete probabilities.
+
+The result after post-processing the surface of Figure~\ref{fig:phase_space_surface}\,(a) with power compression and Gaussian smoothing is shown in Figure~\ref{fig:phase_space_surface}\,(b). We see that the values corresponding to the non-diagonal elements are accentuated. A visual inspection of Figure~\ref{fig:phase_space_surface}\,(b) provides several musical insights to the melodic aspects of the recording. For instance, the high salience indices along the diagonal, $(0,0)$, $(20,20)$, $(40,40)$, $(60,60)$, $(70,70)$, $(90,90)$, and $(110,110)$, correspond to the 7~svaras used in r\={a}ga Yaman. Within which, the highest salience at indices (110,110) correspond to the Ni svara, which is the {\it Vadi} svara, i.e., musically the most salient svara of the r\={a}ga, in this case r\={a}ga Yaman~\cite{rao1999raga}. The asymmetry in the matrix with respect to the diagonal indicates the asymmetric nature of the ascending and descending svara pattern of the r\={a}ga (compare, for example, the salience at indices $(70, 90)$ to indices $(90, 70)$, with the former being more salient than the latter). The similarity of the matrix between indices $(20,20)$ and $(70,70)$ with respect to the matrix between indices $(70,70)$ and $(120,120)$ delineates the tetra-chord structure of the r\={a}ga. Finally, it should be noted that an interesting property of TDMSs is that the mean of the sum across its row and columns yields a PCD representation (see Section \TODO{XXX}).
+
+\subsection{Classification and Distance Measures}
 \label{sec:tdms_classification_evaluation}
 
 % Our second method  $\mathcal{M}_\mathrm{\acrshort{tdms}}$ uses a novel melodic representation, \gls{tdms}, for compactly capturing both the tonal and the temporal characteristics of \glspl{raga}. Evaluations done using representative and scalable data sets for both Hindustani and Carnatic music demonstrate that $\mathcal{M}_\mathrm{\acrshort{tdms}}$ outperforms state-of-the-art methods by a large margin. 
@@ -250,8 +305,101 @@ The computation of a \gls{tdms} has three steps as shown in Figure~\ref{fig:bd_t
 %2) Desired qualities of this method
 
 
-\subsection{Results and Discussion}
+In order to demonstrate the ability of the \gls{tdms} s in capturing r\={a}ga characteristics, we consider the task of classifying audio recordings according to their r\={a}ga label. To perform classification, we choose a $k$-nearest neighbor (kNN) classifier~\cite{Mitchell97BOOK}. The reasons for our choice are manifold. Firstly, the kNN classifier is well understood, with well studied relations to other classifiers in terms of both performance and architecture. Secondly, it is fast, with practically no training and with known techniques to speed up testing or retrieval. Thirdly, it has only one parameter, $k$, which we can just blindly set to a relatively small value or can easily optimize in the training phase. Finally, it is a classifier that is simple to implement and whose results are both interpretable and easily reproducible. 
+
+The performance of a kNN classifier highly depends on the distance measure used to retrieve the $k$ neighbors. We consider three different measures to compute the distance between two recordings $n$ and $m$ with \gls{tdms}\ features $\mathbf{S}^{(n)}$ and $\mathbf{S}^{(m)}$, respectively. We first consider the Frobenius norm of the difference between $\mathbf{S}^{(n)}$ and $\mathbf{S}^{(m)}$,
+\begin{equation*}
+D_{\mathrm{F}}^{(n,m)} = \norm{\mathbf{S}_{n} - \mathbf{S}_{m}}_2 .
+\end{equation*}
+Next, we consider the symmetric Kullback-Leibler divergence
+\begin{equation*}
+D_{\mathrm{KL}}^{(n,m)} = D_{\mathrm{KL}}\left(\mathbf{S}^{(n)},\mathbf{S}^{(m)}\right) + D_{\mathrm{KL}}\left(\mathbf{S}^{(m)},\mathbf{S}^{(n)}\right) ,
+\end{equation*}
+with
+\begin{equation*}
+D_{\mathrm{KL}}\left(\mathbf{X},\mathbf{Y}\right) = \sum{\mathbf{X} \log\left(\frac{\mathbf{X}}{\mathbf{Y}} \right)} ,
+\end{equation*}
+where we perform element-wise operations and sum over all the elements of the resultant matrix. Finally, we consider the Bhattacharyya distance, which is reported to outperform other distance measures with a PCD-based feature for the same task in~\cite{chordia2013joint},
+\begin{equation*}
+D_{\mathrm{B}}^{(n,m)} = -\log\left( \sum{ \sqrt{ \mathbf{S}^{(n)} \cdot \mathbf{S}^{(m)} } } \right) .
+\end{equation*}
+We again perform element-wise operations and sum over all the elements of the resultant matrix. Variants of our proposed method that use $D_{\mathrm{F}}$, $D_{\mathrm{KL}}$ and $D_{\mathrm{B}}$ are denoted by $\mathcal{M}_{\mathrm{F}}$, $\mathcal{M}_{\mathrm{KL}}$, and $\mathcal{M}_{\mathrm{B}}$, respectively.
+
+
+
+\subsection{Evaluation, Results and Discussion}
 \label{sec:tdms_eval_results}
+
+To evaluate the performance of the considered methods we use the raw overall accuracy~\cite{Mitchell97BOOK}. Since both CMD and HMD are balanced in the number of instances per class, we do not need to correct such raw accuracies to counteract for possible biases towards the majority class. We perform a leave-one-out cross validation~\cite{Mitchell97BOOK}, in which one recording from the evaluation data set forms the testing set and the remaining ones become the training set. To assess if the difference in the performance between any two methods is statistically significant, we use McNemar's test~\cite{mcnemar1947note} with $p < 0.01$. To compensate for multiple comparisons, we apply the Holm-Bonferroni method~\cite{holm1979simple}. Besides accuracy, and for a more detailed error analysis, we also compute the confusion matrix over the predicted classes.
+
+In the case of $\mathcal{M}$, a test recording is assigned the majority class of its $k$-nearest neighbors obtained from the training set and, in case of a tie, one of the majority classes is selected randomly. Because we conjecture that none of the parameters we consider is critical to obtain a good performance, we initially make an educated guess and intuitively set our parameters to a specific combination. We later study the influence of every parameter starting from that combination. We initially use $\tau=0.3$\,s, $\alpha=0.75$, $\sigma=2$, and $k=1$, and later consider $\tau\in\lbrace 0.2, 0.3, 0.5, 1, 1.5\rbrace$\,s, $\alpha\in\lbrace 0.1, 0.25, 0.5, 0.75, 1 \rbrace$, $\sigma\in\lbrace -1, 1, 2, 3\rbrace$, and $k\in\lbrace 1,3,5\rbrace$ (recall that $\sigma=-1$ corresponds to no smoothing; Section~\TODO{XXX}.
+
+
+In Table~\ref{tab:main_results}, we show the results for all the variants of the proposed method $\mathcal{M}_{\mathrm{F}}$, $\mathcal{M}_{\mathrm{KL}}$ and $\mathcal{M}_{\mathrm{B}}$, and the two state-of-the-art methods $\mathcal{E}_{\mathrm{PCD}}$ and $\mathcal{E}_{\mathrm{VSM}}$, using HMD and CMD data sets. We see that the highest accuracy obtained on HMD is 97.7\% by $\mathcal{M}_{\mathrm{KL}}$ and $\mathcal{M}_{\mathrm{B}}$. This accuracy is considerably higher than the 91.7\% obtained by $\mathcal{E}_{\mathrm{PCD}}$, and the difference is found to be statistically significant. We also see that $\mathcal{E}_{\mathrm{PCD}}$ performs significantly better than $\mathcal{E}_{\mathrm{VSM}}$. Regarding the proposed variants, we see that, in HMD, $\mathcal{M}_{\mathrm{KL}}$ and $\mathcal{M}_{\mathrm{B}}$ perform better than $\mathcal{M}_{\mathrm{F}}$, with a statistically significant difference. 
+
+\begin{table}[t] 
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{ c | c c c | c c}
+			\hline\hline
+			Data set   	& 	$\mathcal{M}_{\mathrm{F}}$ 	&	$\mathcal{M}_{\mathrm{KL}}$		&	$\mathcal{M}_{\mathrm{B}}$	&	$\mathcal{E}_{\mathrm{PCD}}$		&	$\mathcal{E}_{\mathrm{VSM}}$\\	
+			\hline
+			HMD   	& 	91.3 	&	{\bf 97.7}		&	{\bf 97.7} 	&	91.7		&	83.0\\	
+			
+			CMD   	& 	81.5	&	{\bf 86.7}		&	{\bf 86.7}	&	73.1		&	68.1\\	
+			\hline\hline
+		\end{tabular}
+	}
+	\caption{Accuracy (\%) of the three proposed variants, $\mathcal{M}_{\mathrm{F}}$, $\mathcal{M}_{\mathrm{KL}}$ and $\mathcal{M}_{\mathrm{BC}}$, and the two existing state-of-the-art methods $\mathcal{E}_{\mathrm{PCD}}$ and $\mathcal{E}_{\mathrm{VSM}}$ (see text). The random baseline for this task is 3.3\% for HMD and 2.5\% for CMD. }
+	\label{tab:main_results}
+\end{table}
+
+In Table~\ref{tab:main_results}, we see that the trend in the performance for  CMD across different methods is similar to that for  HMD. The variants $\mathcal{M}_{\mathrm{KL}}$ and $\mathcal{M}_{\mathrm{B}}$ achieve the highest accuracy of 86.7\%, followed by $\mathcal{E}_{\mathrm{PCD}}$ with 73.1\%. The difference between $\mathcal{M}_{\mathrm{KL}}$ ($\mathcal{M}_{\mathrm{B}}$) and $\mathcal{E}_{\mathrm{PCD}}$ is found to be statistically significant.  For CMD, also  $\mathcal{M}_{\mathrm{KL}}$ and $\mathcal{M}_{\mathrm{B}}$ perform better than $\mathcal{M}_{\mathrm{F}}$, with a statistically significant difference. 
+
+In general, we notice that, for every method, the accuracy is higher on HMD compared to CMD. This, as expected, can be largely attributed to the difference in the number of classes in  HMD (30 r\={a}gas) and  CMD (40 r\={a}gas). A higher number of classes makes the task of r\={a}ga recognition more challenging for  CMD, compared to  HMD. In addition to that, another factor that can cause this difference could be the length of the audio recordings, which for  HMD are significantly longer than the ones in CMD.
+
+As mentioned earlier, the system parameters corresponding to the results in Table~\ref{tab:main_results} were set intuitively, without any parameter tuning. Since \gls{tdms} s are used here for the first time, we want to carefully analyze the influence that each of the parameters has on the final r\={a}ga recognition accuracy, and ultimately perform a quantitative assessment of their importance. In Figure~\ref{fig:accuracy_vs_parameter_values}, we show the accuracy of $\mathcal{M}_{\mathrm{KL}}$ for different values of these parameters. In each case, only one parameter is varied and the rest are set to the initial values mentioned above. 
+
+\begin{figure}[t]
+	\begin{center}
+		\includegraphics[width=\figSizeEighty]{ch07_ragaRecognition/figures/accuracy_vs_parameters_long2.pdf}
+	\end{center}\vspace{-1em}
+	\caption{Accuracy of $\mathcal{M}_{\mathrm{KL}}$ as a function of parameter values. State-of-the-art approaches $\mathcal{E}$ and random baselines $\mathcal{B}$ are also reported for comparison.} 
+	\label{fig:accuracy_vs_parameter_values}
+\end{figure}
+
+In Figure~\ref{fig:accuracy_vs_parameter_values}\,(a), we observe that the performance of the method is quite invariant to the choice of $\tau$, except for the extreme delay values of 1 and 1.5\,s for CMD. This can be attributed to the melodic characteristics of Carnatic music, which presents a higher degree of oscillatory melody movements and shorter stationary svara regions, as compared to Hindustani music. In Figure~\ref{fig:accuracy_vs_parameter_values}\,(b), we see that compression with $\alpha < 1$ slightly improves the performance of the method for both data sets. However, the performance degrades for $\alpha < 0.75$ for  CMD and $\alpha < 0.25$ for  HMD. This again appears to be correlated with the long steady nature of the svaras in Hindustani music melodies. Because the dynamic range of $\check{\mathbf{S}}$ is high, \gls{tdms}\ features require a lower value for the compression factor $\alpha$ to accentuate the surface values corresponding to the transitory regions in the melodies of Hindustani music. In Figure~\ref{fig:accuracy_vs_parameter_values}\,(c), we observe that Gaussian smoothing significantly improves the performance of the method, and that such performance is invariant across the chosen values of $\sigma$. Finally, in Figure~\ref{fig:accuracy_vs_parameter_values}\,(d), we notice that the accuracy decreases with increasing $k$. This is also expected due to the relatively small number of samples per class in our data sets~\cite{Mitchell97BOOK}. %The best accuracy obtained is for $k=1$, which is also reported in a previous study that uses PCD-based feature for the same task~\cite{chordia2013joint}. 
+Overall, the method appears to be invariant to different parameter values to a large extent, which implies that it is easier to extend and tune it to other data sets.
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=\figSizeHundred]{ch07_ragaRecognition/figures/carnaticPhaseSapce_config_1078.pdf}
+	\end{center}\vspace{-1em}
+	\caption{Confusion matrix of the predicted r\={a}ga labels obtained by $\mathcal{M}_{\mathrm{KL}}$ on CMD. Shades of grey are mapped to the number of audio recordings.} 
+	\label{fig:confusion_mtx_carnatic}\vspace{-1em}
+\end{figure}
+
+From the results reported in Figure~\ref{fig:accuracy_vs_parameter_values}, we see that there exist a number of parameter combinations that could potentially yield a better accuracy than the one reported in Table~\ref{tab:main_results}. For instance, using  $\tau=0.3$\,s, $\alpha=0.5$, $\sigma=2$, and $k=1$, we are able to reach 97.0\% for $\mathcal{M}_{\mathrm{F}}$ and 98.0\% for both $\mathcal{M}_{\mathrm{KL}}$ and $\mathcal{M}_{\mathrm{B}}$ on HMD. These accuracies are ad-hoc, optimizing the parameters on the testing set. However, and doing things more properly, we could learn the optimal parameters in training, through a standard grid search, cross-validated procedure over the training set~\cite{Mitchell97BOOK}. As our primary goal here is not to obtain the best possible results, but to show the usefulness and superiority of \gls{tdms} s, we do not perform such an exhaustive parameter tuning and leave it for future research.
+
+%\begin{table} 
+%	\centering
+%	\resizebox{\linewidth}{!}{
+%	\begin{tabular}{ c | c c c | c c}
+%		\hline\hline
+%		Data set   	& 	$\mathcal{M}_{\mathrm{F}}$ 	&	$\mathcal{M}_{\mathrm{KL}}$		&	$\mathcal{M}_{\mathrm{B}}$	&	$\mathcal{E}_{\mathrm{PCD}}$		&	$\mathcal{E}_{\mathrm{VSM}}$\\	
+%		\hline
+%		HMD   	& 	97.0 	&	{\bf 98.0}		&	{\bf 98.0} 	&	91.7		&	83.0\\
+%		CMD   	& 	86.3	&	{\bf 86.7}		&	{\bf 86.7}	&	73.1		&	69.1\\
+%		\hline\hline
+%	\end{tabular}
+%	}
+%	\caption{Best in-sample accuracies (\%) of the three variants of the proposed method $\mathcal{M}_{\mathrm{F}}$, $\mathcal{M}_{\mathrm{KL}}$ and $\mathcal{M}_{\mathrm{B}}$, and its comparison with the considered existing state-of-the-art methods $\mathcal{E}_{\mathrm{PCD}}$ and $\mathcal{E}_{\mathrm{VSM}}$.}
+%	\label{tab:main_results_overfit}
+%\end{table}
+
+
+To conclude, we proceed to analyze the errors made by the best performing variant $\mathcal{M}_{\mathrm{KL}}$. For  CMD, we show the confusion matrix of the predicted r\={a}ga labels in Figure~\ref{fig:confusion_mtx_carnatic}. In general, we see that the confusions have a musical explanation. The majority of them are between the r\={a}gas in the sets $\lbrace$Bhairavi, Mukh\={a}ri$\rbrace$, $\lbrace$Harik\={a}mbh\={o}ji, K\={a}mbh\={o}ji$\rbrace$, $\lbrace$Madhyamvat\={i}, A\d{t}\={a}na, \'Sr\={i}$\rbrace$, and $\lbrace$K\={a}pi, \={A}nandabhairavi$\rbrace$. R\={a}gas within each of these sets are allied r\={a}gas~\cite{Viswanathan2004}, i.e., they share a common set of svaras and similar phrases. For HMD, there are only 7 incorrectly classified recordings (confusion matrix omitted for space reasons). R\={a}ga Alhaiy\={a} bil\={a}wal and r\={a}ga D\={e}\'{s} is confused with r\={a}ga Gau\d{d} Malh\={a}r, which is musically explicable as these r\={a}gas share exactly the same set of svaras. R\={a}ga R\={a}g\={e}\'{s}hr\={i} is confused with B\={a}g\={e}\'{s}hr\={i}, which differ in only one svara. In all these cases, the r\={a}gas which are confused also have similar melodic phrases. For two specific cases of confusions, that of r\={a}ga  Kham\={a}j with B\={a}g\={e}\'{s}hr\={i}, and r\={a}ga Darb\={a}r\={i} with Bh\={u}p, we find that the error lies in the estimation of the tonic pitch.
+
 
 \section{Comparison with state of the art}
 \label{sec:summary_raga_recognition}
