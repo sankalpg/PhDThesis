@@ -125,14 +125,14 @@ In this section we present the results of our evaluation of the 560 variants for
 In Table~\ref{tab:results5Best} (top half), we show the MAP scores and the details of parameter settings for the CMD. We see that the best performing variant has a MAP score of 0.413. We observe that for the CMD, in the ranked list of the 560 variants, top performing variants consistently use higher sampling rates (either  $S_{100}$, $S_{67}$ or $S_{50}$). This can be attributed to the rapid oscillatory melodic movements present in Carnatic music, \ADD{whose preservation requires a higher sampling rate}. The top variants invariably use the zero mean normalization ($N_{\mathrm{mean}}$), \ADD{suggesting that there are several repeated instances of the melodic patterns that are pitch transposed within the same recording}. In addition, top variants also use DTW-based distance with local constraint (either $D_{\mathrm{DTW\_L1\_G10}}$ or $D_{\mathrm{DTW\_L1\_G90}}$), \ADD{indicating that melodic fragments are prone to large pathological warpings that can significantly degrade the performance}. We do not observe any consistency in the usage of uniform time-scaling. However, it strongly correlates with the global constraint in the DTW distance. In majority of the top ranked variants, $U_{\mathrm{on}}$ consistently occurs with $D_{\mathrm{DTW\_L1\_G10}}$, and $U_{\mathrm{off}}$ consistently occurs with $D_{\mathrm{DTW\_L1\_G90}}$. \ADD{We also performed an analysis of several (small distance) false positives and found that the MAP scores for a number of queries were low because of the spurious errors in the predominant pitch.}
 
 
-
-\begin{figure}
-	\begin{center}
-		\includegraphics[keepaspectratio = true, height=4.2cm, scale=1]{figures/StatisticalDiff.png}\vspace{-1em}
-	\end{center}
-	\caption{Matrix indicating the statistical significance of the performance difference between every variant pair for the CMD and the HMD. Variant pairs where the difference in the performance is statistically significant are marked by dots.}\vspace{-1em}
-	\label{fig:statisticalSig}
-\end{figure}
+%
+%\begin{figure}
+%	\begin{center}
+%		\includegraphics[keepaspectratio = true, height=4.2cm, scale=1]{figures/StatisticalDiff.png}\vspace{-1em}
+%	\end{center}
+%	\caption{Matrix indicating the statistical significance of the performance difference between every variant pair for the CMD and the HMD. Variant pairs where the difference in the performance is statistically significant are marked by dots.}\vspace{-1em}
+%	\label{fig:statisticalSig}
+%\end{figure}
 
 
 
@@ -146,13 +146,13 @@ The MAP scores and the details of parameter settings for the HMD are shown in Ta
 To assess the statistical significance of the results we compare every possible pair of the variants ($^{560}C_{2}$ = 156520 comparisons). The results are shown in Fig.~\ref{fig:statisticalSig}, where both the axes are the index of the variants in the ranked list. For every variant pair with index $i$ and $j$, we mark the pixel~($i$,$j$) if the difference is statistically significant. From Fig.~\ref{fig:statisticalSig} we see that a majority of variant pairs have a statistically significant difference in the MAP scores. This indicates that the task of computing melodic similarity is sensitive to the choice of parameters and processing steps, and a small change in the choices made in a variant can lead to a significantly different MAP score. Furthermore, as the marked pixels are higher in number for the HMD, this sensitivity is even higher for the HMD compared to the CMD.
 
 
-\begin{figure}
-	\begin{center}
-		\includegraphics[keepaspectratio = true, height=4.6cm, scale=1]{figures/CMD_HMD_CW_MAP.pdf}\vspace{-2em}
-	\end{center}
-	\caption{Boxplot of the average precision values for each pattern type~(PT) in the CMD and the HMD.}\vspace{-1em}
-	\label{fig:CW_AP_results}
-\end{figure}
+%\begin{figure}
+%	\begin{center}
+%		\includegraphics[keepaspectratio = true, height=4.6cm, scale=1]{figures/CMD_HMD_CW_MAP.pdf}\vspace{-2em}
+%	\end{center}
+%	\caption{Boxplot of the average precision values for each pattern type~(PT) in the CMD and the HMD.}\vspace{-1em}
+%	\label{fig:CW_AP_results}
+%\end{figure}
 
 To analyze the consistency in performance across pattern types, we present the boxplot of the average precision values for each pattern type in Fig.~\ref{fig:CW_AP_results}. For this, we consider only the top performing variant for each dataset. \REM{We see that for the CMD, the mean average precision is of the same order across pattern types, whereas, in the case of the HMD, it varies considerably.} \ADD{We see that the MAP scores vary considerably across pattern types for both the CMD and the HMD. Furthermore, we observe that the intra pattern type variance of the MAP scores is higher for the CMD as compared to the HMD.} In addition, we observe that the pattern types $H_2$ and $H_5$ have a higher MAP value compared to other pattern types in the HMD. Interestingly, $H_2$ and $H_5$ are also the pattern types for which $L_{\mathrm{std}}$ is lower \ADD{and $\#Occ$ is higher }than others in the HMD. This correlation is not evident in the CMD, since $L_{\mathrm{std}}$ is small for all pattern types. 
 
@@ -184,7 +184,7 @@ we show an example of the occurrences of a melodic phrase both before ($P_{1a}$,
 
 The complexity weighting that we apply here to overcome the shortcoming of the distance measure in distinguishing two time series with different complexities is discussed in~\cite{batista2011complexity}. We apply a complexity weighting ($\alpha$) to the DTW-based distance ($D_{DTW}$) in order to compute the final similarity score $D_{f}=\alpha D_{DTW}$. We compute $\alpha$ as:
 
-\vSqueezeNormal
+
 \begin{equation}
 \begin{gathered}
 \alpha = \frac{\max(C_i,C_j)}{\min(C_i, C_j)};\hspace{1.5em} C_i = \sqrt[2]{\sum_{i=1}^{N-1} (p_{i}-p_{i+1})^2}\\
@@ -202,13 +202,13 @@ The complexity weighting that we apply here to overcome the shortcoming of the d
 \subsubsection{Pre-processing}
 \label{sec:preprocessing}
 
-\begin{figure}
-	\begin{center}
-		\includegraphics[width=\columnwidth]{figures/blockDiagram_DataProc.pdf}
-	\end{center}
-	\caption{Block diagram of the data processing module.}%\vspace{-1em}
-	\label{fig:blockDiagramDataProc}
-\end{figure}
+%\begin{figure}
+%	\begin{center}
+%		\includegraphics[width=\columnwidth]{figures/blockDiagram_DataProc.pdf}
+%	\end{center}
+%	\caption{Block diagram of the data processing module.}%\vspace{-1em}
+%	\label{fig:blockDiagramDataProc}
+%\end{figure}
 
 
 The steps involved in the pre-processing block are shown in Fig.~\ref{fig:blockDiagramDataProc}. A brief description of each of these steps is given below:
@@ -229,13 +229,13 @@ We select the lag at which the third quartile Q3 has an ACR value of 0.8, which 
 \paragraph{d) Solo Percussion Removal} A concert of Carnatic music typically contains a solo percussion section, referred as {\it Tani Avartana} or {\it Tani} in short. Its duration typically varies from 2 to 25\,min. Since the main percussion instrument in Carnatic music, the {\it m\d{r}da\.{n}ga\.{m}}, has tonal characteristics, the pitch estimation algorithm tracks the pitch of the m\d{r}da\.{n}ga\.{m} strokes instead of detecting this section as an unvoiced segment. Hence, we dedicate an extra effort to discard such segments using a classification-based approach (Fig.~\ref{fig:blockDiagramDataProc}). To feed the classifiers we extracted 13~MFCC coefficients, spectral centroid, spectral flatness and pitch salience (c.f.~\cite{slaney1998auditory}) from the audio signal using Essentia. We iterated over 23, 46 and 92\,ms frame sizes and chose the one which resulted in a better classification accuracy. We set the hop size as half the frame size and all other parameters to their default values. Next, we computed means and variances of these features over 2\,s non-overlapping segments. For training, we used a labeled audio music dataset containing 1.5~hours of mixed voice and violin recordings and 1.5~hours of solo percussion recordings. To assess the performance of the extracted features, we performed a leave-one-out cross-validation. We experimented with five different algorithms exploiting diverse classification strategies~\cite{Hastie09BOOK}: decision trees (Tree), $K$~nearest neighbors (KNN), naive Bayes (NB), logistic regression (LR), and support vector machines with a radial basis function kernel (SVM). We used the implementations available in scikit-learn version~0.14.1~\cite{scikitlearn}. We used the default set of parameters with few exceptions to avoid over-fitting and to compensate for the uneven number of instances per class. We set \texttt{min\_} \texttt{samples\_split=10} for Tree, \texttt{fit\_prior=False} for NB, \texttt{n\_neighbors=5} for KNN, and for LR and SVM \texttt{class\_weight=`auto'}. The combination of the frame size of 46\,ms and the SVM classifier yielded the best performance (96\% accuracy), with no statistically significant difference to the performance with the Tree (95.5\%) and the KNN (95\%), for the same frame size. We finally chose KNN because of its low complexity.
 
 
-\begin{figure}
-	\begin{center}
-		\includegraphics[keepaspectratio = true, height=4cm, scale=1]{figures/ACRHistogram.pdf}
-	\end{center}
-	\caption{Histograms of ACR values (histogram value is indicated by the colormap on the right; for ease of visualization, we compress the range of the histogram values by taking its fourth root). Q1, Q2 and Q3 denote the three quartile boundaries of the histogram. }
-	\label{fig:ACRHistogram}
-\end{figure}
+%\begin{figure}
+%	\begin{center}
+%		\includegraphics[keepaspectratio = true, height=4cm, scale=1]{figures/ACRHistogram.pdf}
+%	\end{center}
+%	\caption{Histograms of ACR values (histogram value is indicated by the colormap on the right; for ease of visualization, we compress the range of the histogram values by taking its fourth root). Q1, Q2 and Q3 denote the three quartile boundaries of the histogram. }
+%	\label{fig:ACRHistogram}
+%\end{figure}
 
 \subsubsection{Subsequence Generation}
 \label{sec:subsequencegeneration}
@@ -264,13 +264,13 @@ The steps involved in generating candidate subsequences are as follows:
 In order to determine the optimal values of $W_{\text{std}}$ and $T_{\text{std}}$, we manually labeled a number of regions in pitch contour as `flat' and `non-flat' for 4 excerpts in our database. We iterated over different parameter values and analyzed the resultant ROC curve (Fig.~\ref{fig:ROC}). %In  we show the ROC curve obtained for $W_{\text{std}} \in \lbrace100,200,400\rbrace$\,ms. 
 Doing so, we found that $W_{\text{std}}=200$\,ms resulted in the best performance and that the knee of the curve corresponded to $T_{\text{std}}=45$\,Cents. Having a value of $\beta$ for each subsequence, we finally filter out the ones for which $\beta \leq \gamma W_n$, using $\gamma = 0.8$. The latter was set by visual inspection.
 
-\begin{figure}
-	\begin{center}
-		\includegraphics[keepaspectratio = true, height=4cm, scale=1]{figures/ROCFlatness.pdf}
-	\end{center}
-	\caption{ROC curves for `flat' and `non-flat' region classification for different values of window length ($W_{\text{std}}$) used for selecting an optimal value of standard deviation $S_i$.}
-	\label{fig:ROC}
-\end{figure}
+%\begin{figure}
+%	\begin{center}
+%		\includegraphics[keepaspectratio = true, height=4cm, scale=1]{figures/ROCFlatness.pdf}
+%	\end{center}
+%	\caption{ROC curves for `flat' and `non-flat' region classification for different values of window length ($W_{\text{std}}$) used for selecting an optimal value of standard deviation $S_i$.}
+%	\label{fig:ROC}
+%\end{figure}
 
 
 After the data processing step, we retain around 17.5 million pattern candidates for our entire dataset. If no subsequence filtering is applied, a sampling rate of 225\,Hz for pitch sequence amounts to nearly 300~million pattern candidates for a database as big as ours.
@@ -338,26 +338,26 @@ One of the challenges in any data-driven task is evaluation. We here perform a q
 
 Expert evaluation is performed by a professional Carnatic musician who has received over 20 years of music education. For examining similarity between two melodic patterns, the musician listened to the audio fragments corresponding to these patterns and scored a 0 for melodically dissimilar and a 1 for melodically similar. The musician annotated melodic similarity for each seed pair and between the seed and its search patterns for every rank refinement method.
 
-\begin{figure}
-	\begin{center}
-		\includegraphics[keepaspectratio = true, height=4cm, scale=1]{figures/SeedDistribution.pdf}\vspace{-1em}
-	\end{center}
-	\caption{Distance distribution of seed patterns. Three seed pattern categories are marked by S1, S2 and S3.}
-	\label{fig:SeedDistanceDistribution}
-\end{figure}
+%\begin{figure}
+%	\begin{center}
+%		\includegraphics[keepaspectratio = true, height=4cm, scale=1]{figures/SeedDistribution.pdf}\vspace{-1em}
+%	\end{center}
+%	\caption{Distance distribution of seed patterns. Three seed pattern categories are marked by S1, S2 and S3.}
+%	\label{fig:SeedDistanceDistribution}
+%\end{figure}
 
 To quantify the musician's assessment of the similarity between the melodic patterns  we use mean average precision (MAP), a typical evaluation measure in information retrieval~\cite{manning2008introduction}, which is also very common in MIR. This way, we have a single number to evaluate the performance of the four different rank refinement methods. For the computation of the MAP scores we consider the total number of relevant patterns as the number of relevant patterns retrieved in the top 10 search results.  For assessing statistical significance we use the Mann-Whitney U test~\cite{mann1947test} with $p < 0.05$. To compensate for multiple comparisons, we apply the Holm-Bonferroni method~\cite{holm1979simple}. Thus, eventually we use a much more stringent criteria than $p < 0.05$ for measuring statistical significance. We use ROC curves to analyze the separation between the distance distribution of melodically similar and dissimilar subsequences~\cite{manning2008introduction}. 
 
 \subsection{Results}
 
 
-\begin{figure}
-	\begin{center}
-		\includegraphics[keepaspectratio = true, width=\columnwidth, scale=1]{figures/PatternPlots/combinedPatterns.pdf}
-	\end{center}
-	\caption{Examples of the discovered melodic patterns. \XXX{S}{J}{I have to put a,b,c,d in the image (later this day)}}%\vspace{-1em}
-	\label{fig:combinedPatterns}
-\end{figure}
+%\begin{figure}
+%	\begin{center}
+%		\includegraphics[keepaspectratio = true, width=\columnwidth, scale=1]{figures/PatternPlots/combinedPatterns.pdf}
+%	\end{center}
+%	\caption{Examples of the discovered melodic patterns. \XXX{S}{J}{I have to put a,b,c,d in the image (later this day)}}%\vspace{-1em}
+%	\label{fig:combinedPatterns}
+%\end{figure}
 
 Before presenting formal evaluations, we show a few examples of the discovered melodic patterns in Fig.~\ref{fig:combinedPatterns}. Our approach robustly extracts patterns in different scenarios such as large local time warpings~(b), uniform scaling~(c), patterns with silence regions~(d) and across different tonic pitches~(e and f). It is worth mentioning that, during the process of annotation, the musician found several musically interesting results. For example, striking similarity between phrases of two different r\={a}gas, between phrases in sung melodies and the melodies played on instruments (Violin or V\={i}\d{n}a), and phrases sung by different artists. Many of the discovered patterns are the characteristic melodic phrases of the r\={a}ga, which are the primary cues for r\={a}ga recognition. Overall, the  obtained results are musically relevant and can be used to establish meaningful relationships between audio recordings.
 
@@ -390,13 +390,13 @@ We now proceed to formal evaluations. We first evaluate the performance of the i
 
 
 
-\begin{figure}
-	\begin{center}
-		\includegraphics[keepaspectratio = true, height=4cm, scale=1]{figures/seedROC.pdf}
-	\end{center}
-	\caption{ROC curve for seed pairs and search patterns (using $V_2$) in the evaluation set.}%\vspace{-1em}
-	\label{fig:combinedROC}
-\end{figure}
+%\begin{figure}
+%	\begin{center}
+%		\includegraphics[keepaspectratio = true, height=4cm, scale=1]{figures/seedROC.pdf}
+%	\end{center}
+%	\caption{ROC curve for seed pairs and search patterns (using $V_2$) in the evaluation set.}%\vspace{-1em}
+%	\label{fig:combinedROC}
+%\end{figure}
 
 Next, we evaluate the performance of inter-recording pattern detection task and assess the effect of the four DTW cost variants of Sec~\ref{sec:rankRefinement} (denoted by $V_1 \dots V_4$). To investigate the dependence of  the performance on the category of the seed pair, we perform the evaluation within each seed category (Table~\ref{tab:meanAveragePrecision}). In addition, we also present a box plot of corresponding average precision values (Fig.~\ref{fig:boxPlotMAP}). In general, we observe that every method performs well for category S1, with a MAP score around 0.9 and no statistically significant difference between each other. For category S2, $V_2$ and $V_3$ perform better than the rest and the difference is found to be statistically significant. The performance is poor for the third category S3 for every variant. The difference in performance between any two methods across seed categories is statistically significant. We observe that MAP scores across different seed categories correlate well with the fraction of melodically similar seed pairs in that category (discussed above). This suggests that patterns which find good matches within a recording (i.e.,~low distance $D$) also correlate with more repetitions across recordings.
 
@@ -419,14 +419,14 @@ Finally, we analyze the distance distribution of search patterns for the best pe
 	
 \end{table}
 
-
-\begin{figure}
-	\begin{center}
-		\includegraphics[keepaspectratio = true, width=\columnwidth, scale=1]{figures/boxPlot.pdf}
-	\end{center}
-	\caption{Boxplot of average precision for variants of rank refinement method ($V_i$) for each seed category. }%\vspace{-1em}
-	\label{fig:boxPlotMAP}
-\end{figure}
+%
+%\begin{figure}
+%	\begin{center}
+%		\includegraphics[keepaspectratio = true, width=\columnwidth, scale=1]{figures/boxPlot.pdf}
+%	\end{center}
+%	\caption{Boxplot of average precision for variants of rank refinement method ($V_i$) for each seed category. }%\vspace{-1em}
+%	\label{fig:boxPlotMAP}
+%\end{figure}
 
 
 \section{Characterization of melodic patterns}
@@ -465,13 +465,13 @@ We start by building an undirected weighted network using the discovered pattern
 
 The main objective of this processing block is to filter the network to retain only the musically meaningful connections between the nodes. Since the edge weights between the pairs of melodically similar and dissimilar nodes may vary by orders of magnitude, we first consider to exploit this heterogeneity to extract the network's backbone. We therefore need to apply disparity filtering~\cite{Serrano09PNAS} to preserve only the edges that represent statistically significant deviations with respect to a null model of edge weight assignment for every node. The only parameter used in the disparity filtering is the statistical confidence value. We iterate over 5 different confidence values $\lbrace$99.99, 99, 90, 80, 50$\rbrace$. However, as we will show, the application of disparity filtering is found to be quite irrelevant for the present case.
 
-\begin{figure}
-	\begin{center}
-		\includegraphics[width=.9\columnwidth]{figures/CC_Curves_shrunk.pdf}\vSqueezeBig
-	\end{center}
-	\caption{Evolution of the clustering coefficient of $\mathcal{G}$ and $\mathcal{G}_r$ over different thresholds and for different statistical confidence values used for disparity filtering (legend).}\vSqueezeNormal
-	\label{fig:cc_curve}
-\end{figure}
+%\begin{figure}
+%	\begin{center}
+%		\includegraphics[width=.9\columnwidth]{figures/CC_Curves_shrunk.pdf}\vSqueezeBig
+%	\end{center}
+%	\caption{Evolution of the clustering coefficient of $\mathcal{G}$ and $\mathcal{G}_r$ over different thresholds and for different statistical confidence values used for disparity filtering (legend).}\vSqueezeNormal
+%	\label{fig:cc_curve}
+%\end{figure}
 
 
 We next proceed to filter edges in the network based on a melodic similarity threshold $T_S$. We propose to estimate $T_S$ based on the topological properties of the network. For this, we analyze the evolution of the clustering coefficient of both the obtained network $\mathcal{G}$ and the corresponding randomized network $\mathcal{G}_r$ over a range of similarity thresholds. Clustering coefficient measures the extent to which the nodes in a network tend to cluster together~\cite{newman2003structure}. The randomized network $\mathcal{G}_r$ is obtained by swapping the edges between randomly selected node pairs such that the degree of each node is preserved~\cite{maslov2002specificity}. This way, $\mathcal{G}_r$ can be considered as the maximally random network with that particular degree distribution. In Figure~\ref{fig:cc_curve}, we show the evolution of the clustering coefficient of $\mathcal{G}$ and $\mathcal{G}_r$ over different similarity thresholds (indicated by exponentially spaced bins). In addition, we can also see the clustering coefficient curves for different statistical confidence values used for disparity filtering. The evolution of the clustering coefficients is used for obtaining a similarity threshold as explained below.
@@ -520,13 +520,13 @@ In order to quantify the musicians' assessment, we use mean ratings for each phr
 
 
 We first analyze the musicians' ratings at the level of melodic phrases. In Figure~\ref{fig:average_rating}, we show $\mu_p$ for the 100 selected melodic phrases, where the grouping is based on their corresponding r\={a}gas. We find that the mean and the standard deviation of $\mu_p$ for the melodic phrases is 0.85 and 0.16, respectively. For a better understanding of $\mu_p$ across phrases and the overall musicians' agreement, we show the histogram of $\mu_p$ in Figure~\ref{fig:average_rating_histogram}. We see that 33 melodic phrases are rated as r\={a}ga motifs by all 10 musicians and 25 phrases are rated as r\={a}ga motifs by 9 out of 10 musicians. Similarly, the musicians' agreement can be inferred for the rest of the phrases from this histogram. We observe that 91\% of the phrases are always marked as r\={a}ga motifs by at least 7 out of 10 musicians. 
-\begin{figure}
-	\begin{center}
-		\includegraphics[width=0.88\columnwidth]{figures/per_raaga_per_phrase_rating.pdf}\vSqueezeBig
-	\end{center}
-	\caption{Mean musician rating per melodic phrase for each r\={a}ga: K\={a}pi\,(Kp), Hamsadhvani\,(Hd), K\={a}mavardhini\,(Kv), Bhairavi\,(Bh), Beh\={a}g\,(Bg), T\={o}\d{d}i\,(Td), B\={e}ga\d{d}\={a}\,(Bd), Kaly\={a}\d{n}\={i}\,(Kl), Darb\={a}r\,(Db), K\={a}mb\={o}ji\,(Kb).}\vSqueezeNormal
-	\label{fig:average_rating}
-\end{figure}
+%\begin{figure}
+%	\begin{center}
+%		\includegraphics[width=0.88\columnwidth]{figures/per_raaga_per_phrase_rating.pdf}\vSqueezeBig
+%	\end{center}
+%	\caption{Mean musician rating per melodic phrase for each r\={a}ga: K\={a}pi\,(Kp), Hamsadhvani\,(Hd), K\={a}mavardhini\,(Kv), Bhairavi\,(Bh), Beh\={a}g\,(Bg), T\={o}\d{d}i\,(Td), B\={e}ga\d{d}\={a}\,(Bd), Kaly\={a}\d{n}\={i}\,(Kl), Darb\={a}r\,(Db), K\={a}mb\={o}ji\,(Kb).}\vSqueezeNormal
+%	\label{fig:average_rating}
+%\end{figure}
 
 
 We now proceed to analyze the results for different r\={a}gas. In Table~\ref{tab:results_per_raaga}, we summarize mean $\mu_r$ and standard deviation $\sigma_r$ of $\mu_p$ for each r\={a}ga. We observe that there is a considerable amount of variation in $\mu_r$ across the r\={a}gas. It ranges from 0.75 for r\={a}ga K\={a}pi to 0.92 in the case of r\={a}ga T\={o}\d{d}i. An interesting observation here is that the phrase-based r\={a}gas\footnote{R\={a}gas whose identity is derived based on phraseology than svaras~\cite{krishna2012carnatic}.} are the top performing r\={a}gas with the  exception of r\={a}ga Darb\={a}r. From Table~\ref{tab:results_per_raaga} and Table~\ref{tab:dataset_details}, we notice a strong correlation between $\mu_r$ and the total duration of the audio recordings across r\={a}gas. This suggests that longer music pieces are likely to facilitate the discovery of r\={a}ga motifs owing to more number of occurrences of such melodic phrases.
@@ -538,14 +538,14 @@ The results show that the proposed method successfully discovers r\={a}ga motifs
 
 
 
-
-\begin{figure}
-	\begin{center}
-		\includegraphics[width=.9\columnwidth]{figures/histogram_musician_rating.pdf}\vSqueezeBig
-	\end{center}
-	\caption{Histogram of $\mu_p$ for all 100 melodic phrases.}\vSqueezeNormal
-	\label{fig:average_rating_histogram}
-\end{figure}
+%
+%\begin{figure}
+%	\begin{center}
+%		\includegraphics[width=.9\columnwidth]{figures/histogram_musician_rating.pdf}\vSqueezeBig
+%	\end{center}
+%	\caption{Histogram of $\mu_p$ for all 100 melodic phrases.}\vSqueezeNormal
+%	\label{fig:average_rating_histogram}
+%\end{figure}
 
 \begin{table} 
 	%\tabcolsep = 0.1cm
@@ -563,7 +563,7 @@ The results show that the proposed method successfully discovers r\={a}ga motifs
 		%   			& 				& 		& 	Overall&0.85 		&	0.16\\ \cline{4-6}\cline{4-6}
 		%\hline\hline 
 	\end{tabular}
-	\caption{Mean $\mu_r$ and standard deviation $\sigma_r$ of $\mu_p$ for each r\={a}ga. R\={a}gas with $\mu_r \geq 0.85$ are highlighted. }\vSqueezeNormal
+	\caption{Mean $\mu_r$ and standard deviation $\sigma_r$ of $\mu_p$ for each r\={a}ga. R\={a}gas with $\mu_r \geq 0.85$ are highlighted. }
 	\label{tab:results_per_raaga}
 \end{table}
 
