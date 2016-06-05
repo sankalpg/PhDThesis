@@ -13,9 +13,55 @@ Thoughts
 \end{itemize}
 
 
-\section{Predominant melody estimation and post-processing}
+\section{Predominant melody estimation}
+
+As mentioned, the primary aim in this thesis is to develop computational models to analyze the melodic aspects of \gls{iam}. It is therefore essential to first understand clearly the engineering definition of melody that we consider in this thesis. \Gls{iam} is heterophonic in nature (Section~\TODO{XXX}), wherein there are typically two melodic lines or melodic sources; the primary source, which is the lead artist and the secondary source, which is the accompanying instrumentalist. In this thesis we consider melody as a continuous pitch contour corresponding to the predominant melodic source (typically, the lead artist) in the audio signal. An example of a melody of an audio excerpt is shown in Figure~\TODO{XXX}, where the continuous contour represents the pitch of the lead singer at each instance in time. For other interesting definitions of melody we refer the readers to \TODO{XXX}. This definition of melody is a common choice and is used by several other researchers for a variety of topics XXXX.
+
+Owing to the complexity involved in the task of pitch estimation or tracking from audio signals, it has been an active research topic since several decades. As indicated in Section~\TODO{XXX} the challenges in the estimation of a reliable pitch contour differ across the type of audio music signals (monophonic or polyphonic). As a result of which the performance of these algorithms vary significantly across different music genres, which also seems to be correlated with the extent of the polyphony in the music. A sparse polyphonic characteristic in audio recordings of \gls{iam} due to its heterophonic nature lessens the complexity of the task compared to music genres like death-metal or orchestral music. This trend is clearly visible from the MIREX results~\TODO{Reference}, comparing the accuracy obtained on the data set of \gls{iam} with respect to the other data sets.
+
+In order to estimate the pitch of the predominant melodic source from the audio recordings of \gls{iam} we use use Melodia algorithm, a state-of-the-art melody extraction method proposed by Salamon and G\'omez~\cite{Salamon2012}. This method performed favorably in MIREX~2011 (an international MIR evaluation campaign) on a variety of music genres, including IAM.
+
+ We use the implementation of this algorithm as available in Essentia~\cite{essentia}. Essentia\footnote{https://github.com/MTG/essentia} is an open-source C++ library for audio analysis and content-based MIR. We use the default values of the parameters, except for the frame and hop sizes, which are set to 46 and 4.44\,ms, respectively. In subsequent steps, we discard frames where a predominant pitch cannot be obtained.
+ 
+ we apply an equal-loudness filter using the default set of parameters. Noticeably, the predominant pitch estimation algorithm also performs voicing detection, which is used in the later part of our data processing methodology to filter unvoiced segments 
+ 
+ What are the other implementations?
+ what are the parameter settings
+ what are the other studies that use this
+
+
+Thoughts
+\begin{itemize}
+	\item What did we want to extract from the audio for the purpose of this thesis work. What are the dimensions of the melody that we don't consider. 
+	\item how is that fullfilled by predominant melody
+	\item Caution to the readers about the usage of the word melody.
+	\item what do we do to extract predominant melody. This problem being simpler compared to the western popular music genres.
+	\item parameter settings
+	\item motivation to choose this algorithm
+	\item How can one use it, have we shared our melody representations?
+	\item Sampling rate depends on the task, hence we talk about that when we talk about the task
+	\item What are the errors in pitch estimation that we face
+	\item Post processing to correct them. What are the steps that we do.
+\end{itemize}
+
+\section{Post-processing of Predominant Melody}
+
+
+We proceed to post-process the pitch contours and remove the spurious pitch jumps lasting over a few frames as well as smooth the pitch contours. We first apply a median filter over a window size of 50\,ms, followed by a low-pass filter using a Gaussian window. The window size and the standard deviation of the Gaussian window is set to 50\,ms and 10\,ms, respectively. The pitch contours are finally down-sampled to 100\,Hz, which was found to be an optimal sampling rate in~\cite{gulati_ICASSP2015}. 
+
+\begin{itemize}
+	\item What are the errors in pitch estimation that we face
+	\item Post processing to correct them. What are the steps that we do.
+	\item Examples of post processed pitch contours.
+\end{itemize}
 
 \section{Tonic Identification}
+
+
+\section{Pitch Representation} 
+
+For the pitch representation to be musically relevant, the pitch values are converted from Hertz to Cents (logarithmic scale). For this conversion we additionally consider the tonic pitch of the lead artist as the reference frequency (i.e.,~0\,Cent corresponds to the tonic pitch). Thus, our representation becomes independent of the tonic of the lead artist, which allows a meaningful comparison of melodies of two distinct recordings (even if sung by two different artists in different tonic pitches). The tonic of the lead artist is identified automatically using a classification-based multi-pitch approach~\cite{Gulati2014Tonic}. We use the implementation of this method available in Essentia with the default set of parameters.%\vspace{0.5em}
+
 
 \section{Nyas identification}
 
