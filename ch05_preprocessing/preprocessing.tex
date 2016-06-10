@@ -1,19 +1,42 @@
 %!TEX root = ../thesis_a4.tex
 
-\chapter{Data preprocessing}
-
-Thoughts
-\begin{itemize}
-	\item What do we mean by data here, what kind of data are we using. Data-> input that we feed to our algorithms. In the scope of this thesis its primarily the audio data + small amount of metadata. The pre-processing is only for the audio data. 
-	\item What do we mean by data pre-proessing. why is it called pre-processing. Audio data is a very low level physical data, before we can use it or make sense out of it we have to abstract it. We have to transform the data and extract a representation of the concept that we are working on. This is how most of the algorithms discussed in this paper function. Typically these processing involve converting audio data to a perceptual representation. On which further cognitive models are applied to extract high level information which has a musical interpretation or is musically meaningful. 
-	\item Why do we have to do pre-processing, what is the reason/motivation
-	\item What kind of pre-processing do we do. 
-	\item Why have we written this at the beginning at one place, its been used in almost every module in the paper
-	\item How is this chapter organized. 
-\end{itemize}
+\chapter{Data Pre-processing}
 
 
-\section{Predominant melody estimation}
+\section{Introduction}
+\label{sec:data_preprocessing_intro}
+
+In this chapter we describe the pre-processing steps followed to obtain different data representations from audio music signals. These compact and musically meaningful representations derived from raw audio data are used as input to different methods described later in this dissertation. Since a number these methods start by performing the same data transformation, we consolidate and present these common pre-processing blocks in the same chapter. This chapter is based on work already presented in XXXX. In the subsequent sections we describe the process followed for identifying the tonic of the lead artist XXXX, for estimating the pitch of the predominant melodic source (typically the lead artist) and transforming it from Hertz to Cents scale, and detecting \gls{nyas} segments in the melodies of \gls{iam}.
+
+Along with the description of these processing blocks we also provide sufficient implementation details and the parameter values used in the experiments. For certain experiments the parameter settings might differ from the one presented in this chapter. In such cases the precise value of the parameters is given in the description of the respective method.
+
+\TODO{Do we need to provide the motivation or need for data pre-processing or this is obvious?}
+
+%In this thesis we follow a data-driven methodology to devise computational models for melodic analysis of \gls{iam}.  In the scope of this work data primarily corresponds to a collection of annotated audio music recordings. Before we start to model the human perception and cognition functions associated with a task, we transform the raw audio data and derive a higher level representation. Such an abstracted representation compactly captures the essential musical characteristics that XXXX. 
+%
+%In this chapter we present different representations of the data used across the experiments in this thesis and describe the procedure to extract them from the raw audio signals. Since several experiments share the step of data transformation, it is summarized in this chapter at once. 
+
+
+%Thoughts
+%\begin{itemize}
+%	\item What do we mean by data here, what kind of data are we using. Data-> input that we feed to our algorithms. In the scope of this thesis its primarily the audio data + small amount of metadata. The pre-processing is only for the audio data. 
+%	\item What do we mean by data pre-proessing. why is it called pre-processing. Audio data is a very low level physical data, before we can use it or make sense out of it we have to abstract it. We have to transform the data and extract a representation of the concept that we are working on. This is how most of the algorithms discussed in this paper function. Typically these processing involve converting audio data to a perceptual representation. On which further cognitive models are applied to extract high level information which has a musical interpretation or is musically meaningful. 
+%	\item Why do we have to do pre-processing, what is the reason/motivation
+%	\item What kind of pre-processing do we do. 
+%	\item Why have we written this at the beginning at one place, its been used in almost every module in the paper
+%	\item How is this chapter organized. 
+%\end{itemize}
+
+\section{Tonic Identification}
+\label{sec:data_preprocessing_tonic_identification}
+
+
+
+
+
+
+\section{Melody Estimation, Post-processing and Representation}
+\label{sec:data_preprocessing_melody_estimation}
 
 \begin{figure}
 	\begin{center}
@@ -24,38 +47,70 @@ Thoughts
 \end{figure}
 
 
+\subsection{Predominant Melody Estimation}
+\label{sec:data_preprocessing_predominant_melody_estimation}
+
 As mentioned before, the primary aim in this thesis is to develop computational models to analyze the melodic aspects of \gls{iam}. It is therefore essential to clearly understand  the engineering definition of melody that we consider in this thesis. \Gls{iam} is heterophonic in nature (Section~\TODO{XXX}), wherein there are typically two melodic lines or melodic sources; the primary source, which is the lead artist and the secondary source, which is the accompanying instrumentalist. In this thesis we consider melody as a continuous pitch contour corresponding to the predominant melodic source (typically, the lead artist) in the audio signal. An example of a melody of an audio excerpt is shown in Figure~\ref{fig:predominant_melodic_fragment}, where the contour represents the pitch of the lead singer at each instance in time. Usage of such a melody representation is a common practice, done by several other researchers for a variety of melody processing tasks across different music traditions~\citep{Dutta2014,Ishwar2013,Rao2014,koduri2014intonation,senturk2013score,pikrakis2012tracking}. \TODO{Add papers of other music genres for diff type of tasks} For other interesting definitions of melody we refer the readers to~\citep{Salamon2012}. 
 
 
 Pitch estimation, also commonly known as pitch tracking from audio signals has been an active research topic since several decades. As indicated in Section~\TODO{XXX} the challenges in the estimation of a reliable pitch contour differ across the type of audio music signals (monophonic or polyphonic). As a result of which the performance of these algorithms vary significantly across different music genres, which also seems to be correlated with the extent of the polyphony in the music. A sparse polyphonic characteristic in audio recordings of \gls{iam} due to its heterophonic nature lessens the complexity of the task to an extent compared to the music genres such as death-metal or orchestral music. This trend is clearly visible from the past MIREX results\footnote{http://www.music-ir.org/mirex/wiki/MIREX\_HOME}. Compare the accuracy obtained by the best performing method on the \gls{iam} data set with the rest of the data sets.
 
-In order to estimate the pitch of the predominant melodic source from the audio recordings of \gls{iam} we use Melodia algorithm, a state-of-the-art melody extraction method proposed by Salamon and G\'omez~\cite{Salamon2012}. This method performed favorably in MIREX~2011 (an international MIR evaluation campaign) on a variety of music genres, including \gls{iam}. This method is used in several other studies analyzing melodies extracted from audio signals~\citep{Dutta2014,Ishwar2013,Rao2014,koduri2014intonation,senturk2013score,pikrakis2012tracking}
+In order to estimate the pitch of the predominant melodic source in the audio recordings of \gls{iam} we use Melodia algorithm, a state-of-the-art melody extraction method proposed by~\cite{Salamon2012}. This method performed favorably in MIREX~2011 (an international MIR evaluation campaign) on a variety of music genres, including \gls{iam}. This method is used in several other studies that analyze melodies extracted from audio signals~\citep{Dutta2014,Ishwar2013,Rao2014,koduri2014intonation,senturk2013score,pikrakis2012tracking}. %\TODO{Another motivation is that this function works on continuous contour basis, so even if the classification of contour goes wrong there is a high chance that we have obtained the contour corresponding to the violin phrase. Since that also follows the melody there are several times melodic phrases obtained in the violin voice.}
 
-Currently, there are two implementations of Melodia available for researchers to use. We use the implementation of this algorithm as available in Essentia~\cite{essentia}. Essentia\footnote{https://github.com/MTG/essentia} is an open-source C++ library for audio analysis and content-based MIR. We use the default values of the parameters, except for the frame and hop sizes, which are set to 46 and 2.9\,ms, respectively. The other implementation of Melodia is available as a Vamp plugin\footnote{http://mtg.upf.edu/technologies/melodia}. 
+Currently, there are two implementations of Melodia algorithm available for researchers to use. We use the implementation as available in Essentia~\citep{essentia}. Essentia\footnote{https://github.com/MTG/essentia} is an open-source C++ library for audio analysis and content-based MIR. We use the default values of the parameters, except for the frame and hop sizes, which are set to 46 and 2.9\,ms, respectively. The other implementation of Melodia is available as a Vamp plugin\footnote{http://mtg.upf.edu/technologies/melodia}. 
 
-we apply an equal-loudness filter using the default set of parameters. Noticeably, the predominant pitch estimation algorithm also performs voicing detection, which is used in the later part of our data processing methodology to filter unvoiced segments 
+Prior to the predominant pitch estimation we apply an equal-loudness filter available in Essentia to make the processing perceptually relevant~\TODO{ref}. For this we use the default set of parameters. Noticeably, the predominant pitch estimation algorithm also performs voicing detection. This means that the algorithm in addition to estimating the pitch also detects the time segments where the predominant voice is absent. Such time segments where the predominant melodic source is inactive are assigned a dummy pitch value (usually 0). \TODO{rephrase this part}.
 
-What are the other implementations?
-what are the parameter settings
-what are the other studies that use this
+All the methods reported in this dissertation mainly utilize the pitch or the tonal aspects of melody. However, for the tasks considered in this work such as melodic similarity, usage of loudness and timbral aspects of melody might be worth exploring. These features largely capture the phonetics related aspects and might be important in studying artist specific nuances in renderings of melodic phrases. To get an idea about the type of information captured by these features and their usefulness we take an example here. We synthesize the harmonic series corresponding to a voice extracted from an excerpt of Carnatic music. During the synthesis we force the pitch of the voice to a monotone while keeping the other aspects (loudness and timbre) intact. The original excerpt\footnote{original link}, extracted predominant pitch\footnote{pitch synthesizes} and the synthesized monotone voice\footnote{monotone sunthesis} is available for listening on Freesound. In addition, we also show the spectogram of the original excerpt and the monotone synthesis in Figure~\TODO{} After listening to this example we get an idea about the amount of useful information that is left behind if we just consider the pitch aspect of the melody in the analysis. Exploiting loudness and timbral aspects for melodic analysis is left for our future work.
+
+\TODO{Obtaining pitch tracks using Dunya? should we give that info in each feature or just at once we show it for all? Maybe the specific version that we have used can be given in specific sections}
+%Thoughts
+%\begin{itemize}
+%	\item What did we want to extract from the audio for the purpose of this thesis work. What are the dimensions of the melody that we don't consider. 
+%	\item how is that fullfilled by predominant melody
+%	\item Caution to the readers about the usage of the word melody.
+%	\item what do we do to extract predominant melody. This problem being simpler compared to the western popular music genres.
+%	\item parameter settings
+%	\item motivation to choose this algorithm
+%	\item How can one use it, have we shared our melody representations?
+%	\item Sampling rate depends on the task, hence we talk about that when we talk about the task
+%\end{itemize}
+
+\subsection{Pitch Post-processing}
+\label{sec:data_preprocessing_pitch_postprocessing}
+
+Predominant pitch estimation is not yet a solved problem and the output pitch contour is still far from being perfect. While these algorithms get better over years, a number of errors in predominant pitch estimation can be alleviated by post-processing the pitch contour. During the post-processing we perform octave correction and smoothening operations on the pitch contour extracted as mentioned above. In addition to these two operations, at times we interpolate the unvoiced regions in the melody, which correspond to the short breath pauses taken by the artists. In subsequent sections we describe these post-processing steps in detail.
+
+\subsubsection{Correcting Spurious Pitch Jumps}
+\label{sec:data_processing_correcting_pitch_jumps}
+
+One of the most frequently occurring errors in pitch estimation is detecting pitch in the wrong octave, commonly referred to as an octave error. Identifying and correcting such an error during a post-processing step for the case of a monophonic signal (containing a single harmonic series) is fairly easy\TODO{reference}. One can compare the energy of the partials with the total energy of the audio frame to infer if the estimated pitch value corresponds to the actual fundamental frequency. However, for the case of a polyphonic signal the task becomes much more challenging. 
 
 
-Thoughts
-\begin{itemize}
-	\item What did we want to extract from the audio for the purpose of this thesis work. What are the dimensions of the melody that we don't consider. 
-	\item how is that fullfilled by predominant melody
-	\item Caution to the readers about the usage of the word melody.
-	\item what do we do to extract predominant melody. This problem being simpler compared to the western popular music genres.
-	\item parameter settings
-	\item motivation to choose this algorithm
-	\item How can one use it, have we shared our melody representations?
-	\item Sampling rate depends on the task, hence we talk about that when we talk about the task
-	\item What are the errors in pitch estimation that we face
-	\item Post processing to correct them. What are the steps that we do.
-\end{itemize}
+We alleviate this problem to an extent by restricting ourselves to a specific set of pitch octave errors occurring over short duration of time. Instead of identifying a pitch octave error for an individual audio frame, which as we mentioned is a challenging task for a polyphonic audio signal, we exploit the temporal continuity of melody to detect such errors. We explain the intuition behind our method with the help of an example shown in Figure~\TODO{fig}. The ground truth pitch contour is shown in XXX and the estimated contour in XXX. If we analyze an audio frame between time XX and XX seconds, automatically identifying if there is an pitch octave error or not is a challenging task. However, analyzing the pitch continuity we can easily detect an anomalous pitch jump at time XX seconds. This is due to the fact in a real-world scenario such drastic pitch jumps do not occur. By analyzing the amount of frequency difference across the pitch transition we can infer to an extent the type of pitch error and can subsequently correct it. In this example the frequency jump at time XX seconds is XXX cents. Knowing that there is another jump in the other direction at time XX makes it more probably that the pitch segment between time XX and XX seconds suffers from an octave error. 
 
-\section{Post-processing of Predominant Melody}
+We now describe our approach more formally. 
 
+
+
+
+
+
+
+
+
+
+
+\subsubsection{Pitch smoothening}
+\label{sec:data_processing_pitch_smoothening}
+
+
+\subsubsection{Pitch Interpolation}
+\label{sec:data_processing_pitch_interpolation}
+
+
+
+ 
 
 We proceed to post-process the pitch contours and remove the spurious pitch jumps lasting over a few frames as well as smooth the pitch contours. We first apply a median filter over a window size of 50\,ms, followed by a low-pass filter using a Gaussian window. The window size and the standard deviation of the Gaussian window is set to 50\,ms and 10\,ms, respectively. The pitch contours are finally down-sampled to 100\,Hz, which was found to be an optimal sampling rate in~\cite{gulati_ICASSP2015}. 
 
@@ -64,8 +119,6 @@ We proceed to post-process the pitch contours and remove the spurious pitch jump
 	\item Post processing to correct them. What are the steps that we do.
 	\item Examples of post processed pitch contours.
 \end{itemize}
-
-\section{Tonic Identification}
 
 
 \section{Pitch Representation} 
