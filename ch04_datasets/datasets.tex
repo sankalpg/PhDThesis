@@ -42,7 +42,7 @@ In this chapter we describe the CompMusic research corpora built for studying a 
 As described earlier in Section XXX, in CompMusic project we work on data-driven computational approaches to describe music recordings and emphasize the use of domain knowledge of a particular music tradition. This project focuses on five different music traditions: Arab-Andalusian (Maghreb), Beijing Opera (China), Turkish makam music (Turkey), Hindustani (North-India) and Carnatic (South-India) music. One of the key ideas in CompMusic project is that there are some universal music concepts such as melody and rhythm common across different music traditions, but many important aspects of a music recording can be better understood and appreciated by focusing on the specificities of the music tradition. Therefore, a significant effort in this project has been to compile a representative research corpora that captures the specificities of different music traditions considered in the project. In addition, an effort is made to define the design criterion that can be used to build good research corporas. In the subsequent section we enumerate the criterion chosen to build the CompMusic corpora.
 
 \subsection{Criterion for Creating Corpora}
-\label{sec:datasets_criterion_for_corpora}
+\label{sec:corpus_criterion_for_corpora}
 
 \cite{serra:14:corpus} enumerates a set of criterion for building a good representative research corpora that have been used in the CompMusic project. These criterion are listed below along with a brief description.
 
@@ -84,12 +84,204 @@ Reusability of the corpus is fundamental for reproducibility of the research res
 %\end{itemize}
 
 
-We now proceed to describe the specificities of the Carnatic and the Hindustani music corpus, both of which are a part of the CompMusic corpus. We will describe the data that constitute the corpus, the unit of the data sample, references for measuring completeness and coverage of the data, resources for obtaining complementary information about musical concepts and XXX. 
+We now proceed to describe the specificities of the Carnatic and the Hindustani music corpus, both of which are a part of the CompMusic corpus. We will describe the data that constitute the corpus, the unit of the data sample, references for measuring completeness and coverage of the data, resources for obtaining complementary information about musical concepts and XXX. Compilation of both the corpora as summarized in the subsequent sections is a collective effort by CompMusic team. The description below is also based primarily on our earlier work presented by~\cite{CM_Corpora_Ajay14}.
 
 
 \subsection{Carnatic music corpus}
+\label{sec:corpus_carnatic_music_corpus}
+
+\Gls{raga} is the melodic and \gls{tala} is the rhythmic frameworks in both Carnatic and Hindustani music~(Section~XXX). They are the two key musical concepts in \gls{iam} around which the entire music is composed, performed, organized and taught. As a result of which these concepts have been the main considerations based on which both the corpora are compiled. Both the corpora primarily comprise audio recordings and its associated editorial metadata and are the ones used by signal processing and machine learning approaches. In addition to that there are lyrics, scores, contextual information on music concepts and community (social) information from online music forums and other sources.
+
+There are several music tradition specific considerations taken into account while building the corpus. A concert, also referred as a (Kach\={e}ri), is the natural unit of Carnatic music. It is the unit typically considered in organization and digital distribution of Carnatic music content. Though Carnatic music is improvisatory in nature, it is predominantly based on compositions. Most of the compositions are to be sung, as a result of which, vocal music is dominant in Carnatic music. Even in instrumental music, the lead artist aims to mimic the vocal singing~\citep{Viswanathan2004}. Based on these considerations, we consulted expert musicians and musicologists, such as T.~M.~Krishna to arrive at a representative audio collection of Carnatic music.
+
+The main institutional reference for gathering the Carnatic music collection is the \gls{mma}. The \Gls{mma} was conceived to be the institution that would set the standard for Carnatic music. Since 1929, the \Gls{mma} hosts annual conferences on music, which has eventually lead to the December music festival of Madras, one of the largest cultural events of the world. The \gls{mma} has been driving the scholarly research in Carnatic music since a long time and has influenced the evolution of the musical concepts being used. The \gls{mma} has an expert pannel that sets the standards and fix procedures for selecting artists for the music festival. Since a long time the \gls{mma} has been recording Carnatic music performances and its archive is considered as one of the main references for Carnatic music. However, the archive is not openly available online. We therefore procured the audio recordings through other commercial sources while following the musical criterion used by the \gls{mma}. We started by collecting the releases of the artists who have performed in the \gls{mma} in the last five years. Subsequently, we expanded the collection to include their teachers and other musicians popular in their era. 
+
+One of the main record labels that specializes in Carnatic music recordings is Charsur, who has been publishing high quality commercial CDs for over 15 years now. The core of Carnatic music audio collection is from their catalog of music concerts. 
+  
+
+\begin{itemize}
+	\item contents of the corpus
+	\item Considerations in collecting data/music recordings
+	\item whom we consulted how we went ahead for 
+	\item Academic references
+	\item Recording label, purchasing of material
+	\item storage of data
+	
+\end{itemize}
 
 
+
+
+The main institutional reference for Carnatic music
+is the Madras Music Academy (MMA) 9
+, which is a premier
+institution dedicated to Carnatic music and organizes
+the annual music conference in Chennai, India. The annual
+Carnatic music festival is one of the largest music festivals
+in the world, with a significant part of the Carnatic
+music community taking part in it. The MMA has been
+driving scholarly research and opinion in Carnatic music.
+The MMA has a panel of experts that formulates the procedure
+and standards for the selection of artists for the music
+festival. The MMA has been recording concerts and its
+archive can be considered a standard repository of Carnatic
+music. However, the archive is not openly available online.
+We thus followed the musical criteria followed by the
+MMA and procured the audio from commercially available
+releases. Though Carnatic music is spread across South India,
+the choice of MMA as an institutional reference will
+have an influence on the research corpus introducing a bias
+towards the music scene in Chennai.
+
+We wished to compile concerts over several generations
+of musicians. We started with the artists that have been
+performing at the MMA in the last five years, and then expanded
+the collections to include their teachers, and popular
+musicians of their era. The record label Charsur 10 specializes
+in Carnatic music and the core of our audio collection
+is from their catalog of music concerts. Hence, the corpus
+consists of audio from commercially available releases
+from Charsur and other music labels. The corpus presently
+consists of 248 releases(concerts) with 1650 audio recordings
+(346 hours) spanning 1068 compositions. The number
+of other relevant music entities in the corpus is described
+in Table 1 (column 2). Though we focus on concerts with
+vocalist leads, we also have instrumental music releases
+(mainly with Veena, Violin, Flute, Saxophone, and Mridangam
+in lead). The whole audio collection is commercial
+and easily accessible, but is not open and distributable.
+However, efforts are underway to compile a freely available
+open collection of Carnatic music.
+The editorial metadata associated with each release has
+been stored and organized in MusicBrainz. The primary
+metadata associated with each concert is the name of the
+release, the lead and the accompanying artists, and the musical
+instruments in the concert. For each audio recording
+contained in the release, the relevant metadata are the artists
+performed on the track, the name of the composition/s and
+the composer, raga/s, tala/s, musical form/s. MusicBrainz
+assigns a unique identifier (MBID) for each entity in MusicBrainz,
+such as the artist, composer, instrument, recording,
+work, and a release. This helps to organize the metadata
+in an effective way. All the editorial metadata was entered
+using Roman alphabet and a roman transliteration was
+used when the language of the release was not English. The
+raga and tala information was added as tags, though a recent
+version of MusicBrainz supports work attributes with
+which this information can be stored and accessed better.
+Efforts are underway to convert the existing tags into work
+attributes.
+Since Carnatic music is predominantly a vocal music tradition,
+lyrics play an important role. A significant part of
+the rendition of a composition is improvised and hence the
+scores associated with a composition are of limited use,
+nonetheless important. The lyrics and scores, even though
+not time aligned to audio recordings, are useful for computational
+analysis and hence we compiled them. The primary
+languages in which Carnatic music is composed are
+Telugu, Tamil, Kannada, Sanskrit, and Malayalam. There
+are several published compilations of lyrics and scores for
+most of the currently performed compositions, such as the
+ones of the three most popular composers in Carnatic music:
+Tyāgarāja, Śyāmā śāstri and Muttusvāmi dīkṣitar (e.g.
+[10]). However, these compilations are not machine readable
+and hence not accessible for computational analysis.
+There are good online open repositories for lyrics, such as
+sahityam.net 11 , which is a wiki of lyrics of Carnatic compositions.
+Sahityam.net is our primary source for machine
+readable lyrics. It uses a uniform scheme for transliteration
+to Roman script and hence has minimal ambiguity. In some
+cases, it provides additional commentary, references, and
+example renditions. Sahityam.net currently hosts lyrics for
+about 1820 compositions of Carnatic music. Machine readable
+scores are more difficult to access, with no comprehensive
+machine readable score compilations available. A
+set of machine readable (HTML, Word) scores compiled
+by Dr. Shivkumar Kalyanaraman 12 is the main source of
+scores.
+
+
+The music community and music concepts related information
+in the corpus form the primary source of informa-
+tion for semantic analysis, and come from various sources
+from the Internet. Kutcheris.com 13 is an up-to-date directory
+of artist biographies, music venues, concerts and
+events. The category of Carnatic music on Wikipedia 14
+is a source of contextual information including music concepts.
+We have added a lot of information and contributed
+to Wikipedia with the help of experts. While Wikipedia
+acts as an encyclopedia of music concepts providing linked
+information, online music forums with discussions provide
+opinions from which some of these links can be inferred.
+The rasikas.org 15 Carnatic music forum is an active forum
+of Carnatic music listener community with useful discussions
+about Carnatic music concepts, concerts, and performances.
+It is an important source of data useful for community
+profiling.
+
+-----------------------------
+
+The main institutional reference for gathering the collection
+has been the Madras Music Academy (MMA).14
+This is an institution that has been hosting an annual music
+festival since 1935, a festival considered the main
+model for the Carnatic music tradition. The MMA has
+also been hosting scholarly discussions for a long time
+and these have shaped the evolution of the musical concepts
+being used. The Academy has an expert committee
+of veteran and contemporary artists, who formulate
+and follow a procedure by which artists are selected for
+the festival, criteria that has a strong influence for the
+reputation of Carnatic musicians. The MMA has been
+recording their concerts for a long time and its archive
+is a main reference for this music tradition. However,
+this archive, like most others, is not openly available online
+and thus we had to rely on gathering commercial
+CDs, even while following the musical criteria used by
+the MMA. The main record company specialised in Carnatic
+music is Charsur15. They have been publishing
+high quality CDs for 15 years and thus the core of our
+collection is their catalog of music concerts.
+In Carnatic music, the concert, kutcheri, is a natural musical
+unit that is also used as the unit for music distribution
+(typically a concert is recorded in two CDs). We
+have use it as the main entity in the corpus. Also in
+gathering the audio collections we wanted to cover several
+generations of musicians. For this, we started from
+the artists that have been performing at the MMA during
+the last 5 years, and then expanded the collection by including
+their teachers, gurus. Table 5 shows some numbers
+of the corpus. The corpus is organised in terms of
+concerts, recordings (songs), artists, ragas, thalas, and
+composers.
+The editorial metadata has been stored and organised in
+MusicBrainz.16 All the text information has been entered
+in english, given that this is the language that most of the
+published recordings use. We have gathered much information
+about the artists in the collection, mainly from
+Wikipedia and Kutcheris.com.17 We also added a lot of
+information by ourselves with the help of experts.
+The Carnatic tradition is very much composition based,
+which is one of the main differences with Hindustani music.
+Because of this, we plan to gather scores and lyrics
+in order to be able to carry out some computational analysis
+using them. There exists published compilations of
+scores from most of the currently performed compositions,
+for example the ones by the three most recognised
+composers; Tyagaraja [20], Syama Sastri [21] and Dikshitar
+[22]. Again the problem is to have them in a machine
+readable form. Just for the lyrics there are good
+online repositories, like shatyam.net.18
+The Carnatic corpus has been the most worked on so far
+in CompMusic, being the most complete one with respect
+to the criteria identified. We are getting close to
+have a corpus that can be used for many research and
+application tasks. We have already done some computational
+work to study the melody and rhythm of this music
+by using part of this collection [18] [25] [23] [16] and we
+have been able to develop a preliminary version of a web
+discovery system that exploits this corpus in a practical
+application [24].
 
 \subsection{Hindustani music corpus}
 
