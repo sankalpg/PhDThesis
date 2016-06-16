@@ -5,45 +5,95 @@
 \section{Introduction}
 \label{sec:corpus_intro}
 
-Data is a fundamental requirement in the development of information retrieval technologies\TODO{ref}. A research corpora is a collection of data compiled to study a specific research problem. A well designed research corpora is representative of the domain under study used for the development and evaluation of approaches (???). 
+Data is a fundamental requirement in the development of information retrieval technologies~\citep{manning2008introduction}. A research corpora is a collection of data compiled to study a specific research problem. A well designed research corpora is representative of the domain under study used for the development and evaluation of approaches. It is practically infeasible to work with the entire universe of data. Therefore, to ensure the scalability of information retrieval technologies to real-world scenarios, it is to important to develop and evaluate the approaches using representative data corpus. In addition to catering the scalability of the approaches, an easily (or, better publicly) accessible data corpora provides a common ground for researchers to evaluate their methods, and thus, accelerate the advancement of the knowledge. 
 
-Since its practically infeasible to work with the entire universe of data, specially in the context of the multimedia owing to differnt challenges including copyright issues, 
-
-In \gls{mir} a considerable number of the computational approaches follow a data-driven methodology, and hence, a well curated research corpora becomes a key factor in determining the success of these approaches. 
-
-Due to the importance of a good representative corpora in research in general, the criterion for designing a such a research corpora becomes a fundamental task in itself.
+Not every computational task would require an entire reseach corpus for development and evaluation of approaches. Typically a subset of the corpus is used in a specific research task. We call this subset a test corpus or test dataset. Test dataset is a static collection of data specific to an experiment, as opposed to a research corpus, which is an evolving collection of data. Therefore, different versions of the test dataset used in a specific experiment should be retained for ensuring the reproducibility of the results. The models build over test dataset can later be extended to entire research corpus. Note that a test dataset should not be confused with the training and testing split of a dataset often performing in a cross validation experimental setup.
 
 
+In \gls{mir} a considerable number of the computational approaches follow a data-driven methodology, and hence, a well curated research corpora becomes a key factor in determining the success of these approaches. Due to the importance of a good corpora in research, building a corpora in itself becomes a fundamental research task. It has been studied in many fields such as XXX, XXX and XXX. \Gls{mir} is relatively a new research area within information retrieval, which has primarily gained popularity in last 2 decades. Even today a majority of the studies in \gls{mir} use an ad-hoc procedures to build a collection of data to be used for the experiments. Quite often the audio data comes from the researcher's personal music collection. Availability of a good representative research corpora has been a challenge in \gls{mir}. This to an extend can be attributed to the large variety of research problems studied within \gls{mir}, lack of standardized methodologies for data collection and annotation, and most of all, the constrained posed by the copyrighted content.
 
+Recently there have been some efforts to compile large collections of music related data to build a research corpora that can be used to study a number of computational tasks in \gls{mir}. One such example is the Million Song Dataset (MSD)\TODO{ref}, which has been used in a number of studies for a variety of tasks\TODO{ref}. However, owing to the copyright issues, the audio for the recordings in MSD is not available. Building a good representative research corpora, which in the field of \gls{mir} would typically mean compilation of a large number of music recordings and it's related metadata is a big effort. A successful sustainable strategy could be to make it a community effort. An endeavor in this direction is AcousticBrainz\TODO{ref}, which aims to crowd source acoustic information for all music in the world and make it available to the public. Data in Acousticbrainz is indexed by unique MusicBrainz identifiers. MusicBrainz\TODO{ref} is an open music encyclopedia that collects music metadata and makes it available to the public. Such open repositories can also serve as corpora for a variety of research problems in \gls{mir}. 
 
+\TODO{Mention COFLA somewhere}
 
-Before we proceed further a distinction should be made between a research corpus and specific datasets
+While there is a growing effort towards building and using a representative sizable corpora in research, there are not many studies that address formally the task of building a good research corpora. There is a lack of studies that discuss the criterion for determining the goodness of a corpora for a particular task and systematic ways to compile and curate research corpora. Some recent efforts towards this direction includes the work by XXX in which the author present unified ways to describe annotated \Gls{mir} datasets. There have been some efforts to define a specifications to store annotations in a more unified way to promote reproducibility and easy access of the corpora. As a part of CompMusic project in XXX presents a set of design criterion for building research corpora that is representative of a given domain of study. These criterions are based around considerations such as purpose, coverage, completeness, quality and reusability. 
 
+%The corpus developed in the CompMusic project for studying a number of problems in \Gls{mir} of \Gls{iam} is based on these criterion.
 
- 
+In this chapter we describe the CompMusic research corpora built for studying a number of computational tasks in \gls{mir} of \gls{iam}. Along with the description of the corpora we also briefly discuss the methodology  and the design criterion used to compile and curate the corpora. Note that the sources used for compiling the corpora are not comprehensive. Our primary aim is to present the approach we used to build the corpus than to justify a specific data source. In addition to the CompMusic corpora we also briefly describe the individual test datasets (Section XX) built for studying specific aspect of melody in \gls{iam}. These test datasets are used for evaluating different approaches described in subsequent chapters. 
 
-
-\begin{itemize}
-	\item Data is needed for dev of MIR approaches
-	\item MIR is primarily a data driven field
-	\item How should be the research corpus used for these approaches
-	\item What are the components of these corpus, how its used, in which modes
-	\item How does it develop
-	\item How is it curated/selected/ what should be the criterions. 
-	\item Issue of reproducibility in research, sharable corpus, open access corpus
-	\item examples of researhc corporas 
-	\item openly available corporas
-	
-\end{itemize}
+%
+%\begin{itemize}
+%	\item Data is needed for dev of MIR approaches
+%	\item MIR is primarily a data driven field
+%	\item How should be the research corpus used for these approaches
+%	\item What are the components of these corpus, how its used, in which modes
+%	\item How does it develop
+%	\item How is it curated/selected/ what should be the criterions. 
+%	\item Issue of reproducibility in research, sharable corpus, open access corpus
+%	\item examples of researhc corporas 
+%	\item openly available corporas
+%	\item ways to access them
+%\end{itemize}
 
 
 \section{CompMusic corpora}
 
-\subsection{Creating the corpora}
+As described earlier in Section XXX, in CompMusic project we work on data-driven computational approaches to describe music recordings and emphasize the use of domain knowledge of a particular music tradition. This project focuses on five different music traditions: Arab-Andalusian (Maghreb), Beijing Opera (China), Turkish makam music (Turkey), Hindustani (North-India) and Carnatic (South-India) music. One of the key ideas in CompMusic project is that there are some universal music concepts such as melody and rhythm common across different music traditions, but many important aspects of a music recording can be better understood and appreciated by focusing on the specificities of the music tradition. Therefore, a significant effort in this project has been to compile a representative research corpora that captures the specificities of different music traditions considered in the project. In addition, an effort is made to define the design criterion that can be used to build good research corporas. In the subsequent section we enumerate the criterion chosen to build the CompMusic corpora.
+
+\subsection{Criterion for Creating Corpora}
+\label{sec:datasets_criterion_for_corpora}
+
+\cite{serra:14:corpus} enumerates a set of criterion for building a good representative research corpora that have been used in the CompMusic project. These criterion are listed below along with a brief description.
+
+\subsubsection{Purpose}
+
+The purpose for building a corpora should be clearly specified, which includes defining the research problem that needs to be addressed and the research approach that will be used. In CompMusic we want to develop methodologies to extract musically meaningful features from audio music recordings, primarily related to melody and rhythm. The approaches taken are based on signal processing and machine learning techniques. A research corpus should take these factors into account.
+
+\subsubsection{Coverage}
+
+As mentioned above, a good corpus should be representative of the domain under study. Coverage is a measure for the representativeness of a corpus with respect to the concepts to be studied. Given the quantitative approach of the CompMusic project, we need sufficient instances of each concept for the data to be statistically significant. For melodic analsis, we need to have audio recordings and appropriate accompanying information that represent the diversities present in the melodic aspects of Hindustani and Carnatic music such as different forms, artists from different schools of music, and the variety of \glspl{raga} frequently performed in each music culture. 
+
+\subsubsection{Completeness}
+
+To successfully use data in a meaningful analyses it should be complemented by the appropriate metadata. Completeness indicates the completeness of the metadata for each audio recording. For the CompMusic corpus it mainly refers to the completeness of the editorial metadata and of the descriptive information accompany each audio recording. 
+
+\subsubsection{Quality}
+
+The quality of the data in a corpus should be good. In our case it means that the audio has to be well recorded and the accompanying metadata should be accurate. We use commercial produced well recorded audio data and the accompanying information is obtained from reliable sources. Quite often the information collected from reliable sources such as editorial metadata on the CD cover is erroneous, in such cases the metadat is validated by experts. 
+
+\TODO{Write a paragraph on the quality and the storing format of the audio collection}
+
+\subsubsection{Reusability}
+
+Reusability of the corpus is fundamental for reproducibility of the research results. An important aspect that impacts reusability is the ease of access to the corpus. This implies that the corpus should be available for the community to access and it has to be well structured for an easy integration. We address reusability by emphasizing the use of open repositories that are either already suitable or can be easily adapted to our needs. For organizing editorial metadata we use MusicBrainz. In addition, we make efforts for an each access of the corpus through the Dunya API.
+
+\TODO{Explain the resuability component of the corpora, explain dunya API and ways to access data etc. Also emphasize the sharing and public availability of the datasets}
+
+
+
+
+%\begin{itemize}
+%\item the kind of research done in compmusic
+%\item important of a good corpora in this project
+%\item design principles followed for building this corpora
+%\item Issue of open access, that makes it more powerful
+%\item Structured way to access the corpora, through APIs
+%\item Complemented by metadata for overall approaches and incorporating domain knowledge
+%\item describing specific Hindustani and carnatic Datasets along with thir attributes and measurement of different parameters used to measure a good corpora.
+%\end{itemize}
+
+
+We now proceed to describe the specificities of the Carnatic and the Hindustani music corpus, both of which are a part of the CompMusic corpus. We will describe the data that constitute the corpus, the unit of the data sample, references for measuring completeness and coverage of the data, resources for obtaining complementary information about musical concepts and XXX. 
+
 
 \subsection{Carnatic music corpus}
 
+
+
 \subsection{Hindustani music corpus}
+
+\subsection{Open-access corpus}
 
 \section{Datasets}
 
