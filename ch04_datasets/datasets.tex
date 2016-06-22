@@ -293,7 +293,7 @@ In Table~\ref{tab:completeness_hindustani_corpus} we show the completeness of th
 \subsection{Open-access Research Corpus}
 \label{sec:corpus_open_access_research_corpus}
 
-The audio recordings compiled in both Hindustani and Carnatic music corpus are taken from commercially released music CDs. These recordings are easily accessible, but owing to the copyright issues they can not be distributed freely and made publicly available. Therefore, even though re-compiling the corpus is theoretically possible, practically that would require a lot of effort from a researcher trying to reproduce the research results \TODO{rephrase this line, also we do share audio excerpts}. To promote the idea of open-access and reproducibility of the research results, in CompMusic project there has been an effort to compile an open-access music collection. This open-access corpus comprises both Hindustani and Carnatic music. Like the other research corpora described in previous sections, this corpus mainly comprises audio recordings and associated editorial metadata. In addition, this corpus also contains several annotations of different music attributes such as melodic phrases, sama locations and sections. Due permissions are taken from the artists for redistribution of the audio recordings, as a result of which the corpus is made publicly available under creative commons license (CC BY-NC 4.0). The audio recordings in this corpus are hosted on Internet Archive and made accessible through the Dunya API (Section XX). 
+The audio recordings compiled in both Hindustani and Carnatic music corpus as described above are taken from commercially released music CDs. These recordings are easily accessible, but owing to the copyright issues they can not be distributed freely and made publicly available. Therefore, even though re-compiling the corpus is theoretically possible, practically that would require a lot of effort from a researcher trying to reproduce the research results \TODO{rephrase this line, also we do share audio excerpts}. To promote the idea of open-access and reproducibility of the research results, in CompMusic project there has been an effort to compile an open-access music collection. This open-access corpus comprises both Hindustani and Carnatic music. Like the other research corpora described in previous sections, this corpus contains audio recordings and associated editorial metadata. In addition, this corpus also contains several annotations of different music attributes such as melodic phrases, sama locations and sections. Due permissions are taken from the artists for redistribution of the audio recordings, as a result of which the corpus is made publicly available under creative commons license (CC BY-NC 4.0). The audio recordings in this corpus are hosted on Internet Archive and made accessible through the Dunya API (Section XX). 
 
 
 
@@ -306,30 +306,93 @@ The audio recordings compiled in both Hindustani and Carnatic music corpus are t
 \end{figure}
 
 
-The Carnatic music part of the open-access corpus contains 19 releases, XXX number of recordings spanning XX hours of music. Majority of these releases correspond to Carnatic music concerts performed and recorded in Arkay Convention Center in Chennai, India. These are multi-track recordings later mixed and mastered by a professional. Individual music pieces of a concert are split into separate recordings, which then comprise a release. A number of releases in this corpus are commercially released CDs with artist's due permissions to make them publicly available. Along with the audio recordings and accompanying editorial metadata this corpus contains carefully done annotations corresponding to melodic, rhythmic and sectional aspects of the music. Manually done annotations include characteristic melodic phrases and sections within each audio recording. Semi-automatically done annotations include time-aligned sama locations and tempo in a recording. Finally, automatically done annotations, which can also be regarded as mid-level audio features include predominant pitch contour and tonic used the recording by the lead artist. Since several recordings are also available in multi-track, along with the predominant pitch estimated from the mixed track we also compute pitch of the solo vocal track. These pitch contours can serve as a ground-truth data to evaluate pitch tracking algorithms for \gls{iam}. In Figure XXX we show the number of available annotations of different musical attributes and audio features for the Carnatic music part of the corpus.
+The Carnatic music part of the open-access corpus contains 19 releases, XXX number of recordings spanning XX hours of music. Majority of these releases correspond to Carnatic music concerts performed and recorded in Arkay Convention Center in Chennai, India. These are multi-track recordings later mixed and mastered by a professional. Individual music pieces of a concert are split into separate recordings, which then comprise a release. In addition to the content procured from Arkay, a number of releases in this corpus are commercially released CDs with artist's due permissions to make them publicly available. Along with the audio recordings and accompanying editorial metadata this corpus contains carefully done annotations corresponding to melodic, rhythmic and sectional aspects of the music. Manually done annotations include characteristic melodic phrases and sections within each audio recording. Semi-automatically done annotations include time-aligned sama locations and tempo in a recording. Finally, automatically done annotations, which can also be regarded as mid-level audio features include predominant pitch contour and tonic used the recording by the lead artist. Since several recordings are also available in multi-track, along with the predominant pitch estimated from the mixed track we also compute pitch of the solo vocal track. These pitch contours can serve as a ground-truth data to evaluate pitch tracking algorithms for \gls{iam}. In Figure XXX we show the number of available annotations of different musical attributes and audio features for the Carnatic music part of the corpus.
 
 
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=\figSizeNinety]{ch04_datasets/figures/hindustani_CC_details.pdf}
+	\end{center}
+	\caption{Details of the Hindustani open-access music corpus in terms of the number of available annotations of different musical attributes and audio features.}
+	\label{fig:hindustani_open_access_corpus_details}
+\end{figure}
+
+The Hindustani music part of the open-access corpus contains 32 releases, which has XXX number of recordings spanning XXX hours of music. A significant part of this collection comprises commercial releases by several maestros such as Pt. Ajoy Chakbraborty and Kumar Gandharva. The other part of the collection comprises individual recordings procured from different professional musicians and grouped together into releases per artist. The grouping is based on common performance practices clubbing the \glspl{raga} that are performed together in a concert. Hindustani open-access corpus also contains annotations for characteristic melodic phrases, sections, time-aligned sama locations and tempo. It also contain mid-level audio features including predominant pitch contour and tonic  frequency used in the recording. Since multi-track recordings are not procured for Hindustani music, like Carnatic music there are no pitch contours extracted from solo vocal track. In Figure XX we show the number of available annotations of different musical attributes and audio features of Hindustani music part of the corpus. 
 
 \subsection{Storage and Access of Corpus}
+\label{sec:corpus_storage_and_access}
+
+The above sections described the Carnatic and the Hindustani research corpus compiled in the CompMusic project in terms of the design criterion and its coverage and completeness. In this section we provide details on the storage and the access of this corpus.
+
+The audio corresponding to all the corpora describe above are stereo recordings sampled at 44.1\,kHz. Most of the audio recordings in the corpora are ripped from commercially release CDs. We compress and store the recordings as 160\,kbps MP3 files. The audio files for the open-access corpus are hosted on Internet Archive, and the rest are stored on the servers in Universitat Pompeu Fabra. In addition to audio the corpora contains different melody and rhythm related audio features such as predominant pitch contours, tonic of the recording and tempo. These features are stored along with the audio recordings on the university servers.
+
+As mentioned before, for every single audio recording included in the corpus there is an accompanying editorial metadata. The metadata typically includes the following fields; lead artist, accompanying artist, instrument played by these artists, \gls{raga} and \gls{tala} of the music piece, music form and the name of the composition of the piece. For the case of Hindustani music it also includes the \gls{laya} information. All this metadata is structured and stored in MusicBrainz, an open music encyclopedia. Every concept in MusicBrainz has a unique identifier, which makes the processing of this metadata much easier. Typical issues arising from different spellings of an entity, different pronunciations and aliases is also avoided by using this schema. There are several other advantages of using MusicBrainz such as its ability to publish its database into Linked Data, mapping of entity concepts to Music Ontology, its REST-based webservice API for direct access to its data. Above all, its a community driven open-content initiative and has its majority of the data in public domain.
+
+All the data associated with a recording; the audio file, extracted set of features and the accompanying metadata can be accessed through the Dunya platform. Dunya allows access to this data in two ways; through a web-based graphical interface and through a REST-based API interface. Dunya platform along with the details on how to access the data is provided in Section XXX. Note that though the data is accessible for research purposes after a user registration step, not all the data in the corpora is in public domain. \TODO{what more?}
 
 
-Storage format for audio
-Storage format for metadata
-Musicbrainz
-What fields have we stored in music brainz for what tradition
-Dunya system
-Dunya API
-Access features
-
-Who can access what ! Issue of being openly publicly available!
+%For researchers to be able to programmatically able to access the data, the second method is suited. Working with Dunya requires a user to first signup. Every user is then assigned a key, which can be used to authenticate the user while using the API. The documentation of the API can be found here. There is a
 
 
 
+%Dunya system
+%Dunya API
+%Access features
+%Who can access what ! Issue of being openly publicly available!
 
 
-\section{Datasets}
+\section{Test Datasets}
+\label{sec:corpus_test_datasets}
 
-\subsection{Tonic dataset}
+As explained earlier, a test dataset is a subset of a corpus used for studying a specific task. Typically these datasets are experiment specific and may contain additional information such as annotations. We here present the datasets that are used in this work for different computational melodic analysis tasks in \gls{iam}. Some of these datasets are quite generic and contain high quality comprehensive editorial metadata along with the audio recordings. And hence, we envision their usage in other melodic analysis tasks beyond the ones addressed in this dissertation.
+
+Since a majority of these datasets are a subset of the corpora described in previous sections, details regarding the quality of the audio recordings and available editorial metadata remain the same as that of the corpora. In case of exceptions, these details are provided in the section where the dataset is described. 
+
+
+\subsection{Tonic datasets}
+\label{sec:corpus_tonic_datasets}
+
+
+{\renewcommand{\arraystretch}{1.3}
+\begin{sidewaystable} 
+\begin{centering}
+	\begin{tabular}{ c | c  c  c  c  c  c  c  c  c  c }
+\hline
+\hline
+		Dataset 	&Avg. length (min)&\#Excerpts&	 	Hi.(\%) 	& 	Ca.(\%)	& 	Voc.
+		(M/F)(\%) & Inst. (\%)	& 	\#Usong   	& 	\#Uartists	\\
+\hline
+		CM1		&3 &271	&	 41		& 	59	&	0			& 	100		& 	169		&	33	\\
+		CM2		&3 &935	&	 45	 	& 	55	&	100 (68 / 32)		&	0		& 	547		&	81	\\
+		CM3		&14.8&428	&	 45	 	& 	55	&	100 (72 / 28)		& 	0		&	428		&	71	\\
+\hdashline
+		IITM1		&144.6&38&	 0		& 	100	&	89 (79 / 21)		&	11		& 	N/A		&	22	\\
+		IITM2		&12.3 &472	&	 0	 	& 	100	&	92 (77 / 23)		&	8		& 	472		&	22	\\
+\hdashline
+		IISCB1		&7.4&55	&	 0		& 	100	&	100 (80 / 20)		&	0		& 	55		&	5	\\
+\hline 
+\hline
+	\end{tabular}
+	
+	
+	\caption{Summary of the tonic datasets, including average excerpt length (Avg. length),
+		number of excerpts (\#Excerpts), percentage of Hindustani music (Hi), Carnatic
+		music (Ca), vocal excerpts (Voc.), instrumental excerpts (Inst.), number of
+		unique songs (\#Usong) and number of unique artists (\#Uartists) in each dataset. For vocal
+		excerpts we also provide the breakdown into male (M) and female (F)
+		singers. Percentage (\%) values are rounded to the nearest integer.}
+	\label{tab:tonic_datasets}
+\par \end{centering}	
+\end{sidewaystable}
+
+We use three different datasets for the comparative evaluation of approaches for tonic identification task in in \gls{iam}. The comparative evaluation is presented in Section  XXX and is based on the work presented by~\cite{Gulati2014Tonic}. A summary of all three tonic datasets in terms of different attributes of the comprising excerpts such as their average length, their total number, proportion of Hindustani/Carnatic, instrumental/vocal and male/female excerpts, and unique number of songs and artists is provided in TableXX. We now describe each of these datasets in detail.
+
+
+
+
+
+
+
 
 \subsection{Nyas dataset}
 
