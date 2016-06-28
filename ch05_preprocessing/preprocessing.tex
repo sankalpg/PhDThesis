@@ -28,8 +28,573 @@ Along with the description of these processing blocks we also provide sufficient
 %	\item How is this chapter organized. 
 %\end{itemize}
 
-\section{Tonic Identification}
+\section{Tonic Identification: A Comparative Evaluation}
 \label{sec:data_preprocessing_tonic_identification}
+
+The tonic pitch of a lead artist is the base frequency that serves as a reference and foundation for melodic integration throughout the performance (Section\TODO{secref}). All the tones in the musical progression are always in reference and related to the tonic pitch. The accompanying instruments such as tabl\={a} and violin are tuned to the tonic of the lead performer. In a performance of \gls{iam} tonic pitch in majority of the cases corresponds to the \textit{Sa} \gls{svara} of the \gls{raga} (the exceptions are the madhyam \gls{shruti} cases in Carnatic music). Other \glspl{svara} used in the performance derive their meaning and purpose in relation to the \textit{Sa} \gls{svara} and the tonal context established by the particular \gls{raga}~\citep{Danielou2010}. Identification of tonic pitch is therefore a crucial first step for tonal analysis of \gls{iam}. In Particular, for a meaningful comparison of melodies across artists, it is important that the melodic representation is normalized by the tonic of the lead artist. Identification of the tonic pitch of the lead artist in a recording is therefore typically a pre-processing step in most of the melodic analyses of \gls{iam}. 
+
+There exist a number of approaches for identifying tonic pitch in an audio recording of \gls{iam}~\citep{salamon2012multipitch,gulati2012two,bellur2012knowledge,ranjani2011carnatic,Sengupta2005b}\TODO{{add parags method and then say why it wasn't considered for the evaluation}}. Our previous works on tonic identification show promising results with accuracy close to 90\%~\citep{salamon2012multipitch,gulati2012two}. However, it might be misleading to draw a consensus on the best performing method based on just the reported accuracy. This is because these approaches are evaluated using different datasets with varied musical characteristics and under different experimental setup. Therefore, to select the most promising approach we perform a thorough comparative evaluation on the same set of datasets and under the same experimental setup~\citep{Gulati2014Tonic}. The evaluation is performed using a number of scalable datasets with varied musical and acoustical characteristics that are representative of real-world collections of \gls{iam}. In the subsequent sections we describe the comparative evaluation, which is based on our earlier work presented in~\cite{Gulati2014Tonic}. In order for this dissertation to be self-contained, we start by providing a brief description of the methods we evaluated~(\secref{sec:pre_processing_tonic_identification_methods}). We then describe the experimental setup and the datasets used for the comparative evaluation~(\secref{sec:pre_processing_experimental_setup}). We present the results of the comparative evaluation and highlight the strengths and limitations of the methods on different type of music material~(\secref{sec:pre_processing_tonic_identification_results}). Finally, we explain a heuristic-based approach to correct common mistakes in tonic identification in a collection of \gls{iam} by exploiting associated metadata of a recording. 
+
+
+\subsection{Tonic Identification Methods}
+\label{sec:pre_processing_tonic_identification_methods}
+
+As mentioned, there have been various efforts to automatically identify the tonic pitch of the
+lead artist in a performance of Indian art music~\citep{salamon2012multipitch,gulati2012two,bellur2012knowledge,ranjani2011carnatic,Sengupta2005b}.
+These approaches mainly differ in terms of the musical cues that they utilize to
+identify the tonic, the amount of input audio data used to perform this task and the type
+of music material they are devised for (Hindustani or Carnatic, vocal or
+instrumental, etc.). Despite the differences, all these approaches can be divided
+into three main processing blocks, as shown in~\figref{fig:tonic_identification_general_block_diagram}. The only exception to this schema is the approach proposed by~\citep{Sengupta2005b}.
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=\figSizeNinety]{ch05_preprocessing/figures/tonic_identification_block_diagram.pdf}
+	\end{center}
+	\caption[General block diagram of the processing steps used by tonic identification
+	approaches.]{General block diagram of the processing steps used by tonic identification
+		approaches.}
+	\label{fig:tonic_identification_general_block_diagram}
+\end{figure}
+
+
+In all the aforementioned approaches, the three main processing blocks are the following: feature
+extraction, feature distribution estimation and tonic selection. Since the task
+of tonic identification involves an analysis of the tonal content of the audio
+signal, the features extracted in the first block are always pitch related. In
+the second block, an estimate of the distribution of these features is obtained
+using either Parzen window based density estimation or by constructing a
+histogram. The feature distribution is then used in the third block to identify
+the tonic. The peaks of the distribution correspond to the most salient pitch
+values used in the performance (usually the svars of the \gls{raga}), one of which
+corresponds to the tonic pitch. As the most salient peak in the distribution is
+not guaranteed to be the tonic, various techniques are applied to select the peak that corresponds to the tonic.
+
+
+
+{\renewcommand{\arraystretch}{1.5}
+	\begin{sidewaystable} 
+		\begin{centering}
+			\begin{tabular}{ c c c c }
+\tabletop			
+			Method 	&	Features	&	Feature Distribution	&	Tonic Selection \\
+\tablemid			
+			\acrshort{tonicid_sengupta} \citep{Sengupta2005b}	&	Pitch \citep{AKDatta_1996} & N/A & Error minimization\\
+			
+			\acrshort{tonicid_ranjani_1}/\acrshort{tonicid_ranjani_2} \citep{ranjani2011carnatic}	&	Pitch \citep{BoersmaPaul2001} & Parzen-window-based \acrshort{pde}  & GMM fitting\\
+			
+			\acrshort{tonicid_justin} \citep{salamon2012multipitch} & Multi-pitch salience \citep{Salamon2011} & Multi-pitch histogram & Decision tree\\
+
+			\acrshort{tonicid_sankalp} \citep{gulati2012two}	& Multi-pitch salience  \citep{Salamon2011} & Multi-pitch histogram & Decision tree\\
+
+			&	Predominant melody \citep{Salamon2012} & Pitch histogram & Decision tree\\
+
+			\acrshort{tonicid_ashwin_1} \citep{bellur2012knowledge}	&	Pitch \citep{DeCheveigne2002}	&  \acrshort{gd} histogram & Highest peak\\
+
+			\acrshort{tonicid_ashwin_2} \citep{bellur2012knowledge}	&	Pitch \citep{DeCheveigne2002}	& 	GD histogram	&
+			Template matching\\
+
+			\acrshort{tonicid_ashwin_2} \citep{bellur2012knowledge}	&	Pitch \citep{DeCheveigne2002}	& 	GD histogram
+			& Highest peak\\
+			
+			\acrshort{tonicid_chordia}	& 	& 	& \\			
+
+\tablebot			
+			\end{tabular}
+
+			\caption[Summary of existing tonic identification approaches.]{Summary of existing tonic identification approaches.}
+			\label{tab:pre_processing_tonic_identification_summary_methods}
+			\par \end{centering}	
+	\end{sidewaystable}
+
+
+In \tabref{tab:pre_processing_tonic_identification_summary_methods} we provide a summary of the existing methods for tonic identification. The common processing blocks and the main differences between them become evident from this table. A review of these methods in terms of the three processing stages as shown in \figref{fig:tonic_identification_general_block_diagram} is provided in~\cite{Gulati2014Tonic}. For a more detailed description of these methods we refer to their respective publications listed in Table \tabref{tab:pre_processing_tonic_identification_summary_methods}. 
+
+\TODO{description of the methods?}
+
+\subsection{Comparative Evaluation Setup}
+\label{sec:pre_processing_experimental_setup}
+
+In order to select the best method for tonic identification in audio collections of \gls{iam} we perform a comparative evaluation. We evaluate seven of the nine tonic identification methods listed in \tabref{tab:pre_processing_tonic_identification_summary_methods} using the same set of datasets. The methods chosen for evaluation are
+denoted by \acrshort{tonicid_justin}~\citep{salamon2012multipitch}, \acrshort{tonicid_sankalp}~\citep{gulati2012two}, \acrshort{tonicid_ranjani_1} and \acrshort{tonicid_ranjani_2}~\citep{ranjani2011carnatic}, \acrshort{tonicid_ashwin_1}, \acrshort{tonicid_ashwin_2} and \acrshort{tonicid_ashwin_3}~\citep{bellur2012knowledge}. Note that \acrshort{tonicid_sengupta}~\citep{Sengupta2005b} was not available for
+evaluation and \acrshort{tonicid_chordia} was not available when the experiments were conducted. 
+
+Each of the method mentioned above is evaluated using six different datasets, denoted \acrshort{tds_cm1}, \acrshort{tds_cm2}, \acrshort{tds_cm3}, \acrshort{tds_iitm1}, \acrshort{tds_iitm2} and \acrshort{tds_iisc}. A detailed description of these datasets in terms the musical material and the audio quality is given in~\secref{sec:corpus_tonic_datasets}. A quick summary of the datasets can be obtained from~\tabref{tab:tonic_datasets}. The diversities present in real-world music collections of \gls{iam} in terms of the varied musical and acoustical characteristics are well captured in these six datasets. Note that \acrshort{tonicid_ashwin_1} requires several excerpts from the same concert in order to compute the segmented \gls{gd} histogram, and this kind of data (and metadata) is only available for \acrshort{tds_iitm1} dataset. Hence, \acrshort{tonicid_ashwin_1} is only evaluated using \acrshort{tds_iitm1} dataset.
+
+For vocal performances we evaluate the accuracy of correctly identifying the tonic pitch, whereas for instrumental music we evaluate the accuracy of estimating the tonic pitch-class only (i.e.~the identified tonic pitch is allowed to be in any octave). This is because whilst for vocal music the concept of the tonic pitch being in a specific octave is clearly defined (because it is restricted by the pitch range of the singer), this notion is not as clear for instrumental music. For vocal performances, the tonic identified by a method is considered correct if it is within 50 cents of the ground truth annotation. For instrumental music, a method's estimate is considered correct if it is within 50 cents of the correct tonic pitch-class.
+
+Classification-based approaches, which require training (\acrshort{tonicid_justin} and \acrshort{tonicid_sankalp}) are evaluated by performing 10-fold cross-validation on every dataset, repeating
+every experiment 10 times and reporting the mean accuracy over the 10 repetitions. All parameters are kept fixed for all methods across all datasets.
+
+\subsection{Results, Discussion and Summary}
+\label{sec:pre_processing_tonic_identification_results}
+
+Yeh dekh
+\acrshort{shadja}
+
+%
+%In this section we present the results obtained by the different tonic
+%identification methods and discuss various types of errors made by
+%them. The section is divided into three parts: in Section \ref{Results
+%	obtained using only audio data} we present the results obtained when
+%only the audio data is used and no additional metadata is provided to the
+%methods. Subsequently, we report the performance accuracy
+%obtained when information regarding the gender of the singer (male or female) and performance type (instrumental or vocal) is
+%provided to the methods in addition to the audio data (Section
+%\ref{Results obtained using metadata together with the audio}). Finally in
+%Section \ref{Error Analysis} we present an analysis of the most common errors
+%made by the methods and make some general observations regarding their
+%performances.
+%
+%\subsection{Results obtained using only audio data}
+%\label{Results obtained using only audio data}
+%
+%
+%\subsubsection{Overall results}
+%In Table~\ref{tab:PerformanceAccuracy_Without_MF_Info} we summarize the
+%identification accuracies (in percentage) for tonic pitch (TP) and tonic
+%pitch-class (TPC) obtained by seven methods on six datasets, using
+%only audio data.
+%
+%\begin{table}
+%	\centering
+%	\begin{tabular}{| c | c | c || c | c || c | c || c | c || c | c || c | c |}
+%		\hline
+%		\multirow{2}{*}{Methods}  & \multicolumn{2}{ c|| }{CM1} & \multicolumn{2}{ c||  }{CM2} & \multicolumn{2}{ c|| }{CM3}  &    \multicolumn{2}{ c|| }{IISCB1}  &  \multicolumn{2}{ c|| }{IITM1}  & \multicolumn{2}{ c| }{IITM2} \\
+%		\cline{2-13}
+%		{} & TP & TPC    & TP & TPC & TP & TPC & TP & TPC
+%		& TP & TPC & TP & TPC   \\
+%		\hline
+%		{JS} & - & 88.9 & 87.4 & 90.1 & \textbf{88.4} & \textbf{91} & 75.6 & 77.5 &
+%		89.5 & \textbf{97.4} & 90.8 & \textbf{94.1}\\
+%		%\hline
+%		{SG} & - & \textbf{92.2} & \textbf{87.8} & \textbf{90.9} & 87.7 & 90.5 &
+%		79.8 & \textbf{85.3} & \textbf{97.4} & \textbf{97.4} & \textbf{93.6}
+%		& 93.6  \\
+%		\hdashline
+%		{RH1} & - & 81.4 & 69.6 & 84.9 & 73.2 & 90.8 & 81.8 & 83.6 & 92.1 & \textbf{97.4} &
+%		80.2 & 86.9  \\
+%		%\hline
+%		{RH2} & - & 63.2 & 65.7 & 78.2 & 68.5 & 83.5 & \textbf{83.6} & 83.6 & 94.7 &
+%		\textbf{97.4} & 83.8 & 88.8\\
+%		%\hline
+%		{AB1} & - & - & - & - & - & - & - & - & 89.5 & 89.5 & - & - \\
+%		% \hline
+%		{AB2} & - & 88.9 & 74.5 & 82.9 & 78.5 & 83.4 & 72.7 & 76.4 & 92.1 & 92.1 & 86.6   & 89.1 \\
+%		%\hline
+%		{AB3} & - & 86 & 61.1 & 80.5 & 67.8 & 79.9 & 72.7 & 72.7 & 94.7 & 94.7 & 85  & 86.6 \\
+%		\hline  
+%	\end{tabular}
+%	\caption{Accuracies for tonic pitch (TP \%) and  tonic
+%		pitch-class (TPC \%) identification by seven methods on six different
+%		datasets using only audio data. The best accuracy obtained for each dataset is
+%		highlighted using bold text. The dashed horizontal line divides the
+%		methods based on supervised learning (JS and SG) and those based on expert
+%		knowledge (RH1, RH2, AB1, AB2 and AB3). TP column for CM1 is marked as `-', because it consists of only instrumental excerpts for which we not evaluate tonic pitch accuracy.}
+%	\label{tab:PerformanceAccuracy_Without_MF_Info}
+%\end{table}
+%
+%We see that most of the methods perform well on all datasets, and
+%the accuracy of the best performing method on each dataset ranges from 84-97\%. 
+%% (Table \ref{tab:PerformanceAccuracy_Without_MF_Info} ).
+%We note that the identification accuracy obtained for instrumental music (CM1)
+%by each method is comparable to the accuracy obtained for vocal music, meaning
+%the approaches are equally suitable for vocal and instrumental music. The
+%approaches based on multi-pitch analysis and classification (JS and
+%SG) are more consistent and generally perform better across different
+%datasets compared to the approaches based only on the predominant pitch (with the
+%exception of IISCB1, most likely due its poor recording quality). Within the
+%multi-pitch based approaches, SG obtains slightly better identification accuracy
+%than JS. This is most likely due to the additional predominant melody information used in SG, and indeed the difference between the two approaches is
+%mainly in the TP measure and less so in the TPC measure (i.e.~correctly
+%identifying the octave of the tonic pitch). 
+%% Among the unsupervised predominant
+%% pitch based approaches, AB2 performs slightly better than the rest of the
+%% approaches (RH1, RH2 and AB3) \comjustin{WHY???}.
+%As could be expected, the simple maximum peak selection approach
+%employed by AB1 and AB3 is too simplistic and the template
+%matching approach employed in AB2 yields better results in most cases. 
+%%
+%% Due to the nature of RH1, panchama errors are avoided, resulting in better TP
+%% and TPC accuracy, as compared to RH2 \comjustin{this sentence last is not
+%% meaningful: what is the ``nature'' of RH1? You can't expect the reader to
+%% decipher this from formulas 2 and 3. Either clarify this or the sentence should be removed}.
+%
+%
+%% On database CM1, method SG performs the best, with AB2 and JS reporting
+%% comparable performances.
+%SG obtains the best results for the instrumental dataset CM1, with AB2
+%and JS reporting comparable accuracies. For the CM2 and CM3 datasets, we see
+%that the multi-pitch based approaches (SG and JS) obtain the best
+%performance, whilst the predominant pitch based methods exhibit a considerable difference
+%between the TP and TPC accuracies. This means that in many cases these approaches are
+%able to identify the tonic pitch-class correctly but fail to identify the
+%correct octave of the tonic pitch. In the case of RH1, RH2, AB2 and AB3, this
+%can be attributed primarily to the tonic selection procedure employed by
+%these approaches. The group-delay processing used in AB2 and AB3, and the
+%estimators used in RH1 and RH2, accentuate the peaks corresponding to all svars
+%which have a low degree of pitch variance. This includes both the lower and
+%higher octave ṣadja and panchama in addition to the middle octave ṣadja (the tonic pitch). Furthermore, the
+%magnitude of peaks corresponding to ṣadja in higher and lower octave is
+%sometimes further accentuated by pitch halving and doubling errors produced by
+%the pitch extraction algorithm. This makes identification of the correct tonic octave
+%more difficult and as seen in Table~\ref{tab:PerformanceAccuracy_Without_MF_Info}, results in a higher degree of
+%octave errors.
+%
+%When considering the results for the IISCB1 dataset, we note that the
+%performance drops for all methods. The main reason for this is the poor audio
+%quality of the excerpts in this collection. The recordings are relatively old
+%and noisy, and contain a humming sound in the background. This makes pitch
+%tracking very difficult. Furthermore, the drone sound in the recordings is very weak compared to the lead artist, which explains the drop in performance for the multi-pitch based approaches.
+%
+%If we consider performance for IITM1 on the other hand, we see that all methods
+%perform very well. This is because each excerpt in this dataset is a full
+%concert, which includes many performances in different rāgs. Usually different
+%set of svars are used in different performances, but with the same tonic pitch
+%throughout the concert. As a result, the melody histogram contains a very high
+%peak corresponding to the Sa svar, making it considerably easier to identify the
+%tonic pitch.
+%%
+%% On IITM2 database, JS and SG methods give a high
+%% accuracy. RH2 and AB2 are comparable in accuracies, while RH1 and AB3
+%% report similar performances \comjustin{Again, just describing the numbers from
+%% the table for IITM2 is meaningless. Either we explain WHY we observe these
+%% results, or we should remove these two sentences}.
+%
+%\subsubsection{Accuracy as a function of excerpt duration}
+%\begin{figure}
+%	\centerline{{
+%			\includegraphics[scale=0.53]{fig/Misc/Accuracy_Length.pdf}}}
+%	\caption{Accuracy (\%) of different methods on four datasets arranged
+%		by increasing order of mean duration.}
+%	\label{fig:AccuracyLength_WithoutMF}
+%\end{figure}
+%
+%As shown in Table~\ref{tab:Database_MTG}, different datasets contain audio
+%excerpts of different lengths. In order to investigate a possible 
+%correlation between the accuracy of a method and the length of an audio
+%excerpt, in Figure~\ref{fig:AccuracyLength_WithoutMF} we plot the
+%identification accuracies of the different methods for four of the six datasets ordered
+%by the mean duration of the excerpts: CM2 (3 min), CM3 (full song), IITM2 (full
+%song) and IITM1 (full concert). CM1 and IISCB1 are excluded because the
+%characteristics of these datasets are very different compared to the rest of the
+%datasets (CM1 contains only instrumental performances and IISCB1 has poor
+%quality audio). As could be expected, we note that practically for all
+%methods there is an improvement in the performance as we increase the duration
+%of the excerpts. Interestingly, the improvement is very significant for
+%the predominant pitch based methods (RH1, RH2, AB2 and AB3) compared to the multi-pitch
+%based methods (JS and SG). This implies that the latter approaches, which exploit the
+%pitch information of the drone instrument, are more robust to the duration of audio data.
+%
+%\begin{figure}
+%	\centerline{{
+%			\includegraphics[scale=0.6]{fig/Misc/Category_Performance.pdf}}}
+%	\caption{Accuracy (\%) as a function of different attributes
+%		(Hindustani, Carnatic, male, female).}
+%	\label{fig:CategoryPerformance}
+%\end{figure}
+%
+%\subsubsection{Accuracy as a function of excerpt characteristics}
+%In addition to analyzing the performance accuracy for the whole dataset, we also examine the results as a function of different attributes of
+%the audio excerpts, namely music tradition (Hindustani or Carnatic) and the
+%gender of the lead singer (male or female). For this analysis we use the CM2
+%dataset, as it has the most balanced representation of excerpts from the
+%different categories. In Figure~\ref{fig:CategoryPerformance} we show the
+%accuracies obtained by the different methods as a function of the different
+%attributes. We see that the performance of the multi-pitch based approaches (JS
+%and SG) is relatively independent of the music tradition (Hindustani or
+%Carnatic). On the other hand, for the predominant pitch based approaches there is a
+%significant difference in performance for Hindustani and Carnatic music (they
+%obtain considerably better results on Carnatic music). The most notable
+%difference for these approach is the increased amount of octave errors
+%made for Hindustani music compared to Carnatic music. 
+%%
+%% The reason might be due
+%% the prominence of tānpūrā in Hindustani recordings, pitch of which is frequently
+%% registered in the silence regions. Depending on the tuning of the tānpūrā and
+%% amount of pitch halving errors, ṣadja in the lower octave was found to dominate
+%% in AB2 and AB3 due to which tonic pitch-class was found to be more accurate when
+%% compared to Tonic pitch. On identifying the tonic pitch by restricting peak
+%% picking to the middle octave range, the dominance of the non ṣadja note of the
+%% tānpūrā was found to affect the accuracy of tonic identification in Hindustani
+%% more when compared to Carnatic music. Similarly, in case of RH1 and RH2,
+%% inspection of the contours obtained from Hindustani recordings show a
+%% concentration of density function in the lower octave regions than in the middle
+%% or higher octave. Choosing a peak to minimize ṣadja variance to weight ratio,
+%% leads to  solutions that are off-by-octave. This is manifested as the noticeable
+%A possible reason for this is that in the Hindustani recordings the tānpūrā is
+%generally more salient compared to the Carnatic recordings. This results in the
+%monophonic pitch estimators tracking the tānpūrā in some frames, in particular
+%when the lead artist is not singing. As a result the pitch histogram includes
+%high peaks at octave multiples or sub-multiples of the correct tonic pitch. In
+%the case of AB2, AB3, RH1 and RH2, most octave errors were found to
+%be sub-multiples of the tonic pitch, caused by the stable and salient lower Sa
+%played by the drone instrument. 
+%
+%Now we turn to examine the performance as a function of the gender of the lead
+%artist (male or female). We see that in general, all approaches perform better
+%on performances by male singers compared to those by female singers. As in the
+%case of Hindustani versus Carnatic music, the difference is once again
+%considerably more significant for the predominant pitch based methods, which make a lot of
+%octave errors for performances by female singers. As noted earlier, in methods
+%RH1, RH2, AB2 and AB3 a range of 100-250 Hz is considered for finding the tonic
+%pitch when no additional metadata about the artists is available. In the case of
+%female singers, the tonic usually resides in the higher end of this range.
+%However, the presence of the drone, the tonal sounds produced by percussive
+%instruments and the octave errors produced by the pitch tracker, all contribute to
+%the appearance of a high peak one octave below the tonic of the female singer.
+%This is especially the case for 3-minute excerpts where a limited amount of
+%vocal pitch information is available.
+%%
+%% For multi-pitch classification based methods this
+%% can be due to the dominance of male singers in the dataset and the frequency
+%% range that is considered for extracting tonic candidates. Automatically
+%% learned set of rules to select correct tonic candidate are such that they
+%% maximise the performance for majority cases (i.e. male singer performances).
+%% Moreover, since the male singers dominate the dataset, even the frequency range
+%% selected is biased towards the male singers, to obtain a high overall accuracy.
+%In the case of the approaches based on multi-pitch analysis and classification (JS and SG),
+%a probable reason for obtaining better performance for male singers is the
+%larger amount of excerpts with male singers in the database. As a result, it
+%is possible that the rules learned by the classifier are slightly biased towards
+%the performances of male singers.
+%
+%
+%\subsection{Results obtained using metadata together with the audio}
+%\label{Results obtained using metadata together with the audio}
+%In order to reduce the amount of octave errors caused by the
+%different tonic pitch ranges used by male and female singers, one
+%can use additional information regarding the gender of the singer (when
+%available) to guide the method, usually by adjusting the frequency range
+%considered for the tonic pitch. In this section we analyze the effect of
+%including information regarding the gender of the singer and the performance
+%type (vocal or instrumental) on the identification accuracy obtained by the different
+%methods.
+%
+%\begin{table}
+%	\centering
+%	\begin{tabular}{| c | c | c | c | c | c | c |}
+%		\hline
+%		\multirow{2}{*}{Methods}  & CM1 & CM2 & CM3 &	IISCB1 & IITM1 & IITM2\\
+%		\cline{2-7}
+%		{} & TPC & TP & TP & TP & TP & TP \\
+%		\hline
+%		JS & 88.9 & \textbf{93.6} & 92.4 & 80.9 & \textbf{97.4} & 92.3 \\
+%		%\hline
+%		SG & 92.2 & 90.9 & 90.5 & 85.3 & \textbf{97.4} & \textbf{93.6}  \\
+%		\hdashline
+%		RH1 & 87.7 & 83.5 & 88.9 & \textbf{87.3} &\textbf{ 97.4} & 91.7 \\
+%		%\hline
+%		RH2 & 79.55 & 76.3 & 82 & 85.5 & \textbf{97.4} & 91.5 \\
+%		%\hline
+%		AB1 & - & - &- & - & \textbf{97.4} & - \\
+%		%\hline
+%		AB2 & \textbf{92.3} & 91.5 & \textbf{94.2} & 81.8 & \textbf{97.4} & 91.1 \\
+%		%\hline 
+%		AB3 & 87.5 & 86.7 & 90.9 & 81.8 & \textbf{94.7} & 89.9 \\
+%		\hline
+%		
+%	\end{tabular}
+%	\caption{Accuracies (tonic pitch-class (\%)) when using additional
+%		information regarding the gender of the lead singer (male/female) and
+%		performance type (vocal/instrumental). The dashed horizontal line divides the
+%		methods based on supervised learning (JS and SG) and those based on
+%		expert knowledge (RH1, RH2, AB1, AB2 and AB3).}
+%	\label{tab:PerformanceAccuracy_With_MF_Info}
+%\end{table}
+%
+%In Table~\ref{tab:PerformanceAccuracy_With_MF_Info} we present the
+%identification accuracies obtained when gender information (male/female) and
+%performance type (vocal/instrumental) is available to the methods in addition
+%to the audio data. Note for this evaluation we only report the tonic pitch
+%accuracy for vocal excerpts (and not pitch-class accuracy) since when this
+%metadata is available the pitch range of the tonic is known and limited to a
+%single octave, meaning the TP and TPC accuracies will be the same.
+%
+%Comparing the results with those in Table~\ref{tab:PerformanceAccuracy_Without_MF_Info} we see that the identification
+%accuracies for all methods are higher when gender and performance metadata is
+%available. With the additional information the performance of the predominant pitch based
+%approaches (AB2, AB3 and RH1) becomes closer to that of the multi-pitch based
+%approaches (JS and SG). Whilst the performance of all methods is improved, the
+%increase in accuracy is more considerable for the predominant pitch based approaches which
+%use template matching (in particular AB2 and AB3) compared to
+%classification-based approaches (JS and SG). This can be attributed to the fact
+%that the rules learned automatically using machine learning are more complete
+%compared to the relatively simple Sa-Pa templates, meaning that the classification
+%based approaches can correctly identify the octave of the tonic even without
+%using gender metadata. That is, since both male and female excerpts are used
+%during training, the influence of the gender of the singer on the pitch
+%features is implicitly learned by the classifier, thus producing rules that can
+%handle both male and female performances, even without explicit metadata about
+%the gender of the singer. On the other hand, manually defined template-based
+%approaches require this extra information to fine-tune the frequency range
+%considered for the tonic, after which they obtain comparable performance to
+%that of the classification-based methods.
+%
+%A potential advantage of the template-based approaches is that they do not
+%require training. This, in theory, could make them more generalizable compared
+%to the classification-based methods. To assess this, we ran an experiment in
+%which the classification-based approaches were trained on one dataset
+%and tested on a different dataset (CM2 and IITM2). We found that the results
+%only went down by approximately 2\% compared to the results obtained using
+%10-fold cross validation on a single dataset. Furthermore, the datasets used for
+%this experiment contained relatively different music material (percentage of
+%Carnatic music excerpts and length of the audio files). This suggests that for
+%tonic identification the rules learned by the classification-based approaches
+%are generalizable and can be used to obtain high identification accuracies for
+%the different types of excerpts evaluated in this study.
+%
+%\subsection{Error Analysis}
+%\label{Error Analysis}
+%
+%We now turn to analyze the different types of errors made by the methods, both
+%with and without using additional metadata for each dataset. Three common
+%types of errors were identified: Pa errors, where the fifth (Pa) is selected
+%instead of the tonic, Ma errors, where the fourth (Ma) is selected instead of
+%the tonic, and the previously mentioned octave errors, where the correct pitch
+%is identified but in the wrong octave (usually one octave above or below the
+%tonic). Since octave errors are already discussed at length in the previous section, here
+%we focus on all other types of errors, which we divide into three categories: Pa
+%(for Pa errors), Ma (for Ma errors) and ``Other'', which includes all errors
+%that are neither Pa, Ma nor octave errors (e.g.~selecting the seventh (Nī)
+%instead of the tonic Sa).
+%
+%\subsubsection{Errors when only audio data is used}
+%\begin{figure}
+%	\centerline{{
+%			\includegraphics[scale=0.6]{fig/Misc/ErrorAnalysis_Without_MF.pdf}}}
+%	\caption{Percentage of excerpts containing each of the three different
+%		categories of errors (excluding octave errors): Pa, Ma and Other, when no
+%		additional metadata is used.}
+%	\label{fig:Errors_Without_MF} 
+%\end{figure}
+%
+%In Figure~\ref{fig:Errors_Without_MF} for each dataset we present the
+%percentage of excerpts containing each of the three categories of errors for
+%every method (when no additional metadata is used).
+%% Note that we don't report percentage of the octave errors explicitly because
+%% these can be inferred from Table \ref{tab:PerformanceAccuracy_Without_MF_Info}
+%% as the difference between accuracy of tonic pitch and pitch-class.
+%We see that for most datasets Pa and Ma errors constitute a large proportion of
+%the total amount of errors made by each method. These confusions make sense from a
+%musical perspective, since in every Indian art music performance one of
+%these two svars (Pa or Ma) is always present in the melody in addition to Sa
+%(the tonic pitch-class). Furthermore, the pitch distance between Sa and Pa (fifth) is
+%the same as the distance between Ma and higher Sa, and the pitch distance
+%between Sa and Ma (one fourth) is same as the distance between between Pa and higher Sa.
+%Since most approaches are based on templates or rules that consider the pitch
+%distance between the peaks of the feature histogram, these equivalences can
+%cause four types of confusions: considering a Sa-Pa pair to be Ma-Sa leading to
+%a Pa error, considering Ma-Sa to be Sa-Pa leading to a Ma error, considering
+%Sa-Ma to be Pa-Sa leading to a Ma error and considering Pa-Sa to be Sa-Ma
+%leading to a Pa error.
+%
+%For the approaches based on multi-pitch analysis (JS and SG) we observe that the
+%only case where we get more `Other' errors compared Pa and Ma errors is for the
+%IISCB1 dataset. Since the drone sound is very weak in the excerpts of this
+%dataset, there are cases in which the prominent peaks of the multi-pitch
+%histogram correspond to svars other than Sa, Ma and Pa (which will depend on the
+%choice of the rāg). Since these approaches assume that the multi-pitch histogram
+%represents the svars of the drone instrument, the peaks of the
+%histogram are mistakenly identified as Sa and Pa or Sa and Ma, leading to an
+%error in identification. For these specific type of excerpts the RH1 method
+%produces slightly better results, as the ṣadja is not inflected (i.e. there is
+%little pitch variation) regardless of the rāg.
+%
+%In many cases we observe that the percentage of Ma errors is greater than the
+%percentage of Pa errors. For the classification based approaches, this can be
+%attributed to the fact that in most excerpts the drone instrument is tuned to
+%\textit{Pa tuning} (lower Sa, middle Sa, middle Sa, lower Pa). This creates a
+%bias in the training and the rules learned by the classifier work better for Pa
+%tuning. Ma errors are also common in RH2, as the estimator looks for a
+%Sa-Pa-higher Sa pitch relation, which would also fit a Ma-tuned performance.
+%RH1 on the other hand does not search for a Sa-Pa-Sa template, resulting
+%in a low proportion of Ma errors compared to the other methods. Finally we note
+%that most methods do not make any Ma errors on the IITM1 dataset. This is
+%because the items in this dataset are full concerts, each concert
+%consisting of several pieces. Whilst Ma may be included in the melody of some of
+%the pieces, Pa and Sa are always present. As a result, the pitch histogram for
+%the complete concert does not contain a prominent Ma peak, meaning that it is highly
+%unlikely for it to be selected as the tonic.
+%
+%\subsubsection{Errors when metadata is provided}
+%
+%\begin{figure}
+%	\centerline{{
+%			\includegraphics[scale=0.6]{fig/Misc/ErrorAnalysis_With_MF.pdf}}}
+%	\caption{Percentage of different type of errors (Pa, Ma  and Others) by different methods on all the datasets using information regarding the gender of the singer and performance type}
+%	\label{fig:Errors_With_MF}
+%\end{figure}
+%
+%We examine how the errors are affected once we allow methods to use
+%gender and performance metadata, shown in Figure~\ref{fig:Errors_With_MF}.
+%If we compare the results to those of Figure~\ref{fig:Errors_Without_MF}, we see
+%that Ma and Pa errors are reduced more than ``Other'' errors. By
+%restricting the tonic frequency range to a single octave we prevent the
+%appearance of a high Sa peak, thus avoiding the possible confusion
+%between fourths and fifths explained earlier and reducing the amount of Pa and
+%Ma errors.
+%
+%For RH1 and RH2 the percentage of Ma errors actually increases slightly after
+%including male/female information. A large proportion of these errors were
+%observed in excerpts with female singers. For these excerpts, the range
+%for ṣadja candidates is limited to 130-250 Hz. For this range, candidates
+%fitting a lower Ma-middle Sa-middle Ma template would also satisfy the
+%minimization criteria used in RH2. In the case of RH1, the reduced frequency
+%range results in relatively weak peaks also being considered, and their small
+%pitch variance can result in the wrong candidate being selected
+%during the minimization process.
+%
+%\subsubsection{Errors as a function of excerpt attributes}
+%
+%\begin{figure}
+%	\centerline{{
+%			\includegraphics[scale=0.6]{fig/Misc/Category_Errors.pdf}}}
+%	\caption{Percentage
+%		of excerpts with the different categories of errors
+%		(Pa, Ma and Others) for every method as a function of different
+%		excerpt attributes (Hindustani, Carnatic, male, female).}
+%	\label{fig:CategoryErrors}
+%\end{figure}
+%
+%Finally, we analyze the errors as a function of the different attributes of the
+%excerpts (Hindustani versus Carnatic, male versus female). As in Section
+%\ref{Results obtained using only audio data}, we use the CM2 dataset for the
+%analysis because it is the most balanced, and methods are not provided with
+%any metadata in addition to the audio signal. The percentage of excerpts
+%containing each of the three categories of errors (Pa, Ma and Other) for
+%every approach as a function of the different excerpt attributes is
+%shown in Figure~\ref{fig:CategoryErrors}.
+%%
+%We see that for the classification based methods, the proportion of Ma errors is
+%much higher in performances by female singers compared to performances by male
+%singers.
+%% This is because both the female performances and the Ma tuning cases are less
+%% in number compared to the male performances and the Pa tuning cases.
+%The pitch range of the tonic for female singers is such that the lower Ma
+%resides in the frequency range where the tonic of most male singers lies. Thus,
+%the lower Ma-middle Sa (fifth) relationship for female singers is often confused
+%with middle Sa-Pa relationship for male singers, resulting in a high number of
+%Ma errors. 
+%% For methods AB2 and AB3 we observe that the percentage of 'Other'
+%% type of errors is exceptionally high for Hindustani music and performances of
+%% female singers.
+%
+%
+%
+%For further details and insights regarding the types of error made by the
+%different methods and their underlying causes we refer the reader to the
+%publications where these methods are discussed in depth
+%\cite{SalamonSankalp2012, SGulati_MThesis2012, Ranjani2011,
+%	Ashwin_Istanbul2012}.
+
+
+
+\subsection{Correcting Mistakes in Tonic Identification}
+\label{sec:pre_processing_tonic_identification_correcting_mistakes}
+
+
+
 
 
 
