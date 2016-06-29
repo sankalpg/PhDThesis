@@ -108,7 +108,7 @@ not guaranteed to be the tonic, various techniques are applied to select the pea
 	\end{sidewaystable}
 
 
-In \tabref{tab:pre_processing_tonic_identification_summary_methods} we provide a summary of the existing methods for tonic identification. The common processing blocks and the main differences between them become evident from this table. A review of these methods in terms of the three processing stages as shown in \figref{fig:tonic_identification_general_block_diagram} is provided in~\cite{Gulati2014Tonic}. For a more detailed description of these methods we refer to their respective publications listed in Table \tabref{tab:pre_processing_tonic_identification_summary_methods}. 
+In \tabref{tab:pre_processing_tonic_identification_summary_methods} we provide a summary of the existing methods for tonic identification. The common processing blocks and the main differences between them become evident from this table. A detailed review of these methods in terms of the three processing stages as shown in \figref{fig:tonic_identification_general_block_diagram} is done in~\cite{Gulati2014Tonic}. For a more detailed description of these methods we refer to their respective publications listed in Table \tabref{tab:pre_processing_tonic_identification_summary_methods}. 
 
 \TODO{description of the methods?}
 
@@ -174,7 +174,7 @@ only audio data.
 		\acrshort{tonicid_ashwin_3} & - & 86 & 61.1 & 80.5 & 67.8 & 79.9 & 72.7 & 72.7 & 94.7 & 94.7 & 85  & 86.6 \\
 \tablebot
 	\end{tabular}
-	\caption{Accuracies for tonic pitch (TP \%) and  tonic
+	\caption[Tonic identification accuracies of seven methods on six different datasets. These accuracies are when no metadata is used in addition to audio data.]{Accuracies for tonic pitch (TP \%) and  tonic
 		pitch-class (TPC \%) identification by seven methods on six different
 		datasets using only audio data. The best accuracy obtained for each dataset is
 		highlighted using bold text. The dashed horizontal line divides the
@@ -183,35 +183,21 @@ only audio data.
 	\label{tab:PerformanceAccuracy_Without_MF_Info}
 \end{sidewaystable}
 
-We see that most of the methods perform well on all datasets, and
-the accuracy of the best performing method on each dataset ranges from 84-97\%. 
-% (Table \ref{tab:PerformanceAccuracy_Without_MF_Info} ).
-We note that the identification accuracy obtained for instrumental music (CM1)
+From \tabref{Table~\ref{tab:PerformanceAccuracy_Without_MF_Info}} we see that most of the methods perform well on all datasets, and the accuracy of the best performing method on each dataset ranges from 84-97\%. We note that the identification accuracy obtained for instrumental music (\acrshort{tds_cm1})
 by each method is comparable to the accuracy obtained for vocal music, meaning
 the approaches are equally suitable for vocal and instrumental music. The
-approaches based on multi-pitch analysis and classification (JS and
-SG) are more consistent and generally perform better across different
+approaches based on multi-pitch analysis and classification (\acrshort{tonicid_justing} and
+\acrshort{tonicid_sankalp}) are more consistent and generally perform better across different
 datasets compared to the approaches based only on the predominant pitch (with the
 exception of IISCB1, most likely due its poor recording quality). Within the
-multi-pitch based approaches, SG obtains slightly better identification accuracy
-than JS. This is most likely due to the additional predominant melody information used in SG, and indeed the difference between the two approaches is
+multi-pitch based approaches, \acrshort{tonicid_sankalp} obtains slightly better identification accuracy
+than \acrshort{tonicid_justin}. This is most likely due to the additional predominant melody information used in \acrshort{tonicid_sankalp}, and indeed the difference between the two approaches is
 mainly in the TP measure and less so in the TPC measure (i.e.~correctly
-identifying the octave of the tonic pitch). 
-% Among the unsupervised predominant
-% pitch based approaches, AB2 performs slightly better than the rest of the
-% approaches (RH1, RH2 and AB3) \comjustin{WHY???}.
-As could be expected, the simple maximum peak selection approach
-employed by AB1 and AB3 is too simplistic and the template
-matching approach employed in AB2 yields better results in most cases. 
-%
-% Due to the nature of RH1, panchama errors are avoided, resulting in better TP
-% and TPC accuracy, as compared to RH2 \comjustin{this sentence last is not
-% meaningful: what is the ``nature'' of RH1? You can't expect the reader to
-% decipher this from formulas 2 and 3. Either clarify this or the sentence should be removed}.
+identifying the octave of the tonic pitch). As could be expected, the simple maximum peak selection approach
+employed by \acrshort{tonicid_ashwin_1} and \acrshort{tonicid_ashwin_3} is too simplistic and the template
+matching approach employed in \acrshort{tonicid_ashwin_2} yields better results in most cases. 
 
 
-% On database CM1, method SG performs the best, with AB2 and JS reporting
-% comparable performances.
 SG obtains the best results for the instrumental dataset CM1, with AB2
 and JS reporting comparable accuracies. For the CM2 and CM3 datasets, we see
 that the multi-pitch based approaches (SG and JS) obtain the best
