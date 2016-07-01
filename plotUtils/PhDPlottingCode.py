@@ -46,7 +46,7 @@ def plotPredominantPitchExample(audio_file, pitch_file, output_file, time_start,
 	font="Times New Roman"
 
 
-	maxplotfreq = 1500.0
+	maxplotfreq = 1000.0
 	numFrames = int(mX[:,0].size)
 	frmTime = hopSize*np.arange(numFrames)/float(sampleRate)                             
 	binFreq = sampleRate*np.arange(NFFT*maxplotfreq/sampleRate)/NFFT                       
