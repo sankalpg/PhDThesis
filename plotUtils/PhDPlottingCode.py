@@ -14,7 +14,10 @@ import stft as STFT
 
 
 def plotPredominantPitchExample(audio_file, pitch_file, output_file, time_start, time_end):
-
+	"""
+	Example:
+	plt.plotPredominantPitchExample('/media/Data/Datasets/PatternProcessing_DB/unsupervisedDBs/hindustaniDB/Hindustani30Ragas/audio/a99e07d5-20a0-467b-8dcd-aa5a095177fd/Rashid_Khan/Evergreen/Raga_Lalit_783aa4b0-26f3-4e18-844c-b787be6d9849.mp3', '/media/Data/Datasets/PatternProcessing_DB/unsupervisedDBs/hindustaniDB/Hindustani30Ragas/audio/a99e07d5-20a0-467b-8dcd-aa5a095177fd/Rashid_Khan/Evergreen/Raga_Lalit_783aa4b0-26f3-4e18-844c-b787be6d9849.pitch', '/home/sankalp/Work/Work_PhD/publications/2016_PhDThesis/plotUtils/ch05_preProcessing/predominantMelodyExample.png', 22*60 + 15,  22*60 + 45)
+	"""
 	frameSize = 4096
 	hopSize = 512
 	NFFT = 4096
@@ -73,7 +76,7 @@ def plotPitchSmootheningExample():
 	pass
 
 
-def plotPitchJumpCorrectionExample(pitch_file, corrected_pitch_file, time_start, time_end):
+def plotPitchJumpCorrectionExample(pitch_file, corrected_pitch_file, output_file, time_start, time_end):
 	
 	time_pitch = np.loadtxt(pitch_file)
 	ind_start = np.argmin(abs(time_pitch[:,0]-time_start))
