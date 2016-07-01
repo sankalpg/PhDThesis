@@ -393,28 +393,66 @@ Predominant pitch estimation is not yet a solved problem and the output pitch co
 One of the most frequently occurring errors in pitch estimation is detecting pitch in the wrong octave, commonly referred to as an octave error. Identifying and correcting such an error during a post-processing step for the case of a monophonic signal (containing a single harmonic series) is fairly easy\TODO{reference}. One can compare the energy of the partials with the total energy of the audio frame to infer if the estimated pitch value corresponds to the actual fundamental frequency. However, for the case of a polyphonic signal the task becomes much more challenging. 
 
 
-We alleviate this problem to an extent by restricting ourselves to a specific set of pitch octave errors occurring over short duration of time. Instead of identifying a pitch octave error for an individual audio frame, which as we mentioned is a challenging task for a polyphonic audio signal, we exploit the temporal continuity of melody to detect such errors. We explain the intuition behind our method with the help of an example shown in Figure~\TODO{fig}. The ground truth pitch contour is shown in XXX and the estimated contour in XXX. If we analyze an audio frame between time XX and XX seconds, automatically identifying if there is an pitch octave error or not is a challenging task. However, analyzing the pitch continuity we can easily detect an anomalous pitch jump at time XX seconds. This is due to the fact that in a real-world scenario such a drastic pitch jump do not occur naturally. By analyzing the amount of frequency difference across the pitch transition we can infer to an extent the type of pitch error and can subsequently correct it. In this example the frequency jump at time XX seconds is XXX cents. Knowing that there is another jump in the other direction at time XX makes it more probably that the pitch segment between time XX and XX seconds suffers from an octave error. We now describe our approach in detail.
+We alleviate this problem to an extent by restricting ourselves to a specific set of pitch octave errors occurring over short duration of time. Instead of identifying a pitch octave error for an individual audio frame, which as we mentioned is a challenging task for a polyphonic audio signal, we exploit the temporal continuity of melody to detect such errors. We explain the intuition behind our method with the help of an example shown in Figure~\TODO{fig}. The ground truth pitch contour is shown in XXX and the estimated contour in XXX. If we analyze an audio frame between time XX and XX seconds, automatically identifying if there is an pitch octave error or not is a challenging task. However, analyzing the pitch continuity we can easily detect an anomalous pitch jump at time XX seconds. This is due to the fact that in a real-world scenario such a drastic pitch jump do not occur naturally. By analyzing the amount of frequency difference across the pitch transition we can infer to an extent the type of pitch error and can subsequently correct it. In this example the frequency jump at time XX seconds is XXX cents. Knowing that there is another jump in the other direction at time XX makes it more probably that the pitch segment between time XX and XX seconds suffers from an octave error. We describe this heuristic-based approach in~\algoref{alg:algorithmPitchCorrection}.
 
-We start by detecting different types of pitch transitions across audio frames that are unnatural in a normal singing context. We regard a pitch difference of 600\,Cents across two frames as a criterion for detecting such a transition. Based on this criterion we detect 7 different types of transitions; 1) transition of an octave both 
+\renewcommand{\algorithmiccomment}[1]{\bgroup\hfill\tiny//~#1\egroup}
 
-%\begin{algorithm}
-%	\begin{algorithmic}
-%
-%%		\Var Inupt: pitch contour in Cents scale, $ith$ sample is denoted by $P_i$
-%
-%	\end{algorithmic}
-%\end{algorithm}
-
-\renewcommand{\algorithmicrequire}{\textbf{Input:}}
-\renewcommand{\algorithmicensure}{\textbf{Output:}}
 \begin{algorithm}
 	\caption{Correcting spurious pitch octave jumps}
+	\label{alg:algorithmPitchCorrection}
 	\begin{algorithmic}  
-		\State {\bf Input:} pitch contour in Cents scale, $i^{th}$ sample is denoted by $p[i]i$, total length $N$ samples
-		\State Initialization;
-		\State jumpType = zeros(N)	// declaring array of N samples containing zeros
-		\State pitchDiff = p[1:end]-p[:end-1]	// holds the pitch difference value at each index
+		\State {\bf Input:} pitch sequence (p) of length N samples in Cents scale
+		\State jumpType = zeros(N)	
+
+		\For{ii=0; ii<N; ii++}							\Comment{Detecting type of pitch transition}
+			\State diff = p[ii+1]-p[ii]
+			\If{abs(diff)\%1200 <= 300}
+				\If {diff > 0}
+					\State jumpType[ii+1]=3			\Comment{Positive octave jump}
+				\ElsIf {diff<0}
+					\State jumpType[ii]=4			\Comment{Negative octave jump}
+				\EndIf
+			\ElsIf {abs(diff)>=600}
+				\If {p[ii]<= silenceCentValue}
+					\State jumpType[ii+1]=1			\Comment{Unvoiced to voiced}
+				\ElsIf {p[ii+1]<= silenceCentValue}
+					\State jumpType[ii]=2			\Comment{Voiced to unvoiced}
+				\ElsIf {diff>0}
+					\State jumpType[ii+1]=5			\Comment{Other positive pitch jump}
+				\Else
+					\State jumpType[ii]=6			\Comment{Other negative pitch jump}
+				\EndIf
+			\EndIf
+		\EndFor
+
+		\For {ii=0; ii<N-winSize; ii++}				\Comment{Fixing pitch octave jumps}
+			\State shift = 0
+			\State indJumps = where(jumpType[ii:ii+winSize]!=0)			
+			\If {len(indJumps) == 2}				\Comment{Process only when two jumps are detected}
+				\State i1 = indJumps[0] + ii
+				\State i2 = indJumps[1]	+ ii			
+				\If {jumpType[i1] + jumpType[i2] == 3}		
+					\State jumpType[i1] = 0
+					\State continue			\Comment{Do nothing for unvoiced to voiced to unvoiced}
+				\EndIf
+				
+				\If {jumpType[i1]\%2 = 1 and jumpType[i2]\%2 = 0 }
+					\If {jumpType[i1] == 3 and jumpType[i2] != 6}
+						\State shift = 1200*round((p[i1] - p[i1-1])/1200)
+					\ElsIf {jumpType[i2] == 4 and jumpType[i1] != 5}
+						\State shift = 1200*round((p[i2] - p[i2+1])/1200)
+					\ElsIf {jumpType[i1] == 1}
+						\State shift = 100*round((p[i2] - p[i2+1])/100)
+					\ElsIf {jumpType[i2] == 2}
+						\State shift = 100*round((p[i1] - p[i1-1])/100)
+					\EndIf
+				\EndIf
+			\EndIf
+			\State p[i1:i2+1] = p[i1:i2+1] - shift
+			\State jumpType[i1] = 0
+			\State jumpType[i2] = 0		
 		
+		\EndFor
 		
 	\end{algorithmic}
 \end{algorithm}
