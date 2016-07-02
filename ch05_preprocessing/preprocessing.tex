@@ -336,8 +336,10 @@ In this section we present an heuristic-based approach to correct frequently occ
 
 \TODO{rephrase and make better this section.}
 
-\section{Melody Estimation, Post-processing and Representation}
-\label{sec:data_preprocessing_melody_estimation}
+\section{Melody Processing}
+\label{sec:data_preprocessing_melody_processing}
+
+In this section we describe in detail all the steps applied at various stages to process melody for different melodic analyses addressed in this dissertation. These processing steps can be grouped into three main categories; predominant melody estimation (or sometimes also called as extraction), melody post-processing and melody representation. All these three steps are described at length in the subsequent sections. 
 
 \begin{figure}
 	\begin{center}
@@ -393,7 +395,7 @@ Predominant pitch estimation is not yet a solved problem and the output pitch co
 One of the most frequently occurring errors in pitch estimation is detecting pitch in the wrong octave, commonly referred to as an octave error. Identifying and correcting such an error during a post-processing step for the case of a monophonic signal (containing a single harmonic series) is fairly easy\TODO{reference}. One can compare the energy of the partials with the total energy of the audio frame to infer if the estimated pitch value corresponds to the actual fundamental frequency. However, for the case of a polyphonic signal the task becomes much more challenging. 
 
 
-We alleviate this problem to an extent by restricting ourselves to a specific set of pitch octave errors occurring over short duration of time. Instead of identifying a pitch octave error for an individual audio frame, which as we mentioned is a challenging task for a polyphonic audio signal, we exploit the temporal continuity of melody to detect such errors. We explain the intuition behind our method with the help of an example shown in Figure~\TODO{fig}. The ground truth pitch contour is shown in XXX and the estimated contour in XXX. If we analyze an audio frame between time XX and XX seconds, automatically identifying if there is an pitch octave error or not is a challenging task. However, analyzing the pitch continuity we can easily detect an anomalous pitch jump at time XX seconds. This is due to the fact that in a real-world scenario such a drastic pitch jump do not occur naturally. By analyzing the amount of frequency difference across the pitch transition we can infer to an extent the type of pitch error and can subsequently correct it. In this example the frequency jump at time XX seconds is XXX cents. Knowing that there is another jump in the other direction at time XX makes it more probably that the pitch segment between time XX and XX seconds suffers from an octave error. We describe this heuristic-based approach in~\algoref{alg:algorithmPitchCorrection}.
+We alleviate this problem to an extent by restricting ourselves to a specific set of pitch octave errors occurring over short duration of time. Instead of identifying a pitch octave error for an individual audio frame, which as we mentioned is a challenging task for a polyphonic audio signal, we exploit the temporal continuity of melody to detect such errors. We explain the intuition behind our method with the help of an example shown in Figure~\TODO{fig}. The ground truth pitch contour is shown in XXX and the estimated contour in XXX. If we analyze an audio frame between time XX and XX seconds, automatically identifying if there is an pitch octave error or not is a challenging task. However, analyzing the pitch continuity we can easily detect an anomalous pitch jump at time XX seconds. This is due to the fact that in a real-world scenario such a drastic pitch jump do not occur naturally. By analyzing the amount of frequency difference across the pitch transition we can infer to an extent the type of pitch error and can subsequently correct it. In this example the frequency jump at time XX seconds is XXX cents. Knowing that there is another jump in the other direction at time XX makes it more probably that the pitch segment between time XX and XX seconds suffers from an octave error. We describe this heuristic-based approach in~\algoref{alg:algorithmPitchCorrection}. In this algorithm $\mathrm{winSize}$ is set to 1\,s and $\mathrm{silenceCentValue}$ is set to $1200*\log2(\epsilon)$, where $\epsilon$ is of the order of $10^{-17}$.
 
 \renewcommand{\algorithmiccomment}[1]{\bgroup\hfill\tiny//~#1\egroup}
 
@@ -461,29 +463,36 @@ We alleviate this problem to an extent by restricting ourselves to a specific se
 \subsubsection{Pitch smoothening}
 \label{sec:data_processing_pitch_smoothening}
 
-This processing step aims to remove the spurious pitch jumps lasting over a few frames and to smooth the pitch contours. We start by performing a median filtering over the estimated pitch contour. The window length chosen for median filtering is 50\,ms. Subsequently, to smooth the pitch contour we apply a low-pass filtering by using a Gaussian window. The window size and the standard deviation of the Gaussian window is set to 50\,ms and 10\,ms, respectively. In Figure \TODO{do the figure} we show an example of a pitch segment before and after applying median filtering and Gaussian smoothening. We see that the spurious pitch jumps are removed and the pitch contour appears smooth.
+This processing step aims to remove the spurious pitch jumps lasting over a few frames and to smooth the pitch contours. We start by performing a median filtering over the estimated pitch contour\TODO{ref}. The window length chosen for median filtering is 50\,ms. Subsequently, to smooth the pitch contour we apply a low-pass filtering by using a Gaussian window\TODO{ref}. The window size and the standard deviation of the Gaussian window is set to 50\,ms and 10\,ms, respectively. In Figure \TODO{do the figure} we show an example of a pitch segment before and after applying median filtering and Gaussian smoothening. We see that the spurious pitch jumps are removed and the pitch contour appears smooth.
 
 
 \subsubsection{Pitch Interpolation}
 \label{sec:data_processing_pitch_interpolation}
 
-
-\subsubsection{Pitch Resampling}
-\label{sec:data_processing_pitch_resampling}
-
-
-The pitch contours are finally down-sampled to 100\,Hz, which was found to be an optimal sampling rate in~\cite{gulati_ICASSP2015}. 
-
-\begin{itemize}
-	\item What are the errors in pitch estimation that we face
-	\item Post processing to correct them. What are the steps that we do.
-	\item Examples of post processed pitch contours.
-\end{itemize}
+In renditions of melodic phrases in \gls{iam} often there are unvoiced segments lasting over a small time interval. These unvoiced segments either correspond to short breath-pauses taken by vocalists or they correspond to the consonants in the lyrics, which are unvoiced in nature. There are several challenges in handling these unvoiced segments in the computation of melodic similarity. One of the biggest challenges is to assign a meaningful numerical value to unvoiced melodic regions such that it does not deteriorate the computation of melodic similarity. Besides, such unvoiced segments might not exist in all occurrences of a melodic phrase. Therefore, in order to avoid the complexities arising from the unvoiced melodic segments, we interpolate such segments and assign them meaningful pitch values. We perform a linear interpolation across all the unvoiced regions that last for less than 300\,ms. An example of an interpolated unvoiced segment is shown in Figure XXX. \TODO{we can show a distribution of pause durations in melodies of IAM}
 
 
 \subsection{Melody Representation} 
 
-For the pitch representation to be musically relevant, the pitch values are converted from Hertz to Cents (logarithmic scale). For this conversion we additionally consider the tonic pitch of the lead artist as the reference frequency (i.e.,~0\,Cent corresponds to the tonic pitch). Thus, our representation becomes independent of the tonic of the lead artist, which allows a meaningful comparison of melodies of two distinct recordings (even if sung by two different artists in different tonic pitches). The tonic of the lead artist is identified automatically using a classification-based multi-pitch approach~\cite{Gulati2014Tonic}. We use the implementation of this method available in Essentia with the default set of parameters.%\vspace{0.5em}
+\subsubsection{Hertz to Cent Conversion}
+\label{sec:data_processing_cent_conversion}
+
+The perception of musical intervals for human beings is logarithmic in nature with respect to pitch (or fundamental frequency in Hz). Thus, in order for the pitch representation to be musically meaningful,  we convert the estimated predominant pitch values from Hertz to Cents (logarithmic scale) following the Eq XX.
+
+\begin{equation}
+\label{eq:hertz_to_cent_conversion}	
+p_i = 1200~\log_2\left(\frac{f_i}{f_r}\right) ,
+\end{equation}
+
+\noindent where $f_r$ is the reference tuning frequency which typically in the case of western popular (or even classical) music is set to an integer multiple or sub-multiple of 440\,Hz. 
+
+For the case of \gls{iam} as pointed out in \secref{sec:pre_processing_tonic_identification} there is no such standard reference frequency to which all the instruments across different performances are tuned to. Every lead artist can choose a tonic pitch using which the \gls{tanpura} and the rest of the instruments are tuned. Therefore for a meaningful comparison of melodies and melodic phrases across recordings of different artists we normalize the predominant pitch by the tonic of the lead artist. We perform this normalization by considering the reference frequency $f_r$ in \eqnref{eq:hertz_to_cent_conversion} as the tonic frequency of the lead artist estimated for every recording (\secref{sec:pre_processing_tonic_identification}).  
+
+
+\subsubsection{Pitch Resampling}
+\label{sec:data_processing_pitch_resampling}
+
+An optimal sampling rate of predominant melody can be argued to depend on the particular computational task under study. For certain tasks such as analysis of melodic ornaments in \gls{iam}\TODO{refs} a high sampling rate might be desired. Whereas, for computationally complex tasks such as melodic pattern discovery and search, a sampling rate as low as possible but at the same time sufficient to capture melodic nuances might be preferred. In order to avoid predominant melody computation for different sampling rates used in different experiments, we resample the predominant melody contours extracted once at a high sampling rate (225\,Hz, Section\TODO{ref}) \TODO{and use it in the experiment? something like that?}. Pitch contours are decimated to a lower sampling rate by simply downsampling them by an integer factor. The downsampling factor is decided based on the sampling rate used in a particular experiment. Since the pitch contours as mentioned above are low-pass filtered, we avoid any aliasing issues that might arise due to downsampling. 
 
 
 \section{Nyas Svara Segmentation}
