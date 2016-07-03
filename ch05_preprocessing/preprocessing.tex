@@ -66,7 +66,7 @@ the second block, an estimate of the distribution of these features is obtained
 using either Parzen window based density estimation or by constructing a
 histogram. The feature distribution is then used in the third block to identify
 the tonic. The peaks of the distribution correspond to the most salient pitch
-values used in the performance (usually the svars of the \gls{raga}), one of which
+values used in the performance (usually the \glspl{svara} of the \gls{raga}), one of which
 corresponds to the tonic pitch. As the most salient peak in the distribution is
 not guaranteed to be the tonic, various techniques are applied to select the peak that corresponds to the tonic.
 
@@ -473,6 +473,8 @@ In renditions of melodic phrases in \gls{iam} often there are unvoiced segments 
 
 
 \subsection{Melody Representation} 
+\label{sec:pre_processing_melody_representation}
+
 
 \subsubsection{Hertz to Cent Conversion}
 \label{sec:data_processing_cent_conversion}
@@ -486,129 +488,130 @@ p_i = 1200~\log_2\left(\frac{f_i}{f_r}\right) ,
 
 \noindent where $f_r$ is the reference tuning frequency which typically in the case of western popular (or even classical) music is set to an integer multiple or sub-multiple of 440\,Hz. 
 
-For the case of \gls{iam} as pointed out in \secref{sec:pre_processing_tonic_identification} there is no such standard reference frequency to which all the instruments across different performances are tuned to. Every lead artist can choose a tonic pitch using which the \gls{tanpura} and the rest of the instruments are tuned. Therefore for a meaningful comparison of melodies and melodic phrases across recordings of different artists we normalize the predominant pitch by the tonic of the lead artist. We perform this normalization by considering the reference frequency $f_r$ in \eqnref{eq:hertz_to_cent_conversion} as the tonic frequency of the lead artist estimated for every recording (\secref{sec:pre_processing_tonic_identification}).  
+For the case of \gls{iam} as pointed out in \secref{sec:pre_processing_tonic_identification} there is no such standard reference frequency to which all the instruments across different performances are tuned to. Every lead artist chooses a tonic pitch using which the \gls{tanpura} and the rest of the instruments are tuned. Therefore for a meaningful comparison of melodies and melodic phrases across recordings of different artists we normalize the predominant pitch by the tonic of the lead artist. We perform this normalization by considering the reference frequency $f_r$ in \eqnref{eq:hertz_to_cent_conversion} as the tonic frequency of the lead artist estimated for every recording (\secref{sec:pre_processing_tonic_identification}).  
 
 
 \subsubsection{Pitch Resampling}
 \label{sec:data_processing_pitch_resampling}
 
-An optimal sampling rate of predominant melody can be argued to depend on the particular computational task under study. For certain tasks such as analysis of melodic ornaments in \gls{iam}\TODO{refs} a high sampling rate might be desired. Whereas, for computationally complex tasks such as melodic pattern discovery and search, a sampling rate as low as possible but at the same time sufficient to capture melodic nuances might be preferred. In order to avoid predominant melody computation for different sampling rates used in different experiments, we resample the predominant melody contours extracted once at a high sampling rate (225\,Hz, Section\TODO{ref}) \TODO{and use it in the experiment? something like that?}. Pitch contours are decimated to a lower sampling rate by simply downsampling them by an integer factor. The downsampling factor is decided based on the sampling rate used in a particular experiment. Since the pitch contours as mentioned above are low-pass filtered, we avoid any aliasing issues that might arise due to downsampling. 
+An optimal sampling rate of predominant melody can be argued to depend on the particular computational task under study. For certain tasks such as analysis of melodic ornaments in \gls{iam}\TODO{refs} a high sampling rate might be desired. Whereas, for computationally complex tasks such as melodic pattern discovery and search, a sampling rate as low as possible but at the same time sufficient to capture melodic nuances might be preferred. In order to avoid predominant melody computation for different sampling rates used in different experiments, we often resample the predominant melody contours extracted once at a high sampling rate. Pitch contours are decimated to a lower sampling rate by simply downsampling them by an integer factor. The downsampling factor is decided based on the sampling rate used in a particular experiment. Since the pitch contours as mentioned above are low-pass filtered, we avoid any aliasing issues that might arise due to downsampling. 
 
+Note that all the processing blocks listed in this section are not employed in all the experiments. The description of the methods in the subsequent chapters will contain details about the processing blocks used in the experiment. \TODO{Where can we obtain the implementation}
 
-\section{Nyas Svara Segmentation}
+\section{\titlecap{\glsentrytext{nyas} \glsentrytext{svara} Segmentation}}
 \label{sec:pre_processing_nyas_segmentation}
 
-Musical melodies contain hierarchically organized events that follow a specific grammar~\cite{Patel07BOOK}. Some of these events are musically more salient than others and act as melodic landmarks. Cadential notes in classical Western music~\cite{GroveCadence} or K\={a}rvai regions in Carnatic music~\cite{sambamoorthy:1998} are examples of such landmarks. While some of these landmarks can be identified based on a fixed set of rules, others do not follow any explicit set of rules and are learned implicitly by a musician through music education and practice. A computational analysis of these landmarks can discover some of these implicitly learned rules and help in developing musically aware tools for music exploration, understanding and education. Occurrence of a ny\={a}s in Hindustani music melodies is an example of such a melodic landmark that we investigate in this study. 
+Musical melodies contain hierarchically organized events that follow a specific grammar~\citep{Patel07BOOK}. Some of these events are musically more salient than others and act as melodic landmarks. Cadential notes in classical Western music~\citep{GroveCadence} or \gls{karvai} regions in Carnatic music~\citep{sambamoorthy:1998} are examples of such landmarks. While some of these landmarks can be identified based on a fixed set of rules, others do not follow any explicit set of rules and are learned implicitly by a musician through music education and practice. A computational analysis of these landmarks can discover some of these implicitly learned rules and help in developing musically aware tools for music exploration, understanding and education. 
 
-%(e.g. last note in a melody blah blah)
-
-%\begin{figure*}[htb]
-%	\begin{center}
-%		\includegraphics[scale=0.65]{fig/NyasFragmentChallenge.pdf}\vspace{-1.5em}
-%	\end{center}
-%	\caption{Fragment of a pitch contour showing ny\={a}s segments denoted by $N_i$ ($i={1...5}$)}
-%	\label{fig:NyasChallenge}
-%\end{figure*}
-
-Dey presents various interpretations and perspectives on the concept of ny\={a}s in Hindustani music according to ancient, medieval and modern authors~\cite{Dey2008}. In the context of its current form, the author describes ny\={a}s as that process in a performance of a r\={a}g where an artist pauses on a particular svar\footnote{The seven solf\`{e}ge symbols used in Indian art music are termed as svars. It is analogous to note in western music but conceptually different.}, in order to build and subsequently sustain the format of a r\={a}g, the melodic framework in Indian art music~\cite[p. 70]{Dey2008}\cite{KKG_SS13}. Dey elaborates the concept of ny\={a}s in terms of action, subject, medium, purpose and effect associated with it. Typically, occurrence of a ny\={a}s delimits melodic phrases (motifs), which constitute one of the most important characteristic of a r\={a}g. Analysis of ny\={a}s is thus a crucial step towards melodic analysis of Hindustani music. In particular, automatically detecting occurrences of ny\={a}s (from now on referred as ny\={a}s segments) will aid in computational analyses such as melody segmentation, motif discovery, r\={a}g recognition and music transcription~\cite{GopalJNMR2012, Rao2014}. However, detection of ny\={a}s segments is a challenging computational task, as the prescriptive definition of ny\={a}s is very broad, and there are no fixed set of explicit rules to quantify this concept~\cite[p. 73]{Dey2008}. It is through rigorous practice that a seasoned artist acquires perfection in the usage of ny\={a}s, complying to the r\={a}g grammar and exploring creativity through improvisation at the same time. 
-
-From a computational perspective, the detection of ny\={a}s segments is challenging due to the variability in segment length, melodic characteristics and the different melodic contexts in which ny\={a}s is rendered. To illustrate this point we show a fragment of pitch contour in Figure~\ref{fig:NyasChallenge}, annotated with ny\={a}s segments denoted by $N_i$ ($i={1...5}$). We see that the ny\={a}s segment length is highly varied, where $N_5$ is the smallest ny\={a}s segment (even smaller than many non-ny\={a}s segments) and $N_3$ is the longest ny\={a}s segment. In addition, pitch contour characteristics also vary a lot due to the presence of alank\={a}rs\footnote{Characteristic pitch movements acting as ornaments during a svar rendition}. The pitch characteristics of a segment depends on the r\={a}g and scale degree of the ny\={a}s, and adds further complexity to the task~\cite{Bagchee1998}. For example, in Figure~\ref{fig:NyasChallenge}, $N_1$ and $N_3$ have a small pitch deviation from the mean svar frequency, whereas, $N_2$ and $N_4$ have significant pitch deviation (close to 100 cents in $N_5$). Large pitch deviations also pose a challenge in segmentation process. Further, melodic context such as the relative position with respect to a non-voiced or long melodically constant region plays a crucial role in determining a ny\={a}s segment. Because of these factors the task of ny\={a}s segment detection becomes challenging and requires sophisticated learning techniques together with musically meaningful domain specific features.
+Occurrence of a \gls{nyas} in Hindustani music melodies is an example of such a melodic landmark that we investigate in this section. A detailed description of \gls{nyas} is provided in \secref{sec:backgroung_nyas_description}. Typically, occurrence of a \gls{nyas} delimits melodic phrases, which constitute one of the most important characteristic of a \gls{raga}. Analysis of \gls{nyas} is thus a crucial step towards melodic analysis of Hindustani music. In particular, automatically detecting occurrences of \gls{nyas} (from now on referred as \gls{nyas} segments) will aid in melody segmentation, which is a crucial step in melodic phrase discovery. However, detection of \gls{nyas} segments is a challenging computational task, as the prescriptive definition of \gls{nyas} is very broad, and there are no fixed set of explicit rules to quantify this concept~\citep[p. 73]{Dey2008}. It is through rigorous practice that a seasoned artist acquires perfection in the usage of \gls{nyas}, complying to the r\={a}g grammar and exploring creativity through improvisation at the same time. 
 
 
-In computational analysis of Indian art music, ny\={a}s segment detection has not received much attention in the past. To the best of our knowledge, only one study with the final goal of spotting melodic motifs has indirectly dealt with this task~\cite{Ross2012}. In it, the authors considered performances of a single r\={a}g and focused on a very specific ny\={a}s svar, corresponding to a single scale degree: the fifth with respect to the tonic, the `Pa' svar. This svar is considered as one of the most stable svars, and has minimal pitch deviations. Thus, focusing on it oversimplified the methodology developed in~\cite{Ross2012} for ny\={a}s segment detection.
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=\figSizeHundred]{ch05_preprocessing/figures/NyasFragmentChallenge.pdf}
+	\end{center}
+	\caption[Fragment of a pitch contour showing \gls{nyas} segments]{Fragment of a pitch contour showing \gls{nyas} segments denoted by $N_i$ ($i={1...5}$)\TODO{If time permits redo fig with diff aspect ratio}}
+	\label{fig:nyas_segments_example}
+\end{figure}
 
-A related topic is the detection of specific alank\={a}rs and characteristic phrases (also referred as {\it Pakads}) in melodies in Indian art music~\cite{Datta2007, Pratyush2010, Ross2012b, Ishwar2013}. These approaches typically exploit pattern recognition techniques and a set of pre-defined melodic templates. A nearest neighbors classifier with a similarity measure based on dynamic time warping (DTW) is a common method to detect patterns in melodic sequences~\cite{Pratyush2010, Ross2012b}. In addition, it is also the most accurate~\cite{Xi06ICML} and extensively used approach for time series classification in general (cf.~\cite{Wang12DMKD}). Notice that the concept of landmark has been used elsewhere, with related but different notions and purposes. That is the case with time series similarity~\cite{Perng00ICDE}, speech recognition~\cite{Jansen08JASA,Chen12ICASSP}, or audio identification~\cite{Duong13ICASSP}.
+From a computational perspective, the detection of \gls{nyas} segments is challenging due to the variability in segment length, melodic characteristics and the different melodic contexts in which \gls{nyas} is rendered. To illustrate this point we show a fragment of pitch contour in~\figref{fig:nyas_segments_example}, annotated with \gls{nyas} segments denoted by $N_i$ ($i={1...5}$). We see that the \gls{nyas} segment length is highly varied, where $N_5$ is the smallest \gls{nyas} segment (even smaller than many non-\gls{nyas} segments) and $N_3$ is the longest \gls{nyas} segment. In addition, pitch contour characteristics also vary a lot due to the presence of \gls{alankar}\footnote{Characteristic pitch movements acting as ornaments during a \gls{svara} rendition\TODO{do we want to keep footnotes for musical concepts?}}. The pitch characteristics of a segment depends on the \gls{raga} and scale degree of the \gls{nyas}, and adds further complexity to the task~\citep{Bagchee1998}. For example, in~\figref{fig:nyas_segments_example}, $N_1$ and $N_3$ have a small pitch deviation from the mean \gls{svara} frequency, whereas, $N_2$ and $N_4$ have significant pitch deviation (close to 100\,cents in $N_5$). Large pitch deviations also pose a challenge in segmentation process. Further, melodic context such as the relative position with respect to a non-voiced or long melodically constant region plays a crucial role in determining a \gls{nyas} segment. Because of these factors the task of \gls{nyas} segment detection becomes challenging and requires sophisticated learning techniques together with musically meaningful domain specific features.
 
-In this paper, we propose a method for detecting occurrences of ny\={a}s svar in Hindustani music melodies. The proposed method consists of two main steps: segmentation based on domain knowledge, and segment classification based on a set of musically motivated pitch contour features. There are three main reasons for selecting this approach over a standard pattern detection technique (for example DTW). First, the pitch contour of a ny\={a}s segment obeys no explicit patterns, hence the contour characteristics have to be abstracted. Second, information regarding the melodic context of a segment can be easily interpreted in terms of discrete features. Third, we aim to measure the contribution of a specific feature in the overall classification accuracy (for example, if contour variance and length are the most important features for the classification). This is important in order to corroborate the results obtained from such data driven approaches to that from musicological studies.
+In computational analysis of \gls{iam}, \gls{nyas} segment detection has not received much attention in the past. To the best of our knowledge, only one study with the final goal of spotting melodic motifs has indirectly dealt with this task~\citep{Ross2012}. In it, the authors considered performances of a single r\={a}g and focused on a very specific \gls{nyas} \gls{svara}, corresponding to a single scale degree: the fifth with respect to the tonic, the `Pa' \gls{svara}. This \gls{svara} is considered as one of the most stable \glspl{svara}, and has minimal pitch deviations. Thus, focusing on it oversimplified the methodology developed in~\cite{Ross2012} for \gls{nyas} segment detection. \TODO{Should we move this to state of the art? + svara notation should be replaced by a glossary item?}. Note that the concept of landmark has been used elsewhere, with related but different notions and purposes. That is the case with time series similarity~\citep{Perng00ICDE}, speech recognition~\citep{Jansen08JASA,Chen12ICASSP}, or audio identification~\citep{Duong13ICASSP}.
 
-The structure of the remainder of the paper is as follows. In Section~\ref{method} we present our proposed method for melody segmentation and for detection of ny\={a}s segments. In Section~\ref{experimentalSetup} we describe  our experimental setup, which includes description of the data set and measures used for evaluation, the ground truth annotation procedure, and brief discussion on few baseline methods. In Section~\ref{ResultsAndDiscussion} we present and discuss the results of our experiments. Finally, in Section~\ref{ConclusionAndFutureWork}, we provide some conclusions and directions for future work.
+In this section, we describe our method for detecting occurrences of \gls{nyas} \gls{svara} in Hindustani music melodies. The description is based on our work presented in~\cite{gulati2014Landmark}. The method consists of two main steps: segmentation based on domain knowledge, and segment classification based on a set of musically motivated pitch contour features. There are three main reasons for selecting this approach over a standard pattern detection technique (for example \gls{dtw}). First, the pitch contour of a \gls{nyas} segment obeys no explicit patterns, hence the contour characteristics have to be abstracted. Second, information regarding the melodic context of a segment can be easily interpreted in terms of discrete features. Third, we aim to measure the contribution of a specific feature in the overall classification accuracy (for example, if contour variance and length are the most important features for the classification). This is important in order to corroborate the results obtained from such data driven approaches to that from musicological studies. In the subsequent sections we first describe our method~(Section XX), present the methodology used for evaluation~(Section XX), discuss the results and summarize our findings~(Section XX).
 
-%\section{Method}
-%\label{method}
+\subsection{Method}
+\label{sec:pre_processing_nyas_id_method}
 
-%\begin{figure}[t]
-%	\begin{center}
-%		\includegraphics[scale=0.68]{fig/BlockDiagram.pdf}\vspace{-1.5em}
-%	\end{center}
-%	\caption{Block diagram of the proposed approach.}
-%	\label{fig:BD_OverallApproach}
-%\end{figure}
+The block diagram of the proposed method for \gls{nyas} segmentation is shown in~\figref{fig:bd_nyas_segmentation}. It consists of four main processing blocks; predominant pitch estimation and representation, segmentation, feature extraction, and segment classification and fusion. These processing blocks are described in the following sections.
 
-\subsection{Predominant Pitch Estimation \& Representation}
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=\figSizeEightyFive]{ch05_preprocessing/figures/BlockDiagramNyasSegmentation.pdf}
+	\end{center}
+	\caption{Block diagram of the proposed approach for \gls{nyas} segmentation.}
+	\label{fig:bd_nyas_segmentation}
+\end{figure}
 
-The proposed method is comprised of four main blocks (Figure~\ref{fig:BD_OverallApproach}): predominant pitch estimation and representation, segmentation, feature extraction, and segment classification and fusion. For estimating pitch of the the predominant melodic source\footnote{This task is also referred as predominant melody extraction in various contexts within Music Information Research.} we use the method by Salamon~\&~G\'omez~\cite{Salamon2012}, which scored very favorably in an international evaluation campaign featuring a variety of musical genres, including Indian art music\footnote{\url{http://nema.lis.illinois.edu/nema_out/mirex2011/results/ame/indian08/summary.html}}. For the pitch representation to be musically meaningful, we convert the pitch values to cents, normalized by the tonic frequency of the lead artist. Tonic of the lead artist is extracted automatically using the approach proposed by Gulati~\cite{SGulati_MThesis2012}. In a comparative evaluation of different tonic identification approaches for Indian art music, this approach consistently performed better for a variety of music material within Indian art music~\cite{Gulati2013Tonic}. For both predominant pitch estimation and tonic identification we use the implementations available in Essentia~\cite{essentia}, an open-source C++ library for audio analysis and content-based music information retrieval.
+\subsubsection{Predominant Pitch Estimation and Representation}
 
-
-\subsection{Segmentation}
-\label{sec:segmentation}
-
-Ny\={a}s segment is a rendition of a single svar and the aim of the segmentation process is to detect the svar boundaries. However, svars contain different alank\={a}rs as discussed before where pitch deviation with respect to the mean svar frequency can go roughly up to 200\,cents. This characteristic of a svar in Hindustani music poses a challenge to segmentation. To illustrate this, in Figure~\ref{fig:SegmentationIllustration} we present an example of a ny\={a}s segment (between $T_1-T_9$, centered around mean svar frequency $S_n=990$\,cents). The pitch deviation in this ny\={a}s segment with respect to the mean svar frequency reaches almost 100\,cents (between $T_5-T_6$). Note that the reference frequency, i.e. 0\,cent is the tonic pitch of the lead singer.
+For estimating pitch of the the predominant melodic source we use the procedure described in~\secref{sec:data_preprocessing_predominant_melody_estimation} with the same set of parameters. We do not perform any post-processing on the estimated pitch contours. Pitch estimated in Hertz is converted to Cent scale and is normalized by the tonic of the lead artist in the recording as described in~\secref{sec:data_processing_cent_conversion}. Tonic pitch of an audio recording is estimated using the method proposed by~\cite{salamon2012multipitch} as it was shown to be the most robust and accurate method in~\secref{sec:pre_processing_tonic_identification_summary}. 
 
 
-%\begin{figure}
-%	\includegraphics[scale=0.47]{fig/SegmentationMethod.pdf}\vspace{-0.5em}
-%	\caption{Fragment of a pitch contour containing a ny\={a}s segment ($T_1-T_9$), where $T_i$s denote time stamps and $S_n$s denote mean svar frequencies. The pitch deviation within the ny\={a}s segment ($T_1-T_9$) is almost 100\,cents ($T_5-T_6$).}
-%	\label{fig:SegmentationIllustration}
-%\end{figure}
+\subsubsection{Segmentation}
+\label{sec:nyas_svara_segmentation_method}
 
-We experiment with two different methods for segmenting melodies: piece-wise linear segmentation (PLS), a classical, generic approach used for the segmentation of time series data~\cite{keogh2004segmenting}, and our proposed method, which incorporates domain knowledge to facilitate the detection of ny\={a}s boundaries. For PLS we use a bottom-up segmentation strategy as described in~\cite{keogh2004segmenting}. Bottom-up segmentation methods involve computation of residual error incrementally for each sample of time series. When the residual error satisfies a pre-defined criterion a new segment is created. Out of the two typical criteria used for segmentation, namely average and maximum error, we choose the latter because, ideally, a new segment should be created as soon as the melody progresses from one svar to the other. In order to select the optimal value of the allowed maximum error, which we denote by $\epsilon$, we iterated over four different values and chose the one which resulted in the best performance. Specifically, for $\epsilon=\lbrace 10, 25, 50, 75\rbrace$, $\epsilon=75$\,cents yielded the best performance (we rejected $\epsilon\geq 100$\,cents in early experimentation stages because few svars of a r\={a}g are separated by an interval of 100\,cents and, therefore, the segmentation output was clearly unsatisfactory).
+\Gls{nyas} segment is a rendition of a single \gls{svara} and the aim of the segmentation process is to detect the \gls{svara} boundaries. However, \glspl{svara} contain different \glspl{alankar} as discussed before where pitch deviation with respect to the mean \gls{svara} frequency can go roughly up to 200\,cents. This characteristic of a \gls{svara} in Hindustani music poses a challenge to segmentation. To illustrate this, in Figure~\ref{fig:nyas_segmentation_illustration} we present an example of a \gls{nyas} segment (between $T_1-T_9$, centered around mean \gls{svara} frequency $S_n=990$\,cents). The pitch deviation in this \gls{nyas} segment with respect to the mean \gls{svara} frequency reaches almost 100\,cents (between $T_5-T_6$). Note that here the reference frequency, i.e. 0\,cent correspond to the tonic pitch of the lead singer.
 
-To make the segmentation process robust to pitch deviations, we propose a method based on empirically-derived thresholds. Unlike PLS, our proposed method computes a pitch histogram and uses that to estimate mean svar frequencies before the computation of residual error. This allows us to compute the residual error with respect to the mean svar frequency instead of computing it with respect to the previous segment boundary, as done in PLS.  In this way our proposed method utilizes the fact that the time series being segmented is a pitch contour where the values of the time series hover around mean svar frequencies. The mean svar frequencies for an excerpt are estimated as the peaks of the histogram computed from the estimated pitch values. An octave folded pitch histogram is computed using a 10\,cent resolution and subsequently smoothened using a Gaussian window with a variance of 15\,cents. Only the peaks of the normalized pitch histogram which have at least one peak-to-valley ratio greater than 0.01 are considered as svar locations. As peaks and valleys we simply take all local maximas and minimas over the whole histogram. In Figure \ref{fig:pitchHistogram} we show an example of an octave folded normalized  pitch histogram used for estimating mean svar frequencies. The estimated mean svar frequencies are indicated by circles. We notice that the pitch values corresponding to a svar span a frequency region and not a single value.
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=\figSizeNinety]{ch05_preprocessing/figures/NyasSegmentationMethod.pdf}
+	\end{center}
+	\caption{Fragment of a pitch contour containing a \gls{nyas} segment ($T_1-T_9$), where $T_i$s denote time stamps and $S_n$s denote mean \gls{svara} frequencies. The pitch deviation within the \gls{nyas} segment ($T_1-T_9$) is almost 100\,cents ($T_5-T_6$).}
+	\label{fig:nyas_segmentation_illustration}
+\end{figure}
 
-%\begin{figure}
-%	\includegraphics[scale=0.45]{fig/swarOnHistogram.pdf}\vspace{-0.5em}
-%	\caption{Normalized octave folded pitch histogram used for estimating mean svar frequencies. Estimated mean svar frequencies are indicated by circles.}
-%	\label{fig:pitchHistogram}
-%\end{figure}
+We experiment with two different methods for segmenting melodies: \gls{pls}, a classical, generic approach used for the segmentation of time series data~\citep{keogh2004segmenting}, and our proposed method, which incorporates domain knowledge to facilitate the detection of \gls{nyas} boundaries. For \gls{pls} we use a bottom-up segmentation strategy as described by~\cite{keogh2004segmenting}. Bottom-up segmentation methods involve computation of residual error incrementally for each sample of time series. When the residual error satisfies a pre-defined criterion a new segment is created. Out of the two typical criteria used for segmentation, namely average and maximum error, we choose the latter because, ideally, a new segment should be created as soon as the melody progresses from one \gls{svara} to the other. In order to select the optimal value of the allowed maximum error, which we denote by $\epsilon$, we iterated over four different values and chose the one which resulted in the best performance. Specifically, for $\epsilon=\lbrace 10, 25, 50, 75\rbrace$, $\epsilon=75$\,cents yielded the best performance. We rejected $\epsilon\geq 100$\,cents in early experimentation stages because few \glspl{svara} of a r\={a}g are separated by an interval of 100\,cents and, therefore, the segmentation output was clearly unsatisfactory.
 
-After we estimate mean frequencies of all the svars in a piece, we proceed with their refinement. For the $n$-th svar $S_n$, we search for contiguous segments within a deviation of $\varepsilon$ from $S_n$, that is, $\vert S_n-P_i \vert < \varepsilon$, for~$i\in[1,N]$, where $P_i$ is the fundamental frequency value (in cents) of the $i$-th sample of a segment of length $N$. In Figure~\ref{fig:SegmentationIllustration}, this corresponds to segments $[T_1,T_2]$, $[T_3,T_4]$, and $[T_7,T_8]$.
+To make the segmentation process robust to pitch deviations, we propose a method based on empirically-derived thresholds. Unlike \gls{pls}, our proposed method computes a pitch histogram and uses that to estimate mean \gls{svara} frequencies before the computation of residual error. This allows us to compute the residual error with respect to the mean \gls{svara} frequency instead of computing it with respect to the previous segment boundary, as done in \gls{pls}.  In this way our proposed method utilizes the fact that the time series being segmented is a pitch contour where the values of the time series hover around mean \gls{svara} frequencies. The mean \gls{svara} frequencies for an excerpt are estimated as the peaks of the histogram computed from the estimated pitch values. An octave folded pitch histogram is computed using a 10\,cent resolution and subsequently smoothened using a Gaussian window with a variance of 15\,cents. Only the peaks of the normalized pitch histogram which have at least one peak-to-valley ratio greater than 0.01 are considered as \gls{svara} locations. As peaks and valleys we simply take all local maximas and minimas over the whole histogram. In~\figref{fig:pitch_histogram_nyas_segmentation} we show an example of an octave folded normalized  pitch histogram used for estimating mean \gls{svara} frequencies. The estimated mean \gls{svara} frequencies are indicated by circles. We notice that the pitch values corresponding to a \gls{svara} span a frequency region and not a single value.
+
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=\figSizeNinety]{ch05_preprocessing/figures/swarOnHistogramForNyasSegmentation.pdf}
+	\end{center}
+	\caption{Normalized octave folded pitch histogram used for estimating mean \gls{svara} frequencies. Estimated mean \gls{svara} frequencies are indicated by circles.}
+	\label{fig:pitch_histogram_nyas_segmentation}
+\end{figure}
+
+After we estimate mean frequencies of all the \glspl{svara} in a piece, we proceed with their refinement. For the $n$-th \gls{svara} $S_n$, we search for contiguous segments within a deviation of $\varepsilon$ from $S_n$, that is, $\vert S_n-P_i \vert < \varepsilon$, for~$i\in[1,N]$, where $P_i$ is the fundamental frequency value (in cents) of the $i$-th sample of a segment of length $N$. In Figure~\ref{fig:nyas_segmentation_illustration}, this corresponds to segments $[T_1,T_2]$, $[T_3,T_4]$, and $[T_7,T_8]$.
 
 Next, we concatenate two segments $[T_a,T_b]$ and $[T_e,T_f]$ if two conditions are met:
 \begin{enumerate}
 	\item $P_i-S_n < \rho_1$ and $S_n-P_i < \rho_2$, for $i\in[T_b,T_e]$, where $\rho_1 = S_{n+1}-S_n + \varepsilon$ and $\rho_2 = S_n-S_{n-1} + \varepsilon$. 
 	\item $T_c-T_d < \delta$, where $\delta$ is a temporal threshold and $[T_c,T_d]$ is a segment between $T_b, T_e$ such that $\vert S_m-P_i\vert <\varepsilon$ for $i\in[T_c,T_d]$ for $m\in [S_{n-1}, S_{n+1}]$ and $m \neq n$.
 \end{enumerate}
-In simple terms, we concatenate two segments if the fundamental frequency values between them do not deviate a lot (less than $\rho_1$ and $\rho_2$) and the time duration of the melody in close vicinity (less than $\epsilon$) of neighboring svars is not too large (less than $\delta$). We repeat this process for all svar locations. In our experiments, we use $\varepsilon = 25$\,cents and $\delta=50$\,ms, which were empirically obtained. In the example of Figure~\ref{fig:SegmentationIllustration}, we see that the two conditions apply for segments $[T_1,T_2]$ and $[T_3,T_4]$, and not for $[T_3,T_4]$ and $[T_7,T_8]$ because $T_6-T5>\delta$. Notice that we can already derive a simple binary flatness measure $\nu$ for $[T_a, T_b]$, $\nu=1$ if $\vert S_n-P_i \vert< \epsilon$ for $i \in [T_a, T_b]$ for any $n$ and $\nu=0$ otherwise. 
 
-\subsection{Feature Extraction}
-\label{sec:features}
+In simple terms, we concatenate two segments if the fundamental frequency values between them do not deviate a lot (less than $\rho_1$ and $\rho_2$) and the time duration of the melody in close vicinity (less than $\epsilon$) of neighboring \glspl{svara} is not too large (less than $\delta$). We repeat this process for all \gls{svara} locations. In our experiments, we use $\varepsilon = 25$\,cents and $\delta=50$\,ms, which were empirically obtained. In the example of~\figref{fig:nyas_segmentation_illustration}, we see that the two conditions apply for segments $[T_1,T_2]$ and $[T_3,T_4]$, and not for $[T_3,T_4]$ and $[T_7,T_8]$ because $T_6-T5>\delta$. Notice that we can already derive a simple binary flatness measure $\nu$ for $[T_a, T_b]$, $\nu=1$ if $\vert S_n-P_i \vert< \epsilon$ for $i \in [T_a, T_b]$ for any $n$ and $\nu=0$ otherwise. 
 
-We extract musically motivated melodic features for segment classification, which resulted out of discussions with musicians. For every segment, three sets of melodic features are computed: local features~(L), which capture the pitch contour characteristics of the segment, contextual features~(C), which capture the melodic context of the segment, and a third set combining both of them~(L+C) in order to analyze if they complement each other. Initially, we considered 9 local features and 24 contextual features:
+\subsubsection{Feature Extraction}
+\label{sec:pro_processing_nyas_segmentation_feature_extraction}
+
+We extract musically motivated melodic features for segment classification, which resulted out of discussions with musicians. For every segment obtained following the process mentioned above, three sets of melodic features are computed: local features~(L), which capture the pitch contour characteristics of the segment, contextual features~(C), which capture the melodic context of the segment, and a third set combining both of them~(L+C) in order to analyze if they complement each other. Initially, we considered 9 local features and 24 contextual features:
 
 \begin{description}
-	\item[Local Features:] segment length, mean and variance of the pitch values in a segment, mean and variance of the differences in adjacent peak locations of the pitch sequence in a segment, mean and variance of the  peak amplitudes of the pitch sequence in a segment, temporal centroid of the pitch sequence in a segment normalized by its length, and the above-mentioned flatness measure $\nu$ (we use the average segmentation error for the case of PLS).
+	\item[Local Features:] segment length, mean and variance of the pitch values in a segment, mean and variance of the differences in adjacent peak locations of the pitch sequence in a segment, mean and variance of the  peak amplitudes of the pitch sequence in a segment, temporal centroid of the pitch sequence in a segment normalized by its length, and the above-mentioned flatness measure $\nu$ (we use the average segmentation error for the case of \gls{pls}).
 	\item[Contextual Features:] segment length normalized by the length of the longest segment within the same breath phrase\footnote{Melody segment between consecutive breaths of a singer. We consider every unvoiced segment (i.e.,~a value of 0 in the pitch sequence) greater than 100\,ms as breath pause.}, segment length normalized by the length of the breath phrase, length normalized with the length of the previous segment, length normalized by the length of the following segment, duration between the ending of the segment and succeeding silence, duration between the starting of the segment and preceding silence, and all the local features of the adjacent segments.
 \end{description}
 
 However, after preliminary analysis, we reduced these features to 3 local features and 15 contextual features. As local features we selected length, variance, and flatness measure ($\nu$). As contextual features we selected all of them except the local features of the posterior segment. This feature selection was done manually, performing different preliminary experiments with a subset of the data, using different combinations of features and selecting the ones that yielded the best accuracies.
 
-\subsection{Classification and Segment Fusion}
+\subsubsection{Classification and Segment Fusion}
 
-Each segment obtained in Section~\ref{sec:segmentation} is classified into ny\={a}s or non-ny\={a}s based on the extracted features of Section~\ref{sec:features}. To demonstrate that the predictive power of the considered features is generic and independent of a particular classification scheme, we employ five different algorithms exploiting diverse classification strategies~\cite{Hastie09BOOK}: trees (Tree), $K$ nearest neighbors (KNN), naive Bayes (NB), logistic regression (LR), and support vector machines with a radial basis function kernel (SVM). We use the implementations available in scikit-learn~\cite{scikitlearn}, version 0.14.1. We use the default set of parameters with few exceptions in order to avoid over-fitting and to compensate for the uneven number of instances per class. Specifically, we set \texttt{min\_samples\_split=10} for Tree, \texttt{fit\_prior=False} for NB, \texttt{n\_neighbors=5} for KNN, and for LR and SVM \texttt{class\_weight=`auto'}.
+Each segment obtained in~\secref{sec:nyas_svara_segmentation_method} is classified into \gls{nyas} or non-\gls{nyas} based on the extracted features described in~\secref{sec:pro_processing_nyas_segmentation_feature_extraction}. To demonstrate that the predictive power of the considered features is generic and independent of a particular classification scheme, we employ five different algorithms exploiting diverse classification strategies~\citep{Hastie09BOOK}: trees (Tree), \gls{knn}, \gls{nb}, \gls{lr}, and \gls{svm} with a radial basis function kernel. We use the implementations available in scikit-learn~\citep{scikitlearn}, version 0.14.1. We use the default set of parameters with few exceptions in order to avoid over-fitting and to compensate for the uneven number of instances per class. Specifically, we set \texttt{min\_samples\_split=10} for Tree, \texttt{fit\_prior=False} for \gls{nb}, \texttt{n\_neighbors=5} for \gls{knn}, and for \gls{lr} and \gls{svm} \texttt{class\_weight=`auto'}.
 
-For out-of-sample testing we implement a cross-fold validation procedure. We split the data set into folds that contain an equal number of ny\={a}s segments, the minimum number of ny\={a}s segments in a musical excerpt (7 in our case). Furthermore, we make sure that no instance from the same artist and r\={a}g is used for training and testing in the same fold.
+For out-of-sample testing we implement a cross-fold validation procedure. We split the data set into folds that contain an equal number of \gls{nyas} segments, the minimum number of \gls{nyas} segments in a musical excerpt. Furthermore, we make sure that no instance from the same artist and \gls{raga} is used for training and testing in the same fold.
 
-After classification, boundaries of ny\={a}s and non-ny\={a}s segments are obtained by merging all the consecutive segments with the same segment label. During this step, the segments corresponding to the silence regions in the melody, which were removed during classification, are regarded as non-ny\={a}s segments.
+After classification, boundaries of \gls{nyas} and non-\gls{nyas} segments are obtained by merging all the consecutive segments with the same segment label. During this step, the segments corresponding to the silence regions in the melody, which were removed during classification, are regarded as non-\gls{nyas} segments.
 
 \subsection{Experimental Setup}
-\label{experimentalSetup}
+\label{sec:pre_processing_nyas_segmentation_experimental_setup}
 
 \subsubsection{Music Collection and Annotations}
 
-The music collection used for evaluation consists of 20 audio music recordings  of total duration of 1.5 hours, all of which are vocal \={a}l\={a}p performances of Hindustani music. \={A}l\={a}ps are unmetered melodic improvisational sections, usually performed as the opening of a raga rendition. We selected only \={a}l\={a}p performances because the concept of ny\={a}s is emphasized in these sections during a r\={a}g rendition. Of the 20 recordings, 15 are polyphonic commercially-available audio recordings compiled as a part of the CompMusic project\footnote{http://compmusic.upf.edu/corpora}~\cite{XavierSerra2011}. The other 5 audio recordings in the data set are monophonic in-house studio recordings of the \={a}l\={a}ps sung by a professional singer of Hindustani music. The in-house audio recordings are available under creative commons (CC) license in Freesound\footnote{http://www.freesound.org/people/sankalp/packs/12292/}. In total we have performances by 8 artists in 16 different r\={a}gs. In order avoid over-fitting of the learned model it is important to include different artists and r\={a}gs as the ny\={a}s characteristics highly depend on these aspects~\cite{Dey2008}.
-
-Ny\={a}s segments were annotated by a performing artist of Hindustani music (vocalist) who has received over 15 years of formal musical training. 
-The musician marked all the ny\={a}s segment boundaries and labeled them appropriately. After annotation, we obtained 1257 ny\={a}s svar segments. The duration of these segments vary from 150\,ms to 16.7\,s with a mean of 2.46\,s and median of 1.47\,s.
+For evaluation of this task we use the \gls{nyas} dataset \acrshort{nds_cm} as described in~\secref{sec:corpus_nyas_dataset}. As explained, this dataset contains both commercially released polyphonic music recordings and in-house monophonic recordings. As melodic characteristics of a \gls{nyas} segment might depend on the artist and the chosen \gls{raga}, the dataset includes performances by 8 artists in 16 different \glspl{raga} to ensure diversity and representativeness.
 
 \subsubsection{Evaluation Measures and Statistical Significance}
 
-For the evaluation of ny\={a}s boundary annotations we use hit rates as in a typical music structure boundary detection task~\cite{Ong05ICMC}. While calculating hit rate, segment boundaries are considered as correct if they fall within a certain threshold of a boundary in the ground-truth annotation. Using matched hits, we compute standard precision, recall, and F-score for every fold and average them over the whole data set. The choice of a threshold however depends on the specific application. Due to the lack of scientific studies on the just noticeable differences of ny\={a}s svar boundaries, we computed results using an arbitrary selected threshold of 100\,ms. Label annotations are evaluated using standard pairwise frame clustering method as described in~\cite{levy2008structural}. Frames with same duration as threshold value for the boundary evaluation (i.e. 100~ms) are considered while computing precision, recall, and F-score. For assessing statistical significance we use the Mann-Whitney U test~\cite{mann1947test} with $p<0.05$ and assuming an asymptotic normal distribution of the evaluation measures. To compensate for multiple comparisons we apply the Holm-Bonferroni method~\cite{holm1979simple}, a powerful method that also controls the so-called family-wise error rate. Thus, we end up using a much more stringent criteria than $p<0.05$ for measuring statistical significance.
+We evaluate two tasks, \gls{nyas} segment boundary annotation, and \gls{nyas} and non-\gls{nyas} segment label annotation. For the evaluation of \gls{nyas} boundary annotations we use hit rates as in a typical music structure boundary detection task~\citep{Ong05ICMC}. While calculating hit rate, segment boundaries are considered as correct if they fall within a certain threshold of a boundary in the ground-truth annotation. Using matched hits, we compute standard precision, recall, and F-score for every fold and average them over the whole data set. The choice of a threshold however depends on the specific application. Due to the lack of scientific studies on the just noticeable differences of \gls{nyas} \gls{svara} boundaries, we computed results using an arbitrary selected threshold of 100\,ms. Label annotations are evaluated using standard pairwise frame clustering method as described in~\cite{levy2008structural}. Frames with same duration as threshold value for the boundary evaluation (i.e. 100~ms) are considered while computing precision, recall, and F-score. 
+
+For assessing statistical significance we use the Mann-Whitney U test~\citep{mann1947test} with $p<0.05$ and assuming an asymptotic normal distribution of the evaluation measures. To compensate for multiple comparisons we apply the Holm-Bonferroni method~\citep{holm1979simple}, a powerful method that also controls the so-called family-wise error rate. Thus, we end up using a much more stringent criteria than $p<0.05$ for measuring statistical significance.
 
 \subsubsection{Baselines}
 
-Apart from reporting the accuracies for the proposed method and its variants, we compare against some baseline approaches. In particular, we consider DTW together with a KNN classifier ($K=5$). For every segment, we compute its distance from all other segments and assign a label to it based on the labels of its $K$ nearest neighbors, using majority voting. As the proposed method also exploits contextual information, in order to make the comparison more meaningful, we consider the adjacent segments in the distance computation with linearly interpolated values in the region corresponding to the segment. For comparing with the variant of the proposed method that uses a combination of the local and contextual features, we consider adjacent segments together with the actual segment in the distance computation. As this approach does not consider any features, it will help us in estimating the benefits of extracting musically-relevant features from ny\={a}s segments. 
+Apart from reporting the accuracies for the proposed method and its variants, we compare against some baseline approaches. In particular, we consider \gls{dtw} together with a \gls{knn} classifier ($K=5$). For every segment, we compute its distance from all other segments and assign a label to it based on the labels of its $K$ nearest neighbors, using majority voting. As the proposed method also exploits contextual information, in order to make the comparison more meaningful, we consider the adjacent segments in the distance computation with linearly interpolated values in the region corresponding to the segment. For comparing with the variant of the proposed method that uses a combination of the local and contextual features, we consider adjacent segments together with the actual segment in the distance computation. As this approach does not consider any features, it will help us in estimating the benefits of extracting musically-relevant features from \gls{nyas} segments. 
 
-In addition, to quantify the limitations of the adopted evaluation measures, we compute a few random baselines. The first one (RB1) is calculated by randomly planting boundaries (starting at 0\,s) according to the distribution of inter boundary intervals obtained using the ground-truth annotations. For each segment we assign the labels `ny\={a}s' with a a priory probability (same for all excerpts) computed using ground truth annotations of the whole data set. The second one (RB2) is calculated by planting boundaries (starting at 0\,s) at even intervals of 100\,ms and assigning class labels as in RB1. Finally, the third one (RB3) considers the exact ground-truth boundaries and assigns the class labels randomly as in RB1 and RB2. Thus, with RB3 we can directly assess the impact of the considered classification algorithms. We found that RB2 achieves the best accuracy and therefore, for all the following comparisons we only consider RB2.
+In addition, to quantify the limitations of the adopted evaluation measures, we compute a few random baselines. The first one (RB1) is calculated by randomly planting boundaries (starting at 0\,s) according to the distribution of inter boundary intervals obtained using the ground-truth annotations. For each segment we assign the labels `\gls{nyas}' with a a priory probability (same for all excerpts) computed using ground truth annotations of the whole data set. The second one (RB2) is calculated by planting boundaries (starting at 0\,s) at even intervals of 100\,ms and assigning class labels as in RB1. Finally, the third one (RB3) considers the exact ground-truth boundaries and assigns the class labels randomly as in RB1 and RB2. Thus, with RB3 we can directly assess the impact of the considered classification algorithms. We found that RB2 achieves the best accuracy and therefore, for all the following comparisons we only consider RB2.
 
 %\begin{table} 
 %\centering
@@ -616,69 +619,63 @@ In addition, to quantify the limitations of the adopted evaluation measures, we 
 %\hline\hline
 %  		&	RB1	&	RB2	&	RB3\\
 %\hline
-% 	ny\={a}s Boundary		&  0.10 & 0.17 &1.0  \\ 
+% 	\gls{nyas} Boundary		&  0.10 & 0.17 &1.0  \\ 
 %%\hline 	
-%	ny\={a}s Region		& 0.56 & 0.69 & 0.64 \\
+%	\gls{nyas} Region		& 0.56 & 0.69 & 0.64 \\
 %\hline\hline
 %\end{tabular}
 %
-%\caption{F-scores for ny\={a}s boundary estimation and ny\={a}s region
+%\caption{F-scores for \gls{nyas} boundary estimation and \gls{nyas} region
 %estimation using random baseline methods. \XXX{J}{S}{Why not adding a row or column in the general results tables??}}
 %	\label{tab:randombaseline}
 %\end{table}
 
 \subsection{Results and Discussion}
-\label{ResultsAndDiscussion}
+\label{sec:preprocessing_nyas_segmentation_results_and_discussion}
 
+We evaluate two tasks, \gls{nyas} segment boundary annotation, and \gls{nyas} and non-\gls{nyas} segment label annotation. For both the tasks, we report results obtained using two different segmentation methods (\gls{pls} and the proposed segmentation method), five classifiers (Tree, \gls{knn}, \gls{nb}, \gls{lr}, \gls{svm}), and three set of features (local (L), contextual(C) and local together with contextual (L+C)). In addition, we report results obtained using a baseline method (DTW) and a random baseline (RB2).
 
-We evaluate two tasks, ny\={a}s segment boundary annotation, and ny\={a}s and non-ny\={a}s segment label annotation. For both the tasks, we report results obtained using two different segmentation methods (PLS and the proposed segmentation method), five classifiers (Tree, KNN, NB, LR, SVM), and three set of features (local (L), contextual(C) and local together with contextual (L+C)). In addition, we report results obtained using a baseline method (DTW) and a random baseline (RB2).
-
-
-In Table~\ref{tab:accuraciesboundary} we show the results of ny\={a}s boundary annotations. First, we see that every variant performs significantly better than the best random baseline. RB2 yields an F-score of 0.184 while the worst variant tested reaches 0.248. Next, we see that the proposed method achieves a notably higher accuracy compared to the DTW baseline. Such difference is found to be statistically significant, with the only exception of the NB classifier. For a given feature set, the performance differences across classifiers are not statistically significant. The only exceptions are Tree and NB, which yield relatively poor and inconsistent performances over different feature sets. We opted to not consider these two classifiers in the following comparisons. Among  feature sets, the performance differences are not statistically significant between PLS variants (Table~\ref{tab:accuraciesboundary}, top rows), whereas for the case of the proposed segmentation method (Table~\ref{tab:accuraciesboundary}, bottom rows), we find that the local features perform significantly better than the contextual features and their combination does not yield consistent improvements. Finally, we see that the best results are obtained using the proposed segmentation method together with the local features, with a statistically significant difference to its competitors. Furthermore, the worst accuracy obtained using the proposed segmentation method is notably higher than the best accuracy using PLS method, again with a statistically significant difference.
-
+In Table~\ref{tab:nyas_segmentation_boundary_accuracy} we show the results of \gls{nyas} boundary annotations. First, we see that every variant performs significantly better than the best random baseline. RB2 yields an F-score of 0.184 while the worst variant tested reaches 0.248. Next, we see that the proposed method achieves a notably higher accuracy compared to the DTW baseline. Such difference is found to be statistically significant, with the only exception of the NB classifier. For a given feature set, the performance differences across classifiers are not statistically significant. The only exceptions are Tree and NB, which yield relatively poor and inconsistent performances over different feature sets. We opted to not consider these two classifiers in the following comparisons. Among  feature sets, the performance differences are not statistically significant between \gls{pls} variants (Table~\ref{tab:nyas_segmentation_boundary_accuracy}, top rows), whereas for the case of the proposed segmentation method (Table~\ref{tab:nyas_segmentation_boundary_accuracy}, bottom rows), we find that the local features perform significantly better than the contextual features and their combination does not yield consistent improvements. Finally, we see that the best results are obtained using the proposed segmentation method together with the local features, with a statistically significant difference to its competitors. Furthermore, the worst accuracy obtained using the proposed segmentation method is notably higher than the best accuracy using \gls{pls} method, again with a statistically significant difference.
 
 \begin{table} 
-	\centering
-	\tabcolsep = 0.15cm
-	\renewcommand{\arraystretch}{1.15}
-	\begin{tabular}{ c|c|c| c c c c c c }
-		
-		\hline\hline
-		& Feat.		&	DTW & Tree	 &	KNN 	&	NB		& LR 	&	SVM\\
-		
-		\hline
+\renewcommand{\arraystretch}{1.25}
+\setlength{\tabcolsep}{6pt}
+	\begin{centering}
+	\begin{tabular}{ c : c : c : c c c c c c }
+\tabletop
+		& Feat.		&	\gls{dtw} & Tree	 &	\gls{knn} 	&	\gls{nb}		& \gls{lr} 	&	\gls{svm}\\
+\tablemid
 		\multirow{3}{*}{A} & 	L		&  0.356 & 0.407 & 0.447 & 0.248 & 0.449 & 0.453\\ 
 		%\hline 	
 		&	C		& 0.284 & 0.394 & 0.387 & 0.383 & 0.389 & 0.406 \\
 		%\hline	
 		&	L+C		& 0.289 & 0.414 & 0.426 & 0.409 &0.432 & 0.437 \\
-		\hline  		
+\tablemid
 		\multirow{3}{*}{B} &	L		& \textbf{0.524} & 0.672 & \textbf{0.719} & 0.491 & \textbf{0.736} & \textbf{0.749}\\ 
 		%\hline 	
 		&	C		& 0.436 & 0.629 & 0.615 & \textbf{0.641} & 0.621 & 0.673 \\
 		%\hline	
 		&	L+C		& 0.446 & \textbf{0.682} & 0.708 & 0.591 & 0.725 & 0.735\\  		
-		\hline\hline
-		
-	\end{tabular}
-	
-	\caption{F-scores for ny\={a}s boundary detection using PLS method (A) and the proposed segmentation method (B). Results are shown for different classifiers (Tree, KNN, NB, LR, SVM) and local (L), contextual (C) and local together with contextual (L+C) features. DTW is the baseline method used for comparison. F-score for the random baseline obtained using RB2 is 0.184. }
-	\label{tab:accuraciesboundary}
+\tablebot		
+	\end{tabular}	
+	\caption[F-scores for \gls{nyas} boundary detection task]{F-scores for \gls{nyas} boundary detection using \gls{pls} method (A) and the proposed segmentation method (B). Results are shown for different classifiers (Tree, \gls{knn}, \gls{nb}, \gls{lr}, \gls{svm}) and local (L), contextual (C) and local together with contextual (L+C) features. \gls{dtw} is the baseline method used for comparison. F-score for the random baseline obtained using RB2 is 0.184.}
+	\label{tab:nyas_segmentation_boundary_accuracy}
+	\par	\end{centering}
 \end{table}
 
-In Table~\ref{tab:accuraciesRegion} we show the results for ny\={a}s and non-ny\={a}s label annotations. Basically, we can draw similar conclusions as with Table~\ref{tab:accuraciesboundary}: (1) all method variants perform significantly better than the random baselines, (2) all the proposed method variants yield significant accuracy increments over the DTW baseline, and (3) no statistically significant differences between classifiers (with the aforementioned exceptions). In label annotations, unlike the boundary annotations, we find that though the local features perform better than the contextual features, the differences are not statistically significant for all the proposed method variants. Furthermore, we also see that the proposed segmentation method consistently performs  better than PLS. However, the differences are not statistically significant.
 
-In addition, we also investigate per-class accuracies for label annotations. We find that the performance for ny\={a}s segments is considerably better than non-ny\={a}s segments. This could be attributed to the fact that even though the segment classification accuracy is balanced across classes, the differences in segment length of ny\={a}s and non-ny\={a}s segments (ny\={a}s segments being considerably longer than non-ny\={a}s segments) can result in more number of matched pairs for ny\={a}s segments.
+In~\tabref{tab:nyas_segmentation_label_accuracies} we show the results for \gls{nyas} and non-\gls{nyas} label annotations. Basically, we can draw similar conclusions as with Table~\ref{tab:nyas_segmentation_label_accuracies}: (1) all method variants perform significantly better than the random baselines, (2) all the proposed method variants yield significant accuracy increments over the \GLS{dtw} baseline, and (3) no statistically significant differences between classifiers (with the aforementioned exceptions). In label annotations, unlike the boundary annotations, we find that though the local features perform better than the contextual features, the differences are not statistically significant for all the proposed method variants. Furthermore, we also see that the proposed segmentation method consistently performs  better than \gls{pls}. However, the differences are not always statistically significant.
+
+In addition, we also investigate per-class accuracies for label annotations. We find that the performance for \gls{nyas} segments is considerably better than non-\gls{nyas} segments. This could be attributed to the fact that even though the segment classification accuracy is balanced across classes, the differences in segment length of \gls{nyas} and non-\gls{nyas} segments (\gls{nyas} segments being considerably longer than non-\gls{nyas} segments) can result in more number of matched pairs for \gls{nyas} segments.
 
 \begin{table} 
-	\centering
-	\tabcolsep = 0.15cm
-	\renewcommand{\arraystretch}{1.15}
-	\begin{tabular}{ c|c|c | c  c  c  c  c  c }
-		\hline\hline
+\renewcommand{\arraystretch}{1.25}
+\setlength{\tabcolsep}{6pt}
+\begin{centering}	
+	\begin{tabular}{ c : c : c : c  c  c  c  c  c }
+\tabletop
 		& Feat.	&	DTW & Tree	 &	KNN 	&	NB		& LR 	&	SVM	\\
-		\hline
-		
+\tablemid		
 		\multirow{3}{*}{A} &   L		& \textbf{0.553} & 0.685 & 0.723 & 0.621 & 0.727 & 0.722	\\
 		%\hline         
 		&	C   		& 0.251 & 0.639 & 0.631  & 0.690 & 0.688 & 0.674	\\
@@ -690,25 +687,54 @@ In addition, we also investigate per-class accuracies for label annotations. We 
 		& 	C		&0.281 & 0.671 & 0.611 & 0.697 & 0.689 & 0.697\\
 		%\hline	
 		& 	L+C		& 0.332 & 0.672 & 0.710 & \textbf{0.730} & 0.743 & 0.731\\
-		\hline\hline        
+\tablebot
 	\end{tabular}
-	\caption{F-scores for ny\={a}s and non-ny\={a}s label annotations task using PLS method (A) and the proposed segmentation method (B). Results are shown for different classifiers (Tree, KNN, NB, LR, SVM) and local (L), contextual (C) and local together with contextual (L+C) features. DTW is the baseline method used for comparison. The best random baseline F-score is  0.153 obtained using RB2. } 
-	\label{tab:accuraciesRegion}
-	%	\vspace{-1.5em}
+	\caption{F-scores for \gls{nyas} and non-\gls{nyas} label annotations task using \gls{pls} method (A) and the proposed segmentation method (B). Results are shown for different classifiers (Tree, KNN, NB, LR, SVM) and local (L), contextual (C) and local together with contextual (L+C) features. DTW is the baseline method used for comparison. The best random baseline F-score is  0.153 obtained using RB2. } 
+	\label{tab:nyas_segmentation_label_accuracies}
+\par \end{centering}
 \end{table}
 
 
-In general, we see that the proposed segmentation method improves the performance over PLS method in both tasks, wherein the differences are statistically significant in the former case. Furthermore, the local feature set, when combined with the proposed segmentation method, yields the best accuracies. We also find that the contextual features do not complement the local features to further improve the performance. However, interestingly, they perform reasonably good considering that they only use contextual information.
+In general, we see that the proposed segmentation method improves the performance over \gls{pls} method in both tasks, wherein the differences are statistically significant in the former case. Furthermore, the local feature set, when combined with the proposed segmentation method, yields the best accuracies. We also find that the contextual features do not complement the local features to further improve the performance. However, interestingly, they perform reasonably good considering that they only use contextual information.
 
 
-\subsection{Conclusions and Future work}
+\subsection{Summary}
 \label{ConclusionAndFutureWork}
 
-We proposed a method for detecting ny\={a}s segments in melodies of Hindustani music. We divided the task into two broad steps: melody segmentation and segment classification. For melody segmentation we proposed a method which incorporates domain knowledge to facilitate ny\={a}s boundary annotations. We evaluated three feature sets: local, contextual and the combination of both. We showed that the performance of the proposed method is significantly better compared to a baseline method using standard dynamic time warping based distance and a $K$ nearest neighbor classifier. Furthermore, we showed that the proposed segmentation method outperforms a standard approach based on piece-wise linear segmentation. A feature set that includes only the local features was found to perform best. However, we showed that using just the contextual information we could also achieve a reasonable accuracy. This indicates that ny\={a}s segments have a defined melodic context which can be learned automatically. In the future we plan to perform this task on Bandish performances, which is a compositional form in Hindustani music. We also plan to investigate other melodic landmarks and different evaluation measures for label annotations.
-
+We described a method for detecting \gls{nyas} segments in melodies of Hindustani music. We divided the task into two broad steps: melody segmentation and segment classification. For melody segmentation we proposed a method which incorporates domain knowledge to facilitate \gls{nyas} boundary annotations. We evaluated three feature sets: local, contextual and the combination of both. We showed that the performance of the proposed method is significantly better compared to a baseline method using standard \gls{dtw} based distance and a $K$ nearest neighbor classifier. Furthermore, we showed that the proposed segmentation method outperforms a standard approach based on \gls{pls}. A feature set that includes only the local features was found to perform best. However, we showed that using just the contextual information we could also achieve a reasonable accuracy. This indicates that \gls{nyas} segments have a defined melodic context which can be learned automatically. \TODO{Where can we obtain the implementation from? and the experiment scripts?}
 
 
 \section{Tani Segmentation}
 \label{sec:pre_processing_tani_segmentation}
 
+A concert of Carnatic music typically contains a solo percussion section towards the end of the concert, referred to as \gls{tani} avartanam or \gls{tani} in short. The duration of such segments typically varies from 2 to 25\,min depending on the artist and the context. The main percussion instrument in Carnatic music is \gls{mridangam}, which becomes the lead instrument during this section. Along with the \gls{mridangam} there are other percussion instruments often played in \gls{tani} section such as \gls{kanjira} and \gls{ghatam}. Though \gls{mridangam} is a percussion instrument and is basically a kind of a barrel drum, its sound has tonal characteristics. Like other accompanying instruments in Carnatic music such as \gls{tanpura} and violin, \Gls{mridangam} is also tuned at the tonic of the lead artist. Due to the tonal acoustical characteristics of \gls{mridangam} sound, and because of the long duration of \gls{tani} sections, the pitch estimation algorithm detects and tracks pitch contours during \gls{tani} sections instead of detecting these sections as non-voiced segments. Notice that the \gls{mridangam} strokes during short (lasting over roughly 1-20 seconds) unvoiced segments such as breath-pauses are correctly detected as non-voiced by the predominant pitch estimation algorithm. This is due to the fact that during such sections predominant pitch corresponds to voice, which has significantly high energy compared to the background percussion signal. 
 
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=\figSizeNinety]{ch05_preprocessing/figures/figure_todo.pdf}
+	\end{center}
+	\caption{Discovered pair of patterns in predominant pitch contours corresponding to \gls{mridangam} strokes in a \gls{tani} section.}
+	\label{fig:pitch_pattern_tani}
+\end{figure}
+
+Failing to detect \gls{tani} sections as non-voiced segments and tracking pitch corresponding to \gls{mridangam} strokes poses a challenge in the discovery of melodic patterns. Percussion patterns and rhythm cycles often contain recurring stroke patterns, and therefore, pitch fragments from \gls{tani} section are frequently discovered as highly similar patterns. An example of a discovered pair of pitch patterns that correspond to \gls{mridangam} strokes is shown in~\figref{fig:pitch_pattern_tani}. We see that the patterns are close to exact repetitions. Since we aim to discover patterns in melodies of \gls{iam} (\chapref{chap:melodic_pattern_processing}), patterns discovered from \gls{tani} sections are undesired. There can be two approaches to avoid such unwanted patterns in the final output; 1) post-process the discovered pitch patterns and detect if they belong correspond to \gls{mridangam} strokes, 2) discard pitch contours corresponding to \gls{tani} section in the pre-processing step. We follow the second approach and discard segments of the pitch contours that correspond to \gls{tani} sections from the input given to the pattern discovery method. Discarding such segments upfront has several advantages. First, detection of \gls{tani} sections in audio recording appears to be an easier task compared to characterizing pitch contours as belonging to melody or \gls{mridangam} strokes. This is mainly because of the considerable amount of timbral differences across the sections where melody (typically voice) is present and where it is not (\gls{tani} sections). Also, such computational tasks of classifying an audio segment based on its timbral characteristics is well studied in \gls{mir}\TODO{ref}. In~\figref{fig:spectrogram_of_tani_segment} we show the waveform and the spectrogram of a voice segment and a \gls{tani} section to demonstrate the timbral differences between the two. Another reason for choosing the latter approach is because discarding \gls{tani} sections upfront reduces the computational complexity of the pattern discovery task as these sections may typically last up to 2-25\,minutes. We therefore detect \gls{tani} sections in the audio recordings and discard the pitch segments corresponding to these sections in the pre-processing step.
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=\figSizeNinety]{ch05_preprocessing/figures/figure_todo.pdf}
+	\end{center}
+	\caption{Waveform and spectrogram of a voice and a \gls{tani} section in an audio recording of Carnatic music.}
+	\label{fig:spectrogram_of_tani_segment}
+\end{figure}
+
+We detect \gls{tani} segments in audio recordings using a classification-based approach \TODO{ref}. To feed the classifiers we extracted 13~MFCC coefficients, spectral centroid, spectral flatness and pitch salience \citep{slaney1998auditory} from the audio signal using Essentia~\citep{essentia}. We iterated over 23, 46 and 92\,ms frame sizes and chose the one which resulted in a better classification accuracy. We set the hop size as half the frame size and all other parameters to their default values. Next, we computed means and variances of these features over 2\,s non-overlapping segments (also sometimes referred to as texture window). For training, we used a labeled audio music dataset containing 1.5~hours of mixed voice and violin recordings and 1.5~hours of solo percussion recordings. To assess the performance of the extracted features, we performed a leave-one-out cross-validation. We experimented with five different algorithms exploiting diverse classification strategies~\cite{Hastie09BOOK}: decision trees (Tree), \glsreset{knn}, \glsreset{nb}, \glsreset{lr}, and \glsreset{svm} with a radial basis function kernel. We use the implementations of the classifiers as available in scikit-learn version~0.14.1~\citep{scikitlearn}. We used the default set of parameters with few exceptions to avoid over-fitting and to compensate for the uneven number of instances per class. We set \texttt{min\_} \texttt{samples\_split=10} for Tree, \texttt{fit\_prior=False} for \gls{nb}, \texttt{n\_neighbors=5} for \gls{knn}, and for \gls{lr} and \gls{svm} \texttt{class\_weight=`auto'}. 
+
+The combination of the frame size of 46\,ms and the \gls{svm} classifier yielded the best performance (96\% accuracy), with no statistically significant difference to the performance with the Tree (95.5\%) and the \gls{knn} (95\%), for the same frame size. We finally chose \gls{knn} because of its low complexity. The accuracy of detecting a \gls{tani} section can be improved further by a simple post-processing step. Since \gls{tani} is a single continuous segment in an audio recording, the class labels of the texture windows predicted by the classifier can be median filtered to remove the spurious labels lasting over a few frames. This ensures a continuity in labels across texture windows and avoids short non-voiced regions during the main performance (not the \gls{tani} section) being classified as \gls{tani} segments.  \TODO{Rephrase this tani segmentation section}
+
+\TODO{Implementation of method and dataset?}
+
+\section{Summary}
+\label{sec:preprocessing_summary}
+
+We here summarize what we described in this chapter. Basically repetition of stuff. Do we really need this?\textsl{}
