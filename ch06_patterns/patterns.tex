@@ -3,44 +3,65 @@
 \chapter{Melodic pattern processing: similarity, discovery and characterization}
 \label{chap:melodic_pattern_processing}
 
-General
-\begin{itemize}
-	\item what do we call patterns, motifs, phrases etc!
-	\item What are the characteristics of Indian art music, how are they based around patterns, what are the different types of patterns in INdian art music, what is their time-scale, what kind of patterns are we interested in, what is the importance of these patterns and what can we do if we can extract these patterns.
-	\item what are the tasks that we have addressed in pattern processing of Indian art music, what is our aim, what are two kinds of approaches to process patterns (sup + unsup]), what do we follow
-	\item existing work on pattern processing, different aspects, melody representation, similarity measure, search and discovery! its important to evaluate how they work on our case. Highlight that for indian art music when this work started nothing much was done! however during the course of this dissertation there is quite a bit of work done in collaboration. 
-	\item What are the challenges in pattern processing of indian art music	
-\end{itemize}
+\section{Introduction}
+\label{sec:patterns_introduction}
+
+In this chapter we present our approach for processing patterns in melodies of \gls{iam}. In this chapter we describe our proposed methods to realize our objectives. These includes an evaluation of melodic similarity measures, our methodology for discovery of melodic patterns, improving melodic similarity using culture specific characteristics and finally, an approach to characterize the melodic patterns. 
+
+
+As mentioned, one of the main objectives of this dissertation is to extract melodic patterns in audio collections of \gls{iam}. These patterns can then be characterized and used in higher level computational melodic analyses such as \gls{raga} recognition. As seen in the literature review (Chapter XX) approaches for extracting patterns in time-series data can be divided broadly into two types (Figure XX). First, supervised approaches in which the system is given  
 
 
 
-Similarity
-\begin{itemize}
-	\item how is the idea of pattern related with similarity or melodic similarity in particular,
-	\item reiterate the idea of pattern connection with similarity. What is the similarity of, time scale of patterns we are talkin about.
-	\item What are the challenges in studying similarity
-	\item what is our motivation to study similarity? core block in discovery and search, core of pattern processing. Why are we studying in section supervised way? what don't we want to use this way
-	\item how do we study and develop appraoches for measuring similarity, explain that we cast it as a retrieval task.
-	\item What has been done in state of the art? explain that there are so many different parameters, different considerations, some of them might depend on the culture dependent characteristics of a music tradition.
-	\item why have we limited ourselves to only few choices of distance measures.
-	\item declaration that choices are inspired by the limtations posed by the next block in terms of computational complexity!
-\end{itemize}
+ 
 
-Improvement in similarity
-\begin{itemize}
-	\item What have we done in previous study
-	\item what did we leave which is covered in this study. What is the main issue that we saw? what cultural specific aspect can we exploit further
-	\item What is the advantage of taking the approach which is taken! 
-\end{itemize}
-
-Discovery
-\begin{itemize}
-	\item Reiterate two ways of going for pattern processing
-	\item Motivate why do we follow the unsupervised analysis, benefits of supervised and more than anything, limitations of unsupervised
-	\item clearly define what is our aim, what kind of patterns we want, musical quality and characteristics, length? etc
-	\item challenges in discovery
-	\item What can be its advantages
-\end{itemize}
+%
+%THINGS TO HAVE
+%\begin{itemize}
+%	\item What is lacking in state of the art? how does your work relate to that
+%	\item Context of the work, how the flow of research went
+%	\item introduction and motivation of the task done in the chapter
+%	\item contexualization based on the state of the art
+%\end{itemize}
+%
+%General
+%\begin{itemize}
+%	\item what do we call patterns, motifs, phrases etc!
+%	\item What are the characteristics of Indian art music, how are they based around patterns, what are the different types of patterns in INdian art music, what is their time-scale, what kind of patterns are we interested in, what is the importance of these patterns and what can we do if we can extract these patterns.
+%	\item what are the tasks that we have addressed in pattern processing of Indian art music, what is our aim, what are two kinds of approaches to process patterns (sup + unsup]), what do we follow
+%	\item existing work on pattern processing, different aspects, melody representation, similarity measure, search and discovery! its important to evaluate how they work on our case. Highlight that for indian art music when this work started nothing much was done! however during the course of this dissertation there is quite a bit of work done in collaboration. 
+%	\item What are the challenges in pattern processing of indian art music	
+%\end{itemize}
+%
+%
+%
+%Similarity
+%\begin{itemize}
+%	\item how is the idea of pattern related with similarity or melodic similarity in particular,
+%	\item reiterate the idea of pattern connection with similarity. What is the similarity of, time scale of patterns we are talkin about.
+%	\item What are the challenges in studying similarity
+%	\item what is our motivation to study similarity? core block in discovery and search, core of pattern processing. Why are we studying in section supervised way? what don't we want to use this way
+%	\item how do we study and develop appraoches for measuring similarity, explain that we cast it as a retrieval task.
+%	\item What has been done in state of the art? explain that there are so many different parameters, different considerations, some of them might depend on the culture dependent characteristics of a music tradition.
+%	\item why have we limited ourselves to only few choices of distance measures.
+%	\item declaration that choices are inspired by the limtations posed by the next block in terms of computational complexity!
+%\end{itemize}
+%
+%Improvement in similarity
+%\begin{itemize}
+%	\item What have we done in previous study
+%	\item what did we leave which is covered in this study. What is the main issue that we saw? what cultural specific aspect can we exploit further
+%	\item What is the advantage of taking the approach which is taken! 
+%\end{itemize}
+%
+%Discovery
+%\begin{itemize}
+%	\item Reiterate two ways of going for pattern processing
+%	\item Motivate why do we follow the unsupervised analysis, benefits of supervised and more than anything, limitations of unsupervised
+%	\item clearly define what is our aim, what kind of patterns we want, musical quality and characteristics, length? etc
+%	\item challenges in discovery
+%	\item What can be its advantages
+%\end{itemize}
 
 
 
