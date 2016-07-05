@@ -333,6 +333,11 @@
 
 \printglossaries
 
+\appendix
+\cleartorecto\include{ch99/appendix}
+%\cleartorecto\include{ch99/quotation}
+\cleartorecto\newpage\thispagestyle{empty}\mbox{}
+
 \backmatter
 \cleartorecto\include{ch99/finalpage}
 \bibliographystyle{apa_jserra2}
@@ -346,9 +351,6 @@
   \ifthenelse{\equal{#1}{lof}}{}%
   {\ifthenelse{\equal{#1}{lot}}{}{\svaddcontentsline{#1}{#2}{#3}}}}
 
-\appendix
-\cleartorecto\include{ch99/appendix}
-%\cleartorecto\include{ch99/quotation}
-\cleartorecto\newpage\thispagestyle{empty}\mbox{}
+
 
 \end{document}
