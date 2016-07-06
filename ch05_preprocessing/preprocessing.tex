@@ -45,7 +45,7 @@ These approaches mainly differ in terms of the musical cues that they utilize to
 identify the tonic, the amount of input audio data used to perform this task and the type
 of music material they are devised for (Hindustani or Carnatic, vocal or
 instrumental, etc.). Despite the differences, all these approaches can be divided
-into three main processing blocks, as shown in~\figref{fig:tonic_identification_general_block_diagram}. The only exception to this schema is the approach proposed by~\citep{Sengupta2005b}.
+into three main processing blocks, as shown in~\figref{fig:tonic_identification_general_block_diagram}. The only exception to this schema is the approach proposed by~\cite{Sengupta2005b}.
 
 \begin{figure}
 	\begin{center}
@@ -386,16 +386,13 @@ All the methods reported in this dissertation primarily utilize tonal aspects of
 \subsection{Pitch Post-processing}
 \label{sec:data_preprocessing_pitch_postprocessing}
 
-Predominant pitch estimation is not yet a solved problem and the output pitch contour is still far from being perfect. While these algorithms get better over years, a number of errors in predominant pitch estimation can be alleviated by post-processing the pitch contour. During post-processing we mainly try to correct the spurious pitch octave jumps and smoothen the extracted pitch contour. In addition to these two operations, for certain tasks we interpolate the unvoiced regions in the melody that correspond to the short breath pauses taken by the artists. In subsequent sections we describe these post-processing steps in detail.
+Predominant pitch estimation in polyphonic audio recordings is not yet a solved problem and the output pitch contour is still far from being perfect\TODO{Mirex citation}. While these algorithms get better over years, a number of errors in predominant pitch estimation can be alleviated by post-processing the pitch contour. During post-processing we mainly try to correct the spurious pitch octave jumps and smoothen the extracted pitch contour. In addition to these two operations, for certain tasks we interpolate the unvoiced regions in the melody that correspond to the short breath pauses taken by the artists. In subsequent sections we describe these post-processing steps in detail.
 
 
 \subsubsection{Correcting Spurious Pitch Jumps}
 \label{sec:data_processing_correcting_pitch_jumps}
 
 One of the most frequently occurring errors in pitch estimation is detecting pitch in the wrong octave, commonly referred to as an octave error. Identifying and correcting such an error during a post-processing step for the case of a monophonic signal (containing a single harmonic series) is fairly easy\TODO{reference}. One can compare the energy of the partials with the total energy of the audio frame to infer if the estimated pitch value corresponds to the actual fundamental frequency. However, for the case of a polyphonic signal the task becomes much more challenging. 
-
-
-We alleviate this problem to an extent by restricting ourselves to a specific set of pitch octave errors occurring over short duration of time. Instead of identifying a pitch octave error for an individual audio frame, which as we mentioned is a challenging task for a polyphonic audio signal, we exploit the temporal continuity of melody to detect such errors. We explain the intuition behind our method with the help of an example shown in Figure~\TODO{fig}. The ground truth pitch contour is shown in XXX and the estimated contour in XXX. If we analyze an audio frame between time XX and XX seconds, automatically identifying if there is an pitch octave error or not is a challenging task. However, analyzing the pitch continuity we can easily detect an anomalous pitch jump at time XX seconds. This is due to the fact that in a real-world scenario such a drastic pitch jump do not occur naturally. By analyzing the amount of frequency difference across the pitch transition we can infer to an extent the type of pitch error and can subsequently correct it. In this example the frequency jump at time XX seconds is XXX cents. Knowing that there is another jump in the other direction at time XX makes it more probably that the pitch segment between time XX and XX seconds suffers from an octave error. We describe this heuristic-based approach in~\algoref{alg:algorithmPitchCorrection}. In this algorithm $\mathrm{winSize}$ is set to 1\,s and $\mathrm{silenceCentValue}$ is set to $1200*\log2(\epsilon)$, where $\epsilon$ is of the order of $10^{-17}$.
 
 \renewcommand{\algorithmiccomment}[1]{\bgroup\hfill\tiny//~#1\egroup}
 
@@ -405,59 +402,62 @@ We alleviate this problem to an extent by restricting ourselves to a specific se
 	\begin{algorithmic}  
 		\State {\bf Input:} pitch sequence (p) of length N samples in Cents scale
 		\State jumpType = zeros(N)	
-
+		
 		\For{ii=0; ii<N; ii++}							\Comment{Detecting type of pitch transition}
-			\State diff = p[ii+1]-p[ii]
-			\If{abs(diff)\%1200 <= 300}
-				\If {diff > 0}
-					\State jumpType[ii+1]=3			\Comment{Positive octave jump}
-				\ElsIf {diff<0}
-					\State jumpType[ii]=4			\Comment{Negative octave jump}
-				\EndIf
-			\ElsIf {abs(diff)>=600}
-				\If {p[ii]<= silenceCentValue}
-					\State jumpType[ii+1]=1			\Comment{Unvoiced to voiced}
-				\ElsIf {p[ii+1]<= silenceCentValue}
-					\State jumpType[ii]=2			\Comment{Voiced to unvoiced}
-				\ElsIf {diff>0}
-					\State jumpType[ii+1]=5			\Comment{Other positive pitch jump}
-				\Else
-					\State jumpType[ii]=6			\Comment{Other negative pitch jump}
-				\EndIf
-			\EndIf
+		\State diff = p[ii+1]-p[ii]
+		\If{abs(diff)\%1200 <= 300}
+		\If {diff > 0}
+		\State jumpType[ii+1]=3			\Comment{Positive octave jump}
+		\ElsIf {diff<0}
+		\State jumpType[ii]=4			\Comment{Negative octave jump}
+		\EndIf
+		\ElsIf {abs(diff)>=600}
+		\If {p[ii]<= silenceCentValue}
+		\State jumpType[ii+1]=1			\Comment{Unvoiced to voiced}
+		\ElsIf {p[ii+1]<= silenceCentValue}
+		\State jumpType[ii]=2			\Comment{Voiced to unvoiced}
+		\ElsIf {diff>0}
+		\State jumpType[ii+1]=5			\Comment{Other positive pitch jump}
+		\Else
+		\State jumpType[ii]=6			\Comment{Other negative pitch jump}
+		\EndIf
+		\EndIf
 		\EndFor
-
+		
 		\For {ii=0; ii<N-winSize; ii++}				\Comment{Fixing pitch octave jumps}
-			\State shift = 0
-			\State indJumps = where(jumpType[ii:ii+winSize]!=0)			
-			\If {len(indJumps) == 2}				\Comment{Process only when two jumps are detected}
-				\State i1 = indJumps[0] + ii
-				\State i2 = indJumps[1]	+ ii			
-				\If {jumpType[i1] + jumpType[i2] == 3}		
-					\State jumpType[i1] = 0
-					\State continue			\Comment{Do nothing for unvoiced to voiced to unvoiced}
-				\EndIf
-				
-				\If {jumpType[i1]\%2 = 1 and jumpType[i2]\%2 = 0 }
-					\If {jumpType[i1] == 3 and jumpType[i2] != 6}
-						\State shift = 1200*round((p[i1] - p[i1-1])/1200)
-					\ElsIf {jumpType[i2] == 4 and jumpType[i1] != 5}
-						\State shift = 1200*round((p[i2] - p[i2+1])/1200)
-					\ElsIf {jumpType[i1] == 1}
-						\State shift = 100*round((p[i2] - p[i2+1])/100)
-					\ElsIf {jumpType[i2] == 2}
-						\State shift = 100*round((p[i1] - p[i1-1])/100)
-					\EndIf
-				\EndIf
-			\EndIf
-			\State p[i1:i2+1] = p[i1:i2+1] - shift
-			\State jumpType[i1] = 0
-			\State jumpType[i2] = 0		
+		\State shift = 0
+		\State indJumps = where(jumpType[ii:ii+winSize]!=0)			
+		\If {len(indJumps) == 2}				\Comment{Process only when two jumps are detected}
+		\State i1 = indJumps[0] + ii
+		\State i2 = indJumps[1]	+ ii			
+		\If {jumpType[i1] + jumpType[i2] == 3}		
+		\State jumpType[i1] = 0
+		\State continue			\Comment{Do nothing for unvoiced to voiced to unvoiced}
+		\EndIf
+		
+		\If {jumpType[i1]\%2 = 1 and jumpType[i2]\%2 = 0 }
+		\If {jumpType[i1] == 3 and jumpType[i2] != 6}
+		\State shift = 1200*round((p[i1] - p[i1-1])/1200)
+		\ElsIf {jumpType[i2] == 4 and jumpType[i1] != 5}
+		\State shift = 1200*round((p[i2] - p[i2+1])/1200)
+		\ElsIf {jumpType[i1] == 1}
+		\State shift = 100*round((p[i2] - p[i2+1])/100)
+		\ElsIf {jumpType[i2] == 2}
+		\State shift = 100*round((p[i1] - p[i1-1])/100)
+		\EndIf
+		\EndIf
+		\EndIf
+		\State p[i1:i2+1] = p[i1:i2+1] - shift
+		\State jumpType[i1] = 0
+		\State jumpType[i2] = 0		
 		
 		\EndFor
 		
 	\end{algorithmic}
 \end{algorithm}
+
+
+We alleviate this problem to an extent by restricting ourselves to a specific set of pitch octave errors occurring over short duration of time. Instead of identifying a pitch octave error for an individual audio frame, which as we mentioned is a challenging task for a polyphonic audio signal, we exploit the temporal continuity of melody to detect such errors. We explain the intuition behind our method with the help of an example shown in Figure~\TODO{fig}. The ground truth pitch contour is shown in XXX and the estimated contour in XXX. If we analyze an audio frame between time XX and XX seconds, automatically identifying if there is an pitch octave error or not is a challenging task. However, analyzing the pitch continuity we can easily detect an anomalous pitch jump at time XX seconds. This is due to the fact that in a real-world scenario such a drastic pitch jump do not occur naturally. By analyzing the amount of frequency difference across the pitch transition we can infer to an extent the type of pitch error and can subsequently correct it. In this example the frequency jump at time XX seconds is XXX cents. Knowing that there is another jump in the other direction at time XX makes it more probably that the pitch segment between time XX and XX seconds suffers from an octave error. We describe this heuristic-based approach in~\algoref{alg:algorithmPitchCorrection}. In this algorithm $\mathrm{winSize}$ is set to 1\,s and $\mathrm{silenceCentValue}$ is set to $1200*\log2(\epsilon)$, where $\epsilon$ is of the order of $10^{-17}$.
 
 
 \subsubsection{Pitch smoothening}
