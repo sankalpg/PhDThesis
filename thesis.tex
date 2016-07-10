@@ -81,6 +81,7 @@
 \usepackage{multirow}
 \makesavenoteenv{tabular}
 \makesavenoteenv{table}
+\usepackage{courier}
 
 \usepackage{ifthen}
 
@@ -336,20 +337,20 @@
 \appendix
 \cleartorecto\include{ch99/appendix}
 %\cleartorecto\include{ch99/quotation}
-\cleartorecto\newpage\thispagestyle{empty}\mbox{}
+%\cleartorecto\newpage\thispagestyle{empty}\mbox{}
 
-\backmatter
-\cleartorecto\include{ch99/finalpage}
+%\backmatter
+%\cleartorecto\include{ch99/finalpage}
 \bibliographystyle{apa_jserra2}
 \cleartorecto\bibliography{sankalp.bib,sankalp_myPubs.bib}
 %\cleartorecto\small\bibliography{ch99/jserra}\normalsize
 %\cleartorecto\footnotesize\bibliography{ch99/jserra}\normalsize
 
-
-\let\svaddcontentsline\addcontentsline
-\renewcommand\addcontentsline[3]{%
-  \ifthenelse{\equal{#1}{lof}}{}%
-  {\ifthenelse{\equal{#1}{lot}}{}{\svaddcontentsline{#1}{#2}{#3}}}}
+%
+%\let\svaddcontentsline\addcontentsline
+%\renewcommand\addcontentsline[3]{%
+%  \ifthenelse{\equal{#1}{lof}}{}%
+%  {\ifthenelse{\equal{#1}{lot}}{}{\svaddcontentsline{#1}{#2}{#3}}}}
 
 
 

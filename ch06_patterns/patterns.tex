@@ -6,11 +6,11 @@
 \section{Introduction}
 \label{sec:patterns_introduction}
 
-In this chapter we present our proposed methodology for processing patterns in melodies of \gls{iam}. We describe our approach for discovering melodic patterns in large audio music collections, evaluate a number of melodic similarity measures, propose ways to improve melodic similarity computation in \gls{iam}, and finally, present an approach to characterize the discovered melodic patterns. The description provided in this chapter is primarily based on our work presented in~\cite{gulati_SITIS_2014,gulati_ICASSP2015, gulati_ISMIR_2015,gulati_communities_2016}. %regarding evaluation of melodic similarity measures, in~\cite{gulati_ISMIR_2015} about utilizing culture specific melodic characteristics to improve similarity, in~\cite{gulati_SITIS_2014} about methodology to mine melodic patterns in sizable audio collections of \gls{iam}, and finally, in~\cite{gulati_communities_2016} about characterization of the discovered melodic patterns. 
+Recurring melodic patterns are one of the fundamental building blocks of melodies in \gls{iam}. As mentioned before, there are various types of melodic patterns that characterize different aspects of melodies in \gls{iam}. Some of these recurring patterns, referred to as characteristic melodic phrases (\secref{sec:music_background}), are prominent cues used by performers, to establish the identity of a \gls{raga}, and listeners, to identify the \gls{raga} in a music piece. Thus, automatically detecting occurrences of these melodic patterns is key to melodic analyses of \gls{iam}, and a crucial step towards meaningful retrieval and recommendation of \gls{iam}.
 
-\TODO{In this introduction, relate what we did to existing approaches and what exists and contrast a bit, somehow}
+In this chapter we present approaches that address different computational tasks related to patterns in melodies of \gls{iam}. These tasks include computing melodic similarity between two melodic fragments, discovering melodic patterns in large audio music collections, and finally, characterizing discovered melodic patterns. We present relevant work done on these topics in \gls{mir} and highlight their shortcomings and reasons for their inapplicability to melodies in \gls{iam}. We describe our proposed approaches in detail and perform comprehensive evaluations. The description provided in this chapter is primarily based on our work presented in~\cite{gulati_SITIS_2014,gulati_ICASSP2015, gulati_ISMIR_2015,gulati_communities_2016}.
 
-One of the key objectives of this dissertation is to extract melodic patterns in sizable audio collections of \gls{iam}. These patterns can then be characterized and used for performing computational tasks such as \gls{raga} recognition~(\chapref{chap:raga_recognition}). From the literature review presented in~\chapref{chap:background} we see that the approaches for extracting patterns in time-series data can be broadly put into two categories (\figref{fig:types_of_methodologies_for_extraction}). Notice that these are also the two types of paradigms used in machine learning. One of the types of approaches are supervised in nature, wherein a system knows a priori the kind of patterns to be extracted. The system is fed with example patterns and is expected to extract all their occurrences in the data. In the context of our task, this would mean that musicians would provide us with example melodic patterns, using which we then aim to retrieve all their occurrences in an audio collection. This kind of an approach is frequently taken for a query based retrieval systems such as in query by humming or in cover song detection\TODO{ref, are these tasks valid in this context?}. 
+As mentioned before, one of the key objectives of this dissertation is to extract melodic patterns in sizable audio collections of \gls{iam}. These patterns can then be characterized and used for performing computational tasks such as \gls{raga} recognition~(\chapref{chap:raga_recognition}). From the literature review presented in~\chapref{chap:background} we see that the approaches for extracting patterns in time-series data can be broadly put into two categories (\figref{fig:types_of_methodologies_for_extraction}). Notice that these are also the two types of paradigms used in machine learning. One of the types of approaches are supervised in nature, wherein a system knows a priori the kind of patterns to be extracted. The system is fed with example patterns and is expected to extract all their occurrences in the data. In the context of our task, this would mean that musicians would provide us with example melodic patterns, using which we then aim to retrieve all their occurrences in an audio collection. This kind of an approach is frequently taken for a query based retrieval systems such as in query by humming or in cover song detection\TODO{ref, are these tasks valid in this context?}. 
 
 
 \begin{figure}
@@ -33,7 +33,7 @@ In this dissertation we follow an unsupervised approach for discovering melodic 
 	\item Another limitation of the  human listener we observed is segmentation. We found tha several times musicians miss marking a characteristic phrase if that occurs in a completely different melodic context in which they are use to listening it.  
 \end{itemize}
 
-\TODO{This is also an area that noone ever has worked with, there is no such an approach for indian art music. In fact if you think of it not even for western music!!!. This could also go in the motivation of choosing this approach}
+\TODO{This is also an area that no one ever has worked with, there is no such an approach for indian art music. In fact if you think of it not even for western music!!!. This could also go in the motivation of choosing this approach. Read some papers on pattern discovery in music and get inspired on what to write!!!}
 
 Along with the aforementioned advantages, there are several challenges in following an unsupervised approach for pattern extraction. One of the most challenging aspects of such approaches is its quantitative evaluation. Due to the absence of ground-truth annotations evaluating such approaches becomes difficult. For a data-driven research methodology this becomes even more complex since the system parameters are optimized based on the data. After our first study presented in~\cite{gulati_SITIS_2014} on mining melodic patterns we realized that selecting optimal values of the system parameters is notoriously difficult in a completely unsupervised setup. As a result of which we bootstrap\TODO{is it a correct word?} our methodology by first improving melodic similarity computation, one of the core processing blocks of the system in a supervised setup. We use a collection of audio recordings annotated with characteristic melodic phrases of \gls{raga} and perform a grid search to obtain optimal values of the system parameters and the most relevant similarity measure~\citep{gulati_ICASSP2015}. We further put efforts to improve the computation of melodic similarity by exploiting culture specific characteristics of melodies in Carnatic and Hindustani music~\citep{gulati_ISMIR_2015}.
 
@@ -104,7 +104,7 @@ There are different types of melodic patterns in melodies of \gls{iam} such as g
 \section{Melodic Similarity: Approaches and Evaluation}
 \label{sec:patterns_evaluation_of_similarity_measures}
 
-As explained in~\secref{sec:patterns_introduction} in all our studies in this dissertation we consider repeating melodic fragments as melodic patterns. The concept of repetition or recurrence in this context is not a numerical reiteration of exactly the same sequence of pitch samples. But, it is musical in nature allowing room for permitted melodic variations while preserving its musical identity. Our motivation behind studying melodic similarity in this dissertation is to model such perceptual similarities between melodic fragments. 
+As explained in~\secref{sec:patterns_introduction} in all our studies in this dissertation we consider repeating melodic fragments as melodic patterns. The concept of repetition or recurrence in this context is not a numerical reiteration of exactly the same sequence of pitch samples. But, it is musical in nature allowing room for permitted melodic variations while preserving its musical identity. Our motivation behind studying melodic similarity in this dissertation is to model such perceptual similarities between melodic fragments. XXX for extracting melodic patterns in audio recordings of \gls{iam}
 
 Computational methods to assess melodic similarity have received considerable attention from the signal processing and the \gls{mir} communities for a long time~\citep{ghias1995query,hewlett1998melodic,casey2008content,typke2007music}(see Section \TODO{XX} for details). Reliable audio melody extractors allow now to apply these methods for music retrieval in large audio archives~\citep{ryynanen2008query,zhu2003warping}, as opposed to earlier methods applicable only to MIDI archives~\citep{RBDannenberg2007QBH}. For melodic similarity computation, the string matching-based and the set point-based approaches are extensively used for both musical scores and audio recordings~\cite{typke2007music}. However, compared to the former, the set point-based approaches are yet to be fully exploited for polyphonic audio music because of the challenges involved in melody extraction and transcription~\cite{collins2014bridging}. A reliable melody transcription algorithm is argued to be the key to bridge the gap between audio and symbolic music, leading to the full exploitation of the potential of the set point-based approaches for audio music. However, for several music traditions such as Hindustani and Carnatic music, automatic melody transcription is a challenging and a rather ill-defined task~\cite{Rao2012}. Methods for computing melodic similarity from audio signals are specifically relevant for melody-dominant music traditions, such as Flamenco~\citep{Pikrakis2012} and \gls{iam}~\citep{Rao2014}, which are orally transmitted and have large audio archives but few written scores. \TODO{Improve this section after writing state of the art, this should be fluid. It should say what different thigns exist, and why certain things are inappropriate right away for us, what kind of things are appropriate}
 
@@ -260,12 +260,14 @@ To analyze the consistency in performance across pattern types, we present the b
 
 So far we have considered segmented melodic patterns obtained using ground-truth annotations. For large audio archives such annotations are rarely available~(\secref{sec:patterns_melodic_pattern_discovery}). To simulate a retrieval scenario where the pattern boundaries are not known \textit{a priori}, we consider a simple extension to the experiment by assuming the target pattern length to be equal to the length of the query pattern. We evaluate all 560 variants of the method as done above on both the datasets under this experimental setup. In~\tabref{tab:melodic_similarity_results_var2} we show the MAP scores of the top performing variants for both the datasets \acrshort{msds_iitm_cmd} and \acrshort{msds_iitb_hmd}. We find that the MAP score for the best performing variant decreases from 0.41 to 0.28 and 0.55 to 0.26 for the \acrshort{msds_iitm_cmd} and the \acrshort{msds_iitb_hmd}, respectively. This indicates that the melodic similarity computation task becomes much more challenging in the absence of an accurate melodic segmentation method. For this experimental setup the trend in the sampling rate for Carnatic and Hindustani music remain the same as we saw in~\tabref{tab:melodic_similarity_results}, which is that a higher sampling rate is desired for representing melodic patterns in Carnatic music. In terms of the normalization we see that surprisingly $N_{\mathrm{tonicQ12}}$ is used by the top performing variants for both the datasets. Note that in other variants whose performance is not statistically significantly different from the ones reported in~\tabref{tab:melodic_similarity_results_var2}, $N_{\mathrm{mean}}$ and $N_{\mathrm{tonic}}$ normalization is also used for the \acrshort{msds_iitm_cmd} and the \acrshort{msds_iitm_cmd} dataset respectively. An interesting observation is that in this experimental setup uniform time-scaling is consistently used by all the top performing variants. This indicates that such a time-scaling operation is immensely advantages in the retrieval scenarios in \gls{iam} where the length of the target melodic patterns is taken to be the same as that of a query pattern. We also see that $D_{\mathrm{DTW\_L1\_G10}}$ and $D_{\mathrm{DTW\_L1\_G90}}$ are always used for the \acrshort{msds_iitm_cmd} and the \acrshort{msds_iitb_hmd} datasets, respectively, indicting that applying a local constraint in \gls{dtw} is critical for this experimental setup.
 
+\TODO{If time permits it would be awesome to show accuracy as a function of different choices of parameters keeping others at an optimal value found in the grid search, This is similar to what we did for the latest raga recognition ISMIR paper.}
+
 It is worth mentioning that compared to the existing studies~\cite{Ishwar2013, Ross2012b} we consider more number of pattern types and evaluate the performance of a variant using all annotated patterns as a query. Hence, the results presented are more likely to be generalizable and reliable. In the future we plan to include other aspects of melody such as loudness and timbre in the similarity computation and use a bigger dataset consisting of many more melodic patterns for evaluation.
 
 \subsection{Summary}
 \label{sec:patterns_melodic_similarity_summary}
 
-We presented an evaluation of 560 different methodology variants for computing similarity of short-time melodic patterns in \gls{iam}. Our results indicate that the task of melodic similarity computation is very sensitive to the choice of parameters and processing steps. A higher sampling rate of the melody representation and mean normalization gives a better retrieval performance for Carnatic music. For Hindustani music, on the other hand, sampling rate has no significant affect on the performance and tonic normalization of the melody results in a better performance. In general, \gls{dtw}-based distance measure performs better than the euclidean distance, and the usage of local constraint in \gls{dtw} enhances the performance. The \gls{dtw} variant without any global constraint is preferred (specially for Hindustani music), which suggests that there are large non-linear timing variations across repeated instances of the melodic pattern in \gls{iam}. 
+We presented an evaluation of 560 different methodology variants for computing similarity of short-time melodic patterns in \gls{iam}. Our results indicate that the task of melodic similarity computation is very sensitive to the choice of parameters and processing steps. A higher sampling rate of the melody representation and mean normalization gives a better retrieval performance for Carnatic music. For Hindustani music, on the other hand, sampling rate has no significant affect on the performance and tonic normalization of the melody results in a better performance. In general, \gls{dtw}-based distance measure performs better than the Euclidean distance, and the usage of local constraint in \gls{dtw} enhances the performance. The \gls{dtw} variant without any global constraint is preferred (specially for Hindustani music), which suggests that there are large non-linear timing variations across repeated instances of the melodic pattern in \gls{iam}. We also see that accurate segmentation of melodic patterns has a big impact on the computation of melodic similarity.
 
 
 %################################################################################################################
@@ -276,11 +278,13 @@ We presented an evaluation of 560 different methodology variants for computing s
 \section{Improving Melodic Similarity in Indian Art Music}
 \label{sec:patterns_improving_melodic_similarity}
 
+In \secref{sec:patterns_evaluation_of_similarity_measures} we performed a comparative evaluation of different system parameters and procedures typically involved in the computation of melodic similarity. Our objective was to study the influence of different parameters and procedures on melodic similarity, and to analyze how specific melodic  characteristics of Hindustani and Carantic music impact the optimal parameter setting. In this section we build upon our findings in \secref{sec:patterns_evaluation_of_similarity_measures} and present an approach that exploits specific melodic characteristics of Hindustani and Carnatic music to improve melodic similarity. 
+
 Studies suggests that melodic similarity models may vary considerably depending on the type of music material (sheet music or polyphonic audio recordings)~\citep{Marsden2012, collins2014bridging, ghias1995query} and the music tradition~\citep{Juhasz2009a, Conklin2010a}. Results until now indicate that the important characteristics of several melody-dominant music traditions of the world such as Flamenco and \gls{iam} need dedicated research efforts to devise specific approaches for computing melodic similarity~\citep{Pikrakis2012, Rao2014}. With this spirit of devising culture specific approaches several methods for retrieving different types of melodic patterns have been proposed for \gls{iam} during the course of this dissertation~\citep{Ross2012b,Ross2012,ishwar2012motivic,Rao2014,Ishwar2013,Dutta2014}. 
 
 \cite{Ross2012b} detect the occurrences of the title phrases of a composition within a concert recording of Hindustani music. The authors exploited the underlying rhythm structure to reduce the search space for detecting pattern occurrences. An extension of that approach~\citep{Ross2012} pruned the search space by employing a melodic landmark called \gls{nyas} \gls{svara} (Section XX). \cite{Rao2014} address the challenge of a large within-class variability in the occurrences of the characteristic phrases. They propose to use exemplar-based matching after vector quantization-based training to obtain multiple templates for a given phrase category. In addition, the authors propose to learn the optimal DTW constraints in a previous step for each phrase category in order to exploit the possible patterns in the duration variability. For Carnatic music, \cite{Ishwar2013} propose a two-stage approach for spotting the characteristic melodic phrases. The authors exploit specific melodic characteristics (saddle points) to reduce the target search space and use a distance measure based on rough longest common subsequence~\citep{lin2011music}. These approaches are important steps towards developing culturally informed and knowledge-driven information technologies to handle diversities in musics of the world. This is just a beginning and there is a large room for improvement in this area. As we just saw, a number of these approaches exploit specific melodic characteristics in \gls{iam} to prune the search space. However, most of them work on a specific form of music within Hindustani and Carnatic music and are hardly generalizable to even an entire music tradition. Moreover, the pruning power of these approaches and limitations are yet to be formally and comprehensively studied. Some of these approaches propose promising solutions to handle large within-class variability in melodic patterns, but these solutions are designed for supervised analysis of melodic patterns and are clearly not applicable to unsupervised analysis, which is one of our end goals in this dissertation.
 
-In \secref{sec:patterns_evaluation_of_similarity_measures} we performed a comparative evaluation of different system parameters and procedures typically involved in the computation of melodic similarity. Our objective was to study the influence of different parameters and procedures on melodic similarity, and to analyze how specific melodic  characteristics of Hindustani and Carantic music impact the optimal parameter setting. In this section we build upon our findings in \secref{sec:patterns_evaluation_of_similarity_measures} and present an approach that exploits specific melodic characteristics of Hindustani and Carnatic music to improve melodic similarity. 
+
 
 \begin{figure}
 	\begin{center}
@@ -353,7 +357,7 @@ we show an example of the occurrences of a melodic phrase both before ($P_{1a}$,
 \subsubsection{Similarity Computation}
 \label{sec:patterns_improving_similarity_similarity_computation}
 
-To measure the similarity between two melodic fragments we consider a \gls{dtw}-based approach. Since the phrase segmentation is known beforehand, we use a whole sequence matching \gls{dtw} variant. We consider the best performing \gls{dtw} variant and the related parameter values for each music tradition as reported in~\secref{sec:patterns_melodic_similarity_results_discussions}. These variants were chosen based on an exhaustive grid search across all possible combinations and hence can be considered as optimal for this dataset. For Carnatic music we use a \gls{dtw} step size condition $\lbrace(2,1), (1,1), (1,2)\rbrace$  and for Hindustani music a step size condition $\lbrace(1,0), (1,1), (0,1)\rbrace$.  We use Sakoe-Chiba global band constraint~\cite{Sakoe78TASLP} with the width of the band as $\pm10$\% of the phrase length. Before computing the \gls{dtw} distance we uniformly time-scale the two melodic fragments to the same length, which is the maximum of the lengths of the phrases. Notice that even though in~\secref{sec:patterns_melodic_similarity_results_discussions} we found that a globally unconstrained \gls{dtw} variant ($D_{\mathrm{DTW\_L0\_G90}}$) is an optimal choice for computing melodic similarity in Hindustani music, we restrict ourselves to a band-width of 10\% in this study. The main reason is because an unconstrained \gls{dtw} variant due to its computational complexity is not suitable for a large scale pattern discovery task~(\secref{arg1}). Since one the main objectives of studying melodic similarity within a supervised setup is to be finally able to apply the findings in an unsupervised analysis, we now restrict to choices that are also available and feasible in unsupervised analysis. \TODO{rephrase the last part}
+To measure the similarity between two melodic fragments we consider a \gls{dtw}-based approach. Since the phrase segmentation is known beforehand, we use a whole sequence matching \gls{dtw} variant. We consider the best performing \gls{dtw} variant and the related parameter values for each music tradition as reported in~\secref{sec:patterns_melodic_similarity_results_discussions}. These variants were chosen based on an exhaustive grid search across all possible combinations and hence can be considered as optimal for this dataset. For Carnatic music we use a \gls{dtw} step size condition $\lbrace(2,1), (1,1), (1,2)\rbrace$  and for Hindustani music a step size condition $\lbrace(1,0), (1,1), (0,1)\rbrace$.  We use Sakoe-Chiba global band constraint~\cite{Sakoe78TASLP} with the width of the band as $\pm10$\% of the phrase length. Before computing the \gls{dtw} distance we uniformly time-scale the two melodic fragments to the same length, which is the maximum of the lengths of the phrases. Notice that even though in~\secref{sec:patterns_melodic_similarity_results_discussions} we found that a globally unconstrained \gls{dtw} variant ($D_{\mathrm{DTW\_L0\_G90}}$) is an optimal choice for computing melodic similarity in Hindustani music, we restrict ourselves to a band-width of 10\% in this study. The main reason is because an unconstrained \gls{dtw} variant due to its computational complexity is not suitable for a large scale pattern discovery task~(\secref{sec:patterns_melodic_pattern_discovery}). Since one the main objectives of studying melodic similarity within a supervised setup in this work is to be finally able to apply the findings in an unsupervised analysis, we now restrict to choices that are also available and feasible in an unsupervised analysis. \TODO{rephrase the last part}
 
 
 \subsubsection{Complexity Weighting}
@@ -393,7 +397,7 @@ For evaluation we use the same music collection as used in~\secref{sec:patterns_
 \subsubsection{Setup, Measures and Statistical Significance}
 \label{sec:patterns_improving_similarity_experimental_setup}
 
-The experimental setup and evaluation measures used in this study are exactly the same as used for the comparative evaluation described in~\secref{sec:patterns_evaluation_of_similarity_measures}. We consider each annotated melodic phrase as a query and perform a search across all the annotated phrases in the dataset (referred to as target search space). In addition to the annotated phrases, we add randomly sampled melodic segments (referred to as noise candidates) in the target space to simulate a real world scenario. We generate the starting time stamps of the noise candidates by randomly sampling a uniform distribution. The length of the noise candidates are generated by sampling the distribution of the duration values of the annotated phrases. The number of noise candidates added are 100 times the number of total annotations in the entire music collection. For every query we consider the top 1000 nearest neighbours in the search results ordered by the similarity value. A retrieved melodic phrase is considered as a true hit only if it belongs to the same phrase category as the query. As a baseline in this study we consider the same method described in this section but without applying the \gls{svara} duration truncation and complexity weighting procedure. We denote this baseline method by $M_{B}$.
+The experimental setup and evaluation measures used in this study are exactly the same as used for the comparative evaluation described in~\secref{sec:patterns_evaluation_of_similarity_measures}. We consider each annotated melodic phrase as a query and perform a search across all the annotated phrases in the dataset (referred to as target search space). In addition to the annotated phrases, we add randomly sampled melodic segments (referred to as noise candidates) in the target space to simulate a real world scenario. We generate the starting time stamps of the noise candidates by randomly sampling a uniform distribution. The length of the noise candidates are generated by sampling the distribution of the duration values of the annotated phrases. The number of noise candidates added are 100 times the number of total annotations in the entire music collection. For every query we consider the top 1000 nearest neighbours in the search results ordered by the similarity value. A retrieved melodic phrase is considered as a true hit only if it belongs to the same phrase category as the query. As a baseline in this study we consider the same method as described in this section but without applying the \gls{svara} duration truncation and complexity weighting procedure. We denote this baseline method by $M_{B}$.
 
 To assess the performance of our approach and the baseline method we use mean average precision (MAP), a common measure in information retrieval~\citep{manning2008introduction}. To assess if the difference in the performance of any two methods is statistically significant we use the Wilcoxon signed rank-test~\citep{wilcoxon1945individual} with $p < 0.01$. To compensate for multiple comparisons, we apply the Holm-Bonferroni met-hod~\citep{holm1979simple}.
 
@@ -401,7 +405,8 @@ To assess the performance of our approach and the baseline method we use mean av
 \subsection{Results and Discussion}
 \label{sec:patterns_improving_similarity_results_and_discussion}
 
-\TODO{Maybe if time permits, Do we first report the accuracy of variabts of prev study on new dataset an then with post processing, and then with new method?}
+\TODO{if time permits, first report the accuracy of best variants of prev study on new dataset an then with post processing, and then with new method?, also the chosen config in the current study, it should be shown how that is behaving in previous study. Also should we also present var2 of our approach, i.e. with unknown segment lengths?}
+\TODO{If time permits also experiment with NCR1, 10, 100, 1000 for the best config. That way we can know what is the affect of NCR!!}
 
 In~\tabref{tab:patterns_improving_similarity_map_scores} we summarize the MAP scores and the standard deviation of the average precision values obtained using the baseline method ($M_{B}$), the method that uses duration truncation ($M_{DT}$) and the ones using the complexity weighting ($M_{CW1}$, $M_{CW2}$), for both the \acrshort{msds_cm_cmd} and the \acrshort{msds_cm_hmd}. Note that $M_{CW1}$ and $M_{CW2}$ are only applicable to the \acrshort{msds_cm_cmd} (\secref{sec:patterns_improving_similarity_complexity_invariance_weighting}).
 
@@ -438,7 +443,7 @@ In~\tabref{tab:patterns_improving_similarity_map_scores} we summarize the MAP sc
 \end{table}
 
 
-We first analyse the results for the \acrshort{msds_cm_hmd} dataset. From~\tabref{tab:patterns_improving_similarity_map_scores} (upper half), we see that the proposed method variant that applies a duration truncation performs better than the baseline method for all the normalization techniques. Moreover, this difference is found to be statistically significant in each case. The results  for the \acrshort{msds_cm_hmd} in this table correspond to $\delta=$500\,ms, for which we obtain the highest accuracy compared to the other $\delta$ values as shown in Figure~\ref{fig:map_per_duration_truncation}. Furthermore, we see that $N_{tonic}$ results in the best accuracy for the \acrshort{msds_cm_hmd} for all the method variants and the difference is found to be statistically significant in each case. From~\tabref{tab:patterns_improving_similarity_map_scores} we notice a high standard deviation of the average precision values. This is because some occurrences of melodic phrases possess a large amount of melodic variation (acting as outliers), and therefore, the average precision value of the retrieved results using them as a query is much smaller compared to the other occurrences. In~\figref{fig:hinudstaniPerCategoryPerformance} we show a boxplot of average precision values for each phrase category and for both $M_B$ and $M_{DT}$ to get a better understanding of the results. We observe that with an exception of the phrase category $H_2$, $M_{DT}$ consistently performs better than $M_B$ for all the other phrase categories. A close examination of this exception reveals that the error often is in the segmentation of the steady \gls{svara} regions of the melodic phrases corresponding to $H_2$. This can be attributed to a specific subtle melodic movement in $H_2$ that is confused by the segmentation method as a melodic ornament instead of a \gls{svara} transition, leading to a segmentation error. \TODO{If time permits show an image of this pattern and the subtle movement!!}
+We first analyse the results for the \acrshort{msds_cm_hmd} dataset. From~\tabref{tab:patterns_improving_similarity_map_scores} (upper half), we see that the proposed method variant that applies a duration truncation performs better than the baseline method for all the normalization techniques. Moreover, this difference is found to be statistically significant in each case. The results  for the \acrshort{msds_cm_hmd} in this table correspond to $\delta=$500\,ms, for which we obtain the highest accuracy compared to the other $\delta$ values as shown in~\figref{fig:map_per_duration_truncation}. Furthermore, we see that $N_{tonic}$ results in the best accuracy for the \acrshort{msds_cm_hmd} for all the method variants and the difference is found to be statistically significant in each case. From~\tabref{tab:patterns_improving_similarity_map_scores} we notice a high standard deviation of the average precision values. This is because some occurrences of melodic phrases possess a large amount of melodic variation (acting as outliers), and therefore, the average precision value of the retrieved results using them as a query is much smaller compared to the other occurrences. In~\figref{fig:hinudstaniPerCategoryPerformance} we show a boxplot of average precision values for each phrase category and for both $M_B$ and $M_{DT}$ to get a better understanding of the results. We observe that with an exception of the phrase category $H_2$, $M_{DT}$ consistently performs better than $M_B$ for all the other phrase categories. A close examination of this exception reveals that the error often is in the segmentation of the steady \gls{svara} regions of the melodic phrases corresponding to $H_2$. This can be attributed to a specific subtle melodic movement in $H_2$ that is confused by the segmentation method as a melodic ornament instead of a \gls{svara} transition, leading to a segmentation error. \TODO{If time permits show an image of this pattern and the subtle movement!! if you plot images for all the patterns in the dataset refer to that}
 
 
 \begin{figure}
@@ -458,7 +463,7 @@ We first analyse the results for the \acrshort{msds_cm_hmd} dataset. From~\tabre
 \end{figure}
 
 
-We now analyse the results for the \acrshort{msds_cm_cmd}. From Table~\ref{tab:patterns_improving_similarity_map_scores} (lower half), we see that using the method variants $M_{DT}$, $M_{CW1}$ and $M_{CW2}$ we obtain reasonably higher MAP scores compared to the baseline method $M_{B}$ and the difference is found to be statistically significant for each method variant across all normalization techniques. This MAP score for $M_{DT}$ corresponds to $\delta=$1\,s, which is considerably higher than the MAP scores for other $\delta$ values as shown in Figure~\ref{fig:map_per_duration_truncation}. We also see that $M_{CW2}$ performs slightly better than $M_{CW1}$ and the difference is found to be statistically significant only in the case of $N_{tetra}$. We do not find any statistically significant difference in the performance of methods $M_{DT}$ and $M_{CW2}$. Unlike the \acrshort{msds_cm_hmd}, for the \acrshort{msds_cm_cmd} $N_{tetra}$ results in the best performance with a statistically significant difference compared to the other normalization techniques across all method variants. We now analyse the average precision values for every phrase category for $M_B$, $M_{DT}$ and $M_{CW2}$. Since $M_{CW2}$ performs slightly better than $M_{CW1}$ we only consider $M_{CW2}$ for this analysis. In Figure~\ref{fig:carnaticPerCategoryPerformance} we see that $M_{DT}$ performs better than $M_B$ for all phrase categories.  We also observe that $M_{CW2}$ consistently performs better than $M_{B}$ with the sole exception of $C_2$. This exception occurs because $M_{CW2}$ presumes a consistency in terms of the number of saddle points across the occurrences of a melodic phrase, which does not hold true for $C_2$. This is because phrases corresponding to $C_2$ are rendered very fast and the subtle pitch movements are not the characteristic aspect of such melodic phrases. Hence, the artists often take the liberty of changing the number of saddle points. 
+We now analyse the results for the \acrshort{msds_cm_cmd} dataset. From~\tabref{tab:patterns_improving_similarity_map_scores} (lower half), we see that using the method variants $M_{DT}$, $M_{CW1}$ and $M_{CW2}$ we obtain reasonably higher MAP scores compared to the baseline method $M_{B}$ and the difference is found to be statistically significant for each method variant across all normalization techniques. This MAP score for $M_{DT}$ corresponds to $\delta=$1\,s, which is considerably higher than the MAP scores for other $\delta$ values as shown in~\figref{fig:map_per_duration_truncation}. We also see that $M_{CW2}$ performs slightly better than $M_{CW1}$ and the difference is found to be statistically significant only in the case of $N_{tetra}$. We do not find any statistically significant difference in the performance of methods $M_{DT}$ and $M_{CW2}$. Unlike in the case of the \acrshort{msds_cm_hmd} dataset, for the \acrshort{msds_cm_cmd} dataset $N_{tetra}$ results in the best performance with a statistically significant difference compared to the other normalization techniques across all method variants. We now analyse the average precision values for every phrase category for $M_B$, $M_{DT}$ and $M_{CW2}$. Since $M_{CW2}$ performs slightly better than $M_{CW1}$ we only consider $M_{CW2}$ for this analysis. In~\figref{fig:carnaticPerCategoryPerformance} we see that $M_{DT}$ performs better than $M_B$ for all phrase categories.  We also observe that $M_{CW2}$ consistently performs better than $M_{B}$ with the sole exception of $C_2$. This exception occurs because $M_{CW2}$ presumes a consistency in terms of the number of saddle points across the occurrences of a melodic phrase, which does not hold true for $C_2$. This is because phrases corresponding to $C_2$ are rendered very fast and the subtle pitch movements are not the characteristic aspect of such melodic phrases. Hence, the artists often take the liberty of changing the number of saddle points. 
 
 \begin{figure}
 	\begin{center}
@@ -469,17 +474,13 @@ We now analyse the results for the \acrshort{msds_cm_cmd}. From Table~\ref{tab:p
 \end{figure}
 
 
-Overall we see that duration truncation of steady melodic regions improves the performance in both the \acrshort{msds_cm_hmd} and the \acrshort{msds_cm_cmd}. This reinforces our hypothesis that elongation of steady \gls{svara} regions in the melodies of IAM in the context of the characteristic melodic phrase does not change the musical identity of the phrase. This correlates with the concept of ny\={a}s svar (ny\={a}s literally means home), where the artist has the flexibility to stay and elongate a single svar. A similar observation was reported in~\cite{Rao2014}, where the authors proposed to learn the optimal global DTW constraints a priori for each pattern category. However, their proposed solution could not improve the performance. Further comparing the results for the \acrshort{msds_cm_hmd} and the \acrshort{msds_cm_cmd} we notice that $N_{tonic}$ results in the best performance for the \acrshort{msds_cm_hmd} and $N_{tetra}$ for the \acrshort{msds_cm_cmd}. This can be attributed to the fact that the number of the pitch-transposed occurrences of a melodic phrase is significantly higher in the \acrshort{msds_cm_cmd} compared to the \acrshort{msds_cm_hmd}~\cite{gulati_ICASSP2015}. Also, since the non-linear timing variability in the \acrshort{msds_cm_hmd} is very high, any normalization ($N_{mean}$ or $N_{tetra}$) that involves a decision based on the mean frequency of the phrase is more likely to fail.
+Overall we see that duration truncation of steady melodic regions improves the performance in both \acrshort{msds_cm_hmd} and \acrshort{msds_cm_cmd} datasets. This reinforces our hypothesis that elongation of steady \gls{svara} regions in the melodies of \gls{iam} in the context of the characteristic melodic phrase does not change the musical identity of the phrase. This correlates with the concept of \gls{nyas} \gls{svara} (\secref{sec:backgroung_nyas_description}), where the artist has the flexibility to stay and elongate a single \gls{svara}. A similar observation was reported in~\cite{Rao2014}, where the authors proposed to learn the optimal global \gls{dtw} constraints a priori for each pattern category. However, as they report, their proposed solution could not improve the performance. Further comparing the results for the \acrshort{msds_cm_hmd} and \acrshort{msds_cm_cmd} datasets we notice that $N_{tonic}$ results in the best performance for the \acrshort{msds_cm_hmd} and $N_{tetra}$ for the \acrshort{msds_cm_cmd}. This can be attributed to the fact that the number of the pitch-transposed occurrences of a melodic phrase is significantly higher in the \acrshort{msds_cm_cmd} compared to the \acrshort{msds_cm_hmd} (\secref{sec:patterns_melodic_similarity_results_discussions}). Also, since the non-linear timing variability in the \acrshort{msds_cm_hmd} is very high, any normalization ($N_{mean}$ or $N_{tetra}$) that involves a decision based on the mean frequency of the phrase is more likely to fail.
 
 
-
-%\vSqueezeSmall 
 \subsection{Summary}
 \label{sec:patterns_improving_similarity_summary}
 
-In this paper we briefly presented an overview of the approaches for detecting the occurrences of the characteristic melodic phrases in audio recordings of Indian art music. We highlighted the major challenges involved in this task and focused on two specific issues that arise due to large non-linear timing variations and rapid melodic movements. We proposed simple and easy to implement solutions based on partial transcription and complexity weighting to address these challenges. We also put forward a new dataset by appending 30\% more number of melodic phrase annotations to those used in previous studies.  We showed that duration truncation of the steady \gls{svara} regions in the melodic phrases results in a statistically significant improvement in the computation of melodic similarity. This confirms our hypothesis that the elongation of steady \gls{svara} regions beyond a certain duration does not affect the perception of the melodic similarity in the context of the characteristic melodic phrases. Furthermore, we showed that  complexity weighting significantly improves the melodic similarity in Carnatic music. This suggests that the extent and the number of saddle points is an important characteristic of a melodic phrase and is crucial to melodic similarity in Carnatic music. 
-
-In the future, we plan to improve the method used for segmenting the steady \gls{svara} regions so that it can differentiate melodic ornaments from subtle \gls{svara} transitions. In addition, we see a vast scope in further refining the complexity estimate of a melodic phrase to improve the complexity weighting. It would also be worthwhile to explore the applicability of this approach to music traditions such as Flamenco, Beijing opera and Turkish Makam music.
+In this section we highlighted the major challenges involved in this task and focused on two specific issues that arise due to large non-linear timing variations and rapid melodic movements. We described simple and easy to implement solutions based on partial transcription and complexity weighting to address these challenges. We showed that duration truncation of the steady \gls{svara} regions in the melodic phrases results in a statistically significant improvement in the computation of melodic similarity. Furthermore, we showed that complexity weighting improves the melodic similarity in Carnatic music. This suggests that the extent and the number of saddle points is an important characteristic of a melodic phrase and is crucial to melodic similarity in Carnatic music.  In the future, we plan to improve the method used for segmenting the steady \gls{svara} regions so that it can differentiate melodic ornaments from subtle \gls{svara} transitions. In addition, we see a vast scope in further refining the complexity estimate of a melodic phrase to improve the complexity weighting. It would also be worthwhile to explore the applicability of this approach to music traditions such as Flamenco, Beijing opera and Turkish Makam music.
 
 
 %################################################################################################################
@@ -490,116 +491,193 @@ In the future, we plan to improve the method used for segmenting the steady \gls
 \section{Melodic Pattern Discovery in Sizable Audio Collections}
 \label{sec:patterns_melodic_pattern_discovery}
 
+The task of melodic pattern discovery aims to mine repeating patterns in a time-series representation of melodies by following an unsupervised methodology. As mentioned before in \secref{sec:patterns_introduction}, extracting melodic patterns and detecting their different occurrences in audio music collections is crucial for melodic analyses of \gls{iam}. The discovered melodic patterns can be utilized in a number of other computational tasks and applications such as automatic \gls{raga} recognition, studying similarities between artists and different schools of music, meaningful music recommendations and developing pedagogical tools.
+
+In \secref{sec:patterns_evaluation_of_similarity_measures} and \secref{sec:patterns_improving_melodic_similarity} we studied different approaches and their variants for computing similarities between short melodic fragments. Given instances of different melodic patterns by an domain expert, these approaches can be used to detect occurrences of such example patterns in audio music collections of \gls{iam}. However, as the size of the evaluation datasets \acrshort{msds_cm_hmd} and \acrshort{msds_cm_cmd} reflects, obtaining such example patterns is a cumbersome task. Moreover, there are several other challenges involved in compiling a comprehensive collection of all repeating patterns in a large audio collection of \gls{iam} (\secref{sec:patterns_introduction}). We therefore follow an unsupervised approach for extracting melodic patterns in audio music collections, and do not require any example melodic patterns. 
+
+\TODO{write a better sota after reading more!}
+In \gls{mir}, several approaches have been proposed for extracting different kinds of repeating structures, including long duration repetitions such as themes, choruses and sections~\cite{paulus2010state}, and short duration repetitions such as motifs and riffs~\cite{Janssen2013}. While there exists a number of approaches for motivic discovery in sheet music~\cite{Lartillot2005}, there are fewer approaches that work on audio music recordings~\cite{dannenberg2003pattern}. This can be attributed to the audio-symbolic gap \cite{collins2014bridging}, which can be bridged by a reliable automatic transcription system to abstract the audio music content into musically meaningful discrete symbols. There exists a wide scope for developing methodologies for the discovery and analysis of short duration melodic patterns (or motifs) in large audio music collections. In the case of audio music recordings, approaches for motif discovery can benefit from the literature in the domain of time series analysis such as time series representation~\cite{Lin2003}, core pattern discovery methods~\cite{Mueen2009}, and search and indexing techniques~\cite{Rakthanmanon2013}.
+
+In recent years, many approaches have been proposed for this task, most of them of a supervised nature.  Ross~et~al.~\cite{Ross2012b} detect title phrases of a composition within a concert of Hindustani music. The authors use annotated rhythm cycle boundaries for pattern segmentation. Ishwar~et~al.~\cite{Ishwar2013} propose a two-stage approach and a sparse melody representation for spotting characteristic melodic patterns of a r\={a}ga. Rao~et~al.~\cite{Rao2014} classify melodic motives in IAM by using exemplar-based matching and propose an approach to learn DTW global constraints for computing melodic similarity. Many of these approaches either use semi-supervised pitch estimation, manually segmented pattern boundaries, a dataset comprising few recordings, or analyze only a limited number of characteristic phrases. Thus, scalability of such approaches is questionable and over-fitting of the approach to a specific dataset is probable. \TODO{see if something is usable otherwise delete}.
+
+
+\TODO{do we write the ending statement before describing the method? look at the paper for some content!!}
+
+
 \subsection{Method}
+\label{sec:patterns_discovery_method}
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/discovery/blockDiagram_Overall.pdf}
+	\end{center}
+	\caption{Block diagram of the proposed approach for melodic pattern discovery in large audio collections of \gls{iam}}
+	\label{fig:pattern_discovery_overall_block_diagram}
+\end{figure}
+
+Our approach for pattern discovery in audio music collections consists of four main blocks as shown in~\figref{fig:pattern_discovery_overall_block_diagram}. The data processing block (\secref{sec:pattern_discover_preprocessing}) generates pitch subsequences from every audio recording in the music collection. The intra-recording pattern discovery block (\secref{sec:intraRecordingPatternDiscovery}) performs an exact pattern discovery by detecting the closest subsequence pairs within an audio recording (referred to as seed patterns). The inter-recording pattern detection block (\secref{sec:inter_recording_pattern_search}) considers each seed pattern as a query and searches for its occurrences in the entire music collection. The rank refinement block (\secref{sec:rankRefinement}) reorders a ranked list of search results by recomputing melodic similarity using a more sophisticated similarity measure. The following description is based on our work presented in~\cite{gulati_SITIS_2014}.
+
+We choose to perform first an intra-recording pattern discovery because several melodic patterns are repeated within a music piece of Carnatic music. Moreover, the scalability of the computational approaches considered here for discovering patterns at the level of the entire music collection is questionable. To confirm this hypothesis, we conducted an experiment using a state-of-the-art algorithm for time series motif discovery~\citep{Mueen2009}, with a trivial modification to extract the top K motifs. Using just 16\,hours of audio data (amounting to around 20\,million pitch samples), the algorithm could discover only 40~melodic patterns in 24\,hours using Euclidean distance. Besides pattern pairs being from the same recording, only a few of the obtained pattern pairs were melodically similar and meaningful. This is expected as we found in \secref{sec:patterns_melodic_similarity_results_discussions} that Euclidean distance is not appropriate for handling large-non linear timing variations present across occurrences of melodic patterns. In order to scale the tasks of pattern discovery for hundreds of hours of audio data using a computationally complex \gls{dtw}-based distance measure we choose to first perform pattern discovery within an audio recording.
+
+Before we proceed to describe our method it should be noted that during the course of this dissertation several processing blocks and system parameters presented in the subsequent sections have evolved. The methodology presented in this section is based on our work reported in~\cite{gulati_SITIS_2014}. However, after that study, based on our findings in ~\cite{gulati_ICASSP2015} and in~\cite{gulati_ICASSP2015} we have modified the procedure followed in several processing blocks and system parameters. In order to facilitate reproducibility of our experiments and research outcomes, along with the original description of the method~\citep{gulati_SITIS_2014} we also present the modifications done for the new (the most recent) variant of the method. Wherever applicable the modifications are presented during the description of the processing block. Since the evaluation methodology we followed involve cumbersome listening tests, the results presented in this section are only corresponding to the initial variant of the method presented in~\cite{gulati_SITIS_2014}.
 
 
 \subsubsection{Pre-processing}
-\label{sec:preprocessing}
+\label{sec:pattern_discover_preprocessing}
 
-%\begin{figure}
-%	\begin{center}
-%		\includegraphics[width=\columnwidth]{figures/blockDiagram_DataProc.pdf}
-%	\end{center}
-%	\caption{Block diagram of the data processing module.}%\vspace{-1em}
-%	\label{fig:blockDiagramDataProc}
-%\end{figure}
-
-
-The steps involved in the pre-processing block are shown in Fig.~\ref{fig:blockDiagramDataProc}. A brief description of each of these steps is given below:
-
-\paragraph{a) Predominant Pitch Estimation} We consider melody as the predominant pitch in the audio signal and estimate it using the method proposed by Salamon and G\'omez~\cite{Salamon2012}. This method performed very favorably in an international MIR evaluation campaign focusing on a variety of music genres, including IAM\footnote{\url{http://nema.lis.illinois.edu/nema_out/mirex2011/results/ame/indian08/summary.html}}. We use the implementation available in Essentia~2.0~\cite{essentia}, an open-source C++ library for audio analysis and content-based MIR. We use a frame size of 46\,ms and a hop size of 4.44\,ms. All other parameters are left to their default values. Before pitch estimation, we apply an equal-loudness filter using the default set of parameters. Noticeably, the predominant pitch estimation algorithm also performs voicing detection, which is used in the later part of our data processing methodology to filter unvoiced segments (Fig.~\ref{fig:blockDiagramDataProc}).%\vspace{0.5em}
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/discovery/blockDiagram_DataProc.pdf}
+	\end{center}
+	\caption{Block diagram of the data processing block in melodic pattern discovery task.}
+	\label{fig:pattern_discovery_preprocessing_block_diagram}
+\end{figure}
 
 
+The steps involved in the pre-processing block are shown in Fig.~\ref{fig:pattern_discovery_preprocessing_block_diagram}. A brief description of each of these steps is given below:
 
-\paragraph{b) Pitch Representation} For the pitch representation to be musically relevant, the pitch values are converted from Hertz to Cents (logarithmic scale). For this conversion we additionally consider the tonic pitch of the lead artist as the reference frequency (i.e.,~0\,Cent corresponds to the tonic pitch). Thus, our representation becomes independent of the tonic of the lead artist, which allows a meaningful comparison of melodies of two distinct recordings (even if sung by two different artists in different tonic pitches). The tonic of the lead artist is identified automatically using a classification-based multi-pitch approach~\cite{Gulati2014Tonic}. We use the implementation of this method available in Essentia with the default set of parameters.%\vspace{0.5em}
+\paragraph{a) Predominant Pitch Estimation and Representation} 
 
+We consider melody as the predominant pitch in the audio signal. For estimating predominant pitch we follow the procedure we used in~\secref{sec:patterns_evaluation_of_similarity_measures}, which is described in detail in~\secref{sec:data_preprocessing_predominant_melody_estimation}. We use a frame size of 46\,ms and a hop size of 4.44\,ms. Noticeably, the predominant pitch estimation we use algorithm also performs voicing detection, which is used in the later part of our data processing methodology to filter unvoiced segments (\figref{fig:pattern_discovery_preprocessing_block_diagram}). We do not perform any post-processing on the estimated pitch contours.
 
+For the pitch representation to be musically relevant, the pitch values are converted from Hertz to Cents (\secref{sec:data_processing_cent_conversion}). In order to compare melodies across different artists and recordings we additionally consider the tonic pitch of the lead artist in the recording as the reference frequency during this conversion. The tonic of the lead artist for each recording in the collection is identified automatically using a classification-based multi-pitch approach~\citep{salamon2012multipitch}, which is found to be the best performing approach for this task (\secref{sec:data_preprocessing_tonic_identification}).
 
-\paragraph{c) Downsampling} In order to reduce the computational cost, we downsample the predominant pitch sequence (Fig.~\ref{fig:blockDiagramDataProc}). We derive the new sampling rate using the autocorrelation (ACR) of short-time pitch segments generated using a sliding window of 2\,s. We compute the ACR of all possible pitch segments in the entire dataset for different lags $l$, $l\in \lbrace0,1,\dots30\rbrace$, and examine the histogram of normalized ACR values at each lag (Fig.~\ref{fig:ACRHistogram}). %The ACR of a pitch segment is normalized by its value at $l=0$ before computing the histogram. 
-We select the lag at which the third quartile Q3 has an ACR value of 0.8, which corresponds to a sampling rate of 22.22\,ms. We informally found that this sampling rate generally preserves melodic nuances and rapid pitch movements while reducing the computational requirements of the task. In the literature, we could not find any reference for this sampling rate of the melody. Thus, our quantitative derivation could be useful for further studies.
-
-
-
-\paragraph{d) Solo Percussion Removal} A concert of Carnatic music typically contains a solo percussion section, referred as {\it Tani Avartana} or {\it Tani} in short. Its duration typically varies from 2 to 25\,min. Since the main percussion instrument in Carnatic music, the {\it m\d{r}da\.{n}ga\.{m}}, has tonal characteristics, the pitch estimation algorithm tracks the pitch of the m\d{r}da\.{n}ga\.{m} strokes instead of detecting this section as an unvoiced segment. Hence, we dedicate an extra effort to discard such segments using a classification-based approach (Fig.~\ref{fig:blockDiagramDataProc}). To feed the classifiers we extracted 13~MFCC coefficients, spectral centroid, spectral flatness and pitch salience (c.f.~\cite{slaney1998auditory}) from the audio signal using Essentia. We iterated over 23, 46 and 92\,ms frame sizes and chose the one which resulted in a better classification accuracy. We set the hop size as half the frame size and all other parameters to their default values. Next, we computed means and variances of these features over 2\,s non-overlapping segments. For training, we used a labeled audio music dataset containing 1.5~hours of mixed voice and violin recordings and 1.5~hours of solo percussion recordings. To assess the performance of the extracted features, we performed a leave-one-out cross-validation. We experimented with five different algorithms exploiting diverse classification strategies~\cite{Hastie09BOOK}: decision trees (Tree), $K$~nearest neighbors (KNN), naive Bayes (NB), logistic regression (LR), and support vector machines with a radial basis function kernel (SVM). We used the implementations available in scikit-learn version~0.14.1~\cite{scikitlearn}. We used the default set of parameters with few exceptions to avoid over-fitting and to compensate for the uneven number of instances per class. We set \texttt{min\_} \texttt{samples\_split=10} for Tree, \texttt{fit\_prior=False} for NB, \texttt{n\_neighbors=5} for KNN, and for LR and SVM \texttt{class\_weight=`auto'}. The combination of the frame size of 46\,ms and the SVM classifier yielded the best performance (96\% accuracy), with no statistically significant difference to the performance with the Tree (95.5\%) and the KNN (95\%), for the same frame size. We finally chose KNN because of its low complexity.
+In the new variant of this method we post-process the predominant pitch contours as described in~\secref{sec:data_preprocessing_pitch_postprocessing}. We perform median and Gaussian filtering to remove spurious pitch jumps lasting over a few samples and to smooth the pitch contours. In addition, we also interpolate short non-voiced segments that usually correspond to intra-phrase breath pauses or to consonants in the lyrics (\secref{sec:data_processing_pitch_interpolation}). 
 
 
-%\begin{figure}
-%	\begin{center}
-%		\includegraphics[keepaspectratio = true, height=4cm, scale=1]{figures/ACRHistogram.pdf}
-%	\end{center}
-%	\caption{Histograms of ACR values (histogram value is indicated by the colormap on the right; for ease of visualization, we compress the range of the histogram values by taking its fourth root). Q1, Q2 and Q3 denote the three quartile boundaries of the histogram. }
-%	\label{fig:ACRHistogram}
-%\end{figure}
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/discovery/ACRHistogram.pdf}
+	\end{center}
+	\caption{Histograms of ACR values (histogram value is indicated by the colormap on the right; for ease of visualization, we compress the range of the histogram values by taking its fourth root). Q1, Q2 and Q3 denote the three quartile boundaries of the histogram. }
+	\label{fig:ACRHistogram}
+\end{figure}
+
+
+\paragraph{b) Downsampling}
+
+As mentioned above, we estimate predominant pitch at a sampling rate of around 225\,Hz. However, in order to reduce the computational cost, we downsample the predominant pitch sequence \figref{fig:pattern_discovery_preprocessing_block_diagram}. We could not find any study that systematically reports the effect of sampling rate on melodic similarity in \gls{iam}. In such a case, we derive an optimal sampling rate by analyzing the autocorrelation (ACR) of short-time pitch segments generated using a sliding window of 2\,s. We compute the ACR of all possible pitch segments in the entire dataset for different lags $l$, $l\in \lbrace0,1,\dots30\rbrace$, and examine the histogram of normalized ACR values at each lag (\figref{fig:ACRHistogram}). We select the lag at which the third quartile Q3 has an ACR value of 0.8, which corresponds to a sampling rate of 22.22\,ms~(or 45\,Hz). We informally found that this sampling rate generally preserves melodic nuances and rapid pitch movements in Carnatic music while reducing the computational requirements of the task. 
+
+In the new variant of this method, we use the optimal sampling rate derived from our comprehensive quantitative evaluations in~\cite{gulati_ICASSP2015} (see~\secref{sec:patterns_evaluation_of_similarity_measures}). We use a sampling rate of 56\,Hz for Carnatic music and 45\,Hz for Hindustani music.  
+
+%Note that the study in this section was originally presented in~\cite{gulati_SITIS_2014} and was conducted before we quantitatively assessed the optimal parameter settings in~\cite{gulati_ICASSP2015} (see~\secref{sec:patterns_evaluation_of_similarity_measures}). In the subsequent studies  Although, the heuristically chosen sampling rate in this study is not drastically different from the optimal sampling rate reported in~\cite{gulati_ICASSP2015} (see \TODO{Figure(where we show the accuracy vs sampling rate)}). 
+
+
+\paragraph{c) Solo Percussion Removal} 
+
+As described in \secref{sec:pre_processing_tani_segmentation}, a concert of Carnatic music typically contains a solo percussion section, referred as \gls{tani}, which can last up to 2-25\,minutes. Predominant pitch estimation algorithm employed in this study tracks pitch corresponding to the \gls{mridangam} strokes instead of detecting \gls{tani} sections as non-voiced segments. This poses a challenge for melodic pattern discovery as there are several repeating percussion patterns in \gls{tani} sections, which are often discovered as the closest melodic pattern pairs. In \secref{sec:pre_processing_tani_segmentation} we explain this issue in detail and describe a classification-based approach to detect \gls{tani} sections in audio recordings of Carnatic music. Once detected, we can simply discard the pitch samples corresponding to these sections and overcome the challenge. In addition to avoiding the unwanted melodic patterns being present in the output, by discarding pitch samples from the \gls{tani} sections we also reduce the computational complexity of the pattern discovery task.
+
 
 \subsubsection{Subsequence Generation}
 \label{sec:subsequencegeneration}
-The steps involved in generating candidate subsequences are as follows:
-\paragraph{a) Segmentation} Due to the lack of reliable methods for segmentation of melodic patterns in IAM~\cite{gulati2014Landmark}, we generate pitch subsequences by using a sliding window of length $W_l$ with a hop size of one sample (22\,ms). Given no quantitative studies investigating the length of the melodic patterns in Carnatic music, we make a choice of $W_l = 2$\,s based on recommendations from a few Carnatic musicians. Since unvoiced segments are removed from the pitch sequence at the pre-processing step, a window can include pitch samples separated by more than $W_l$ seconds. To handle these cases, we use the time stamps of the first sample ($T_1$) and the last sample ($T_2$) in a window. We filter out all subsequences for which $T_2-T_1 > W_l + \Phi$. We select $\Phi =0.5$\,s to account for the short pauses during a phrase rendition. This value was empirically set to differentiate between inter- and intra-phrase pauses.%\vspace{0.5em}
+
+In this step we aim to generate melodic pattern candidates from the resultant pitch representation. The steps involved in generating candidate subsequences are as follows:
+
+\paragraph{a) Segmentation} 
+
+As seen in~\secref{sec:patterns_melodic_similarity_results_discussions}, an accurate segmentation of melodic patterns has a big impact on the computation of melodic similarity, and eventually on the retrieval accuracy of melodic patterns. In the literature (Section \TODO{XX}) there are several models proposed for melodic segmentation~\citep{Cambouropoulos2006,muller2009robust,cambouropoulos2001local}. \cite{pearce2008comparison} and \cite{rodriguez2014comparing} provide a comparison of a number of such models. Due to the lack of such studies and reliable models for segmentation of melodic patterns in \gls{iam}, we use brute-force approach for generating pattern candidates. We generate candidate pitch subsequences by using a sliding window of length $W_l$ with a hop size of one sample (22\,ms). Given no quantitative studies investigating the length of the melodic patterns in Carnatic music, we make a choice of $W_l = 2$\,s based on recommendations from a few Carnatic musicians.
+
+Since unvoiced segments are removed from the pitch sequence at the pre-processing step, a window can include pitch samples separated by more than $W_l$ seconds. To handle these cases, we use the time stamps of the first sample ($T_1$) and the last sample ($T_2$) in a window. We filter out all subsequences for which $T_2-T_1 > W_l + \Phi$. We select $\Phi =0.5$\,s to account for the short pauses during a phrase rendition. This value was empirically set to differentiate between inter- and intra-phrase pauses. 
+
+In the new variant of this method, the processing step described in the previous paragraph becomes redundant, and is therefore not applied. Since in this variant the short-duration unvoiced regions in the predominant pitch contours are interpolated, there will not be any situation where $T_2-T_1 > W_l + \Phi$. 
 
 
-\paragraph{b) Subsequence Filtering} A subsequence may contain a segment of the pitch contour corresponding to a single musical note, where the pitch values are nearly constant. Such musically uninteresting patterns are discarded in a filtering stage (Fig.~\ref{fig:blockDiagramDataProc}). The criterion for discarding such subsequences is summarized below:
-%\begin{equation}
-%\begin{aligned}
-%f_i& = 
-%\begin{cases}
-%    1, & \text{if } S_i\geq T_{\text{std}}\\
-%    0, & \text{otherwise}
-%\end{cases}\hspace{0.6cm}|\hspace{0.6cm}
-%\beta&=\sum_{i=0}^{W_n}f_i
-%\end{aligned}
-%\label{eq:subsequencefiltering}
-%\end{equation}%\vspace{-1em}
-\begin{equation*}
+\paragraph{b) Subsequence Filtering} 
+
+One of the challenges in melodic pattern discovery is the presence of combinatorial redundancy in the form of musically trivial patterns in the output~\citep{Lartillot2005}. One such redundancy in our case is that of a melodic pattern comprising a single \gls{svara}. Instead of removing such musically uninteresting patterns after they are discovered, we detect and discard such subsequences (or pattern candidates) during the pre-processing step (\figref{fig:pattern_discovery_preprocessing_block_diagram}). The criterion for discarding such subsequences is summarized below:
+
+\begin{equation}
+\label{eq:flatness_measure}
 \beta =\sum_{i=0}^{W_n} \Theta\left(S_i\geq T_{\text{std}}\right),
-\end{equation*}
+\end{equation}
 
 
-\noindent where $\beta$ is the flatness measure of a subsequence, $W_n$ denotes its number of samples, $\Theta(z)$ is a Heaviside step function yielding $\Theta(\text{true})\!=\!1$ and $\Theta(\text{false})\!=\!0$, and $S_i$ is the standard deviation at the $i$-th sample of a subsequence, computed using a window of length $W_{\text{std}}$ centered at sample $i$. %The threshold $T_{\text{std}}$ determines if a sample belongs to a flat region or not.
-In order to determine the optimal values of $W_{\text{std}}$ and $T_{\text{std}}$, we manually labeled a number of regions in pitch contour as `flat' and `non-flat' for 4 excerpts in our database. We iterated over different parameter values and analyzed the resultant ROC curve (Fig.~\ref{fig:ROC}). %In  we show the ROC curve obtained for $W_{\text{std}} \in \lbrace100,200,400\rbrace$\,ms. 
+\noindent where $\beta$ is the flatness measure of a subsequence, $W_n$ denotes its number of samples, $\Theta(z)$ is a Heaviside step function yielding $\Theta(\text{true})\!=\!1$ and $\Theta(\text{false})\!=\!0$, and $S_i$ is the standard deviation at the $i$-th sample of a subsequence, computed using a window of length $W_{\text{std}}$ centered at sample $i$. The threshold $T_{\text{std}}$ determines if a sample belongs to a flat region or not. In order to determine the optimal values of $W_{\text{std}}$ and $T_{\text{std}}$, we manually labeled a number of regions in pitch contour as `flat' and `non-flat' for 4 excerpts in our database. We iterated over different parameter values and analyzed the resultant ROC curve shown in~\figref{fig:ROC_pattern_discovery}). %In  we show the ROC curve obtained for $W_{\text{std}} \in \lbrace100,200,400\rbrace$\,ms. 
 Doing so, we found that $W_{\text{std}}=200$\,ms resulted in the best performance and that the knee of the curve corresponded to $T_{\text{std}}=45$\,Cents. Having a value of $\beta$ for each subsequence, we finally filter out the ones for which $\beta \leq \gamma W_n$, using $\gamma = 0.8$. The latter was set by visual inspection.
 
-%\begin{figure}
-%	\begin{center}
-%		\includegraphics[keepaspectratio = true, height=4cm, scale=1]{figures/ROCFlatness.pdf}
-%	\end{center}
-%	\caption{ROC curves for `flat' and `non-flat' region classification for different values of window length ($W_{\text{std}}$) used for selecting an optimal value of standard deviation $S_i$.}
-%	\label{fig:ROC}
-%\end{figure}
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/discovery/ROCFlatness.pdf}
+	\end{center}
+	\caption{ROC curves for `flat' and `non-flat' region classification for different values of window length ($W_{\text{std}}$) used for selecting an optimal value of standard deviation $S_i$.}
+	\label{fig:ROC_pattern_discovery}
+\end{figure}
 
+In the new variant of this method, we use the segmentation approach described in~\secref{sec:nyas_svara_segmentation_method} to detect the stable \gls{svara} regions in melodies. The pitch samples in a subsequence that correspond to these stable \gls{svara} regions are regarded as `flat', which is analogous to $S_i\geq T_{\text{std}}$ being `True' for those samples. All other parameters remain the same as described above. This change is done because the segmentation approach produces more reliable estimates of the stable melodic regions compared to the simple measure using local standard deviation of the pitch samples. 
 
-After the data processing step, we retain around 17.5 million pattern candidates for our entire dataset. If no subsequence filtering is applied, a sampling rate of 225\,Hz for pitch sequence amounts to nearly 300~million pattern candidates for a database as big as ours.
+ %In the current study our dataset comprises only Carnatic music. For Hindustani music the reduction ratio of number of pattern candidates might be even higher due to the presence of long held \gls{svaras}.
 
-\subsection{Intra-recording Pattern Discovery}
+\subsubsection{Intra-recording Pattern Discovery}
 \label{sec:intraRecordingPatternDiscovery}
 
-We perform an exact pattern discovery by computing the similarity between every possible subsequence pair obtained within an audio recording. We regard the top $N=25$ closest subsequence pairs in each recording as seed patterns. We omit overlapping subsequences in order to avoid trivial matches and additionally constrain the top $N$ seed pattern pairs to be mutually non-overlapping. Due to this constraint for some recordings we obtain less than 25 pattern pairs. In total, for all the recordings, nearly 1.4 trillion \gls{dtw} distance computations are done to obtain 79,172 seed patterns.
+In this step our aim is to discover melodic patterns within each recording in the audio collection. We perform an exact pattern discovery by computing the similarity between every possible subsequence pair obtained within an audio recording. Thus, the computational complexity of this task is quadratic ()$\mathcal{O}(n^2)$) over the number of subsequences. We regard the top $N=25$ closest subsequence pairs in each recording as seed patterns. We omit overlapping subsequences in order to avoid trivial matches and additionally constrain the top $N$ seed pattern pairs to be mutually non-overlapping. Due to this constraint for some recordings we obtain less than 25 pattern pairs. 
 
-\subsubsection{Melodic Similarity}
-\label{MelodicSimilarity}
-We compute melodic similarity between two subsequences using a \gls{dtw}-based distance measure~\cite{Sakoe78TASLP}. We use a step condition of $\lbrace(1,0), (1,1), (0,1)\rbrace$ and the squared Euclidean distance as the cost function. We do not use any penalty for insertion and deletion. These choices are made in order to allow lower bounding (see below). In addition, we apply the Sakoe-Chiba global constraint with the band width set to 10\% of the pattern length. This constraint may be sufficiently large for accounting time warpings in melodic repetitions in Carnatic music.
 
-\subsubsection{Lower Bounding \gls{dtw}}
+\paragraph{Melodic Similarity} 
+
+We compute melodic similarity between two subsequences using a \gls{dtw}-based distance measure~\cite{Sakoe78TASLP} (Section\TODO{XXX}). This choice is supported by our findings in~\secref{sec:patterns_melodic_similarity_results_discussions}, wherein we showed that a \gls{dtw}-based distance measure outperforms Euclidean distance measure in melodic similarity computation in \gls{iam}. We use a step condition of $\lbrace(1,0), (1,1), (0,1)\rbrace$ and the squared Euclidean distance as the cost function (Section\TODO{XXX}). We do not use any penalty for insertion and deletion. In addition, we apply the Sakoe-Chiba global constraint with the band width set to 10\% of the pattern length. This constraint was found to be sufficiently large for accounting time warpings in melodic repetitions in Carnatic music (see \tabref{tab:melodic_similarity_results}). For the case of Hindustani music, an unconstrained \gls{dtw} variant is shown to perform the best. However, due to the computational complexity of the task, in order to make it computationally feasible we finally choose 10\% band width for both the music traditions. Notice that these parameter values are close to the optimal settings but not the most optimal settings for a \gls{dtw} variant that we obtained in \secref{tab:melodic_similarity_results}. We make these choices in order to allow lower bounding as explained in the subsequent sections. 
+
+\TODO{Should we copy the DTW equation here, or show an example of aligned pattern. Or atleast say how is dtw taking care of local time variations.}
+	
+
+\paragraph{Lower Bounding \gls{dtw}}
 \label{LowerBoundingDTW}
-To make \gls{dtw} distance computations tractable for such a large number of subsequences we apply cascaded lower bounds~\cite{Rakthanmanon2013}. In particular, we use FL (first-last) lower bound and LB\_Keogh bound for both query to reference and reference to query matching. Besides, we apply early abandoning, both during the computation of lower bounds as well as during the \gls{dtw} distance computation~\cite{Rakthanmanon2013}. 
 
-\subsubsection{Pattern Length Compensation}
+The computational complexity of a brute-force pattern discovery system using a \gls{dtw} distance measure is quadratic ($\mathcal{O}(n^2)$) over both the number of subsequences and the length of a subsequence. For a dataset as big as ours that contains millions of subsequences (pattern candidates), where the length of each subsequence is around 100\,samples, the system becomes extremely demanding in terms of the CPU time. Even after reducing the number of pattern candidates by filtering out subsequences in the pre-processing step and reducing the length of the subsequences by downsampling the pitch representation, it is not practically feasible to perform the task. One of the ways to address this problem is to use indexing or lower bounding techniques with which we can prune subsequence pairs that can not possibly be the best matches. Pruning of the subsequence pairs reduces the number of times the \gls{dtw} computation is done, and thus make \gls{dtw} distance computations tractable for datasets with large number of subsequences.
+
+In literature there are several methods proposed for indexing the \gls{dtw} distance~\citep{Keogh2004,vlachos2003indexing}. These methods differ in terms of their computational complexities and the type of indexing techniques they employ (approximate or exact). In this study to speed up \gls{dtw} computations we use the exact \gls{dtw} indexing technique~\citep{Keogh2004} and apply cascaded lower bounds as explained in~\cite{Rakthanmanon2013}. This method is parameter free, it does not require any pre-processing of the data and there is no constraint on the minimum and maximum query length. In particular, we use FL (first-last) lower bound and LB\_Keogh bound for both query to reference and reference to query matching. Besides, we apply early abandoning, both during the computation of lower bounds as well as during the \gls{dtw} distance computation. These lower bounding and early abandoning techniques are explained in section XXX, however, for a more detailed explanation we refer to~\cite{Rakthanmanon2013}. 
+
+In \algoref{alg:algorithmdiscovery} we show the pattern discovery routine that uses cascaded lower bounds to speed up \gls{dtw}. This pseudo-code provides a better understanding of the pruning procedure and puts in context the utility of using different lower bounds. Note that in this routine we show the discovery of only the closest subsequence pair. With a trivial addition of incorporating a priority queue that stores the K most closest subsequence pairs at each step, we extend it to our use-case of discovering the top K closest melodic patterns. We further optimize this routine by pre-computing the subsequence envelopes used in the computation of LB\_Keogh bound section XXX.
+
+\renewcommand{\algorithmiccomment}[1]{\bgroup\hfill\tiny//~#1\egroup}
+\begin{algorithm}
+\caption{Discovering the closest subsequence pair using the \gls{dtw} distance and cascaded lower bounds.}
+\label{alg:algorithmdiscovery}
+	\begin{algorithmic} 
+	
+	\State {\bf Input:} array $\mathrm{S}$ containing $N$ number of subsequences
+	\State \texttt{best\_so\_far} = \texttt{infinity};
+	\For{$i$=0; $i \leq N-1$; $i$++}
+		\For{$j$=0; $j \leq N-1$; $j$++}
+			\State  \texttt{dist\_FL} = \texttt{LB\_FL($\mathrm{S}_i$, $\mathrm{S}_j$)}			
+			\If {\texttt{dist\_FL} < \texttt{best\_so\_far}}				
+				\State  \texttt{dist\_EQ} = \texttt{LB\_Keogh($\mathrm{S}_i$, $\mathrm{S}_j$)}				
+				\If {\texttt{dist\_EQ} < \texttt{best\_so\_far}}				
+					\State  \texttt{dist\_EC} = \texttt{LB\_Keogh($\mathrm{S}_j$, $\mathrm{S}_i$)}					
+					\If {\texttt{dist\_EC} < \texttt{best\_so\_far}}					
+						\State  \texttt{true\_dist} = \texttt{DTW($\mathrm{S}_i$, $\mathrm{S}_j$)}						
+						\If {\texttt{true\_dist} < \texttt{best\_so\_far}}
+							\State \texttt{best\_so\_far} = \texttt{true\_dist}
+							\State \texttt{closest\_pair\_index} = ($i$,$j$)							
+						\EndIf
+					\EndIf
+				\EndIf
+			\EndIf
+		\EndFor
+	\EndFor
+	
+	\end{algorithmic}
+\end{algorithm}
+				
+
+\paragraph{Pattern Length Compensation}
 \label{PatternLengthCompensation}
-Along with the local non-linear time warpings, the overall length of a melodic pattern may also vary across repetitions. For example, a melodic pattern of length 2\,s might be sung in 2.2\,s in a different position in the song. We handle this by using multiple time scaled versions of a subsequence in the distance computation. This technique is also referred to as local \gls{dtw} and is shown to have tighter lower bounds~\cite{Zhu2003}. It should be noted that typically such issues are addressed by using a subsequence variant of the \gls{dtw} distance measure. However, the lower bounding techniques we used during the \gls{dtw} distance computation do not work for the subsequence variant of the \gls{dtw}. 
 
-For every subsequence, we generate five subsequences by uniformly time scaling it by a factor of $\alpha \in I_{\text{intp}} =\lbrace 0.9, 0.95, 1, 1.05, 1.1\rbrace$, such that the length of the resulting subsequences is $W_l$. We use cubic interpolation for uniformly time scaling a subsequence. Since these 5 interpolation factors increase the computational cost by a factor of 25, we assume that the distance between a subsequence pair $X_{1.0}$ and $Y_{1.05}$ is very close to the distance between the pair $X_{1.05}$ and $Y_{1.1}$ (the sub-index denotes the interpolation factor $\alpha$). Following this rationale, we can avoid the distance computation between 16 of the 25 combinations without a significant compromise on accuracy.
+Along with the local non-linear time warpings, the overall length of a melodic pattern may also vary across repetitions. For example, a melodic pattern of length 2\,s might be sung in 2.2\,s in a different position in the recording. We handle this by using multiple time scaled versions of a subsequence in the distance computation. This technique is also referred to as local \gls{dtw} and is shown to have tighter lower bounds~\citep{Zhu2003}. It should be noted that such issues are typically addressed by using a subsequence variant of the \gls{dtw} distance measure. However, the lower bounding techniques we use to speed up the \gls{dtw} distance computation do not work for the subsequence variant of the \gls{dtw}. 
 
-\subsection{Inter-recording Pattern Detection}
-\label{sec:patternSearch}
+For every subsequence, we generate five subsequences by uniformly time scaling it by a factor of $\alpha \in I_{\text{intp}} =\lbrace 0.9, 0.95, 1, 1.05, 1.1\rbrace$, such that the length of the resulting subsequences is $W_l$. We use cubic interpolation for uniformly time scaling a subsequence. Creating five uniform time scaled subsequences for each subsequence increases the computational cost by a factor of 25. We observe that the distance between a subsequence pair $X_{1.0}$ and $Y_{1.05}$ is very close to the distance between the pair $X_{1.05}$ and $Y_{1.1}$ (the sub-index denotes the interpolation factor $\alpha$). Thus by following this rationale and using this approximation, we can avoid the distance computation between 16 of the 25 combinations without a significant compromise on accuracy. We only retain the combinations for which the difference between the interpolation factors of subsequence pairs are unique. \TODO{Figure?? matrix if time permits}
 
+\subsubsection{Inter-recording Pattern Detection}
+\label{sec:inter_recording_pattern_search}
 
-We consider every seed pattern as a query (79,172 in number) and perform an exhaustive search over all the subsequences obtained from the entire audio music collection (nearly 17.5 million in number). For every seed pattern we store top $M=200$ closest matches (referred to as search patterns). Here also for every subsequence we consider 5 uniformly  scaled subsequences in the distance computation. For inter-recording pattern detection also use the same similarity measure and lower bounding techniques as used in intra-recording pattern discovery block (Sec.~\ref{sec:intraRecordingPatternDiscovery}). In total, nearly 12.4 trillion \gls{dtw} distance computations are done in this step.
+After discovering melodic patterns within each audio recording, we now proceed to detect their occurrences in all the recordings in the collection. For this, we consider every seed pattern as a query and perform an exhaustive search over all the subsequences obtained from the entire audio music collection. For every seed pattern we store top $M=200$ closest matches (referred to as search patterns). To avoid redundancy in the search results, we constrain search patterns for every seed pattern to be mutually non-overlapping. Similar to the intra-recording pattern discovery step, here also for every subsequence we consider 5 uniformly  time scaled subsequences in the distance computation. Furthermore, for detecting occurrences of seed patterns in other recordings we use the same similarity measure and lower bounding techniques as used in ~\secref{sec:intraRecordingPatternDiscovery}. The pattern detection routine is a small modification of the routine shown in~\algoref{alg:algorithmdiscovery}. Instead of a single subsequence array, we would have two arrays; one of which comprises the seed patterns (queries) and the other comprises subsequences obtained from all the recordings (target candidates). 
 
-
-
-\subsection{Rank Refinement}
+\subsubsection{Rank Refinement}
 \label{sec:rankRefinement}
 
-The lower bounds we use for speeding up distance computations are not valid for any variant of \gls{dtw}. However, once the top matches are found, nothing prevents us from reordering the ranked list using any variant of \gls{dtw}, as we do not need to apply lower bounds in this reduced search space. In this step, we select a \gls{dtw} step condition of $\lbrace(1,2), (1,1), (2,1)\rbrace$ to avoid some pathological warpings of the path. Furthermore, we investigate four different distance measures $d_i$, $i=1,\dots 4$, used in the computation of the \gls{dtw} cost matrix as described below. %(Fig.~\ref{fig:Distances}).
+As mentioned before, the lower bounds used for speeding up the distance computations are not valid for any variant of the \gls{dtw} distance. This constraint governed the choices made for the \gls{dtw} variant and the parameter settings for computing melodic similarity in both the intra and the inter-recording pattern processing blocks. However, once the top matches are found, nothing prevents us from reordering the ranked list using any variant of the \gls{dtw} distance. This is because the number of top matches we consider ($M=200$) per query is orders of magnitude smaller than the total number of subsequences obtained from the entire audio collection. For every query pattern, we now recompute the melodic similarity with its top M search patterns using a more robust and a better performing variant of the \gls{dtw} distance.
+
+During rank refinement, we select a \gls{dtw} step condition of $\lbrace(1,2), (1,1), (2,1)\rbrace$ to avoid some pathological warpings of the path. This step condition, which also acts as a local constraint was shown to better model the melodic similarity in~\secref{sec:patterns_melodic_similarity_results_discussions}. Furthermore, we investigate four different distance measures $d_i$, $i=1,\dots 4$, used in the computation of the \gls{dtw} cost matrix as described below. %(Fig.~\ref{fig:Distances}).
 %We choose $d_1 = \delta^2$, $d_2=\delta$, $d_3 = \delta-25$ if $\delta>25$ or %$d_3=0$ otherwise, $d_4 = (\delta-\phi)^{1.5} + \varphi$ if $\delta>100$ or $d_4 %= d_3$ otherwise. 
 
 \begin{equation}
@@ -621,44 +699,63 @@ d_3, & \text{otherwise}
 \label{eq:distances}
 \end{equation}
 
+\noindent where $\delta = |p_1-p_2|$ is the city block distance between two pitch values and all numeric values are in Cent scale. We set $\phi =99.555$ and $\varphi = 74.7$ to maintain point and slope continuity of the function. The formulation for these different distance measures ($d_i$) is inspired by our own experience and some of the approaches we find in the literature~\citep{Ishwar2013,Rao2014}. We denote the four variants of the rank refinement method by $V_i$, $i=1\dots 4$.
 
-
-\noindent where $\delta = |p_1-p_2|$ is the city block distance between two pitch values and all numeric values are in Cents. We set $\phi =99.555$ and $\varphi = 74.70$ to maintain point and slope continuity. The formulation for the different $d_i$ is inspired by our own experience and some of the approaches we find in the literature~\cite{Ishwar2013,Rao2014}. We denote the four variants of the rank refinement method by $V_i$, $i=1\dots 4$.
 
 \subsection{Evaluation}
 
+\subsection{Music Collection}
+\label{sec:pattern_discovery_musiccollection}
 
-One of the challenges in any data-driven task is evaluation. We here perform a quantitative evaluation based on expert feedback. For the entire dataset we obtain over 15\,million search patterns for each of the rank refinement methods. We divide seed patterns into three categories based on the distance between the seed pairs, which we denote by $D$. Then, to have an equal representation from the range of values of $D$, 200 seed pairs equally distributed among these categories are randomly selected for evaluation (Fig.~\ref{fig:SeedDistanceDistribution}). Seed category boundaries are $\mu \pm 1.5\sigma$, where $\mu$ and $\sigma$ are the mean and the standard deviation of the distribution of $D$. For every selected seed pattern we consider the first 10 search patterns for each of the four rank refinement methods. Thus, in total, we obtain 200 seed pairs and 8,000 search patterns for expert evaluation.
+The music collection used for studying the task of pattern discovery in this section comprises 365\,hours Carnatic music. It contains 1764 audio recordings, which are carefully compiled as a part of the CompMusic Carnatic music corpus (\secref{sec:corpus_carnatic_music_corpus}). As explained in~\secref{sec:corpus_carnatic_music_corpus}, these audio recordings are ripped from commercially released music CDs. The selected music material is diverse in terms of the number of artists, gender of lead artists, number of different \glspl{raga}, year of release and various forms within Carnatic music.
 
-Expert evaluation is performed by a professional Carnatic musician who has received over 20 years of music education. For examining similarity between two melodic patterns, the musician listened to the audio fragments corresponding to these patterns and scored a 0 for melodically dissimilar and a 1 for melodically similar. The musician annotated melodic similarity for each seed pair and between the seed and its search patterns for every rank refinement method.
-
-%\begin{figure}
-%	\begin{center}
-%		\includegraphics[keepaspectratio = true, height=4cm, scale=1]{figures/SeedDistribution.pdf}\vspace{-1em}
-%	\end{center}
-%	\caption{Distance distribution of seed patterns. Three seed pattern categories are marked by S1, S2 and S3.}
-%	\label{fig:SeedDistanceDistribution}
-%\end{figure}
-
-To quantify the musician's assessment of the similarity between the melodic patterns  we use mean average precision (MAP), a typical evaluation measure in information retrieval~\cite{manning2008introduction}, which is also very common in MIR. This way, we have a single number to evaluate the performance of the four different rank refinement methods. For the computation of the MAP scores we consider the total number of relevant patterns as the number of relevant patterns retrieved in the top 10 search results.  For assessing statistical significance we use the Mann-Whitney U test~\cite{mann1947test} with $p < 0.05$. To compensate for multiple comparisons, we apply the Holm-Bonferroni method~\cite{holm1979simple}. Thus, eventually we use a much more stringent criteria than $p < 0.05$ for measuring statistical significance. We use ROC curves to analyze the separation between the distance distribution of melodically similar and dissimilar subsequences~\cite{manning2008introduction}. 
-
-\subsection{Results}
+\TODO{If time permits provide statistics of this dataset}
 
 
-%\begin{figure}
-%	\begin{center}
-%		\includegraphics[keepaspectratio = true, width=\columnwidth, scale=1]{figures/PatternPlots/combinedPatterns.pdf}
-%	\end{center}
-%	\caption{Examples of the discovered melodic patterns. \XXX{S}{J}{I have to put a,b,c,d in the image (later this day)}}%\vspace{-1em}
-%	\label{fig:combinedPatterns}
-%\end{figure}
+\subsection{Evaluation Methodology}
+\label{sec:evaluationmethodology}
 
-Before presenting formal evaluations, we show a few examples of the discovered melodic patterns in Fig.~\ref{fig:combinedPatterns}. Our approach robustly extracts patterns in different scenarios such as large local time warpings~(b), uniform scaling~(c), patterns with silence regions~(d) and across different tonic pitches~(e and f). It is worth mentioning that, during the process of annotation, the musician found several musically interesting results. For example, striking similarity between phrases of two different \glspl{raga}, between phrases in sung melodies and the melodies played on instruments (Violin or V\={i}\d{n}a), and phrases sung by different artists. Many of the discovered patterns are the characteristic melodic phrases of the \gls{raga}, which are the primary cues for \gls{raga} recognition. Overall, the  obtained results are musically relevant and can be used to establish meaningful relationships between audio recordings.
+One of the challenges in an unsupervised data-driven approach such as the one we use for discovering melodic patterns is evaluation. We here perform a quantitative evaluation based on expert feedback. For the entire dataset we obtain over 15\,million search patterns for each of the rank refinement methods. We divide seed patterns into three categories based on the distance between the seed pairs, which we denote by $D$. The distribution of the distance $D$ between the seed pattern pairs is shown in~\figref{fig:SeedPatternsDistanceDistribution}. Then, to have an equal representation from the range of values of $D$, 200 seed pairs equally distributed among these categories are randomly selected for evaluation. Seed category boundaries are $\mu \pm 1.5\sigma$, where $\mu$ and $\sigma$ are the mean and the standard deviation of the distribution of $D$. For every selected seed pattern we consider the first 10 search patterns for each of the four rank refinement methods for evaluation. Thus, in total, we obtain 200 seed pairs and 8,000 search patterns for expert evaluation.
 
-It is also interesting to analyze the contribution of different lower bounds in pruning the search space. In Table \ref{tab:computationalStats} we show in percentage the number of times the program counter exits after a lower bound computation with respect to the total number of distance computations. As mentioned before, the total number of distance computations are 1.413 trillion for intra-recording pattern discovery and 12.418 trillion for inter-recording pattern detection. From Table \ref{tab:computationalStats} it becomes evident that the lower bounding methods are more effective in inter-recording pattern detection. This is expected as different songs may correspond to different \glspl{raga} and hence use different set of musical notes.
+Expert evaluation is performed by a professional Carnatic musician who has received over 20 years of music education. For examining similarity between two melodic patterns, the musician listened to the audio fragments corresponding to these patterns and scored a 0 for melodically dissimilar and a 1 for melodically similar pattern. The musician annotated melodic similarity for each seed pair and between the seed and its search patterns for every rank refinement method.
 
 
-We now proceed to formal evaluations. We first evaluate the performance of the intra-recording pattern discovery task. We find that the fraction of melodically similar seed pairs within each seed category S1, S2 and S3 consistently decreases: 0.98, 0.67 and 0.31, respectively. To further examine the separation between melodically similar and dissimilar seed pairs, we compute the ROC curve (Fig.~\ref{fig:combinedROC}, solid blue line). The knee of such curve corresponds to a precision of approximately 80\% for 10\% of false positive cases. This indicates that the chosen \gls{dtw}-based distance measure is a sufficiently good candidate for computing melodic similarity for the case of intra-recording seed pattern discovery. 
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/discovery/SeedDistribution.pdf}
+	\end{center}
+	\caption{Distance distribution of seed patterns. Three seed pattern categories are marked by S1, S2 and S3.}
+	\label{fig:SeedPatternsDistanceDistribution}
+\end{figure}
+
+
+To quantify the musician's assessment of the similarity between the melodic patterns  we use \gls{map}, a typical evaluation measure in information retrieval~\citep{manning2008introduction}, which is also very common in \gls{mir}. This way, we have a single number to evaluate the performance of the four different rank refinement methods. Since we do not have ground-truth annotations of melodic patterns for our dataset, total number of occurrences of different patterns is unknown. Therefore, while computing the \gls{map} scores we consider the total number of relevant patterns as the number of relevant patterns retrieved in the top 10 search results.  For assessing statistical significance we use the Mann-Whitney U test~\citep{mann1947test} with $p < 0.05$. To compensate for multiple comparisons, we apply the Holm-Bonferroni method~\citep{holm1979simple}. Thus, eventually we use a much more stringent criteria than $p < 0.05$ for measuring statistical significance. We also use ROC curves to analyze the separation between the distance distribution of melodically similar and dissimilar subsequences~\citep{manning2008introduction}. 
+
+
+\subsection{Results and Discussion}
+\label{sec:patterns_discovery_results}
+
+Before presenting the results of the evaluation of the discovered patterns, we provide details in terms of the number of patterns and \gls{dtw} computations done at each step. Our dataset comprising 365\,hours of audio data contains nearly 300\,million pitch samples (considering 225\,Hz as the sampling rate of the pitch contours). In a brute force segmentation scenario that would amount to roughly the same number of pattern candidates. However, since we downsample the pitch contours and filter out musically trivial patterns, we retain around 17.5\,million pattern candidates (subsequences) after data pre-processing step. In the intra-recording pattern discovery block, for all the recordings, nearly 1.41\,trillion distance computations are done to obtain 79,172 seed patterns. In the inter-recording pattern detection block, nearly 12.42\,trillion distance computations are done to obtain 15 million search patterns for each variant of the method. These numbers give us an idea about the computational complexity of the task and shows the scale at which this study is performed.
+
+We now analyze the contribution of different lower bounds in pruning the search space. In~\tabref{tab:computationalStats} we show in percentage the number of times the program counter exits after a lower bound computation with respect to the total number of distance computations. As mentioned before, the total number of distance computations are 1.41\,trillion for intra-recording pattern discovery and 12.42\,trillion for inter-recording pattern detection. 
+
+From~\tabref{tab:computationalStats} it becomes evident that the lower bounding methods are more effective in inter-recording pattern detection as compared to intra-recording pattern discovery. This is expected as different songs may correspond to different \glspl{raga} and hence use different set of musical notes.
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=\figSizeHundred]{ch06_patterns/figures/discovery/combinedPatterns.pdf}
+	\end{center}
+	\caption{Examples of the discovered melodic patterns.}
+	\label{fig:combinedPatternsDiscovered}
+\end{figure}
+
+
+Before presenting formal evaluations, we show a few examples of the discovered melodic patterns in Fig.~\ref{fig:combinedPatternsDiscovered}. Our approach robustly extracts patterns in different scenarios such as large local time warpings~(b), uniform scaling~(c), patterns with silence regions~(d) and across different tonic pitches~(e and f). It is worth mentioning that, during the process of annotation, the musician found several musically interesting results. For example, striking similarity between phrases of two different \glspl{raga}, between phrases in sung melodies and the melodies played on instruments (Violin or V\={i}\d{n}a), and phrases sung by different artists. Many of the discovered patterns are the characteristic melodic phrases of the \gls{raga}, which are the primary cues for \gls{raga} recognition. Overall, the  obtained results are musically relevant and can be used to establish meaningful relationships between audio recordings.
+
+
+
+
+We now proceed to formal evaluations. We first evaluate the performance of the intra-recording pattern discovery task. We find that the fraction of melodically similar seed pairs within each seed category S1, S2 and S3 consistently decreases: 0.98, 0.67 and 0.31, respectively. To further examine the separation between melodically similar and dissimilar seed pairs, we compute the ROC curve (Fig.~\ref{fig:combinedROCPatternDiscovery}, solid blue line). The knee of such curve corresponds to a precision of approximately 80\% for 10\% of false positive cases. This indicates that the chosen \gls{dtw}-based distance measure is a sufficiently good candidate for computing melodic similarity for the case of intra-recording seed pattern discovery. 
 
 \begin{table} 
 	\centering
@@ -682,19 +779,18 @@ We now proceed to formal evaluations. We first evaluate the performance of the i
 	
 \end{table}
 
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/discovery/seedROC.pdf}
+	\end{center}
+	\caption{ROC curve for seed pairs and search patterns (using $V_2$) in the evaluation set.}%\vspace{-1em}
+	\label{fig:combinedROCPatternDiscovery}
+\end{figure}
 
 
-%\begin{figure}
-%	\begin{center}
-%		\includegraphics[keepaspectratio = true, height=4cm, scale=1]{figures/seedROC.pdf}
-%	\end{center}
-%	\caption{ROC curve for seed pairs and search patterns (using $V_2$) in the evaluation set.}%\vspace{-1em}
-%	\label{fig:combinedROC}
-%\end{figure}
+Next, we evaluate the performance of inter-recording pattern detection task and assess the effect of the four \gls{dtw} cost variants of Sec~\ref{sec:rankRefinement} (denoted by $V_1 \dots V_4$). To investigate the dependence of  the performance on the category of the seed pair, we perform the evaluation within each seed category (Table~\ref{tab:meanAveragePrecision}). In addition, we also present a box plot of corresponding average precision values (Fig.~\ref{fig:boxPlotMAPPatternDiscovery}). In general, we observe that every method performs well for category S1, with a MAP score around 0.9 and no statistically significant difference between each other. For category S2, $V_2$ and $V_3$ perform better than the rest and the difference is found to be statistically significant. The performance is poor for the third category S3 for every variant. The difference in performance between any two methods across seed categories is statistically significant. We observe that MAP scores across different seed categories correlate well with the fraction of melodically similar seed pairs in that category (discussed above). This suggests that patterns which find good matches within a recording (i.e.,~low distance $D$) also correlate with more repetitions across recordings.
 
-Next, we evaluate the performance of inter-recording pattern detection task and assess the effect of the four \gls{dtw} cost variants of Sec~\ref{sec:rankRefinement} (denoted by $V_1 \dots V_4$). To investigate the dependence of  the performance on the category of the seed pair, we perform the evaluation within each seed category (Table~\ref{tab:meanAveragePrecision}). In addition, we also present a box plot of corresponding average precision values (Fig.~\ref{fig:boxPlotMAP}). In general, we observe that every method performs well for category S1, with a MAP score around 0.9 and no statistically significant difference between each other. For category S2, $V_2$ and $V_3$ perform better than the rest and the difference is found to be statistically significant. The performance is poor for the third category S3 for every variant. The difference in performance between any two methods across seed categories is statistically significant. We observe that MAP scores across different seed categories correlate well with the fraction of melodically similar seed pairs in that category (discussed above). This suggests that patterns which find good matches within a recording (i.e.,~low distance $D$) also correlate with more repetitions across recordings.
-
-Finally, we analyze the distance distribution of search patterns for the best performing method $V_2$ (Fig.~\ref{fig:combinedROC}, dashed red line). We observe that the separability between melodically similar and dissimilar subsequences in this case is poorer than the one obtained for the seed pairs (solid blue line). This indicates that it is much harder to differentiate melodically similar from dissimilar patterns when the search is performed across recordings. This can be attributed to the fact that phrases of two allied \glspl{raga} are differentiated based on subtle melodic nuances~\cite{Viswanathan2004}. Hence, one faces a much more difficult task. 
+Finally, we analyze the distance distribution of search patterns for the best performing method $V_2$ (Fig.~\ref{fig:combinedROCPatternDiscovery}, dashed red line). We observe that the separability between melodically similar and dissimilar subsequences in this case is poorer than the one obtained for the seed pairs (solid blue line). This indicates that it is much harder to differentiate melodically similar from dissimilar patterns when the search is performed across recordings. This can be attributed to the fact that phrases of two allied \glspl{raga} are differentiated based on subtle melodic nuances~\cite{Viswanathan2004}. Hence, one faces a much more difficult task. 
 
 \begin{table} 
 	\centering
@@ -713,14 +809,18 @@ Finally, we analyze the distance distribution of search patterns for the best pe
 	
 \end{table}
 
-%
-%\begin{figure}
-%	\begin{center}
-%		\includegraphics[keepaspectratio = true, width=\columnwidth, scale=1]{figures/boxPlot.pdf}
-%	\end{center}
-%	\caption{Boxplot of average precision for variants of rank refinement method ($V_i$) for each seed category. }%\vspace{-1em}
-%	\label{fig:boxPlotMAP}
-%\end{figure}
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/discovery/boxPlot.pdf}
+	\end{center}
+	\caption{Boxplot of average precision for variants of rank refinement method ($V_i$) for each seed category. }%\vspace{-1em}
+	\label{fig:boxPlotMAPPatternDiscovery}
+\end{figure}
+
+\subsection{Summary}
+\label{sec:patterns_pattern_discovery_summary}
+
+
 
 
 \section{Characterization of Melodic Patterns}
