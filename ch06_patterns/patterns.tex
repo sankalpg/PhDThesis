@@ -677,8 +677,18 @@ After discovering melodic patterns within each audio recording, we now proceed t
 
 As mentioned before, the lower bounds used for speeding up the distance computations are not valid for any variant of the \gls{dtw} distance. This constraint governed the choices made for the \gls{dtw} variant and the parameter settings for computing melodic similarity in both the intra and the inter-recording pattern processing blocks. However, once the top matches are found, nothing prevents us from reordering the ranked list using any variant of the \gls{dtw} distance. This is because the number of top matches we consider ($M=200$) per query is orders of magnitude smaller than the total number of subsequences obtained from the entire audio collection. For every query pattern, we now recompute the melodic similarity with its top M search patterns using a more robust and a better performing variant of the \gls{dtw} distance.
 
-During rank refinement, we select a \gls{dtw} step condition of $\lbrace(1,2), (1,1), (2,1)\rbrace$ to avoid some pathological warpings of the path. This step condition, which also acts as a local constraint was shown to better model the melodic similarity in~\secref{sec:patterns_melodic_similarity_results_discussions}. Furthermore, we investigate four different distance measures $d_i$, $i=1,\dots 4$, used in the computation of the \gls{dtw} cost matrix as described below. %(Fig.~\ref{fig:Distances}).
+During rank refinement, we select a \gls{dtw} step condition of $\lbrace(1,2), (1,1), (2,1)\rbrace$ to avoid some pathological warpings of the path. This step condition, which also acts as a local constraint was shown to better model the melodic similarity in~\secref{sec:patterns_melodic_similarity_results_discussions}. Furthermore, we investigate four different distance measures $d_i$, $i=1,\dots 4$, used in the computation of the \gls{dtw} cost matrix. These distance measures are described below in~\eqref{eq:distance_measures_discovery}. For a better understanding of the distance measures we show them in~\figref{fig:Distances_DTW_discovery}.
 %We choose $d_1 = \delta^2$, $d_2=\delta$, $d_3 = \delta-25$ if $\delta>25$ or %$d_3=0$ otherwise, $d_4 = (\delta-\phi)^{1.5} + \varphi$ if $\delta>100$ or $d_4 %= d_3$ otherwise. 
+
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/discovery/distances.pdf}
+	\end{center}
+	\caption{Output of four distance measures as a function of cityblock distance $\delta$. }
+	\label{fig:Distances_DTW_discovery}
+\end{figure}
+
 
 \begin{equation}
 \begin{aligned}
@@ -696,7 +706,7 @@ d_4 &=
 d_3, & \text{otherwise}
 \end{cases}
 \end{aligned}
-\label{eq:distances}
+\label{eq:distance_measures_discovery}
 \end{equation}
 
 \noindent where $\delta = |p_1-p_2|$ is the city block distance between two pitch values and all numeric values are in Cent scale. We set $\phi =99.555$ and $\varphi = 74.7$ to maintain point and slope continuity of the function. The formulation for these different distance measures ($d_i$) is inspired by our own experience and some of the approaches we find in the literature~\citep{Ishwar2013,Rao2014}. We denote the four variants of the rank refinement method by $V_i$, $i=1\dots 4$.
@@ -704,7 +714,7 @@ d_3, & \text{otherwise}
 
 \subsection{Evaluation}
 
-\subsection{Music Collection}
+\subsubsection{Music Collection}
 \label{sec:pattern_discovery_musiccollection}
 
 The music collection used for studying the task of pattern discovery in this section comprises 365\,hours Carnatic music. It contains 1764 audio recordings, which are carefully compiled as a part of the CompMusic Carnatic music corpus (\secref{sec:corpus_carnatic_music_corpus}). As explained in~\secref{sec:corpus_carnatic_music_corpus}, these audio recordings are ripped from commercially released music CDs. The selected music material is diverse in terms of the number of artists, gender of lead artists, number of different \glspl{raga}, year of release and various forms within Carnatic music.
@@ -712,7 +722,7 @@ The music collection used for studying the task of pattern discovery in this sec
 \TODO{If time permits provide statistics of this dataset}
 
 
-\subsection{Evaluation Methodology}
+\subsubsection{Evaluation Methodology}
 \label{sec:evaluationmethodology}
 
 One of the challenges in an unsupervised data-driven approach such as the one we use for discovering melodic patterns is evaluation. We here perform a quantitative evaluation based on expert feedback. For the entire dataset we obtain over 15\,million search patterns for each of the rank refinement methods. We divide seed patterns into three categories based on the distance between the seed pairs, which we denote by $D$. The distribution of the distance $D$ between the seed pattern pairs is shown in~\figref{fig:SeedPatternsDistanceDistribution}. Then, to have an equal representation from the range of values of $D$, 200 seed pairs equally distributed among these categories are randomly selected for evaluation. Seed category boundaries are $\mu \pm 1.5\sigma$, where $\mu$ and $\sigma$ are the mean and the standard deviation of the distribution of $D$. For every selected seed pattern we consider the first 10 search patterns for each of the four rank refinement methods for evaluation. Thus, in total, we obtain 200 seed pairs and 8,000 search patterns for expert evaluation.
@@ -737,6 +747,22 @@ To quantify the musician's assessment of the similarity between the melodic patt
 
 Before presenting the results of the evaluation of the discovered patterns, we provide details in terms of the number of patterns and \gls{dtw} computations done at each step. Our dataset comprising 365\,hours of audio data contains nearly 300\,million pitch samples (considering 225\,Hz as the sampling rate of the pitch contours). In a brute force segmentation scenario that would amount to roughly the same number of pattern candidates. However, since we downsample the pitch contours and filter out musically trivial patterns, we retain around 17.5\,million pattern candidates (subsequences) after data pre-processing step. In the intra-recording pattern discovery block, for all the recordings, nearly 1.41\,trillion distance computations are done to obtain 79,172 seed patterns. In the inter-recording pattern detection block, nearly 12.42\,trillion distance computations are done to obtain 15 million search patterns for each variant of the rank-refinement method. These numbers give us an idea about the computational complexity of the task and shows the scale at which this study is performed.
 
+\begin{table} 
+	\begin{centering}
+		\begin{tabular}{ c | c c }
+			\tabletop
+			Lower bound   	& Intra-rec.(\%)		&	Inter-rec.(\%) \\	
+			\tablemid
+			LB\_KIM\_FL   	& 52	&	45 \\	
+			LB\_Keogh\_EQ   	& 23	&	51 \\
+			LB\_Keogh\_EC   		& 1	&	3 \\
+			\tablebot
+		\end{tabular}
+		\caption{Percentage of exits after a lower bound computation with respect to the total number of distance computations.}
+		\label{tab:computationalStats}	
+		\par \end{centering}	
+\end{table}
+
 We now analyze the contribution of different lower bounds in pruning the search space. In~\tabref{tab:computationalStats} we show in percentage the number of times the program counter exits after a lower bound computation with respect to the total number of distance computations. As mentioned before, the total number of distance computations are 1.41\,trillion for intra-recording pattern discovery and 12.42\,trillion for inter-recording pattern detection. From~\tabref{tab:computationalStats} we see that the \gls{dtw} computation is avoided in 76\% and 99\% of the distance computations done in the intra-recording pattern discovery and the inter-recording pattern detection task, respectively. It is evident that the lower bounding methods are more effective in the former case compared to the latter. This is expected as different songs may correspond to different \glspl{raga} and hence use different set of musical notes. An interesting observation here is that LB\_KIM\_FL (first-last) lower bound whose computational complexity is $\mathcal{O}(1)$ prunes nearly 50\% of the total numbers of possible subsequence pairs. 
 
 \begin{figure}
@@ -747,25 +773,9 @@ We now analyze the contribution of different lower bounds in pruning the search 
 	\label{fig:combinedPatternsDiscovered}
 \end{figure}
 
-We show a few examples of the discovered melodic patterns in~\figref{fig:combinedPatternsDiscovered}. Our approach robustly extracts patterns in different scenarios such as large local time warpings~(b), uniform scaling~(c), patterns with silence regions~(d) and across different tonic pitches~(e and f). It is worth mentioning that, during the process of annotation, the musician found several musically interesting results. For example, striking similarity between phrases of two different \glspl{raga}, between phrases in sung melodies and the melodies played on instruments (Violin or \Gls{vina}), and phrases sung by different artists. Many of the discovered patterns are the characteristic melodic phrases of the \glspl{raga}, which are the primary cues for \gls{raga} recognition. Overall, we find that the obtained results are musically relevant and can be used to establish meaningful relationships between audio recordings.
+To demonstrate the capabilities of the approach, we show a few examples of the discovered melodic patterns in~\figref{fig:combinedPatternsDiscovered}. Our approach robustly extracts patterns in different scenarios such as large local time warpings~(b), uniform scaling~(c), patterns with silence regions~(d) and across different tonic pitches~(e and f). It is worth mentioning that, during the process of annotation, the musician found several musically interesting results. For example, striking similarity between phrases of two different \glspl{raga}, between phrases in sung melodies and the melodies played on instruments (Violin or \Gls{vina}), and phrases sung by different artists. Many of the discovered patterns are the characteristic melodic phrases of the \glspl{raga}, which are the primary cues for \gls{raga} recognition. Overall, we find that the obtained results are musically relevant and can be used to establish meaningful relationships between audio recordings. We explore the usability of these discovered patterns in the task of automatic \gls{raga} recognition in~\secref{sec:phrase_based_feature_extraction}.
 
-We now proceed to formal evaluations. We first evaluate the performance of the intra-recording pattern discovery task. We find that the fraction of melodically similar seed pairs within each seed category S1, S2 and S3 consistently decreases: 0.98, 0.67 and 0.31, respectively. To further examine the separation between melodically similar and dissimilar seed pairs, we compute the ROC curve (Fig.~\ref{fig:combinedROCPatternDiscovery}, solid blue line). The knee of such curve corresponds to a precision of approximately 80\% for 10\% of false positive cases. This indicates that the chosen \gls{dtw}-based distance measure is a sufficiently good candidate for computing melodic similarity for the case of intra-recording seed pattern discovery. 
-
-\begin{table} 
-	\begin{centering}
-	\begin{tabular}{ c | c c }
-\tabletop
-		Lower bound   	& Intra-rec.(\%)		&	Inter-rec.(\%) \\	
-\tablemid
-		LB\_KIM\_FL   	& 52	&	45 \\	
-		LB\_Keogh\_EQ   	& 23	&	51 \\
-		LB\_Keogh\_EC   		& 1	&	3 \\
-\tablebot
-	\end{tabular}
-	\caption{Percentage of exits after a lower bound computation with respect to the total number of distance computations.}
-	\label{tab:computationalStats}	
-\par \end{centering}	
-\end{table}
+We now present our formal evaluations. We first evaluate the performance of the intra-recording pattern discovery task. We find that the fraction of melodically similar seed pairs within each seed category S1, S2 and S3 consistently decreases: 0.98, 0.67 and 0.31, respectively. This is expected as the seed categories are created based on the distance ($D$) between the seed pairs. These numbers indicate that the computed distance strongly correlates to the melodic similarity between the patterns. However, from these numbers we do not get much information about the amount of separation between the distance distributions of melodically similar and dissimilar seed pattern pairs. To examine the separation, we compute the ROC curve as shown in~\figref{fig:combinedROCPatternDiscovery} (solid blue line). The knee of the curve corresponds to a precision of approximately 80\% for 10\% of false positive cases. This indicates that the chosen \gls{dtw}-based distance measure is a sufficiently good candidate for computing melodic similarity for the case of intra-recording seed pattern discovery. 
 
 
 \begin{figure}
@@ -776,40 +786,46 @@ We now proceed to formal evaluations. We first evaluate the performance of the i
 	\label{fig:combinedROCPatternDiscovery}
 \end{figure}
 
-
-Next, we evaluate the performance of inter-recording pattern detection task and assess the effect of the four \gls{dtw} cost variants of Sec~\ref{sec:rankRefinement} (denoted by $V_1 \dots V_4$). To investigate the dependence of  the performance on the category of the seed pair, we perform the evaluation within each seed category (Table~\ref{tab:meanAveragePrecision}). In addition, we also present a box plot of corresponding average precision values (Fig.~\ref{fig:boxPlotMAPPatternDiscovery}). In general, we observe that every method performs well for category S1, with a MAP score around 0.9 and no statistically significant difference between each other. For category S2, $V_2$ and $V_3$ perform better than the rest and the difference is found to be statistically significant. The performance is poor for the third category S3 for every variant. The difference in performance between any two methods across seed categories is statistically significant. We observe that MAP scores across different seed categories correlate well with the fraction of melodically similar seed pairs in that category (discussed above). This suggests that patterns which find good matches within a recording (i.e.,~low distance $D$) also correlate with more repetitions across recordings.
-
-Finally, we analyze the distance distribution of search patterns for the best performing method $V_2$ (Fig.~\ref{fig:combinedROCPatternDiscovery}, dashed red line). We observe that the separability between melodically similar and dissimilar subsequences in this case is poorer than the one obtained for the seed pairs (solid blue line). This indicates that it is much harder to differentiate melodically similar from dissimilar patterns when the search is performed across recordings. This can be attributed to the fact that phrases of two allied \glspl{raga} are differentiated based on subtle melodic nuances~\cite{Viswanathan2004}. Hence, one faces a much more difficult task. 
-
+\TODO{make the row and colum spacing consistent across tables}
 \begin{table} 
 	\begin{centering}	
-	\begin{tabular}{ c | c c c c}
-		\hline\hline
-		Seed Category   & $V_1$		&	$V_2$ & $V_3$	 &	$V_4$ 	\\	
-		\hline
-		S1 & 0.92    &	0.92		&	0.91    &	0.89\\
-		S2 & 0.68    &	0.73		&	0.73    &	0.66\\
-		S3 & 0.35    &	0.34    &	0.35    &	0.35\\
-		\hline\hline
-	\end{tabular}
-	\caption{MAP scores for four variants of rank refinement method ($V_i$) for each seed category (S1, S2 and S3).}
-	\label{tab:meanAveragePrecision}
-\par \end{centering}	
+		\begin{tabular}{ c | c c c c}
+			\tabletop
+			Seed Category   & $V_1$		&	$V_2$ & $V_3$	 &	$V_4$ 	\\	
+			\tablemid
+			S1 & 0.92    &	0.92		&	0.91    &	0.89\\
+			S2 & 0.68    &	0.73		&	0.73    &	0.66\\
+			S3 & 0.35    &	0.34    &	0.35    &	0.35\\
+			\tablebot
+		\end{tabular}
+		\caption{MAP scores for four variants of rank refinement method ($V_i$) for each seed category (S1, S2 and S3).}
+		\label{tab:meanAveragePrecision_pattern_discovery}
+		\par \end{centering}	
 \end{table}
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/discovery/boxPlot.pdf}
+		\includegraphics[width=\figSizeHundred]{ch06_patterns/figures/discovery/boxPlot.pdf}
 	\end{center}
-	\caption{Boxplot of average precision for variants of rank refinement method ($V_i$) for each seed category. }%\vspace{-1em}
+	\caption{Boxplot of average precision values for the different variants of the rank refinement method ($V_i$) for each seed category. }
 	\label{fig:boxPlotMAPPatternDiscovery}
 \end{figure}
+
+Next, we evaluate the performance of inter-recording pattern detection task and assess the effect of the four \gls{dtw} cost variants explained in~\secref{sec:patterns_discovery_results} (denoted by $V_1 \dots V_4$). To investigate the dependence of the performance on the category of the seed pair, we perform the evaluation within each seed category. In~\tabref{tab:meanAveragePrecision_pattern_discovery} we show the \gls{map} scores obtained for the different variants of the rank refinement method ($V_1, V_2, V_3$ and $V_4$) for each seed category (S1, S2 and S3). In addition, we also present a box plot of corresponding average precision values in~\figref{fig:boxPlotMAPPatternDiscovery}. In general, we observe that every method performs well for category S1, with a MAP score around 0.9 and no statistically significant difference between each other. For category S2, $V_2$ and $V_3$ perform better than the rest and the difference is found to be statistically significant. The performance is poor for the third category S3 for every variant. The difference in performance between any two methods across seed categories is statistically significant. We observe that MAP scores across different seed categories correlate well with the fraction of melodically similar seed pairs in that category (discussed above). This means that the seed pattern pairs that have low distance $D$ between them (in other words repeating patterns) obtain higher average precision when used as query patterns. It suggests that repeating patterns do have some significance, they are not a product of coincidence, and therefore, they are more likely to recur across recordings. Note that we do not imply that every repeating pattern is (equally) musically significant or is a characteristic phrase of a \gls{raga}. There are different types of repeating patterns in melodies of \gls{iam}. The task of characterizing the discovered patterns is addressed in~\secref{sec:patterns_characterization_of_melodic_patterns} \TODO{rehphrase this last part}
+
+Finally, we analyze the distance distributions of melodically similar and dissimilar search patterns. For this we use the best performing rank-refinement variant $V_2$. To examine the separation in the distance distribution, we compute the ROC curve as shown in~\ref{fig:combinedROCPatternDiscovery} (dashed red line). We observe that the separability between melodically similar and dissimilar subsequences in this case is poorer than the one obtained for the seed pairs (solid blue line). This suggests that it is much harder to differentiate melodically similar from dissimilar patterns when the search is performed across recordings. This can be attributed to the total number of melodically dissimilar subsequences (irrelevant documents) for a query subsequence, which is orders of magnitude higher in the task of pattern search across recordings compared to the task of pattern discovery within a recording. \TODO{rephrase?}. In addition, one of the reasons can also be that the phrases of two allied \glspl{raga} (which are musically dissimilar) are differentiated based on subtle melodic nuances~\cite{Viswanathan2004}. Hence, one faces a much more difficult task, which demands a more sophisticated melodic similarity measure. \TODO{see if this last para needs any rephrasing.} 
 
 
 \subsection{Summary}
 \label{sec:patterns_pattern_discovery_summary}
 
+We presented a data-driven unsupervised approach for melodic pattern discovery in large audio collections of \gls{iam}. We first discovered seed patterns within a recording and later used those as queries to detect similar occurrences in the entire dataset. We used DTW-based distance measures to compute melodic similarity and compared four different rank refinement methods. A randomly sampled subset of the extracted melodic patterns was evaluated by a professional Carnatic musician. We showed that a variant of DTW using cityblock distance performs slightly better than the rest. We also found that a DTW-based distance measure performs reasonably well for intra-recording discovery. However, we require better melodic similarity measures for searching occurrences across recordings. This is a clear direction for future works. Our results also indicate that patterns which find close matches within a recording have a larger number of repetitions across recordings. 
 
+
+
+%################################################################################################################
+%########################################### IMPROVING MELODIC SIMILARITY #######################################
+%################################################################################################################
 
 
 \section{Characterization of Melodic Patterns}
