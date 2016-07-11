@@ -639,7 +639,7 @@ In \algoref{alg:algorithmdiscovery} we show the pattern discovery routine that u
 	\State \texttt{best\_so\_far} = \texttt{infinity};
 	\For{$i$=0; $i \leq N-1$; $i$++}
 		\For{$j$=0; $j \leq N-1$; $j$++}
-			\State  \texttt{dist\_FL} = \texttt{LB\_FL($\mathrm{S}_i$, $\mathrm{S}_j$)}			
+			\State  \texttt{dist\_FL} = \texttt{LB\_KIM\_FL($\mathrm{S}_i$, $\mathrm{S}_j$)}			
 			\If {\texttt{dist\_FL} < \texttt{best\_so\_far}}				
 				\State  \texttt{dist\_EQ} = \texttt{LB\_Keogh($\mathrm{S}_i$, $\mathrm{S}_j$)}				
 				\If {\texttt{dist\_EQ} < \texttt{best\_so\_far}}				
@@ -735,11 +735,9 @@ To quantify the musician's assessment of the similarity between the melodic patt
 \subsection{Results and Discussion}
 \label{sec:patterns_discovery_results}
 
-Before presenting the results of the evaluation of the discovered patterns, we provide details in terms of the number of patterns and \gls{dtw} computations done at each step. Our dataset comprising 365\,hours of audio data contains nearly 300\,million pitch samples (considering 225\,Hz as the sampling rate of the pitch contours). In a brute force segmentation scenario that would amount to roughly the same number of pattern candidates. However, since we downsample the pitch contours and filter out musically trivial patterns, we retain around 17.5\,million pattern candidates (subsequences) after data pre-processing step. In the intra-recording pattern discovery block, for all the recordings, nearly 1.41\,trillion distance computations are done to obtain 79,172 seed patterns. In the inter-recording pattern detection block, nearly 12.42\,trillion distance computations are done to obtain 15 million search patterns for each variant of the method. These numbers give us an idea about the computational complexity of the task and shows the scale at which this study is performed.
+Before presenting the results of the evaluation of the discovered patterns, we provide details in terms of the number of patterns and \gls{dtw} computations done at each step. Our dataset comprising 365\,hours of audio data contains nearly 300\,million pitch samples (considering 225\,Hz as the sampling rate of the pitch contours). In a brute force segmentation scenario that would amount to roughly the same number of pattern candidates. However, since we downsample the pitch contours and filter out musically trivial patterns, we retain around 17.5\,million pattern candidates (subsequences) after data pre-processing step. In the intra-recording pattern discovery block, for all the recordings, nearly 1.41\,trillion distance computations are done to obtain 79,172 seed patterns. In the inter-recording pattern detection block, nearly 12.42\,trillion distance computations are done to obtain 15 million search patterns for each variant of the rank-refinement method. These numbers give us an idea about the computational complexity of the task and shows the scale at which this study is performed.
 
-We now analyze the contribution of different lower bounds in pruning the search space. In~\tabref{tab:computationalStats} we show in percentage the number of times the program counter exits after a lower bound computation with respect to the total number of distance computations. As mentioned before, the total number of distance computations are 1.41\,trillion for intra-recording pattern discovery and 12.42\,trillion for inter-recording pattern detection. 
-
-From~\tabref{tab:computationalStats} it becomes evident that the lower bounding methods are more effective in inter-recording pattern detection as compared to intra-recording pattern discovery. This is expected as different songs may correspond to different \glspl{raga} and hence use different set of musical notes.
+We now analyze the contribution of different lower bounds in pruning the search space. In~\tabref{tab:computationalStats} we show in percentage the number of times the program counter exits after a lower bound computation with respect to the total number of distance computations. As mentioned before, the total number of distance computations are 1.41\,trillion for intra-recording pattern discovery and 12.42\,trillion for inter-recording pattern detection. From~\tabref{tab:computationalStats} we see that the \gls{dtw} computation is avoided in 76\% and 99\% of the distance computations done in the intra-recording pattern discovery and the inter-recording pattern detection task, respectively. It is evident that the lower bounding methods are more effective in the former case compared to the latter. This is expected as different songs may correspond to different \glspl{raga} and hence use different set of musical notes. An interesting observation here is that LB\_KIM\_FL (first-last) lower bound whose computational complexity is $\mathcal{O}(1)$ prunes nearly 50\% of the total numbers of possible subsequence pairs. 
 
 \begin{figure}
 	\begin{center}
@@ -749,35 +747,26 @@ From~\tabref{tab:computationalStats} it becomes evident that the lower bounding 
 	\label{fig:combinedPatternsDiscovered}
 \end{figure}
 
-
-Before presenting formal evaluations, we show a few examples of the discovered melodic patterns in Fig.~\ref{fig:combinedPatternsDiscovered}. Our approach robustly extracts patterns in different scenarios such as large local time warpings~(b), uniform scaling~(c), patterns with silence regions~(d) and across different tonic pitches~(e and f). It is worth mentioning that, during the process of annotation, the musician found several musically interesting results. For example, striking similarity between phrases of two different \glspl{raga}, between phrases in sung melodies and the melodies played on instruments (Violin or V\={i}\d{n}a), and phrases sung by different artists. Many of the discovered patterns are the characteristic melodic phrases of the \gls{raga}, which are the primary cues for \gls{raga} recognition. Overall, the  obtained results are musically relevant and can be used to establish meaningful relationships between audio recordings.
-
-
-
+We show a few examples of the discovered melodic patterns in~\figref{fig:combinedPatternsDiscovered}. Our approach robustly extracts patterns in different scenarios such as large local time warpings~(b), uniform scaling~(c), patterns with silence regions~(d) and across different tonic pitches~(e and f). It is worth mentioning that, during the process of annotation, the musician found several musically interesting results. For example, striking similarity between phrases of two different \glspl{raga}, between phrases in sung melodies and the melodies played on instruments (Violin or \Gls{vina}), and phrases sung by different artists. Many of the discovered patterns are the characteristic melodic phrases of the \glspl{raga}, which are the primary cues for \gls{raga} recognition. Overall, we find that the obtained results are musically relevant and can be used to establish meaningful relationships between audio recordings.
 
 We now proceed to formal evaluations. We first evaluate the performance of the intra-recording pattern discovery task. We find that the fraction of melodically similar seed pairs within each seed category S1, S2 and S3 consistently decreases: 0.98, 0.67 and 0.31, respectively. To further examine the separation between melodically similar and dissimilar seed pairs, we compute the ROC curve (Fig.~\ref{fig:combinedROCPatternDiscovery}, solid blue line). The knee of such curve corresponds to a precision of approximately 80\% for 10\% of false positive cases. This indicates that the chosen \gls{dtw}-based distance measure is a sufficiently good candidate for computing melodic similarity for the case of intra-recording seed pattern discovery. 
 
 \begin{table} 
-	\centering
-	\caption{Percentage of exits after a lower bound computation with respect to the total number of distance computations.}
-	\label{tab:computationalStats}
-	
+	\begin{centering}
 	\begin{tabular}{ c | c c }
-		
-		\hline\hline
+\tabletop
 		Lower bound   	& Intra-rec.(\%)		&	Inter-rec.(\%) \\	
-		
-		\hline 
-		%LB\_KIM\_FL   		& 1.0	&	1.0 \\	
+\tablemid
 		LB\_KIM\_FL   	& 52	&	45 \\	
 		LB\_Keogh\_EQ   	& 23	&	51 \\
 		LB\_Keogh\_EC   		& 1	&	3 \\
-		%DTW 	& 24	&	1 \\
-		\hline\hline
-		
+\tablebot
 	\end{tabular}
-	
+	\caption{Percentage of exits after a lower bound computation with respect to the total number of distance computations.}
+	\label{tab:computationalStats}	
+\par \end{centering}	
 \end{table}
+
 
 \begin{figure}
 	\begin{center}
@@ -793,10 +782,7 @@ Next, we evaluate the performance of inter-recording pattern detection task and 
 Finally, we analyze the distance distribution of search patterns for the best performing method $V_2$ (Fig.~\ref{fig:combinedROCPatternDiscovery}, dashed red line). We observe that the separability between melodically similar and dissimilar subsequences in this case is poorer than the one obtained for the seed pairs (solid blue line). This indicates that it is much harder to differentiate melodically similar from dissimilar patterns when the search is performed across recordings. This can be attributed to the fact that phrases of two allied \glspl{raga} are differentiated based on subtle melodic nuances~\cite{Viswanathan2004}. Hence, one faces a much more difficult task. 
 
 \begin{table} 
-	\centering
-	\caption{MAP scores for four variants of rank refinement method ($V_i$) for each seed category (S1, S2 and S3).}
-	\label{tab:meanAveragePrecision}
-	
+	\begin{centering}	
 	\begin{tabular}{ c | c c c c}
 		\hline\hline
 		Seed Category   & $V_1$		&	$V_2$ & $V_3$	 &	$V_4$ 	\\	
@@ -806,7 +792,9 @@ Finally, we analyze the distance distribution of search patterns for the best pe
 		S3 & 0.35    &	0.34    &	0.35    &	0.35\\
 		\hline\hline
 	\end{tabular}
-	
+	\caption{MAP scores for four variants of rank refinement method ($V_i$) for each seed category (S1, S2 and S3).}
+	\label{tab:meanAveragePrecision}
+\par \end{centering}	
 \end{table}
 
 \begin{figure}
@@ -816,6 +804,7 @@ Finally, we analyze the distance distribution of search patterns for the best pe
 	\caption{Boxplot of average precision for variants of rank refinement method ($V_i$) for each seed category. }%\vspace{-1em}
 	\label{fig:boxPlotMAPPatternDiscovery}
 \end{figure}
+
 
 \subsection{Summary}
 \label{sec:patterns_pattern_discovery_summary}
