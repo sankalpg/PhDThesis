@@ -1,0 +1,52 @@
+Chapter labels - chap:<short chapter name>
+Section labels - sec:<short chapter name>_<short section name>
+Fig/Tables labels - tab/fig:<short chapter name>_<short section name>_<figure/table label>
+
+
+
+
+INTRO OF A CHAPTER
+
+1) 'What' is the meaining of that task, what do we aim to achieve with that task
+2) 'Why' is this task important to do, how can it help us, what are the applications (apps + tools + feed to other computationsl tasks)
+3) What have we done in this chapter, what problems we have addressed, what solutions we have proposed, how we have evaluated, how we have compared, what have we concluded. OBJECTIVES OF THIS CHAPTER SHOULD BE CLEAR, NOT ONLY OF THE STUDIES WE HAVE CONDUCTED
+
+
+4) A bit more detailed description of the task. Context of the task. What are the challenges in this task, what are the opportunities of doing this task
+
+5) Has it been addressed in the past? How is it handled and what approaches are proposed for this task
+
+6) How are the approaches proposed not enough, what is the missing thing
+
+7) How have we addressed the gaps what is our proposal
+
+8) The organization of the Chapter and flow
+
+9) What studies are this chapter based on
+
+
+
+INTRO OF A METHOD/Procedure
+
+1) Objective of that block/procedure
+2) Is their related work, how is the approach taken inspired or related to previous work
+3) Justifications of the choices 
+4) What have we done
+5) How have we done
+6) Advantages of our way of doing
+7) How can be the output utilized in diff things
+8) What studies is this description based on
+9) Where is the implementation shared
+10) What are the crucial parameters
+
+CONCLUSIONS/SUMMARY IDEAS
+
+1) Summarizing what is presented, task addressed, broadly methodology adapted
+2) Summarizing the main results of the approach and possible implications
+3) Highlighting the applications of this result, where all it can help etc
+4) What are the fields of science used for this work!
+5) Overall contributions, what gap have we filled, have people done this kind of thing, if no, what is the contribution. 
+6) How can what is done can become a based for other studies!!!
+
+
+
