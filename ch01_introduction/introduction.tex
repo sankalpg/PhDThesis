@@ -3,41 +3,98 @@
 \chapter{Introduction}
 \label{chap:intro}
 
-\section{Motivation and Context}
-\label{sec:intro_motivation}
+%Ideas->Describing general picture of melodic analysis for description and characterization of IAM. The one we have used in several presentations.
+%Ideas-> When you talk about MIR first say what kinds of varied tasks. And then similarity at diff level and pattern recognition has been a focus since a long time! Talk about glass ceiling in similarities, (ref to Joan's thesis). This maybe because similarities has many variablesm and cultural influence is quite recognized one in that. 
+%Ideas-> Our ideas behinf using characteristic phrase is like cover song similarity. There is no comparison between two items for similarity. Its from ones mental abstractino or image. See joan's work to get more insights on how has he presented it.
+%Ideas-> read some more thesis on this topic and read intros from PR IITB, they are really good points 
+%
+%
+%Overall what all things
+%1) What are in generals the problems that world is facing related with digital music
+%2) What if machines can understand music like humans do, what can they do
+%
+%3) MIR dedicated to this kind of research
+%4) Varikous topics, variety of problems, basic research, applied reearch, interdesciplinary, mixture of approaches borrowed from other domains, 
+%
+%
+%Joan's approach: Straight starting from task at hand, motivating need for it --> MIR-->
+
+%
+%Basically I want to say that data and information is increasing at a fast pace. We ICT tech that can understand, interpret and make sense of digital data like humans do, so that they can make our interaction with the data and information better. So that we can utilize the data and information better in our lives. Many factors play role here, one of them is the cultural and social context. So bsically those factors should also be taken into account. Once these systems learn how to make sense of data, not only will we be able to consume that better but doing this exercise of making machines make sense of the data can also increase our understanding of the concepts surrounding us. This can also enable novel ways od doing stuff, far suprior than what human do for now. 
+%
+%
+
+%Technologies that can process digital data to understand and interpret it like humans do have becomes nearly a necessity in modern world. Such technology can not only perform tasks that humans already do but can also pave way for novel ways to interact with the data. During the process of developing such technologies we learn and undertand more about the phenomenon in the world. 
+
+
+
+
+
+
+\section{Motivation, Context and Relevance}
+\label{sec:intro_motivation_context_relevance}
 
 %Repeating structures are important information units in data such as text, DNA sequences, images, videos, speech and music~\citep{Buhler2002b,Herley2006}. Patterns are exploited in a variety of ways, ranging from signal level tasks such as data-compression~\citep{Atallah1999} to more cognitively complex tasks such as analyzing an art work~\citep{van2010texton}. In music domain, identification of repeating structures in a musical piece is fundamental to its analysis, understanding and interpretation~\citep{Cook1987,Lerdahl1983}. 
 
-
-
-\subsection{Music Information Retrieval}
+\subsection{\titlecap{\glsentrylong{mir}}}
 \label{sec:intro_motivation_mir}
 
-\begin{itemize}
-	\item What is music information retrieval
-	\item What is the context in which music information retrieval is growing
-	\item Why is MIR getting more important and finding many applications
-	\item Successful examples of MIR
-	\item What are the different contexts related with music that MIR can help in
-	\item what more?
-\end{itemize}
+\Gls{mir} is a growing interdisciplinary research field that primarily addresses topics involved in understanding and modeling of music using information processing methodologies~\citep{roadmap_mir}. In particular, it aims to advance our knowledge in representing, understanding, describing, retrieving and organizing music related data, which opens up wealth of possibilities to develop novel ways to interact with music~\citep{casey2008content,orio2006music,burgoyne2016music}. As mentioned \gls{mir} is interdisciplinary field, which stands at intersection of well established disciplines such as signal processing, pattern recognition, musicology, psychoacoustics, music perception and cognition, information science, and computer science (machine-learning). \TODO{remark that we are mainly talking about content based MIR}
+
+A significant effort in \gls{mir} is dedicated towards automatic description and characterization of music content to extract musically and semantically relevant information. Computational approaches in \gls{mir} for tasks such as melody extraction~\citep{salamon:phd:13}, chord estimation~\citep{mcvicar2014automatic}, music key estimation~\citep{peeters2006chroma}, motif discovery~\citep{collins2011improved,Conklin2010}, music structure analysis~\citep{paulus2010state,serra2012unsupervised}, music similarity~\citep{joan_thesis}, genre classification~\cite{aucouturier2003representing} and emotion recognition~\citep{kim2010music}, tempo and beat tracking~\citep{gouyon2005review,scheirer1998tempo} describe and characterize music pieces in terms of different musical aspects such as melody, rhythm, harmony, structure and emotion. However, the definition, interpretation and relevance of these musical aspects are not universal and vary significantly across different music traditions,  and personal, cultural and social contexts. As a result, a significant number of existing computational approaches in \gls{mir} might be hitting the so-called ``glass ceiling"~\citep{pachet2004improving,casey2008content}. This phenomenon is fairly evident from the slowing rate of improvement of the approaches in \gls{mir} over years, as seen in the results of MIREX\footnote{http://www.music-ir.org/mirex/wiki/MIREX\_HOME} evaluations. There exists a semantic-gap between the automatically extracted music descriptors from audio signals and the high level music concepts that humans relate to~\citep{celma2006foafing,casey2008content}. There is a need to bridge this gap and to take a broader perspective to describe music by also considering the cultural, social and user context into account~\citep{roadmap_mir}. \TODO{highlight lack of knowledge infusion from top dwn. Most approaches work on audio based on features and try to describe higher level concepts}.
+
+%
+%\begin{itemize}
+%	\item What is music information retrieval
+%	\item What is the context in which music information retrieval is growing
+%	\item Why is MIR getting more important and finding many applications
+%	\item Successful examples of MIR
+%	\item What are the different contexts related with music that MIR can help in
+%	\item what more?
+%\end{itemize}
 
 \subsection{CompMusic Project}
 \label{sec:intro_motivation_compmusic}
 
-\begin{itemize}
-	\item MIR is important and things are going fine, what's the issue then? Is there any bias in the kind of music tradition being analyzed in MIR right now? whats the reason for this bias
-	\item What kind of music traditions are kind of ignored for anlaysis now?
-	\item What's the reason why no one wants to consider them?
-	\item Is it even relevant to consider them? Which ones amongst them are the easiest ones or the most relevant ones to consider
-	\item Does everyone get benefitted from this kind of work? how things improve overall by doing this?
-	\item What is the objective of COmpMusic project, which music traditions it focuses on. 
-	\item What kind of methodologies are being worked upon in compmusic, What is the main philosophy
-	\item The idea of open-acess and reproducibility
-	\item what more?
-\end{itemize}
+Despite great advancements in the field of \gls{mir} in the last two decades, the outcome and generated knowledge to a large extent is not directly applicable to several music cultures of the world. This can be largely attributed to the fact that the research in \gls{mir} has been mainly focused on the western commercial music of the past few decades~\citep{XavierSerra2011}, and therefore, it does not generalize to other music traditions. The western commercial music has shaped the undertaken research problems in \gls{mir}, and as a natural consequence, the obtain solutions are best suited for this music repertoire. These solutions often fail to respond to the multicultural reality present in the musics of the world~\citep{XavierSerra2011}. To gain insights on the factors responsible for capping the performance of the current \gls{mir} approaches (\secref{sec:intro_motivation_mir}) and to make the research outcome applicable to different music traditions of the world, development of these approaches in a multicultural context is important. Note that by this we do not imply that research  in \gls{mir} is only focused on western popular music. There has been work done on analysis of flamenco, folk, ethnomusicology, western classical \TODO{rephrase last line and put references}.
 
-\section{Computational Melodic Analysis of Indian Art Music: Challenges and Opportunities}
+CompMusic\footnote{http://compmusic.upf.edu/} (Computational Models for the Discovery of the World'd Music) is a research project funded by the European Research Council that was born from the concerns mentioned above~\citep{XavierSerra2011}. The project focuses on five music traditions of the world: Hindustani (North India), Carnatic (South India), Turkish-makam (Turkey), Arab-Andalusian (Maghreb), and Beijing Opera (China). One of the main objectives of the CompMusic project is to promote and develop multicultural perspectives in \gls{mir}. In particular, the project aims to advance in the automatic description of music within \gls{mir} by identifying musically relevant problems coming from culture-specific contexts and by developing domain specific approaches to solve them. The solutions devised in this project can result in new computational methodologies of interest for a wide variety of music information processing problems. Thus, addressing the research problems in the context of diverse music cultures will not only help in advancing the knowledge in the specific cultures, but also expand the scope of current research in \gls{mir}. Furthermore, it can help bridge the semantic-gap and push the glass-ceiling.
+
+The work presented in this dissertation for description and characterization of melodies in \gls{iam} has been carried out as a part of the CompMusic project and it aligns with the goals of the project. The cultural specificities of \gls{iam} have shaped our research work at each step such as the selection of relevant research problems, building of the corpus and the choices made different procedures and parameter settings. The insights gained in dealing with the challenges posed by the peculiar characteristics of melodies in \gls{iam} will help expand the scope of the existing approaches in \gls{mir}. Our work pave way for cross-cultural studies, which can help us get better insights into the influence of cultural training on perception and cognition of different musical aspects.
+
+
+
+%\begin{itemize}
+%	\item MIR is important and things are going fine, what's the issue then? Is there any bias in the kind of music tradition being analyzed in MIR right now? whats the reason for this bias
+%	\item What kind of music traditions are kind of ignored for anlaysis now?
+%	\item What's the reason why no one wants to consider them?
+%	\item Is it even relevant to consider them? Which ones amongst them are the easiest ones or the most relevant ones to consider
+%	\item Does everyone get benefitted from this kind of work? how things improve overall by doing this?
+%	\item What is the objective of COmpMusic project, which music traditions it focuses on. 
+%	\item What kind of methodologies are being worked upon in compmusic, What is the main philosophy
+%	\item The idea of open-acess and reproducibility
+%	\item what more?
+%\end{itemize}
+
+\subsection{Description and Characterization of Melodies}
+\label{sec:intro_description_characterization_melodies}
+
+Melody is the fundamental aspct in most music traditons
+Several different ways to approach description and characterization of music. one of whch is through doing the same for the melody. very widely addressed..
+Automatic analysis for description and characterization of melodies is an imp task, core in mir. examples of the tasks that do that...
+
+Melodies is composed of xxxx, heirarchical arrangement. Tonal and Temporal arramgement. 
+
+One of the ways is pattenr, very imp. 
+
+We can describe at diff level, notes it uses, key and mode, stylistic description, structural description, description of the characterisics
+
+In this thesis focus on patterns. 
+
+what is raga and makam commonly called asm doing that is imp.
+
+description 
+\section{Melodic Analysis in Indian Art Music: Challenges and Opportunities}
 \label{sec:intro_challenges_oppurtunities}
 
 %
@@ -57,8 +114,12 @@
 %	\item use cases/ applications / relevant problems within similarity and search and discovery
 %\end{itemize}
 
-\section{Scope and Broad Objectives}
+\section{Scope and Objectives}
 \label{sec:intro_scope_context_relevance}
+
+we take an engineering perspective, MIR types approach of describing music, within and following CompMusic ideologies, culture specific in a multicultral context, applied, and micture of culture specific and 
+
+In this section include both broad objectives of this thesis and present a list of detailed research tasks done, since they are quite many in numbers that will give an idea about how they relate to the overall goal and this is the only place where we are going to enurate them.
 
 \section{Organization and Outline of the thesis}
 \label{sec:intro_organization}
