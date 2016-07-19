@@ -80,41 +80,116 @@ The work presented in this dissertation for description and characterization of 
 \subsection{Description and Characterization of Melodies}
 \label{sec:intro_description_characterization_melodies}
 
-\blockquote[{\cite{ringer2001melody}}]{``Melody, defined as pitched sounds arranged in musical time in accordance with given cultural conventions and constraints, represents a universal human phenomenon traceable to prehistoric times...wherever music became an intrinsic condition of life, certain common melodic procedures were necessarily adopted, because they satisfied basic physiological and biological requirements, if not the aesthetic imagination, per se....`Melodic unity' is configurationally speaking an intrinsic psychoacoustical function of melodic generation in a given historical-cultural context and music in the end be experienced as such...Above all, as a social product, melody is part and parcel of the cultural or subculture to which it owes its existence..."}
 
-Essentially, there are two points to note here in the context of this dissertation; first, that melody is innate to humans and is one of the fundamental aspects in most music traditions, and second, the perception of melody is deeply effected by cultural influences. The innate characteristics of melody in human life is evident from a number of activities that surround us,  for example, lullabies, nursery rhythms, importance of intonation in languages, and in music. Melody also facilitate memorization. Even historically, when the printed medium was not prevalent, knowledge was orally passed on over generations, often set to music to make memorization easier. Even today, as listeners, very often we try to reproduce the melody of the song we want to remember. The importance of melody in our musical experiences makes its analysis an interesting topic for scientific study. With no surprises, a significant part of the research efforts in \gls{mir} is dedicated to computational analysis of melodic aspects of music.
+\blockcquote{ringer2001melody}{``\textit{Melody, defined as pitched sounds arranged in musical time in accordance with given cultural conventions and constraints, represents a universal human phenomenon traceable to prehistoric times...wherever music became an intrinsic condition of life, certain common melodic procedures were necessarily adopted, because they satisfied basic physiological and biological requirements, if not the aesthetic imagination, per se....`Melodic unity' is configurationally speaking an intrinsic psychoacoustical function of melodic generation in a given historical-cultural context and music in the end be experienced as such...Above all, as a social product, melody is part and parcel of the cultural or subculture to which it owes its existence...}''}
 
+Essentially, there are two points to note here; first, that melody is innate to humans and is one of the fundamental aspects in most music traditions, and second, the perception of melody is shaped by cultural influences. Melody is manifested in a number of phenomena that surround us, for example, in lullabies, nursery rhymes, intonation in languages, and music. Melody also facilitates memorization. Historically, when the printed medium was not prevalent, knowledge was transmitted orally across generations, often set to music to make memorization easier. Even today, as listeners, very often we try to reproduce the melody of the song we want to recall. The importance of melody in our musical experiences makes its analysis an interesting topic of research. With no surprises, a significant part of the efforts in music content processing in \gls{mir} is dedicated to computational analysis of the melodic aspects of music. Such an analysis is even more important for melody dominant music cultures such as \gls{iam} and Flamenco.
 
+The arrangement of the pitched sounds in a melody is shown to be hierarchical in nature\TODO{ref: generative theory}, where the pitched sounds group together into melodic phrases or motifs, which in turn group into sections that together form stanzas finally leading to the musical piece. At each level there is a complex interplay between these different elements of melody. Computational analysis of these melodic elements can provide insights into musical concepts operating at different levels of abstraction and complexity, and eventually help us automatically extract higher level semantic descriptors.
 
+\textquote*[Cambouropoulos2006]{\textit{Music becomes intelligible to a great extent through self-reference, i.e.,~through the relations of new musical passages to previously heard material. Structural repetition and similarity are crucial devices in establishing such relations}}. Repeating structures or patterns in melodies play a pivotal role in organizing an incoming music stream. \textquote[schenker1980harmony]{Only by repetition can a series of tones be characterized as something definite. Only repetition can demarcate a series of tones and its purpose. Repetition thus is the basis of music as an art}. This makes the computational analysis of melodic patterns and motifs a crucial task in the automatic description of melodies, which is also evident from a large number of studies dedicated to this topic. Discovery of repeated melodic patterns within a music piece (often referred to as intra-opus discovery) can help reveal the structure of the piece, and form the basis for studying the stylistic characteristics of an artist. Such repeating patterns when analyzed at a corpus level can not only help establish similarities between different artists and compositions, but also, facilitate studying stylistic influences across them. 
 
+It is worth noting that the idea of repetition as mentioned above refers to a musical repetition, wherein across occurrences the musical unit can undergo a series of transformations. Few examples of such transformations in the case of melodic patterns are pitch transposition, non-linear time-scaling and addition/deletion of melodic ornaments. A computational approach for pattern discovery should be robust to such transformations. Thus, the task of discovering patterns encapsulates the task of computing similarity in music, which is crucial in developing novel methodologies for music recommendation, navigation and music discovery. As mentioned above, the perception of melody is shaped by the cultural influences. The meaning, interpretation, functional role, relevance and manifestation of the elements of melody as discussed above may significantly differ across music cultures. For a holistic understanding of these musical concepts it is important that they are studied within a multicultural context. 
 
-As described by XXX "Melody is". Melody is also said imbibed in human XXX, basically when a child cries, intonatino in languages etc etc. Description and characterization of melodies is thus a fundamental task in computational analysis of music in \gls{mir}. Such a description can enable XXX, XX ,XX. 
-
-Melodies can also be seen as being structured hierarchically according to the melodic framework prevalent in a music tradition. Starting from the basic unit, which is a pitched sound, a note, through a temporal interplay of such events building the whole melody. TYpically arrangement is such that notes group together into phrases, which is a unit that can be considered as a unit incorporating artists thoughts. Silence plays an important role in this structrures and a delimiter. Patterns play an important role in comprehension of melodies and are very important to be studied. It is also linked to lyrics and the strucrture in the lyrics, different lines, stanjas and probably like verses, chorus, which is another hrirarchy of this structure. And then when seen as a whole the fullpiece is basically a piece of art conveying what artist wanted to express and musically is making a unit of a framework (like raga tala). Issue of similarity
-
-Description and characterization are umbrella terms involving a number of computational tasks that act at different levels of abstraction and musical concepts.  Study and analysis of each of these units and different strucrtures at different level is contributing towards description and characterization of melodies. Studing XX is helpgul in XXX and form the basis or input for other tasks. Studying XXX is helpful in blah blah.
-
+Al the reasons mentioned above motivate us to study computational approaches for the description and characterization of melodies in \gls{iam}. Unavailability or rather inappropriateness of symbolic type music representation, long duration of music performances (sometimes over an hour), distinct melodic characteristics, improvisatory nature of music, and complex melodic framework of \gls{raga} (Section XX) are few peculiar characteristics of \gls{iam} that provide unique opportunities and challenges to expose the shortcomings of the current \gls{mir} systems. Devising novel approaches that overcome these challenges will not only result in making \gls{mir} more accessible to \gls{iam}, but it will also push the boundaries of \gls{mir} technologies. Such computational approaches can enable \gls{raga}-based music retrieval from large audio collections, semantically meaningful music discovery, musically informed navigation and several applications around music pedagogy. In the next section we provide a detailed overview of the challenges and opportunities offered by \gls{iam} in computational analysis of its melodies, which further adds to our motivation behind selecting \gls{iam} for this study.
 
 
-Several different ways to approach description and characterization of music. one of whch is through doing the same for the melody. very widely addressed..
-Automatic analysis for description and characterization of melodies is an imp task, core in mir. examples of the tasks that do that...
-
-Melodies is composed of xxxx, heirarchical arrangement. Tonal and Temporal arramgement. 
-
-One of the ways is pattenr, very imp. 
-
-We can describe at diff level, notes it uses, key and mode, stylistic description, structural description, description of the characterisics
-
-In this thesis focus on patterns. 
-
-what is raga and makam commonly called asd doing that is imp. and why
 
 
-so basically melody is imp, melodic desc is imp, it can help in XXXXXX, it can be at various levels, low level to high level, each one has its own imp, we focus more on patterns, patterns are imp, and why so..then melodic framework, the most abstracted higher level view, we do that too, and since that is closely linked with mood and emotions that directly becomes relevant for recommendation and navigation and those kind of stuff
+
+
+
+%
+%concept of similaries, and then recommendation and navigation etc
+%
+%What can we do in practical applications with this this
+%
+%In the past done this this, since these differ we need to do for indian...
+%
+%
+%These elements, their role, significance and manifestation changes across music cultures. also context changes, many things are diff signal etc...copmlexity is didd. concept of music generation is diff.. improvisation idea is diff...idea of composition is diff
+%
+%
+%
+%While a precise objective definition of melody is argued to be impossible (XXX), at a 
+%
+%Automatic description and characterization of melodies are broad topics with a wide scope that can include a number of computational tasks addressing different aspects of melodies. 
+%
+%
+%Melodies can also be seen as being structured hierarchically according to the melodic framework prevalent in a music tradition. Starting from the basic unit, which is a pitched sound, a note, through a temporal interplay of such events building the whole melody. TYpically arrangement is such that notes group together into phrases, which is a unit that can be considered as a unit incorporating artists thoughts. Silence plays an important role in this structrures and a delimiter. Patterns play an important role in comprehension of melodies and are very important to be studied. It is also linked to lyrics and the strucrture in the lyrics, different lines, stanjas and probably like verses, chorus, which is another hrirarchy of this structure. And then when seen as a whole the fullpiece is basically a piece of art conveying what artist wanted to express and musically is making a unit of a framework (like raga tala). Issue of similarity
+%
+%Description and characterization are umbrella terms involving a number of computational tasks that act at different levels of abstraction and musical concepts.  Study and analysis of each of these units and different strucrtures at different level is contributing towards description and characterization of melodies. Studing XX is helpgul in XXX and form the basis or input for other tasks. Studying XXX is helpful in blah blah.
+%
+%
+%
+%Several different ways to approach description and characterization of music. one of whch is through doing the same for the melody. very widely addressed..
+%Automatic analysis for description and characterization of melodies is an imp task, core in mir. examples of the tasks that do that...
+%
+%Melodies is composed of xxxx, heirarchical arrangement. Tonal and Temporal arramgement. 
+%
+%One of the ways is pattenr, very imp. 
+%
+%We can describe at diff level, notes it uses, key and mode, stylistic description, structural description, description of the characterisics
+%
+%In this thesis focus on patterns. 
+%
+%what is raga and makam commonly called asd doing that is imp. and why
+%
+%
+%so basically melody is imp, melodic desc is imp, it can help in XXXXXX, it can be at various levels, low level to high level, each one has its own imp, we focus more on patterns, patterns are imp, and why so..then melodic framework, the most abstracted higher level view, we do that too, and since that is closely linked with mood and emotions that directly becomes relevant for recommendation and navigation and those kind of stuff
+%
+%First time pattern discovery is addressed to this level
 
 description 
 \section{Melodic Analysis in Indian Art Music: Challenges and Opportunities}
 \label{sec:intro_challenges_oppurtunities}
+
+The current thesis focuses on developing computational approaches for description and characterization of melodies in \gls{iam}. There are ample reasons why such an analysis is relevant for \gls{iam}, and why working on \gls{iam} can help broaden the scope of the current approaches for melody processing in \gls{mir}. In this section we highlight these reasons by presenting the main challenges in the computational melodic analysis of \gls{iam}, and by presenting the new opportunities that it offers. 
+
+
+One of the challenges in computational analysis of \gls{iam} arises from the fact that symbolic music scores corresponding to music performances are nearly inexistent, and audio recordings are the main data source for computational analysis.  Though, there exists a small repertoire of prescriptive symbolic scores corresponding to musical compositions, the scope and relevance of such music representation in \gls{iam} is practically restricted to its role as a tool for documentation and music training. This is understandable as musical compositions merely act as skeletons in music performances in \gls{iam}, and the essence of the music lies in the improvisatory aspects. In addition, the existing symbolic music representations do not capture the nuances of the melodic material used in the performances of \gls{iam}. \gls{iam} has been transmitted orally across generations and has predominantly followed a tradition of Guru-Shishya parampara (``lineage'' system).  Due to these factors \gls{iam} mainly possesses audio music collections. It is well known in \gls{mir} that computational analysis using audio recordings is challenging as extraction of a reliable melodic representation from audio signals is still an active topic of research. However, at the same time working with the audio music collections of \gls{iam} can be seen as an opportunity.  The extraction of predominant melody in audio recordings of \gls{iam} appears to be relatively easier compared to other music traditions such as rock, jazz and orchestral music. This performance difference is evident from the MIREX results\footnote{\TODO{link?}}. It can be attributed to the fact that a performance of \gls{iam} typically involves a small number of simultaneously playing musical instruments compared to other music traditions, resulting into a sparse polyphonic audio content, which is easier to process for the melody extraction algorithms. In addition, since \gls{iam} is a melody dominant tradition and comprises largely vocal-based music, the lead voice is predominant compared to the accompanying instruments. These factor make the extraction of predominant melody in \gls{iam} relatively easier. 
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=\figSizeHundred]{ch01_introduction/figures/phraseClassesExample.pdf}
+	\end{center}
+	\caption{Pitch contours of occurrences of three different characteristic melodic phrases in Hindustani music. Contours are frequency transposed and time shifted for a better visualization.\TODO{diff aspect ratio?}}
+	\label{fig:phraseComplexityExample_intro}
+\end{figure}
+
+An aspect that makes processing of melodies in \gls{iam} both interesting and challenging at the same time is the improvisatory nature of the music. The characteristic melodic phrases of \glspl{raga} (Section XX) act as the basis for artists to improvise, providing them with a medium to express creativity during \gls{raga} rendition. Since the essence of the music largely lies in the improvisatory aspects, artists bring in novelty through creatively transforming these melodic phrases as much as possible within the periphery defined by the \gls{raga} grammar. Therefore, the surface representation of these melodic phrases vary a lot across their occurrences. This high degree of variations in terms of the overall duration of a phrase, non-linear time warpings and the added melodic ornaments together pose a big challenge for melodic similarity computation and pattern extraction in \gls{iam}. In~\figref{phraseComplexityExample_intro} we illustrate this variability by showing the pitch contours of the different occurrences of three characteristic melodic phrases of the \gls{raga} Alaiya Bilawal. We can clearly see that the duration of a phrase across its occurrences varies a lot and the steady melodic regions are highly varied in terms of the duration and the presence of melodic ornaments. Thus, due to the improvisatory nature of the music, pattern processing in melodies of \gls{iam} becomes a challenging task. This context provides an opportunity to get deeper insights into the perception of melodic similarity and into the cultural influences on melodic similarity. 
+
+Melodic characteristics in \gls{iam} differ significantly from a lot of other music traditions that are often the focus of studies in \gls{mir}. One peculiar characteristic of the melodies in Carnatic music (Section XX) is the meandering movement of the predominant pitch. Such melodic characteristics pose a challenge to melody transcription, a step often involved in the process of abstraction of melody. In addition, since these rapid pitch movements are characteristics aspect of melodic patterns they need to be preserved while computing melodic similarity, implying a fine grained representation of melody. Using a fine grained continuous predominant pitch representation of melody makes the task of pattern discovery further more difficult because of the computational complexity involved in the task.
+
+%A beat level summarization of features, which is often performed in a number of tasks in \gls{MIR} to reduce the time-series dimensionality is not suited for melodies in \gls{iam}. 
+
+%As mentioned, a composition mainly acts as a skeleton or a framework for an artist to construct a melody. In fact, typically the opening unmetered section, \gls{alap}, is not not based on any composition but is completely improvised. 
+
+A vast majority of approaches for pattern processing in music focus on intra-opus or intra-recording pattern discovery. Since computational complexity is often one of the primary concerns in such a task, long duration of the performances in \gls{iam} pose a unique challenge. For long duration audio recordings lasting around an hour computational of self similarity becomes a computationally challenging task. To better understand the magnitude of computational complexity, consider a predominant pitch sequence of an hour long recording, sampled at 50\,Hz\footnote{a near-optimal sampling rate reported in \secref{sec:patterns_evaluation_of_similarity_measures}}. The pitch sequence comprises $1.8x10^{5}$ number of samples, which in turn amounts to nearly $3.2x10^{10}$ cells in the self similarity matrix. \XXX{S}{J}{Is this a strong point? how can we make it impressive} Thus, long performances in \gls{iam} introduce another set of challenges to this task. However, at the same time it is an opportunity as it provides a use-case to devise and test scalable approaches for pattern discovery from audio recordings. 
+
+
+%Techniques that are typically employed to reduce the computational complexity in pattern processing task are; transcribe the melody to generate a symbolic score like representation and considering dimensionality reduced version of the feature, usually done through beat duration averaging. Applicability of both these techniques is questionable in the context of \gls{iam} owing the melodic characteristics. Melodic transcription is very complex and an ill defined task for melodic in \gls{iam}. And beat level summarization is musically not relevant since we are intersted in considering fine grained melodic nuances in the computation of melodic similarity. Moreover, estimation of beat locations is a  \TODO{complete it nicely}
+
+\TODO{we are looking after really short duration patterns, that is also another challenge, please note that. Also typically beat summarization is done to reduce computational complexity, that can't be done here because 1) we wnt to present melodic nuances as the yare imp for simlarity and beat restimation is hard. Also for very small duration pattern that doesn't make sense....}
+
+
+There is no standard frequency that is used as a reference for tuning instruments and voice in a music performances of \gls{iam}. The tonic pitch of the lead artist acts as the base frequency using which all the other instruments are tuned. Tonic pitch varies across artists and may vary across the different performance of an artist. In addition, an artist is free to choose any arbitrary frequency as a tonic in a performance. This aspect of music performance in \gls{iam} makes it difficult to directly compare melodies across different artists and audio recordings. 
+
+There are many music traditions in the world where the manifestations of the seemingly transversal musical concepts such as melody and rhythm present a wide range of challenges to the current computational approaches in \gls{mir}. However, a very important factor behind selecting \gls{iam} for this analysis is the existence of musicological literature and well established music theory. \gls{iam} is an old music tradition whose origins can be traced back to the Vedas dating back to 1500 BCE. With that history, musical concepts in \gls{iam} are well studied and there exists a rich literature. This can be regarded as an opportunity, since basing the methodologies on the established music theories can speed up the advancements of computational approaches. 
+
+
+
+%However at the same time not every computational task can directly benefit from the existing music theory. For example, the theory behind the concept of \gls{raga} in \gls{iam} elaborates WTF is happening to my mind!!!!!
+
+%In this dissertation our focus is from an engineering perspective and solely on the computational aspects, we take established music theories for granted. Notably that is one major difference between an analysis like ours and studies in ethno-musicollogical. 
+
+
+These challenges and opportunities offered by \gls{iam} sets in a unique context to develop novel methodologies for computational melodic anlaysis, and thus, improve the current state of the art in \gls{mir}. 
+
+
+
+
+
 
 %
 %\begin{itemize}
@@ -136,9 +211,41 @@ description
 \section{Scope and Objectives}
 \label{sec:intro_scope_context_relevance}
 
+In this section we define the scope of our research work, clearly outline our objectives and enumerate the research questions addressed in this dissertation. 
+
+Computational description and characterization of melodies is a broad research topic that can be approached from a number of perspectives involving different disciplines of science. In this dissertation we take a data-driven engineering approach and focus solely on the computational aspects of melodic analysis, building on top of the established music theories. Our applied research methodology, stands at an intersection of signal processing, machine learning and time-series analysis. We focus on content-based processing and the input data used in our approaches comprise audio recordings. The only exception to this is the approach described in~\secref{sec:patterns_characterization_of_melodic_patterns}, which utilize the associated editorial metadata of the recordings in addition to the audio data. The proposed approaches in this thesis are devised and evaluated on music collections in \gls{iam} that includes both Hindustani and Carnatic music. We now outline our broad objectives in this dissertation.
+
+\begin{itemize}
+%	\item To identify research tasks within computational melodic analysis that are relevant to \gls{iam}, and which can take advantage of the challenges and opportunities offered by this music tradition to improve the state of the art in \gls{mir}.
+	\item To perform a critical review of the existing approaches in \gls{mir} relevant to our work in this dissertation.
+	\item To build representative music corpora of \gls{iam} that comprises audio recordings and relevant editorial metadata, and use that to compile sizable and well annotated tests datasets for melodic analyses.
+	\item To devise scalable pattern processing in \gls{iam}, which includes computational of melodic similarity, discovery and characterization of melodic patterns.
+	\item To devise culture-aware and human interpretable approaches for automatic \gls{raga} recognition.
+\end{itemize}
+
+There are a number of research tasks within computational melodic analysis that are addressed in this dissertation, which sum up to achieve our broad objectives. Here we provide a brief description of these specific tasks, which also gives an idea about the evolution of the work done in this dissertation.
+
+As mentioned before, tonic pitch of the lead artist in a performance is the base frequency used for tuning by other instruments. For a meaningful comparison of melodies across artists and their recordings, identification of the tonic pitch in a recording is paramount. In recent past there are a number of methods proposed for tonic identification. However, a comparative evaluation of these methods on a common set of datasets is required to reach a consensus on the best performing method. We perform an extensive comparative evaluation of seven different tonic identification methods on six diverse datasets of \gls{iam} and use the best method in our work.
+
+Melody segmentation is a crucial step in pattern processing tasks, specifically in discovery of melodic patterns. Since \gls{nyas} \gls{svara} occurrences mark the boundaries of characteristic melodic phrases of \glspl{raga} in Hindustani music, detection of such segments becomes important for melodic segmentation. We therefore address the task of automatically segmenting \gls{nyas} \gls{svara} segments in the melodies of \gls{iam}.
+
+
+
+
+
+\TODO{Objective of reproducible research, CompMusic philosophy}
+
+
+
+
+
+
+
+
+
 we take an engineering perspective, MIR types approach of describing music, within and following CompMusic ideologies, culture specific in a multicultral context, applied, and micture of culture specific and 
 
-In this section include both broad objectives of this thesis and present a list of detailed research tasks done, since they are quite many in numbers that will give an idea about how they relate to the overall goal and this is the only place where we are going to enurate them.
+
 
 \section{Organization and Outline of the thesis}
 \label{sec:intro_organization}
