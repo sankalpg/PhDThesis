@@ -219,13 +219,22 @@ Computational description and characterization of melodies is a broad research t
 %	\item To identify research tasks within computational melodic analysis that are relevant to \gls{iam}, and which can take advantage of the challenges and opportunities offered by this music tradition to improve the state of the art in \gls{mir}.
 	\item To perform a critical review of the existing approaches in \gls{mir} relevant to our work in this dissertation.
 	\item To build representative music corpora of \gls{iam} that comprises audio recordings and relevant editorial metadata, and use that to compile sizable and well annotated tests datasets for melodic analyses.
-	\item To devise scalable pattern processing in \gls{iam}, which includes computational of melodic similarity, discovery and characterization of melodic patterns.
+	\item To devise an approach to discover musically relevant melodic patterns in sizable audio collections of \gls{iam}
 	\item To devise culture-aware and human interpretable approaches for automatic \gls{raga} recognition.
 \end{itemize}
 
-There are a number of research tasks within computational melodic analysis that are addressed in this dissertation, which sum up to achieve our broad objectives. Here we provide a brief description of these specific tasks, which also gives an idea about the evolution of the work done in this dissertation.
 
-As mentioned before, tonic pitch of the lead artist in a performance is the base frequency used for tuning by other instruments. For a meaningful comparison of melodies across artists and their recordings, identification of the tonic pitch in a recording is paramount. In recent past there are a number of methods proposed for tonic identification. However, a comparative evaluation of these methods on a common set of datasets is required to reach a consensus on the best performing method. We perform an extensive comparative evaluation of seven different tonic identification methods on six diverse datasets of \gls{iam} and use the best method in our work.
+There are a number of research tasks within computational melodic analysis that are addressed in this dissertation (\figref{fig:tasks}), which sum up to achieve our broad objectives. Here we provide a brief description of these specific tasks, which also gives an idea about the evolution of the work done in this dissertation.
+
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[width=\figSizeHundred]{ch01_introduction/figures/tasks.pdf}
+	\end{center}
+	\caption{Computational tasks within melodic analysis of \gls{iam} addressed in this dissertation.}
+	\label{fig:tasks}
+\end{figure}
+
+As mentioned before, tonic pitch of the lead artist in a performance is the base frequency used for tuning by other instruments. For a meaningful comparison of melodies across artists and their recordings, identification of the tonic pitch in a recording is paramount. In recent past there are a number of methods proposed for tonic identification. However, a comparative evaluation of these methods on a common set of datasets is required to reach a consensus on the best performing method. We perform an extensive comparative evaluation of seven different tonic identification methods on six diverse datasets of \gls{iam} and identify the approaches that are robust and more accurate on both Hindustani and Carnatic music. In the process we also gain valuable insights into the types of errors made by tonic identification approaches, a useful information while devising methods that require tonic of the recordings as one of the inputs. 
 
 Melody segmentation is a crucial step in pattern processing tasks, specifically in discovery of melodic patterns. Since \gls{nyas} \gls{svara} occurrences mark the boundaries of characteristic melodic phrases of \glspl{raga} in Hindustani music, detection of such segments becomes important for melodic segmentation. We therefore address the task of automatically segmenting \gls{nyas} \gls{svara} segments in the melodies of \gls{iam}.
 
