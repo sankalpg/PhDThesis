@@ -224,7 +224,7 @@ Computational description and characterization of melodies is a broad research t
 \end{itemize}
 
 
-There are a number of research tasks within computational melodic analysis that are addressed in this dissertation (\figref{fig:tasks}), which sum up to achieve our broad objectives. Here we provide a brief description of these specific tasks, which also gives an idea about the evolution of the work done in this dissertation.
+There are a number of research tasks within computational melodic analysis that are addressed in this dissertation, which sum up to achieve our broad objectives. We list these tasks in~\figref{fig:tasks}, starting from the bottom and building until the top. We now provide a brief description of these specific tasks to show their relation and relevance in our broad objectives. 
 
 \begin{figure}[h]
 	\begin{center}
@@ -234,27 +234,24 @@ There are a number of research tasks within computational melodic analysis that 
 	\label{fig:tasks}
 \end{figure}
 
-As mentioned before, tonic pitch of the lead artist in a performance is the base frequency used for tuning by other instruments. For a meaningful comparison of melodies across artists and their recordings, identification of the tonic pitch in a recording is paramount. In recent past there are a number of methods proposed for tonic identification. However, a comparative evaluation of these methods on a common set of datasets is required to reach a consensus on the best performing method. We perform an extensive comparative evaluation of seven different tonic identification methods on six diverse datasets of \gls{iam} and identify the approaches that are robust and more accurate on both Hindustani and Carnatic music. In the process we also gain valuable insights into the types of errors made by tonic identification approaches, a useful information while devising methods that require tonic of the recordings as one of the inputs. 
+As mentioned before, tonic pitch of the lead artist in a performance is the base frequency used for tuning by other instruments. For a meaningful comparison of melodies across artists and their recordings, identification of the tonic pitch in a recording is paramount. In recent years a number of methods are proposed for tonic identification, however, a consensus on the best performing approach is lacking since the evaluations are performed on different datasets, under different experimental conditions. We address this issue by performing an extensive comparative evaluation of seven different tonic identification methods on six diverse datasets of \gls{iam} and identify the approaches that are robust and more accurate on both Hindustani and Carnatic music. In the process we also gain valuable insights into the types of errors made by tonic identification approaches, a useful information while devising methods that require tonic of the recordings as one of the inputs.
 
-Melody segmentation is a crucial step in pattern processing tasks, specifically in discovery of melodic patterns. Since \gls{nyas} \gls{svara} occurrences mark the boundaries of characteristic melodic phrases of \glspl{raga} in Hindustani music, detection of such segments becomes important for melodic segmentation. We therefore address the task of automatically segmenting \gls{nyas} \gls{svara} segments in the melodies of \gls{iam}.
+Melody segmentation is an important and a well researched topic in melody description in \gls{mir}. It is a crucial step in pattern processing tasks, specifically in the task of discovering melodic patterns. To the best of our knowledge, there are no computational approaches that directly address phrase segmentation in melodies of \gls{iam} from audio recordings\footnote{At the time of starting of this thesis work, 2012}. It is well known from musicological studies that \gls{nyas} \gls{svara} occurrences mark the boundaries of characteristic melodic phrases of \glspl{raga} in melodies of Hindustani music. Thus, detection such segments in melodies can be an approach to melodic segmentation. We therefore address the task of automatically segmenting \gls{nyas} \gls{svara} segments in the melodies of Hindustani music. 
 
+Musically meaningful computation of melodic similarity is one of the most crucial steps in melodic pattern extraction. Since the task of melodic pattern discovery follows an unsupervised approach, its quantitative evaluation on sizable music collections is a challenging task. As a result of which, evaluating method used for computing melodic similarity also becomes difficult. Computation of melodic similarity in \gls{iam} is a work in progress and it has gained popularity during the coarse of this thesis. We address the task of computing melodic similarity in \gls{iam} with a focus to clearly understand the challenges involved in the task, to analyze quantitatively the influence of different processing steps and parameter values on the accuracy, and to finally select the best possible method that can be used for the pattern discovery task. Our main intention behind investigating melodic similarity is to bootstrap our approach for melodic pattern discovery. 
 
+We subsequently address the task of pattern discovery from large audio collections of \gls{iam}, which is one of the main objectives in this dissertation. In melodic pattern discovery we aim to extract all kinds of repeated melodic patterns, which can correspond to different types of melodic units in \gls{iam} with varying degree of musical relevance. In order to successfully use the discovered melodic patterns in analyzing high-level musical concepts such as \gls{raga}, it becomes important to assess the musical relevance of the discovered patterns. We therefore address the task of pattern characterization to identify the musically most relevant melodic patterns, the characteristic phrases of \glspl{raga}.
 
+Finally, we investigate one of the most studied and relevant topics in computational anlaysis of \gls{iam}, automatic \gls{raga} recognition. We aim to devise a culturally-aware approach utilizing the main cues that listeners of \gls{iam} exploit to recognize \glspl{raga}. 
 
-
-\TODO{Objective of reproducible research, CompMusic philosophy}
-
-
-
-
+This work in this thesis is done as a part of the CompMusic project, and it aligns with the goals of the project. The objectives of this thesis are directed towards a bigger goal of developing culture-aware computational approaches that can exploit characteristic features of a music traditions in order to produce a semantically meaningful description of the music. This thesis is also well aligned with the project's philosophy of open-access and reproducible research. All the data and code used to produce the results reported in this thesis is made openly available, with the exception of the commercial recordings, which is made accessible through personal contact\TODO{Ask xavier what to write!!}. In addition, whenever possible, we also make the output of our methods available to further facilitate reproducing the research results reported in this thesis.
 
 
-
-
-
-we take an engineering perspective, MIR types approach of describing music, within and following CompMusic ideologies, culture specific in a multicultral context, applied, and micture of culture specific and 
-
+\TODO{Should we be writing specific research questions???? given that our work is quite applied. Ask Xavier and Joan and then decide!!}
 
 
 \section{Organization and Outline of the thesis}
 \label{sec:intro_organization}
+
+
+
