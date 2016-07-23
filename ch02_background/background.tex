@@ -5,29 +5,18 @@
 
 \section{Introduction}
 
-In this chapter we present an overview of the terminology used in this work, music and scientific background, and literature review relevant to this thesis. In order to avoid possibilities of misunderstanding and confusions arising because of s
-
-we provide a brief discussion on the terminology used in this thesis, present an overview of the music and scientific background needed to better understand the concepts and present a review of the existing research work relevant to the topics addressed in this thesis. 
-
-
+In this chapter we provide the relevant music and scientific background for the work presented in this dissertation. We start with a brief discussion on the terminology used in this thesis (\secref{sec:background_terminology}). Subsequently, we provide an overview of the selected music concepts relevant to better understand our work (\secref{sec:music_background}). We then present a review of the literature related with the topics addressed in this thesis. We first present relevant work done in computational analysis of \gls{iam} (SEction XX), which includes approaches for tonic identification, automatic \gls{raga} recognition and melodic pattern processing. Then, we present work done for other music traditions within \gls{mir} on topics covering melodic pattern processing and key recognition (\secref{sec:background_relevant_work_other_music}). Finally, we provide an overview of the select scientific concepts in information retrieval, time-series analysis, complex networks and statistics (\secref{sec:background_scientific_background}). We conclude this chapter by providing a summary of the literature review, wherein we highlight the shortcomings of the existing approaches, and identify some possible venues for scientific contribution (\secref{sec:background_summary}). 
 
 \section{Terminology}
-\label{sec:terminology}
+\label{sec:background_terminology}
 
-The description of the terms that we provide here is not intended to be the formal definition. Since most of the terms 
+In this section we provide working definition of the selected terms we have used throughout the thesis. Since the thesis focuses on the melodic description of \gls{iam}, it is important to clearly understand the meaning of melody in the context of this thesis. Our aim here is not to formally define melody in an universal sense, which as we see from the literature has been a challenge in itself, with almost every definition falling short of considering some aspect or the other XXXX. It would not be an overstatement to say that there is no agreed definition of melody that suits every context. For a review of interesting definitions of melody we refer to XXXX. Before we present the definition of melody that we consider in this work, it is important to understand the performance or concert setup in \gls{iam}. Since this music tradition is performance-based, even the studio recordings follow the same setup. Performances in \gls{iam} have a clearly defined concept of a lead artist, who plays the central role (also literally positioned in the center of the stage) and all other instruments are considered the accompaniments. In this context, mergin relevant parts of the definitions given by~\cite{paiva2006melody,kim2000analysis,levitin2002memory} covers to a large extent the scope of melody in \gls{iam}. Their definitions in the respective order are: \textquote{``\textit{the dominant individual pitched line in a musical ensemble}''} and \textquote{``\textit{an auditory object that emerges from a series of transformations along the six dimensions: pitch, tempo, timbre, loudness, spatial location, and reverberant environment}''}.  The first definition falls short of considering several other dimensions of sound such as timbre and loudness that are important in perception and production of melody, which are taken into account in the second definition. The concept of audio as a mixture of sounds from multiple instruments (`\textit{ensemble}') is missing in the second definition, which the first definition takes into account. The idea of continuity and smoothness of melody is expressed by `\textit{line}' in the former and by `\textit{series of transformations}' in the latter. If we combine these two definitions we can rewrite our working definition as \textquote{``\textit{an auditory object that emerges from a continuous series of transformations along the six dimensions: pitch, tempo, timbre, loudness, spatial location, and reverberant environment, by the dominant individual sound source in a music ensemble}''}. Although, we only consider the pitch dimension of melody in this thesis. Thus, loosely speaking, for all practical purposes within the scope of this thesis, we represent melody by a continuous pitch time-series corresponding to the lead artist in an audio recording, also referred to as predominant pitch in the subsequent chapters. This definition does not explicitly take into account the rare case of two lead artists. Since in a majority of such cases the two lead sound sources are active sequentially in time, our definition encompasses this scenario by considering the active sound source as dominant. \TODO{please make this shit better, these thigns are so confusing and broad}
 
-Since the thesis focuses on the melodic description of \gls{iam}, it is important to clearly understand the meaning of melody in the context of this thesis. Our aim here is not to formally define melody in an universal sense, which as we see from the literature has been a challenge in itself, with almost every definition falling short of considering some aspect or the other XXXX. It would not be an overstatement to say that there is no agreed definition of melody that suits every context. For a review of interesting definitions of melody we refer to XXXX. Before we present the definition of melody that we consider in this work, it is important to understand the performance or concert setup in \gls{iam}. Since this music tradition is performance-based, even the studio recordings follow the same setup. Performances in \gls{iam} have a clearly defined concept of a lead artist, who plays the central role (also literally positioned in the center of the stage) and all other instruments are considered the accompaniments. In this context, combining the definitions given by~\cite{paiva2006melody,kim2000analysis,levitin2002memory} with a small modifications covers to a large extent the scope of melody in \gls{iam}. Their definitions in the respective order are: \textquote{``\textit{the dominant individual pitched line in a musical ensemble}''} and \textquote{``\textit{an auditory object that emerges from a series of transformations along the six dimensions: pitch, tempo, timbre, loudness, spatial location, and reverberant environment}''}.  The first definition falls short of considering several other dimensions of sound that are important in the perception or production of melody, which are present in the second definition. The concept of audio as a mixture of sounds from multiple instruments (`\textit{ensemble}') is missing in the second definition, which the first definition takes into account. The idea of continuity and smoothness of melody is expressed by `\textit{line}' in the former and by `\textit{series of transformations}' in the latter. If we combine these two definitions we can rewrite the definition as \textquote{``\textit{an auditory object that emerges from the component of the ensemble sound corresponding to the lead artist, through continuous series of transformations along the six dimensions: pitch, tempo, timbre, loudness, spatial location, and reverberant environment}''}. However, we only consider the pitch dimension of melody in this thesis. Thus, loosely speaking, for all practical purposes within the scope of this thesis, we represent melody by continuous pitch corresponding to the lead artist in the audio recording, also referred to as predominant pitch. This definition does not explicitly take into account the rare case of two lead artists. Since in a majority of such cases the two vocal lines are active sequentially in time, our definition encompasses this scenario. 
-
-and regard `\textit{dominant}' as the lead voice (making it specific to \gls{iam}) 
+Now that we have a working definition of melody, we proceed to define the scope of the terms such as melodic patterns, phrases and motifs in this thesis, and disambiguate them with other seemingly synonymous terms such as melodic fragment and segment. Melodic fragment or melodic segment in this thesis refers to a continuous subsequence of the pitch sequence. It does not entail any musical relevance in terms of the boundaries or the length of the subsequence. By a melodic pattern we refer to a repeating melodic fragment, where the scope and the meaning of repetition is based on the perceived melodic similarity. Across repetitions, a melodic fragment can undergo a series of time and pitch transformations allowed within the periphery of melodic framework (\gls{raga} in our case) without altering the identity of the melodic unit. Also, the melodic similarity here refers to the perceived similarity between melodic fragments when heard in isolation, as the local melodic context can influence the perception of similarity. Melodic patterns in this thesis do not entail any particular musical significance in terms them being characteristic of a melodic concept in \gls{iam}. The terms melodic pattens, fragments and segments are more from the perspective of signal or the time-series. Melodic phrases on the other hand are used in the context of music, as being a unit of melody which encapsulate an idea or a musical thought by an artist. Melodic motif is further high-level concept and we use it to refer to a particular type of characteristic patterns, in out thesis of \glspl{raga}, \gls{raga} motifs. 
 
 
-Melody
-Melodic Pattern
-Melodic Fragment or Segment
-Melodic phrase
-Melodic motif
-Recurrence, melodic recurrence, repetition
-Raga motif
+The word polyphonic in the context of audio recordings signifies that the recordings consists of a mixtue of multiple instruments playing simultaneously.
+
 
 \section{Music Background}
 \label{sec:music_background}
@@ -37,6 +26,7 @@ Raga motif
 \subsection{Melodies in Indian Art Music}
 
 \subsubsection{Tonic in Indian art music}
+\label{sec:background_tonic_in_iam}
 
 \subsubsection{Svaras}
 
@@ -60,9 +50,72 @@ Dey presents various interpretations and perspectives on the concept of ny\={a}s
 
 \subsubsection{Recurring Melodic Patterns in IAM}
 
+
 \section{Relevant Work in Indian Art Music}
+\label{sec:background_relevant_work_iam}
+
 
 \subsection{Tonic Identification}
+\label{sec:background_relevant_work_tonic_identification}
+
+Identification of tonic pitch of the lead artist in an audio recording is a crucial first step in tonal analysis of \gls{iam} (\secref{sec:background_tonic_in_iam}). Knowing the tonic pitch used in an audio recording enables a meaningful comparison of melodies across different artists and their recordings. In this section we review existing approaches for automatic tonic identification in audio collections of \gls{iam}. 
+
+As mentioned, there have been various efforts to automatically identify the tonic pitch of the lead artist in a performance of Indian art music~\citep{salamon2012multipitch,gulati2012two,bellur2012knowledge,ranjani2011carnatic,Sengupta2005b}. These approaches mainly differ in terms of the musical cues that they utilize to identify the tonic, the amount of input audio data used to perform this task and the type of music material they are devised for (Hindustani or Carnatic, vocal or
+instrumental, etc.). Despite the differences, all these approaches can be divided into three main processing blocks, as shown in~\figref{fig:tonic_identification_general_block_diagram}. The only exception to this schema is the approach proposed by~\cite{Sengupta2005b}.
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=\figSizeNinety]{ch05_preprocessing/figures/tonic_identification_block_diagram.pdf}
+	\end{center}
+	\caption[General block diagram of the processing steps used by tonic identification
+	approaches.]{General block diagram of the processing steps used by tonic identification
+		approaches.}
+	\label{fig:tonic_identification_general_block_diagram}
+\end{figure}
+
+
+In all the aforementioned approaches, the three main processing blocks are the following: feature extraction, feature distribution estimation and tonic selection. Since the task of tonic identification involves an analysis of the tonal content of the audio signal, the features extracted in the first block are always pitch related. In the second block, an estimate of the distribution of these features is obtained using either Parzen window based density estimation or by constructing a histogram. The feature distribution is then used in the third block to identify the tonic. The peaks of the distribution correspond to the most salient pitch values used in the performance (usually the \glspl{svara} of the \gls{raga}), one of which corresponds to the tonic pitch. As the most salient peak in the distribution is not guaranteed to be the tonic, various techniques are applied to select the peak that corresponds to the tonic.
+
+{\renewcommand{\arraystretch}{1.5}
+	\begin{sidewaystable} 
+		\begin{centering}
+			\begin{tabular}{ c c c c }
+				\tabletop			
+				Method 	&	Features	&	Feature Distribution	&	Tonic Selection \\
+				\tablemid			
+				\acrshort{tonicid_sengupta} \citep{Sengupta2005b}	&	Pitch \citep{AKDatta_1996} & N/A & Error minimization\\
+				
+				\acrshort{tonicid_ranjani_1}/\acrshort{tonicid_ranjani_2} \citep{ranjani2011carnatic}	&	Pitch \citep{BoersmaPaul2001} & Parzen-window-based \acrshort{pde}  & GMM fitting\\
+				
+				\acrshort{tonicid_justin} \citep{salamon2012multipitch} & Multi-pitch salience \citep{Salamon2011} & Multi-pitch histogram & Decision tree\\
+				
+				\acrshort{tonicid_sankalp} \citep{gulati2012two}	& Multi-pitch salience  \citep{Salamon2011} & Multi-pitch histogram & Decision tree\\
+				
+				&	Predominant melody \citep{Salamon2012} & Pitch histogram & Decision tree\\
+				
+				\acrshort{tonicid_ashwin_1} \citep{bellur2012knowledge}	&	Pitch \citep{DeCheveigne2002}	&  \acrshort{gd} histogram & Highest peak\\
+				
+				\acrshort{tonicid_ashwin_2} \citep{bellur2012knowledge}	&	Pitch \citep{DeCheveigne2002}	& 	GD histogram	&
+				Template matching\\
+				
+				\acrshort{tonicid_ashwin_2} \citep{bellur2012knowledge}	&	Pitch \citep{DeCheveigne2002}	& 	GD histogram
+				& Highest peak\\
+				
+				\acrshort{tonicid_chordia}	& 	& 	& \\			
+				
+				\tablebot			
+			\end{tabular}
+			
+			\caption[Summary of existing tonic identification approaches.]{Summary of existing tonic identification approaches.}
+			\label{tab:pre_processing_tonic_identification_summary_methods}
+			\par \end{centering}	
+	\end{sidewaystable}
+	
+	
+In \tabref{tab:pre_processing_tonic_identification_summary_methods} we provide a summary of the existing methods for tonic identification. The common processing blocks and the main differences between them become evident from this table. A detailed review of these methods in terms of the three processing stages as shown in \figref{fig:tonic_identification_general_block_diagram} is done in~\cite{Gulati2014Tonic}. For a more detailed description of these methods we refer to their respective publications listed in Table \tabref{tab:pre_processing_tonic_identification_summary_methods}. 
+
+
+
 
 \subsection{R\={a}ga Recognition}
 
@@ -71,6 +124,7 @@ Dey presents various interpretations and perspectives on the concept of ny\={a}s
 
 
 \section{Relevant Work (in MIR??) or (Other Music Tradition?)}
+\label{sec:background_relevant_work_other_music}
 
 \subsection{Key and Mode Recognition}
 
@@ -95,6 +149,7 @@ Dey presents various interpretations and perspectives on the concept of ny\={a}s
 %\section{Motif discovery in time-series}
 %\subsection{Lower-bounding techniques for DTW}
 \section{Scientific Background}
+\label{sec:background_scientific_background}
 
 \subsection{Distance Measures}
 \subsubsection{Euclidean Distance}
@@ -125,4 +180,5 @@ Dey presents various interpretations and perspectives on the concept of ny\={a}s
 \subsubsection{Holm-Bonferroni Method}
 
 
-
+\section{Summary}
+\label{sec:background_summary}

@@ -35,82 +35,82 @@ The tonic pitch of a lead artist is the base frequency that serves as a referenc
 
 There exist a number of approaches for identifying tonic pitch in an audio recording of \gls{iam}~\citep{salamon2012multipitch,gulati2012two,bellur2012knowledge,ranjani2011carnatic,Sengupta2005b}\TODO{{add parags method and then say why it wasn't considered for the evaluation}}. Our previous works on tonic identification show promising results with accuracy close to 90\%~\citep{salamon2012multipitch,gulati2012two}. However, it might be misleading to draw a consensus on the best performing method just based on the reported accuracy in the publications. This is because these approaches are evaluated using different datasets with varied musical characteristics and under different experimental setup. Therefore, to select the most promising approach we perform a thorough comparative evaluation on the same set of datasets and under the same experimental setup~\citep{Gulati2014Tonic}. The evaluation is performed using a number of scalable datasets with varied musical and acoustical characteristics that are representative of real-world collections of \gls{iam}. In the subsequent sections we describe the comparative evaluation, which is based on our earlier work presented in~\cite{Gulati2014Tonic}. In order for this dissertation to be self-contained, we start by providing a brief description of the methods we evaluated~(\secref{sec:pre_processing_tonic_identification_existing_approaches}). We then describe the experimental setup and the datasets used for the comparative evaluation~(\secref{sec:pre_processing_experimental_setup}). We present the results of the comparative evaluation and highlight the strengths and limitations of the methods on different type of music material~(\secref{sec:pre_processing_tonic_identification_results}). Finally, we explain a heuristic-based approach to correct common mistakes in tonic identification in a collection of \gls{iam} by exploiting associated metadata of a recording. 
 
-
-\subsection{Existing Approaches}
-\label{sec:pre_processing_tonic_identification_existing_approaches}
-
-As mentioned, there have been various efforts to automatically identify the tonic pitch of the
-lead artist in a performance of Indian art music~\citep{salamon2012multipitch,gulati2012two,bellur2012knowledge,ranjani2011carnatic,Sengupta2005b}.
-These approaches mainly differ in terms of the musical cues that they utilize to
-identify the tonic, the amount of input audio data used to perform this task and the type
-of music material they are devised for (Hindustani or Carnatic, vocal or
-instrumental, etc.). Despite the differences, all these approaches can be divided
-into three main processing blocks, as shown in~\figref{fig:tonic_identification_general_block_diagram}. The only exception to this schema is the approach proposed by~\cite{Sengupta2005b}.
-
-\begin{figure}
-	\begin{center}
-		\includegraphics[width=\figSizeNinety]{ch05_preprocessing/figures/tonic_identification_block_diagram.pdf}
-	\end{center}
-	\caption[General block diagram of the processing steps used by tonic identification
-	approaches.]{General block diagram of the processing steps used by tonic identification
-		approaches.}
-	\label{fig:tonic_identification_general_block_diagram}
-\end{figure}
-
-
-In all the aforementioned approaches, the three main processing blocks are the following: feature
-extraction, feature distribution estimation and tonic selection. Since the task
-of tonic identification involves an analysis of the tonal content of the audio
-signal, the features extracted in the first block are always pitch related. In
-the second block, an estimate of the distribution of these features is obtained
-using either Parzen window based density estimation or by constructing a
-histogram. The feature distribution is then used in the third block to identify
-the tonic. The peaks of the distribution correspond to the most salient pitch
-values used in the performance (usually the \glspl{svara} of the \gls{raga}), one of which
-corresponds to the tonic pitch. As the most salient peak in the distribution is
-not guaranteed to be the tonic, various techniques are applied to select the peak that corresponds to the tonic.
-
-
-
-{\renewcommand{\arraystretch}{1.5}
-	\begin{sidewaystable} 
-		\begin{centering}
-			\begin{tabular}{ c c c c }
-\tabletop			
-			Method 	&	Features	&	Feature Distribution	&	Tonic Selection \\
-\tablemid			
-			\acrshort{tonicid_sengupta} \citep{Sengupta2005b}	&	Pitch \citep{AKDatta_1996} & N/A & Error minimization\\
-			
-			\acrshort{tonicid_ranjani_1}/\acrshort{tonicid_ranjani_2} \citep{ranjani2011carnatic}	&	Pitch \citep{BoersmaPaul2001} & Parzen-window-based \acrshort{pde}  & GMM fitting\\
-			
-			\acrshort{tonicid_justin} \citep{salamon2012multipitch} & Multi-pitch salience \citep{Salamon2011} & Multi-pitch histogram & Decision tree\\
-
-			\acrshort{tonicid_sankalp} \citep{gulati2012two}	& Multi-pitch salience  \citep{Salamon2011} & Multi-pitch histogram & Decision tree\\
-
-			&	Predominant melody \citep{Salamon2012} & Pitch histogram & Decision tree\\
-
-			\acrshort{tonicid_ashwin_1} \citep{bellur2012knowledge}	&	Pitch \citep{DeCheveigne2002}	&  \acrshort{gd} histogram & Highest peak\\
-
-			\acrshort{tonicid_ashwin_2} \citep{bellur2012knowledge}	&	Pitch \citep{DeCheveigne2002}	& 	GD histogram	&
-			Template matching\\
-
-			\acrshort{tonicid_ashwin_2} \citep{bellur2012knowledge}	&	Pitch \citep{DeCheveigne2002}	& 	GD histogram
-			& Highest peak\\
-			
-			\acrshort{tonicid_chordia}	& 	& 	& \\			
-
-\tablebot			
-			\end{tabular}
-
-			\caption[Summary of existing tonic identification approaches.]{Summary of existing tonic identification approaches.}
-			\label{tab:pre_processing_tonic_identification_summary_methods}
-			\par \end{centering}	
-	\end{sidewaystable}
-
-
-In \tabref{tab:pre_processing_tonic_identification_summary_methods} we provide a summary of the existing methods for tonic identification. The common processing blocks and the main differences between them become evident from this table. A detailed review of these methods in terms of the three processing stages as shown in \figref{fig:tonic_identification_general_block_diagram} is done in~\cite{Gulati2014Tonic}. For a more detailed description of these methods we refer to their respective publications listed in Table \tabref{tab:pre_processing_tonic_identification_summary_methods}. 
-
-\TODO{description of the methods?}
+%
+%\subsection{Existing Approaches}
+%\label{sec:pre_processing_tonic_identification_existing_approaches}
+%
+%As mentioned, there have been various efforts to automatically identify the tonic pitch of the
+%lead artist in a performance of Indian art music~\citep{salamon2012multipitch,gulati2012two,bellur2012knowledge,ranjani2011carnatic,Sengupta2005b}.
+%These approaches mainly differ in terms of the musical cues that they utilize to
+%identify the tonic, the amount of input audio data used to perform this task and the type
+%of music material they are devised for (Hindustani or Carnatic, vocal or
+%instrumental, etc.). Despite the differences, all these approaches can be divided
+%into three main processing blocks, as shown in~\figref{fig:tonic_identification_general_block_diagram}. The only exception to this schema is the approach proposed by~\cite{Sengupta2005b}.
+%
+%\begin{figure}
+%	\begin{center}
+%		\includegraphics[width=\figSizeNinety]{ch05_preprocessing/figures/tonic_identification_block_diagram.pdf}
+%	\end{center}
+%	\caption[General block diagram of the processing steps used by tonic identification
+%	approaches.]{General block diagram of the processing steps used by tonic identification
+%		approaches.}
+%	\label{fig:tonic_identification_general_block_diagram}
+%\end{figure}
+%
+%
+%In all the aforementioned approaches, the three main processing blocks are the following: feature
+%extraction, feature distribution estimation and tonic selection. Since the task
+%of tonic identification involves an analysis of the tonal content of the audio
+%signal, the features extracted in the first block are always pitch related. In
+%the second block, an estimate of the distribution of these features is obtained
+%using either Parzen window based density estimation or by constructing a
+%histogram. The feature distribution is then used in the third block to identify
+%the tonic. The peaks of the distribution correspond to the most salient pitch
+%values used in the performance (usually the \glspl{svara} of the \gls{raga}), one of which
+%corresponds to the tonic pitch. As the most salient peak in the distribution is
+%not guaranteed to be the tonic, various techniques are applied to select the peak that corresponds to the tonic.
+%
+%
+%
+%{\renewcommand{\arraystretch}{1.5}
+%	\begin{sidewaystable} 
+%		\begin{centering}
+%			\begin{tabular}{ c c c c }
+%\tabletop			
+%			Method 	&	Features	&	Feature Distribution	&	Tonic Selection \\
+%\tablemid			
+%			\acrshort{tonicid_sengupta} \citep{Sengupta2005b}	&	Pitch \citep{AKDatta_1996} & N/A & Error minimization\\
+%			
+%			\acrshort{tonicid_ranjani_1}/\acrshort{tonicid_ranjani_2} \citep{ranjani2011carnatic}	&	Pitch \citep{BoersmaPaul2001} & Parzen-window-based \acrshort{pde}  & GMM fitting\\
+%			
+%			\acrshort{tonicid_justin} \citep{salamon2012multipitch} & Multi-pitch salience \citep{Salamon2011} & Multi-pitch histogram & Decision tree\\
+%
+%			\acrshort{tonicid_sankalp} \citep{gulati2012two}	& Multi-pitch salience  \citep{Salamon2011} & Multi-pitch histogram & Decision tree\\
+%
+%			&	Predominant melody \citep{Salamon2012} & Pitch histogram & Decision tree\\
+%
+%			\acrshort{tonicid_ashwin_1} \citep{bellur2012knowledge}	&	Pitch \citep{DeCheveigne2002}	&  \acrshort{gd} histogram & Highest peak\\
+%
+%			\acrshort{tonicid_ashwin_2} \citep{bellur2012knowledge}	&	Pitch \citep{DeCheveigne2002}	& 	GD histogram	&
+%			Template matching\\
+%
+%			\acrshort{tonicid_ashwin_2} \citep{bellur2012knowledge}	&	Pitch \citep{DeCheveigne2002}	& 	GD histogram
+%			& Highest peak\\
+%			
+%			\acrshort{tonicid_chordia}	& 	& 	& \\			
+%
+%\tablebot			
+%			\end{tabular}
+%
+%			\caption[Summary of existing tonic identification approaches.]{Summary of existing tonic identification approaches.}
+%			\label{tab:pre_processing_tonic_identification_summary_methods}
+%			\par \end{centering}	
+%	\end{sidewaystable}
+%
+%
+%In \tabref{tab:pre_processing_tonic_identification_summary_methods} we provide a summary of the existing methods for tonic identification. The common processing blocks and the main differences between them become evident from this table. A detailed review of these methods in terms of the three processing stages as shown in \figref{fig:tonic_identification_general_block_diagram} is done in~\cite{Gulati2014Tonic}. For a more detailed description of these methods we refer to their respective publications listed in Table \tabref{tab:pre_processing_tonic_identification_summary_methods}. 
+%
+%\TODO{description of the methods?}
 
 \subsection{Comparative Evaluation Setup}
 \label{sec:pre_processing_experimental_setup}

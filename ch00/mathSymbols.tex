@@ -1,5 +1,10 @@
-%define custom commands here
+% The list of symbols is a chapter, but without a number
+\chapter*{List of Symbols} 
+\addcontentsline{toc}{chapter}{List of Symbols}
+The following is a list of different symbols used in the dissertation along with a short description of each symbol. 
 
+% Define symbol definitions
+\newcommand\listSymbol[3]{\protected\gdef#1{#2}#2 & #3 \tabularnewline \addlinespace[2pt]} 
 
-
-
+% Defined and listed
+\newcommand\nolistSymbol[3]{\protected\gdef#1{#2}} % Defined, but not listed
