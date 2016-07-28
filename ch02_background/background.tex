@@ -163,7 +163,7 @@ In~\cite{Ashwin_Istanbul2012}, a histogram is constructed using a frequency rang
 Instead of using a histogram, \cite{ranjani2011carnatic} use a Parzen window estimator to compute a pitch density function~\citep{Bishop,DudaHart2000}. Parzen window estimators (or kernel density estimators) are non-parametric density estimators. The choice of kernel function can control the smoothness of the estimated density. They are widely used as an alternative to histograms to alleviate the artificial discontinuities at the boundaries of the bins of the histogram, and aid in a smoother peak picking process. In addition, they do not require partitioning of data into distinct bins. \cite{ranjani2011carnatic} use parzen window estimators with Gaussian kernels for estimating the density of the extracted pitch frequencies.
 
 
-\subsection{Tonic selection}
+\subsubsection{Tonic selection}
 \label{Tonic Selection}
 
 In the previous section we discussed different ways to compute the pitch distribution function. This section presents the last processing block shown in~\figref{fig:tonic_identification_general_block_diagram}, where the pitch distribution function is used to identify the tonic pitch. The peaks of the pitch distribution function correspond to the most frequent (or salient) pitches present in the audio signal. Depending on how the pitch distribution is computed the peaks will coincide with the \glspl{svara} of the \gls{raga} used in the rendition or with the \glspl{svara} produced by the drone instrument. The problem of tonic identification is thus reduced to selecting the peak of the distribution that corresponds to the tonic of the lead artist. As noted earlier, the peak corresponding to the tonic pitch is not always the highest peak in the distribution. For this reason, various strategies are have been proposed for analyzing the pitch distribution and selecting the peak that corresponds to the tonic. The complexity of the approaches varies from simply selecting the highest peak of the histogram to the application of machine learning algorithms in order to automatically learn the best set of rules for selecting the tonic peak. The different tonic selection strategies used in the literature are presented below.
@@ -182,6 +182,56 @@ different octaves) a set of 25 features is computed. The features are the values
 
 
 \subsection{R\={a}ga Recognition}
+
+In this section we present a critical review of the existing computational approaches for \gls{raga} recognition. Due to the central role of the concept of \gls{raga} in \gls{iam}, automatic \gls{raga} recognition is one of the most researched topics in computational analysis of \gls{iam}. There are a number of approaches that utilize different characteristic features of \glspl{raga}. Our objective behind this review is to structure existing work on automatic \gls{raga} recognition, emphasize the strengths and highlight the shortcomings of different methods, and finally, identify concrete venues of improvement. 
+
+%Before we proceed, it is worthwhile to briefly recapitulate the characteristic aspects of \glspl{raga} (Section XX). \Glspl{raga} are characterized by a number melodic attributes at different time scales such as a set of constituent \glspl{svara}, \gls{arohana}-\gls{avrohana}, and a set of characteristic melodic phrases or motifs. \Gls{raga} grammar specifies the functional roles of the constituent \glspl{svara} in terms of their precise intonation and salience in a melody. In terms of the temporal characteristics, the allowed ascending and descending \gls{svara} progression is spe
+%
+%In addition, the grammar also guides the temporal characteristics of the melodic movement from one \gls{svara} to the other. The complexity of the \gls{raga} framework makes its automatic recognition a challenging computational task. 
+
+% Preview source code for paragraph 0
+
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+	\hline 
+	Approach & Tonal Feature & Melodic Aspect & Feature & Transcription & Tonic  & Classification & \#Ragas & Dataset Size (duration/pieces) & Audio Type\tabularnewline
+	\hline 
+	\hline 
+	\cite{belle2009raga} & \cite{rao2009improving} & Svara Iintonation & Svara features derived from PD & No & Manual & \gls{knn} & 4 & 0.6 / 10 & Polyphonic\tabularnewline
+	\hline 
+	\cite{chordia2007raag} & \cite{sun2000pitch} & Svara salience and \gls{arohana}-\gls{avrohana} & PCD + PCDD & Yes & Manual & \gls{svm} & 31 & 20 / 127 & Monophonic\tabularnewline
+	\hline 
+	\cite{pandey2003tansen} & \cite{BoersmaPaul2001} & \gls{arohana}-\gls{avrohana} and \textbackslash{}Gls\{raga\} motifs & Svara sequence & Yes & Manual & \gls{hmm} and \gls{ngram} based & 2 & NA / 31 & Monophonic\tabularnewline
+	\hline 
+	4 &  &  &  &  &  &  &  &  & \tabularnewline
+	\hline 
+	5 &  &  &  &  &  &  &  &  & \tabularnewline
+	\hline 
+	6 &  &  &  &  &  &  &  &  & \tabularnewline
+	\hline 
+	7 &  &  &  &  &  &  &  &  & \tabularnewline
+	\hline 
+	8 &  &  &  &  &  &  &  &  & \tabularnewline
+	\hline 
+	9 &  &  &  &  &  &  &  &  & \tabularnewline
+	\hline 
+	10 &  &  &  &  &  &  &  &  & \tabularnewline
+	\hline 
+	11 &  &  &  &  &  &  &  &  & \tabularnewline
+	\hline 
+	12 &  &  &  &  &  &  &  &  & \tabularnewline
+	\hline 
+	13 &  &  &  &  &  &  &  &  & \tabularnewline
+	\hline 
+	14 &  &  &  &  &  &  &  &  & \tabularnewline
+	\hline 
+	15 &  &  &  &  &  &  &  &  & \tabularnewline
+	\hline 
+	&  &  &  &  &  &  &  &  & \tabularnewline
+	\hline 
+	&  &  &  &  &  &  &  &  & \tabularnewline
+	\hline 
+\end{tabular}
+
 
 \subsection{Melodic Pattern Processing}
 
