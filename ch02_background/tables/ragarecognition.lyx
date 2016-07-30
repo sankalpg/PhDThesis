@@ -221,7 +221,7 @@ cite{rao2009improving}
 \begin_inset Text
 
 \begin_layout Plain Layout
-Svara Iintonation
+Svara intonation
 \end_layout
 
 \end_inset
@@ -1602,7 +1602,19 @@ Brute force
 \begin_inset Text
 
 \begin_layout Plain Layout
-SVM classifier with custom kernel
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{svm}
+\end_layout
+
+\end_inset
+
+ classifier with custom kernel
 \end_layout
 
 \end_inset
@@ -1784,33 +1796,18 @@ Polyphonic
 \begin_inset Text
 
 \begin_layout Plain Layout
-13
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
+\begin_inset ERT
+status open
 
 \begin_layout Plain Layout
 
+
+\backslash
+cite{dighe2013swara}
 \end_layout
 
 \end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -1820,6 +1817,19 @@ Polyphonic
 \begin_inset Text
 
 \begin_layout Plain Layout
+Chroma
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\backslash
+citep{lartillot2008matlab}
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -1829,7 +1839,7 @@ Polyphonic
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Svara saliences
 \end_layout
 
 \end_inset
@@ -1838,7 +1848,7 @@ Polyphonic
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Variant of PCD
 \end_layout
 
 \end_inset
@@ -1847,7 +1857,7 @@ Polyphonic
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Yes
 \end_layout
 
 \end_inset
@@ -1856,7 +1866,34 @@ Polyphonic
 \begin_inset Text
 
 \begin_layout Plain Layout
+Brute force (Vadi-based)
+\end_layout
 
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Random Forest
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+16.8 / 117
 \end_layout
 
 \end_inset
@@ -1865,7 +1902,7 @@ Polyphonic
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Polyphonic
 \end_layout
 
 \end_inset
@@ -1876,7 +1913,17 @@ Polyphonic
 \begin_inset Text
 
 \begin_layout Plain Layout
-14
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+cite{shrey_ISMIR_2015}
+\end_layout
+
+\end_inset
+
+*
 \end_layout
 
 \end_inset
@@ -1885,42 +1932,18 @@ Polyphonic
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
+\begin_inset ERT
+status open
 
 \begin_layout Plain Layout
 
+
+\backslash
+cite{Salamon2012}
 \end_layout
 
 \end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -1930,6 +1953,67 @@ Polyphonic
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Gls{raga}
+\end_layout
+
+\end_inset
+
+ motifs
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pitch contours
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Cepstrum-based
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Longest common subsequence set with 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{knn}
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -1939,7 +2023,7 @@ Polyphonic
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+30
 \end_layout
 
 \end_inset
@@ -1948,7 +2032,7 @@ Polyphonic
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+3 / 254
 \end_layout
 
 \end_inset
@@ -1957,7 +2041,7 @@ Polyphonic
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Polyophonic
 \end_layout
 
 \end_inset
@@ -1968,33 +2052,18 @@ Polyphonic
 \begin_inset Text
 
 \begin_layout Plain Layout
-15
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
+\begin_inset ERT
+status open
 
 \begin_layout Plain Layout
 
+
+\backslash
+cite{koduri2014intonation}
 \end_layout
 
 \end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -2004,6 +2073,18 @@ Polyphonic
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{Salamon2012}
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -2013,7 +2094,7 @@ Polyphonic
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Svara intonation
 \end_layout
 
 \end_inset
@@ -2022,7 +2103,7 @@ Polyphonic
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Parameterized PCD 
 \end_layout
 
 \end_inset
@@ -2031,7 +2112,7 @@ Polyphonic
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+No
 \end_layout
 
 \end_inset
@@ -2040,7 +2121,47 @@ Polyphonic
 \begin_inset Text
 
 \begin_layout Plain Layout
+Multipitch-based
+\end_layout
 
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Several classifiers (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{knn}
+\end_layout
+
+\end_inset
+
+ best)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+??
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+??
 \end_layout
 
 \end_inset
@@ -2049,7 +2170,7 @@ Polyphonic
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Polyphonic
 \end_layout
 
 \end_inset
