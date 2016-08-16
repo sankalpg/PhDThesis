@@ -180,10 +180,52 @@ different octaves) a set of 25 features is computed. The features are the values
 \cite{Ashwin_Istanbul2012} propose a simple approach, picking the highest peak of the pitch distribution as the tonic. In two out of the three proposed variants of their method, the bin value of the highest peak of the segmented \gls{gd} pitch histogram is selected as the tonic pitch. The frequency range of the histogram is restricted to 100-250\,Hz. When the gender information of the lead artist for an audio recording is available, this range is further restricted. In addition to the simple highest peak approach, \cite{Ashwin_Istanbul2012} also propose a template matching process to identify tonic. This procedure is comparable to the Semi-continuous GMM fitting proposed by \cite{Ranjani2011}, which exploits the smaller degree of pitch variation around \gls{shadja} and panchama. The template that authors use to identify the tonic candidate uses three octaves and consider the pitch distribution values at tonic and its fifth (Pa) in different octaves. For more information we refer to~\cite{Gulati2014Tonic}.
 
 
+\TODO{A concluding paragraph of this section, motivating the need for a thorough evaluation.}
 
-\subsection{R\={a}ga Recognition}
 
-In this section we present a critical review of the existing computational approaches for \gls{raga} recognition. Due to the central role of the concept of \gls{raga} in \gls{iam}, automatic \gls{raga} recognition is one of the most researched topics in computational analysis of \gls{iam}. There are a number of approaches that utilize different characteristic features of \glspl{raga}. Our objective behind this review is to structure existing work on automatic \gls{raga} recognition, emphasize the strengths and highlight the shortcomings of different methods, and finally, identify concrete venues of improvement. 
+\subsection{\Glsentrytext{raga} Recognition}
+
+In this section we present a critical review of the existing computational approaches for \gls{raga} recognition in audio collections of \gls{iam}. Our main objective in this review is to consolidate existing work on automatic \gls{raga} recognition, identify the strengths and shortcomings of different methodologies, and finally, identify potential venues of improvement. The accuracy of a \gls{raga} recognition system largely depends on the size of the dataset in terms of the number of \glspl{raga} and also on the chosen set of \glspl{raga}. The task becomes even more challenging when the chosen set of \glspl{raga} in the dataset share a common set of \glspl{svara} and are allied \glspl{raga} (Section XX). Since the approaches reviewed in this section are evaluated on different datasets (typically collected for a single study, and is not publicly made available), we refrain from comparing absolute \gls{raga} recognition accuracies across studies. 
+
+We now proceed to review the existing \gls{raga} recognition approaches. Due to the central role of the \gls{raga} framework in \gls{iam}, its automatic identification is one of the most researched topics in computational analysis of this music tradition. Over the last couple of decades there have been several approaches proposed for this task. In \tabref{tab:raga_recognition_methods_melodic_characteristics} and \tabref{tab:raga_recognition_methods_details} we summarize the prominent existing approaches for \gls{raga} recognition. Both the tables comprise exactly the same set of approaches, but differ in terms of the type of information provided for each approach. In \tabref{tab:raga_recognition_methods_melodic_characteristics} we indicate the different characteristic features of a \gls{raga} that these approaches exploit to perform the task. The melodic attributes that we have considered to summarize the approaches are; \gls{svara} set, \gls{svara} salience, \gls{svara} intonation, \gls{arohana}-\gls{avrohana} and melodic phrases. In addition to these melodic attributes, we also mark if an approach uses a discretized melodic representation, and if it considers the temporal aspects of the melody to perform the task. In \tabref{tab:raga_recognition_methods_details} we provide the relevant details for each approach in terms of the common processing blocks such as the feature extraction, the tonic identification, the learning method used to recognize \glspl{raga} and the other relevant dataset details. With both these tables we get an bird's-eye view of the existing work done in \gls{raga} recognition.
+
+From \tabref{tab:raga_recognition_methods_melodic_characteristics} we see that the most frequently used melodic attribute is the set of \glspl{svara} in a \gls{raga}, which is also computationally one of the most basic feature to extract. \Gls{svara} set is considered as a feature for \gls{raga} recognition in a both explicit and implicit manner by different approaches. \citep{chakraborty2012object,ranjani2011carnatic} explicitly extract the comprising set of \glspl{svara} in an audio recording. The \gls{raga} of the recording is then identified by matching the estimated \gls{svara} set with the stored set for each \gls{raga}. The exact procedure followed to map the estimated \gls{svara} set with a unique \gls{raga} label is missing in the articles. As can be imagined, it is a rather naive approach since there are several \glspl{raga} that share the same set of \glspl{svara} and are differentiated based on more elaborate melodic and temporal characteristics.
+
+Along with the set of \glspl{svara}, \gls{raga} grammar also defines the functional roles of these \glspl{svara} (Section XX). In particular, there is a vocabulary to describe the salience of the \glspl{svara} in a melody such as \gls{vadi} and \gls{samvadi}. Thus, one of the ways to differentiate between the \glspl{raga} that share a common set of \glspl{svara} is to also consider the salience of the comprising \glspl{svara} in the analysis. Computing \gls{svara} salience for all the possible \glspl{svara} frequencies implicitly incorporates the \gls{svara} set feature. This is the reason why it appears for nearly all the approaches mentioned in \tabref{tab:raga_recognition_methods_melodic_characteristics}. \cite{chordia2007raag} propose a feature that jointly incorporates the presence and the salience of different \glspl{svara} in a melody for recognizing \glspl{raga}. The authors represent \gls{svara} saliences using a 12 bin \gls{pcd} computed as a histogram of the pitch sequence for an audio recording. This global feature is robust to pitch octave errors and is shown to perform well on a sizable dataset. The approach proposed by~\cite{chordia2007raag} for computing \gls{pcd} implicitly considers the duration of the \glspl{svara} in a melody for estimating their saliences. However, the meaning of the salience of a \gls{svara} in a melody is not explicitly defined in the music theory, and therefore, it can be interpreted and computed in multiple ways. \cite{koduri2011survey} explore two different approaches for computing \gls{pcd}, which differ in the way \gls{svara} salience is interpreted. One of the proposed approaches for computing \gls{pcd} weighs the salience by the duration of the \glspl{svara} as done in~\cite{chordia2007raag}. Whereas, the other approach considers the frequency of the occurrence of \glspl{svara} as the salience, irrespective of their duration. The former was reported to result in a better accuracy.
+
+A simple extension to the 12 bin \gls{pcd} feature mentioned above is computing the pitch distribution using a fine grained bin boundaries. A high resolution \gls{pcd} in addition to the \gls{svara} saliences also captures the intonation aspects of the \glspl{svara}. Such a fine grained \gls{pcd} is used in~\cite{chordia2013joint,koduri2012raga,belle2009raga,kumar2014identifying}. These studies report a superior performance by using the high resolution \gls{pcd} as compared to a 12 bin \gls{pcd}. Note that in~\cite{chordia2013joint} the authors refer to the high resolution \gls{pcd} by \gls{fpd}. Apart from the high resolution \glspl{pcd}, there are other variants of the \gls{pcd} feature, wherein the technique used for computing the pitch distribution is based on the concept of \gls{kde}. Such a variant of the \gls{pcd} feature is used in~\cite{chordia2013joint,ranjani2011carnatic} and is reported to improve the \gls{raga} recognition accuracy. Note that these variants are referred to as \gls{kpd} in~\cite{chordia2013joint} and \gls{pde} in~\cite{ranjani2011carnatic}. 
+
+The high resolution \gls{pcd} features mentioned above implicitly capture some of the intonation aspects of the \glspl{svara} in a melody. However, controlling the weight of the \gls{svara} intonation aspects in the \gls{pcd} feature space for \gls{raga} recognition is a challenging task. To address this issue, \cite{belle2009raga,koduri2014intonation} propose to use a parametrized version of the \gls{pcd}, wherein the parametrization is performed for each \glspl{svara} in the melody. \cite{belle2009raga} extract four different features for each \gls{svara}; peak position, mean position, variance and overall probability of the \gls{svara}.  In a similar manner, \cite{koduri2014intonation} extract six features for each \gls{svara}; peak position, peak amplitude, mean, variance, skewness and kurtosis of the \gls{svara} distribution. Melodies in Carnatic music contain \glspl{gamaka} (Section XX), during which the pitch deviation even in the rendition of a single \gls{svara} can reach up to 200\,cents. To capture the intonation aspects in such scenarios it is essential to identify which \gls{svara} is being rendered at a given point in time in a melody. For that, \cite{koduri2014intonation} also propose an alternate approach to compute context-based \gls{svara} distribution by categorizing pitch contours based on the melodic context. Subsequently, the parametrization to extract six features is performed on these context-based \gls{svara} distribution. \cite{koduri2014intonation} report that context-based \gls{svara} distribution obtain a better results in classifying \glspl{raga}.
+
+One of the shortcomings of the approaches discussed so far is that they do not consider the temporal aspects of melody, which are fundamental in characterization of \glspl{raga}. There exist a number of approaches that statistically capture the temporal aspects of melody by modeling essentially the \gls{arohana}-\gls{avrohana} progression of the \glspl{raga}~\citep{pandey2003tansen,chordia2007raag,Shetty2009,sridhar2009raga,dighe2013scale,kumar2014identifying}. A number of these methods compute \gls{svara} sequence and employ techniques such as \gls{hmm} and \gls{ngram} to model the temporal aspects~\citep{pandey2003tansen,dighe2013scale,kumar2014identifying}. Some approaches compute an intermediate representation that captures the temporal aspects, such as \gls{pcdd} in~\cite{Pchordia2007raag} and \gls{svara} combination feature in~\cite{Shetty2009}, which are then fed to a classifier to learn the discriminatory model for different \glspl{raga}. Few of these approaches also utilize characteristic melodic phrases of \glspl{raga}~\citep{pandey2003tansen,sridhar2009raga}. They store a dictionary of pre-defined melodic patterns for each \gls{raga}, and subsequently detect the occurrences of these patterns in the \gls{svara} sequences obtained from the test recordings to recognize \glspl{raga}. The scalability of these approaches is however questionable, since they have been evaluated on a dataset comprising only two to three \glspl{raga}. 
+
+The approaches mentioned above invariably consider a discrete representation of melody by either performing a simple quantization of the estimated pitch contours or by using a relatively sophisticated melodic transcription technique~\cite{pandey2003tansen}. Since melodic transcription still remains a challenging and an ill-defined task for melodies in \gls{iam}, this step introduces errors that further propagate and influence the final accuracy of the methods. Although, a formal quantitative evaluation of the influence of the errors introduced during the melody transcription stage on the final accuracy is yet to be performed. Apart from the challenges arising from the melody transcription stage, another limitation of the approaches mentioned above is that they fall short of capturing the relevant information in the melody transitions across the \glspl{svara}. Calan of a \gls{raga} outlines the way melody progresses from one \gls{svara} to another, and therefore, is a characteristic feature of a \gls{raga}. Such a fine grained temporal melodic aspects are considered in the approaches that use a continuous melodic representation and utilize melodic patterns for recognizing \glspl{raga}. Owing to the challenges involved in discovering and detecting patterns in continuous melody representation, there are not many approaches follow this methodology. \cite{shrey_ISMIR_2015} perform \gls{raga} verification using automatically discovered melodic patterns from specific sections (Pallavi lines) of audio recordings in Carnatic music. A \gls{raga} verification system as opposed to a recognition system assumes that a specific \gls{raga} is claimed and the system checks whether the claimed \gls{raga} is correct or not. Thus, \gls{raga} verification can be regarded as a subset of \gls{raga} recognition with a reduced complexity of the task. 
+
+With the exception of the methods proposed by~\cite{dighe2013scale,dighe2013swara} all other methods use pitch as the tonal feature for performing \gls{raga} recognition (\tabref{tab:raga_recognition_methods_details}). These methods employ a variety of pitch estimation algorithms. While some of these pitch estimation algorithms are specifically designed to work with polyphonic audio music content~\cite{Salamon2012}, others are primarily suitable for monophonic speech signals~\cite{BoersmaPaul2001}. Thus, incorrect estimation of the pitch from the audio signals might be a potential source of errors in the system. However, since some of these methods are evaluated using monophonic audio music content and the others with polyphonic content, it is hard to make that conclusion from the results reported in the studies. Verification of this hypothesis remains up to a comprehensive comparative evaluation on a common dataset. \cite{dighe2013scale,dighe2013swara} use 12 bin chroma feature to perform the task. Such a feature might be robust compared to pitch feature.
+
+
+%Tonal feature extractino. Mainly pitch. Bad methods good methods. Chroma, thats surprising. Would be good to performa comparative evaluation.
+%
+%Tonic id, influence of that. Automatic Vs joint estimation!!! many of them are manual! how to comparatively evaluate then?
+%
+%Learning method, no clear consunsys. KNN looks promising.
+%
+%Dataset, shitty good better best! No sharing, monophonic polyphonic? diff number of ragas, also what pieces have been considered matters a lot! no publicly available reference dataset.
+%
+%Type of approaches tha are needed, phrase based, fuzzy global statistical tewmporal and tonal distribution.
+%
+%Lack of clarity of methods. 4 mthods are removed from the review.
+%
+%
+%Different musical features 1) Svara set, 2) Svara salience, 3) Intonation, 4) temporal Aspect 5) Phrases?
+%
+%We have seen the organization of the SOTA in terms of the features, lets review the learning methods that these methods used.
+% 
+%Issues: Unclear explainations, implementation details missing, bad pitch estimator, non-real world dataset, too small collection, monophonic collection, 
+%
+%Even survey papers haven't done a common evaluation!
+% 
+%Avenues for improvement->1) Evaluation (dataset + setup) 2) Methodology 3) No reproducibility 4) Available code
 
 %Before we proceed, it is worthwhile to briefly recapitulate the characteristic aspects of \glspl{raga} (Section XX). \Glspl{raga} are characterized by a number melodic attributes at different time scales such as a set of constituent \glspl{svara}, \gls{arohana}-\gls{avrohana}, and a set of characteristic melodic phrases or motifs. \Gls{raga} grammar specifies the functional roles of the constituent \glspl{svara} in terms of their precise intonation and salience in a melody. In terms of the temporal characteristics, the allowed ascending and descending \gls{svara} progression is spe
 %
@@ -197,35 +239,34 @@ In this section we present a critical review of the existing computational appro
 \setlength{\tabcolsep}{2pt}
 \small
 	\begin{centering}
-		\begin{tabular}{l L{2.5cm} L{2cm} L{2.5cm} L{2.5cm} L{2.5cm} L{2.5cm}}
+		\begin{tabular}{l L{2.5cm} L{2cm} L{2.5cm} L{2.5cm} L{2.5cm} L{2.5cm} L{2.5cm}}
 \tabletop
-			& Svara set & Svara salience & Svara intonation & \Gls{arohana}-\gls{avrohana} & Melodic phrases & Svara discretization\tabularnewline
+			& Svara set & Svara salience & Svara intonation & \Gls{arohana}-\gls{avrohana} & Melodic phrases & Svara discretization & Temporal aspects\tabularnewline
 \tablemid
-			\cite{pandey2003tansen} &  &  &  & $\bullet$ & $\bullet$ & Yes\tabularnewline
-			\cite{chordia2007raag} & $\bullet$ & $\bullet$ &  & $\bullet$ &  & Yes\tabularnewline
-			\cite{belle2009raga} & $\bullet$ & $\bullet$ & $\bullet$ &  &  & No\tabularnewline
-			\cite{Shetty2009} & $\bullet$ &  &  & $\bullet$ &  & Yes\tabularnewline
-			\cite{sridhar2009raga} & $\bullet$ &  &  & $\bullet$ &  & Yes\tabularnewline
-			\cite{koduri2011survey} & $\bullet$ & $\bullet$ &  &  &  & Yes\tabularnewline
-			\cite{ranjani2011carnatic} & $\bullet$ &  &  &  &  & No\tabularnewline
-			\cite{chakraborty2012object} & $\bullet$ &  &  &  &  & Yes\tabularnewline
-			\cite{koduri2012raga} & $\bullet$ & $\bullet$ & $\bullet$ &  &  & Both\tabularnewline
-			\cite{chordia2013joint} & $\bullet$ & $\bullet$ & $\bullet$ &  &  & No\tabularnewline
-			\cite{dighe2013scale} & $\bullet$ & $\bullet$ &  & $\bullet$ &  & Yes\tabularnewline
-			\cite{dighe2013swara} & $\bullet$ & $\bullet$ &  &  &  & Yes\tabularnewline
-			\cite{koduri2014intonation} & $\bullet$ & $\bullet$ & $\bullet$ &  &  & No\tabularnewline
-			\cite{kumar2014identifying} & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & Yes\tabularnewline
-			\cite{shrey_ISMIR_2015}\tnote{a} &  &  &  &  & $\bullet$ & No\tabularnewline
-			
+			\cite{pandey2003tansen} &  &  &  & $\bullet$ & $\bullet$ & Yes & $\bullet$\tabularnewline
+			\cite{chordia2007raag} & $\bullet$ & $\bullet$ &  & $\bullet$ &  & Yes & $\bullet$\tabularnewline
+			\cite{belle2009raga} & $\bullet$ & $\bullet$ & $\bullet$ &  &  & No & \tabularnewline
+			\cite{Shetty2009} & $\bullet$ &  &  & $\bullet$ &  & Yes & $\bullet$\tabularnewline
+			\cite{sridhar2009raga} & $\bullet$ &  &  & $\bullet$ &  & Yes & $\bullet$\tabularnewline
+			\cite{koduri2011survey} & $\bullet$ & $\bullet$ &  &  &  & Yes & \tabularnewline
+			\cite{ranjani2011carnatic} & $\bullet$ &  &  &  &  & No & \tabularnewline
+			\cite{chakraborty2012object} & $\bullet$ &  &  &  &  & Yes & \tabularnewline
+			\cite{koduri2012raga} & $\bullet$ & $\bullet$ & $\bullet$ &  &  & Both & \tabularnewline
+			\cite{chordia2013joint} & $\bullet$ & $\bullet$ & $\bullet$ &  &  & No & \tabularnewline
+			\cite{dighe2013scale} & $\bullet$ & $\bullet$ &  & $\bullet$ &  & Yes & $\bullet$\tabularnewline
+			\cite{dighe2013swara} & $\bullet$ & $\bullet$ &  &  &  & Yes & \tabularnewline
+			\cite{koduri2014intonation} & $\bullet$ & $\bullet$ & $\bullet$ &  &  & No & \tabularnewline
+			\cite{kumar2014identifying} & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & Yes & $\bullet$\tabularnewline
+			\cite{shrey_ISMIR_2015}\tnote{a} &  &  &  &  & $\bullet$ & No & $\bullet$\tabularnewline	
 \tablebot
 		\end{tabular}
 	\par \end{centering}
+
 \begin{tablenotes}
 	\item[a] This method performs \gls{raga} verification and not recognition
-
 \end{tablenotes}
+\caption{\Gls{raga} recognition methods proposed in the literature along with the melodic characteristics they utilize to perform the task. We also indicate if a method uses a discrete \gls{svara} representation of melody. The methods are arranged in the chronological order. \TODO{review the approaches and verify}}
 \label{tab:raga_recognition_methods_melodic_characteristics}
-\caption{\Gls{raga} recognition methods proposed in the literature along with the melodic characteristics they utilize to perform the task. We also indicate if a method uses a discrete \gls{svara} representation of melody. The methods are arranged in the chronological order}
 \end{threeparttable}
 \end{sidewaystable}
 
@@ -245,8 +286,8 @@ In this section we present a critical review of the existing computational appro
 			\cite{Shetty2009} & \cite{sridhar_2006_svara}\tnote{p} & Fixed frequency & \#Svaras, its combinations, Vakra svaras & Neural Network classifier & 20 & NA / 90 & Monophonic\tabularnewline
 			\cite{sridhar2009raga} & \cite{lee2006automatic}\tnote{p} & Singer identification & Svara set, its sequence & String matching & 3 & NA / 30 & Polyphonic\tabularnewline
 			\cite{koduri2011survey} & \cite{rao2010vocal}\tnote{p} & Brute force & PCD & \acrshort{knn} classifier & 10 & 2.82 / 170 & Polypohonic\tabularnewline
-			\cite{ranjani2011carnatic} & \cite{BoersmaPaul2001}\tnote{p} & GMM fitting & PDE & SC-GMM and Table lookup & 7 & NA / 48 & Polyphonic\tabularnewline
-			\cite{chakraborty2012object} & \cite{sengupta1990study}\tnote{p} & Error minimization & Svara set & Table lookup & NA & NA / NA & NA\tabularnewline
+			\cite{ranjani2011carnatic} & \cite{BoersmaPaul2001}\tnote{p} & GMM fitting & PDE & SC-GMM and Set matching & 7 & NA / 48 & Polyphonic\tabularnewline
+			\cite{chakraborty2012object} & \cite{sengupta1990study}\tnote{p} & Error minimization & Svara set & Set matching & NA & NA / NA & NA\tabularnewline
 			\cite{koduri2012raga} & \cite{Salamon2012}\tnote{p} & Multipitch-based & PCD variants & \acrshort{knn} classifier & 43 & NA / 215 & Polyphonic\tabularnewline
 			\cite{chordia2013joint} & \cite{camacho2007swipe}\tnote{p} & Brute force & PCD variants & \acrshort{knn} and statistical classifiers & 31 & 20 / 127 & Monophonic\tabularnewline
 			\cite{dighe2013scale} & Chroma~\citep{lartillot2008matlab}\tnote{c} & Brute force (Vadi-based) & Chroma, Timbre features & \acrshort{hmm}  & 4 & 9.33 / 56 & Polyphonic\tabularnewline
@@ -263,11 +304,13 @@ In this section we present a critical review of the existing computational appro
 			\item[c] Chroma extraction algorithm
 			\item[*] This method performs \gls{raga} verification and not recognition
 		\end{tablenotes}
-		\label{tab:raga_recognition_methods_melodic_characteristics}
-		\caption{Summary of the \Gls{raga} recognition methods proposed in the literature. The methods are arranged in the chronological order. }
+\caption{Summary of the \Gls{raga} recognition methods proposed in the literature. The methods are arranged in the chronological order. \TODO{review the approaches and verify. Put specific resolution of PCD and mark if they used KDE based PCD? also make it consistent the vocabulary. Clean it further and use more meaningful descriptor names. Both Dighe paper use chroma feature...chromagram types...not PCD variant. Verify all these details..}}
+\label{tab:raga_recognition_methods_details}
 	\end{threeparttable}
 \end{sidewaystable}
 
+
+With \tabref{tab:raga_recognition_methods_melodic_characteristics} we get an overall perspective on the melodic characteristics utilized by the existing methods for \gls{raga} recognition. We notice that XXX
 
 
 \subsection{Melodic Pattern Processing}
