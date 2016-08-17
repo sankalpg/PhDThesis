@@ -285,7 +285,7 @@ A crucial step in \gls{raga} recognition is making the method invariant to the t
 
 An important component in a data-driven research that is largely missing from the existing work on \gls{raga} recognition is the presence of a diverse and a sizable music corpora. There are different methods proposed for \gls{raga} recognition that use a variety of tonal features and learning methodologies. However, we know a little about their comparative performances. This can be largely attributed to the lack of standard datasets for \gls{raga} recognition. As seen from \tabref{tab:raga_recognition_methods_details}, the datasets used for evaluation by the existing methods vary immensely in terms of the number of \glspl{raga}, the chosen set of \glspl{raga}, the duration and the number of the audio recordings per \gls{raga} and the type of audio content. With that diverse datasets, it is difficult to draw any concrete conclusions on the performance of the methods across different studies. Even the survey studies such as in~\citep{koduri2011survey} have not performed any exhaustive comparative evaluations on the same dataset and under the same experimental setup. Thus, creating diverse, sizable and sharable datasets that are representative of the real-world music collections is a potential venue for contributions in this task. In addition to the datasets, poor description of the implementation details is another common factor amongst several existing studies. This situation becomes further difficult since none of the approaches make their code publicly available for ensuring reproducibility of the research results. More emphasis should be put on the reproducibility aspect of the research work. \TODO{refactor this last part, maybe the issue of reproducibility should come in the summary??}
 
-\TODO{to add: no statistical testing, no baseline, usually on one tradition, not evaluated on both, + something about the typical distane measures + classifiers used ? highlight that there are not many survey papers and comparative studies}
+\TODO{to add: no statistical testing, no baseline, usually on one tradition, not evaluated on both, + something about the typical distane measures + classifiers used ? highlight that there are not many survey papers and comparative studies. Check the sheet, make sure nothing is left to mention}
 
 In addition to the issues mentioned above, we identify other core venues for improving the state-of-the-art in \gls{raga} recognition. From \tabref{tab:raga_recognition_methods_melodic_characteristics} it becomes evident that there is a lack of approaches that use melodic phrases for this task. A system that can reliably extract melodic patterns in an audio music collection and can use those patterns for \gls{raga} recognition is much desired. Such a system is particularly valuable because in \gls{iam} characteristic melodic patterns are the most salient cues for \gls{raga} recognition used by human listeners. From~\tabref{tab:raga_recognition_methods_melodic_characteristics} we also notice that approaches that capture temporal aspects of melody use a discretized representation of melody. These approaches fail to capture the characteristic melodic transitions across \glspl{svara}. Thus, there is a need for approaches that can statistically capture both the tonal and the fine grained temporal aspects of melody by utilizing a continuous melody representation. Both these voids in the existing research on \gls{raga} recognition are addressed in this dissertation in~\chapref{chap:raga_recognition}.
 
@@ -304,6 +304,32 @@ In addition to the issues mentioned above, we identify other core venues for imp
 
 \subsection{Melodic Pattern Processing}
 \label{sec:sota_pattern_processing_iam}
+
+What do we mean by pattern processing. What is the scope of this term in this review process. It encapsulate the idea of melodic similarity for short melodic fragmens. Pattern processing in IAm is challenging because of xxx....
+
+
+1) divide into two types of approaches, discovery and search/detection (within search two types, detection and discrimination within melodic patterns, no noise candiddates)
+2) Methods different for different traditions, too specific to a music tradition or to a style within a tradition.
+3) Methods using different melodic representation, continuous, discrete
+4) Normalization is quite consistent! however octave shifted phrases are there and only one method has handled that
+4) Segmentation logic: no smart generic segmentation. There are some for very specific situations in Hindustani music
+5) Say that method to be used for matching depends on how much the melodic reprsentation is abstracted. If the abstraction embded the variability then you can do away with a simple distance measure. Distance measures: lots of them, Euc, RLCS, DTW, Smith waterman (string matching algorithm)
+6) speedup. Melodic abstraction, segmentation, locality sensitive hashing
+7) Different types of patterns handled in literature.
+8) Dataset variabilities + small size (less ragas, less phrases, less occurrences) + errors in annotations
+9) Culture specific aspects are exploited but it becomes too particular 1) DTW constraint learning 2) segmentation logic
+10) Discovery method evaluated in a very small setup, scalability is questionable. Evaluation done with only one musician. Manual step involved in getting one liners. Synthetic dataset. The speedup method is lossy, it doesn't retrieve all the patterns. 
+11) Evaluation metric: unclear explanations, adhoc measures to evaluate, not considering all the annotated phrases as queries, computing metric using only top retrieved results etc
+12) 
+
+Venues for improvement
+1) Controlled experimental setup, controlling the amount of noise candidates
+2) Method that can scale atleast to entire IAM, it has a diverse melodic characteristic
+3) So many different variants and choices, no comparative evaluation and evaluation of both the music tradidions with the same setup
+4) Either raga or pattern specific exploitation of cultural specific concepts, we need it at a culture level atleast
+5) No evaluation of sampling rate
+6) No clear explanation of the length of the segment and length normalization
+7) 
 
 
 
