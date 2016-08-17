@@ -306,7 +306,6 @@ In addition to the issues mentioned above, we identify other core venues for imp
 \label{sec:sota_pattern_processing_iam}
 
 
-
 \begin{sidewaystable}
 	\begin{threeparttable} 
 		\setlength{\tabcolsep}{2pt}
@@ -317,16 +316,16 @@ In addition to the issues mentioned above, we identify other core venues for imp
 \tabletop
 				& Task & Melody Representation & Segmentation & Distance Measure & Speed-up & \#\Glspl{raga} & \#Rec & \#Unq Patt & \#Occ \tabularnewline
 \tablemid
-			\cite{ganguli2015efficient} & Detection & \acrshort{bss}, Transcription & Implicit & Smith Waterman & Discretization & 34\tnote{h} & 50 & NA & 1075\tabularnewline
-			\multirow{2}{*}{\cite{Rao2014}} & Distinction & Continous & GT annotations & \acrshort{dtw} & - & 1\tnote{h} & 8 & 3 & 268\tabularnewline
-			& Distinction & Continous & GT annotations & \acrshort{hmm} & - & 5\tnote{c} & NA & 10 & 652\tabularnewline
-			\cite{rao2013distinguishing} & Distinction & Continuous & GT annotations & \acrshort{dtw} & - & 1\tnote{h} & 8 & 3 & 268\tabularnewline
-			\cite{Ross2012b} & Detection & Continous, SAX-12,1200 & Sama location & Euc., \acrshort{dtw} & Segmentaion & 3\tnote{h} & 4 & 3 & 107\tabularnewline
-			\cite{Ross2012} & Detection & Continous & Pa \gls{nyas} & \acrshort{dtw} & Segmentation & 1\tnote{h} & 2 & 2 & 107\tabularnewline
-			\cite{Ishwar2013} & Detection & Stationary point + Continuous & Bruteforce & \acrshort{rlcs} & Two pass method & 2\tnote{c} & 47 & XXX & 173\tabularnewline
-			\cite{Dutta2014} & Discovery & Stationary point + Continuous & Bruteforce & \acrshort{rlcs} & - & 5\tnote{c} & NA & - & -\tabularnewline
-			\cite{dutta2014modified} & Detection & Stationary point + Continuous & NA & Modified-\acrshort{rlcs} & Two pass method & 1\tnote{c} & 16 & NA & 59\tabularnewline
-			\cite{ishwar2012motivic} & Distinction & Continuous & GT annotations & \acrshort{hmm} & - & 5\tnote{c} & NA & 6 & 431\tabularnewline
+				\cite{ishwar2012motivic} & Distinction & Continuous & GT annotations & \acrshort{hmm} & - & 5\tnote{c} & NA & 6 & 431\tabularnewline
+				\cite{Ross2012} & Detection & Continous & Pa \gls{nyas} & \acrshort{dtw} & Segmentation & 1\tnote{h} & 2 & 2 & 107\tabularnewline
+				\cite{Ross2012b} & Detection & Continous, SAX-12,1200 & Sama location & Euc., \acrshort{dtw} & Segmentaion & 3\tnote{h} & 4 & 3 & 107\tabularnewline
+				\cite{Ishwar2013} & Detection & Stationary point + Continuous & Bruteforce & \acrshort{rlcs} & Two pass method & 2\tnote{c} & 47 & XXX & 173\tabularnewline
+				\cite{rao2013distinguishing} & Distinction & Continuous & GT annotations & \acrshort{dtw} & - & 1\tnote{h} & 8 & 3 & 268\tabularnewline
+				\cite{Dutta2014} & Discovery & Stationary point + Continuous & Bruteforce & \acrshort{rlcs} & - & 5\tnote{c} & NA & - & -\tabularnewline
+				\cite{dutta2014modified} & Detection & Stationary point + Continuous & NA & Modified-\acrshort{rlcs} & Two pass method & 1\tnote{c} & 16 & NA & 59\tabularnewline
+				\multirow{2}{*}{\cite{Rao2014}} & Distinction & Continous & GT annotations & \acrshort{dtw} & - & 1\tnote{h} & 8 & 3 & 268\tabularnewline
+				& Distinction & Continous & GT annotations & \acrshort{hmm} & - & 5\tnote{c} & NA & 10 & 652\tabularnewline
+				\cite{ganguli2015efficient} & Detection & \acrshort{bss}, Transcription & Implicit & Smith Waterman & Discretization & 34\tnote{h} & 50 & NA & 1075\tabularnewline
 \tablebot			
 
 			\end{tabular}
@@ -339,40 +338,43 @@ In addition to the issues mentioned above, we identify other core venues for imp
 			\item[] ABBREVIATIONS: \#Rec=Number of recordings;       \#Unq Patt=Number of unique patterns; \#Occ=Total number of annotated occurrences of the patterns; GT=Ground truth; NA=Not available; ``-''= Not applicable; Euc.=Euclidean distance.
 						
 		\end{tablenotes}
-		\caption{Methods proposed in the literature for melodic pattern detection and discovery in \gls{iam}. \TODO{Complexte the table, remove XX and double check the numbers + review the Task strings 'distinction' specifically}}
-		\label{tab:raga_recognition_methods_melodic_characteristics}
+		\caption{Methods proposed in the literature for melodic pattern detection and discovery in \gls{iam}. \TODO{Complexte the table, remove XX and double check the numbers + review the Task strings 'distinction' specifically. Check if there are other works}}
+		\label{tab:pattern_processing_iam}
 	\end{threeparttable}
 \end{sidewaystable}
 
+In this section we review the existing approaches for melodic pattern processing in \gls{iam}. By melodic pattern processing we jointly refer to a number of research tasks that involve computational analysis of melodic patterns such as pattern similarity, pattern detection and pattern discovery. Depending on the musical relevance of the melodic patterns, they are at times referred to as melodic motifs in the literature. Analysis of melodic patterns or motifs is a well established research task in \gls{mir} for several music traditions~(Section XX). However, for \gls{iam} this computational task has gained attention only recently, mainly during the course of this dissertation. We summarize the existing approaches proposed for pattern processing in \gls{iam} in~\tabref{tab:pattern_processing_iam}. 
 
 
 
-What do we mean by pattern processing. What is the scope of this term in this review process. It encapsulate the idea of melodic similarity for short melodic fragmens. Pattern processing in IAm is challenging because of xxx....
 
-
-1) divide into two types of approaches, discovery and search/detection (within search two types, detection and discrimination within melodic patterns, no noise candiddates)
-2) Methods different for different traditions, too specific to a music tradition or to a style within a tradition.
-3) Methods using different melodic representation, continuous, discrete
-4) Normalization is quite consistent! however octave shifted phrases are there and only one method has handled that
-4) Segmentation logic: no smart generic segmentation. There are some for very specific situations in Hindustani music
-5) Say that method to be used for matching depends on how much the melodic reprsentation is abstracted. If the abstraction embded the variability then you can do away with a simple distance measure. Distance measures: lots of them, Euc, RLCS, DTW, Smith waterman (string matching algorithm)
-6) speedup. Melodic abstraction, segmentation, locality sensitive hashing
-7) Different types of patterns handled in literature.
-8) Dataset variabilities + small size (less ragas, less phrases, less occurrences) + errors in annotations
-9) Culture specific aspects are exploited but it becomes too particular 1) DTW constraint learning 2) segmentation logic
-10) Discovery method evaluated in a very small setup, scalability is questionable. Evaluation done with only one musician. Manual step involved in getting one liners. Synthetic dataset. The speedup method is lossy, it doesn't retrieve all the patterns. 
-11) Evaluation metric: unclear explanations, adhoc measures to evaluate, not considering all the annotated phrases as queries, computing metric using only top retrieved results etc
-12) 
-
-Venues for improvement
-1) Controlled experimental setup, controlling the amount of noise candidates
-2) Method that can scale atleast to entire IAM, it has a diverse melodic characteristic
-3) So many different variants and choices, no comparative evaluation and evaluation of both the music tradidions with the same setup
-4) Either raga or pattern specific exploitation of cultural specific concepts, we need it at a culture level atleast
-5) No evaluation of sampling rate
-6) No clear explanation of the length of the segment and length normalization
-7) 
-
+%
+%What do we mean by pattern processing. What is the scope of this term in this review process. It encapsulate the idea of melodic similarity for short melodic fragmens. Pattern processing in IAm is challenging because of xxx....
+%
+%
+%1) divide into two types of approaches, discovery and search/detection (within search two types, detection and discrimination within melodic patterns, no noise candiddates)
+%2) Methods different for different traditions, too specific to a music tradition or to a style within a tradition.
+%3) Methods using different melodic representation, continuous, discrete
+%4) Normalization is quite consistent! however octave shifted phrases are there and only one method has handled that
+%4) Segmentation logic: no smart generic segmentation. There are some for very specific situations in Hindustani music
+%5) Say that method to be used for matching depends on how much the melodic reprsentation is abstracted. If the abstraction embded the variability then you can do away with a simple distance measure. Distance measures: lots of them, Euc, RLCS, DTW, Smith waterman (string matching algorithm)
+%6) speedup. Melodic abstraction, segmentation, locality sensitive hashing
+%7) Different types of patterns handled in literature.
+%8) Dataset variabilities + small size (less ragas, less phrases, less occurrences) + errors in annotations
+%9) Culture specific aspects are exploited but it becomes too particular 1) DTW constraint learning 2) segmentation logic
+%10) Discovery method evaluated in a very small setup, scalability is questionable. Evaluation done with only one musician. Manual step involved in getting one liners. Synthetic dataset. The speedup method is lossy, it doesn't retrieve all the patterns. 
+%11) Evaluation metric: unclear explanations, adhoc measures to evaluate, not considering all the annotated phrases as queries, computing metric using only top retrieved results etc
+%12) 
+%
+%Venues for improvement
+%1) Controlled experimental setup, controlling the amount of noise candidates
+%2) Method that can scale atleast to entire IAM, it has a diverse melodic characteristic
+%3) So many different variants and choices, no comparative evaluation and evaluation of both the music tradidions with the same setup
+%4) Either raga or pattern specific exploitation of cultural specific concepts, we need it at a culture level atleast
+%5) No evaluation of sampling rate
+%6) No clear explanation of the length of the segment and length normalization
+%7) 
+%
 
 
 
