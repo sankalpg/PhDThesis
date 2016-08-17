@@ -343,7 +343,20 @@ In addition to the issues mentioned above, we identify other core venues for imp
 	\end{threeparttable}
 \end{sidewaystable}
 
-In this section we review the existing approaches for melodic pattern processing in \gls{iam}. By melodic pattern processing we jointly refer to a number of research tasks that involve computational analysis of melodic patterns such as pattern similarity, pattern detection and pattern discovery. Depending on the musical relevance of the melodic patterns, they are at times referred to as melodic motifs in the literature. Analysis of melodic patterns or motifs is a well established research task in \gls{mir} for several music traditions~(Section XX). However, for \gls{iam} this computational task has gained attention only recently, mainly during the course of this dissertation. We summarize the existing approaches proposed for pattern processing in \gls{iam} in~\tabref{tab:pattern_processing_iam}. 
+In this section we review the existing approaches for melodic pattern processing in audio collections of \gls{iam}. By melodic pattern processing we jointly refer to a number of research tasks that involve computational analysis of melodic patterns such as pattern similarity, pattern detection and pattern discovery. Depending on the musical relevance of the melodic patterns, they are at times referred to as melodic motifs in the literature. Analysis of melodic patterns or motifs is a well established research task in \gls{mir} for several music traditions~(Section XX). However, for \gls{iam}, despite the importance of melodic patterns in the \gls{raga} framework this computational task has gained attention only recently, mainly during the course of this dissertation. 
+
+In~\tabref{tab:pattern_processing_iam} we summarize the existing approaches for pattern processing in \gls{iam} and provide relevant details to better compare these approaches and get an overall perspective. There are three closely related but different pattern processing tasks that these approaches address (\tabref{tab:pattern_processing_iam}); 1) Pattern detection, where given a query melodic pattern the objective is to retrieve all the other occurrences of the query pattern in the test audio recordings~\citep{Ross2012,Ross2012b,Ishwar2013,dutta2014modified,ganguli2015efficient}. 2) Pattern distinction, where given a query pattern the aim is to retrieve the other instances of the query pattern within a pool of annotated patterns~\citep{ishwar2012motivic,rao2013distinguishing,Rao2014}. This task can be considered as a subtask of pattern detection, with the only difference being the absence of irrelevant patterns in the search space. 3) Pattern discovery, where given a collection of audio recordings the objective is to discover melodic patterns in the absence of any ground truth annotations of melodic patterns~\citep{Dutta2014}. 
+
+As seen from~\tabref{tab:pattern_processing_iam}, a majority of the existing approaches follow a supervised approach and focus on the task of pattern detection or pattern distinction. Based on these approaches we see that there are three main processing units involved in this task; melodic representation, melody segmentation and similarity (or dissimilarity) computation. 
+
+
+
+
+Since melodic patterns provide a base for improvisation in \gls{iam}, their repeated occurrences bear significant time and pitch variations (SectionXX). Therefore, devising a musically meaningful melodic similarity model has been one of the key objectives of these approaches. The choice of distance measure largely depends on the chosen melodic representation. If the time and pitch variations are accounted in melody representation, music agnostic or generic distance measures can be used. However, often than not, music specificities are considered 
+
+
+Since this research topic is young, one of the main objectives is to first study closely the melodic similarity models. 
+
 
 
 
@@ -376,6 +389,9 @@ In this section we review the existing approaches for melodic pattern processing
 %7) 
 %
 
+Note that we have only considered the approaches proposed for pattern processing in audio collections of \gls{iam}. This is because \gls{iam} is primarily an oral and an improvisatory music tradition. The musical compositions essentially provide only a skeleton for a performance and the essence lies in the artistic improvisation. The symbolic notation corresponding to the performances are scarce and often too simplistic to capture the nuances in melodies of \gls{iam}. However, there are few approaches that work with symbolic notation of Carnatic music collection~XXXXXX. \TODO{make sure you justify why only audio, maybe refer tothe introduction chapter and provide some references for symbolic music studies...ranjani etc...}
+
+\TODO{There has to be a big point in the introduction justifying why we are doing all this work on audio recordings. why not symbolic when thats the one worked with for western music.}
 
 
 \section{Relevant Work (in MIR??) or (Other Music Tradition?)}
