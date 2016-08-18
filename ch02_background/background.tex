@@ -21,34 +21,81 @@ The word polyphonic in the context of audio recordings signifies that the record
 \section{Music Background}
 \label{sec:music_background}
 
+In this section we provide a brief introduction to the \gls{iam}, which is the music tradition that we focus on for the computational analysis in this thesis. We first briefly describe the general aspects of the  music tradition and subsequently provide a short introduction to the musical concepts. In our description the emphasis will be on the melodic aspects as that is the focus in this thesis. Note that the description here is essentially aimed to facilitate the understanding of the subsequent chapters. For a deeper understanding of these concepts we provide additional references. 
+
 \subsection{Indian Art Music}
+\label{sec:music_background_iam}
 
-\subsection{Melodies in Indian Art Music}
+In this work, \glsreset{iam} refers to both the art music traditions of the Indian subcontinent: Hindustani (also known as North Indian) music~\cite{Bor2010, Danielou2010}, prominent in the northern and central regions of India, Pakistan, Nepal, Afghanistan and Bangladesh; and Carnatic music, widespread in the southern regions of the Indian subcontinent (South India and Srilanka)~\cite{Singh1995,Viswanathan2004}. \gls{iam} is also commonly referred to as \glsreset{icm}. Throughout this thesis we use the word ``art'' instead of ``Classical'' to refer to these music traditions. \cite[Page 1]{Raja2012} presents an interesting argument emphasizing the appropriateness of such a terminology. The roots of the \gls{iam} can be traced back to \gls{samved}, which is one of the four \gls{vedas} that describes music at length~\cite{Trivedi2008,Singh1995}. The \gls{samved} dates back to around 1000 BC, consists of a collection of religious hymns (taken from \gls{rigved}), to be sung using specifically indicated melodies called as \gls{samagan}~\cite{Griffith2004}. However, the current form of Indian art music is a confluence resulting from the cultural interactions between the Persian, Greek, Arabic, Iranian and Indian cultures~\cite{Kaul2007,Saraf2011,Singh1995}.
 
-\subsubsection{Tonic in Indian art music}
-\label{sec:background_tonic_in_iam}
+With its long existing history \gls{iam} continues to thrive in the diverse sociocultural contexts in both inside and outside India. There is an active audience base and several music festival such as Sawai Gandharva Bhimsen Mahotsav\footnote{http://sawaigandharvabhimsenmahotsav.com/} and Madras Music Season\footnote{http://www.musicacademymadras.in/} that exclusively feature these art music traditions. Notably, Madras Music Season is one of the largest music festivals in the world that organizes more than 1500 individual artist concerts in a span of six weeks. \Gls{iam} is a well studied music tradition with sophisticated and grounded music theory. It has a substantial musicological literature and scholarly text written on different musical concepts. The established musical theories and existing musicological work provides a strong base to formulate research problems within \gls{mir} for these music traditions. 
 
-\subsubsection{Svaras}
+Over the centuries \gls{iam} has been orally transmitted from across generations, following a hierarchical model of music training such as \gls{gharana} (or school of music) in Hindustani music~\cite{Saraf2011,Mehta2008}. Though the fundamental musical concepts used across \glspl{gharana} are the same, each \gls{gharana} has its own ideology and characteristic style of music performance~\cite{Deshpande1989}.
 
-\subsubsection{Aroh-Avroh}
+Both Hindustani and Carnatic music are performance oriented traditions and are primarily improvisatory in nature. In Carnatic music, a concert, also referred as a Kach\={e}ri, is the natural unit of music performance. It is the unit typically considered for organization and digital distribution of Carnatic music content. Though Carnatic music is improvisatory in nature, it is predominantly based on compositions. Most of the compositions are to be sung, as a result of which, vocal music is dominant in Carnatic music. Even in instrumental music, the artists aims to mimic vocal singing~\citep{Viswanathan2004}. In Hindustani music, individual music pieces tend to be long in duration. A concert typically contains a handful of such pieces. In this music tradition also the vocal music is predominant. However, compared to Carnatic music instrumental performances in Hindustani music are much more popular and prevalent.
 
-\subsubsection{Gamakas and Ornaments}
+Indian art music is essentially heterophonic with a main melody being sung or played by the lead artist~\cite{Bagchee1998}. Many times an instrument provides a melodic accompaniment and follows the lead performer~\cite{Viswanathan2004}. A typical arrangement in a performance of Indian art music consists of a lead performer (occasionally a duo), a rhythm accompaniment generally provided by \gls{tabla} in Hindustani music and \gls{mridangam} in Carnatic music, a constantly sounding drone in the background and frequently a
+melodic accompaniment using harmonium or \gls{sarangi} in Hindustani and violin in Carnatic music. The drone sound which is mainly produced by a \gls{tanpura} is the only component that adds a harmonic element to the performance~\cite{Bagchee1998}. In case of the instrumental Hindustani music the prominent lead instrument are \gls{sitar}, \gls{sarod}, \gls{bansuri}, \gls{sarangi} and \gls{santur}.
 
-\subsubsection{Raga in Indian Art Music}
+Due to a wider geographical spread over the Indian subcontinent, Hindustani music is much more diverse and heterogeneous compared to Carnatic music. There are several forms and styles within this music tradition such as \gls{dhrupad}, \gls{khayal} and \gls{thumri}, which differ considerable from each other. In this thesis we primarily focus on the \gls{khayal} form, which is one of the most frequently performed forms in current time in Hindustani music. 
 
-\paragraph{Phase-based and Scale-based ragas}
-\paragraph{Allied ragas}
 
-\subsubsection{Characteristic Melodic Phrases}
+Despite a number of significant differences in Hindustani and Carnatic music traditions, they share similar musical concepts. In both these music traditions \gls{raga} (pronounced as r\={a}g in Hindustani music) is the melodic framework and \gls{tala} (pronounced as t\={a}l in Hindustani music) is the rhythmic framework. For the rest of this document we will use the terms \gls{raga} and \gls{tala} to denote these concepts for both the music traditions. Since this thesis focuses on the melodic characterization in \gls{iam}, we provide a brief overview of the \gls{raga} concept in the subsequent section. We also provide a short explanation of the melody related terminology commonly used in \gls{iam}, which we use throughout the subsequent chapters. 
 
-\subsubsection{Chalan}
+%7) Performance oriented music traditions, Orally transmitted, musical notation almost inexistant
+%8)Concert setup, lead artist, accompanists, acoustic characteristics basically
+%9) Emphasis on the unit of recordings, A single performance in Hindustani and Concert (Kacheri) in Carnatic. Concert structure in Carnatic music.
+%10) Vocal dominance in both the traditions, more in cArnatic than in Hindustani. Even instrumental mimic gayaki ang
+%11) Hindustani, very diverse, different forms within Hindustani music, Dhrupad, Khayal, Tappa, Thumri, Bhajan
+%7) Common rhythmic and melodic framework
+%8) Raga melodic framework described in the next section!!!
 
-\subsubsection{Nyas}
+
+\subsection{Melody in Indian Art Music}
+
+Melodies in \gls{iam} are based on the framework of \gls{raga}. Numerous scholars have defined ragas from different perspectives. The meaning and interpretation of ragas have also evolved over time..
+
+
+1) What is raga, definitions of ragas. evolution of the meaning and interpretation of raga over ages
+2) What are the most suitable definitions 
+3) Relation of raga with the emotions
+3) Instead of understanding them through definitions, for this work its more important to understand the characteristics of the raga. what characterizes different ragas
+4) Influence of this music on bollywood music
+
+\paragraph{Tonic pitch}
+
+\paragraph{Svaras}
+
+\paragraph{Nyas}
 \label{sec:backgroung_nyas_description}
+
+\paragraph{Aroh-Avroh}
+
+\paragraph{Chalan}
+
+\paragraph{Gamakas and Ornaments}
+
+\paragraph{Characteristic Melodic Phrases}
+
+
+\subsubsection{Notation in IAM}
+
+What is the notation in IAM, bhatkhande etc and there might be some used in Carnatic music. 
+Provide some reposiroty..
+Some good links to papers which talk about this topic
+Improvisatory form. Role of written notation in music.
+The compositions mainly act as a skeleton in a performance and the aesthetic values are derived from the improvisatory aspects. Notations in IAM?
+
+
+\subsubsection{Recurring Melodic Patterns in IAM}
+
+Explain what kind of patterns are recurring, gamakas, ornaments, composition specific and characteristic. Say that we make these distinctions and stick with it for the rest of the document.
 
 Dey presents various interpretations and perspectives on the concept of ny\={a}s in Hindustani music according to ancient, medieval and modern authors~\cite{Dey2008}. In the context of its current form, the author describes ny\={a}s as that process in a performance of a r\={a}g where an artist pauses on a particular \gls{svara}\footnote{The seven solf\`{e}ge symbols used in Indian art music are termed as \glspl{svara}. It is analogous to note in western music but conceptually different.}, in order to build and subsequently sustain the format of a r\={a}g, the melodic framework in Indian art music~\cite[p. 70]{Dey2008}\cite{KKG_SS13}. Dey elaborates the concept of ny\={a}s in terms of action, subject, medium, purpose and effect associated with it. Typically, occurrence of a ny\={a}s delimits melodic phrases (motifs), which constitute one of the most important characteristic of a r\={a}g. Analysis of ny\={a}s is thus a crucial step towards melodic analysis of Hindustani music. In particular, automatically detecting occurrences of ny\={a}s (from now on referred as ny\={a}s segments) will aid in computational analyses such as melody segmentation, motif discovery, r\={a}g recognition and music transcription~\cite{GopalJNMR2012, Rao2014}. However, detection of ny\={a}s segments is a challenging computational task, as the prescriptive definition of ny\={a}s is very broad, and there are no fixed set of explicit rules to quantify this concept~\cite[p. 73]{Dey2008}. It is through rigorous practice that a seasoned artist acquires perfection in the usage of ny\={a}s, complying to the r\={a}g grammar and exploring creativity through improvisation at the same time. 
 
-\subsubsection{Recurring Melodic Patterns in IAM}
+
+
+
 
 
 \section{Related Work in Indian Art Music}
