@@ -241,6 +241,7 @@ different octaves) a set of 25 features is computed. The features are the values
 \subsection{\Glsentrytext{raga} Recognition}
 \label{sec:sota_raga_recognition}
 
+\TODO{If time permits highlight the positives and little bit more detail what the approaches have done, and most of all what was their motivation, what were they trying to capture.}
 
 \begin{sidewaystable}
 	\begin{threeparttable} 
@@ -430,6 +431,19 @@ Based on our discussion above we see that there are a variety of approaches prop
 %7) Discovery approaches not at all there
 %8) Pattern characterization not there, there is one but its too simple we need more sophisiticated.
 
+\TODO{Mention in one paragraph the approaches that address pattern processing where the patterns are like gamakas and Alankars. Pratyush's work etc...In the proposal there is a paragraph on this topic}
+
+Copy paste---
+Existing computational work on pattern processing in melodies of Indian art
+music is mostly focused on analysis and modeling of gamakas and characteristic
+phrases of a rāg. Predominantly these approaches follow a supervised analysis
+framework. In this section we present only a selection of works related to these
+topics. \citeA{Subramanian2012} proposes `longest path' optimization algorithm for phrase-level selection of gamakas and
+two component `stage-dance' representation for modeling gamakas in Carnatic
+music. \citeA{Datta2007} attempt to automatically extract `meend', a class of
+gamakas from audio signals using heuristic rules, music knowledge and curve
+fitting measures. 
+
 
 Note that we have only considered the approaches proposed for pattern processing in audio collections of \gls{iam}. This is because \gls{iam} is primarily an oral and an improvisatory music tradition. The musical compositions essentially provide only a skeleton for a performance and the essence lies in the artistic improvisation. The symbolic notation corresponding to the performances are scarce and often too simplistic to capture the nuances in melodies of \gls{iam}. However, there are few approaches that work with symbolic notation of Carnatic music collection~XXXXXX. \TODO{make sure you justify why only audio, maybe refer tothe introduction chapter and provide some references for symbolic music studies...ranjani etc...}
 
@@ -437,7 +451,44 @@ Note that we have only considered the approaches proposed for pattern processing
 \section{Related Work}
 \label{sec:background_relevant_work_other_music}
 
-\subsection{Key and Mode Recognition}
+\TODO{Please review and edit this paragraph. Make it little attractive pls.}
+In the previous section we reviewed the relevant work done in \gls{mir} for \gls{iam}. However, the approaches devised for related tasks in other music traditions in \gls{mir} are also pertinent and beneficial for the current work. In this section we review available literature on tonality modeling and pattern processing, the two topics in \gls{mir} that are most related to our work. Since in this dissertation we work with audio recordings, during our review we primarily focus on the approaches that operate on audio music collections. We also present a brief review of the related literature in time-series analysis domain, since the task of motif discovery is in time-series is well studied. Note that the literature review in this section is not intended to comprehensively summarize and analyze the state-of-the-art, but mainly aims at providing an overall perspective on the research topic.
+
+
+\subsection{Key and Tonality Modeling}
+\label{sec:background_key_and_tonality_modeling}
+
+
+One of the research tasks that is most related to the task of \gls{raga} recognition is that of modeling the tonality of an audio recording. In the last decade, tasks such as key estimation and chord recognition have been amongst the most popular topics in the \gls{mir} community. These research problems are studied by researchers from a computational, musicological, and music cognition and psychology point of view. In this section we review some of the prominent work done in key and tonality estimation. 
+
+%\cite{Brown1988} proposes two basic ways of modeling human key perception, namely, the structural and functional approach. The structural approach to tonality considers that the listeners mainly derive the key perception or tonal centers by using aggregated pitch content of a musical piece. However there are secondary factors affecting the perceptual salience of a pitch class, like its repetition, or metrical position. Structural approach pays relatively less importance to the local ordering of the pitch values. On the other hand, the functional approach is quite complementary to this approach. It pays less importance to the pitch class material and more emphasis on the sequential intervallic implications.
+
+One of the seminal approaches for automatic key estimation is the key profile method proposed by~\cite{KrumhanslKessler82,krumhansl2001cognitive}. The approach is based on correlating the established tonal hierarchies with the \gls{pcd} extracted from the test musical material. These tonal hierarchies are experimentally determined using the probe-tone method~\cite{}.
+
+
+Pitch saliences in \gls{pcd} are affected by the pitch repetition and their relative duration in a musical piece. Many recent approaches to key estimation are motivated by this methodology and use these experimentally determined key profiles to match with the \glspl{pcd} extracted from the audio \cite{Peeters2006}. 
+
+In these methods, the pitch class distributions derived from the audio are correlated with each of these templates (12 for major and 12 for minor scale), and the one resulting in the highest correlation is selected as the correct key note and the mode. 
+
+However the extraction of the \glspl{pcd} from the audio is not a trivial task. Some  of the challenges involved are the presence of the multiple pitch sources in the audio and their corresponding harmonics~\cite{Gomez2006}. 
+
+One of the methods to tackle this difficulty is proposed by~\cite{Gomez2006}. In her approach instead of the pitch class profile a harmonic pitch class profile is built directly from the audio taking appropriate contributions from all the harmonics. 
+
+A comprehensive overview of the main studies pertaining to tonality and key estimation in western music can be found in her dissertation \cite{Gomez2006}.
+
+An alternate model to represent the tonality in Western music is the spiral model, proposed by~\cite{Chew2002}. In this model the pitches are represented in a three-dimensional space (3D spiral), and every key has its particular place in that space.
+
+Feature extraction -
+Conversion to pitch class profiles
+Determining the key and the mode. - Global feature - aligning and KNN, machine learning based approach, HMM based approach, etc
+
+
+Names that have to be there - Brown, Krumhansler, Temperely, Peeters, Emilia, Chew, Klapuri if possible, Barish
+More sophisticated learning neural net approach. 
+
+Tonality modeling in Makam music???
+
+
 
 \subsection{Pattern Processing in Music}
 
