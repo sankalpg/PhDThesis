@@ -1,14 +1,124 @@
 %!TEX root = ../thesis_a4.tex
+% Some new commands for setting up appendices
+\newcommand\contrib[1]{~{\footnotesize (#1)}}
+% 
+\newcommand\resource[2]{
+	\noindent #1 \par
+	\vspace{0.2em}
+	{\centering	\url{#2} \par}
+	\vspace{0.5em}
+	\hrule \par 
+	\vspace{0.8em} \par}
+%
+%
+\chapter[List of Publications][List of Publications]{List of Publications}\label{app:mypapers}% by the author
+The following is a list of publications by the author in the context of the thesis and CompMusic project. The text in parentheses outlines the specific contribution of the author in each publication. 
+\subsection*{Peer-reviewed journals}
+\begin{itemize}[leftmargin=*]
+	\item \textbf{Srinivasamurthy, A.}, Holzapfel, A., \& Serra, X. (2014). In Search of Automatic Rhythm Analysis Methods for Turkish and Indian Art Music. \textit{Journal of New Music Research}, 43(1), 97--117. \contrib{Contributed to identifying problems, challenges, opportunities and state of the art, building the Indian music datasets, conducting experiments on Indian music datasets, analysis and interpretation of results and writing of the manuscript. Companion webpage for the paper: \url{http://compmusic.upf.edu/jnmr-2014-rhythm}} % http://compmusic.upf.edu/node/308/
+\end{itemize}
+%
+\subsection*{Full articles in peer-reviewed conferences}
+\begin{itemize}[leftmargin=*]
+	\item \textbf{Srinivasamurthy, A.}, Holzapfel, A., Cemgil, A. T., \& Serra, X. (2016, March). A generalized Bayesian model for tracking long metrical cycles in acoustic music signals. In \emph{Proceedings of the 41st IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP2016)} (pp. 76--80). Shanghai, China. \contrib{Formulated the section pointer model, built the Hindustani rhythm dataset, conducted the experiments and wrote the manuscript. Companion webpage for the paper: \url{http://compmusic.upf.edu/icassp-2016-spm}}
+	%
+	\item \textbf{Srinivasamurthy, A.}, Holzapfel, A., Cemgil, A. T., \& Serra, X. (2015, October). Particle Filters for Efficient Meter Tracking with Dynamic Bayesian Networks. In \emph{Proceedings of the 16th International Society for Music Information Retrieval Conference (ISMIR 2015)} (pp. 197--203). Malaga, Spain. \contrib{Formulated the mixture observation model, built the Carnatic rhythm data subset, conducted the experiments and wrote the manuscript. Companion webpage for the paper: \url{http://compmusic.upf.edu/ismir-2015-pf}}
+	%
+	\item Gupta, S., \textbf{Srinivasamurthy, A.}, Kumar, M., Murthy, H., \& Serra, X. (2015, October). Discovery of Syllabic Percussion Patterns in Tabla Solo Recordings. In \emph{Proceedings of the 16th International Society for Music Information Retrieval Conference (ISMIR 2015)} (pp. 385--391). Malaga, Spain. \contrib{Contributed to formulating the problem of pattern discovery in tabla solos, building the dataset, running transcription experiments, analysis of results and writing the manuscript. Companion webpage for the paper: \url{http://compmusic.upf.edu/ismir-2015-tabla}}
+	%
+	\item \textbf{Srinivasamurthy, A.}, Caro, R., Sundar, H., \& Serra, X. (2014, October). Transcription and Recognition of Syllable based Percussion Patterns: The Case of Beijing Opera. In \emph{Proceedings of the 15th International Society for Music Information Retrieval Conference (ISMIR 2014)} (pp. 431--436). Taipei, Taiwan. \contrib{Contributed to formulating the problem of percussion pattern transcription in  {jingju}, helped in building the percussion pattern dataset, conducted all the experiments and wrote the manuscript. Companion webpage for the paper: \url{http://compmusic.upf.edu/ismir-2014-bo}} % http://compmusic.upf.edu/node/309
+	%
+	\item Holzapfel, A., Krebs, F., \& \textbf{Srinivasamurthy, A.} (2014). Tracking the ``odd": Meter inference in a culturally diverse music corpus. In \emph{Proceedings of the 15th International Society for Music Information Retrieval Conference (ISMIR 2014)} (pp. 425--430). Taipei, Taiwan. \contrib{Contributed to building the Carnatic dataset, analysis of results and writing the manuscript. Companion webpage for the paper: \url{http://compmusic.upf.edu/ismir-2014-odd}} % http://compmusic.upf.edu/node/310
+	% 
+	\item \textbf{Srinivasamurthy, A.}, Koduri, G. K., Gulati, S., Ishwar, V., \& Serra, X. (2014, September). Corpora for Music Information Research in Indian Art Music. In \emph{Proceedings of Joint International Computer Music Conference/Sound and Music Computing Conference}. Athens, Greece. \contrib{Contributed to collection and analysis of corpora data, writing the manuscript. Companion webpage for the paper: \url{http://compmusic.upf.edu/smc-2014-corpora}} % http://compmusic.upf.edu/node/311
+	% 
+	\item \textbf{Srinivasamurthy, A.}, \& Serra, X. (2014, May). A Supervised Approach to Hierarchical Metrical Cycle Tracking from Audio Music Recordings. In \emph{Proceedings of the 39th IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP 2014)} (pp. 5237--5241). Florence, Italy. \contrib{Formulated the tempo,  {akshara} and  {sama} tracking problems, built the Carnatic rhythm dataset, conducted the experiments and wrote the manuscript. Companion webpage for the paper: \url{http://compmusic.upf.edu/icassp-2014-talaTrack}} % http://compmusic.upf.edu/node/312
+	%
+	\item Tian, M., \textbf{Srinivasamurthy, A.}, Sandler, M., \& Serra, X. (2014, May). A Study of Instrument-wise Onset Detection in Beijing Opera Percussion Ensembles. In \emph{Proceedings of the 39th IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP 2014)} (pp. 2174--2178). Florence, Italy. \contrib{Formulated the problem of instrument-wise onset detection in  {jingju}, designed and conducted the experiments, and wrote the manuscript. Companion webpage for the paper: \url{http://compmusic.upf.edu/icassp-2014-onsetbo}} % http://compmusic.upf.edu/node/313
+	\item \textbf{Srinivasamurthy, A.}, Subramanian, S., Tronel, G., \& Chordia, P. (2012, July). A Beat Tracking Approach to Complete Description of Rhythm in Indian Classical Music. In \emph{Proceedings of the 2nd CompMusic Workshop} (pp. 72--78). Istanbul, Turkey. \contrib{Formulated the problem of tracking sub-beat structure and cycle length from audio recordings, compiled the dataset, conducted the experiments and wrote the manuscript.}
+	\item Dzhambazov, G., \textbf{Srinivasamurthy, A.}, Senturk, S., \& Serra, X. (2016). On the use of Note Onsets for Improved Lyrics-to-audio alignment in Turkish Makam Music. To appear in the \emph{Proceedings of the 17th International Society for Music Information Retrieval Conference (ISMIR 2016)}, New York, USA. {\footnotesize (Contributed to the formulation of a variable-time  {HMM} for lyrics-to-audio alignment -  content not a part of the dissertation.)}
+\end{itemize}
+%
+\subsection*{Other contributions to conferences}
+\begin{itemize}[leftmargin=*]
+	\item Krebs, F., Holzapfel, A., \& \textbf{Srinivasamurthy, A.} (2014). MIREX 2014 Audio Downbeat Tracking Evaluation: KHS1. 10th Music Information Retrieval Evaluation eXchange (MIREX), extended abstract. Taipei, Taiwan. \contrib{Algorithm from \cite{holzapfel:14:odd} submitted for evaluation.} 
+	\item Gulati, S., Ganguli, K. K., Gupta, S., \textbf{Srinivasamurthy, A.}, \& Serra, X. (2015). RAGAWISE: A Lightweight Real-time Raga Recognition System for Indian Art Music. In Late-Breaking Demo Session of the 16th International Society for Music Information Retrieval Conference. Malaga, Spain. \contrib{Contributed to conceptualization, feedback and testing.}
+	\item Caro, R., \textbf{Srinivasamurthy, A.}, Gulati, S., \& Serra, X. (2014). Jingju music: Concepts and Computational Tools for its Analysis. A Tutorial in the 15th International Society for Music Information Retrieval Conference, Taipei, Taiwan. \contrib{Presented the rhythm part of the tutorial, discussing automatic rhythm analysis problems and methods in  {jingju} music. The companion webpage for the tutorial: \url{http://compmusic.upf.edu/jingju-tutorial}}
+\end{itemize}
+%
+%Other publications
+%
+%Other non peer reviewed 
+%hacks, reports, 
+\chapter{Resources}\label{app:resources}
+% <<Whatever could not make it to the main text>>
+This appendix is a compendium of links to resources and additional material related to the work presented in the thesis. An up-to-date set of links is also listed and maintained on the companion webpage \url{http://compmusic.upf.edu/phd-thesis-ajay} or its mirror at \url{www.ajaysrinivasamurthy.in/phd-thesis} . Latest updates on the CompMusic project can be obtained from \url{http://compmusic.upf.edu/}. 
 
-\chapter{Appendix A: Author's Publications}
-
-
-\section*{Journal Papers}
-
-\section*{Conference Papers}
-
-
-\chapter{Appendix B: Resources}
-
-\chapter{Appendix C: Glossary}
+Some of the results not reported in the dissertation and audio examples showcasing the results are presented on the companion webpage. The companion webpage will also be updated with any additional resources and material that will be built in the future. 
+%
+\section*{Music concepts and audio examples}
+\resource{A resource page for Carnatic  pl{tala}, with additional explanation of the structure of many different  pl{tala} and audio examples of music pieces in popular Carnatic  pl{tala}}{http://compmusic.upf.edu/examples-taala-carnatic}
+%
+\resource{A resource page for Hindustani  pl{taal}, with additional explanation of the structure of many different  pl{taal} and audio examples of music pieces in popular Hindustani  pl{taal}}{http://compmusic.upf.edu/examples-taal-hindustani}
+%
+\resource{Audio examples for the different percussion instruments used in Beijing opera}{http://compmusic.upf.edu/examples-percussion-bo}
+%
+\resource{A resource page for percussion patterns in Beijing opera, including scores and audio examples of popular percussion patterns}{http://compmusic.upf.edu/bo-perc-patterns}
+%
+\resource{A resource page for \textit{usul}, the cyclic rhythmic framework in Turkish makam music, with audio examples and scores}{http://compmusic.upf.edu/examples-usul-mmt}
+%
+\section*{Corpora and datasets}
+Access to the corpora and datasets will be through the Dunya API that provides access to audio recordings, metadata and features. Standalone archives of datasets are also distributed in some cases outside of the Dunya API. All the research corpora and datasets related to the thesis are additionally listed at the links below. 
+\begin{description}
+	\item[Research corpora] - \url{http://compmusic.upf.edu/corpora}
+	\item[Test datasets] - \url{http://compmusic.upf.edu/datasets}
+\end{description}
+% 
+\resource{The Dunya Carnatic collection on MusicBrainz that forms the CompMusic Carnatic music research corpus}{http://musicbrainz.org/collection/f96e7215-b2bd-4962-b8c9-2b40c17a1ec6}
+% 
+\resource{The Dunya Hindustani collection on MusicBrainz that forms the CompMusic Hindustani music research corpus}{http://musicbrainz.org/collection/213347a9-e786-4297-8551-d61788c85c80}
+% 
+\resource{The  {CMDo} on MusicBrainz with openly accessible music}{http://musicbrainz.org/collection/a163c8f2-b75f-4655-86be-1504ea2944c2}
+%
+\resource{The  {HMDo} on MusicBrainz with openly accessible music}{http://musicbrainz.org/collection/6adc54c6-6605-4e57-8230-b85f1de5be2b}
+%
+\resource{The  {CMDf} containing rhythm annotated pieces of Carnatic music, from which a subset  {CMDs} dataset is also available}{http://compmusic.upf.edu/carnatic-rhythm-dataset}
+%
+\resource{The  {HMDf} containing rhythm annotated pieces of Hindustani music, from which two subsets  {HMDs} and  {HMDl} datasets are also available}{http://compmusic.upf.edu/hindustani-rhythm-dataset}
+%
+\resource{The  {AMSD} containing audio examples of individual strokes of the mridangam in various tonics}{http://compmusic.upf.edu/mridangam-stroke-dataset}
+%
+\resource{The  {UMSD} containing a transcribed collection of two  {tani avartana} played by the renowned mridangam maestro Padmavibhushan Umayalpuram K. Sivaraman}{http://compmusic.upf.edu/mridangam-tani-dataset}
+%
+\resource{The  {TSD} containing a transcribed collection of tabla solo audio recordings spanning compositions from six different  pl{gharana} of  {tabla}, compiled from the album \textit{Shades of Tabla} by Pandit Arvind Mulgaonkar}{http://compmusic.upf.edu/tabla-solo-dataset}
+% 
+\resource{The  {BOPI} containing isolated strokes spanning the four percussion instrument classes used in Beijing opera}{http://compmusic.upf.edu/bo-perc-dataset}
+%
+\pagebreak % Extra careful here!!!
+\resource{The  {BOPP} containing a collection of audio percussion patterns covering five pattern classes in Beijing opera}{http://compmusic.upf.edu/bopp-dataset}
+% 
+\section*{Results}
+An extended set of results, along with a few audio examples analyzed with the models and algorithms presented in the dissertation are available on the companion page.
+\begin{description}[style=nextline]
+	\item[Audio examples] {\small \url{http://compmusic.upf.edu/phd-thesis-ajay\#examples}}
+	\item[Extended results] {\small \url{http://compmusic.upf.edu/phd-thesis-ajay\#results}}
+\end{description}
+% 
+\section*{Tools and code}
+The links to tools and code related to the thesis are listed. Up-to-date links to code (including future releases) will be available on: \url{http://compmusic.upf.edu/phd-thesis-ajay\#code}
+\begin{description}[style=nextline,font=\normalfont]
+	\item[Essentia audio analysis library] \url{http://essentia.upf.edu/}
+	\item[Dunya API] \url{https://github.com/MTG/pycompmusic}
+	\item[Dunya front end] \url{http://dunya.compmusic.upf.edu/}
+	\item[Dunya server and back end] \url{https://github.com/MTG/dunya}
+	\item[A MATLAB package for meter analysis (Florian Krebs)] \url{https://github.com/flokadillo/bayesbeat}
+	\item[A MATLAB package for beat tracking evaluation (Matthew Davies)] {\footnotesize \url{https://code.soundsoftware.ac.uk/projects/beat-evaluation/}}
+	%\item[An implementation of  {RLCS} by Swapnil Gupta]{https://github.com/swapnilgt/tablaPercPatternsISMIR}
+	\item[Rhythm analysis tools for jingju, from the tutorial in ISMIR 2014] \url{http://compmusic.upf.edu/jingju-tutorial}
+	\item[Sawaal-Jawaab Code and Demo] \url{http://compmusic.upf.edu/ismir-15-hacks}
+	\item[Sonic Visualizer, for visualization and annotation of audio] \url{http://www.sonicvisualiser.org/}
+	\item[BeatStation, an interface to record beat tapping] \url{https://github.com/ajaysmurthy/beatStation}
+\end{description}
+% Discuss specific datasets and code, with links, explain the dataset organization, access. 
+%one idea: identify recorded cycles which are very close to the depicted patterns, and provide them as acoustic documentation on a website and multimedia appendix to the thesis
 

@@ -1,12 +1,27 @@
-% This template is taken from Fredrick Font, which I guess to a large extent comes from Joan Serrà
-\RequirePackage{fix-cm} % Technicalities
+% This template is mainly taken from Fredrick Font, which I guess to a large extent comes from Joan Serrà. There are some changes to it, mainly taken from Ajay Srinivasamurthy
 
+% What version of the document are you compiling
+%\def\DRAFTMODE{}   % Uncomment if generating the draft version
+%\def\PRINTVER{}    % Uncomment if generating the final BOOK (print) version (The differences are in 1) Colors of hyperlinks, 2) Bleeds, 3) Trim marks + Size)
+% If both the commands are comments it generates a final PDF version to be distributted electronically.
+
+%% Useful packages
+\RequirePackage{fix-cm} % Technicalities
 % -------------------------------------------------------------------------------------------------------------------------
-%\documentclass[11pt,a4paper,twoside,openright]{memoir}
-%\documentclass[10pt,b5paper,twoside,showtrims,openright]{memoir}
-%\documentclass[10pt,a4paper,twoside,showtrims,openright]{memoir}
-\documentclass[12pt,a4paper,twoside,openright, showtrims, oldfontcommands]{memoir}
+%\documentclass[11pt,a4paper,twoside,openright]{memoir}	% Some extra options if needed in the future\textsl{}
+%\documentclass[10pt,b5paper,twoside,showtrims,openright]{memoir} % Some extra options if needed in the future
+%\documentclass[10pt,a4paper,twoside,showtrims,openright]{memoir} % Some extra options if needed in the future
+\documentclass[12pt,a4paper,twoside,openright, showtrims, oldfontcommands]{memoir} 
+
+%Fixing imp useful info
+\renewcommand{\title}{Computational Approaches for Description and Characterization of Melodies in Indian Art Music}
+\renewcommand{\author}{Sankalp Gulati}
+\newcommand{\thyear}{2016}
+\newcommand{\departmenta}{Music Technology Group}
+\newcommand{\departmentb}{Dept. of Information and Communication Technologies}
+\newcommand{\supervisor}{Dr. Xavier Serra Casals}
 % -------------------------------------------------------------------------------------------------------------------------
+\usepackage{times}
 \usepackage[T1]{fontenc} 
 \usepackage[utf8]{inputenc}
 \usepackage{mathptmx}
@@ -14,6 +29,7 @@
 \usepackage[UKenglish]{isodate}
 \usepackage[british]{babel}
 \usepackage{url}
+\urlstyle{rm}
 \usepackage{enumitem}
 \usepackage{amssymb,amsmath}
 \usepackage[pdftex]{graphicx}
@@ -25,13 +41,6 @@
 \usepackage{titlecaps}
 \Addlcwords{for, is, on}
 \usepackage{titlesec}
-\usepackage[colorlinks,bookmarks,pdftex,hyperfigures,breaklinks,backref=page,
-%  pdfpagemode=UseOutlines,
-%  pdftitle=Melodic~Analysis~of~Indian~Art~Music,
-%  pdfauthor=Sankalp~Gulati,
-%  pdfsubject=PhD~Thesis,
-%  pdfkeywords=Melody~Motifs~Patterns~Raga~Phrases
-]{hyperref} % produeix enllacos clicables
 \usepackage[round,authoryear]{natbib}
 \usepackage{acronym}
 \usepackage[style=long,nonumberlist,toc,xindy,acronym,nomain]{glossaries}
@@ -43,10 +52,18 @@
 \usepackage{algorithm,algorithmicx}
 \usepackage[noend]{algpseudocode}
 \usepackage[threshold=1]{csquotes}
+\usepackage[pdftex,backref=page,hyperfigures,breaklinks,colorlinks,bookmarksopenlevel=0,bookmarksdepth=2
+  pdfpagemode=UseOutlines,
+  pdftitle=Computational~Approaches~for~Description~and~Characterization~of~Melodies~in~Indian~Art~Music
+  pdfauthor=Sankalp~Gulati,
+  pdfsubject=PhD~Thesis,
+  pdfkeywords=Melody~Motifs~Patterns~Raga~Phrases~Indian~art~music~Hindustani~Carnatic~MIR~Information~Retrieval
+]{hyperref}
 
+\usepackage[font=small,labelfont=bf]{caption}
 
-
-
+\setlength{\epigraphwidth}{0.586\textwidth}
+\renewcommand{\textflush}{flushleftright}
 
 %\usepackage{natbibspacing}
 %\setlength{\bibspacing}{0.3\baselineskip}
@@ -72,11 +89,13 @@
 \usepackage[para]{threeparttable}
 \usepackage{booktabs}
 \usepackage{arydshln}
+
 \newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
 \usepackage{array}
 \newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
 \newcolumntype{L}[1]{>{\centering\arraybackslash}m{#1}}
 \newcolumntype{T}[1]{>{\raggedleft\arraybackslash}p{#1}}
+
 % for footnotes in tables
 \usepackage{footnote}
 \usepackage{multirow}
@@ -95,9 +114,20 @@
 \settocdepth{subsection}
 
 \definecolor{NoColor}{rgb}{0,0,0}
-\definecolor{LinkColor}{rgb}{0,0,0.25}
-\definecolor{ExtLinkColor}{rgb}{0,0.3,0}
-\hypersetup{citecolor=NoColor,linkcolor=NoColor,urlcolor=NoColor}
+%%%%%%%%\definecolor{LinkColor}{rgb}{0,0,0.25}
+%%%%%%%%\definecolor{ExtLinkColor}{rgb}{0,0.3,0}
+\definecolor{tabgray}{gray}{0.8}
+\definecolor{CiteColor}{rgb}{0, 0, 0.3} 
+\definecolor{LinkColor}{rgb}{0, 0, 0.3} 
+% \definecolor{LinkColor}{rgb}{0, 1, 0} 
+% \definecolor{ExtLinkColor}{rgb}{0, 0.4, 0}
+\definecolor{ExtLinkColor}{rgb}{0, 0, 0.6}
+
+\ifdefined\PRINTVER
+\hypersetup{citecolor=black,linkcolor=black,urlcolor=black}
+\else
+\hypersetup{citecolor=CiteColor,linkcolor=LinkColor,urlcolor=ExtLinkColor}
+\fi
 
 %% Format UPF, dues cares. Recordeu que les dimensions d'A4 i B5 son (210mm,297mm) i (176mm,250mm), respectivament.
 \setstocksize{297mm}{210mm} % El suport original es A4
@@ -107,10 +137,31 @@
 \setlength{\trimedge}{17mm} % Amplada de la franja interior a tallar per cada costat.
 %\setulmarginsandblock{*}{29mm}{1.1} % Marges verticals (3cm a dalt, 0.9*3cm a baix)
 %\setlrmarginsandblock{30mm}{*}{0.75} % Marges laterals (3cm a la dreta, 0.75*3cm l'esquerra)
-\setulmarginsandblock{23mm}{18mm}{*} % used to be {25mm}{16mm}
+\setulmarginsandblock{23mm}{23mm}{*} % used to be {25mm}{16mm}
 \setlrmarginsandblock{25mm}{*}{0.8}
 \checkandfixthelayout
 \trimLmarks % Marques de tall en forma de 'L'
+
+%%%%%%%%% TAKEN FROM AJAY SEE IF THIS SIZE LOOKS BETTER OTHERWISE STICK TO WHAT IT IS 
+%\ifdefined\PRINTVER
+%\setstocksize{297mm}{210mm}  % The size of the stock paper (support), A4
+%\settrimmedsize{250mm}{176mm}{*} % B5, the size of the final copy, cut from the stock paper.
+%\setlength{\trimtop}{23mm}   % Top margin: top_stock - top_page
+%\setlength{\trimedge}{17mm}  % Outer later margin: lat_stock - lat_page
+%\setlrmarginsandblock{34mm}{30mm}{*} % 
+%\setulmarginsandblock{27mm}{25mm}{*} % 
+%\trimLmarks % Ls, not crosses (which may leave traces on the final copy) as trimmarks.
+%\checkandfixthelayout
+%\else
+%\setstocksize{250mm}{176mm}  % The size of the stock paper (support), A4
+%\settrimmedsize{\stockheight}{\stockwidth}{*} % B5, the size of the final copy, cut from the stock paper.
+%\setlength{\trimtop}{0mm}   % Top margin: top_stock - top_page
+%\setlength{\trimedge}{0mm}  % Outer later margin: lat_stock - lat_page
+%\setlrmarginsandblock{32mm}{32mm}{*} % 
+%\setulmarginsandblock{27mm}{25mm}{1.0} % 
+%\showtrimsoff
+%\checkandfixthelayout
+%\fi
 
 % arreglar que floats al final de capitol no es centrin verticalment
 %\makeatletter% Set distance from top of page to first float
@@ -133,7 +184,7 @@
 
 % ---- Some configs...
 
-\usepackage[font=small,labelfont=bf]{caption}
+
 
 %\renewcommand{\rmdefault}{put}
 %\renewcommand{\sfdefault}{phv}
@@ -325,8 +376,8 @@
 
 \mainmatter
 
-%\cleartorecto\include{ch01_introduction/introduction}
-\cleartorecto\include{ch02_background/background}
+\cleartorecto\include{ch01_introduction/introduction}
+%\cleartorecto\include{ch02_background/background}
 %%%%%%\cleartorecto\include{ch03_problems/problems}
 %\cleartorecto\include{ch04_datasets/datasets}
 %\cleartorecto\include{ch05_preprocessing/preprocessing} 
