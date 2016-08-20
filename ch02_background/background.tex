@@ -476,14 +476,124 @@ Given a \gls{pcp} (or \gls{hpcp}) summary vector, a typical approach to estimate
 
 The studies mentioned above mainly focus on the analysis of western popular and classical music tradition. However, they have influenced the methods proposed for modeling tonality in other music traditions of the world such as Turkish Makam music~\cite{gedik2010pitch,gedik2009evaluation,bozkurt2008automatic}. In all these studies predominant pitch is used as the tonal feature as opposed to a Chroma feature (see above). One of the significant differences in these approaches compared to the ones proposed for western music is the resolution of the \gls{pcp}. Owing to the presence of micro-tonal melodic content and smooth melodic movements between the notes a fine grained pitch distribution is considered as a feature for tonality modeling. \cite{bozkurt2008automatic,gedik2010pitch} use a fine-grained pitch distribution with bin-width as 1/3 Holdrian comma~\cite{akkocc2002non}, which is approximately 7.5 cents. This results in a 159 dimensional \gls{pcd} vector compared to a 12 dimensional \gls{pcp} vector often used for tonal analysis in western popular and western classical music traditions~\cite{gomez2006tonal}. Such a fine grained representation of the tonal content of an audio recording is also used for African music~\citep{moelants2009exploring} and \acrfull{iam}~\citep{chordia2013joint}. 
 
+\TODO{probably you can explain the methods in a bit more detail...like how they findthe key or maqam. TO conclude we can say something about raga, that its more than a scale so there are other approahes etc etc see above.}
+
 
 \subsection{Pattern Processing in Music}
+
+Patterns explain XXX, they are important in XXX, they surround us. Before proceeding lets clarity what do we mean by pattern processing. It covers two main topics pattern matching and pattern discovery.Pattern processing includes task of pattern discovery and detectino (or search).pattern matching/detection/search and pat- tern discovery/extraction. In discovery there is no query...unsupervised sab kuch...matching main there is a query.. 
+
+
+ Pattern processing is an active research topic in several multi-media domains such as music, audio, speech as well as in time-serie analysis area. 
+
+Patterns in music are ?? get a nice catchy line from somewhere..some cool stuff can be taken from D. Meredith
+
+Probably some of this goes into introduction 
+
+Heinrich Schenker, for example, claimed that repetition “is the basis of music as an
+art” (Schenker, 1954, p. 5). Bent and Drabkin (1987, p. 5)
+observed that “the central analytical act” in all forms of
+music analysis is “the test for identity” and Lerdahl and Jack-
+endoff state that
+"the importance of parallelism [i.e., repetition] in musical struc-
+ture cannot be overestimated. The more parallelism one can
+detect, the more internally coherent an analysis becomes, and
+the less independent information must be processed and retained
+in hearing or remembering a piece."
+
+(Lerdahl & Jackendoff, 1983, p. 52)Lerdahl, F. & Jackendo, R. (1983). A Generative Theory of Tonal Music. M.I.T. Press, Cambridge, Mass.
+
+underlying text is taken from Janssen2013
+
+Musical pattern discovery is important in several areas of music research. In
+Music Information Retrieval, repetitions have been used as indicators of musical segmentation, or to find themes or choruses in large databases [37]. In Music Analysis, analytical approaches based on repetition, for instance R´eti’s motivic 2 Berit Janssen et al.
+analysis [40], have been formalized and evaluated by developing a computer model [3]. In Folk Music Research, computational discovery of shared patterns between folk song variants offers the potential to detect moments of stability, i.e. melodic elements that change relatively little through the process of oral transmission [45]. Hypotheses on memory, recall and transmission of melodies can be tested on large databases once stable melodic patterns can be discovered automatically
+
+
+
+
+
+"In music analysis, an awareness of the locations of motifs, themes, and sections, and their relation to one another, is a prerequisite for writ- ing about the construction of a piece [3]. TOMs paper"
+
+In MIR pattern discovery is studied a lot. There are different types of patterns in mir, sections (structural- long time scale), themes (riffs etc), motifs (short melodic patterns?). Explain them on the basis of time scales...
+
+Structural segmentation wants to XXXX...Approahes for structural segmentation do XXX...This is studied both on audio and symbolic domain....very popular topic in mir..
+
+Themes or riffs follow pretty much the methodolofy for structure segmentation, but on a shorter time scale. It typically involves computing self similarity etc and then tracking local alignments...etc ...Has it been done on both audio and symbolic???
+
+Discovering melodic motifs is probably been traditionally an active reseach topic. Analysis of motifs is almost a pre-requite for writing about the construction of a piece..."The new Grove dic- tionary of music and musicians"...It has been an active way to describe music even before machines. People have done it with hands in musicology XXX...MIR aims to do the same analysis for bigger corpus and automatize the analysis. 
+
+
+ When working with motif discovery in music, from a computational point of view the main processing blocks are melody representation, segmentation, similarity compputation, discovery methodology, redundancy filtering, characterization of discovered patterns. Working with audio there are concerns to be addressed about the coputational complexity. 
+ 
+There are two scales at which pattern discovery is studied. Intra and inter opus....explain what are they and they both have a different level of challenges.  A considerable amount of rsearch is focused on pattern discovery from symbolic music domain, mainly for western classical music kind of cases. There are typically two types of representations used (mentioned in collins2013siarct), multiple viewpoint (Strings) (Conklin stuff) and geometric representation (D. Meredith).."viewpoints [9] involve en- coding multiple aspects of the music as strings of symbols (such as the numeric pitches mentioned above, or dura- tions, intervals between notes, etc.This approach has been applied mainly to monophonic music; (2)"
+
+many types of string representations . Event strings and interval strings..Meredith
+
+"the geomet- ric approach [14] involves converting each note to a point in pitch-time space (see the pitch-time pairs in Figures 1A and B). Higher-dimensional spaces are also possible (e.g., including dimensions for duration or staff number). The geometric approach is well-suited to handling polyphonic music, where few attempts have been made to apply view- points."
+
+Pattens when repeat they dont repeat exactly, therefore there is inexact discovery to discover such patterns which bear transformations (proposals by collins2013siarct). 
+
+There are pros and cons to both viewpoint and geometric representation. LIke viewpoint is mainly applied to monophonic, and geometric is used quite a bit in polyphonic. But geometric is fucked up in inexact repetitions as explained collins2013siarct.. We do not want to go deeper into that now...since it might not be directly related....
+
+collins2013siarct integrated an inexact matching technique within a pattern discovery approach.
+
+Discovery method - SIARCT-CFP by collins2013siarct
+
+More discovery methods!!! more representation !!! more of categorization stuff pls!!
+
+
+SIA and SIATEC - two methods from Meredith for discovering patterns.
+
+One component of Cambouropoulos’s (1998) General Com-
+putational Theory of Musical Structure is a “Sequential
+Pattern Induction Algorithm” (SPIA) that identifies repeti-tions in a musical surface. Cambouropoulos (1998, pp.88–90) - cambouropoulos1997towards
+
+A very good survey of exisitng algorithms is provided in Meredith
+A very nice summary of these methods is given in \textbf{Janssen2013}
+
+From Janssen2013 - Many different ways to define approximate matching have been proposed
+in theory, see [8] for an overview. To our knowledge, only Rolland [41] applied approximate matches in musical pattern discovery, using the Levenshtein edit distance [31] to compare a pattern with amatch candidate. The candidate is then accepted as a match if the edit distance remains under a user-defined threshold. Implicitly, however, approximate matching can also be achieved through more abstract music representations, as Cambouropoulos et al. [6] point out. We will discuss this in more detail below.
+
+
+
+
+A vast majority of patterns and repetision in music might not be musically or perceptually significant, and thus we need ways to identify them..big challenge is how to detect significant ones. an that is what this chapter is about!!! here comes characterization or reduncancy reductino steps..
+
+For approaches doing filtering or characterization read Filtering section in Janssen2013. Nice summary...
+
+
+Hsu2001a finds non trivial patterns!!  - THE CORRELATIVE-MATRIX APPROACH and String-Join Approach
+Meredith also claims that he finds meaningful patterns.
+
+
+Basically for symbolic SOTA refer to Janssen2013 see whatever you need from there...
+
+From audio this problem is more complex...extraction of reliable representation is a challenge. even if extracted converting it to a nie parametrizes discrete abstracted representation is difficult. If done researchers can utilize a lot of approaches proposed on symbolic domain. Toll collins try to do that ...however it might be hard to extract pitch and such abstracted representation (transcriptino) in several music traditions such as iam.
+
+
+
+For a nice survey on pattern processing in audio refer to klapuri2010pattern
+
+
+
+QBH methods...
+Self similarity based...
+
+Studies...are
+
 
 % Patterns at different time scales: 1) Sections, 2) Motifs, 3) Stanzas 4) Chord sequences? 
 
 % Focus on Motifs/Riffs 
 
 % Subparts: Melody representation, Melody segmentation, Melodic similarity, Discovery methodology, Redundancy reduction etc
+
+At the end write something about eval...but thats only possible when patterns are annotated..
+Collins has talked about evaluation. More about different eval can be read from Evaluation section in Janssen2013..
+
+
+
 
 \subsection{Corpus level melodic analysis}
 

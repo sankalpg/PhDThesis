@@ -6,6 +6,30 @@
 \section{Introduction}
 \label{sec:patterns_introduction}
 
+
+\TODO{Explain our aim in terms of intra and inter opus discovery?}
+
+Importance of patterns in Music. solid line. What can we do when we have patterns..
+
+Some motivations of pattern discovery putational model of expert music cognition and it could also
+be used to build useful software tools for music analysts and
+composers. A music analyst might find such an algorithm
+useful for discovering characteristic structural features in the
+works of a particular composer or for analysing the structure
+of a work into its elemental “building blocks.” A composer
+who is suffering from writer’s block could use such an algo-
+rithm to find significant repeated structures in an unfinished
+work thus discovering a fresh perspective that might stimu-
+late further progress on the work. Another important practi-
+cal use for such an algorithm is for music database indexing
+
+Add what you can think on top of this...
+
+
+Clarify the different types of tasks in pattern processing, matching and discovery. What do we mean by what..
+
+And now about IAM....Take from intro, wtate of the art and from other papers..like D. Meredith, 
+
 Recurring melodic patterns are one of the fundamental building blocks of melodies in \gls{iam}. As mentioned before, there are various types of melodic patterns that characterize different aspects of melodies in \gls{iam}. Some of these recurring patterns, referred to as characteristic melodic phrases (\secref{sec:music_background}), are prominent cues used by performers, to establish the identity of a \gls{raga}, and listeners, to identify the \gls{raga} in a music piece. Thus, automatically detecting occurrences of these melodic patterns is key to melodic analyses of \gls{iam}, and a crucial step towards meaningful retrieval and recommendation of \gls{iam}.
 
 \TODO{Solid background on relevane of pattern processing in IAM. Collection from as many sources and write an impressive paragraph, also a part of this paragraph will be common from the motivation in the introduction.}
@@ -501,6 +525,8 @@ In this section we highlighted the major challenges involved in this task and fo
 \section{Melodic Pattern Discovery in Sizable Audio Collections}
 \label{sec:patterns_melodic_pattern_discovery}
 
+\TODO{solic motivation for discovery, read papers man, there are nice thigns written about this}
+
 The task of melodic pattern discovery aims to mine repeating patterns in a time-series representation of melodies by following an unsupervised methodology. As mentioned before in \secref{sec:patterns_introduction}, extracting melodic patterns and detecting their different occurrences in audio music collections is crucial for melodic analyses of \gls{iam}. The discovered melodic patterns can be utilized in a number of other computational tasks and applications such as automatic \gls{raga} recognition, studying similarities between artists and different schools of music, meaningful music recommendations and developing pedagogical tools.
 
 In \secref{sec:patterns_evaluation_of_similarity_measures} and \secref{sec:patterns_improving_melodic_similarity} we studied different approaches and their variants for computing similarities between short melodic fragments. Given instances of different melodic patterns by an domain expert, these approaches can be used to detect occurrences of such example patterns in audio music collections of \gls{iam}. However, as the size of the evaluation datasets \acrshort{msds_cm_hmd} and \acrshort{msds_cm_cmd} reflects, obtaining such example patterns is a cumbersome task. Moreover, there are several other challenges involved in compiling a comprehensive collection of all repeating patterns in a large audio collection of \gls{iam} (\secref{sec:patterns_introduction}). We therefore follow an unsupervised approach for extracting melodic patterns in audio music collections, and do not require any example melodic patterns. 
@@ -850,6 +876,9 @@ We presented a data-driven unsupervised approach for melodic pattern discovery i
 
 \section{Characterization of Melodic Patterns}
 \label{sec:patterns_characterization_of_melodic_patterns}
+
+\TODO{A vast majority of patterns and repetision in music might not be musically or perceptually significant, and thus we need ways to identify them..big challenge is how to detect significant ones. an that is what this chapter is about!!! enjoy :) One can't model them explicitly specially in discovery cases. There might be a wide range of significant patterns which do not exhibit explit behavoir ? indicating them being significant}
+
 
 In the previous section we described our approach to discover melodic patterns in sizable audio music collections of \gls{iam}. Our primary goal was to extract as many different types of recurring melodic patterns and as many occurrences of them as possible, irrespective of their musical relevance. Recurring patterns in melodies of \gls{iam} may differ drastically in terms of their musical relevance (Section XX). Their functional role in melodies may vary from being a melodic ornamentation to being a characteristic melodic phrase of a \gls{raga}. Thus, in order to effectively utilize the discovered melodic patterns in different melodic analyses and applications in \gls{iam}, characterization of these patterns in terms of their musical relevance and functional roles is crucial. In addition, since a musically meaningful melodic similarity threshold is unavailable in such an unsupervised analysis (\secref{sec:patterns_discovery_results}), no similarity thresholding is performed. The discovery approach in~\secref{sec:patterns_melodic_pattern_discovery} works with a fixed number of closest pattern matches irrespective of the absolute value of the melodic similarity. As a result of which the output of the pattern discovery approach may contain a large amount of music irrelevant or noisy matches. Although, as seen in~\secref{sec:patterns_discovery_results}, separation between the distance distributions of melodically similar an dissimilar patterns appears favorable (\figref{fig:combinedROCPatternDiscovery}), indicating that an optimal melodic similarity threshold can potentially remove the noisy matches with a reasonable accuracy. 
 
