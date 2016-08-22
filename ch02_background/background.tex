@@ -547,71 +547,80 @@ The approaches mentioned above typically focus on long-time duration music repet
 
 Initial work on \gls{qbh}  was focused on the retrieval from MIDI or score databases. One of the earlier approach was proposed by~\cite{ghias1995query}. The authors extract pitch from the incoming audio query and convert it to a string sequence comprising three different symbols (U, D, S). These symbols represent the relative pitch changes across successive notes as higher or upper (U), lower or down (D), and same (S). A similar representation is also extracted from the database comprising MIDI files. Usage of such a melody representation makes the system robust to absolute pitch, which is one of the desired properties of an \gls{qbh}  systems. Another desired property is to handle insertion and deletion type of errors in the query string representation. Taking these objectives into account, the database search is performed using an approximate string matching algorithm baesd on the method proposed in~\cite{baeza1992fast}.
 
-There are different kinds of melody representations used in the task of \gls{qbh} . A set of methods represent melody by using the exact pitch values~\citep{McNab1996,uitdenbogerd1998manipulation}. Some approaches consider only the pitch interval between adjacent notes~\citep{pauws2004cubyhum}, and others use only a relative pitch change compared to the previous note (up or down)~\citep{ghias1995query}. Since melodies inherently embed rhythm information, the duration of the notes become an important factor in recognizing melodies. It has been shown that embeding duration information of the notes in the representation improves the retrieval performance in \gls{qbh}  systems. Again, this information can be included in a number of ways. 
+There are different kinds of melody representations used in the task of \gls{qbh} . A set of methods represent melody by using the exact pitch values (quantized)~\citep{McNab1996,uitdenbogerd1998manipulation}. Some approaches consider only the pitch interval between adjacent notes~\citep{pauws2004cubyhum}, and others use only a relative pitch change compared to the previous note (up or down)~\citep{ghias1995query}. There are very few approaches that consider a continuous pitch representation extracted from the query excerpt~\citep{mazzoni2001melody}. Since melodies inherently embed rhythm information, the duration of the notes become an important factor in recognizing melodies. It has been shown that embeding duration information of the notes in the representation improves the retrieval performance in \gls{qbh}  systems. Again, this information can be included in a number of ways. 
 \cite{pardo2002encoding} proposes to use quantized versions of \gls{ioi} and \gls{ioir} computed in both linear and log domain. Such a representation also makes the system more invariant to linear tempo scalings. \cite{dannenberg2007comparative} perform a comparative evaluation of different representations of melody and show that best results are obtained with the representation that uses relative pitch intervals and log \gls{ioi} ratios. 
 
-There are different approaches to match the melody representation obtained from the query to the target database. One of the most commonly used approaches is to use string matching based algorithms.  
+There are different approaches to match the melody representation obtained from the query to the target database. One of the most commonly used approaches is to use string matching based algorithms that are often based dynamic programming.. \cite{mazzoni2001melody} follow a brute-force approach and match query pitch representation with every possible segment in the target song for every possible pitch transformation. The authors use a \gls{dtw}-based distance measure to compute the melodic similarity. Such an approach was found to be better than the approaches that perform pitch quantization on query pitch representation. However, a brute-force segmentation and usage of \gls{dtw} distance makes it practically intractable for large datasets. One of the ways to avoid the brute-force segmentation is to use a subsequence variant of the \gls{dtw} distance. Such a \gls{dtw} variant enables the query string to match starting anywhere within the reference song. \cite{jang2000query} uses a subsequence variant of \gls{dtw} distance with local constraints to avoid pathological warping. The authors embed transposition invariance in the cost function computation within the \gls{dtw}-distance by using a heuristic-based recursive approach. Another variant of \gls{dtw} distance is \gls{cdtw}, which is suitable in both whole and subsequence matching scenarios and is known to be computationally more efficient than \gls{dtw}~\cite{lijffijt2010benchmarking}.  \cite{zhu2003query} utilize some well developed indexing techniques in time-series domain to make the \gls{dtw}-based \gls{qbh} systems scalable to sizable datasets. The authors combine the idea of \gls{utw} with \gls{dtw} and propose a variant referred to as \gls{ldtw}. The method is essentially a two-step process which starts by first globally time-stretching the two subsequences (the query and target) to the same length. Subsequently, in the second step a band-constrained \gls{dtw} is used for computing the melodic similarity. Such a \gls{ldtw} variant of \gls{dtw} is reported to result into tighter lower-bounds. In addition, the authors use the GEMINI framework to reduce the dimensionality of the time-series before indexing~\cite{keogh2001dimensionality}. In this method, pitch transposition invariance is incorporated by mean normalization of the query and the target sequences. Through extensive set of experiments authors show that such a system performs better both in terms of the precision and the speed as compared to the previous approaches~\citep{zhu2003query}. 
 
 
-
-
-%String mathicng approaches [66]
-%HMMs [67, 68]
-%Dynamic programming [69, 70]
-%Recursive alignemnt [71]
-
-Problem - > Pitch from query, incorrect singing, timing and pitch accuracy errors..efficient retrieval from the database
-
-McNab1996
-
-
-
-
-\gls{qbh}  on MIDI
-problems
-representation
-similarity
-speedup
-Transformation invariance
-
-\gls{qbh}  on audio
-problems
-representation
-similarity
-speedup
-Transformation invariance
-
-
-Matching approaches include string matching techniques [66], hidden Markov models [67, 68], dynamic programming [69, 70], and efficient recursive alignment [71]. 
-
-
-A number of \gls{qbh}  systems have been evaluated in Music Information Retrieval Evaluation eXchange (MIREX) [72].
-
-	Methods for the \gls{qbh}  of audio data have been proposed only quite recently
-	[73, 74, 14, 75, 63]. Typically,Typically, the methods extract the main melodies from the target musical audio (see Sec. 2.3) before the matching takes place. However, it should be noted that a given query melody can in principle be matchedrectly against polyphonic audio data in the time-frequency or time-pitch do- main. Some on-line services incorporating \gls{qbh}  are already available, see e.g. [www.midomi.com], [www.musicline.de], [www.musipedia.org].
-
-
-	
-	
-
-
-Themes or riffs follow pretty much the methodolofy for structure segmentation, but on a shorter time scale. It typically involves computing self similarity etc and then tracking local alignments...etc ...
-
-
-
-\gls{qbh} 
-Pitch feature
-transformation invariance..
-similarity measure..
-Computatinoal complexity
-
-
-Pattern discovery and search in flamenco etc from audio recordings
-Pitch feature
-Transcription vs continuous
-Detection vs discovery
-
-A nice survey on pattern processing in audio refer to klapuri2010pattern
+In addition to the \gls{dtw}-based sequence matching approaches there are different variants of the edit distance used in \gls{qbh}. \cite{uitdenbogerd1999melodic} use \gls{lcss} to match query sequence to a MIDI database. \gls{lcss} measures the largest number of common elements in two sequences. DO this review nicely.!!! 
+ 
+%
+%
+%
+%Whole sequence matching 
+%DTW - mazzoni2001melody
+%cDTW - lijffijt2010benchmarking
+%EDR
+%ERP
+%
+%SUBSEQ
+%DTW - jang2000query
+%LCSS
+%RlCS
+%
+%Dividing sequences subseq->seqs
+%Lower bounding
+%
+%SPRING
+%cDTW
+%Smith waterman
+%SMBGT  - A Subsequence Matching with Gaps-Range-Tolerances Framework : A Query-By-Humming Application
+%
+%\cite{lijffijt2010benchmarking} performs benchmarking of three different dynamic programming-based methods mentioned above for music retrieval task. The authors report SPRING to be computationally more efficient followed by \gls{cdtw} and \gls{dtw}.
+% 
+%HMM basd approaches, n-gram based approaches.
+% 
+%Until recently a majority of the methods were proposed to work on the MIDI databases. Due to the advancements in pitch estimation algoerithms for polyphonic music content, these approaches can now scale to audio collections.
+%
+%
+%
+%%String mathicng approaches [66]
+%%HMMs [67, 68]
+%%Dynamic programming [69, 70]
+%%Recursive alignemnt [71]
+%
+%Problem - > Pitch from query, incorrect singing, timing and pitch accuracy errors..efficient retrieval from the database
+%
+%
+%
+%A number of \gls{qbh}  systems have been evaluated in Music Information Retrieval Evaluation eXchange (MIREX) [72].
+%
+%	Methods for the \gls{qbh}  of audio data have been proposed only quite recently
+%	[73, 74, 14, 75, 63]. Typically,Typically, the methods extract the main melodies from the target musical audio (see Sec. 2.3) before the matching takes place. However, it should be noted that a given query melody can in principle be matchedrectly against polyphonic audio data in the time-frequency or time-pitch do- main. Some on-line services incorporating \gls{qbh}  are already available, see e.g. [www.midomi.com], [www.musicline.de], [www.musipedia.org].
+%
+%
+%	
+%	
+%
+%
+%Themes or riffs follow pretty much the methodolofy for structure segmentation, but on a shorter time scale. It typically involves computing self similarity etc and then tracking local alignments...etc ...
+%
+%
+%
+%\gls{qbh} 
+%Pitch feature
+%transformation invariance..
+%similarity measure..
+%Computatinoal complexity
+%
+%
+%Pattern discovery and search in flamenco etc from audio recordings
+%Pitch feature
+%Transcription vs continuous
+%Detection vs discovery
+%
+%A nice survey on pattern processing in audio refer to klapuri2010pattern
 
 
 % Patterns at different time scales: 1) Sections, 2) Motifs, 3) Stanzas 4) Chord sequences? 
