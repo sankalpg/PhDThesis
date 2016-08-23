@@ -51,7 +51,7 @@
 \usepackage{arydshln}
 \usepackage{algorithm,algorithmicx}
 \usepackage[noend]{algpseudocode}
-\usepackage[threshold=1]{csquotes}
+\usepackage[threshold=0]{csquotes}
 \usepackage[pdftex,backref=page,hyperfigures,breaklinks,colorlinks,bookmarksopenlevel=0,bookmarksdepth=2
   pdfpagemode=UseOutlines,
   pdftitle=Computational~Approaches~for~Description~and~Characterization~of~Melodies~in~Indian~Art~Music
@@ -251,9 +251,9 @@
 
 % Variables matematiques i altres
 \usepackage{color}
-\definecolor{darkgreen}{rgb}{0,0.5,0}
+\definecolor{darkgreen}{rgb}{0,0.8,.3}
 \newcommand{\TODO}[1]{{\color{red}{[{TODO:} #1}]}}
-\newcommand{\COMMENT}[1]{{\color{darkgreen}{[#1}]}}
+\newcommand{\COMMENT}[1]{{\color{darkgreen}{[{COMMENT:}#1}]}}
 \newcommand{\ADD}[1]{{\color{blue}#1}}
 \newcommand{\REM}[1]{{\color{red}#1}}
 \newcommand{\XXX}[3]{{\color{blue}{{[#1$\rightarrow$#2:} #3{]}}}}
@@ -376,17 +376,17 @@
 
 \mainmatter
 %
-\cleartorecto\include{ch01_introduction/introduction}
+%\cleartorecto\include{ch01_introduction/introduction}
 \cleartorecto\include{ch02_background/background}
-%%%%%%\cleartorecto\include{ch03_problems/problems}
-\cleartorecto\include{ch04_datasets/datasets}
-\cleartorecto\include{ch05_preprocessing/preprocessing} 
-\cleartorecto\include{ch06_patterns/patterns}
-\cleartorecto\include{ch07_ragaRecognition/ragaRecognition}
-\cleartorecto\include{ch08_applications/applications}
-\cleartorecto\include{ch09_conclusions/conclusions}
+%%%%%%%\cleartorecto\include{ch03_problems/problems}
+%\cleartorecto\include{ch04_datasets/datasets}
+%\cleartorecto\include{ch05_preprocessing/preprocessing} 
+%\cleartorecto\include{ch06_patterns/patterns}
+%\cleartorecto\include{ch07_ragaRecognition/ragaRecognition}
+%\cleartorecto\include{ch08_applications/applications}
+%\cleartorecto\include{ch09_conclusions/conclusions}
 
-
+\TODO{CHECK TRANSLITERATIONS OF ALL THE TERMS, ORGANIZE GLOSSARY PER CONCEPT}
 \printglossaries
 
 \appendix
