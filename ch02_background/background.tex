@@ -588,41 +588,138 @@ In this section we present a brief description of the different well established
 \subsection{Dynamic Time Warping}
 \label{sec_background_distance_measure}
 
-\acrfull{dtw} is a well-known dynamic programming-based time series alignment algorithm. This algorithm is widely used for measuring similarity (or dissimilarity) between two temporal sequences. \gls{dtw} was originally proposed for speech recognition, and is commonly used in domains that often require an optimal non-linear time alignment of two sequences~\cite{muller2007dynamic}. 
+\Acrfull{dtw} is a well-known dynamic programming-based time series alignment algorithm. This algorithm was originally proposed for speed recognition. \Gls{dtw} is widely used for measuring similarity (or dissimilarity) between two temporal sequences that often require an optimal non-linear time alignment. A comprehensive information about \gls{dtw} can be obtained from~\cite{muller2007dynamic}. 
 
-We now formally describe the computation of \gls{dtw} distance. Given two time series, a sequence  $X$ of length $$, and a sequence $Y$ of length m, where
+We now briefly describe the computation of the \gls{dtw} distance (taken from \cite{Keogh2004,muller2007dynamic}). Given two time series, a sequence  $X$ of length $N$, and a sequence $Y$ of length $M$, where:
 
 \begin{equation}
-	X = x_1, x_2 \cdots x_i \cdots x_n
+	X = x_1, x_2 \cdots x_i \cdots x_N
+\end{equation}
+\begin{equation}
+	Y = Y_1, Y_2 \cdots Y_J \cdots Y_N
 \end{equation}
 
+\noindent A local cost matrix $C \in \mathbb{R}^{N \times M}$ of the two real valued sequences $X$ and $Y$ can be defined by:
+
+\begin{equation}
+C(i,j) = d(x_i,y_j)
+\end{equation}
+\noindent where, $d(i,j)$ is the local distance measure between $x_i$ and $y_j$.
+
+A warping path is a sequence $p = (p_1, p_2 \cdots p_i \cdots p_L)$ that defines a mapping between $X$ and $Y$ with $p_l = (i_l, j_l) \in \lbrack 1:N\rbrack \times \lbrack1:M\rbrack$ for $ l \in \lbrack1:L\rbrack$ satisfying three conditions:
+
+\begin{itemize}
+	\item \textbf{Boundary conditions}: $p_1 = (1, 1)$ and $p_L = (N, M)$. The warping path is required to start and finish in the diagonally opposite corners of the matrix $C$.
+	\item \textbf{Step size}: $p_{l+1}-p_l \in \lbrace (1,0), (0,1), (1,1) \rbrace$ for $l \in \lbrack 1: L-1 \rbrack$. This restricts warping path to adjacent cells in the matrix.
+	\item \textbf{Monotonicity}: Given $p_l = (i_l, j_l)$ and $p_{l-1} = (i_{l-1}, j_{l-1})$, then $i_l - i_{l-1} \geq 0$ and $j_l - j_{l-1} \geq 0$. This requires $p$ to be monotonically increasing.
+\end{itemize}
+
+In the computation of the \gls{dtw} we are interested in the warping path that minimizes the warping cost:
+
+\begin{equation}
+\mathrm{DTW}(X,Y) = \mathrm{min} \left\lbrace ~\sum_{l=1}^{l=L}C(p_l)\right.
+\end{equation}
+
+This optimal alignment path can be computed in $\mathcal{O}(N\,M)$ by using dynamic programming. A accumulated  $N \times M$ cost matrix $D$ can be defined such that $D(N,M) = \mathrm{DTW}(X,Y)$. The accumulated cost matrix $D$ can be computed as:
+
+\begin{equation}
+	D(i,j) = \mathrm{min} \lbrace D(i-1,j), D(i,j-1), D(i-1,j-1)\rbrace + d(x_i, y_j)
+\end{equation}
+
+The optimal path can be computed by tracking back the accumulated cost matrix $D$. Starting with $p_L = (N,M)$ and supposing $p_l = (i,j)$, $p_{l-1}$ can be computed as:
+
+\begin{equation}
+	p_{l-1} : \begin{cases}
+	(1, j-1), & \quad \text{if } i=1\\
+	(i-1, 1), & \quad \text{if } j=1\\	
+	\mathrm{argmin} \lbrace D(i-1,j), D(i,j-1), D(i-1,j-1)\rbrace, & \mathrm{otherwise},
+	\end{cases}
+\end{equation}
+
+There are several variants of the classical \gls{dtw} described above. One of the variant that we will use changes the step condition in the \gls{dtw} calculation. In several situations classical \gls{dtw} suffers from pathological warpings, wherein a single element from one sequence is mapped to a large number of elements in the other sequence. In order to avoid such situations the step size condition can be modified to constrain the slope of the warping paths. The step size condition described above can be modified to $p_{l+1}-p_l \in \lbrace (2,1), (1,2), (1,1) \rbrace$ for $l \in \lbrack 1: L-1 \rbrack$. As a result of this modification the warping paths have a local slope bound of $\frac{1}{2}$ and 2. With this step condition the accumulated cost matrix $D$ can be recursively computed as:
+
+\begin{equation}
+D(i,j) = \mathrm{min} \lbrace D(i-2,j-1), D(i-1,j-2), D(i-1,j-1)\rbrace + d(x_i, y_j)
+\end{equation}
+
+Note that we have not described the initialization procedure of the cost matrix $D$, for which we refer the readers to~\citep{muller2007dynamic}.
+
+In addition to the step size condition, another variants of the \gls{dtw} impose several kinds of constraints on the warping path. Such constraints are not only advantageous in terms of the computational complexity, but they also prevent pathological alignment problems. Two very well known global path constraints are the Sakoe-Chiba band and the Itakura parallelogram. In the subsequent chapters we use Sakoe-Chiba band constraint. More information about different variants of \gls{dtw} can be obtained from~\citep{rabiner1993fundamentals,muller2007dynamic}.
+
+\TODO{If time permits add some nice looking and illustrative figures explaining alignment and local constaints}
+
+\subsection{Lower-bounds for DTW distance}
+\label{sec:background_lowerbound}
+
+Time and space complexity of the classical \gls{dtw} variant is $\mathcal{O}N\,M$ for the two sequences $X$ and $Y$ considered above. Thus, a similarity search under \gls{dtw} is very demanding in terms of CPU time. As described in~\cite{Keogh2004} one of the ways to address this problem is to use efficient lower-bounds on the \gls{dtw} distance. Lower bounding functions felicitate in pruning the sequences candidates that could not possibly be the best matches. To understand it further we present a pseudo-code of a sequential scan search for query $Q$ in~\algoref{alg:sequential_scan_lower_bound}. Different possible subsequence candidates that can be possible matches are represented by $C_i$ for $0 \leq i \leq N$.
+
+\begin{algorithm}
+	\caption{Sequential scan with lower bounding technique}
+	\label{alg:sequential_scan_lower_bound}
+	\begin{algorithmic}
+		\State bsf = $\infty$	\Comment{best distance so far}
+		\For {all subsequence candidates in database}
+			\State dist\_LB = lower\_bound($C_i$, $Q$)
+			\If {dist\_LB < bsf}
+				\State dist\_True = DTW($C_i$,$Q$)	
+				\If {dist\_True < bsf}
+					\State bsf = dist\_True
+					\State index = i \Comment{index of the best match}
+				\EndIf
+			\EndIf
+		
+		\EndFor
+		
+	\end{algorithmic}
+\end{algorithm}
+
+The desired properties of a good lower-bounding function are; significantly low computational complexity compared to \gls{dtw}, and the lower bound must be tight~\cite{Keogh2004}. There are a small of lower-bounding techniques applicable to \gls{dtw} as compared to other string edit or tree edit distance measures. In this dissertation we use the lower bounding technique proposed in~\cite{Keogh2004} (hereafter, referred to as LB\_Keogh). 
+
+A global or a local path constraint on \gls{dtw} can be used to define a constraint on the indices of the warping path $p_l = (i_l, j_l)$ such that $j-r \leq i \leq j+r$, where $r$ is the allowed range of warping. For the case of a global Sakoe-Chiba band $r$ is independent of $i$. \cite{Keogh2004} defines two new sequences ($\mathrm{U}$ and $\mathrm{L}$) using $r$:
+
+\begin{equation}
+	\mathrm{U_i} = \mathrm{max}(x_{i-r}:x_{i+r})
+\end{equation}
+
+\begin{equation}
+\mathrm{\mathrm{L}_i} = \mathrm{min}(x_{i-r}:x_{i+r})
+\end{equation}
+
+With $\mathrm{U}$ and $\mathrm{L}$ and $d(x_i, y_j)$ as Euclidean distance, LB\_Keogh lower bound can be defined as:
+
+\begin{equation}
+	\mathrm{LB\_Keogh}(X,Y) = \sqrt{\sum_{i=1}^{N}{\begin{cases}
+			(y_i - \mathrm{U}_i)^2, & \quad \text{if} y_i > \mathrm{U}_i\\
+			(y_i - \mathrm{L}_i)^2, & \quad \text{if} y_i < \mathrm{L}_i\\			
+			0, & \quad \mathrm{otherwise}			
+			\end{cases}}}
+\end{equation}
+
+The proof that LB\_Keogh produces a lower-bound on \gls{dtw}, i.e.~$\mathrm{LB\_Keogh}(X,Y) \leq \mathrm{DTW}(X,Y)$ can be obtained from~\cite{Keogh2004}.
+
+\TODO{explain the cascaded lower bounds that we have used!!!, maybe since we have already given an idea for that we can refer to the paper. Also it involves early abandoning which might be hard to explain in here..}
 
 
-
-
-
-
-\subsection{Indexing of Time-series}
-\subsubsection{Lower Bounds for DTW distance}
-
-\subsection{Evaluation Measures for Information Retrieval}
-\subsubsection{Precision and Recall}
-\subsubsection{Mean Average Precision}
-\subsubsection{Expert Evaluation?}
-
-\subsection{Machine Learning Concepts}
-\subsubsection{Classification Methods}
-\subsubsection{Evaluation Strategies}
-
-\subsection{Complex Networks}
-
-
-\subsection{Statistical Testing}
-\subsubsection{Mann-Whitney U Test}
-\subsubsection{Wilcoxin Test}
-\subsubsection{Signed Rank Test}
-\subsubsection{McNemar's Test}
-\subsubsection{Holm-Bonferroni Method}
+%
+%\subsection{Evaluation Measures for Information Retrieval}
+%
+%\TODO{Do we really have to explain this stuff?? I think its too basic}
+%\subsubsection{Precision and Recall}
+%\subsubsection{Mean Average Precision}
+%
+%\subsection{Machine Learning Concepts}
+%\subsubsection{Classification Methods}
+%\subsubsection{Evaluation Strategies}
+%
+%\subsection{Complex Networks}
+%\TODO{the only point I see explaining this is to desribe the randomization process through a pseudo-code. But that can also be done inlined in the chapter.}
+%
+%\subsection{Statistical Testing}
+%\subsubsection{Mann-Whitney U Test}
+%\subsubsection{Wilcoxin Test}
+%\subsubsection{Signed Rank Test}
+%\subsubsection{McNemar's Test}
+%\subsubsection{Holm-Bonferroni Method}
 
 
 \section{Summary}
