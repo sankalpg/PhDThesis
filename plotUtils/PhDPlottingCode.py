@@ -170,6 +170,7 @@ def plotPairs(pattern1, pattern2, plotName=-1):
 
 def plotMotifPairs(motifFile):
 
+	#example: plt.plotMotifPairs('/home/sankalp/Work/Work_PhD/publications/2016_PhDThesis/MISC/TaniPattern/data/Ninni_Vinaga.disPatt_2s_config0')
 
     pitchExt = '.pitch'
     
