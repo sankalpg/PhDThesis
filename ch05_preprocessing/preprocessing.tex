@@ -275,7 +275,9 @@ The primary aim in this thesis is to develop computational models to describe th
 
 Pitch estimation, also commonly known as pitch tracking from audio signals has been an active research topic since several decades~\citep{salamon:phd:13}. The challenges in the estimation of a reliable pitch contour differ across the type of audio music signals (monophonic or polyphonic). As a result of which the performance of these algorithms vary significantly across different music genres, which also seems to be correlated with the extent of the polyphony in the music. A sparse polyphonic characteristic in audio recordings of \gls{iam} due to its heterophonic nature lessens the complexity of the task to an extent compared to the other western popular music genres. This trend is clearly visible from the past MIREX (an international MIR evaluation campaign) results\footnote{\url{http://www.music-ir.org/mirex/wiki/MIREX_HOME}}. For example, compare the accuracy obtained by different algorithms on INDIAN08\footnote{\url{http://nema.lis.illinois.edu/nema_out/mirex2011/results/ame/indian08/summary.html}}, MIREX05\footnote{\url{http://nema.lis.illinois.edu/nema_out/mirex2011/results/ame/mirex05/summary.html}} and  MIREX09~0dB\footnote{\url{http://nema.lis.illinois.edu/nema_out/mirex2011/results/ame/mirex09_0dB/summary.html}} datasets from MIREX-2011. 
 
-In order to estimate the pitch of the predominant melodic source in the audio recordings of \gls{iam} we use \gls{melodia} algorithm, a state-of-the-art melody extraction method proposed by~\cite{Salamon2012}. This method performed favorably in MIREX~2011 on a variety of music genres, including \gls{iam}\footnote{\url{http://nema.lis.illinois.edu/nema_out/mirex2011/results/ame/indian08/summary.html}}. This method is used in several other studies that analyze melodies extracted from audio signals~\citep{Dutta2014,Ishwar2013,Rao2014,koduri2014intonation,senturk2013score,pikrakis2012tracking}. Another motivation to use this algorithm is that it works on continuous pitch contours and employ auditory streaming constraints to ensure a continuity in the output pitch. As a result of this processing, it does not produce octave errors at frame-level. Often an entire continuous pitch contour segment is octave transposed, which is less harmful as compared to the frame-level octave jumps. Noticeably, this predominant pitch estimation algorithm also performs voicing detection. This means that the algorithm in addition to estimating the pitch also detects the time segments where the predominant voice is absent. %Such time segments where the predominant melodic source is inactive are assigned a dummy pitch value (usually 0).
+In order to estimate the pitch of the predominant melodic source in the audio recordings of \gls{iam} we use \gls{melodia} algorithm, a state-of-the-art melody extraction method proposed by~\cite{Salamon2012}. This method performed favorably in MIREX~2011 on a variety of music genres, including \gls{iam}\footnote{\url{http://nema.lis.illinois.edu/nema_out/mirex2011/results/ame/indian08/summary.html}}. This method is used in several other studies that analyze melodies extracted from audio signals~\citep{Dutta2014,Ishwar2013,Rao2014,koduri2014intonation,senturk2013score,pikrakis2012tracking}. In this thesis we denote predominant pitch in Hertz scale by $\pitchHz$.
+
+Another motivation to use this algorithm is that it works on continuous pitch contours and employ auditory streaming constraints to ensure a continuity in the output pitch. As a result of this processing, it does not produce octave errors at frame-level. Often an entire continuous pitch contour segment is octave transposed, which is less harmful as compared to the frame-level octave jumps. Noticeably, this predominant pitch estimation algorithm also performs voicing detection. This means that the algorithm in addition to estimating the pitch also detects the time segments where the predominant voice is absent. %Such time segments where the predominant melodic source is inactive are assigned a dummy pitch value (usually 0).
 
 Currently, there are two implementations of \gls{melodia} algorithm available for researchers to use. We use the implementation as available in \Gls{essentia}~\citep{essentia}. \Gls{essentia}\footnote{https://github.com/MTG/essentia} is an open-source C++ library for audio analysis and content-based MIR. We use the default values of the parameters, except for the frame and hop sizes, which are set to 46 and 2.9\,ms, respectively. The other implementation of \Gls{melodia} is available as a Vamp plugin\footnote{http://mtg.upf.edu/technologies/melodia}. 
 
@@ -296,7 +298,20 @@ Predominant pitch estimation in polyphonic audio recordings is not yet a solved 
 \subsubsection{Correcting Spurious Pitch Jumps}
 \label{sec:data_processing_correcting_pitch_jumps}
 
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=\figSizeHundred]{ch05_preprocessing/figures/octaveErrorIllustration.png}
+	\end{center}
+	\caption{Example of an octave error in estimated predominant pitch contour}
+	\label{fig:octave_error_pitch}
+\end{figure}
+
 One of the most frequently occurring errors in pitch estimation is detecting pitch in a wrong octave, commonly referred to as an octave error. Identifying and correcting such an error during a post-processing step for the case of a monophonic signal (containing a single harmonic series) is fairly simple. One can compare the energy of the partials with the total energy of the audio frame to infer if the estimated pitch value correspond to the actual fundamental frequency. However, for the case of a polyphonic signal correcting octave errors becomes a challenging task. 
+
+We alleviate this problem to an extent by restricting ourselves to a specific type of pitch octave errors occurring over a short duration of time. Instead of identifying a pitch octave error for an individual audio frame, which as mentioned above is a challenging task in a polyphonic audio signal, we exploit the temporal melodic continuity to detect such errors. We explain the intuition behind our method with the help of an example shown in~\figref{fig:octave_error_pitch}. If we analyze an isolated audio frame at 0.5\,s, identifying computationally a pitch octave error becomes a challenging task. However, analyzing the pitch continuity we can easily detect an anomalous pitch jump of roughly 1200\,cents at time 0.65\,s. This is due to the fact that in a real-world scenario such a drastic pitch jump do not occur naturally. By analyzing the amount of frequency difference across the pitch transition we can infer to an extent the type of pitch error and can subsequently correct it. Since the detected pitch jump is around 1200\,cents, it is highly likely to be an octave error. In this example voice starts at around 0.4\,s, which we consider as a positive pitch jump. Knowing that there is a anomalous pitch jump in the other direction (negative pitch jump) at time 0.65\,s makes it highly probable that the pitch segment between time 0.4\,s and 0.65\,s suffers from an octave error.  
+
+We describe this heuristic-based approach in~\algoref{alg:algorithmPitchCorrection}. In this algorithm $\mathrm{winSize}$ is set to 1\,s and $\mathrm{silenceCentValue}$ is set to $1200*\log2(\epsilon)$, where $\epsilon$ is of the order of $10^{-17}$.
+
 
 \renewcommand{\algorithmiccomment}[1]{\bgroup\hfill\tiny//~#1\egroup}
 
@@ -304,11 +319,11 @@ One of the most frequently occurring errors in pitch estimation is detecting pit
 	\caption{Correcting spurious pitch octave jumps}
 	\label{alg:algorithmPitchCorrection}
 	\begin{algorithmic}  
-		\State {\bf Input:} pitch sequence (p) of length N samples in Cents scale
+		\State {\bf Input:} pitch sequence ($\pitchHz$) of length N samples in Cents scale
 		\State jumpType = zeros(N)	
 		
 		\For{ii=0; ii<N; ii++}							\Comment{Detecting type of pitch transition}
-		\State diff = p[ii+1]-p[ii]
+		\State diff = $\pitchHz$[ii+1]-$\pitchHz$[ii]
 		\If{abs(diff)\%1200 <= 300}
 		\If {diff > 0}
 		\State jumpType[ii+1]=3			\Comment{Positive octave jump}
@@ -316,9 +331,9 @@ One of the most frequently occurring errors in pitch estimation is detecting pit
 		\State jumpType[ii]=4			\Comment{Negative octave jump}
 		\EndIf
 		\ElsIf {abs(diff)>=600}
-		\If {p[ii]<= silenceCentValue}
+		\If {$\pitchHz$[ii]= silenceCentValue}
 		\State jumpType[ii+1]=1			\Comment{Unvoiced to voiced}
-		\ElsIf {p[ii+1]<= silenceCentValue}
+		\ElsIf {$\pitchHz$[ii+1]= silenceCentValue}
 		\State jumpType[ii]=2			\Comment{Voiced to unvoiced}
 		\ElsIf {diff>0}
 		\State jumpType[ii+1]=5			\Comment{Other positive pitch jump}
@@ -351,7 +366,7 @@ One of the most frequently occurring errors in pitch estimation is detecting pit
 		\EndIf
 		\EndIf
 		\EndIf
-		\State p[i1:i2+1] = p[i1:i2+1] - shift
+		\State $\pitchHz$[i1:i2+1] = $\pitchHz$[i1:i2+1] - shift
 		\State jumpType[i1] = 0
 		\State jumpType[i2] = 0		
 		
@@ -361,19 +376,27 @@ One of the most frequently occurring errors in pitch estimation is detecting pit
 \end{algorithm}
 
 
-We alleviate this problem to an extent by restricting ourselves to a specific type of pitch octave errors occurring over a short duration of time. Instead of identifying a pitch octave error for an individual audio frame, which as mentioned above is a challenging task in a polyphonic audio signal, we exploit the temporal melodic continuity to detect such errors. We explain the intuition behind our method with the help of an example shown in Figure~\TODO{fig}. The ground truth pitch contour is shown in XXX and the estimated contour in XXX. If we analyze an audio frame between time XX and XX seconds, automatically identifying if there is an pitch octave error or not is a challenging task. However, analyzing the pitch continuity we can easily detect an anomalous pitch jump at time XX seconds. This is due to the fact that in a real-world scenario such a drastic pitch jump do not occur naturally. By analyzing the amount of frequency difference across the pitch transition we can infer to an extent the type of pitch error and can subsequently correct it. In this example the frequency jump at time XX seconds is XXX cents. Knowing that there is another jump in the other direction at time XX makes it more probably that the pitch segment between time XX and XX seconds suffers from an octave error. We describe this heuristic-based approach in~\algoref{alg:algorithmPitchCorrection}. In this algorithm $\mathrm{winSize}$ is set to 1\,s and $\mathrm{silenceCentValue}$ is set to $1200*\log2(\epsilon)$, where $\epsilon$ is of the order of $10^{-17}$.
-
-
 \subsubsection{Pitch smoothening}
 \label{sec:data_processing_pitch_smoothening}
 
-This processing step aims to remove the spurious pitch jumps lasting over a few frames and to smooth the pitch contours. We start by performing a median filtering over the estimated pitch contour\TODO{ref}. The window length chosen for median filtering is 50\,ms. Subsequently, to smooth the pitch contour we apply a low-pass filtering by using a Gaussian window\TODO{ref}. The window size and the standard deviation of the Gaussian window is set to 50\,ms and 10\,ms, respectively. In Figure \TODO{do the figure} we show an example of a pitch segment before and after applying median filtering and Gaussian smoothening. We see that the spurious pitch jumps are removed and the pitch contour appears smooth.
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=\figSizeHundred]{ch05_preprocessing/figures/smootheningExample.png}
+	\end{center}
+	\caption{Example of a pitch segment before and after post-processing, which involve median filtering, Gaussian filtering and interpolation of the short unvoiced regions.}
+	\label{fig:smoothening_example}
+\end{figure}
+
+This processing step aims to remove the spurious pitch jumps lasting over a few frames and to smooth the pitch contours. We start by performing a median filtering over the estimated pitch contour\TODO{ref: ask Joan}. The window length chosen for median filtering is 50\,ms. Subsequently, to smooth the pitch contour we apply a low-pass filtering by using a Gaussian window\TODO{ref: ask Joan}. The window size and the standard deviation of the Gaussian window is set to 50\,ms and 10\,ms, respectively. In~\figref{fig:smoothening_example} we show an example of a pitch segment before and after applying median filtering and Gaussian smoothening. We see that the spurious pitch jumps are removed and the pitch contour appears smooth.
+
+\TODO{Can we provide any more details here?}
 
 
 \subsubsection{Pitch Interpolation}
 \label{sec:data_processing_pitch_interpolation}
 
-In renditions of melodic phrases in \gls{iam} often there are unvoiced segments lasting over a small time interval. These unvoiced segments either correspond to short breath-pauses taken by vocalists or they correspond to the consonants in the lyrics, which are unvoiced in nature. There are several challenges in handling these unvoiced segments in the computation of melodic similarity. One of the biggest challenges is to assign a meaningful numerical value to unvoiced melodic regions such that it does not deteriorate the computation of melodic similarity. Besides, such unvoiced segments might not exist in all occurrences of a melodic phrase. Therefore, in order to avoid the complexities arising from the unvoiced melodic segments, we interpolate such segments and assign them meaningful pitch values. We perform a linear interpolation across all the unvoiced regions that last for less than 300\,ms. An example of an interpolated unvoiced segment is shown in Figure XXX. \TODO{we can show a distribution of pause durations in melodies of IAM}
+In renditions of melodic phrases in \gls{iam} there are often unvoiced segments lasting over a small time interval. These unvoiced segments either correspond to short breath-pauses taken by vocalists or they correspond to the consonants in the lyrics, which are unvoiced in nature. These short unvoiced segments pose a difficulty in the computation of melodic similarity since they do not exist in all the occurrences of a melodic phrase. In such situations assignment of a meaningful numerical value to these unvoiced melodic regions is desired. Therefore, in order to avoid the complexities arising from these unvoiced melodic segments, we interpolate these regions. We perform a linear interpolation across all the unvoiced segments that last for less than 300\,ms. An Example of an interpolated unvoiced segment is shown in~\figref{fig:smoothening_example} between time 0-1\,s and 2-3\,s.
 
 
 \subsection{Melody Representation} 
@@ -616,9 +639,9 @@ A concert of Carnatic music typically contains a solo percussion section towards
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\figSizeNinety]{ch05_preprocessing/figures/figure_todo.pdf}
+		\includegraphics[width=\figSizeNinety]{ch05_preprocessing/figures/taniPatterns.pdf}
 	\end{center}
-	\caption{Discovered pair of patterns in predominant pitch contours corresponding to \gls{mridangam} strokes in a \gls{tani} section.}
+	\caption{Discovered pair of melodic patterns corresponding to \gls{mridangam} strokes in a \gls{tani} section.}
 	\label{fig:pitch_pattern_tani}
 \end{figure}
 
@@ -626,9 +649,9 @@ Failing to detect \gls{tani} sections as non-voiced segments and tracking pitch 
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\figSizeNinety]{ch05_preprocessing/figures/figure_todo.pdf}
+		\includegraphics[width=\figSizeEighty]{ch05_preprocessing/figures/spectrogramTani.png}
 	\end{center}
-	\caption{Waveform and spectrogram of a voice and a \gls{tani} section in an audio recording of Carnatic music.}
+	\caption{Spectrogram of a voice (with percussion) and a \gls{tani} section in an audio recording of Carnatic music. Spectrogram spans 3\,minutes of audio.}
 	\label{fig:spectrogram_of_tani_segment}
 \end{figure}
 
