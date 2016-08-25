@@ -1,125 +1,42 @@
 %!TEX root = ../thesis_a4.tex
 
-\chapter{Data Pre-processing}
+\chapter{Melody Representations and Descriptors}
 \label{chap:data_preprocessing}
-
 
 \section{Introduction}
 \label{sec:data_preprocessing_intro}
 
-In this chapter we describe the pre-processing steps followed to obtain different data representations from audio music signals. These compact and musically meaningful representations derived from raw audio data are used as input to different methods described later in this dissertation. Since a number these methods start by performing the same data transformation, we consolidate and present these common pre-processing blocks in the same chapter. This chapter is based on work already presented in XXXX. In the subsequent sections we describe the process followed for identifying the tonic of the lead artist XXXX, for estimating the pitch of the predominant melodic source (typically the lead artist) and transforming it from Hertz to Cents scale, and detecting \gls{nyas} segments in the melodies of \gls{iam}.
+In this thesis, we follow a data-driven methodology to devise computational methods for melodic description of \gls{iam}.  In the scope of this work data primarily corresponds to a collection of audio music recordings. We therefore start by processing the raw audio data to extract musically relevant melody representation and other related melodic descriptors that facilitate modeling of different musical concepts described in the subsequent chapters. Since a number of methods described in the subsequent chapters utilize these data representations and descriptors, we consolidate and present the common audio processing blocks in the current chapter.
 
-Along with the description of these processing blocks we also provide sufficient implementation details and the parameter values used in the experiments. For certain experiments the parameter settings might differ from the one presented in this chapter. In such cases the precise value of the parameters is given in the description of the respective method.
+There are four sections in this chapter, wherein each section focuses on extraction of a relevant melody descriptor (or a representation).
+\begin{itemize}
+	\item \secref{sec:data_preprocessing_tonic_identification} focuses on the task of tonic pitch identification from audio recordings. The main objective is to perform a comparative evaluation of the existing approaches and select the best performing method to be used in this work.
+	\item \secref{sec:data_preprocessing_melody_processing} describes the process followed for extracting the predominant melody from polyphonic audio music signals, the post-processing performed on the extracted melody, and the representation of the melody used in this thesis.
+	\item \secref{sec:pre_processing_nyas_segmentation} addresses the task of segmenting and labeling \gls{nyas} \glspl{svara} in melodies of \gls{iam}. The segmentation process described in this section is used in several methods explained in the subsequent chapters. 
+	\item \secref{sec:pre_processing_tani_segmentation} describes the process of segmenting the solo percussion regions (\Gls{tani} sections) in the audio recordings of Carnatic music. \Gls{tani} segmentation is performed in order to discard such sections in our melodic analysis.  
+\end{itemize}
 
-\TODO{Do we need to provide the motivation or need for data pre-processing or this is obvious?}
+Along with the description of these processing blocks we also provide sufficient implementation details and the parameter values used in the experiments. For certain experiments the parameter settings might be different from the one presented in this chapter. In such cases the parameters settings are provided in the description of the respective method. This chapter is largely based on our published work presented in~\cite{Gulati2014Tonic,gulati2014Landmark,gulati_SITIS_2014}.
 
-%In this thesis we follow a data-driven methodology to devise computational models for melodic analysis of \gls{iam}.  In the scope of this work data primarily corresponds to a collection of annotated audio music recordings. Before we start to model the human perception and cognition functions associated with a task, we transform the raw audio data and derive a higher level representation. Such an abstracted representation compactly captures the essential musical characteristics that XXXX. 
-%
-%In this chapter we present different representations of the data used across the experiments in this thesis and describe the procedure to extract them from the raw audio signals. Since several experiments share the step of data transformation, it is summarized in this chapter at once. 
-
-
-%Thoughts
-%\begin{itemize}
-%	\item What do we mean by data here, what kind of data are we using. Data-> input that we feed to our algorithms. In the scope of this thesis its primarily the audio data + small amount of metadata. The pre-processing is only for the audio data. 
-%	\item What do we mean by data pre-proessing. why is it called pre-processing. Audio data is a very low level physical data, before we can use it or make sense out of it we have to abstract it. We have to transform the data and extract a representation of the concept that we are working on. This is how most of the algorithms discussed in this paper function. Typically these processing involve converting audio data to a perceptual representation. On which further cognitive models are applied to extract high level information which has a musical interpretation or is musically meaningful. 
-%	\item Why do we have to do pre-processing, what is the reason/motivation
-%	\item What kind of pre-processing do we do. 
-%	\item Why have we written this at the beginning at one place, its been used in almost every module in the paper
-%	\item How is this chapter organized. 
-%\end{itemize}
 
 \section{Tonic Identification: Approaches and Comparative Evaluation}
 \label{sec:data_preprocessing_tonic_identification}
 
-The tonic pitch of a lead artist is the base frequency that serves as a reference and foundation for melodic integration throughout the performance (Section\TODO{secref}). All the tones in the musical progression are always in reference and related to the tonic pitch. The accompanying instruments such as tabl\={a} and violin are tuned to the tonic of the lead performer. In a performance of \gls{iam} tonic pitch in majority of the cases corresponds to the \textit{Sa} \gls{svara} of the \gls{raga} (the exceptions are the madhyam \gls{shruti} cases in Carnatic music). Other \glspl{svara} used in the performance derive their meaning and purpose in relation to the \textit{Sa} \gls{svara} and the tonal context established by the particular \gls{raga}~\citep{Danielou2010}. Identification of tonic pitch is therefore a crucial first step for tonal analysis of \gls{iam}. In Particular, for a meaningful comparison of melodies across artists, it is important that the melodic representation is normalized by the tonic of the lead artist. Identification of the tonic pitch of the lead artist in a recording is therefore typically a pre-processing step in most of the melodic analyses of \gls{iam}. 
+The tonic pitch of a lead artist in \gls{iam} is the base frequency that serves as a reference and foundation for melodic integration throughout the performance. All the tones in the musical progression are always in reference and related to the tonic pitch. In \secref{sec:melody_in_iam} we describe the concept of tonic in detail. Due to the importance of the tonic pitch its automatic identification becomes a crucial first step for tonal analysis of \gls{iam}. In Particular, for a meaningful comparison of melodies across artists, it is important that the melodic representation is normalized by the tonic of the lead artist. Identification of the tonic pitch of the lead artist in a recording is therefore typically a pre-processing step in most of the melodic analyses of \gls{iam}. 
 
-There exist a number of approaches for identifying tonic pitch in an audio recording of \gls{iam}~\citep{salamon2012multipitch,gulati2012two,bellur2012knowledge,ranjani2011carnatic,Sengupta2005b}\TODO{{add parags method and then say why it wasn't considered for the evaluation}}. Our previous works on tonic identification show promising results with accuracy close to 90\%~\citep{salamon2012multipitch,gulati2012two}. However, it might be misleading to draw a consensus on the best performing method just based on the reported accuracy in the publications. This is because these approaches are evaluated using different datasets with varied musical characteristics and under different experimental setup. Therefore, to select the most promising approach we perform a thorough comparative evaluation on the same set of datasets and under the same experimental setup~\citep{Gulati2014Tonic}. The evaluation is performed using a number of scalable datasets with varied musical and acoustical characteristics that are representative of real-world collections of \gls{iam}. In the subsequent sections we describe the comparative evaluation, which is based on our earlier work presented in~\cite{Gulati2014Tonic}. In order for this dissertation to be self-contained, we start by providing a brief description of the methods we evaluated~(\secref{sec:pre_processing_tonic_identification_existing_approaches}). We then describe the experimental setup and the datasets used for the comparative evaluation~(\secref{sec:pre_processing_experimental_setup}). We present the results of the comparative evaluation and highlight the strengths and limitations of the methods on different type of music material~(\secref{sec:pre_processing_tonic_identification_results}). Finally, we explain a heuristic-based approach to correct common mistakes in tonic identification in a collection of \gls{iam} by exploiting associated metadata of a recording. 
+There exist a number of approaches for identifying tonic pitch in an audio recording of \gls{iam}~\citep{salamon2012multipitch,gulati2012two,bellur2012knowledge,ranjani2011carnatic,Sengupta2005b,chordia2013joint}. We present a critical review of these approaches in \secref{sec:background_relevant_work_tonic_identification}. Our previous studies on tonic identification report promising results with identification accuracies close to 90\%~\citep{salamon2012multipitch,gulati2012two}. Similar is the case with some other studies~\citep{ranjani2011carnatic}. However, as we see from our review (\secref{sec:background_relevant_work_tonic_identification}), it might be misleading to draw a consensus on the best performing method just based on the accuracy reported in the publications. This is because different approaches are evaluated using different datasets with varied musical characteristics and under different experimental setup. 
 
-%
-%\subsection{Existing Approaches}
-%\label{sec:pre_processing_tonic_identification_existing_approaches}
-%
-%As mentioned, there have been various efforts to automatically identify the tonic pitch of the
-%lead artist in a performance of Indian art music~\citep{salamon2012multipitch,gulati2012two,bellur2012knowledge,ranjani2011carnatic,Sengupta2005b}.
-%These approaches mainly differ in terms of the musical cues that they utilize to
-%identify the tonic, the amount of input audio data used to perform this task and the type
-%of music material they are devised for (Hindustani or Carnatic, vocal or
-%instrumental, etc.). Despite the differences, all these approaches can be divided
-%into three main processing blocks, as shown in~\figref{fig:tonic_identification_general_block_diagram}. The only exception to this schema is the approach proposed by~\cite{Sengupta2005b}.
-%
-%\begin{figure}
-%	\begin{center}
-%		\includegraphics[width=\figSizeNinety]{ch05_preprocessing/figures/tonic_identification_block_diagram.pdf}
-%	\end{center}
-%	\caption[General block diagram of the processing steps used by tonic identification
-%	approaches.]{General block diagram of the processing steps used by tonic identification
-%		approaches.}
-%	\label{fig:tonic_identification_general_block_diagram}
-%\end{figure}
-%
-%
-%In all the aforementioned approaches, the three main processing blocks are the following: feature
-%extraction, feature distribution estimation and tonic selection. Since the task
-%of tonic identification involves an analysis of the tonal content of the audio
-%signal, the features extracted in the first block are always pitch related. In
-%the second block, an estimate of the distribution of these features is obtained
-%using either Parzen window based density estimation or by constructing a
-%histogram. The feature distribution is then used in the third block to identify
-%the tonic. The peaks of the distribution correspond to the most salient pitch
-%values used in the performance (usually the \glspl{svara} of the \gls{raga}), one of which
-%corresponds to the tonic pitch. As the most salient peak in the distribution is
-%not guaranteed to be the tonic, various techniques are applied to select the peak that corresponds to the tonic.
-%
-%
-%
-%{\renewcommand{\arraystretch}{1.5}
-%	\begin{sidewaystable} 
-%		\begin{centering}
-%			\begin{tabular}{ c c c c }
-%\tabletop			
-%			Method 	&	Features	&	Feature Distribution	&	Tonic Selection \\
-%\tablemid			
-%			\acrshort{tonicid_sengupta} \citep{Sengupta2005b}	&	Pitch \citep{AKDatta_1996} & N/A & Error minimization\\
-%			
-%			\acrshort{tonicid_ranjani_1}/\acrshort{tonicid_ranjani_2} \citep{ranjani2011carnatic}	&	Pitch \citep{BoersmaPaul2001} & Parzen-window-based \acrshort{pde}  & GMM fitting\\
-%			
-%			\acrshort{tonicid_justin} \citep{salamon2012multipitch} & Multi-pitch salience \citep{Salamon2011} & Multi-pitch histogram & Decision tree\\
-%
-%			\acrshort{tonicid_sankalp} \citep{gulati2012two}	& Multi-pitch salience  \citep{Salamon2011} & Multi-pitch histogram & Decision tree\\
-%
-%			&	Predominant melody \citep{Salamon2012} & Pitch histogram & Decision tree\\
-%
-%			\acrshort{tonicid_ashwin_1} \citep{bellur2012knowledge}	&	Pitch \citep{DeCheveigne2002}	&  \acrshort{gd} histogram & Highest peak\\
-%
-%			\acrshort{tonicid_ashwin_2} \citep{bellur2012knowledge}	&	Pitch \citep{DeCheveigne2002}	& 	GD histogram	&
-%			Template matching\\
-%
-%			\acrshort{tonicid_ashwin_2} \citep{bellur2012knowledge}	&	Pitch \citep{DeCheveigne2002}	& 	GD histogram
-%			& Highest peak\\
-%			
-%			\acrshort{tonicid_chordia}	& 	& 	& \\			
-%
-%\tablebot			
-%			\end{tabular}
-%
-%			\caption[Summary of existing tonic identification approaches.]{Summary of existing tonic identification approaches.}
-%			\label{tab:pre_processing_tonic_identification_summary_methods}
-%			\par \end{centering}	
-%	\end{sidewaystable}
-%
-%
-%In \tabref{tab:pre_processing_tonic_identification_summary_methods} we provide a summary of the existing methods for tonic identification. The common processing blocks and the main differences between them become evident from this table. A detailed review of these methods in terms of the three processing stages as shown in \figref{fig:tonic_identification_general_block_diagram} is done in~\cite{Gulati2014Tonic}. For a more detailed description of these methods we refer to their respective publications listed in Table \tabref{tab:pre_processing_tonic_identification_summary_methods}. 
-%
-%\TODO{description of the methods?}
+In order to identify the most reliable, robust and scalable approach we perform a thorough comparative evaluation using the same set of datasets and under the same experimental setup. This evaluation is performed using a number of scalable datasets with varied musical and acoustical characteristics that are representative of the real-world collections of \gls{iam}. In the subsequent sections we describe the comparative evaluation, which is based on our earlier work presented in~\cite{Gulati2014Tonic}.  The experimental setup and the datasets used for the comparative evaluation are described in~\secref{sec:pre_processing_experimental_setup}. We present the results of the evaluations and highlight the strengths and limitations of different methods in~\secref{sec:pre_processing_tonic_identification_results}. Finally, we explain a heuristic-based approach that exploits the associated metadata of a recording to correct the common mistakes in tonic identification in a collection of \gls{iam} (\secref{sec:pre_processing_tonic_identification_correcting_errors}). 
+
 
 \subsection{Comparative Evaluation Setup}
 \label{sec:pre_processing_experimental_setup}
 
-In order to select the best method for tonic identification in audio collections of \gls{iam} we perform a comparative evaluation. We evaluate seven of the nine tonic identification methods listed in \tabref{tab:pre_processing_tonic_identification_summary_methods} using the same set of datasets. The methods chosen for evaluation are
+We evaluate seven of the nine tonic identification methods listed in \tabref{tab:pre_processing_tonic_identification_summary_methods} using the same set of datasets. The methods chosen for evaluation are
 denoted by \acrshort{tonicid_justin}~\citep{salamon2012multipitch}, \acrshort{tonicid_sankalp}~\citep{gulati2012two}, \acrshort{tonicid_ranjani_1} and \acrshort{tonicid_ranjani_2}~\citep{ranjani2011carnatic}, \acrshort{tonicid_ashwin_1}, \acrshort{tonicid_ashwin_2} and \acrshort{tonicid_ashwin_3}~\citep{bellur2012knowledge}. Note that \acrshort{tonicid_sengupta}~\citep{Sengupta2005b} was not available for
-evaluation and \acrshort{tonicid_chordia} was not available when the experiments were conducted. 
+evaluation and \acrshort{tonicid_chordia}~\citep{chordia2013joint} was not available when the experiments were conducted. 
 
-Each of the method mentioned above is evaluated using six different datasets, denoted \acrshort{tds_cm1}, \acrshort{tds_cm2}, \acrshort{tds_cm3}, \acrshort{tds_iitm1}, \acrshort{tds_iitm2} and \acrshort{tds_iisc}. A detailed description of these datasets in terms the musical material and the audio quality is given in~\secref{sec:corpus_tonic_datasets}. A quick summary of the datasets can be obtained from~\tabref{tab:tonic_datasets}. The diversities present in real-world music collections of \gls{iam} in terms of the varied musical and acoustical characteristics are well captured in these six datasets. Note that \acrshort{tonicid_ashwin_1} requires several excerpts from the same concert in order to compute the segmented \gls{gd} histogram, and this kind of data (and metadata) is only available for \acrshort{tds_iitm1} dataset. Hence, \acrshort{tonicid_ashwin_1} is only evaluated using \acrshort{tds_iitm1} dataset.
+Each of the method mentioned above is evaluated using six different datasets, denoted by \acrshort{tds_cm1}, \acrshort{tds_cm2}, \acrshort{tds_cm3}, \acrshort{tds_iitm1}, \acrshort{tds_iitm2} and \acrshort{tds_iisc}. A detailed description of these datasets in terms the musical material and the audio quality is given in~\secref{sec:corpus_tonic_datasets}. A quick summary of the datasets can be obtained from~\tabref{tab:tonic_datasets}. The diversities present in real-world music collections of \gls{iam} in terms of the varied musical and acoustical characteristics are well captured in these six datasets. Note that \acrshort{tonicid_ashwin_1} requires several excerpts from the same concert in order to compute the segmented \gls{gd} histogram, and this kind of data (and metadata) is only available for \acrshort{tds_iitm1} dataset. Hence, \acrshort{tonicid_ashwin_1} is only evaluated using \acrshort{tds_iitm1} dataset.
 
 For vocal performances we evaluate the accuracy of correctly identifying the tonic pitch, whereas for instrumental music we evaluate the accuracy of estimating the tonic pitch-class only (i.e.~the identified tonic pitch is allowed to be in any octave). This is because whilst for vocal music the concept of the tonic pitch being in a specific octave is clearly defined (because it is restricted by the pitch range of the singer), this notion is not as clear for instrumental music. For vocal performances, the tonic identified by a method is considered correct if it is within 50 cents of the ground truth annotation. For instrumental music, a method's estimate is considered correct if it is within 50 cents of the correct tonic pitch-class.
 
