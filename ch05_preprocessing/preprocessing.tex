@@ -415,6 +415,9 @@ p_i = 1200~\log_2\left(\frac{f_i}{f_r}\right) ,
 
 \noindent where $f_r$ is the reference tuning frequency which typically in the case of western popular (or even classical) music is set to an integer multiple or sub-multiple of 440\,Hz. 
 
+\subsubsection{Tonic Normalization}
+\label{sec:tonic_normalization}
+
 For the case of \gls{iam} as pointed out in \secref{sec:pre_processing_tonic_identification} there is no such standard reference frequency to which all the instruments across different performances are tuned to. Every lead artist chooses a tonic pitch using which the \gls{tanpura} and the rest of the instruments are tuned. Therefore for a meaningful comparison of melodies and melodic phrases across recordings of different artists we normalize the predominant pitch by the tonic of the lead artist. We perform this normalization by considering the reference frequency $f_r$ in \eqnref{eq:hertz_to_cent_conversion} as the tonic frequency of the lead artist estimated for every recording (\secref{sec:pre_processing_tonic_identification}).  
 
 
