@@ -580,9 +580,25 @@ A study that addresses directly one of the main tasks in this thesis is performe
 
 In this section we present a brief description of the different scientific concepts and algorithms that are used in the subsequent chapters. This description primarily intends to serve as a quick reference, and by no means provides a comprehensive information on the concept. For a more detailed description of these concepts external references are provided wherever needed.
 
+\subsection{Distance Measures}
+\label{sec:distance_measures}
+
+In this section we provide formulations for the distance measures used in this thesis. 
+
+\subsubsection{Euclidean Distance}
+\label{sec:euclidean_distance}
+
+The Euclidean distance between two $n$-dimensional points $X$ and $Y$ is the length of the line segment connecting them. If $X=x_1, x_2\cdots x_n$, and $Y=y_1, y_2\cdots y_n$ are two points in Euclidean $n$-space, then the Euclidean distance ($d$) between them is given by:
+
+\begin{equation}
+\label{eq:euclidean_distance}
+	d(X,Y) = \sqrt{\sum_{i=1}^{n}(x_i-y_i)^2}	
+\end{equation}
+
+
 
 \subsection{Dynamic Time Warping}
-\label{sec_background_distance_measure}
+\label{sec_DTW_distance_measure}
 
 \Acrfull{dtw} is a well-known dynamic programming-based time series alignment algorithm. This algorithm was originally proposed for speed recognition~\citep{Sakoe78TASLP}. \Gls{dtw} is widely used for measuring similarity (or dissimilarity) between two temporal sequences that often require an optimal non-linear time alignment. A comprehensive information about \gls{dtw} can be obtained from~\cite{muller2007dynamic}. 
 
@@ -592,7 +608,7 @@ We now briefly describe the computation of the \gls{dtw} distance (taken from \c
 	X = x_1, x_2 \cdots x_i \cdots x_N
 \end{equation}
 \begin{equation}
-	Y = Y_1, Y_2 \cdots Y_j \cdots Y_N
+	Y = y_1, y_2 \cdots y_j \cdots y_N
 \end{equation}
 
 \noindent A local cost matrix $C \in \mathbb{R}^{N \times M}$ of the two real valued sequences $X$ and $Y$ can be defined by:
@@ -625,6 +641,7 @@ This optimal alignment path can be computed in $\mathcal{O}(N\,M)$ by using dyna
 The optimal path can be computed by tracking back the accumulated cost matrix $D$. Starting with $p_L = (N,M)$ and supposing $p_l = (i,j)$, $p_{l-1}$ can be computed as:
 
 \begin{equation}
+\label{eq:dtw_classic_cost_matrix_computation}
 	p_{l-1} : \begin{cases}
 	(1, j-1), & \quad \text{if } i=1\\
 	(i-1, 1), & \quad \text{if } j=1\\	
@@ -635,6 +652,7 @@ The optimal path can be computed by tracking back the accumulated cost matrix $D
 There are several variants of the classical \gls{dtw} described above. One of the variant that we will use changes the step condition in the \gls{dtw} calculation. In several situations classical \gls{dtw} suffers from pathological warpings, wherein a single element from one sequence is mapped to a large number of elements in the other sequence. In order to avoid such situations the step size condition can be modified to constrain the slope of the warping paths. The step size condition described above can be modified to $p_{l+1}-p_l \in \lbrace (2,1), (1,2), (1,1) \rbrace$ for $l \in \lbrack 1: L-1 \rbrack$. As a result of this modification the warping paths have a local slope bound of $\frac{1}{2}$ and 2. With this step condition the accumulated cost matrix $D$ can be recursively computed as:
 
 \begin{equation}
+\label{eq:dtw_local_constraint_cost_matrix_computation}
 D(i,j) = \mathrm{min} \lbrace D(i-2,j-1), D(i-1,j-2), D(i-1,j-1)\rbrace + d(x_i, y_j)
 \end{equation}
 
