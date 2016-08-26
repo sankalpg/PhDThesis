@@ -104,6 +104,7 @@ The work presented in this dissertation is carried out as a part of the CompMusi
 \subsection{Computational Description of Melodies in Indian Art Music}
 \label{sec:intro_melodic_analysis_IAM}
 
+why melody, why description of melodies, why iam, why pattern and raga in iam...
 
 \blockcquote{ringer2001melody}{``\textit{Melody, defined as pitched sounds arranged in musical time in accordance with given cultural conventions and constraints, represents a universal human phenomenon traceable to prehistoric times...wherever music became an intrinsic condition of life, certain common melodic procedures were necessarily adopted, because they satisfied basic physiological and biological requirements, if not the aesthetic imagination, per se....`Melodic unity' is configurationally speaking an intrinsic psychoacoustical function of melodic generation in a given historical-cultural context and music in the end be experienced as such...Above all, as a social product, melody is part and parcel of the cultural or subculture to which it owes its existence...}''}
 
@@ -125,14 +126,32 @@ Include this in the text!!
 %
 %(Lerdahl & Jackendoff, 1983, p. 52)Lerdahl, F. & Jackendo, R. (1983). A Generative Theory of Tonal Music. M.I.T. Press, Cambridge, Mass.
 
+%
+%Some motivations of pattern discovery putational model of expert music cognition and it could also
+%be used to build useful software tools for music analysts and
+%composers. A music analyst might find such an algorithm
+%useful for discovering characteristic structural features in the
+%works of a particular composer or for analysing the structure
+%of a work into its elemental “building blocks.” A composer
+%who is suffering from writer’s block could use such an algo-
+%rithm to find significant repeated structures in an unfinished
+%work thus discovering a fresh perspective that might stimu-
+%late further progress on the work. Another important practi-
+%cal use for such an algorithm is for music database indexing
+%
+%Add what you can think on top of this...
+
 \textquote*[Cambouropoulos2006]{\textit{Music becomes intelligible to a great extent through self-reference, i.e.,~through the relations of new musical passages to previously heard material. Structural repetition and similarity are crucial devices in establishing such relations}}. Repeating structures or patterns in melodies play a pivotal role in organizing an incoming music stream. \textquote[schenker1980harmony]{Only by repetition can a series of tones be characterized as something definite. Only repetition can demarcate a series of tones and its purpose. Repetition thus is the basis of music as an art}. This makes the computational analysis of melodic patterns a crucial task in the automatic description of melodies, which is also evident from the large number of studies dedicated to this topic\TODO{refs}. The discovery of repeated melodic patterns within a music piece (often referred to as intra-opus discovery) can help reveal the structure of the piece, and can also form the basis for studying the stylistic characteristics of an artist. Such repeating patterns when analyzed at a corpus level can not only help establish similarities between different artists and compositions, but also, facilitate studying stylistic influences across them. 
 
 Melodies in \gls{iam} are constructed within the framework of \gls{raga} (Section XX). \gls{raga} acts as a grammar within the boundaries of which an artist composes a music piece or improvises during a performance. A \gls{raga} is characterized by various melodic attributes, of which melodic patterns are the most salient. Characteristic melodic patterns act as building blocks to construct melodies within the \gls{raga} grammar. These patterns capture the essence of a \gls{raga}, and are the prominent cues for its identification. Analysis of melodic patterns is therefore crucial to computational description of melodies in \gls{iam}. Approaches that can efficiently discover and characterize meaningful melodic patterns in audio collections of \gls{iam} can pave the way for automatic \gls{raga} recognition, semantically meaningful music discovery and recommendation, and several applications around music pedagogy.
+
+\COMMENT{patterns can be used for music analysis, characterizing ragas compositions and artists. They can be used to study influences of artists, gharanas, since its a oral tradution its an interesting topic. They can be used to study evolution of music and how the usage of patterns has been changing. They can be used to perform intra piece analysis, how a piece evolves, different improvisatory aspects within a piece. Since artist puts in his mind, his characterization. Then it can be used to build other computation tasks, raga id, discovery of music, recommendation etc. Then it can be used to build applications music pedagogy etc.}
 
 The idea of repetition of a pattern mentioned above refers to a musical recurrence, wherein across occurrences the musical unit can undergo a series of transformations. A computational approach for pattern discovery should be robust to such transformations. Thus, the task of discovering patterns encapsulates the task of computing similarity in music.  The concept of repetition and self-referencing is particularly intriguing in melodic structures of \gls{iam}. As mentioned, characteristic melodic patterns in \gls{iam} act as a base for artists to express their creativity through improvisation. As a result of which, the surface melodic representation of these melodic patterns across their occurrences differ significantly, while their musical identity remains the same. Due to these factors studying computational models for measuring melodic similarity in \gls{iam} is an interesting and a relevant research topic. This can not only improve our current understanding of the perception and cognition of melodic similarity, but can also help us model the cultural influences on it. 
 
 The arrangement of the pitched sounds in a melody is shown to be hierarchical in nature\TODO{ref: generative theory}, where the pitched sounds group together into melodic phrases or motifs, which in turn group into sections that together form stanzas finally leading to the musical piece. At each level there is a complex interplay between these different elements of melody. In IAM it is the raga framework that determines the hierarchical melodic structure. The raga grammar not only specifies the tonal material to be used in the melodies but also governs the temporal relationships between them at different time-scales (Sec XX). A computational analysis of raga can thus provide insights into the melodic aspects operating at different levels of abstraction and complexity. That would eventually lead to automatic extraction of higher level semantic descriptors, which in turn enables raga based music retrieval in large audio archives and several applications around music pedagogy.
 
+\TODO{here quote the raga is between scale and melodies etc. THus a unique kind of an opportutnity to study both the aspects. Studying raga recognition we get to learn about them. THus we do that..Why raga, motivation, and then its advantages, computatinally and musicologically. .FUll music is based around raga, its the central most important concept, its the most rich annotation one  can produce. So we go for it, its the best description fo the piece of music.}
 
 IAM with its sophisticated melodic framework sets an ideal context for developing culture-aware computational methodologies for description and characterization of melodies. In the next section we identify unique challenges and opportunities in this task. 
 
