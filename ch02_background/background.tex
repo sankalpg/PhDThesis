@@ -635,13 +635,13 @@ In the computation of the \gls{dtw} we are interested in the warping path that m
 This optimal alignment path can be computed in $\mathcal{O}(N\,M)$ by using dynamic programming. A accumulated  $N \times M$ cost matrix $D$ can be defined such that $D(N,M) = \mathrm{DTW}(X,Y)$. The accumulated cost matrix $D$ can be computed as:
 
 \begin{equation}
+\label{eq:dtw_classic_cost_matrix_computation}
 	D(i,j) = \mathrm{min} \lbrace D(i-1,j), D(i,j-1), D(i-1,j-1)\rbrace + d(x_i, y_j)
 \end{equation}
 
 The optimal path can be computed by tracking back the accumulated cost matrix $D$. Starting with $p_L = (N,M)$ and supposing $p_l = (i,j)$, $p_{l-1}$ can be computed as:
 
 \begin{equation}
-\label{eq:dtw_classic_cost_matrix_computation}
 	p_{l-1} : \begin{cases}
 	(1, j-1), & \quad \text{if } i=1\\
 	(i-1, 1), & \quad \text{if } j=1\\	
