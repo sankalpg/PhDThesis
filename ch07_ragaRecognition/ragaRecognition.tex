@@ -22,57 +22,55 @@ As mentioned before, \gls{raga} is a core musical concept used in the compositio
 \Gls{raga} recognition is the most studied research topic in \gls{mir} of \gls{iam}. There exist a considerable number of approaches utilizing different characteristic aspects of \glspl{raga} such as \gls{svara} set, \gls{svara} salience and \gls{arohana}-\gls{avrohana}. A critical in-depth review of the existing approaches for \gls{raga} recognition is presented in \secref{sec:sota_raga_recognition}, wherein we identified several shortcomings in these approaches and different venues for scientific contribution to take this task to the next level. Here we summarize the main areas of improvement that are identified based on our literature review (\secref{sec:sota_raga_recognition}). 
 
 \begin{itemize}
-	\item The complexity in the task of recognizing \glspl{raga} is dependent on the number of \glspl{raga} to be differentiated, and the set of \glspl{raga} considered together. Many existing approaches are evaluated with only a few number of \glspl{raga}. Approaches that include considerable number of \glspl{raga} often include only a handful of audio recordings per \gls{raga}. A sizable, diverse and representative dataset of Hindustani and Carnatic music that can be shared and used across studies will be instrumental in systematically improving the state-of-the-art in \gls{raga} recognition.
-	
 	\item Around half the number of the existing approaches for \gls{raga} recognition do not utilize the temporal aspects of melody at all (\tabref{tab:raga_recognition_methods_melodic_characteristics}), which are crucial in characterizing \glspl{raga}. Approaches that do utilize the temporal aspects, invariably consider a discrete representation of melody in the analysis . Such approaches fall short of capturing the characteristics of the continuous melodic transitions across the \glspl{svara}, which is a relevant information for \gls{raga} recognition. Thus, approaches that can work with a continuous melody representation and still can utilize effectively the temporal aspects of melody are worth exploring for this task.
+	
+	\item The complexity in the task of recognizing \glspl{raga} is dependent on the number of \glspl{raga} to be differentiated, and the set of \glspl{raga} considered together. Many existing approaches are evaluated with only a few number of \glspl{raga}. Approaches that include considerable number of \glspl{raga} often include only a handful of audio recordings per \gls{raga}. A sizable, diverse and representative dataset of Hindustani and Carnatic music that can be shared and used across studies will be instrumental in systematically improving the state-of-the-art in \gls{raga} recognition.
 	
 	\item A thorough comparative  evaluation of the existing methods is missing in the literature. Most of the studies only evaluate their proposed method and do not perform any comparison with the existing studies. An exhaustive comparison of different approaches on the same dataset and under the same experimental setup is needed in order to identifying the strengths and weaknesses of these methods.
 	
 \end{itemize}
 
-A summary of these approaches is already provided in Section XXX. A large number of approaches for \gls{raga} recognition use features derived from the pitch or pitch-class distribution as can be seen in Table~XXXX. Using these features they capture the overall usage of the tonal material in an audio recording. In general, PCD-based approaches are robust to pitch octave errors, which is one of the most frequent errors in the estimation of predominant melody from polyphonic music signals. Currently, the PCD-based approach represents the state-of-the-art in \gls{raga} recognition~\citep{chordia2013joint}. Along with the merits there are several limitations of the these approaches. One of the major shortcomings of the PCD-based approaches is that they completely disregard the temporal aspects of the melody, which are essential to \gls{raga} characterization~\cite{rao1999raga}. Temporal aspects are even more relevant in distinguishing phrase-based \glspl{raga}~\cite{krishna2012carnatic}, as their aesthetics and identity is largely defined by the usage of meandering melodic movements, called gamakas. 
-
-Several approaches address this shortcoming in the PCD-based approaches by modeling the temporal aspects of a melody in a variety of ways~\cite{kumar2014identifying, shetty2009raga, rajkumar2011identification}. Such approaches typically use melodic progression templates~\cite{shetty2009raga}, n-gram distributions~\cite{kumar2014identifying}, or hidden Markov models~\cite{rajkumar2011identification} to capture the sequential information in the melody. With that, they primarily utilize the \={a}r\={o}hana-avr\={o}hana pattern of a \gls{raga}. In addition, most of them either transcribe the predominant melody in terms of a discrete svara sequence, or use only a single symbol/state per svara. Thus, they discard the characteristic melodic transitions between svaras, which are a representative and distinguishing aspect of a \gls{raga}~\cite{rao1999raga}. Furthermore, they often rely on an accurate transcription of the melody, which is still a challenging and an ill-defined task given the nature of IAM~\cite{rao2012culture, Suvarnalata2014}. 
-
-As mentioned before melodic patterns are one of the most prominent cues for \gls{raga} identification, used both by a performer and a listener~\citep{rao1999raga}. Despite the importance there do not exist many approaches that exploit these patterns for automatic \gls{raga} recognition. This can be attributed to the challenges involved in the extraction of characteristic melodic phrases in audio music collections. To the best of our knowledge there exist only two approaches so far that use melodic patterns for this task~\cite{shrey_ISMIR_2015, sridhar2009raga}, out of which only the former considers a continuous melodic contour for melodic phrases. Their aim is to create dictionaries of characteristic melodic phrases and to utilize them in the recognition phase. \TODO{What are the critical remarks for these two approaches?}
-
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\figSizeHundred]{ch07_ragaRecognition/figures/bd_overall_phasebased_raga_recognition.pdf}
+		\includegraphics[width=\figSizeEightyFive]{ch07_ragaRecognition/figures/bd_overall_raga_recognition.pdf}
 	\end{center}
 	\caption{Overall block diagram for automatic \gls{raga} recognition.}
 	\label{fig:bd_raga_recognition}
 \end{figure}
 
+We address the above mentioned issues in our work. We put a significant amount of effort in compiling and curating sizable datasets for evaluating the task of \gls{raga} recognition for both Hindustani and Carnatic music. To the best of our knowledge these are the largest datasets every used for evaluating \gls{raga} recognition methods. Furthermore, to encourage reproducible research we also make these datasets publicly available online (\appref{app:resources}). 
 
+We describe two novel methods for \gls{raga} recognition $\mathcal{M}_\mathrm{\acrshort{vsm}}$ and $\mathcal{M}_\mathrm{\acrshort{tdms}}$ that overcome a number of shortcomings in the existing approaches as enumerated above and in our literature review (\secref{sec:sota_raga_recognition}). A general block diagram for both the methods is shown in Figure~\ref{fig:bd_raga_recognition}. There are two main processing blocks; feature extraction and classification. Given sets of audio recordings for training ($\mathrm{R}_\mathrm{tr}$) and testing ($\mathrm{R}_\mathrm{ts}$) we first extract features ($\mathrm{F}_\mathrm{tr}$ and $\mathrm{F}_\mathrm{ts}$) for every audio recording in both the sets. Subsequently features of the training set $\mathrm{F}_\mathrm{tr}$ along with the \gls{raga} labels $\mathrm{L}_\mathrm{tr}$ are used to train a classifier to build a classification model. Using this model we then predict the \gls{raga} labels for the testing set $\mathrm{L}_\mathrm{ts}$. $\mathcal{M}_\mathrm{\acrshort{vsm}}$ and $\mathcal{M}_\mathrm{\acrshort{tdms}}$ differ both in terms of the extracted features and the classification strategy. Both these methods are described at length in the subsequent sections.
 
-In this chapter we describe two novel methods $\mathcal{M}_\mathrm{\acrshort{vsm}}$~\TODO{Citations for both} and $\mathcal{M}_\mathrm{\acrshort{tdms}}$ that overcome a number of shortcomings in the existing approaches described above and improve the accuracy of \gls{raga} recognition. A general block diagram for both the methods is shown in Figure~\ref{fig:bd_raga_recognition}. There are two main processing blocks; feature extraction and classification. Given sets of audio recordings for training ($\mathrm{R}_\mathrm{tr}$) and testing ($\mathrm{R}_\mathrm{ts}$) we first extract features ($\mathrm{F}_\mathrm{tr}$ and $\mathrm{F}_\mathrm{ts}$) for every audio recording in both the sets. Subsequently features of the training set $\mathrm{F}_\mathrm{tr}$ along with the \gls{raga} labels $\mathrm{L}_\mathrm{tr}$ are used to train a classifier to build a classification model. Using this model we then predict the \gls{raga} labels for the testing set $\mathrm{L}_\mathrm{ts}$. $\mathcal{M}_\mathrm{\acrshort{vsm}}$ and $\mathcal{M}_\mathrm{\acrshort{tdms}}$ differ both in terms of the extracted features and the classification strategy. Both these methods are described at length in subsequent sections.
 
 
 \section{\titlecap{Vector Space Modeling for \glsentrytext{raga} Recognition}}
 \label{sec:phrase_based_feature_extraction}
 
-\TODO{In this section we aim to utilize the patterns for blah blah. and why we believe its a sensible way, what gap does it fill}
+In this section, we describe our method ($\mathcal{M}_\mathrm{\acrshort{vsm}}$) that is based on melodic patterns and employs vector space modeling for \gls{raga} recognition. This method utilizes melodic patterns discovered from audio recordings of \gls{iam} in an unsupervised manner using the approach we described in the previous chapter (\chapref{}). 
 
-A number of similarities can be seen between a \gls{raga} rendition and a textual description of a topic. Like an author describes a topic by using different relevant words to the topic, an artist renders a \gls{raga} by using appropriate melodic phrases that suit the context. There are words that are quite specific to a topic, which are analogous to the characteristic melodic phrases of a \gls{raga}. Stop words not specific to any topic or to a document can be seen as analogous to the generic gamaka type melodic patterns (for example, Kampita\footnote{a specific type of an oscillatory melodic movement on a svara~\cite{krishna2012carnatic}.}), which are not specific to a \gls{raga} or to a recording. Words that are specific to a document can be regarded as composition specific melodic patterns. This analogy drives the proposed method, which we denote by $\mathcal{M}_\mathrm{\acrshort{vsm}}$. $\mathcal{M}_\mathrm{\acrshort{vsm}}$ uses automatically discovered melodic patterns and employs concepts of \gls{vsm}. As can be imagined, the overall approach is inspired by the approaches typically used for topic modeling and document classification~\TODO{refs}.
+As mentioned before, every \gls{raga} has a set of characteristic melodic patterns that capture the essence of the \gls{raga}. These melodic patterns are one of the most prominent cues for \gls{raga} identification, used both by a performer and a listener (\secref{sec:melody_in_iam}). They act as a building block to construct melodies both in composition and improvisation. However, despite the importance of melodic patterns in characterizing \glspl{raga}, they are not fully exploited by the computational methods for \gls{raga} recognition.  There exist only a handful of approaches that utilize melodic patterns for this task (\secref{sec:sota_raga_recognition}). However, they work with a discrete representation, and pre-defined dictionaries of these patterns, thus limiting the potential of a pattern-based approach for \gls{raga} recognition. This can be attributed primarily to the challenges involved in the extraction of musically meaningful melodic patterns from the audio music recordings. To the best of our knowledge there exists only one approach that uses discovered melodic patterns for this task~\citep{shrey_ISMIR_2015}. Although, the authors extract these patterns in specific sections (Pallavi lines) of audio recordings in Carnatic music and address the task of \gls{raga} verification, and not \gls{raga} recognition. A detailed discussion on the existing approaches and their shortcomings is provided in \secref{sec:sota_raga_recognition}.
 
-Merits and shortcomings of this method are summarized below:
-\begin{itemize}
-	\item Human interpretation of the intermediate output, usability of intermediate outputs, exploiting the most characteristic aspect of a raga. Utilize both the tonal and the pitch information. Exploit characteristic movements between the svaras as well as sequence of svaras
-	\item No need for analyzing whole melody, if patterns are identified in chunks raga can be identified.
-	\item Musically meaningful relatinos between recordings can be established.
-\end{itemize}
+Before describing our method we first present the intuition and motivation behind the approach. A number of similarities can be seen between a \gls{raga} rendition and a textual description of a topic. Like an author describes a topic by using different relevant words to the topic, an artist renders a \gls{raga} by using appropriate melodic phrases that suit the context. There are words that are quite specific to a topic, which are analogous to the characteristic melodic phrases of a \gls{raga}. Stop words not specific to any topic or to a document can be seen as analogous to the generic \gls{gmaka} type melodic patterns, which are not specific to a \gls{raga} or to a recording (\secref{sec:recurring_melodic_patterns_iam}). Words that are specific to a document can be regarded as composition specific melodic patterns. This analogy drives the proposed method and motivates to employs concepts of \gls{vsm}. The approach in several sense is inspired by the approaches typically used for topic modeling and document classification\COMMENT{Is any ref needed here?}. We now proceed to describe our method in detail.
 
-Cons
-\begin{itemize}
-	\item Prone to octave errors, not statistical, spurts of error can deprove the performance enormously
-	\item Extraction of characteristic melodic patterns is still a challenging process. Limited by that performance
-	\item Affected a lot by the improvisational aspects
-	\item Computatinoally challenging. 
-	\item Does not exploit global melodic characteristics.
-\end{itemize}
+\COMMENT{if time permits write pros and cons of this approach.}
 
-\TODO{Give examples of studies which have tried to use language concepts in music!}
+%Merits and shortcomings of this method are summarized below:
+%\begin{itemize}
+%	\item Human interpretation of the intermediate output, usability of intermediate outputs, exploiting the most characteristic aspect of a raga. Utilize both the tonal and the pitch information. Exploit characteristic movements between the svaras as well as sequence of svaras
+%	\item No need for analyzing whole melody, if patterns are identified in chunks raga can be identified.
+%	\item Musically meaningful relatinos between recordings can be established.
+%\end{itemize}
+%
+%Cons
+%\begin{itemize}
+%	\item Prone to octave errors, not statistical, spurts of error can deprove the performance enormously
+%	\item Extraction of characteristic melodic patterns is still a challenging process. Limited by that performance
+%	\item Affected a lot by the improvisational aspects
+%	\item Computationally challenging. 
+%	\item Does not exploit global melodic characteristics.
+%\end{itemize}
+%
 
 \begin{figure}
 	\begin{center}
@@ -81,11 +79,6 @@ Cons
 	\caption{Block diagram of the proposed phrase-based approach to \gls{raga} recognition.}
 	\label{fig:bd_phasebased_raga_recognition}
 \end{figure}
-
-
-
-
-%In melodic pattern discovery block we follow an unsupervised approach and extract melodic patterns from audio music recordings. For this, we employ our proposed method for mining melodic patterns as described in Section~XXX that scales upto hundreds of hours of music data. These patterns are then clustered together into communities using the method described in Section~XXX. The occurrences of the melodic patterns clustered within communities are used to compute feature vector for each audio recording, which is eventually used for \gls{raga} classification.
 
 
 \subsection{Feature Extraction}
@@ -222,12 +215,27 @@ Finally, we compare $M$ with the state of the art methods $S_1$ and $S_2$. From 
 %2) What is the analogy that we have considered to devise the methodology
 
 
+
+
+
+
+
+
+
+
+
+
+
 \section{\titlecap{\glsentrylong{tdms} for \glsentrytext{raga} recognition}}
 \label{sec:tdms_raga_recognition}
 
-\TODO{Rephrase intro to something impressive}
+The method described in the previous section () uses melodic patterns to perform \gls{raga} recognition (\secref{sec:phrase_based_feature_extraction}). Using automatically discovered short-duration melodic patterns that constitute only a fraction of the total duration of the audio recordings, our method achieved an accuracy comparable to the state-of-the-art method. While we further refine our approach for discovering melodic patterns and eventually improve \gls{raga} recognition, we in parallel explore an alternate method (). 
 
-The approach described above for \gls{raga} recognition close to how humans identify \glspl{raga} and shows encouraging results. However, several challenges in reliably extracting melodic phrases and shortcomings summarized in Section~\TODO{ref} limit the performance of the system. In this section we propose a novel feature, the \gls{tdms}, that captures several melodic aspects that are useful in characterizing and distinguishing \glspl{raga}. \Glspl{tdms} alleviate some of the shortcomings mentioned above and improves the accuracy of \gls{raga} recognition by large margins. \Gls{tdms} is inspired by the concept of delay coordinates~\TODO{ref}. The main strengths of \gls{tdms} are:
+Chalan concept!!
+
+XX also aims to capture the tonal and the temporal characteristics of melody by using a continuous melody representation. However, this method exploits the entire audio recording and not just small fragments of it to perform the task , which was the case in our previous approach using short-duration melodic patterns. 
+
+In this section we describe our second method (XX) that uses a novel feature, the \gls{tdms}.  \gls{tdms} captures different tonal and temporal melodic aspects that are useful in characterizing and distinguishing \glspl{raga}. \Glspl{tdms} alleviate some of the shortcomings mentioned above and improves the accuracy of \gls{raga} recognition by large margins. \Gls{tdms} is inspired by the concept of delay coordinates~\TODO{ref}. The main strengths of \gls{tdms} are:
 
 \begin{itemize}
 	\item It is a compact representation that describes both the tonal and the temporal characteristics of a melody
@@ -237,6 +245,8 @@ The approach described above for \gls{raga} recognition close to how humans iden
 	\item It is easy to implement, fast to compute, and has a musically-meaningful interpretation.
 	\item As it will be shown, it obtains unprecedented accuracies in the raga recognition task, outperforming the state-of-the-art by a large margin, without the use of any elaborated classification schema.
 \end{itemize}
+
+
 
 
 \subsection{\titlecap{\glsentrylong{tdms}}}
@@ -414,8 +424,8 @@ From the results reported in Figure~\ref{fig:accuracy_vs_parameter_values}, we s
 To conclude, we proceed to analyze the errors made by the best performing variant $\mathcal{M}_{\mathrm{KL}}$. For  CMD, we show the confusion matrix of the predicted r\={a}ga labels in Figure~\ref{fig:confusion_mtx_carnatic}. In general, we see that the confusions have a musical explanation. The majority of them are between the r\={a}gas in the sets $\lbrace$Bhairavi, Mukh\={a}ri$\rbrace$, $\lbrace$Harik\={a}mbh\={o}ji, K\={a}mbh\={o}ji$\rbrace$, $\lbrace$Madhyamvat\={i}, A\d{t}\={a}na, \'Sr\={i}$\rbrace$, and $\lbrace$K\={a}pi, \={A}nandabhairavi$\rbrace$. R\={a}gas within each of these sets are allied r\={a}gas~\cite{Viswanathan2004}, i.e., they share a common set of svaras and similar phrases. For HMD, there are only 7 incorrectly classified recordings (confusion matrix omitted for space reasons). R\={a}ga Alhaiy\={a} bil\={a}wal and r\={a}ga D\={e}\'{s} is confused with r\={a}ga Gau\d{d} Malh\={a}r, which is musically explicable as these r\={a}gas share exactly the same set of svaras. R\={a}ga R\={a}g\={e}\'{s}hr\={i} is confused with B\={a}g\={e}\'{s}hr\={i}, which differ in only one svara. In all these cases, the r\={a}gas which are confused also have similar melodic phrases. For two specific cases of confusions, that of r\={a}ga  Kham\={a}j with B\={a}g\={e}\'{s}hr\={i}, and r\={a}ga Darb\={a}r\={i} with Bh\={u}p, we find that the error lies in the estimation of the tonic pitch.
 
 
-\section{Comparison with State-of-the-art Methods}
-\label{sec:summary_raga_recognition}
+\section{Effect of Dataset}
+\label{}
 
 \section{Summary}
 \label{sec:summary_raga_recognition}
