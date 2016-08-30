@@ -30,8 +30,10 @@ The following is a list of different symbols used in the dissertation along with
 	\listSymbol{\maxErrorNyas}{\ensuremath{\rho}}{Max pitch deviation used in ny\={a}s segmentation}
 	\listSymbol{\timeTshldNyas}{\ensuremath{\delta}}{Temporal threshold used in ny\={a}s segmentation}
 	\listSymbol{\binFlatNyas}{\ensuremath{\nu}}{Binary flatness measure used in ny\={a}s segmentation}
-	\listSymbol{\pattern}{\ensuremath{\wp}}{Melodic pattern}					
-	\listSymbol{\patternArray}{\ensuremath{\boldmath{\wp}}}{Array of melodic patterns}						
+	\listSymbol{\pattern}{\ensuremath{\mathfrak{p}}}{Melodic pattern}					
+	\listSymbol{\recording}{\ensuremath{\mathfrak{r}}}{Audio recording}	
+	\listSymbol{\corpus}{\ensuremath{\mathcal{R}}}{Corpus of music recordings}	
+	\listSymbol{\patternArray}{\ensuremath{\boldmath{\pattern}}}{Array of melodic patterns}						
 	\listSymbol{\svarTruncThsld}{\ensuremath{\Phi}}{Svara duration truncation threshold}
 	\listSymbol{\compWght}{\ensuremath{\Upsilon}}{Complexity weighting in melodic similarity computation}
 	\listSymbol{\compEst}{\ensuremath{\zeta}}{Complexity estimate of a melodic pattern}	
@@ -44,9 +46,22 @@ The following is a list of different symbols used in the dissertation along with
 	\listSymbol{\timeScaFac}{\ensuremath{\Omega}}{Uniform time-scaling factor}					
 	\listSymbol{\dtwCostFnc}{\ensuremath{d}}{DTW local cost function}		
 	\listSymbol{\netUndirWght}{\ensuremath{\mathcal{G}}}{Undirected weighted network}	
-	\listSymbol{\netUndirWghtRand}{\ensuremath{\mathcal{G_r}}}{Randomized undirected weighted network}		
-	\listSymbol{\netUndirUnWght}{\ensuremath{\hat{\mathcal{G}}}}{Undirected unweighted network}		
+	\listSymbol{\edgeWght}{\ensuremath{\mathit{w}}}{Weight of a network edge}	
+	\listSymbol{\simThsld}{\ensuremath{\distPatt''}}{Melodic similarity threshold}
+	\listSymbol{\clusCoff}{\ensuremath{C}}{Clustering coefficient of a network}	
+	\listSymbol{\pattVocab}{\ensuremath{\mathfrak{P}}}{Vocabulary of melodic phrases}	
+	
 		
+	\listSymbol{\community}{\ensuremath{\mathcal{C}}}{Community in a network}	
+	\listSymbol{\nodesCommRaga}{\ensuremath{\alpha}}{Number of notes in a community $q$ belonging to a particular \gls{raga}}	
+	\listSymbol{\nodesCommRec}{\ensuremath{\beta}}{Number of notes in a community $q$ belonging to a particular audio recording}
+	\listSymbol{\goodnessComm}{\ensuremath{\mathfrak{G}}}{Goodness measure of a community in network}	
+	\listSymbol{\ragaLikelihood}{\ensuremath{\mathfrak{R}}}{Likelihood of the representative \gls{raga} in a community}
+	\listSymbol{\recDistCentroid}{\ensuremath{\mathfrak{C}}}{Centroid of the distribution of nodes over recordings}				
+%	\listSymbol{\netUndirWghtRand}{\ensuremath{\mathcal{G_r}}}{Randomized undirected weighted network}		
+%	\listSymbol{\netUndirUnWght}{\ensuremath{\hat{\mathcal{G}}}}{Undirected unweighted network}		
+
+	
 
 	\nolistSymbol{\RankRefVar}{\ensuremath{V}}{Prefix for the rank refinement method variants}			
 	\nolistSymbol{\seedPattCat}{\ensuremath{\mathtt{S}}}{Prefix for seed pattern category}
@@ -58,6 +73,16 @@ The following is a list of different symbols used in the dissertation along with
 	\nolistSymbol{\pitchDiff}{\ensuremath{\delta}}{Pitch difference between two samples}	
 	
 	\nolistSymbol{\arbitTshldOne}{\ensuremath{\varphi_1}}{Threshold1 used in DTW local cost function}	
-	\nolistSymbol{\arbitTshldTwo}{\ensuremath{\varphi_2}}{Threshold1 used in DTW local cost function}		
+	\nolistSymbol{\arbitTshldTwo}{\ensuremath{\varphi_2}}{Threshold1 used in DTW local cost function}	
+	
+	\nolistSymbol{\totalRagasComm}{\ensuremath{L}}{Total number of \glspl{raga} in a community}		
+	\nolistSymbol{\totalRecsComm}{\ensuremath{H}}{Total number of recordings in a community}	
+	\nolistSymbol{\RagaOfComm}{\ensuremath{R}}{\Gls{raga} corresponding to the maximum number of nodes in a community}	
+	
+	\nolistSymbol{\featureVSMOne}{\ensuremath{\mathfrak{f}_1}}{Feature 1 in \acrshort{ragarecVSM} method}	
+	\nolistSymbol{\featureVSMTwo}{\ensuremath{\mathfrak{f}_2}}{Feature 2 in \acrshort{ragarecVSM} method}	
+	\nolistSymbol{\featureVSMThree}{\ensuremath{\mathfrak{f}_3}}{Feature 3 in \acrshort{ragarecVSM} method}	
+	\nolistSymbol{\feaqPhRec}{\ensuremath{f}}{Frequency of occurrence of a pattern in a recording}
+	\nolistSymbol{\irf}{\ensuremath{\mathcal{I}}}{Inverse recording frequency}						
 		
 \end{longtable}	
