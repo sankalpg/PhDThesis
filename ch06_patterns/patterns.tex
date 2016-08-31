@@ -16,7 +16,7 @@ In this chapter, we present our methodology for discovering musically relevant m
 
 \blockquote[\cite{schenker1980harmony}]{\textit{Only by repetition can a series of tones be characterized as something definite. Only repetition can demarcate a series of tones and its purpose. Repetition thus is the basis of music as an art}}
 
-Patterns (or repetitions) are at the core of music. Consequently, analysis of repeating patterns is fundamental in music analysis.  In \gls{iam}, recurring melodic patterns are the building blocks of melodic structures. They provide a base for improvisation and composition, and thus, are instrumental in description and characterization of \glspl{raga}, compositions and artists in this music tradition. A detailed account of the relevance of patterns in music, and in \gls{iam} in particular is provided in~\secref{sec:intro_melodic_analysis_IAM,sec:melody_in_iam}. 
+Patterns (or repetitions) are at the core of music. Consequently, analysis of repeating patterns is fundamental in music analysis.  In \gls{iam}, recurring melodic patterns are the building blocks of melodic structures. They provide a base for improvisation and composition, and thus, are instrumental in analysis and description of \glspl{raga}, compositions, and artists in this music tradition. A detailed account of the relevance of patterns in music, and in \gls{iam} in particular is provided in~\secref{sec:intro_melodic_analysis_IAM} and in~\secref{sec:melody_in_iam}. 
 
 %
 %As mentioned before, there are various types of melodic patterns that characterize different aspects of melodies in \gls{iam}. Some of these recurring patterns, referred to as characteristic melodic phrases (\secref{sec:music_background}), are prominent cues used by performers, to establish the identity of a \gls{raga}, and listeners, to identify the \gls{raga} in a music piece. Thus, automatically detecting occurrences of these melodic patterns is key to melodic analyses of \gls{iam}, and a crucial step towards meaningful retrieval and recommendation of \gls{iam}.
@@ -268,11 +268,6 @@ So far we have seen the results in the experimental setup where the melodic patt
 \TODO{This is an important comment}
 \COMMENT{If time permits it would be awesome to show accuracy as a function of different choices of parameters keeping others at an optimal value for both the traditions. That would make things very clear and impressive. Please do this!!!}
 
-\subsection{Summary}
-\label{sec:patterns_melodic_similarity_conclusion}
-
-We presented an evaluation of 560 different methodology variants for computing similarity of short-time melodic patterns in \gls{iam}. Our results indicate that the task of melodic similarity computation is very sensitive to the choice of parameters and processing steps. A higher sampling rate of the melody representation and mean normalization gives a better retrieval performance for Carnatic music. For Hindustani music, on the other hand, sampling rate has no significant affect on the performance and tonic normalization of the melody results in a better performance. In general, \gls{dtw}-based distance measure performs better than the Euclidean distance, and the usage of local constraint in \gls{dtw} enhances the performance. The \gls{dtw} variant without any global constraint is preferred (specially for Hindustani music), which suggests that there are large non-linear timing variations across repeated instances of the melodic pattern in \gls{iam}. We also see that an accurate segmentation of the melodic patterns has a large impact on the computation of melodic similarity, and that the task becomes much more challenging in the absence of a pattern segmentation model.
-
 
 %################################################################################################################
 %########################################### IMPROVING MELODIC SIMILARITY #######################################
@@ -490,14 +485,6 @@ We now analyse the results for the \acrshort{msds_cm_cmd} dataset. From~\tabref{
 
 
 Overall we see that duration truncation of steady melodic regions improves the performance in both \acrshort{msds_cm_hmd} and \acrshort{msds_cm_cmd} datasets. This reinforces our hypothesis that elongation of steady \gls{svara} regions in the melodies of \gls{iam} in the context of the characteristic melodic phrase does not change the musical identity of the phrase. This correlates with the concept of \gls{nyas} \gls{svara} (\secref{sec:backgroung_nyas_description}), where the artist has the flexibility to stay and elongate a single \gls{svara}. A similar observation was reported in~\cite{Rao2014}, where the authors proposed to learn the optimal global \gls{dtw} constraints a priori for each pattern category. However, as they report, their proposed solution could not improve the performance. Further comparing the results for the \acrshort{msds_cm_hmd} and \acrshort{msds_cm_cmd} datasets we notice that $\mNorm_\mathrm{tonic}$ results in the best performance for the \acrshort{msds_cm_hmd} and $\mNorm_\mathrm{tetra}$ for the \acrshort{msds_cm_cmd}. This can be attributed to the fact that the number of the pitch-transposed occurrences of a melodic phrase is significantly higher in the \acrshort{msds_cm_cmd} compared to the \acrshort{msds_cm_hmd} (\secref{sec:patterns_melodic_similarity_results_discussions}). Also, since the non-linear timing variability in the \acrshort{msds_cm_hmd} is very high, any normalization ($\mNorm_\mathrm{mean}$ or $\mNorm_\mathrm{tetra}$) that involves a decision based on the mean frequency of the phrase is more likely to fail.
-
-
-\subsection{Summary}
-\label{sec:patterns_improving_similarity_summary}
-
-In this section we highlighted the major challenges involved in this task and focused on two specific issues that arise due to large non-linear timing variations and rapid melodic movements. We described simple and easy to implement solutions based on partial transcription and complexity weighting to address these challenges. We showed that duration truncation of the steady \gls{svara} regions in the melodic phrases results in a statistically significant improvement in the computation of melodic similarity. Furthermore, we showed that complexity weighting improves the melodic similarity in Carnatic music. This suggests that the extent and the number of saddle points is an important characteristic of a melodic phrase and is crucial to melodic similarity in Carnatic music.  In the future, we plan to improve the method used for segmenting the steady \gls{svara} regions so that it can differentiate melodic ornaments from subtle \gls{svara} transitions. In addition, we see a vast scope in further refining the complexity estimate of a melodic phrase to improve the complexity weighting. It would also be worthwhile to explore the applicability of this approach to music traditions such as Flamenco, Beijing opera and Turkish Makam music.
-
-\TODO{ you can consider adding a section on limitations of the string matching basd similarity measures in the context of Indian art music. Give examples in situations which need specifric nuances in melodies to weigh more and which is completely not considered in our similarity measure. Say this as the future direction. Probably a model based method is what is needed and not string based matching. Read PhD doc that I have been writing to get more points on this.}
 
 
 %################################################################################################################
@@ -829,13 +816,6 @@ Finally, we analyze the distance distributions of melodically similar and dissim
 
 
 
-\subsection{Summary}
-\label{sec:patterns_pattern_discovery_summary}
-
-We presented a data-driven unsupervised approach for melodic pattern discovery in large audio collections of \gls{iam}. We first discovered seed patterns within a recording and later used those as queries to detect similar occurrences in the entire dataset. We used \gls{dtw}-based distance measures to compute melodic similarity and compared four different rank refinement variants. To evaluate the approach we use a sizable music collection comprising 365\,hours of audio recordings of Carnatic music, which represents the diversities present in the music tradition. A randomly sampled subset of the extracted melodic patterns was evaluated by a professional Carnatic musician. We saw that discovering 25 closest seed pattern pairs within each recording and retrieving their 200 closest patterns from the entire music collection resulted in around 12 trillion distance computations. Using cascaded lower bounding techniques for the \gls{dtw} distance we saved nearly 76\% of the total computations for the intra-recording pattern discovery task and around 99\% of the total computations for the inter-recording pattern detection task. Our quantitative evaluation indicated that a \gls{dtw}-based distance measure performs well for intra-recording discovery. However, the performance for the inter-recording pattern detection task was inferior suggesting that we require better melodic similarity measures for searching occurrences across recordings. This is a clear direction for future works. We showed that a variant of the \gls{dtw} cost function using cityblock distance performs slightly better than the rest for refining the ranks of the retrieved search results. Qualitative feedback from the musician suggested that the extracted melodic patterns are interesting and musically meaningful and possibly be utilized in higher level computational tasks such as automatic \gls{raga} recognition, and music recommendation. Furthermore, the discovered patterns can also be utilized in several applications around enhanced music listening, exploratory tools for musicologists and in pedagogical tools.
-
-
-
 %################################################################################################################
 %########################################### IMPROVING MELODIC SIMILARITY #######################################
 %################################################################################################################
@@ -1072,31 +1052,30 @@ The results show that the proposed method successfully discovers \gls{raga} moti
 \end{table}
 
 
-\subsection{Summary}
-\label{sec:patterns_characterization_summary}
+We consider this work as a preliminary study with a lot of scope for improvements. In particular, the approach can be extended to identify patterns belonging to other categories (\gls{gamaka} or composition-specific patterns), definition of the goodness measure $\goodnessComm$ can be improved as suggested in~\secref{sec:patterns_characterization_results_and_discussion}, listening test could be done more rigorously by including negative examples (\gls{gamaka} patterns), and the resultant patterns of the approach can be quantitatively evaluated by using them in tasks such as composition identification. On these lines, in~\secref{sec:phrase_based_feature_extraction} we present an approach that uses clustered melodic patterns to perform the task of automatic \gls{raga} recognition. That way, in addition to the qualitative assessment as done in this work, we can also quantitatively assess the musical relevance of the extracted and characterized melodic patterns.
+
+
+
+\section{Conclusions}
+\label{sec:conclusions_patterns}
+
+
+We presented an evaluation of 560 different methodology variants for computing similarity of short-time melodic patterns in \gls{iam}. Our results indicate that the task of melodic similarity computation is very sensitive to the choice of parameters and processing steps. A higher sampling rate of the melody representation and mean normalization gives a better retrieval performance for Carnatic music. For Hindustani music, on the other hand, sampling rate has no significant affect on the performance and tonic normalization of the melody results in a better performance. In general, \gls{dtw}-based distance measure performs better than the Euclidean distance, and the usage of local constraint in \gls{dtw} enhances the performance. The \gls{dtw} variant without any global constraint is preferred (specially for Hindustani music), which suggests that there are large non-linear timing variations across repeated instances of the melodic pattern in \gls{iam}. We also see that an accurate segmentation of the melodic patterns has a large impact on the computation of melodic similarity, and that the task becomes much more challenging in the absence of a pattern segmentation model.
+
+
+In this section we highlighted the major challenges involved in this task and focused on two specific issues that arise due to large non-linear timing variations and rapid melodic movements. We described simple and easy to implement solutions based on partial transcription and complexity weighting to address these challenges. We showed that duration truncation of the steady \gls{svara} regions in the melodic phrases results in a statistically significant improvement in the computation of melodic similarity. Furthermore, we showed that complexity weighting improves the melodic similarity in Carnatic music. This suggests that the extent and the number of saddle points is an important characteristic of a melodic phrase and is crucial to melodic similarity in Carnatic music.  In the future, we plan to improve the method used for segmenting the steady \gls{svara} regions so that it can differentiate melodic ornaments from subtle \gls{svara} transitions. In addition, we see a vast scope in further refining the complexity estimate of a melodic phrase to improve the complexity weighting. It would also be worthwhile to explore the applicability of this approach to music traditions such as Flamenco, Beijing opera and Turkish Makam music.
+
+\TODO{ you can consider adding a section on limitations of the string matching basd similarity measures in the context of Indian art music. Give examples in situations which need specifric nuances in melodies to weigh more and which is completely not considered in our similarity measure. Say this as the future direction. Probably a model based method is what is needed and not string based matching. Read PhD doc that I have been writing to get more points on this.}
+
+
+We presented a data-driven unsupervised approach for melodic pattern discovery in large audio collections of \gls{iam}. We first discovered seed patterns within a recording and later used those as queries to detect similar occurrences in the entire dataset. We used \gls{dtw}-based distance measures to compute melodic similarity and compared four different rank refinement variants. To evaluate the approach we use a sizable music collection comprising 365\,hours of audio recordings of Carnatic music, which represents the diversities present in the music tradition. A randomly sampled subset of the extracted melodic patterns was evaluated by a professional Carnatic musician. We saw that discovering 25 closest seed pattern pairs within each recording and retrieving their 200 closest patterns from the entire music collection resulted in around 12 trillion distance computations. Using cascaded lower bounding techniques for the \gls{dtw} distance we saved nearly 76\% of the total computations for the intra-recording pattern discovery task and around 99\% of the total computations for the inter-recording pattern detection task. Our quantitative evaluation indicated that a \gls{dtw}-based distance measure performs well for intra-recording discovery. However, the performance for the inter-recording pattern detection task was inferior suggesting that we require better melodic similarity measures for searching occurrences across recordings. This is a clear direction for future works. We showed that a variant of the \gls{dtw} cost function using cityblock distance performs slightly better than the rest for refining the ranks of the retrieved search results. Qualitative feedback from the musician suggested that the extracted melodic patterns are interesting and musically meaningful and possibly be utilized in higher level computational tasks such as automatic \gls{raga} recognition, and music recommendation. Furthermore, the discovered patterns can also be utilized in several applications around enhanced music listening, exploratory tools for musicologists and in pedagogical tools.
+
+
+
 
 We presented a novel unsupervised approach to discover \gls{raga} motifs from polyphonic audio music collections of \gls{iam} and, specifically, to distinguish them from gamaka and composition-specific motifs. We first extracted melodic patterns from audio recordings using an unsupervised approach. We then employed a network analysis and non-overlapping community detection algorithm to cluster melodic patterns. Using the topological properties of the network, we determined a musically meaningful similarity threshold. We devised a goodness measure for characterizing the detected communities and evaluated our method using a representative music collection. A listening test with 10 professional Carnatic musicians shows that the proposed method successfully discovers \gls{raga} motifs with accuracy, even in the presence of allied \glspl{raga} in the dataset. The way we determine melodic similarity threshold and define the goodness measure appears to be successful strategies. However, only after extensive quantitative evaluations and comparisons with competing alternatives we can infer if they are the most optimal methodologies. Overall, our results suggest that the functional roles of different melodic phrases in \gls{iam} can be effectively exploited to identify them in an unsupervised manner. This, to the best of our knowledge, has been done for the first time in this study. 
 
 \TODO{how can the results and the output of this study be utilized or helpful in other studies / applications / other use-case scenarios??}
 \TODO{Highlight that this is the only computational approach in this dissertation that uses editorial metadata, that is raga labels, which a we will see in section xx can be automatically extracted quite reliably.}
-
-We consider this work as a preliminary study with a lot of scope for improvements. In particular, the approach can be extended to identify patterns belonging to other categories (\gls{gamaka} or composition-specific patterns), definition of the goodness measure $\goodnessComm$ can be improved as suggested in~\secref{sec:patterns_characterization_results_and_discussion}, listening test could be done more rigorously by including negative examples (\gls{gamaka} patterns), and the resultant patterns of the approach can be quantitatively evaluated by using them in tasks such as composition identification. On these lines, in~\secref{sec:phrase_based_feature_extraction} we present an approach that uses clustered melodic patterns to perform the task of automatic \gls{raga} recognition. That way, in addition to the qualitative assessment as done in this work, we can also quantitatively assess the musical relevance of the extracted and characterized melodic patterns.
-
-
-\section{Conclusion and Future Work }
-
-I am writing future work and possible conclusions in random order as they come 
-
-We wont go very far with an unsupervised approach without the mechanism of evaluating it. But if the annotation process was not tricky we would be using supervised. So a balanced approach would be to use discovery methods to generate evaluatino set and bootstrap the process. 
-
-Phrase boundary extension collectively within a community of phrases...to study a common defining length
-
-Exploiting melodic context in discovering and detecting phrases
-
-Exploiting if melodic characteristic of he phrase can tell us something about the phrase category
-
-Incorpotating segmentation models or using methods that does not require segmentation.
-
-In the future we plan to include other aspects of melody such as loudness and timbre in the similarity computation and use a bigger dataset consisting of many more melodic patterns for evaluation.
 
 
