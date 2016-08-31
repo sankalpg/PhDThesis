@@ -32,7 +32,7 @@ As mentioned before, \gls{raga} is a core musical concept used in the compositio
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\figSizeEightyFive]{ch07_ragaRecognition/figures/figure_todo.pdf}
+		\includegraphics[width=\figSizeEightyFive]{ch07_ragaRecognition/figures/bd_overall_raga_recognition.pdf}
 	\end{center}
 	\caption{Overall block diagram for automatic \gls{raga} recognition.}
 	\label{fig:bd_raga_recognition}
@@ -52,7 +52,7 @@ In this section, we describe our method (\acrshort{ragarecVSM}) that is based on
 
 As mentioned before, every \gls{raga} has a set of characteristic melodic patterns that capture the essence of the \gls{raga}. These melodic patterns are one of the most prominent cues for \gls{raga} identification, used both by a performer and a listener (\secref{sec:melody_in_iam}). They act as a building block to construct melodies both in composition and improvisation. However, despite the importance of melodic patterns in characterizing \glspl{raga}, they are not fully exploited by the computational methods for \gls{raga} recognition.  There exist only a handful of approaches that utilize melodic patterns for this task (\secref{sec:sota_raga_recognition}). However, they work with a discrete representation, and pre-defined dictionaries of these patterns, thus limiting the potential of a pattern-based approach for \gls{raga} recognition. This can be attributed primarily to the challenges involved in the extraction of musically meaningful melodic patterns from the audio music recordings. To the best of our knowledge there exists only one approach that uses discovered melodic patterns for this task~\citep{shrey_ISMIR_2015}. Although, the authors extract these patterns in specific sections (Pallavi lines) of audio recordings in Carnatic music and address the task of \gls{raga} verification, and not \gls{raga} recognition. A detailed discussion on the existing approaches and their shortcomings is provided in \secref{sec:sota_raga_recognition}.
 
-Before describing our method we first present the intuition and motivation behind the approach. A number of similarities can be seen between a \gls{raga} rendition and a textual description of a topic. Like an author describes a topic by using different relevant words to the topic, an artist renders a \gls{raga} by using appropriate melodic phrases that suit the context. There are words that are quite specific to a topic, which are analogous to the characteristic melodic phrases of a \gls{raga}. Stop words not specific to any topic or to a document can be seen as analogous to the generic \gls{gamaka} type melodic patterns, which are not specific to a \gls{raga} or to a recording (\secref{sec:recurring_melodic_patterns_iam}). Words that are specific to a document can be regarded as composition specific melodic patterns. This analogy drives the proposed method and motivates to employs concepts of \gls{vsm}. The approach in several sense is inspired by the approaches typically used for topic modeling and document classification\COMMENT{Is any ref needed here?}. We now proceed to describe our method in detail.
+Before describing our method that uses melodic patterns, we first present the intuition and motivation behind the approach. A number of similarities can be seen between a \gls{raga} rendition and a textual description of a topic. Like an author describes a topic by using different relevant words to the topic, an artist renders a \gls{raga} by using appropriate melodic phrases that suit the context. There are words that are quite specific to a topic, which are analogous to the characteristic melodic phrases of a \gls{raga}. Stop words not specific to any topic or to a document can be seen as analogous to the generic \gls{gamaka} type melodic patterns, which are not specific to a \gls{raga} or to a recording (\secref{sec:recurring_melodic_patterns_iam}). Words that are specific to a document can be regarded as composition specific melodic patterns. This analogy drives the proposed method and motivates to employs concepts of \gls{vsm}. The approach in several sense is inspired by the approaches typically used for topic modeling and document classification\COMMENT{Is any ref needed here?}. We now proceed to describe our method in detail.
 
 \COMMENT{if time permits write pros and cons of this approach.}
 
@@ -216,32 +216,18 @@ Finally, we compare \acrshort{ragarecVSM} with the state of the art methods \acr
 
 
 
-%
-%1) What is the motivation behind this method, what can be its advantages
-%2) What is the analogy that we have considered to devise the methodology
-
-
-
-
-
-
-
-
-
-
 
 
 
 \section{\titlecap{\glsentrylong{tdms} for \glsentrytext{raga} recognition}}
 \label{sec:tdms_raga_recognition}
 
-The method described in the previous section () uses melodic patterns to perform \gls{raga} recognition (\secref{sec:phrase_based_feature_extraction}). Using automatically discovered short-duration melodic patterns that constitute only a fraction of the total duration of the audio recordings, our method achieved an accuracy comparable to the state-of-the-art method. While we further refine our approach for discovering melodic patterns and eventually improve \gls{raga} recognition, we in parallel explore an alternate method (). 
+The method described in the previous section (\acrshort{ragarecVSM}) uses melodic patterns to perform \gls{raga} recognition (\secref{sec:phrase_based_feature_extraction}). Using automatically discovered short-duration melodic patterns that constitute only a fraction of the total duration of the audio recordings, \acrshort{ragarecVSM} showed promising results by achieving an accuracy comparable to the state-of-the-art method. While we refine our methodology for discovering melodic patterns and further improve \gls{raga} recognition through that approach, we also propose another method (\acrshort{ragarecTDMS}) for this task. 
 
-Chalan concept!!
+\acrshort{ragarecTDMS} also aims to capture both the tonal and the temporal characteristics of melody by using a continuous melody representation. However, instead of using short-duration patterns extracted directly from the surface representation of melody as done in \acrshort{ragarecVSM}, in \acrshort{ragarecTDMS} we seek to abstract the melody representation. An abstraction of melody that imbibes both the tonal and the temporal aspects relates to the concept of \gls{chalan} in \gls{iam} (\secref{sec:melody_in_iam}). \Gls{chalan} (literally meaning gait or movement) of a \gls{raga} defines its melodic outline in terms of how a melodic transition is to be made from one \gls{svara} to another, the precise intonation to be followed, and the proportion of time spent on each \gls{svara}. \Gls{chalan} can be considered as an abstraction of \gls{raga} motifs, and is a characterizing feature of \glspl{raga}.
 
-XX also aims to capture the tonal and the temporal characteristics of melody by using a continuous melody representation. However, this method exploits the entire audio recording and not just small fragments of it to perform the task , which was the case in our previous approach using short-duration melodic patterns. 
 
-In this section we describe our second method (XX) that uses a novel feature, the \gls{tdms}.  \gls{tdms} captures different tonal and temporal melodic aspects that are useful in characterizing and distinguishing \glspl{raga}. \Glspl{tdms} alleviate some of the shortcomings mentioned above and improves the accuracy of \gls{raga} recognition by large margins. \Gls{tdms} is inspired by the concept of delay coordinates~\TODO{ref}. The main strengths of \gls{tdms} are:
+In this section we describe our second method for \gls{raga} recognition, \acrshort{ragarecTDMS}. This method utilizes \gls{chalan} aspect of melodies in \gls{iam} to perform the task. In order to incorporate \gls{chalan} and abstract melody representation \acrshort{ragarecTDMS} uses a novel feature,  the \acrfull{tdms}. \gls{tdms} captures tonal and temporal melodic aspects that are useful in characterizing and distinguishing \glspl{raga}. \Glspl{tdms} alleviate several of the shortcomings in the existing approaches (\secref{sec:sota_raga_recognition}) and improves the accuracy of \gls{raga} recognition by large margins. \Gls{tdms} is inspired by the concept of delay coordinates~\citep{takens1981detecting}. The main strengths of \gls{tdms} are:
 
 \begin{itemize}
 	\item It is a compact representation that describes both the tonal and the temporal characteristics of a melody
@@ -252,8 +238,7 @@ In this section we describe our second method (XX) that uses a novel feature, th
 	\item As it will be shown, it obtains unprecedented accuracies in the raga recognition task, outperforming the state-of-the-art by a large margin, without the use of any elaborated classification schema.
 \end{itemize}
 
-
-
+We now proceed to describe \acrshort{ragarecTDMS} in detail. The block diagram of \acrshort{ragarecTDMS} method is the same as shown before in~\figref{fig:bd_raga_recognition} .There are two main blocks, feature extraction and classification. \acrshort{ragarecTDMS} uses \gls{tdms} features whose computation is described in the subsequent section. The classification strategy and the distance measures used in \acrshort{ragarecTDMS} are described in~\secref{sec:tdms_classification_evaluation}. In~\secref{sec:tdms_eval_results}, we present the experimental setup used to evaluate this method, and finally, discuss the obtained results. 
 
 \subsection{\titlecap{\glsentrylong{tdms}}}
 \label{sec:tdms_feature_extraction}
@@ -268,7 +253,7 @@ In this section we describe our second method (XX) that uses a novel feature, th
 
 The computation of a \gls{tdms} has three steps as shown in Figure~\ref{fig:bd_tdms_computation}: pre-processing, surface generation, and post-processing. In pre-processing, we obtain a representation of the melody of an audio recording, which is normalized by the tonic or base frequency of the music piece. In surface generation, we compute a two dimensional surface based on the concept of delay coordinates. Finally, in post-processing, we apply power compression and Gaussian smoothing to the computed surface. We subsequently detail these steps.
 
-\subsubsection{Pre-processing}
+\subsubsection{Pre-processing} 
 \label{sec:tdms_preprocessing}
 
 In this step we process the audio collection to obtain representation of the melodies that is suitable for the task of \gls{raga} recognition. For the computation of the \gls{tdms} we represent melody of an audio excerpt by the pitch of the predominant melodic source. For predominant pitch estimation we follow the method described in Section~\TODO{XXX}. We use exactly the same set of parameter values for pitch estimation. We subsequently post-process the estimated pitch to smoothen it and remove spurious pitch jumps. For post-processing we follow the procedure described in Section~\TODO{XXX} and use the same set of parameter values.
