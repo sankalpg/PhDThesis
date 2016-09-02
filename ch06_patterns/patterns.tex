@@ -2,6 +2,7 @@
 
 \chapter{Melodic Pattern Processing: Similarity, Discovery and Characterization}
 \label{chap:melodic_pattern_processing}
+\chaptermark{Melodic Pattern Processing}
 
 \section{Introduction}
 \label{sec:patterns_introduction}
@@ -22,9 +23,9 @@ To recapitulate, from the literature review presented in~\secref{sec:sota_patter
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\figSizeSixty]{ch06_patterns/figures/figure_todo.pdf}
+		\includegraphics[width=\figSizeEighty]{ch06_patterns/figures/discovery/TwoTypesOfMethodology.pdf}
 	\end{center}
-	\caption{Two types of approaches for pattern extraction in time-series data.}
+	\caption{Two types of approaches for pattern extraction in music recordings.}
 	\label{fig:types_of_methodologies_for_extraction}
 \end{figure}
 
@@ -67,7 +68,7 @@ Studying computational models for melodic similarity is particularly interesting
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\figSizeEighty]{ch06_patterns/figures/SimilarityEvaluation/Hindustani3Patts.pdf}
+		\includegraphics[width=\figSizeSixty]{ch06_patterns/figures/SimilarityEvaluation/Hindustani3Patts.pdf}
 	\end{center}
 	\caption{Melodic fragments corresponding to three different renditions of the same characteristic \gls{raga} pattern in Hindustani music. For a better visualization, the patterns are transposed by a frequency offset of 600\,cents between them.}
 	\label{fig:examples_3_phrases}
@@ -266,7 +267,7 @@ So far we have seen the results in the experimental setup where the melodic patt
 %########################################### IMPROVING MELODIC SIMILARITY #######################################
 %################################################################################################################
 
-\section{Improving Melodic Similarity in Indian Art Music}
+\section{Improving Melodic Similarity}
 \label{sec:patterns_improving_melodic_similarity}
 
 In the previous section we performed an exhaustive comparison of different procedures and parameter settings typically involved in the computation of melodic similarity (\secref{sec:patterns_evaluation_of_similarity_measures}). We learned about the impact of the different methodologies on the accuracy of the system, and about the best set of parameter settings for computing melodic similarity in \gls{iam}. Results indicate that this task is challenging, and even in the case of the best methodology, there exists a large scope for improvement. In this section we build upon our findings in \secref{sec:patterns_evaluation_of_similarity_measures} and investigate the exploitation of specific melodic characteristics of Hindustani and Carnatic music to further improve melodic similarity. 
@@ -485,7 +486,7 @@ Overall, we see that duration truncation of steady melodic regions improves the 
 %################################################################################################################
 
 
-\section{Melodic Pattern Discovery in Sizable Audio Collections}
+\section{Melodic Pattern Discovery}
 \label{sec:patterns_melodic_pattern_discovery}
 
 As argued in \secref{sec:patterns_introduction} the potential of a pattern-based melodic analysis in characterization of \glspl{raga}, compositions and artists  in \gls{iam} gets severely restricted in a supervised experimental setup. As described before, this is mainly due to the factors such as limited dataset size, knowledge bias and human errors in the melodic pattern corpus provided by domain experts. Therefore, to overcome these issues we follow an unsupervised methodology to discover melodic patterns in sizable audio music collections of \gls{iam}. Since a quantitative evaluation of an unsupervised method for sizable datasets is difficult and rather ill-defined, improving such methods and learning optimal values of the system parameters becomes a challenging task. We therefore studied the computation of melodic similarity, a crucial component in a melodic pattern discovery method in a supervised manner in \secref{sec:patterns_evaluation_of_similarity_measures} and \secref{sec:patterns_improving_melodic_similarity}. The learnings from these supervised studies loop back into our unsupervised melodic pattern discovery method presented in this chapter. 
