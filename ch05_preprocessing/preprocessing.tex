@@ -398,6 +398,13 @@ This processing step aims to remove the spurious pitch jumps lasting over a few 
 
 In renditions of melodic phrases in \gls{iam} there are often unvoiced segments lasting over a small time interval. These unvoiced segments either correspond to short breath-pauses taken by vocalists or they correspond to the consonants in the lyrics, which are unvoiced in nature. These short unvoiced segments pose a difficulty in the computation of melodic similarity since they do not exist in all the occurrences of a melodic phrase. In such situations assignment of a meaningful numerical value to these unvoiced melodic regions is desired. Therefore, in order to avoid the complexities arising from these unvoiced melodic segments, we interpolate these regions. We perform a linear interpolation across all the unvoiced segments that last for less than 300\,ms. An Example of an interpolated unvoiced segment is shown in~\figref{fig:smoothening_example} between time 0-1\,s and 2-3\,s.
 
+\subsubsection{Pitch Resampling}
+\label{sec:data_processing_pitch_resampling}
+
+An optimal sampling rate of predominant melody can be argued to depend on the particular computational task under study. For certain tasks such as analysis of melodic ornaments in \gls{iam} a high sampling rate might be desired. Whereas, for computationally complex tasks such as melodic pattern discovery and search, a sampling rate as low as possible but at the same time sufficient to capture melodic nuances might be preferred. In order to avoid predominant melody computation for different sampling rates used in different experiments, we often resample the predominant melody contours extracted once at a high sampling rate. Pitch contours are decimated to a lower sampling rate by simply downsampling them by an integer factor. The downsampling factor is decided based on the sampling rate used in a particular experiment.
+
+Note that not all the post-processing steps listed in this section are employed in all the experiments. The description of the methods in the subsequent chapters will contain details about the post-processing steps used in the experiment.
+
 
 \subsection{Melody Representation} 
 \label{sec:pre_processing_melody_representation}
@@ -421,13 +428,6 @@ The perception of melodic intervals for human beings is logarithmic in nature wi
 
 For the case of \gls{iam} as pointed out in \secref{sec:data_preprocessing_tonic_identification} there is no such standard reference frequency to which all the instruments across different performances are tuned to. Every lead artist chooses a tonic pitch using which the \gls{tanpura} and the rest of the instruments are tuned. Therefore for a meaningful comparison of melodies and melodic phrases across recordings of different artists we normalize the predominant pitch by the tonic of the lead artist estimated for every recording (\toniRec). We perform this normalization by considering the reference frequency $f_r=\toniRec$ in \eqnref{eq:hertz_to_cent_conversion}. \toniRec is estimated for every recording using \acrshort{tonicid_justin} method, the best method resulted from our comparative evaluation in~\secref{sec:pre_processing_tonic_identification_summary}
 
-
-\subsubsection{Pitch Resampling}
-\label{sec:data_processing_pitch_resampling}
-
-An optimal sampling rate of predominant melody can be argued to depend on the particular computational task under study. For certain tasks such as analysis of melodic ornaments in \gls{iam} a high sampling rate might be desired. Whereas, for computationally complex tasks such as melodic pattern discovery and search, a sampling rate as low as possible but at the same time sufficient to capture melodic nuances might be preferred. In order to avoid predominant melody computation for different sampling rates used in different experiments, we often resample the predominant melody contours extracted once at a high sampling rate. Pitch contours are decimated to a lower sampling rate by simply downsampling them by an integer factor. The downsampling factor is decided based on the sampling rate used in a particular experiment.
-
-Note that not all the post-processing steps listed in this section are employed in all the experiments. The description of the methods in the subsequent chapters will contain details about the post-processing steps used in the experiment.
 
 
 \section{\titlecap{\glsentrytext{nyas} \glsentrytext{svara} Segmentation}}

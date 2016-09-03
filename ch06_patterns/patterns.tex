@@ -386,7 +386,7 @@ The complexity weighting that we apply here to overcome the shortcoming of the d
 \label{eq:complexity_estimate_batista}
 \end{equation}
 
-\noindent where, $\compEst_i$ is the complexity estimate of a melodic pattern of length $N$ samples and $\pitchCents_i$ is the pitch value of the $i^{\mathrm{th}}$ sample. We explore two variants of this complexity estimate. One of these variants is already proposed in~\cite{batista2011complexity} and is described in equation~\ref{eq:complexity_estimate_batista}. We denote this method variant by \acrshort{similarity_cw1}. We propose another variant that utilizes melodic characteristics of Carnatic music. This variant takes the number of saddle points in the melodic phrase as the complexity estimate~\citep{Ishwar2013}. This method variant is denoted by \acrshort{similarity_cw2}. As saddle points we consider all the local minimas and the local maximas in the pitch contour which have at least one minima to maxima distance of half a semitone. Since such melodic characteristics are predominantly present in Carnatic music, the complexity weighting is not applicable for computing melodic similarity in Hindustani music.
+\noindent where, $\compEst_i$ is the complexity estimate of a melodic pattern of length $N$ samples and $\pitchCents_i$ is the pitch value of the $i^{\mathrm{th}}$ sample. We explore two variants of this complexity estimate. One of these variants is already proposed in~\cite{batista2011complexity} and is described in~\eqnref{eq:complexity_estimate_batista}. We denote this method variant by \acrshort{similarity_cw1}. We propose another variant that utilizes melodic characteristics of Carnatic music. This variant takes the number of saddle points in the melodic phrase as the complexity estimate~\citep{Ishwar2013}. This method variant is denoted by \acrshort{similarity_cw2}. As saddle points we consider all the local minimas and the local maximas in the pitch contour which have at least one minima to maxima distance of half a semitone. Since such melodic characteristics are predominantly present in Carnatic music, the complexity weighting is not applicable for computing melodic similarity in Hindustani music.
 
 
 \subsection{Evaluation}
@@ -693,7 +693,7 @@ During rank refinement, we select a \gls{dtw} step condition of $\lbrace(1,2), (
 \label{eq:distance_measures_discovery}
 \end{equation}
 
-\noindent where $\pitchDiff = |\pitchCents_1-\pitchCents_2|$ is the city block distance between two pitch values and all numeric values are in Cent scale. We set $\arbitTshldOne =99.555$ and $\arbitTshldTwo = 74.7$ to maintain point and slope continuity of the function. The formulation for these different distance measures ($\dtwCostFnc_i$) is inspired by our own experience and some of the approaches we find in the literature~\citep{Ishwar2013,Rao2014}. We denote the four variants of the rank refinement method by $\RankRefVar_i$, where $i \in \lbrace 1\cdots4 \rbrace$.
+\noindent where $\pitchDiff = |\pitchCents_1-\pitchCents_2|$ is the city block distance between two pitch values and all numeric values are in Cent scale. We set $\arbitTshldOne =99.55$ and $\arbitTshldTwo = 74.7$ to maintain point and slope continuity of the function. The formulation for these different distance measures ($\dtwCostFnc_i$) is inspired by our own experience and some of the approaches we find in the literature~\citep{Ishwar2013,Rao2014}. We denote the four variants of the rank refinement method by $\RankRefVar_i$, where $i \in \lbrace 1\cdots4 \rbrace$.
 
 
 \subsection{Evaluation}
