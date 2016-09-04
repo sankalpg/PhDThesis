@@ -294,14 +294,11 @@ Tonic pitch varies across artists and their recordings, and therefore, a meaning
 \label{sec:tdms_surface_generation}
 
 The next step is to construct a two-dimensional surface based on the concept of delay coordinates (also termed phase space embedding)~\citep{takens1981detecting, Kantz04BOOK}. In fact, such two-dimensional surface can be seen as a discretized histogram of the elements in a two-dimensional Poicar\'e map~\citep{Kantz04BOOK}. For a given recording, we generate a surface $\tdmsBase$ of size $\sizeTDMS\times\sizeTDMS$ recursively, by computing
-
 \begin{equation}
 \label{eq:surface_computation1}	
 \tdmsElem_{ij} = \sum_{t=\timeDelay}^{N-1} \indFnc\left(\binOp\left(\pitchCents_t\right),i\right)~ \indFnc\left(\binOp\left(\pitchCents_{t-\timeDelay}\right),j\right) 
 \end{equation}
-
 for $0 \leq i,j < \sizeTDMS$, where $\tdmsElem_{ij}$ is the $(i,j)^\mathrm{th}$ element of the two-dimensional matrix $\tdmsBase$, $\pitchCents_t$ is the $t^\mathrm{th}$ sample (in Cent-scale) of the pitch sequence of length $N$, $\indFnc$ is an indicator function such that
-
 \begin{equation}
 \begin{aligned}
 \indFnc(x,y)=
@@ -310,22 +307,19 @@ for $0 \leq i,j < \sizeTDMS$, where $\tdmsElem_{ij}$ is the $(i,j)^\mathrm{th}$ 
 0, & \text{otherwise}
 \end{cases}
 \end{aligned}
-\end{equation}
- 
-$\binOp$ is an octave-wrapping integer binning operator defined by
- 
+\end{equation} 
+$\binOp$ is an octave-wrapping integer binning operator defined by 
 \begin{equation}	
 \label{eq:binning_function}	
 \binOp(x) = \left\lfloor ~\left(\frac{\sizeTDMS x}{1200}\right) \bmod \sizeTDMS ~\right\rfloor,
 \end{equation}
-
 and $\timeDelay$ is a time delay index (in frames) that is left as a parameter. Note that, the frames where a predominant pitch could not be obtained (unvoiced segments) are excluded from any calculation. For the size of $\tdmsBase$ we use $\sizeTDMS = 120$. This value  corresponds to 10 cents per bin, an optimal pitch resolution reported in~\citep{chordia2013joint}. The study shows that \gls{raga} recognition using \glspl{pcd} with a bin width of 10\,Cents outperforms the \glspl{pcd} with a bin width of 100\,Cents, and obtains a comparable results to \glspl{pcd} with a bin width of 5\,Cents.
 
 An example of the generated surface $\tdmsBase$ for a music piece\footnote{\url{http://musicbrainz.org/recording/e59642ca-72bc-466b-bf4b-d82bfbc7b4af}} in \gls{raga} Yaman is shown in~\figref{fig:phase_space_surface}\,(a). We see that the prominent peaks in the surface correspond to the \glspl{svara} of \gls{raga} Yaman. We notice that these peaks are steep and the dynamic range of the surface is high. This can be attributed to the nature of the melodies in these music traditions, particularly in Hindustani music, where the melodies often contain long held \glspl{svara}. In addition, the dynamic range is high also because the pitches in the stable \gls{svara} regions lie within a small frequency range around the mean \gls{svara} frequency compared to the pitches in the transitory melodic regions. Because of this, most of the pitch values are mapped to a small number of bins, making the prominent peaks more steep.
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\figSizeEighty]{ch07_ragaRecognition/figures/PSfeature_e59642ca-72bc-466b-bf4b-d82bfbc7b4af.pdf}
+		\includegraphics[width=\figSizeHundred]{ch07_ragaRecognition/figures/PSfeature_e59642ca-72bc-466b-bf4b-d82bfbc7b4af.pdf}
 	\end{center}\vspace{-1.5em}
 	\caption{Generated surface for a music piece before (a) and after (b) applying post-processing ($\tdmsBase$ and $\tdmsSmooth$, respectively). For ease of visualization, both matrices are normalized here between 0 and 1.}
 	\label{fig:phase_space_surface}
@@ -335,13 +329,11 @@ An example of the generated surface $\tdmsBase$ for a music piece\footnote{\url{
 \subsubsection{Post-processing}
 \label{sec:tdms_post_processing}
 
-In order to accentuate the values corresponding to the transitory regions in the melody and reduce the dynamic range of the surface, we apply an element-wise power compression as shown below:
-
+In order to accentuate the values corresponding to the transitory regions in the melody and reduce the dynamic range of the surface, we apply an element-wise power compression
 \begin{equation}
 \label{eq:tdms_power_compression}	
 \tdmsPower= \tdmsBase^\tdmsPowFac ,
 \end{equation}
-
 where $\tdmsPowFac$ is an exponent that is left as a parameter. Once a more compact (in terms of the dynamic range) surface is obtained, we apply Gaussian smoothing. With that, we attempt to attenuate the subtle differences in $\tdmsPower$ corresponding to the different melodies within the same \gls{raga}, while retaining the attributes that characterize that \gls{raga}. 
 
 We perform Gaussian smoothing by circularly convolving $\tdmsPower$ with a two-dimensional Gaussian kernel. We choose a circular convolution because of the cyclic (or octave-folded) nature of the \gls{tdms}~(\eqnref{eq:binning_function}), which mimics the cyclic nature of pitch-classes. The standard deviation of this kernel is $\sigmaTDMS$ bins (samples). The length of the kernel is truncated to $8\sigmaTDMS + 1$ bins in each dimension, after which the values are negligible (below $0.01\%$ of the kernel's maximum amplitude). We experiment with different values of $\sigmaTDMS$, and also with a method variant excluding the Gaussian smoothing (loosely denoted by $\sigmaTDMS = -1$), so that we can quantify its influence on the accuracy of the system. 
@@ -351,7 +343,7 @@ We perform Gaussian smoothing by circularly convolving $\tdmsPower$ with a two-d
 Once we have the smoothed surface $\tdmsSmooth$, there is only one step remaining to obtain the final \gls{tdms}. Since the overall duration of the recordings and of the voiced regions within them is different, the computed surface $\tdmsSmooth$ needs to be normalized. To do so, we divide $\tdmsSmooth$ by its entrywise $L_1$ norm:
 \begin{equation}
 \label{eq:tdms_normalization}
-\tdmsNorm = \tdmsSmooth/\norm{\tdmsSmooth}_{1} 
+\tdmsNorm = \tdmsSmooth/\norm{\tdmsSmooth}_{1} .
 \end{equation}
 This also yields values of $\tdmsNorm$, the final \gls{tdms}, that are interpretable in terms of discrete probabilities.
 
