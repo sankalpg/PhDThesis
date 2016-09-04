@@ -99,18 +99,10 @@ We start by building an undirected network $\netUndirWght$ using the discovered 
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\figSizeNinety]{ch07_ragaRecognition/figures/HindustaniConfig2_Accuracy_vs_CCdiff.pdf}
+		\includegraphics[width=\figSizeEightyFive]{ch07_ragaRecognition/figures/ClusteringCoffs_40raga_2s.pdf}
 	\end{center}
 	\caption{Evolution of clustering coefficients of $\netUndirWght$ and $\netUndirWght_r$ and their difference for different similarity thresholds~($\simThsld$).}
-	\label{fig:temp1}
-\end{figure}
-
-\begin{figure}
-	\begin{center}
-		\includegraphics[width=\figSizeNinety]{ch07_ragaRecognition/figures/CarnaticConfig3_Accuracy_vs_CCdiff.pdf}
-	\end{center}
-	\caption{Evolution of clustering coefficients of $\netUndirWght$ and $\netUndirWght_r$ and their difference for different similarity thresholds~($\simThsld$).}
-	\label{fig:temp2}
+	\label{fig:raga_rec_clustering_coff_evolution}
 \end{figure}
 
 As discussed in~\secref{sec:patterns_characterization_of_melodic_patterns} determining a meaningful similarity threshold in an unsupervised manner is a challenging task. For estimating an optimal value of $\simThsld$ we follow the approach as described in~\secref{sec:network_filtering}. We compare the evolution of the clustering coefficient $\clusCoff$ of the obtained network $\netUndirWght$ with the clustering coefficient of a randomized network $\netUndirWght_r$ over different distance thresholds $\simThsld$. The randomized network $\netUndirWght_r$ is obtained by swapping the edges between randomly selected pairs of nodes such that the degree of each node is preserved~\citep{maslov2002specificity}. The optimal threshold $\simThsld^\star$ is taken as the distance that maximizes the difference between the two clustering coefficients.  In~\figref{fig:raga_rec_clustering_coff_evolution}, we show $\clusCoff(\netUndirWght)$, $\clusCoff(\netUndirWght_r)$ and $\clusCoff(\netUndirWght)-\clusCoff(\netUndirWght_r)$ for different values of $\simThsld$, and mark the optimal threshold $\simThsld^\star$.
@@ -230,7 +222,7 @@ In order to validate that the estimated similarity threshold $\simThsld^\star$ (
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\figSizeEighty]{ch07_ragaRecognition/figures/HindustaniConfig2_Accuracy_vs_CCdiff.pdf}
+		\includegraphics[width=\figSizeEighty]{ch07_ragaRecognition/figures/accuracy_Vs_thresold.pdf}
 	\end{center}
 	\caption{Accuracy of \acrshort{ragarecVSM} and $\clusCoff(\netUndirWght)-\clusCoff(\netUndirWght_r)$ for different similarity thresholds.}
 	\label{fig:performance_across_thresholds}
