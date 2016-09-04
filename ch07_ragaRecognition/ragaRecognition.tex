@@ -154,7 +154,7 @@ The music collection used for evaluation in this study is a subset of the CompMu
 
 To the best of our knowledge these are the largest and the most comprehensive (in terms of the available metadata) datasets ever used for studying the task of automatic \gls{raga} recognition. To facilitate reproducible research and comparative studies we also make these datasets publicly available online (\appref{app:resources}). A further detailed description of these datasets is provided in~\secref{sec:corpus_raga_recognition_datasets}. 
 
-\subsubsection{Classification and Evaluation Methodology}
+\subsubsection{Classification and Experimental Setup}
 \label{sec:raga_rec_pattern_classification_evaluation}
 
 The features obtained above are used to train a classifier. In order to assess the relevance of these features for \gls{raga} recognition, we experiment with different algorithms exploiting diverse classification strategies~\citep{Hastie09BOOK}: \acrfull{nbm}, \acrfull{nbg}, and \acrfull{nbb}, support vector machines with a linear and a radial basis function kernel, and with a stochastic gradient descent learning (\acrshort{svml}, \acrshort{svmr} and \acrshort{sgd}, respectively), \acrfull{lr} and \acrfull{randforest}. We use the implementation of these classifiers available in scikit-learn toolkit~\citep{scikitlearn}, version 0.15.1. Since in this study, our focus is to extract a musically relevant set of features based on melodic patterns, we use the  default parameter settings for the classifiers available in scikit-learn. 
@@ -281,13 +281,9 @@ The computation of a \gls{tdms} involves three steps as shown in~\figref{fig:bd_
 \subsubsection{Pre-processing} 
 \label{sec:tdms_preprocessing}
 
-\paragraph{Predominant Pitch Estimation}
+\paragraph{Predominant Pitch Estimation:} In this step we process an audio recording to obtain a low-level representation of the melody, which is subsequently used in the computation of the \gls{tdms}. For this, we consider predominant pitch in the audio signal as the low-level melody representation. For predominant pitch estimation we follow the method described in~\secref{sec:data_preprocessing_predominant_melody_estimation}. In addition, we also post-process the estimated pitch to smoothen it and remove spurious pitch jumps (\secref{sec:data_preprocessing_pitch_postprocessing}). \TODO{params for both pitch and post processing.}
 
-In this step we process an audio recording to obtain a low-level representation of the melody, which is subsequently used in the computation of the \gls{tdms}. For this, we consider predominant pitch in the audio signal as the low-level melody representation. For predominant pitch estimation we follow the method described in~\secref{sec:data_preprocessing_predominant_melody_estimation}. In addition, we also post-process the estimated pitch to smoothen it and remove spurious pitch jumps (\secref{sec:data_preprocessing_pitch_postprocessing}). \TODO{params for both pitch and post processing.}
-
-\paragraph{Tonic Normalization}
-
-The base frequency chosen in a performance of \gls{iam} is the tonic pitch of the lead artist, to which all other accompanying instruments are tuned~(\secref{sec:melody_in_iam}). 
+\paragraph{Tonic Normalization:} The base frequency chosen in a performance of \gls{iam} is the tonic pitch of the lead artist, to which all other accompanying instruments are tuned~(\secref{sec:melody_in_iam}). 
 Tonic pitch varies across artists and their recordings, and therefore, a meaningful feature for \gls{raga} recognition should be normalized with respect to the tonic pitch. To achieve this, we normalize the predominant pitch of every recording by considering its tonic pitch as the reference frequency during the Hertz-to-Cent-scale conversion~(\secref{sec:pre_processing_melody_representation}). The tonic pitch of the lead artist for every recording is automatically identified using \acrshort{tonicid_justin}, the method that outperformed all other existing methods for this task as shown in our comparative evaluation~(\secref{sec:pre_processing_tonic_identification_summary}). 
 
 \subsubsection{Surface Generation}
@@ -320,23 +316,22 @@ An example of the generated surface $\tdmsBase$ for a music piece\footnote{\url{
 \begin{figure}
 	\begin{center}
 		\includegraphics[width=\figSizeHundred]{ch07_ragaRecognition/figures/PSfeature_e59642ca-72bc-466b-bf4b-d82bfbc7b4af.pdf}
-	\end{center}\vspace{-1.5em}
+	\end{center}
 	\caption{Generated surface for a music piece before (a) and after (b) applying post-processing ($\tdmsBase$ and $\tdmsSmooth$, respectively). For ease of visualization, both matrices are normalized here between 0 and 1.}
 	\label{fig:phase_space_surface}
-	\vspace{-0.5em}
 \end{figure}
 
 \subsubsection{Post-processing}
 \label{sec:tdms_post_processing}
 
-In order to accentuate the values corresponding to the transitory regions in the melody and reduce the dynamic range of the surface, we apply an element-wise power compression
+\paragraph{Power Compression:} In order to accentuate the values corresponding to the transitory regions in the melody and reduce the dynamic range of the surface, we apply an element-wise power compression
 \begin{equation}
 \label{eq:tdms_power_compression}	
 \tdmsPower= \tdmsBase^\tdmsPowFac ,
 \end{equation}
 where $\tdmsPowFac$ is an exponent that is left as a parameter. Once a more compact (in terms of the dynamic range) surface is obtained, we apply Gaussian smoothing. With that, we attempt to attenuate the subtle differences in $\tdmsPower$ corresponding to the different melodies within the same \gls{raga}, while retaining the attributes that characterize that \gls{raga}. 
 
-We perform Gaussian smoothing by circularly convolving $\tdmsPower$ with a two-dimensional Gaussian kernel. We choose a circular convolution because of the cyclic (or octave-folded) nature of the \gls{tdms}~(\eqnref{eq:binning_function}), which mimics the cyclic nature of pitch-classes. The standard deviation of this kernel is $\sigmaTDMS$ bins (samples). The length of the kernel is truncated to $8\sigmaTDMS + 1$ bins in each dimension, after which the values are negligible (below $0.01\%$ of the kernel's maximum amplitude). We experiment with different values of $\sigmaTDMS$, and also with a method variant excluding the Gaussian smoothing (loosely denoted by $\sigmaTDMS = -1$), so that we can quantify its influence on the accuracy of the system. 
+\paragraph{Gaussian Smoothening:} We perform Gaussian smoothing by circularly convolving $\tdmsPower$ with a two-dimensional Gaussian kernel. We choose a circular convolution because of the cyclic (or octave-folded) nature of the \gls{tdms}~(\eqnref{eq:binning_function}), which mimics the cyclic nature of pitch-classes. The standard deviation of this kernel is $\sigmaTDMS$ bins (samples). The length of the kernel is truncated to $8\sigmaTDMS + 1$ bins in each dimension, after which the values are negligible (below $0.01\%$ of the kernel's maximum amplitude). We experiment with different values of $\sigmaTDMS$, and also with a method variant excluding the Gaussian smoothing (loosely denoted by $\sigmaTDMS = -1$), so that we can quantify its influence on the accuracy of the system. 
 %
 %After convolution we retain the same dimensionality of the surface as before by discarding $4\sigmaTDMS$ number of samples from the start and the end of each dimension (i.e.~the border). 
 
@@ -347,42 +342,69 @@ Once we have the smoothed surface $\tdmsSmooth$, there is only one step remainin
 \end{equation}
 This also yields values of $\tdmsNorm$, the final \gls{tdms}, that are interpretable in terms of discrete probabilities.
 
-The result after post-processing the surface in~\figref{fig:phase_space_surface}\,(a) with power compression and Gaussian smoothing is shown in~\figref{fig:phase_space_surface}\,(b). We see that the values corresponding to the non-diagonal elements are accentuated. A visual inspection of~\figref{fig:phase_space_surface}\,(b) provides several musical insights to the melodic aspects of the recording. For instance, the high salience indices along the diagonal, $(0,0)$, $(20,20)$, $(40,40)$, $(60,60)$, $(70,70)$, $(90,90)$, and $(110,110)$, correspond to the 7~svaras used in \gls{raga} Yaman. Within which, the highest salience at indices (110,110) correspond to the Ni svara, which is the {\it Vadi} svara, i.e., musically the most salient svara of the \gls{raga}, in this case \gls{raga} Yaman~\cite{rao1999raga}. The asymmetry in the matrix with respect to the diagonal indicates the asymmetric nature of the ascending and descending svara pattern of the \gls{raga} (compare, for example, the salience at indices $(70, 90)$ to indices $(90, 70)$, with the former being more salient than the latter). The similarity of the matrix between indices $(20,20)$ and $(70,70)$ with respect to the matrix between indices $(70,70)$ and $(120,120)$ delineates the tetra-chord structure of the \gls{raga}. Finally, it should be noted that an interesting property of TDMSs is that the mean of the sum across its row and columns yields a PCD representation (see Section \TODO{XXX}).
+The result after post-processing the surface in~\figref{fig:phase_space_surface}\,(a) with power compression and Gaussian smoothing is shown in~\figref{fig:phase_space_surface}\,(b). We see that the values corresponding to the non-diagonal elements are accentuated. A visual inspection of~\figref{fig:phase_space_surface}\,(b) provides several musical insights to the melodic aspects of the recording. For instance, the high salience indices along the diagonal, $(0,0)$, $(20,20)$, $(40,40)$, $(60,60)$, $(70,70)$, $(90,90)$, and $(110,110)$, correspond to the 7~\glspl{svara} used in \gls{raga} Yaman. Within which, the highest salience at indices (110,110) correspond to the \gls{ni} \gls{svara}, which is the \gls{vadi} \gls{svara}, that is, musically the most salient \gls{svara} of the \gls{raga}, in this case \gls{raga} Yaman~\citep{rao1999raga}. The asymmetry in the matrix with respect to the diagonal indicates the asymmetric nature of the ascending and descending \gls{svara} progression, \gls{arohana}-\gls{avrohana}, of the \gls{raga} (compare, for example, the salience at indices $(70, 90)$ to indices $(90, 70)$, with the former being more salient than the latter). The similarity of the matrix between indices $(20,20)$ and $(70,70)$ with respect to the matrix between indices $(70,70)$ and $(120,120)$ delineates the tetra-chord structure of the \gls{raga}. Thus, we see that the \gls{tdms} captures several features related with the tonal and the temporal aspects of melody at different time-scales. Finally, it should be noted that an interesting property of the \gls{tdms} feature is that the mean of the sum across its rows and columns yields a \gls{pcd} representation, widely used in \gls{raga} recognition~(\secref{sec:sota_raga_recognition}).
 
-\subsection{Classification and Distance Measures}
+\COMMENT{If time permits put the points above in bullets. That would help to clearly understand the points.Also add a point about the vertical + horizontal blurring/smoothened nature of the surface around Pa svar. This indicate the slow gliding movement. Similarly for Ga (40,40) it can be said that its hit bang on without any glide.}
+
+
+\subsection{Evaluation}
+\label{sec:tdms_evaluation}
+
+\subsubsection{Music Collection}
+\label{sec:tdms_music_collection}
+
+To evaluate \acrshort{ragarecTDMS} method we use the same music collection as used in the evaluation of \acrshort{ragarecVSM}~(\secref{sec:raga_rec_pattern_music_collection}). It comprises two datasets,\acrshort{rrds_cmd_big} and \acrshort{rrds_hmd_big}, one for each music tradition, Carnatic and Hindustani music, respectively. As mentioned before, a separate evaluation on both the music traditions allows a better analysis and interpretation of the results.
+
+\acrshort{rrds_cmd_big} and \acrshort{rrds_hmd_big} comprise 124 and 130\,hours of commercially available audio recordings, respectively. \acrshort{rrds_cmd_big} contains full-length recordings of 480~performances belonging to 40~\glspl{raga} with 12~music pieces per \gls{raga}. \acrshort{rrds_hmd_big} contains full-length recordings of 300~performances belonging to 30~\glspl{raga} with 10~music pieces per \gls{raga}. The selected music material is diverse and is representative of these music traditions. A detailed description of these datasets is provided in~\secref{sec:corpus_raga_recognition_datasets}.
+
+To reiterate, these are the largest datasets ever used for studying the task of automatic \gls{raga} recognition. To facilitate reproducible research and comparative studies we also make these datasets publicly available online (\appref{app:resources}).
+
+
+\subsubsection{Classification and Distance Measures}
 \label{sec:tdms_classification_evaluation}
 
-In order to demonstrate the ability of the \gls{tdms} s in capturing \gls{raga} characteristics, we consider the task of classifying audio recordings according to their \gls{raga} label. To perform classification, we choose a $k$-nearest neighbor (kNN) classifier~\cite{Mitchell97BOOK}. The reasons for our choice are manifold. Firstly, the kNN classifier is well understood, with well studied relations to other classifiers in terms of both performance and architecture. Secondly, it is fast, with practically no training and with known techniques to speed up testing or retrieval. Thirdly, it has only one parameter, $k$, which we can just blindly set to a relatively small value or can easily optimize in the training phase. Finally, it is a classifier that is simple to implement and whose results are both interpretable and easily reproducible. 
+In order to demonstrate the ability of the \glspl{tdms} in capturing \gls{raga} characteristics, we consider the task of classifying audio recordings according to their \gls{raga} label. To perform classification, we choose a \acrfull{knn} classifier~\cite{Mitchell97BOOK}. The reasons for our choice are manifold. Firstly, the \gls{knn} classifier is well understood, with well studied relations to other classifiers in terms of both performance and architecture. Secondly, it is fast, with practically no training and with known techniques to speed up testing or retrieval. Thirdly, it has only one parameter, $k$, which we can just blindly set to a relatively small value or can easily optimize in the training phase. Finally, it is a classifier that is simple to implement and whose results are both interpretable and easily reproducible. 
 
-The performance of a kNN classifier highly depends on the distance measure used to retrieve the $k$ neighbors. We consider three different measures to compute the distance between two recordings $n$ and $m$ with \gls{tdms}\ features $\tdmsNorm^{(n)}$ and $\tdmsNorm^{(m)}$, respectively. We first consider the Frobenius norm of the difference between $\tdmsNorm^{(n)}$ and $\tdmsNorm^{(m)}$,
-\begin{equation*}
-\distTDMS_{\mathrm{F}}^{(n,m)} = \norm{\tdmsNorm_{n} - \tdmsNorm_{m}}_2 .
-\end{equation*}
+The performance of a \gls{knn} classifier highly depends on the distance measure used to retrieve the $k$ neighbors. We consider three different measures to compute the distance between two recordings $n$ and $m$ with \gls{tdms} features $\tdmsNorm^{(n)}$ and $\tdmsNorm^{(m)}$, respectively. We first consider the Frobenius norm of the difference between $\tdmsNorm^{(n)}$ and $\tdmsNorm^{(m)}$,
+\begin{equation}
+\distTDMS_{\mathrm{F}}^{(n,m)} = \norm{\tdmsNorm^{(n)} - \tdmsNorm^{(m)}}_2 .
+\end{equation}
 Next, we consider the symmetric Kullback-Leibler divergence
-\begin{equation*}
-\distTDMS_{\mathrm{KL}}^{(n,m)} = \distTDMS_{\mathrm{KL}}\left(\tdmsNorm^{(n)},\tdmsNorm^{(m)}\right) + \distTDMS_{\mathrm{KL}}\left(\tdmsNorm^{(m)},\tdmsNorm^{(n)}\right) ,
-\end{equation*}
+\begin{equation}
+\distTDMS_{\mathrm{KL}}^{(n,m)} = D_{\mathrm{KL}}\left(\tdmsNorm^{(n)},\tdmsNorm^{(m)}\right) + D_{\mathrm{KL}}\left(\tdmsNorm^{(m)},\tdmsNorm^{(n)}\right) ,
+\end{equation}
 with
-\begin{equation*}
-\distTDMS_{\mathrm{KL}}\left(\mathbf{X},\mathbf{Y}\right) = \sum{\mathbf{X} \log\left(\frac{\mathbf{X}}{\mathbf{Y}} \right)} ,
-\end{equation*}
-where we perform element-wise operations and sum over all the elements of the resultant matrix. Finally, we consider the Bhattacharyya distance, which is reported to outperform other distance measures with a PCD-based feature for the same task in~\cite{chordia2013joint},
-\begin{equation*}
+\begin{equation}
+D_{\mathrm{KL}}\left(\mathbf{X},\mathbf{Y}\right) = \sum{\mathbf{X} \log\left(\frac{\mathbf{X}}{\mathbf{Y}} \right)} ,
+\end{equation}
+where we perform element-wise operations and sum over all the elements of the resultant matrix. Finally, we consider the Bhattacharyya distance, which is reported to outperform other distance measures with a \gls{pcd}-based feature for the same task in~\cite{chordia2013joint},
+\begin{equation}
 \distTDMS_{\mathrm{B}}^{(n,m)} = -\log\left( \sum{ \sqrt{ \tdmsNorm^{(n)} \cdot \tdmsNorm^{(m)} } } \right) .
-\end{equation*}
+\end{equation}
 We again perform element-wise operations and sum over all the elements of the resultant matrix. Variants of our proposed method that use $\distTDMS_{\mathrm{F}}$, $\distTDMS_{\mathrm{KL}}$ and $\distTDMS_{\mathrm{B}}$ are denoted by \acrshort{ragarecTDMS_F}, \acrshort{ragarecTDMS_KL}, and \acrshort{ragarecTDMS_B}, respectively.
 
 
+\subsubsection{Comparison with Other Methods}
+\label{sec:tdms_comparison_other}
 
-\subsection{Evaluation, Results and Discussion}
-\label{sec:tdms_eval_results}
+In addition to \acrshort{ragarecTDMS}, we also evaluate and compare the method proposed by~\cite{chordia2013joint} (denoted by \acrshort{sotaChordia}) in the same way as explained before~(\secref{sec:raga_rec_pattern_comparison_sota}). \acrshort{sotaChordia} is regarded as the state-of-the-art in \gls{raga} recognition, which uses smoothened \acrfull{pcd} as the tonal feature and employs \acrfull{1nn} using Bhattacharyya distance for predicting \gls{raga} labels. We use the original implementation of these method obtained from the respective author. We also compare the performance of \acrshort{ragarecTDMS} with our melodic pattern-based method, \acrshort{ragarecVSM}~(\secref{sec:pattern_based_raga_recognition}).
 
-To evaluate the performance of the considered methods we use the raw overall accuracy~\cite{Mitchell97BOOK}. Since both CMD and HMD are balanced in the number of instances per class, we do not need to correct such raw accuracies to counteract for possible biases towards the majority class. We perform a leave-one-out cross validation~\cite{Mitchell97BOOK}, in which one recording from the evaluation data set forms the testing set and the remaining ones become the training set. To assess if the difference in the performance between any two methods is statistically significant, we use McNemar's test~\cite{mcnemar1947note} with $\pVal < 0.01$. To compensate for multiple comparisons, we apply the Holm-Bonferroni method~\cite{holm1979simple}. Besides accuracy, and for a more detailed error analysis, we also compute the confusion matrix over the predicted classes.
-
-In the case of \acrshort{ragarecTDMS}, a test recording is assigned the majority class of its $k$-nearest neighbors obtained from the training set and, in case of a tie, one of the majority classes is selected randomly. Because we conjecture that none of the parameters we consider is critical to obtain a good performance, we initially make an educated guess and intuitively set our parameters to a specific combination. We later study the influence of every parameter starting from that combination. We initially use $\timeDelay=0.3$\,s, $\tdmsPowFac=0.75$, $\sigmaTDMS=2$, and $k=1$, and later consider $\timeDelay\in\lbrace 0.2, 0.3, 0.5, 1, 1.5\rbrace$\,s, $\tdmsPowFac\in\lbrace 0.1, 0.25, 0.5, 0.75, 1 \rbrace$, $\sigmaTDMS\in\lbrace -1, 1, 2, 3\rbrace$, and $k\in\lbrace 1,3,5\rbrace$ (recall that $\sigmaTDMS=-1$ corresponds to no smoothing; Section~\TODO{XXX}.
+\TODO{It might be a good idea to move in all the comparisons to a common section.}
 
 
-In Table~\ref{tab:main_results}, we show the results for all the variants of the proposed method \acrshort{ragarecTDMS_F}, \acrshort{ragarecTDMS_KL} and \acrshort{ragarecTDMS_B}, and the two state-of-the-art methods \acrshort{sotaChordia} and \acrshort{ragarecVSM}, using HMD and CMD data sets. We see that the highest accuracy obtained on HMD is 97.7\% by \acrshort{ragarecTDMS_KL} and \acrshort{ragarecTDMS_B}. This accuracy is considerably higher than the 91.7\% obtained by \acrshort{sotaChordia}, and the difference is found to be statistically significant. We also see that \acrshort{sotaChordia} performs significantly better than \acrshort{ragarecVSM}. Regarding the proposed variants, we see that, in HMD, \acrshort{ragarecTDMS_KL} and \acrshort{ragarecTDMS_B} perform better than \acrshort{ragarecTDMS_F}, with a statistically significant difference. 
+\subsubsection{Experimental Setup}
+\label{sec:tdms_experimental_setup}
+
+To evaluate \acrshort{ragarecTDMS} we use the same experimental setup as used in the evaluation of \acrshort{ragarecVSM}~(\secref{sec:raga_rec_pattern_classification_evaluation}). We perform a leave-one-out cross validation~\citep{Mitchell97BOOK}, in which one recording from the evaluation data set forms the testing set and the remaining ones become the training set. To quantify the performance of the considered methods we use the raw overall accuracy~\citep{Mitchell97BOOK}. Since both \acrshort{rrds_cmd_big} and \acrshort{rrds_hmd_big} are balanced datasets in the number of instances per class, we do not need to correct such raw accuracies to counteract for possible biases towards the majority class. To assess if the difference in the performance between any two methods is statistically significant, we use McNemar's test~\citep{mcnemar1947note} with $\pVal < 0.01$. To compensate for multiple comparisons, we apply the Holm-Bonferroni method~\citep{holm1979simple}. Besides accuracy, and for a more detailed error analysis, we also compute the confusion matrix over the predicted classes.
+
+In the case of \acrshort{ragarecTDMS}, a test recording is assigned the majority class of its $k$-nearest neighbors obtained from the training set and, in case of a tie, one of the majority classes is selected randomly. Because we conjecture that none of the parameters we consider is critical to obtain a good performance, we initially make an educated guess and intuitively set our parameters to a specific combination. We later study the influence of every parameter starting from that combination. We initially use $\timeDelay=0.3$\,s, $\tdmsPowFac=0.75$, $\sigmaTDMS=2$, and $k=1$, and later consider $\timeDelay\in\lbrace 0.2, 0.3, 0.5, 1, 1.5\rbrace$\,s, $\tdmsPowFac\in\lbrace 0.1, 0.25, 0.5, 0.75, 1 \rbrace$, $\sigmaTDMS\in\lbrace -1, 1, 2, 3\rbrace$, and $k\in\lbrace 1,3,5\rbrace$ (recall that $\sigmaTDMS=-1$ corresponds to no smoothing;~\secref{sec:tdms_post_processing}).
+
+
+
+\subsection{Results and Discussion}
+\label{sec:tdms_results_and_discussion}
+
+In Table~\ref{tab:main_results_tdms}, we show the results for all the variants of the proposed method \acrshort{ragarecTDMS_F}, \acrshort{ragarecTDMS_KL} and \acrshort{ragarecTDMS_B}, and for \acrshort{sotaChordia} and \acrshort{ragarecVSM}, using \acrshort{rrds_hmd_big} and \acrshort{rrds_cmd_big} datasets. We see that the highest accuracy obtained on \acrshort{rrds_hmd_big} is 97.7\% by \acrshort{ragarecTDMS_KL} and \acrshort{ragarecTDMS_B}. This accuracy is considerably higher than the 91.7\% obtained by \acrshort{sotaChordia}, and the difference is found to be statistically significant. We also see that \acrshort{sotaChordia} performs significantly better than \acrshort{ragarecVSM}. Regarding the proposed variants, we see that, in \acrshort{rrds_hmd_big}, \acrshort{ragarecTDMS_KL} and \acrshort{ragarecTDMS_B} perform better than \acrshort{ragarecTDMS_F}, with a statistically significant difference. 
 
 \begin{table}[t] 
 	\centering
@@ -391,62 +413,49 @@ In Table~\ref{tab:main_results}, we show the results for all the variants of the
 			\hline\hline
 			Dataset   	& 	\acrshort{ragarecTDMS_F} 	&	\acrshort{ragarecTDMS_KL}		&	\acrshort{ragarecTDMS_B}	&	\acrshort{sotaChordia}		&	\acrshort{ragarecVSM}\\	
 			\hline
-			HMD   	& 	91.3 	&	{\bf 97.7}		&	{\bf 97.7} 	&	91.7		&	83.0\\	
+			\acrshort{rrds_hmd_big}   	& 	91.3 	&	{\bf 97.7}		&	{\bf 97.7} 	&	91.7		&	83.0\\	
 			
-			CMD   	& 	81.5	&	{\bf 86.7}		&	{\bf 86.7}	&	73.1		&	68.1\\	
+			\acrshort{rrds_cmd_big}   	& 	81.5	&	{\bf 86.7}		&	{\bf 86.7}	&	73.1		&	68.1\\	
 			\hline\hline
 		\end{tabular}
 	}
-	\caption{Accuracy (\%) of the three proposed variants, \acrshort{ragarecTDMS_F}, \acrshort{ragarecTDMS_KL} and $\mathcal{M}_{\mathrm{BC}}$, and the two existing state-of-the-art methods \acrshort{sotaChordia} and \acrshort{ragarecVSM} (see text). The random baseline for this task is 3.3\% for HMD and 2.5\% for CMD. }
-	\label{tab:main_results}
+	\caption{Accuracy (\%) of the three proposed variants, \acrshort{ragarecTDMS_F}, \acrshort{ragarecTDMS_KL} and $\mathcal{M}_{\mathrm{BC}}$, and two other methods \acrshort{sotaChordia} and \acrshort{ragarecVSM}. The random baseline ($\mathfrak{B}_\mathrm{r}$) for this task is 3.3\% for \acrshort{rrds_hmd_big} and 2.5\% for \acrshort{rrds_cmd_big}.}
+	\label{tab:main_results_tdms}
 \end{table}
 
-In Table~\ref{tab:main_results}, we see that the trend in the performance for  CMD across different methods is similar to that for  HMD. The variants \acrshort{ragarecTDMS_KL} and \acrshort{ragarecTDMS_B} achieve the highest accuracy of 86.7\%, followed by \acrshort{sotaChordia} with 73.1\%. The difference between \acrshort{ragarecTDMS_KL} (\acrshort{ragarecTDMS_B}) and \acrshort{sotaChordia} is found to be statistically significant.  For CMD, also  \acrshort{ragarecTDMS_KL} and \acrshort{ragarecTDMS_B} perform better than \acrshort{ragarecTDMS_F}, with a statistically significant difference. 
+In Table~\ref{tab:main_results_tdms}, we also see that the trend in the performance for  \acrshort{rrds_cmd_big} across different methods is similar to that for  \acrshort{rrds_hmd_big}. The variants \acrshort{ragarecTDMS_KL} and \acrshort{ragarecTDMS_B} achieve the highest accuracy of 86.7\%, followed by \acrshort{sotaChordia} with 73.1\%. The difference in performance between both the methods, \acrshort{ragarecTDMS_KL} and \acrshort{ragarecTDMS_B}, and \acrshort{sotaChordia} is found to be statistically significant.  For \acrshort{rrds_cmd_big}, also  \acrshort{ragarecTDMS_KL} and \acrshort{ragarecTDMS_B} perform better than \acrshort{ragarecTDMS_F}, with a statistically significant difference. 
 
-In general, we notice that, for every method, the accuracy is higher on HMD compared to CMD. This, as expected, can be largely attributed to the difference in the number of classes in  HMD (30 \glspl{raga}) and  CMD (40 \glspl{raga}). A higher number of classes makes the task of \gls{raga} recognition more challenging for  CMD, compared to  HMD. In addition to that, another factor that can cause this difference could be the length of the audio recordings, which for  HMD are significantly longer than the ones in CMD.
+In general, we notice that, for every method, the accuracy is higher on \acrshort{rrds_hmd_big} compared to \acrshort{rrds_cmd_big}. This, as expected, can be largely attributed to the difference in the number of classes in  \acrshort{rrds_hmd_big} (30 \glspl{raga}) and  \acrshort{rrds_cmd_big} (40 \glspl{raga}). A higher number of classes makes the task of \gls{raga} recognition more challenging for  \acrshort{rrds_cmd_big}, compared to  \acrshort{rrds_hmd_big}. In addition to that, another factor that can cause this difference could be the length of the audio recordings, which for  \acrshort{rrds_hmd_big} are significantly longer than the ones in \acrshort{rrds_cmd_big}~(\secref{sec:corpus_raga_recognition_datasets}).
 
-As mentioned earlier, the system parameters corresponding to the results in Table~\ref{tab:main_results} were set intuitively, without any parameter tuning. Since \gls{tdms} s are used here for the first time, we want to carefully analyze the influence that each of the parameters has on the final \gls{raga} recognition accuracy, and ultimately perform a quantitative assessment of their importance. In Figure~\ref{fig:accuracy_vs_parameter_values}, we show the accuracy of \acrshort{ragarecTDMS_KL} for different values of these parameters. In each case, only one parameter is varied and the rest are set to the initial values mentioned above. 
+As mentioned earlier, the system parameters corresponding to the results in Table~\ref{tab:main_results_tdms} were set intuitively, without any parameter tuning. Since \glspl{tdms} are novel features that are being used for the first time, we want to carefully analyze the influence that each of the parameters has on the final \gls{raga} recognition accuracy, and ultimately perform a quantitative assessment of their importance. In~\figref{fig:accuracy_vs_parameter_values_tdms}, we show the accuracy of \acrshort{ragarecTDMS_KL} for different values of these parameters. In each case, only one parameter is varied and the rest are set to the initial values mentioned above. 
 
-\begin{figure}[t]
+\begin{figure}[h]
 	\begin{center}
-		\includegraphics[width=\figSizeEighty]{ch07_ragaRecognition/figures/accuracy_vs_parameters_long2.pdf}
-	\end{center}\vspace{-1em}
-	\caption{Accuracy of \acrshort{ragarecTDMS_KL} as a function of parameter values. State-of-the-art approaches $\mathcal{E}$ and random baselines $\mathcal{B}$ are also reported for comparison.\TODO{Match param names and legend with the updated symbol and acronym list}} 
-	\label{fig:accuracy_vs_parameter_values}
+		\includegraphics[width=\figSizeHundred]{ch07_ragaRecognition/figures/AccuracyVsParameters_tdms.pdf}
+	\end{center}
+	\caption{Accuracy of \acrshort{ragarecTDMS_KL} as a function of parameter values. State-of-the-art approaches $\mathcal{E}$ and random baselines $\mathcal{B}$ are also reported for comparison.\TODO{Match $\mathfrak{B}$, wasn't happening in matplotlib}} 
+	\label{fig:accuracy_vs_parameter_values_tdms}
 \end{figure}
 
-In Figure~\ref{fig:accuracy_vs_parameter_values}\,(a), we observe that the performance of the method is quite invariant to the choice of $\timeDelay$, except for the extreme delay values of 1 and 1.5\,s for CMD. This can be attributed to the melodic characteristics of Carnatic music, which presents a higher degree of oscillatory melody movements and shorter stationary svara regions, as compared to Hindustani music. In Figure~\ref{fig:accuracy_vs_parameter_values}\,(b), we see that compression with $\tdmsPowFac < 1$ slightly improves the performance of the method for both data sets. However, the performance degrades for $\tdmsPowFac < 0.75$ for  CMD and $\tdmsPowFac < 0.25$ for  HMD. This again appears to be correlated with the long steady nature of the svaras in Hindustani music melodies. Because the dynamic range of $\tdmsBase$ is high, \gls{tdms}\ features require a lower value for the compression factor $\tdmsPowFac$ to accentuate the surface values corresponding to the transitory regions in the melodies of Hindustani music. In Figure~\ref{fig:accuracy_vs_parameter_values}\,(c), we observe that Gaussian smoothing significantly improves the performance of the method, and that such performance is invariant across the chosen values of $\sigmaTDMS$. Finally, in Figure~\ref{fig:accuracy_vs_parameter_values}\,(d), we notice that the accuracy decreases with increasing $k$. This is also expected due to the relatively small number of samples per class in our data sets~\cite{Mitchell97BOOK}. %The best accuracy obtained is for $k=1$, which is also reported in a previous study that uses PCD-based feature for the same task~\cite{chordia2013joint}. 
-Overall, the method appears to be invariant to different parameter values to a large extent, which implies that it is easier to extend and tune it to other data sets.
+In~\figref{fig:accuracy_vs_parameter_values_tdms}\,(a), we observe that the performance of the method is quite invariant to the choice of $\timeDelay$, except for the extreme delay values of 1 and 1.5\,s for \acrshort{rrds_cmd_big}. This can be attributed to the melodic characteristics of Carnatic music, which presents a higher degree of oscillatory melody movements and shorter stationary svara regions, as compared to Hindustani music. In~\figref{fig:accuracy_vs_parameter_values_tdms}\,(b), we see that compression with $\tdmsPowFac < 1$ slightly improves the performance of the method for both datasets. However, the performance degrades for $\tdmsPowFac < 0.75$ for  \acrshort{rrds_cmd_big} and $\tdmsPowFac < 0.25$ for  \acrshort{rrds_hmd_big}. This again appears to be correlated with the long steady nature of the \glspl{svara} in Hindustani music melodies. Because the dynamic range of $\tdmsBase$ is high, \gls{tdms} features require a lower value for the compression factor $\tdmsPowFac$ to accentuate the surface values corresponding to the transitory regions in the melodies of Hindustani music. In~\figref{fig:accuracy_vs_parameter_values_tdms}\,(c), we observe that Gaussian smoothing significantly improves the performance of the method, and that such performance is invariant across the chosen values of $\sigmaTDMS$. Finally, in Figure~\ref{fig:accuracy_vs_parameter_values_tdms}\,(d), we notice that the accuracy decreases with increasing $k$. This is also expected due to the relatively small number of samples per class in our datasets~\cite{Mitchell97BOOK}. The best accuracy obtained is for $k=1$. A similar observation is also reported in a previous study that uses \gls{pcd}-based feature for the same task~\cite{chordia2013joint}. 
+
+Overall, the method appears to be invariant to different parameter values to a large extent, which implies that it is easier to extend and tune it to other datasets.
 
 \begin{figure}
 	\begin{center}
 		\includegraphics[width=\figSizeHundred]{ch07_ragaRecognition/figures/carnaticPhaseSapce_config_1078.pdf}
-	\end{center}\vspace{-1em}
-	\caption{Confusion matrix of the predicted \gls{raga} labels obtained by \acrshort{ragarecTDMS_KL} on CMD. Shades of grey are mapped to the number of audio recordings.} 
-	\label{fig:confusion_mtx_carnatic}\vspace{-1em}
+	\end{center}
+	\caption{Confusion matrix of the predicted \gls{raga} labels obtained by \acrshort{ragarecTDMS_KL} on \acrshort{rrds_cmd_big}. Shades of grey are mapped to the number of audio recordings.} 
+	\label{confusion_mtx_carnatic_tdms}
 \end{figure}
 
-From the results reported in Figure~\ref{fig:accuracy_vs_parameter_values}, we see that there exist a number of parameter combinations that could potentially yield a better accuracy than the one reported in Table~\ref{tab:main_results}. For instance, using  $\timeDelay=0.3$\,s, $\tdmsPowFac=0.5$, $\sigmaTDMS=2$, and $k=1$, we are able to reach 97.0\% for \acrshort{ragarecTDMS_F} and 98.0\% for both \acrshort{ragarecTDMS_KL} and \acrshort{ragarecTDMS_B} on HMD. These accuracies are ad-hoc, optimizing the parameters on the testing set. However, and doing things more properly, we could learn the optimal parameters in training, through a standard grid search, cross-validated procedure over the training set~\cite{Mitchell97BOOK}. As our primary goal here is not to obtain the best possible results, but to show the usefulness and superiority of \gls{tdms} s, we do not perform such an exhaustive parameter tuning and leave it for future research.
+From the results reported in~\figref{fig:accuracy_vs_parameter_values_tdms}, we see that there exist a number of parameter combinations that could potentially yield a better accuracy than the one reported in~\tabref{tab:main_results_tdms}. For instance, using  $\timeDelay=0.3$\,s, $\tdmsPowFac=0.5$, $\sigmaTDMS=2$, and $k=1$, we are able to reach 97.0\% for \acrshort{ragarecTDMS_F} and 98.0\% for both \acrshort{ragarecTDMS_KL} and \acrshort{ragarecTDMS_B} on \acrshort{rrds_hmd_big}. These accuracies are ad-hoc, optimizing the parameters on the testing set. However, and doing things more properly, we could learn the optimal parameters in training, through a standard grid search, cross-validated procedure over the training set~\cite{Mitchell97BOOK}. As our primary goal here is not to obtain the best possible results, but to show the usefulness and superiority of \glspl{tdms}, we do not perform such an exhaustive parameter tuning and leave it for future research.
 
-%\begin{table} 
-%	\centering
-%	\resizebox{\linewidth}{!}{
-%	\begin{tabular}{ c | c c c | c c}
-%		\hline\hline
-%		Data set   	& 	\acrshort{ragarecTDMS_F} 	&	\acrshort{ragarecTDMS_KL}		&	\acrshort{ragarecTDMS_B}	&	\acrshort{sotaChordia}		&	\acrshort{ragarecVSM}\\	
-%		\hline
-%		HMD   	& 	97.0 	&	{\bf 98.0}		&	{\bf 98.0} 	&	91.7		&	83.0\\
-%		CMD   	& 	86.3	&	{\bf 86.7}		&	{\bf 86.7}	&	73.1		&	69.1\\
-%		\hline\hline
-%	\end{tabular}
-%	}
-%	\caption{Best in-sample accuracies (\%) of the three variants of the proposed method \acrshort{ragarecTDMS_F}, \acrshort{ragarecTDMS_KL} and \acrshort{ragarecTDMS_B}, and its comparison with the considered existing state-of-the-art methods \acrshort{sotaChordia} and \acrshort{ragarecVSM}.}
-%	\label{tab:main_results_overfit}
-%\end{table}
+We now proceed to analyze the errors made by the best performing variant \acrshort{ragarecTDMS_KL}. For \acrshort{rrds_cmd_big}, we show the confusion matrix of the predicted \gls{raga} labels in Figure~\ref{confusion_mtx_carnatic_tdms}. In general, we see that the confusions have a musical explanation. The majority of them are between the \glspl{raga} in the sets $\lbrace$Bhairavi, Mukh\={a}ri$\rbrace$, $\lbrace$Harik\={a}mbh\={o}ji, K\={a}mbh\={o}ji$\rbrace$, $\lbrace$Madhyamvat\={i}, A\d{t}\={a}na, \'Sr\={i}$\rbrace$, and $\lbrace$K\={a}pi, \={A}nandabhairavi$\rbrace$. \Glspl{raga} within each of these sets are allied \glspl{raga}~\citep{Viswanathan2004}~(\secref{sec:melody_in_iam}), i.e., they share a common set of \glspl{svara} and similar phrases. Due to these characteristics, distinguishing between allied \glspl{raga} is a challenging task, which is often based on subtle melodic nuances.
 
+For \acrshort{rrds_hmd_big}, there are only seven incorrectly classified recordings\TODO{Confusion matrix}. \Gls{raga} Alhaiy\={a} bil\={a}wal and \gls{raga} D\={e}\'{s} is confused with \gls{raga} Gau\d{d} Malh\={a}r, which is musically explicable as these \glspl{raga} share exactly the same set of \glspl{svara}. \Gls{raga} R\={a}g\={e}\'{s}hr\={i} is confused with B\={a}g\={e}\'{s}hr\={i}, which differ in only one \gls{svara}. In all these cases, the \glspl{raga} which are confused also have similar melodic phrases. For two specific cases of confusions, that of \gls{raga}  Kham\={a}j with B\={a}g\={e}\'{s}hr\={i}, and \gls{raga} Darb\={a}r\={i} with Bh\={u}p, we find that the error lies in the estimation of the tonic pitch.
 
-To conclude, we proceed to analyze the errors made by the best performing variant \acrshort{ragarecTDMS_KL}. For  CMD, we show the confusion matrix of the predicted \gls{raga} labels in Figure~\ref{fig:confusion_mtx_carnatic}. In general, we see that the confusions have a musical explanation. The majority of them are between the \glspl{raga} in the sets $\lbrace$Bhairavi, Mukh\={a}ri$\rbrace$, $\lbrace$Harik\={a}mbh\={o}ji, K\={a}mbh\={o}ji$\rbrace$, $\lbrace$Madhyamvat\={i}, A\d{t}\={a}na, \'Sr\={i}$\rbrace$, and $\lbrace$K\={a}pi, \={A}nandabhairavi$\rbrace$. \Glspl{raga} within each of these sets are allied \glspl{raga}~\cite{Viswanathan2004}, i.e., they share a common set of svaras and similar phrases. For HMD, there are only 7 incorrectly classified recordings (confusion matrix omitted for space reasons). \Gls{raga} Alhaiy\={a} bil\={a}wal and \gls{raga} D\={e}\'{s} is confused with \gls{raga} Gau\d{d} Malh\={a}r, which is musically explicable as these \glspl{raga} share exactly the same set of svaras. \Gls{raga} R\={a}g\={e}\'{s}hr\={i} is confused with B\={a}g\={e}\'{s}hr\={i}, which differ in only one svara. In all these cases, the \glspl{raga} which are confused also have similar melodic phrases. For two specific cases of confusions, that of \gls{raga}  Kham\={a}j with B\={a}g\={e}\'{s}hr\={i}, and \gls{raga} Darb\={a}r\={i} with Bh\={u}p, we find that the error lies in the estimation of the tonic pitch.
-
+\TODO{Add comparison of type of errors made by different method, for this add confusion matrix of other method}
 
 \section{Effect of Dataset}
 \label{}
