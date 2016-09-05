@@ -433,7 +433,7 @@ As mentioned earlier, the system parameters corresponding to the results in Tabl
 	\begin{center}
 		\includegraphics[width=\figSizeHundred]{ch07_ragaRecognition/figures/AccuracyVsParameters_tdms.pdf}
 	\end{center}
-	\caption{Accuracy of \acrshort{ragarecTDMS_KL} as a function of parameter values. State-of-the-art approaches $\mathcal{E}$ and random baselines $\mathcal{B}$ are also reported for comparison.\TODO{Match $\mathfrak{B}$, wasn't happening in matplotlib}} 
+	\caption{Accuracy of \acrshort{ragarecTDMS_KL} as a function of parameter values. Other methods \acrshort{sotaChordia} and \acrshort{ragarecVSM}, and random baseline $\mathfrak{B}_\mathrm{r}$ are also reported for comparison.\TODO{Match $\mathfrak{B}$, wasn't happening in matplotlib}} 
 	\label{fig:accuracy_vs_parameter_values_tdms}
 \end{figure}
 
@@ -458,10 +458,27 @@ For \acrshort{rrds_hmd_big}, there are only seven incorrectly classified recordi
 \TODO{Add comparison of type of errors made by different method, for this add confusion matrix of other method}
 
 \section{Effect of Dataset}
-\label{}
+\label{sec:ragarec_dataset_effect}
+
+\COMMENT{If time permits please lets do this part, this is very crucial and it takes advantage of our dataset, this also will result in an nice conclusion. We will get to know how dataset affects the accuracy.}
+
 
 \section{Conclusions}
 \label{sec:conclusions_raga_recognition}
+
+In this chapter we present computational approaches for automatically recognizing \glspl{raga} in audio collections of \gls{iam}, which address a number of shortcomings in the existing approaches identified in our critical literature review. We describe two novel methods that utilize both the tonal and the temporal characteristics of melodies for \gls{raga} recognition. Both these methods require only an estimate of the predominant pitch and the tonic of the performance obtained from audio recordings.
+
+We describe our first method that utilizes melodic patterns for \gls{raga} recognition, which are discovered from a collection of music recordings by using our unsupervised approach described in the previous chapter (\chapref{chap:melodic_pattern_processing}). We build a network of the discovered melodic patterns and cluster them using a non-overlapping community detection method. In this process we also remove the connections betweens melodically dissimilar patterns by applying a similarity threshold that we estimate by exploiting the topological properties of the network. A vector space model is employed to represent audio recordings using these melodic patterns. The features thus obtained are used to train a classifier. For evaluating and comparing our method and the state-of-the-art methods we compile sizable audio collections of Carnatic and Hindustani music. We experimented with a number of classification algorithms and found that the multinomial naive Bayes classifier outperforms the rest. Our results indicate that considering the mere presence or the absence of melodic patterns in audio recordings is sufficient for \gls{raga} recognition. An analysis of the classification errors revealed that the errors made by the pattern-based and the pitch distribution-based methods are complementary, and thus, they can possibility be combined to improve the accuracy in \gls{raga} recognition. Overall, we show that our pattern-based \gls{raga} recognition approach that utilize vector space modeling concepts is a successful strategy, yielding comparable accuracies to the state of the art. To the best of our knowledge, no other method employs a fully automated methodology for discovery and selection of relevant melodic patterns for \gls{raga} recognition at this scale. Note that these results also suggest that the discovered melodic patterns are musically relevant, and thus, the evaluation of the pattern-based \gls{raga} recognition approach can be regarded as an indirect quantitative evaluation of our pattern discovery approach. 
+
+We subsequently describe our second method that abstracts predominant pitch representation and uses a novel feature, the \acrshort{tdms}, which is inspired by the concept of delay coordinates and Poicar\'e maps. A \gls{tdms} captures both the tonal and the short-time temporal characteristics of a melody. This feature is derived directly from the tonic-normalized predominant pitch in the audio. A visual inspective of the \acrshort{tdms} revealed interesting musical insights. We demonstrate the capabilities of \glspl{tdms} in capturing \gls{raga} characteristics by classifying audio recordings according to their \glspl{raga} labels. We use the same music collections for evaluation as mentioned above. Using a $k$-nearest neighbor classifier, the proposed feature outperformed state-of-the-art systems in \gls{raga} recognition showing unprecedented accuracies. We also studied the influence of different parameters on the accuracy obtained by \glspl{tdms}, and found that it is largely invariant to different parameter values. An analysis of the classification errors revealed that the confusions occur between musically similar \glspl{raga} that share a common set of \glspl{svara} and have similar melodic phrases. In the future, we plan to investigate if \gls{pcd}-based, pattern-based, and \glspl{tdms} can be successfully combined to improve \gls{raga} recognition. In addition, we would like to investigate the influence of the dataset size in terms of the number of \glspl{raga}, recordings per \gls{raga} and the minimum duration of the audio recording on the performance of different methods for \gls{raga} recognition.
+
+\TODO{Expand the conclusion, add 1) Short comings of the proposed approach. And some more future work}
+
+
+
+
+
+
 
 
 
