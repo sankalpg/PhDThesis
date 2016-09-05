@@ -114,10 +114,10 @@
 
 \maxsecnumdepth{subsubsection}
 \setsecnumdepth{subsubsection}
-\maxtocdepth{subsubsection}
-\settocdepth{subsubsection}
-%\maxtocdepth{subsection}
-%\settocdepth{subsection}
+%\maxtocdepth{subsubsection}
+%\settocdepth{subsubsection}
+\maxtocdepth{subsection}
+\settocdepth{subsection}
 
 \definecolor{NoColor}{rgb}{0,0,0}
 %%%%%%%%\definecolor{LinkColor}{rgb}{0,0,0.25}
@@ -264,11 +264,11 @@
 \newcommand{\REM}[1]{{\color{red}#1}}
 \newcommand{\XXX}[3]{{\color{blue}{{[#1$\rightarrow$#2:} #3{]}}}}
 % Uncomment next line to hide all comments
-%\renewcommand{\XXX}[3]{}
-%\renewcommand{\TODO}[1]{}
-%\renewcommand{\COMMENT}[1]{}
-%\renewcommand{\REM}[1]{}
-%\renewcommand{\ADD}[1]{#1}
+\renewcommand{\XXX}[3]{}
+\renewcommand{\TODO}[1]{}
+\renewcommand{\COMMENT}[1]{}
+\renewcommand{\REM}[1]{}
+\renewcommand{\ADD}[1]{#1}
 
 \def\mathLarge#1{\mbox{\LARGE $#1$}}
 
@@ -410,14 +410,14 @@
 \mainmatter
 
 %
-%\cleartorecto\include{ch01_introduction/introduction}
+\cleartorecto\include{ch01_introduction/introduction}
 \cleartorecto\include{ch02_background/background}
-%%%%%%%%\cleartorecto\include{ch03_problems/problems}
-%\cleartorecto\include{ch04_datasets/datasets}
+%%%%%%%\cleartorecto\include{ch03_problems/problems}
+\cleartorecto\include{ch04_datasets/datasets}
 \cleartorecto\include{ch05_preprocessing/preprocessing} 
 \cleartorecto\include{ch06_patterns/patterns}
 \cleartorecto\include{ch07_ragaRecognition/ragaRecognition}
-%\cleartorecto\include{ch08_applications/applications}
+\cleartorecto\include{ch08_applications/applications}
 \cleartorecto\include{ch09_conclusions/conclusions}
 
 \TODO{CHECK TRANSLITERATIONS OF ALL THE TERMS, ORGANIZE GLOSSARY PER CONCEPT}
