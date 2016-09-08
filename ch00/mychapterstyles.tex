@@ -44,6 +44,42 @@
   \makeoddfoot{plain}{}{}{\thepage}
 }
 
+
+\makeatletter
+\makepagestyle{mainmatter}
+\setlength{\headwidth}{\textwidth}
+\makerunningwidth{mainmatter}{\headwidth}
+\makeheadrule{mainmatter}{\headwidth}{0pt}
+\makeheadposition{mainmatter}{flushright}{flushleft}{}{}
+\makepsmarks{mainmatter}{%
+	\let\@mkboth\markboth
+	\def\chaptermark##1{\markboth{##1}{##1}}    % left mark & right marks
+	\def\sectionmark##1{\markright{%
+			\ifnum \c@secnumdepth>\z@
+			\thesection \ \ %
+			\fi
+			##1}}
+	\def\tocmark{\markboth{\contentsname}{\contentsname}}%
+	\def\lofmark{\markboth{\listfigurename}{\listfigurename}}%
+	\def\lotmark{\markboth{\listtablename}{\listtablename}}%
+	\def\bibmark{\markboth{\bibname}{\bibname}}%
+	\def\indexmark{\markboth{\indexname}{\indexname}}%
+}
+\makeevenhead{mainmatter}{\normalfont\thepage}{}%\bfseries
+{\normalfont\scshape\leftmark}
+\makeoddhead{mainmatter}{\normalfont\scshape\rightmark}{}%
+{\normalfont\thepage}%\bfseries
+\ifdraftdoc
+\makeevenfoot{mainmatter}{\thepage}{}{\textit{Draft: \today, \printtime*{}}}
+\makeoddfoot{mainmatter}{\textit{Draft: \today, \printtime*{}}}{}{\thepage}
+\fi
+\makeatother
+% For front matter
+\makepagestyle{frontmatter}
+\makeevenhead{frontmatter}{\normalfont\thepage}{}{}%\bfseries
+\makeoddhead{frontmatter}{}{}{\normalfont\thepage}%\bfseries
+
+
 %\usepackage{calc}\usepackage{tikz}
 %\makechapterstyle{mycombined}{
 %  \setlength{\beforechapskip}{1cm}
