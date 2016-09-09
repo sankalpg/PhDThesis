@@ -70,22 +70,26 @@ In~\figref{fig:saraga_screens} we show a screenshot of the recording page of in 
 \subsubsection{Riy\={a}z}
 \label{sec:riyaz}
 
-\gls{riyaz} is a mobile application that aims to facilitate music learning for beginner to intermediate level music students of \gls{iam} by making their practice sessions more efficient. It does it by simulating a classroom environment in which the learning happens through imitating the musical exercises build by processional musicians. The application performs singing assessment and provides a detailed feedback, wherein it highlights the mistakes and gives suggestions to improve. In~\figref{fig:riyaz_evaluation_screen} we show the main evaluation screen of \gls{riyaz} where a user can visualize in real-time the pitch track and \gls{svara} score. Post practice session a detailed feedback is provided as shown in~\figref{fig:riyaz_feedback_screen}.  Note that \gls{riyaz} is a work in progress with a prototype version already available at the time of writing this thesis. Currently there are 1000+ users with 15000+ user sessions. 
-
-\begin{figure}[h]
-	\begin{center}
+\begin{figure}
+	\begin{subfigure}{\textwidth}
+			\centering
 		\includegraphics[width=\figSizeSeventy]{ch08_applications/figures/riyaz1.png}
-	\end{center}
-	\caption{Screenshot of the evaluation screen in Riy\={a}z (Beta) mobile application showing real time melody extraction and scoring.}
-	\label{fig:riyaz_evaluation_screen}
-\end{figure}
-\begin{figure}[h]
-	\begin{center}
+		\caption{Evaluation screen}
+		\label{fig:riyaz_evaluation_screen}
+	\end{subfigure}
+	\begin{subfigure}{\textwidth}
+			\centering
 		\includegraphics[width=\figSizeSeventy]{ch08_applications/figures/riyaz2.png}
-	\end{center}
-	\caption{Screenshot of the feedback screen in Riy\={a}z (Beta) mobile application showing detailed feedback}
-	\label{fig:riyaz_feedback_screen}
+		\caption{Feedback screen}
+		\label{fig:riyaz_feedback_screen}
+	\end{subfigure}
+	\caption{Screenshots of the Riy\={a}z (Beta) mobile application}
+	\label{fig:riyaz_screens}
 \end{figure}
+
+\gls{riyaz} is a mobile application that aims to facilitate music learning for beginner to intermediate level music students of \gls{iam} by making their practice sessions more efficient. It does it by simulating a classroom environment in which the learning happens through imitating the musical exercises build by processional musicians. The application performs singing assessment and provides a detailed feedback, wherein it highlights the mistakes and gives suggestions to improve. In~\figref{fig:riyaz_screens}\,(a) we show the main evaluation screen of \gls{riyaz} where a user can visualize in real-time the pitch track and \gls{svara} score. Post practice session, a detailed feedback is provided as shown in~\figref{fig:riyaz_screens}\,(b).  Note that \gls{riyaz} is a work in progress with a prototype version already available at the time of writing this thesis. Currently there are 1000+ users with 15000+ user sessions. 
+
+
 
 
 
@@ -93,9 +97,11 @@ In~\figref{fig:saraga_screens} we show a screenshot of the recording page of in 
 
 We now proceed to present two prototype Web-based applications that demonstrate the outcome of our pattern discovery approach. In addition, we also present ragawise, a prototype Web application for a real-time raga recognition. 
 
-\subsection*{Demo: Melodic Patten Discovery}
+\subsection*{Melodic Patten Discovery}
 
-The output of computation approaches for pattern discovery often contain a large number of redundancies or musically trivial patterns, This is specifically true when the approach for discovery follows a TOp N approach due to the difficulties in obtaining a reliable similarity threshold in an unsupervised setup. Our first demo exposes each and every pattern obtain in the study reported in XXXX. In order to browse to these patterns in an structured way we oganize them as seed patterns for each recording, wherein each seed pattern can then be considered as a query to perform a search in the entire music collection. In this study we considered top 25 seed pattern pairs and considerd 200 nearest patterns in the searched results for each seed pattern. This results in 15millino patterns, all of which we expose through our application. The screen shot o this application is shown in XXXX. The discoverd patterns are across artists, instruments and different lyrical lines of a song. Such a tool can provide interesting starting point for several musicologically relevant research topics.
+One of the motivations behind pattern discovery is to explore novel relationships in the data and extract new knowledge. However, it is a challenging task to evaluate these aspects  in a quantitative evaluation setup, wherein available ground-truth (typically comprising expert annotations) is used as a basis to measure the quality of the output. It becomes even more challenging when such analyses are performed on large datasets such as the case with ours, in which obtaining ground-truth becomes practically unfeasible.  In the study presented in~\secref{}, we performed melodic pattern discover in audio collections of Carnatic music comprising nearly 365\,hours of music. Though we performed a quantitative evaluation using a randomly sampled subset of the output, the evaluation numbers do not convey much in terms of the musical novelty of the patterns. 
+
+In order to facilitate informal evaluations, take feedback from musicians, identify novel outcomes, and eventually, to improve the quality of the output of our pattern discovery methods we built two Web-based application that exposes the resultant patterns. 
 
 \begin{figure}
 	\begin{center}
@@ -105,9 +111,7 @@ The output of computation approaches for pattern discovery often contain a large
 	\label{fig:browser_patterns}
 \end{figure}
 
-\subsection*{Demo2: Melodic Phrase-based Similarity Spaces}
-
-
+Our first demo application allows to browse through all the melodic patterns discovered in the study reported in~\secref{}. Since determining a meaningful similarity threshold is in itself a challenging task, we selected a fixed number of closest pattern matches in the output. To recall, 25 closest seed pattern pairs were selected within a recording, and for each seed pattern its 200 closest neighboring patterns were selected  across the entire music collection. This resulted into 15\,million pattern for our audio collection that comprise 1764\,recordings. This demo allows us to navigate through all the recordings in the collection, fetch all the seed patterns for a recording, and for each seed pattern, fetch their closest patterns from the entire music collection. In~\figref{fig:browser_patterns}, we show a screenshot of a page where a list of closest melodic patterns for a seed pattern is displayed. We notice that the retrieved patterns are from different recordings bearing different \glspl{mbid}. These recordings are from different artists with different tonic pitches, and even across vocal and instrumental music. 
 
 \begin{figure}
 	\begin{center}
@@ -117,16 +121,28 @@ The output of computation approaches for pattern discovery often contain a large
 	\label{fig:network_patterns}
 \end{figure}
 
+The demo described above presents melodic patterns structured in an hierarchical way, which is useful when the reader is curious to look for patterns in a particular music piece or by a particular artist. An alternate way to present these patterns is through an interlinked network of them. Such a network visualization makes it easier to identify interesting and novel relationships between different music pieces, artists, and sometimes, even across \glspl{raga}. In~\figref{fig:network_patterns} we show a screenshot of our second demo that presents a network visualization of discovered melodic patterns. These melodic patterns are ones obtained in the study described in~\secref{}. Note that in this study we employed a network analysis to also determine a melodic similarity threshold, as a result of that filtering we retain only the musically meaningful connections between the melodic patterns. 
+
+Both the Web demos described above are made available online (\appref{sec:resources}). 
 
 
 \subsection*{Ragawise: Realtime Raga Recognition}
 \label{sec:ragawise}
 
+In~\chapref{} we described our computational approaches for \gls{raga} recognition in detail. Our objective was to develop novel methods to obtain a \gls{raga} label for a recorded music performance. As mentioned earlier, there are several applications of these methods such as automatic \gls{raga} annotation of large audio archives, \gls{raga}-based music retrieval, establishing meaningful similarity measures across recordings and music pedagogy. In this section we present a prototype Web application, \gls{ragawise}, which demonstrates a context in which such systems can be used in music pedagogy. 
+
+\gls{ragawise} is a real-time \gls{raga} recognition prototype system for Indian art music. It uses \gls{pcp}, pitch transitions and melodic patterns to recognize \gls{raga} from an incoming audio stream. For each \gls{raga} it stores a dictionary of the \glspl{svara}, \gls{svara} transitions, and typical melodic patterns. It processes the input vocals in real-time to estimate pitch, and subsequently performs melody transcription. The likelihood of each \gls{raga} is updated in real-time based on the identified of \gls{raga} elements in the melody. In order to highlight the melodic events that are characteristic of a \gls{raga}, a dynamic visualization of the evolution of the likelihood of all the \glspl{raga} is performed. In~\figref{} we present a screenshot of \gls{ragawise}. 
+
+Note that \gls{ragawise} is a team effort, made a part of the hackday, HAMR, in ISMIR-2015. It is done in collaboration with Kaustuv Kanti Ganguli, Swapnil Gupta and Ajay Srinivasamurthy. 
+
+\TODO{I just wrote something in a hurry, discuss with Kaustuv if its worth putting such apoint, and also if he would like to make it sound better}
+%There are different sets of \glspl{raga} that share common melodic elements. For example, there are \glspl{raga} that share set of \glspl{svara}, while some others may have similar melodic phrases. In a \gls{raga} rendition an important aspect is to understand when to bring in characteristic melodic elements of a raga and when to use elements which are also used in similar ragas. This aspect is used to control the musical tension, wherein an artist gives away clear cues for a particualr raga after he has built the tension. In ragawise we not just identify the closest possibility of a raga but also update the saliences of all the ragas based on the sung melody. Such a system can be used by teachers to demonstrate characteristics aspects of ragas and the ones which are shared amongst different ragas. Also for a student it is helpful to observe if unknowingly he is using some elements of another raga.
+
 \begin{sidewaysfigure}
 	\begin{center}
 		\includegraphics[width=\figSizeHundred]{ch08_applications/figures/ragawise.png}
 	\end{center}
-	\caption{Screenshot of Ragawisea recording page in Dunya showing showing extracted audio descriptors and relevant editorial metadata. Tonic, pitch histogram and melody is marked by XXX.}
+	\caption{Screenshot of \gls{ragawise} recording page in Dunya showing showing extracted audio descriptors and relevant editorial metadata. Tonic, pitch histogram and melody is marked by XXX.}
 	\label{fig:dunya_recording}
 \end{sidewaysfigure}
 
@@ -136,5 +152,15 @@ The output of computation approaches for pattern discovery often contain a large
 
 \section{Summary}
 
+In this section we presented examples of some concrete applications that utilize the output of the work presented in this thesis. We presented Dunya, which comprise all the data and software tools developed in the compmusic project. Dunya provides different interfaces to acces this data. The quality data collected in compmusic can be utilized for a variety of problems in mir of iam. Dunya facilitates access of that data, using which building datasets becomes an easytask. 
+
+We presented demo that directly nlah blah.
+
+in addition we presented concrete mobile applications that gives an context in which our work is further useful. 
+
+The usecase demosrate the utility in computational methodology. 
+
+
+In addition we also presented demos that directly expose the output of the methods described in our work. These applications gives an idea about the context in which our work is usable. Overall, we see that there can be several interesting applications that can be built on top of our work. In the future we plan to develop more. 
 
 
