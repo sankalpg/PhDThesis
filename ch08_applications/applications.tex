@@ -49,12 +49,12 @@ While the Web interface provides an easy and a quick access to the data, for a m
 \begin{figure}
 	\centering
 	\begin{subfigure}[b]{0.48\textwidth}
-		\includegraphics[width=\textwidth]{ch08_applications/figures/saraga1.png}
+		\includegraphics[width=\figSizeNinety]{ch08_applications/figures/saraga1.png}
 		\caption{Full music piece}
 		\label{fig:saraga_full_piece}
 	\end{subfigure}
 	\begin{subfigure}[b]{0.48\textwidth}
-		\includegraphics[width=\textwidth]{ch08_applications/figures/saraga2.png}
+		\includegraphics[width=\figSizeNinety]{ch08_applications/figures/saraga2.png}
 		\caption{\Gls{alap} section (zoomed in)}
 		\label{fig:saraga_alap_section}
 	\end{subfigure}
@@ -70,21 +70,18 @@ In~\figref{fig:saraga_screens} we show a screenshot of the recording page of in 
 \subsubsection{Riy\={a}z}
 \label{sec:riyaz}
 
-
-
-
 \gls{riyaz} is a mobile application that aims to facilitate music learning for beginner to intermediate level music students of \gls{iam} by making their practice sessions more efficient. It does it by simulating a classroom environment in which the learning happens through imitating the musical exercises build by processional musicians. The application performs singing assessment and provides a detailed feedback, wherein it highlights the mistakes and gives suggestions to improve. In~\figref{fig:riyaz_evaluation_screen} we show the main evaluation screen of \gls{riyaz} where a user can visualize in real-time the pitch track and \gls{svara} score. Post practice session a detailed feedback is provided as shown in~\figref{fig:riyaz_feedback_screen}.  Note that \gls{riyaz} is a work in progress with a prototype version already available at the time of writing this thesis. Currently there are 1000+ users with 15000+ user sessions. 
 
 \begin{figure}[h]
 	\begin{center}
-		\includegraphics[width=\figSizeEighty]{ch08_applications/figures/riyaz1.png}
+		\includegraphics[width=\figSizeSeventy]{ch08_applications/figures/riyaz1.png}
 	\end{center}
 	\caption{Screenshot of the evaluation screen in Riy\={a}z (Beta) mobile application showing real time melody extraction and scoring.}
 	\label{fig:riyaz_evaluation_screen}
 \end{figure}
 \begin{figure}[h]
 	\begin{center}
-		\includegraphics[width=\figSizeEighty]{ch08_applications/figures/riyaz2.png}
+		\includegraphics[width=\figSizeSeventy]{ch08_applications/figures/riyaz2.png}
 	\end{center}
 	\caption{Screenshot of the feedback screen in Riy\={a}z (Beta) mobile application showing detailed feedback}
 	\label{fig:riyaz_feedback_screen}
@@ -94,9 +91,11 @@ In~\figref{fig:saraga_screens} we show a screenshot of the recording page of in 
 
 \section{Demos}
 
+We now proceed to present two prototype Web-based applications that demonstrate the outcome of our pattern discovery approach. In addition, we also present ragawise, a prototype Web application for a real-time raga recognition. 
 
-\subsection*{Demo1: Melodic Phrase-based Navigation of Collection}
+\subsection*{Demo: Melodic Patten Discovery}
 
+The output of computation approaches for pattern discovery often contain a large number of redundancies or musically trivial patterns, This is specifically true when the approach for discovery follows a TOp N approach due to the difficulties in obtaining a reliable similarity threshold in an unsupervised setup. Our first demo exposes each and every pattern obtain in the study reported in XXXX. In order to browse to these patterns in an structured way we oganize them as seed patterns for each recording, wherein each seed pattern can then be considered as a query to perform a search in the entire music collection. In this study we considered top 25 seed pattern pairs and considerd 200 nearest patterns in the searched results for each seed pattern. This results in 15millino patterns, all of which we expose through our application. The screen shot o this application is shown in XXXX. The discoverd patterns are across artists, instruments and different lyrical lines of a song. Such a tool can provide interesting starting point for several musicologically relevant research topics.
 
 \begin{figure}
 	\begin{center}
@@ -108,6 +107,8 @@ In~\figref{fig:saraga_screens} we show a screenshot of the recording page of in 
 
 \subsection*{Demo2: Melodic Phrase-based Similarity Spaces}
 
+
+
 \begin{figure}
 	\begin{center}
 		\includegraphics[width=\figSizeHundred]{ch08_applications/figures/patternNetwork1.png}
@@ -118,7 +119,7 @@ In~\figref{fig:saraga_screens} we show a screenshot of the recording page of in 
 
 
 
-\subsection{Ragawise: Realtime Raga Recognition}
+\subsection*{Ragawise: Realtime Raga Recognition}
 \label{sec:ragawise}
 
 \begin{sidewaysfigure}
