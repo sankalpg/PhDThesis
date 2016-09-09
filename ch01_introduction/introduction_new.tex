@@ -42,7 +42,6 @@ The work presented in this dissertation is carried out as a part of the CompMusi
 
 \section{Opportunities and Challenges}
 \label{sec:challenges_opportunities}
-
 \gls{iam} is a highly evolved music tradition with its origins dating back as early as 1500\,BC, and is alive and thriving. It is a well studied music tradition with sophisticated and grounded music theory. The literature is replete with scholarly text written on musical concepts in \gls{iam}. However, this music tradition is not explored fully from a computational analysis point of view. The established musical theories and existing musicological work provides a strong base to formulate \gls{mir} tasks and develop computational models for automatic music description.
 
 IAM is a performance centric music tradition, which has been transmitted orally across generations following a tradition of Guru-Shishya parampara (``lineage'' system). The musical compositions in IAM merely act as skeletons in music performances, and the essence of the music lies in the improvisatory aspects. As a result of which, IAM mainly possesses recorded music repertoire. 
@@ -80,55 +79,36 @@ This definition is closely related to the one given by~\cite{powers1963backgroun
 
 Raga thus is a fascinating topic of research. Being a complex melodic framework it involves an intricate interplay between different melodic elements both in terms of the tonality and their temporal relations. Therefore, its computational characterization and recognition poses unique challenges as well as provides new opportunities. It is worth mentioning that recognizing raga in a musical performance requires domain expertise, which further emphasizes the complexity of the task.
 
-Overall, we see that the main challenges in the computational melodic description of IAM arise due to its melodic complexity. It provides a context that is highly conducive to developing novel computational approaches to describe higher level melodic aspects of music, specifically of music performances in audio collections. 
-
-
+IAM thus provides a context that is highly conducive to developing novel computational approaches to describe higher level melodic aspects of music, specifically of music performances in audio collections. 
 
 
 \section{Scope and Objectives}
 \label{sec:scope_objectives}
 
-
-In this section we define the scope of our research work, clearly outline our objectives and enumerate the research questions addressed in this dissertation. 
-
-Computational description and characterization of melodies is a broad research topic that can be approached from a number of perspectives involving different disciplines of science. In this dissertation we take a data-driven engineering approach and focus solely on the computational aspects of melodic analysis, building on top of established music theories. Our applied research methodology, stands at an intersection of signal processing, machine learning and time-series analysis. We focus on content-based processing and the input data used in our approaches comprise audio recordings. The only exception to this is the approach described in~\secref{sec:patterns_characterization_of_melodic_patterns}, which utilize the associated editorial metadata of the recordings in addition to the audio data. The approaches proposed in this thesis are devised and evaluated on music collections in \gls{iam} that includes both Hindustani and Carnatic music. We now outline our broad objectives in this dissertation.
+Analysis and description of melodic aspects of music is a broad research topic that can be approached from a number of perspectives and different academic disciplines. In this thesis we take a data-driven engineering approach and focus solely on the computational aspects of melodic analysis, making use of the established music theories. Our applied research methodology, stands at the intersection of signal processing, machine learning and time-series analysis. We focus on content-based processing, wherein the input data used in our approaches comprise mainly audio recordings, and in a few cases their associated editorial metadata. The approaches proposed in our work are developed and evaluated using music collections of \gls{iam} that includes both Hindustani and Carnatic music. We now outline our broad objectives in this dissertation.
 
 \begin{itemize}
-	\item To build a representative music corpora of \gls{iam} that comprises audio recordings and relevant editorial metadata, and use that to compile sizable and well annotated tests datasets for melodic analyses.
-	\item To devise a data-driven computational approach to discover musically relevant melodic patterns in sizable audio collections of \gls{iam}
-	\item To devise culture-aware and human interpretable approaches for automatic \gls{raga} recognition.
+	\item To curate and structure a representative music corpora of \gls{iam} that comprise audio recordings and associated metadata, and use that to compile sizable and well annotated tests datasets for melodic analyses.
+	\item To develop data-driven computational methodologies for discovery and characterization of musically relevant melodic patterns in sizable audio collections of \gls{iam}
+	\item To devise computational approaches for automatically recognizing \glspl{raga} in recorded performances of \gls{iam}.
 \end{itemize}
-
-
-\TODO{enumerate all these tasks} There are a number of research tasks within computational melodic analysis that are addressed in this dissertation, which sum up to achieve our broad objectives. We list these tasks in~\figref{fig:tasks}, starting from the bottom and building to the top. We now provide a brief description of these specific tasks to show their relation and relevance in our broad objectives. 
 
 \begin{figure}[h]
 	\begin{center}
-		\includegraphics[width=\figSizeNinety]{ch01_introduction/figures/tasks.pdf}
+		\includegraphics[width=\figSizeEighty]{ch01_introduction/figures/tasks.pdf}
 	\end{center}
 	\caption{Computational tasks within melodic analysis of \gls{iam} addressed in this dissertation.}
 	\label{fig:tasks}
 \end{figure}
 
-As mentioned before, tonic pitch of the lead artist in a performance is the base frequency used for tuning by other instruments. For a meaningful comparison of melodies across artists and their recordings, identification of the tonic pitch in a recording is a fundamental task. In recent years a number of methods are proposed for tonic identification, however, there is no consensus on the best performing approach since the evaluations are performed on different datasets, under different experimental conditions. We address this issue by performing an extensive comparative evaluation of seven different tonic identification methods on six diverse datasets of \gls{iam} and identify the approaches that are robust and more accurate on both Hindustani and Carnatic music. In the process we also gain valuable insights into the types of errors made by tonic identification approaches, a useful information while devising methods that require tonic of the recordings as one of the inputs.
 
-Melody segmentation is an important and a well researched topic in melody description in \gls{mir}. It is a crucial step in pattern processing tasks, specifically in the task of discovering melodic patterns. To the best of our knowledge, there are no computational approaches that directly address phrase segmentation in melodies of \gls{iam} from audio recordings\footnote{At the time of starting of this thesis work, 2012}. It is well known from musicological studies that \gls{nyas} \gls{svara} occurrences mark the boundaries of characteristic melodic phrases of \glspl{raga} in melodies of Hindustani music. Thus, detection of such segments in melodies can be an approach to melodic segmentation. We therefore address the task of automatically segmenting \gls{nyas} \gls{svara} segments in the melodies of Hindustani music. 
+To meet these objectives we perform a number of computational tasks as illustrated in~\figref{fig:tasks}. We first obtain a tonal context to analyze melodies by identifying the tonic pitch used in the recording (tonic identification). We detect specific melodic landmarks that demarcate melodic phrases in \gls{iam} (\gls{nyas} segmentation). Before addressing the task of melodic pattern discovery we study the efficacy of different melodic similarity measures in IAM. We then perform pattern discovery through an unsupervised methodology, and characterize the discovered patterns to identify raga motifs, which are musically the most significant patterns in \gls{iam}. Finally, we combine the outcomes of the above methods to perform \gls{raga} recognition. 
 
-Musically meaningful computation of melodic similarity is one of the most crucial steps in melodic pattern extraction. Since the task of melodic pattern discovery follows an unsupervised approach, its quantitative evaluation on sizable music collections is a challenging task. As a result of which, evaluation of the methods used for computing melodic similarity also becomes difficult. Computation of melodic similarity in \gls{iam} is a work in progress and it has gained popularity during the course of this thesis. While addressing the task of computing melodic similarity in \gls{iam} we aim to clearly understand the challenges involved in the task, to analyze quantitatively the influence of different processing steps and parameter values on the accuracy, and to finally select the best possible method that can be used for the pattern discovery task. Our main intention behind investigating melodic similarity is to bootstrap our approach for melodic pattern discovery. 
+The work presented in this thesis is done as a part of the CompMusic project, and aligns with its goals. The efforts in this thesis are directed towards the bigger goal of developing culture-aware computational approaches that can utilize domain knowledge in order to produce semantically meaningful description of music. Our work also aligns with the philosophy of open-access and reproducible research. The data and the code pertaining to this thesis is made publicly available online (\appref{chap:resources}). 
 
-We subsequently address the task of pattern discovery from large audio collections of \gls{iam}, which is one of the main objectives in this dissertation. In melodic pattern discovery we aim to extract all kinds of repeated melodic patterns, which can correspond to different types of melodic units in \gls{iam} with varying degree of musical relevance. In order to successfully use the discovered melodic patterns in analyzing high-level musical concepts such as \gls{raga}, it becomes important to assess the musical relevance of the discovered patterns. We therefore address the task of pattern characterization to identify the musically most relevant melodic patterns, the characteristic phrases of \glspl{raga}.
-
-Finally, we investigate one of the most studied and relevant topics in computational anlaysis of \gls{iam}, automatic \gls{raga} recognition. We aim to devise a culturally-aware approach utilizing the main cues that listeners of \gls{iam} exploit to recognize \glspl{raga}. 
-
-This work in this thesis is done as a part of the CompMusic project, and it aligns with the goals of the project. The objectives of this thesis are directed towards a bigger goal of developing culture-aware computational approaches that can utilize domain knowledge in order to produce semantically meaningful description of music. This thesis is also well aligned with the project's philosophy of open-access and reproducible research. All the data and code used to produce the results reported in this thesis is made openly available, with the exception of the commercial recordings, which is made accessible through personal contact\TODO{Ask xavier what to write!!}. In addition, whenever possible, we also make the output of our methods available to further facilitate reproducing the research results reported in this thesis.
-
-
-\TODO{Should we be writing specific research questions???? given that our work is quite applied. Ask Xavier and Joan and then decide!!}
 
 \section{Organization and Outline of the thesis}
 \label{sec:organization_thesis}
-
-\COMMENT{If time permits draw a block diagram of the different components in this thesis and we can arrange them chapter wise, that would look good and the navigation becomes easier}
 
 There are eight chapters in this thesis. However, the primary contributions are contained in four chapters, Chapter\,3 to Chapter\,6. Each of these four chapters contain one main topic of this thesis, data corpus and datasets, data pre-processing procedures, melodic pattern processing and \gls{raga} recognition. A significant amount of the content in these chapters is derived from our peer-reviewed research papers~\cite{Gulati2014Tonic,gulati2014Landmark,gulati_SITIS_2014,gulati_ICASSP2015,gulati_ISMIR_2015,gulati_communities_2016,gulatiphrase_2016,gulati_tdms_2016}. Most of the work in these papers is done in collaboration with other researchers and musicians, which is duly indicated wherever required. We now proceed to describe a detailed outline of this thesis.
 
@@ -145,5 +125,3 @@ In \chapref{chap:raga_recognition}, we present the other significant part of our
 In \chapref{sec:applicatoins}, we present applications and a demo that are based on the research outcomes in CompMusic, which also includes the work done in this thesis. In particular, we introduce Dunya, a web-based research prototype that exposes the resarch outcomes and resources in the CompMusic project and consolidates the tools and technology developed in the project. We provide a brief description of both the interfaces, web-interface and web-API, that Dunya offers to access the content. In addition, we introduce two real-world applications; Saraga and Riyaz, that capitalize on our research outcomes in CompMusic and cater to two types of use-cases, enhance listening and music education. In order to demonstrate the outcome of our melodic pattern processing approaches more directly, we also present a web-based demo. It shows a network-based navigation across discovered melodic patterns and audio recordings. \TODO{written very roughly change it after you have more idea of that chapter}
 
 At the end of every chapter listed above we present a summary of the results and conclusions. Finally, in \chapref{sec:conclusoins} we present the overall conclusions of this thesis work, list our main contributions and discuss possible future directions for improving melodic description of \gls{iam}. This thesis also contains three appendix sections. Appendix A, lists the publications by the author, Appendix B, present ways to access the relevant resources and Appendix C, presents the glossary of the abbreviations and other terms used in this thesis.
-
-

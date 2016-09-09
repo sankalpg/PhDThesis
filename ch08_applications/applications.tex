@@ -6,36 +6,57 @@
 \section{Introduction}
 \label{sec:applications_introduction}
 
-The research work presented in this thesis has several applications. A number of these applications have already been identified and described in~\secref{sec:motivation}. In this chapter we present some concrete examples of the applications that have already incorporated parts of the outcome of our work presented in this thesis. While a number of applications described earlier are only relevant in the context of large audio music archives, there are some that can be developed with the data collected as a part of the CompMusic project. In this chapter we describe Dunya, a collection of music corpora and software tools built as a part of the CompMusic project (\chapref{chap:corpus_music_corpora_and_datasets}), \Gls{saraga} and \Gls{riyaz}, the two mobile applications being developed as a part of the technology transfer project \gls{camut}. In addition, we also present three Web demos that expose the output of our methods and give a sense of the context in which our work can be utilized. We also present as a use-case one of our study that uses our methods to perform musicological motivated exploration of melodic structuers in \gls{iam}. It gives an example of how our methods can facilitate investigations in computational musicology. 
+The research work presented in this thesis has several applications. A number of these applications have already been identified and described in~\secref{sec:motivation}. While some applications such as \gls{raga}-based music retrieval and music discovery are relevant largely in the context of large audio collections, there are several applications that can be developed on the scale of the corpora compiled in the CompMusic project. In this chapter we present some concrete examples of such applications that have already incorporated parts of the outcome of our work. We provide a brief overview of Dunya, a collection of music corpora and software tools developed during the project (\chapref{chap:corpus_music_corpora_and_datasets}) and, \Gls{saraga} and \Gls{riyaz}, the mobile applications developed within the technology transfer project, \gls{camut}. In addition, we present three Web demos that showcase parts of the outcomes of our computational methods. We also briefly present one of our recent study that perform musicologically motivated exploration of melodic structures in \gls{iam}. It acts as an example of how our methods can facilitate investigations in computational musicology.\TODO{include this last sentence only if you provide enough description}
 
 \section{Dunya}
 \label{sec:applications_dunya}
 
-Dunya\footnote{\url{http://dunya.compmusic.upf.edu/}} comprises the music corpora and the software tools that have been developed as part of the CompMusic project. It includes five music traditions - Hindustani, Carnatic, Turkish Ottoman Maqam, Jingju and Andalusian music. The main purpose behind Dunya is to expose the gathered and generated data in the project in order to facilitate study and exploration of relevant aspects of different music repertoires. The data mainly comprise audio recordings and complementary information that describes those recordings. The complementary information includes relevant metadata, melody, rhythm and music structure descriptors \TODO{where is georgi's stuff} that are extracted using computational analyses, music scores (wherever relevant). The associated metadata is aggregated from multiple data sources; MusicBrainz, from where primarily editorial metadata is obtained, Wikipedia and Kutcheri, from where artist related information is fetched. For a detailed description of Dunya we refer to~\cite{dunya_porter}.
+Dunya\footnote{\url{http://dunya.compmusic.upf.edu/}} comprises the music corpora and the software tools that have been developed as part of the CompMusic project. It includes data for five music traditions - Hindustani, Carnatic, Turkish Makam music, Jingju and Andalusian music. By providing access to the gathered and the generated data in the project, Dunya aims to facilitate study and exploration of relevant aspects of different music repertoires. CompMusic corpora mainly comprise audio recordings and complementary information that describes those recordings. This complementary information can be in the form of the relevant metadata, melody, rhythm and structural descriptors extracted using computational analyses and, wherever relevant, music scores. The metadata for each recording is aggregated from multiple data sources; MusicBrainz, for the editorial metadata and, Wikipedia, for artists' biographies\footnote{An~example~of~a~biography,~\url{https://en.wikipedia.org/wiki/T._M._Krishna}} and related information. For a detailed description of Dunya we refer to~\cite{dunya_porter}.
 
-Dunya uses \gls{essentia} and a bunch of XXX developed for specific music traditions  to perform content based analyses to extract relevant music descriptors mentioned above. Our work related with tonic identification is already incorporated in Dunya, which is through the integration of its implementation in Essentia. Implementations of our methods for pattern discovery and \gls{raga} recognition will be integrated into Essentia. 
+To extract the music descriptors mentioned above Dunya uses \gls{essentia} and a set of software packages developed for specific music traditions. Our work on tonic identification is already integrated in to \gls{essentia}, and is thus available in Dunya. Implementations of our other methods for pattern discovery and \gls{raga} recognition will also be integrated into \gls{essentia}. 
 
-There are two modes in which Dunya provides access to the data mentioned above; a Web-based interface, and a restful API. The Web-based GUI\footnote{\url{http://dunya.compmusic.upf.edu/}} is mainly meant to browse through the music corpora, listen to the music recordings, and visualize the extracted music descriptors time-synchronized with the music. In a way it provides a medium for enhanced music listening experience. In addition, for every recording the associated metadata is also shown, which provides the surrounding context to better appreciate the music performance. The Web interface also provides an option to download all the data displayed on a recording page. An example of a recording page for a music piece\footnote{\url{http://dunya.compmusic.upf.edu/hindustani/recording/72df913b-ac52-4798-990d-72e04a64bd8c/raga-ragesri}}\footnote{\url{http://musicbrainz.org/recording/72df913b-ac52-4798-990d-72e04a64bd8c}} in Hindustani music is shown in~\figref{fig:dunya_recording}. We see that there are two three main page, the metadata pane towards top-left, rhythm pane at the top and melody pane at the bottom of the image. The metadata pane displays the editorial and the automatically generated metadata. In this pane the main description about the melodic aspects of the music performance is given by the tonic and the \gls{raga} label, indicated by arrows numbered 1 and 5, respectively. The melody pane at the bottom displays a crude timbral representation in the background on top which the predominant pitch contour is shown (indicated by arrow-3).  In the same pane, the solid horizontal line (indicated by arrow-2) marks the tonic frequency of the recording. This frequency corresponds to the base \gls{svara} Sa in the performance and acts as a reference to better interpret the pitch intervals (or values) in the continuous pitch contour. The second octave of the tonic frequency is also indicated by a dashed horizontal line. Along with the time varying pitch, a pitch histogram is shown (arrow-4) that summarizes the overall usage of the pitch material in the entire performance. Depending on the context, these descriptors can be visualized at 4 different temporal zoom levels by a user. 
+There are two modes in which Dunya provides access to the data mentioned above; a Web-based interface, and a restful \acrshort{api}. The Web-based GUI\footnote{\url{http://dunya.compmusic.upf.edu/}} is mainly meant to browse through the music corpora, listen to the music recordings, and visualize the extracted music descriptors time-synchronized with the music. In a way it also provides a medium for enhanced music listening. In addition, for every recording the associated metadata is also shown, which provides the surrounding context to better appreciate the music performance. A screenshot of the recording page for a music piece\footnote{\url{http://dunya.compmusic.upf.edu/hindustani/recording/72df913b-ac52-4798-990d-72e04a64bd8c/raga-ragesri}}\footnote{\url{http://musicbrainz.org/recording/72df913b-ac52-4798-990d-72e04a64bd8c}} in Hindustani music is shown in~\figref{fig:dunya_recording}. We see that there are three main panes, the metadata pane towards top-left, rhythm pane at the top and melody pane at the bottom. The metadata pane displays the editorial and the automatically generated metadata. In this pane, the main description of the melodic aspects of performance is given by the tonic and the \gls{raga} label, indicated by the arrows numbered 1~and~5, respectively. The melody pane at the bottom displays a coarse timbral representation on top which the extracted predominant pitch contour is shown (indicated by arrow-3).  In the same pane, the solid horizontal line (indicated by arrow-2) marks the tonic frequency of the recording. This frequency corresponds to the base \gls{svara} Sa in the performance and acts as a reference to better interpret the pitch intervals (or values) in the continuous pitch contour. The second octave of the tonic frequency is also indicated by a dashed horizontal line. Along with the predominant pitch contour its histogram is also shown (arrow-4), which summarizes the overall pitch material used in the entire performance. 
 
 \begin{sidewaysfigure}
 	\begin{center}
 		\includegraphics[width=\figSizeHundred]{ch08_applications/figures/dunyaScreenshot.pdf}
 		\end{center}
-		\caption{Screenshot of a recording page in Dunya showing showing extracted audio descriptors and associated metadata. Tonic, pitch histogram and melody is marked by XXX.}
+		\caption{Screenshot of the recording page in Dunya showing extracted music descriptors and associated metadata}
 		\label{fig:dunya_recording}
 \end{sidewaysfigure}
 
-While the Web interface provides an easy and a quick access to the data, for a more comprehensive access mainly meant for researchers and developers Dunya provides a restful \gls{api}. Through the \gls{api} it exposes audio recordings, gathered metadata and extracted audio descriptors. For researchers who wish to create datasets from the CompMusic music corpora, such a tool can be very helpful. To further facilitate the usage of Dunya \gls{api}, a Python\footnote{\url{https://www.python.org/}} wrapper, \gls{pycompmusic}\footnote{\url{https://github.com/MTG/pycompmusic}}, is provided. Using this tool with just a few lines of code the entire corpora and associated metadata can be retrieved. An example of an \gls{api} call through \gls{pycompmusic} and the returned Json object corresponding to this call is shown in~\figref{fig:api_call_example}.  
+While the Web interface provides an easy and a quick access to the data, for a more comprehensive access that mainly meant for researchers and developers Dunya provides a restful \gls{api}. Through the \gls{api} it exposes audio recordings, gathered metadata and extracted music descriptors. it can be used by researchers to create different datasets from the CompMusic corpora. To further facilitate the usage of this \gls{api}, its Python\footnote{\url{https://www.python.org/}} wrapper, \gls{pycompmusic}\footnote{\url{https://github.com/MTG/pycompmusic}}, is provided. Using this tool with just a few lines of code the entire corpora and associated metadata can be retrieved. An example usage of \gls{pycompmusic} is shown below.
 
-\begin{figure}
-	\begin{center}
-		\includegraphics[width=\figSizeHundred]{ch08_applications/figures/figure_todo.pdf}
-	\end{center}
-	\caption{An example of a code that uses \gls{pycompmusic} Python package to access Dunya data.}
-	\label{fig:api_call_example}
-\end{figure}
+\lstset{language=Python,
+	numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+	numbersep=5pt,
+	basicstyle=\footnotesize,
+	numberstyle=\tiny,
+	frame=tb,
+	columns=fullflexible,
+	showstringspaces=false
+	}
 
-\TODO{Think more, what is left?}
+\begin{lstlisting}[frame=bt] 
+from compmusic import dunya as dn
+from compmusic.dunya import carnatic as ca
+
+dn.set_token("60312f59428916bb854adaa208f55eb35c3f2f07")
+recs = ca.get_concerts()
+
+\end{lstlisting}
+
+
+%
+%
+%\begin{figure}
+%	\begin{center}
+%		\includegraphics[width=\figSizeHundred]{ch08_applications/figures/figure_todo.pdf}
+%	\end{center}
+%	\caption{An example of a code that uses \gls{pycompmusic} Python package to access Dunya data.}
+%	\label{fig:api_call_example}
+%\end{figure}
+
 
 
 \section{Mobile Applications: Sar\={a}ga and Riy\={a}z}
