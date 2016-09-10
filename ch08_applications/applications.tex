@@ -27,25 +27,47 @@ There are two modes in which Dunya provides access to the data mentioned above; 
 
 While the Web interface provides an easy and a quick access to the data, for a more comprehensive access that mainly meant for researchers and developers Dunya provides a restful \gls{api}. Through the \gls{api} it exposes audio recordings, gathered metadata and extracted music descriptors. it can be used by researchers to create different datasets from the CompMusic corpora. To further facilitate the usage of this \gls{api}, its Python\footnote{\url{https://www.python.org/}} wrapper, \gls{pycompmusic}\footnote{\url{https://github.com/MTG/pycompmusic}}, is provided. Using this tool with just a few lines of code the entire corpora and associated metadata can be retrieved. An example usage of \gls{pycompmusic} is shown below.
 
-\lstset{language=Python,
-	numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
-	numbersep=5pt,
-	basicstyle=\footnotesize,
-	numberstyle=\tiny,
-	frame=tb,
-	columns=fullflexible,
-	showstringspaces=false
-	}
+%\lstset{language=Python,
+%	numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+%	numbersep=5pt,
+%	basicstyle=\footnotesize,
+%	numberstyle=\tiny,
+%	frame=tb,
+%	columns=fullflexible,
+%	showstringspaces=false
+%	}
+%
+%\begin{lstlisting}[frame=bt] 
+%from compmusic import dunya as dn
+%from compmusic.dunya import carnatic as ca										
+%
+%dn.set_token("60312f59428916bb854adaa208f55eb35c3f2f07")		#authorization
+%
+%recs = ca.get_concerts()																	  #Fetching all the concerts
+%
+%len(recs)
+%
+%\end{lstlisting}
 
-\begin{lstlisting}[frame=bt] 
-from compmusic import dunya as dn
-from compmusic.dunya import carnatic as ca
-
-dn.set_token("60312f59428916bb854adaa208f55eb35c3f2f07")
-recs = ca.get_concerts()
-
-\end{lstlisting}
-
+\begin{verbatim}
+In [1]: from compmusic import dunya as dn
+In [2]: from compmusic.dunya import carnatic as ca
+In [3]: dn.set_token("<dunya api token>")
+In [4]: concerts = ca.get_concerts()
+In [5]: len(concerts)
+Out[5]: 328
+In [6]: concerts[1]
+Out[6]: 
+       {u'mbid': u'c5d9d3bd-bc01-4104-b874-d55219bd0e54',
+        u'title': u'Madrasil Margazhi 2006'}
+In [7]: recs = ca.get_recordings()
+In [8]: len(recs)
+Out[8]: 3533
+In [9]: recs[1]
+Out[9]: 
+       {u'mbid': u'01f863b7-46b4-44f5-b547-fcbaa1f66348',
+        u'title': u'Vetta Veli'}        
+\end{verbatim}
 
 %
 %
