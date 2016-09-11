@@ -6,58 +6,63 @@
 \section{Introduction}
 \label{sec:summary_thesis}
 
-In this thesis we have presented computational approaches for analyzing a number of elements/concepts/components at different levels of melodic organization in \gls{iam}, which in tandem generate a higher-level melodic description of its audio collections. These approaches build upon each other to finally allow us to achieve the goals that we set at the onset of this thesis, which are: 
-
-\begin{itemize}
-	\item To devise a data-driven computational approach to discover musically relevant melodic patterns in sizable audio collections of \gls{iam}.
-	\item To devise culture-aware approaches for automatic \gls{raga} recognition and improve the state of the art in this task. 
-\end{itemize}
-
-Based on the results presented in this thesis we can now say that our goals are successfully met. In~\chapref{chap:melodic_pattern_processing} we argued that the potential of a pattern-based melodic analysis in \gls{iam} can be fully exploited using an unsupervised approach to extract melodic patterns from audio recordings. We demonstrated that using our novel approach that does not use any exemplars, we can successfully discover musically significant melodic patterns in hundreds of hours of audio collections of \gls{iam}. In~\chapref{chap:raga_recognition} we described two novel approaches for \gls{raga} recognition that jointly utilize the tonal and the temporal characteristics of melodies in \gls{iam} without discretizing the melody representation. We demonstrated that our approach can effectively utilize the discovered melodic patterns for \gls{raga} recognition. We also presented our approach that abstracts continuous melody representation to capture the melodic outline relevant for characterizing \glspl{raga}. Using this approach we demonstrated unprecedented accuracies in the task of \gls{raga} recognition using largest datasets ever used for this task. 
-
-\TODO{This issue has to come somewhere!!}
-With that said, we note that the approaches we propose to perform these tasks are not perfect, and there exist a large scope for further improvement. It remains a subject of our future investigation to determine the extent to which human listeners can perform such complex tasks, and with what level of musical training. Should we say that our main aim was to open up tasks?
-
-We started this thesis by presenting our motivation behind the analysis and description of melodies in \gls{iam}, highlighting the opportunities and challenges that this music tradition offers within the context of music information research and the compmusic project (\chapref{chap:intro}). We provided a brief introduction to \gls{iam} and its melodic organization,  and reviewed the existing literature on related topics within the context of \gls{mir} and \gls{iam} (\chapref{chap:background}). We described the music corpora of \gls{iam} and different test datasets, emphasizing the design criterion taken in the Compmusic project to compile and curate the corpora (\chapref{chap:corpus_music_corpora_and_datasets}).  We described and evaluated the approaches we follow to obtain melodic descriptors and melody representations with which we perform melodic analysis in this thesis (\chapref{chap:data_preprocessing}). We then presented and evaluated our approaches for computing melodic similarity, discovering melodic patterns and characterizing melodic patterns (\chapref{chap:melodic_pattern_processing}). Finally, we presented and evaluated our novel approaches for \gls{raga} recognition that utilize discovered melodic patterns and abstracted melody representation to outperform the state-of-the-art (\chapref{chap:raga_recognition}).
-
-At the end of each chapter in this thesis we included a section that summarized the key results and conclusions of the work reported in that chapter. In this chapter we provide an overall summary of the thesis, highlight our main contributions (\secref{sec:summary_contributions}), and finally, end the thesis with some discussions about the future perspectives (\secref{sec:future_directions}). 
+ In this thesis we have presented computational approaches for analyzing a number of melodic elements at different levels of melodic organization in \gls{iam}, which in tandem generate a higher-level melodic description of its audio collections. These approaches build upon each other to finally allow us to achieve the goals that we set at the beginning of this thesis, which are: 
+ 
+ \begin{itemize}
+ 	\item To curate and structure a representative music corpora of \gls{iam} that comprise audio recordings and associated metadata, and use that to compile sizable and well annotated tests datasets for melodic analyses.
+ 	\item To develop data-driven computational approaches for discovery and characterization of musically relevant melodic patterns in sizable audio collections of \gls{iam}
+ 	\item To devise computational approaches for automatically recognizing \glspl{raga} in recorded performances of \gls{iam}.
+ \end{itemize}
+ 
+ Based on the results presented in this thesis we can now say that our goals are successfully met. In~\chapref{chap:corpus_music_corpora_and_datasets} we provided a comprehensive overview of the music corpora and datasets that were compiled and structured in our work as a part of the CompMusic project. To the best of our knowledge these corpora comprise the largest audio collections of \gls{iam} along with curated metadata and automatically extracted music descriptors that is available for research. Furthermore, the datasets that we built from these corpora allowed us to successfully evaluate our computational approaches, with some of them being the largest datasets ever used for such evaluations. 
+ 
+ In~\chapref{chap:melodic_pattern_processing} we argued that the potential of a pattern-based melodic analysis in \gls{iam} can be exploited using an unsupervised approach to extract melodic patterns from audio recordings. We demonstrated that using our novel approach we can successfully discover musically significant melodic patterns in hundreds of hours of audio collections of \gls{iam} without requiring any exemplars of melodic patterns from experts as input.
+ 
+ In~\chapref{chap:raga_recognition} we described two novel approaches for \gls{raga} recognition that jointly utilize the tonal and the temporal characteristics of melodies in \gls{iam} without discretizing the melody representation. We demonstrated that our approach can effectively utilize the discovered melodic patterns for \gls{raga} recognition. We also presented our approach that abstracts continuous melody representation to capture the melodic outline relevant for characterizing \glspl{raga}. Using this approach we demonstrated unprecedented accuracies in the task of \gls{raga} recognition using largest datasets ever used for this task. 
+ 
+ We note that the approaches we propose to perform these tasks are not 100\% accurate, and there exists a large scope for improvement. However, a significant part of the errors made by our approaches can be explained from a musicological and perceptual perspective. The cases where the system fails are often the ones which are challenging even for a human listener. 
+ 
+ We started this thesis by presenting our motivation behind the analysis and description of melodies in \gls{iam}, highlighting the opportunities and challenges that this music tradition offers within the context of music information research and the compmusic project (\chapref{chap:intro}). We provided a brief introduction to \gls{iam} and its melodic organization,  and reviewed the existing literature on related topics within the context of \gls{mir} and \gls{iam} (\chapref{chap:background}). We described the music corpora of \gls{iam} and different test datasets, emphasizing the design criterion taken in the Compmusic project to compile and curate the corpora (\chapref{chap:corpus_music_corpora_and_datasets}).  We described and evaluated the approaches we follow to obtain melodic descriptors and melody representations with which we perform melodic analysis in this thesis (\chapref{chap:data_preprocessing}). We then presented and evaluated our approaches for computing melodic similarity, discovering melodic patterns and characterizing melodic patterns (\chapref{chap:melodic_pattern_processing}). Finally, we presented and evaluated our novel approaches for \gls{raga} recognition that utilize discovered melodic patterns and abstracted melody representation to outperform the state-of-the-art (\chapref{chap:raga_recognition}).
+ 
+ At the end of each chapter in this thesis we included a section that summarized the key results and conclusions of the work reported in that chapter. We here provide an overall summary of the thesis, highlight our main contributions (\secref{sec:summary_contributions}), and finally, end the thesis with some discussions about the future perspectives (\secref{sec:future_directions}). 
+ 
  
 \section{Summary of Contributions}
 \label{sec:summary_contributions}
+We now present a summary of the main contributions of this thesis.
 
-We now present a summary of the main contributions of this thesis work:
+\subsubsection*{Contributions to Creating Music Corpora and Datasets}
+
+One of the objectives of the CompMusic project was to build a quality research corpora of \gls{iam}, with which to study different computational tasks in the context of \gls{mir}. The task of compiling and curating the research corpora and different test datasets has mainly been a team effort. We describe below some specific contributions from the author. 
+
+\begin{itemize}
+	
+	\item The contributions to compiling corpora are mainly in Hindustani music corpus (\secref{sec:corpus_hindustani_music_corpus}), starting from the procurement of music CDs, ripping and structuring the audio collection and manually adding all the editorial metadata to MusicBrainz. 
+	
+	\item Compiling CompMusic Tonic Datasets (\acrshort{tds_cm1}, \acrshort{tds_cm2} and \acrshort{tds_cm3}), which collectively include tonic annotations for 716 audio recordings spanning. \TODO{Double check this number}
+	
+	\item Compiling \Gls{nyas} dataset (\acrshort{nds_cm}), which includes annotations of \gls{nyas} segments for 20 audio recordings spanning 1.5\,hours of audio, done in collaboration with Kaustuv Kanti Ganguli. 
+	\item Improving Melodic Similarity Dataset (\acrshort{msds}), which originally included 497 annotated instances of 10 different melodic patterns in 33\,audio recordings done by Kaustuv Kanti Ganguli and Vignesh Ishwar. In the revised version of the dataset that came after a detailed verification, 127\,instances of melodic patterns were added for the same audio recordings and pattern categories. 
+	\item Compiling \Gls{raga} recognition datasets (\acrshort{rrds_cmd_big} and \acrshort{rrds_hmd_big}), which contain \gls{raga} labels and associated editorial metadata for 780\, audio recordings, done in collaboration with Vignesh Ishwar and Kaustuv Kanti Ganguli. \acrshort{rrds_cmd_big} comprise 480\,full length recorded performances in 40\,\glspl{raga} with 12 recordings per \gls{raga} spanning a total of 124\,hours of audio. \acrshort{rrds_hmd_big} comprise 300\,full length recorded performances in 30\,\glspl{raga} with 10 recordings per raga spanning a total of 130\,hours of audio.
+\end{itemize}
 
 \subsection*{Scientific and Technical Contributions}
 
 \begin{itemize}
-	\item Review of current approaches for tonic identification, melodic pattern processing and \gls{raga} recognition in the context of \gls{mir} in \gls{iam}, specifically emphasizing their shortcomings and identifying venues for scientific contributions. \TODO{have we done enough to say that we have also reviewed them for in general mir?}
+	\item Review of current approaches for tonic identification, melodic pattern processing and \gls{raga} recognition in the context of \gls{mir} in \gls{iam}, emphasizing their limitations and identifying avenues for scientific contributions.
 	\item Comprehensive assessment of different tonic identification approaches on a number of sizable datasets,  along with a detailed error analysis for different types of music material.
-	\item Development of a novel \gls{nyas} landmark-based approach for segmentation of melodies in Hindustani music. \Gls{nyas} detection is addressed for the first time from a computational perspective.
+	\item Development of a novel \gls{nyas} landmark-based approach for the segmentation of melodies in Hindustani music. \Gls{nyas} detection is addressed for the first time from a computational perspective.
 	\item In depth evaluation of different procedures and parameter settings for computing melodic similarity in the context of short-duration \gls{raga} motifs in \gls{iam}. 
 	\item A partial transcription and complexity weighting-based approach for improving melodic similarity is devised that exploits peculiar characteristics of melodies in \gls{iam} .
 	\item Demonstration of the utility of an unsupervised approach for discovering repeated melodic patterns in sizable audio collections of \gls{iam}.
 	\item Characterization of the discovered melodic patterns by employing network analysis tools to identify musically significant patterns, the \gls{raga} motifs. 
-	\item Demonstration of the utility of a pattern-based approach for \gls{raga} recognition, which employs vector space modeling concepts to exploit discovered melodic pattens for this task. 
-	\item Development of  a novel feature, the \acrfull{tdms}, which captures both the tonal and the short-time temporal characteristics of a melody. This feature together with a simple \gls{1nn} classification strategy is shown to outperform state of the art in \gls{raga} recognition by margins using the largest datasets every used for this task. 
+	\item Demonstration of the utility of a novel pattern-based approach for \gls{raga} recognition, which employs vector space modeling concepts to exploit discovered melodic patterns for this task. 
+	\item Development of  a novel feature, the \acrfull{tdms}, which captures both the tonal and the short-time temporal characteristics of a melody. This feature together with a simple \gls{1nn} classification strategy is shown to outperform state of the art in \gls{raga} recognition using the largest datasets ever used for this task. 
 \end{itemize}
 
-\subsubsection*{Contributions to Creating Music Corpora and Datasets}
+Most of the outcomes of the work presented in this document have been published in the form of papers in international conferences, and journals. The full list of the author’s publications is provided in~\appref{app:publications}. The code and tools developed during our work are made publicly available to facilitate reproducible research and comparative studies (). The set of tools and output of our approaches are also integrated in Dunya, a system that consolidates the corpora and computational tools for XXX. There are a number of online Web demos built to demonstrate the usefulness of the outcome of our approaches, which are discussed in~\secref{}. Furthermore, we have also exploited a number of the outcomes of our work for developing mobile applications that provide enhanced listening experience, and novel pedagogical tools in the context of \gls{iam} \secref{}.
 
-One of the objectives of the CompMusic project was to build a quality research corpora of \gls{iam}, with which to study different computational tasks in the context of \gls{mir}. The task of compiling and curating the research corpora and different test datasets has mainly been a team effort. Below we describe some specific contributions from the author. 
-
-\begin{itemize}
-	
-	\item The contributions to compiling corpora are mainly in Hindustani music corpus (\secref{sec:corpus_hindustani_music_corpus}), starting from the procurement of music CDs, ripping and structuring the audio collection and manually adding all the editorial metadata into MusicBrainz. 
-	
-	\item Compiling CompMusic Tonic Datasets (\acrshort{tds_cm1}, \acrshort{tds_cm2} and \acrshort{tds_cm3}), which collectively include tonic annotations for 716 audio recordings spanning. \TODO{Double check this number}
-	
-	\item Compiling \Gls{nyas} dataset (\acrshort{nds_cm}), which includes annotations of \gls{nyas} segments for 20 audio recordings spanning 1.5\,hours of audio, done in 
-	collaboration with Kaustuv Kanti Ganguli. 
-	\item Improving Melodic Similarity Dataset (\acrshort{msds}), which originally included 497 annotated instances of 10 different melodic patterns in 33\,audio recordings done by Kaustuv Kanti Ganguli and Vignesh Ishwar. In the revised version of the dataset that came after a detailed verification, 127\,instances of melodic patterns were added for the same audio recordings and pattern categories. 
-	\item Compiling \Gls{raga} recognition datasets (\acrshort{rrds_cmd_big} and \acrshort{rrds_hmd_big}), which contain \gls{raga} labels and associated editorial metadata for 780\, audio recordings, done in collaboration with Vignesh Ishwar and Kaustuv Kanti Ganguli. \acrshort{rrds_cmd_big} comprise 480\,full length recorded performances in 40\,\glspl{raga} with 12 recordings per \gls{raga} spanning a total of 124\,hours of audio. \acrshort{rrds_hmd_big}, which contain 300\,full length recorded performances in 30\,\glspl{raga} with 10 recordings per raga spanning a total of 130\,hours of audio. Due to several mistakes found in the original editorial metadata on the CD cover, \gls{raga} labels for each of these recordings were manually verified by the above mentioned musicians by listening. 
-\end{itemize}
-
-Most of the outcomes of the work presented in this document have been published in the form of papers in international conferences, and journals. The full list of the author’s publications is provided in~\appref{app:publications}. In addition to scientific publications, the code and tools developed during our work are made publicly available for facilitate reproducible research and comparative studies (). The set of tools and output of our approaches is also integrated in Dunya, a XXX that consolidates Corpora and computational tools for XXX. There are a number of online Web demos built to demonstrate the usefulness of the outcome of our approaches, which are discussed in~\secref{}. Furthermore, a number of the outcomes of our work are exploited for developing mobile applications that provide enhanced listening experience, and novel pedagogical tools in the context of \gls{iam}. These applications are discussed in \secref{}.
+\TODO{Any overall big sentence, that we have opened out research area? Good datasets and spectrum of problems.}
 
 \section{Future Directions}
 \label{sec:future_directions}
