@@ -70,7 +70,7 @@
 
 \begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="11">
+<lyxtabular version="3" rows="7" columns="11">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -323,7 +323,7 @@ featureVSMOne$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+5.62
 \end_layout
 
 \end_inset
@@ -332,7 +332,7 @@ featureVSMOne$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+51.04
 \end_layout
 
 \end_inset
@@ -341,7 +341,7 @@ featureVSMOne$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+55
 \end_layout
 
 \end_inset
@@ -350,7 +350,7 @@ featureVSMOne$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+37.5
 \end_layout
 
 \end_inset
@@ -359,7 +359,7 @@ featureVSMOne$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+54.37
 \end_layout
 
 \end_inset
@@ -368,7 +368,7 @@ featureVSMOne$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+8.12
 \end_layout
 
 \end_inset
@@ -377,7 +377,7 @@ featureVSMOne$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+25.41
 \end_layout
 
 \end_inset
@@ -386,7 +386,7 @@ featureVSMOne$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+55.83
 \end_layout
 
 \end_inset
@@ -395,7 +395,7 @@ featureVSMOne$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+-
 \end_layout
 
 \end_inset
@@ -436,7 +436,7 @@ featureVSMTwo$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+2.08
 \end_layout
 
 \end_inset
@@ -445,7 +445,7 @@ featureVSMTwo$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+45.83
 \end_layout
 
 \end_inset
@@ -454,7 +454,7 @@ featureVSMTwo$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+50.41
 \end_layout
 
 \end_inset
@@ -463,7 +463,7 @@ featureVSMTwo$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+35.62
 \end_layout
 
 \end_inset
@@ -472,7 +472,7 @@ featureVSMTwo$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+47.5
 \end_layout
 
 \end_inset
@@ -481,7 +481,7 @@ featureVSMTwo$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+8.12
 \end_layout
 
 \end_inset
@@ -490,7 +490,7 @@ featureVSMTwo$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+26.87
 \end_layout
 
 \end_inset
@@ -499,7 +499,7 @@ featureVSMTwo$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+51.87
 \end_layout
 
 \end_inset
@@ -508,7 +508,7 @@ featureVSMTwo$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+-
 \end_layout
 
 \end_inset
@@ -549,7 +549,7 @@ featureVSMThree$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+2.08
 \end_layout
 
 \end_inset
@@ -558,7 +558,7 @@ featureVSMThree$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+45.83
 \end_layout
 
 \end_inset
@@ -567,7 +567,7 @@ featureVSMThree$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+51.66
 \end_layout
 
 \end_inset
@@ -576,7 +576,7 @@ featureVSMThree$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+67.29
 \end_layout
 
 \end_inset
@@ -585,7 +585,7 @@ featureVSMThree$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+44.79
 \end_layout
 
 \end_inset
@@ -594,7 +594,7 @@ featureVSMThree$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+8.12
 \end_layout
 
 \end_inset
@@ -603,7 +603,7 @@ featureVSMThree$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+23.75
 \end_layout
 
 \end_inset
@@ -612,7 +612,7 @@ featureVSMThree$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+51.87
 \end_layout
 
 \end_inset
@@ -621,7 +621,7 @@ featureVSMThree$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+-
 \end_layout
 
 \end_inset
@@ -676,6 +676,133 @@ mathrm{full}$
 \begin_inset Text
 
 \begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+73.12
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+acrshort{sotaKoduri}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+mathrm{PD}_
+\backslash
+mathrm{param}$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -748,7 +875,7 @@ mathrm{full}$
 \begin_inset Text
 
 \begin_layout Plain Layout
-7X
+
 \end_layout
 
 \end_inset
@@ -789,7 +916,7 @@ $
 \backslash
 mathrm{PD}_
 \backslash
-mathrm{param}$
+mathrm{context}$
 \end_layout
 
 \end_inset
@@ -803,7 +930,7 @@ mathrm{param}$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+32.7
 \end_layout
 
 \end_inset
@@ -812,7 +939,7 @@ mathrm{param}$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+58.33
 \end_layout
 
 \end_inset
@@ -821,7 +948,7 @@ mathrm{param}$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+50.41
 \end_layout
 
 \end_inset
@@ -830,7 +957,7 @@ mathrm{param}$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+57.7
 \end_layout
 
 \end_inset
@@ -839,7 +966,7 @@ mathrm{param}$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+65.2
 \end_layout
 
 \end_inset
@@ -848,7 +975,7 @@ mathrm{param}$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+33.12
 \end_layout
 
 \end_inset
@@ -857,7 +984,7 @@ mathrm{param}$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+80
 \end_layout
 
 \end_inset
@@ -866,7 +993,7 @@ mathrm{param}$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+53.12
 \end_layout
 
 \end_inset
@@ -875,7 +1002,7 @@ mathrm{param}$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+54.8
 \end_layout
 
 \end_inset
