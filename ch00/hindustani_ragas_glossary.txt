@@ -72,7 +72,7 @@ type=ragaHMD
 
 \newglossaryentry{sri}
 {
- name={\'{S}r\={i}},
+ name={\'{S}r\={\i}},
 description={},
  sort=sri,
 type=ragaHMD
@@ -120,7 +120,7 @@ type=ragaHMD
 
 \newglossaryentry{todi}
 {
- name={T\={o}\d{d}\={i}},
+ name={T\={o}\d{d}\={\i}},
 description={},
  sort=todi,
 type=ragaHMD
@@ -128,7 +128,7 @@ type=ragaHMD
 
 \newglossaryentry{bagesri}
 {
- name={B\={a}g\={e}\'{s}r\={i}},
+ name={B\={a}g\={e}\'{s}r\={\i}},
 description={},
  sort=bagesri,
 type=ragaHMD
@@ -184,7 +184,7 @@ type=ragaHMD
 
 \newglossaryentry{abhogi}
 {
- name={\={A}bh\={o}g\={i}},
+ name={\={A}bh\={o}g\={\i}},
 description={},
  sort=abhogi,
 type=ragaHMD
@@ -192,7 +192,7 @@ type=ragaHMD
 
 \newglossaryentry{bilasakhani_todi}
 {
- name={Bil\={a}sakh\={a}n\={i} t\={o}\d{d}\={i}},
+ name={Bil\={a}sakh\={a}n\={\i} t\={o}\d{d}\={\i}},
 description={},
  sort=bilasakhani_todi,
 type=ragaHMD
@@ -224,7 +224,7 @@ type=ragaHMD
 
 \newglossaryentry{ragesri}
 {
- name={R\={a}g\={e}\'{s}r\={i}},
+ name={R\={a}g\={e}\'{s}r\={\i}},
 description={},
  sort=ragesri,
 type=ragaHMD
@@ -232,7 +232,7 @@ type=ragaHMD
 
 \newglossaryentry{puriya_dhanasri}
 {
- name={Puriy\={a} dhana\'{s}r\={i}},
+ name={Puriy\={a} dhana\'{s}r\={\i}},
 description={},
  sort=puriya_dhanasri,
 type=ragaHMD

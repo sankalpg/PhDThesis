@@ -56,7 +56,7 @@ type=ragaCMD
 
 \newglossaryentry{sriranjani}
 {
- name={\'{S}r\={i}ranjani},
+ name={\'{S}r\={\i}ranjani},
 description={},
  sort=sriranjani,
 type=ragaCMD
@@ -64,7 +64,7 @@ type=ragaCMD
 
 \newglossaryentry{ritigaula}
 {
- name={R\={i}tigau\d{l}a},
+ name={R\={\i}tigau\d{l}a},
 description={},
  sort=ritigaula,
 type=ragaCMD
@@ -72,7 +72,7 @@ type=ragaCMD
 
 \newglossaryentry{husseni}
 {
- name={Huss\={e}n\={i}},
+ name={Huss\={e}n\={\i}},
 description={},
  sort=husseni,
 type=ragaCMD
@@ -190,14 +190,6 @@ description={},
 type=ragaCMD
 }
 
-\newglossaryentry{todi}
-{
- name={T\={o}\d{d}i},
-description={},
- sort=todi,
-type=ragaCMD
-}
-
 \newglossaryentry{begada}
 {
  name={B\={e}ga\d{d}a},
@@ -214,14 +206,6 @@ description={},
 type=ragaCMD
 }
 
-\newglossaryentry{sri}
-{
- name={\'{S}r\={i}},
-description={},
- sort=sri,
-type=ragaCMD
-}
-
 \newglossaryentry{kalyani}
 {
  name={Kaly\={a}\d{n}i},
@@ -230,7 +214,7 @@ description={},
 type=ragaCMD
 }
 
-\newglossaryentry{sama}
+\newglossaryentry{saama}
 {
  name={S\={a}ma},
 description={},
@@ -248,7 +232,7 @@ type=ragaCMD
 
 \newglossaryentry{purvikalyani}
 {
- name={P\={u}rv\={i}ka\d{l}y\={a}\d{n}i},
+ name={P\={u}rv\={\i}ka\d{l}y\={a}\d{n}i},
 description={},
  sort=purvikalyani,
 type=ragaCMD
