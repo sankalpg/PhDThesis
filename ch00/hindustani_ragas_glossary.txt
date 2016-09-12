@@ -2,209 +2,239 @@
 {
  name={J\={o}g},
 description={},
- sort=jog
+ sort=jog,
+type=ragaHMD
 }
 
 \newglossaryentry{madhukauns}
 {
  name={Madhukauns},
 description={},
- sort=madhukauns
+ sort=madhukauns,
+type=ragaHMD
 }
 
 \newglossaryentry{darbari}
 {
  name={Darb\={a}ri},
 description={},
- sort=darbari
+ sort=darbari,
+type=ragaHMD
 }
 
 \newglossaryentry{miyan_malhar}
 {
  name={Miy\={a}n malh\={a}r},
 description={},
- sort=miyan_malhar
+ sort=miyan_malhar,
+type=ragaHMD
 }
 
 \newglossaryentry{bhairav}
 {
  name={Bhairav},
 description={},
- sort=bhairav
+ sort=bhairav,
+type=ragaHMD
 }
 
 \newglossaryentry{madhuvanti}
 {
  name={Madhuvanti},
 description={},
- sort=madhuvanti
+ sort=madhuvanti,
+type=ragaHMD
 }
 
 \newglossaryentry{alahaiya_bilaval}
 {
  name={Alahaiy\={a} bil\={a}val},
 description={},
- sort=alahaiya_bilaval
+ sort=alahaiya_bilaval,
+type=ragaHMD
 }
 
 \newglossaryentry{marva}
 {
  name={M\={a}rv\={a}},
 description={},
- sort=marva
+ sort=marva,
+type=ragaHMD
 }
 
 \newglossaryentry{suddh_sarang}
 {
  name={\'{S}uddh s\={a}ra\.{n}g},
 description={},
- sort=suddh_sarang
+ sort=suddh_sarang,
+type=ragaHMD
 }
 
 \newglossaryentry{sri}
 {
  name={\'{S}r\={i}},
 description={},
- sort=sri
+ sort=sri,
+type=ragaHMD
 }
 
 \newglossaryentry{yaman_kalyan}
 {
  name={Yaman kaly\={a}\d{n}},
 description={},
- sort=yaman_kalyan
+ sort=yaman_kalyan,
+type=ragaHMD
 }
 
 \newglossaryentry{marubihag}
 {
  name={M\={a}r\={u}bih\={a}g},
 description={},
- sort=marubihag
+ sort=marubihag,
+type=ragaHMD
 }
 
 \newglossaryentry{hamsadhvani}
 {
  name={Hamsadhv\={a}ni},
 description={},
- sort=hamsadhvani
+ sort=hamsadhvani,
+type=ragaHMD
 }
 
 \newglossaryentry{des}
 {
  name={D\={e}\'{s}},
 description={},
- sort=des
+ sort=des,
+type=ragaHMD
 }
 
 \newglossaryentry{malkauns}
 {
  name={M\={a}lkauns},
 description={},
- sort=malkauns
+ sort=malkauns,
+type=ragaHMD
 }
 
 \newglossaryentry{todi}
 {
  name={T\={o}\d{d}\={i}},
 description={},
- sort=todi
+ sort=todi,
+type=ragaHMD
 }
 
 \newglossaryentry{bagesri}
 {
  name={B\={a}g\={e}\'{s}r\={i}},
 description={},
- sort=bagesri
+ sort=bagesri,
+type=ragaHMD
 }
 
 \newglossaryentry{khamaj}
 {
  name={Kham\={a}j},
 description={},
- sort=khamaj
+ sort=khamaj,
+type=ragaHMD
 }
 
 \newglossaryentry{bihag}
 {
  name={Bih\={a}g},
 description={},
- sort=bihag
+ sort=bihag,
+type=ragaHMD
 }
 
 \newglossaryentry{lalit}
 {
  name={Lalit},
 description={},
- sort=lalit
+ sort=lalit,
+type=ragaHMD
 }
 
 \newglossaryentry{kedar}
 {
  name={K\={e}d\={a}r},
 description={},
- sort=kedar
+ sort=kedar,
+type=ragaHMD
 }
 
 \newglossaryentry{bairagi}
 {
  name={Bair\={a}gi},
 description={},
- sort=bairagi
+ sort=bairagi,
+type=ragaHMD
 }
 
 \newglossaryentry{gaud_malhar}
 {
  name={Gau\d{d} malh\={a}r},
 description={},
- sort=gaud_malhar
+ sort=gaud_malhar,
+type=ragaHMD
 }
 
 \newglossaryentry{abhogi}
 {
  name={\={A}bh\={o}g\={i}},
 description={},
- sort=abhogi
+ sort=abhogi,
+type=ragaHMD
 }
 
 \newglossaryentry{bilasakhani_todi}
 {
  name={Bil\={a}sakh\={a}n\={i} t\={o}\d{d}\={i}},
 description={},
- sort=bilasakhani_todi
+ sort=bilasakhani_todi,
+type=ragaHMD
 }
 
 \newglossaryentry{bhup}
 {
  name={Bh\={u}p},
 description={},
- sort=bhup
+ sort=bhup,
+type=ragaHMD
 }
 
 \newglossaryentry{basant}
 {
  name={Basant},
 description={},
- sort=basant
+ sort=basant,
+type=ragaHMD
 }
 
 \newglossaryentry{ahira_bhairav}
 {
  name={Ahira bhairav},
 description={},
- sort=ahira_bhairav
+ sort=ahira_bhairav,
+type=ragaHMD
 }
 
 \newglossaryentry{ragesri}
 {
  name={R\={a}g\={e}\'{s}r\={i}},
 description={},
- sort=ragesri
+ sort=ragesri,
+type=ragaHMD
 }
 
 \newglossaryentry{puriya_dhanasri}
 {
  name={Puriy\={a} dhana\'{s}r\={i}},
 description={},
- sort=puriya_dhanasri
+ sort=puriya_dhanasri,
+type=ragaHMD
 }
 

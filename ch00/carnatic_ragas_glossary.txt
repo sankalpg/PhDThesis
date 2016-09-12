@@ -2,279 +2,319 @@
 {
  name={\d{S}anmukhapriya},
 description={},
- sort=sanmukhapriya
+ sort=sanmukhapriya,
+type=ragaCMD
 }
 
 newglossaryentry{kapi}
 {
  name={K\={a}pi},
 description={},
- sort=kapi
+ sort=kapi,
+type=ragaCMD
 }
 
 newglossaryentry{bhairavi}
 {
  name={Bhairavi},
 description={},
- sort=bhairavi
+ sort=bhairavi,
+type=ragaCMD
 }
 
 newglossaryentry{madhyamavati}
 {
  name={Madhyam\={a}vati},
 description={},
- sort=madhyamavati
+ sort=madhyamavati,
+type=ragaCMD
 }
 
 newglossaryentry{bilahari}
 {
  name={Bilahari},
 description={},
- sort=bilahari
+ sort=bilahari,
+type=ragaCMD
 }
 
 newglossaryentry{mohanam}
 {
  name={M\={o}hana\.{m}},
 description={},
- sort=mohanam
+ sort=mohanam,
+type=ragaCMD
 }
 
 newglossaryentry{sencurutti}
 {
  name={Sencuru\d{t}\d{t}i},
 description={},
- sort=sencurutti
+ sort=sencurutti,
+type=ragaCMD
 }
 
 newglossaryentry{sriranjani}
 {
  name={\'{S}r\={i}ranjani},
 description={},
- sort=sriranjani
+ sort=sriranjani,
+type=ragaCMD
 }
 
 newglossaryentry{ritigaula}
 {
  name={R\={i}tigau\d{l}a},
 description={},
- sort=ritigaula
+ sort=ritigaula,
+type=ragaCMD
 }
 
 newglossaryentry{husseni}
 {
  name={Huss\={e}n\={i}},
 description={},
- sort=husseni
+ sort=husseni,
+type=ragaCMD
 }
 
 newglossaryentry{dhanyasi}
 {
  name={Dhany\={a}si},
 description={},
- sort=dhanyasi
+ sort=dhanyasi,
+type=ragaCMD
 }
 
 newglossaryentry{atana}
 {
  name={A\d{t}\={a}na},
 description={},
- sort=atana
+ sort=atana,
+type=ragaCMD
 }
 
 newglossaryentry{behag}
 {
  name={Beh\={a}g},
 description={},
- sort=behag
+ sort=behag,
+type=ragaCMD
 }
 
 newglossaryentry{surati}
 {
  name={Sura\d{t}i},
 description={},
- sort=surati
+ sort=surati,
+type=ragaCMD
 }
 
 newglossaryentry{kamavardani}
 {
  name={K\={a}mavardani},
 description={},
- sort=kamavardani
+ sort=kamavardani,
+type=ragaCMD
 }
 
 newglossaryentry{mukhari}
 {
  name={Mukh\={a}ri},
 description={},
- sort=mukhari
+ sort=mukhari,
+type=ragaCMD
 }
 
 newglossaryentry{sindhubhairavi}
 {
  name={Sindhubhairavi},
 description={},
- sort=sindhubhairavi
+ sort=sindhubhairavi,
+type=ragaCMD
 }
 
 newglossaryentry{sahana}
 {
  name={Sah\={a}n\={a}},
 description={},
- sort=sahana
+ sort=sahana,
+type=ragaCMD
 }
 
 newglossaryentry{kanada}
 {
  name={K\={a}na\d{d}a},
 description={},
- sort=kanada
+ sort=kanada,
+type=ragaCMD
 }
 
 newglossaryentry{mayamalavagaula}
 {
  name={M\={a}y\={a}m\={a}\d{l}avagau\d{l}a},
 description={},
- sort=mayamalavagaula
+ sort=mayamalavagaula,
+type=ragaCMD
 }
 
 newglossaryentry{nata}
 {
  name={N\={a}\d{t}a},
 description={},
- sort=nata
+ sort=nata,
+type=ragaCMD
 }
 
 newglossaryentry{sankarabharanam}
 {
  name={\'{S}ankar\={a}bhara\d{n}a\.{m}},
 description={},
- sort=sankarabharanam
+ sort=sankarabharanam,
+type=ragaCMD
 }
 
 newglossaryentry{saveri}
 {
  name={S\={a}v\={e}ri},
 description={},
- sort=saveri
+ sort=saveri,
+type=ragaCMD
 }
 
 newglossaryentry{kamas}
 {
  name={Kam\={a}s},
 description={},
- sort=kamas
+ sort=kamas,
+type=ragaCMD
 }
 
 newglossaryentry{todi}
 {
  name={T\={o}\d{d}i},
 description={},
- sort=todi
+ sort=todi,
+type=ragaCMD
 }
 
 newglossaryentry{begada}
 {
  name={B\={e}ga\d{d}a},
 description={},
- sort=begada
+ sort=begada,
+type=ragaCMD
 }
 
 newglossaryentry{harikambhoji}
 {
  name={Harik\={a}mbh\={o}ji},
 description={},
- sort=harikambhoji
+ sort=harikambhoji,
+type=ragaCMD
 }
 
 newglossaryentry{sri}
 {
  name={\'{S}r\={i}},
 description={},
- sort=sri
+ sort=sri,
+type=ragaCMD
 }
 
 newglossaryentry{kalyani}
 {
  name={Kaly\={a}\d{n}i},
 description={},
- sort=kalyani
+ sort=kalyani,
+type=ragaCMD
 }
 
 newglossaryentry{sama}
 {
  name={S\={a}ma},
 description={},
- sort=sama
+ sort=sama,
+type=ragaCMD
 }
 
 newglossaryentry{natakurinji}
 {
  name={N\={a}\d{t}akurinji},
 description={},
- sort=natakurinji
+ sort=natakurinji,
+type=ragaCMD
 }
 
 newglossaryentry{purvikalyani}
 {
  name={P\={u}rv\={i}ka\d{l}y\={a}\d{n}i},
 description={},
- sort=purvikalyani
+ sort=purvikalyani,
+type=ragaCMD
 }
 
 newglossaryentry{yadukula_kamboji}
 {
  name={Yadukula k\={a}\.{m}b\={o}ji},
 description={},
- sort=yadukula_kamboji
+ sort=yadukula_kamboji,
+type=ragaCMD
 }
 
 newglossaryentry{devagandhari}
 {
  name={D\={e}vag\={a}ndh\={a}ri},
 description={},
- sort=devagandhari
+ sort=devagandhari,
+type=ragaCMD
 }
 
 newglossaryentry{kedaragaula}
 {
  name={K\={e}d\={a}ragau\d{l}a},
 description={},
- sort=kedaragaula
+ sort=kedaragaula,
+type=ragaCMD
 }
 
 newglossaryentry{anandabhairavi}
 {
  name={\={A}nandabhairavi},
 description={},
- sort=anandabhairavi
+ sort=anandabhairavi,
+type=ragaCMD
 }
 
 newglossaryentry{gaula}
 {
  name={Gau\d{l}a},
 description={},
- sort=gaula
+ sort=gaula,
+type=ragaCMD
 }
 
 newglossaryentry{varali}
 {
  name={Var\={a}\d{l}i},
 description={},
- sort=varali
+ sort=varali,
+type=ragaCMD
 }
 
 newglossaryentry{kambhoji}
 {
  name={K\={a}\.{m}bh\={o}ji},
 description={},
- sort=kambhoji
+ sort=kambhoji,
+type=ragaCMD
 }
 
 newglossaryentry{karaharapriya}
 {
  name={Karaharapriya},
 description={},
- sort=karaharapriya
+ sort=karaharapriya,
+type=ragaCMD
 }
 
