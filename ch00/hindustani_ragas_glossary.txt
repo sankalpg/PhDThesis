@@ -19,11 +19,11 @@ description={},
  sort=darbari
 }
 
-\newglossaryentry{miyan malhar}
+\newglossaryentry{miyan_malhar}
 {
  name={Miy\={a}n malh\={a}r},
 description={},
- sort=miyan malhar
+ sort=miyan_malhar
 }
 
 \newglossaryentry{bhairav}
@@ -40,11 +40,11 @@ description={},
  sort=madhuvanti
 }
 
-\newglossaryentry{alahaiya bilaval}
+\newglossaryentry{alahaiya_bilaval}
 {
  name={Alahaiy\={a} bil\={a}val},
 description={},
- sort=alahaiya bilaval
+ sort=alahaiya_bilaval
 }
 
 \newglossaryentry{marva}
@@ -54,11 +54,11 @@ description={},
  sort=marva
 }
 
-\newglossaryentry{suddh sarang}
+\newglossaryentry{suddh_sarang}
 {
  name={\'{S}uddh s\={a}ra\.{n}g},
 description={},
- sort=suddh sarang
+ sort=suddh_sarang
 }
 
 \newglossaryentry{sri}
@@ -68,11 +68,11 @@ description={},
  sort=sri
 }
 
-\newglossaryentry{yaman kalyan}
+\newglossaryentry{yaman_kalyan}
 {
  name={Yaman kaly\={a}\d{n}},
 description={},
- sort=yaman kalyan
+ sort=yaman_kalyan
 }
 
 \newglossaryentry{marubihag}
@@ -152,11 +152,11 @@ description={},
  sort=bairagi
 }
 
-\newglossaryentry{gaud malhar}
+\newglossaryentry{gaud_malhar}
 {
  name={Gau\d{d} malh\={a}r},
 description={},
- sort=gaud malhar
+ sort=gaud_malhar
 }
 
 \newglossaryentry{abhogi}
@@ -166,11 +166,11 @@ description={},
  sort=abhogi
 }
 
-\newglossaryentry{bilasakhani todi}
+\newglossaryentry{bilasakhani_todi}
 {
  name={Bil\={a}sakh\={a}n\={i} t\={o}\d{d}\={i}},
 description={},
- sort=bilasakhani todi
+ sort=bilasakhani_todi
 }
 
 \newglossaryentry{bhup}
@@ -187,11 +187,11 @@ description={},
  sort=basant
 }
 
-\newglossaryentry{ahira bhairav}
+\newglossaryentry{ahira_bhairav}
 {
  name={Ahira bhairav},
 description={},
- sort=ahira bhairav
+ sort=ahira_bhairav
 }
 
 \newglossaryentry{ragesri}
@@ -201,10 +201,10 @@ description={},
  sort=ragesri
 }
 
-\newglossaryentry{puriya dhanasri}
+\newglossaryentry{puriya_dhanasri}
 {
  name={Puriy\={a} dhana\'{s}r\={i}},
 description={},
- sort=puriya dhanasri
+ sort=puriya_dhanasri
 }
 
