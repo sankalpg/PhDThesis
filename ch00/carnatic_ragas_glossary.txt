@@ -1,0 +1,280 @@
+\newglossaryentry{Sanmukhapriya}
+{
+ name={\d{S}anmukhapriya},
+description={},
+ sort=Sanmukhapriya
+}
+
+\newglossaryentry{Kapi}
+{
+ name={K\={a}pi},
+description={},
+ sort=Kapi
+}
+
+\newglossaryentry{Bhairavi}
+{
+ name={Bhairavi},
+description={},
+ sort=Bhairavi
+}
+
+\newglossaryentry{Madhyamavati}
+{
+ name={Madhyam\={a}vati},
+description={},
+ sort=Madhyamavati
+}
+
+\newglossaryentry{Bilahari}
+{
+ name={Bilahari},
+description={},
+ sort=Bilahari
+}
+
+\newglossaryentry{Mohanam}
+{
+ name={M\={o}hana\.{m}},
+description={},
+ sort=Mohanam
+}
+
+\newglossaryentry{Sencurutti}
+{
+ name={Sencuru\d{t}\d{t}i},
+description={},
+ sort=Sencurutti
+}
+
+\newglossaryentry{Sriranjani}
+{
+ name={\'{S}r\={i}ranjani},
+description={},
+ sort=Sriranjani
+}
+
+\newglossaryentry{Ritigaula}
+{
+ name={R\={i}tigau\d{l}a},
+description={},
+ sort=Ritigaula
+}
+
+\newglossaryentry{Husseni}
+{
+ name={Huss\={e}n\={i}},
+description={},
+ sort=Husseni
+}
+
+\newglossaryentry{Dhanyasi}
+{
+ name={Dhany\={a}si},
+description={},
+ sort=Dhanyasi
+}
+
+\newglossaryentry{Atana}
+{
+ name={A\d{t}\={a}na},
+description={},
+ sort=Atana
+}
+
+\newglossaryentry{Behag}
+{
+ name={Beh\={a}g},
+description={},
+ sort=Behag
+}
+
+\newglossaryentry{Surati}
+{
+ name={Sura\d{t}i},
+description={},
+ sort=Surati
+}
+
+\newglossaryentry{Kamavardani}
+{
+ name={K\={a}mavardani},
+description={},
+ sort=Kamavardani
+}
+
+\newglossaryentry{Mukhari}
+{
+ name={Mukh\={a}ri},
+description={},
+ sort=Mukhari
+}
+
+\newglossaryentry{Sindhubhairavi}
+{
+ name={Sindhubhairavi},
+description={},
+ sort=Sindhubhairavi
+}
+
+\newglossaryentry{Sahana}
+{
+ name={Sah\={a}n\={a}},
+description={},
+ sort=Sahana
+}
+
+\newglossaryentry{Kanada}
+{
+ name={K\={a}na\d{d}a},
+description={},
+ sort=Kanada
+}
+
+\newglossaryentry{Mayamalavagaula}
+{
+ name={M\={a}y\={a}m\={a}\d{l}avagau\d{l}a},
+description={},
+ sort=Mayamalavagaula
+}
+
+\newglossaryentry{Nata}
+{
+ name={N\={a}\d{t}a},
+description={},
+ sort=Nata
+}
+
+\newglossaryentry{Sankarabharanam}
+{
+ name={\'{S}ankar\={a}bhara\d{n}a\.{m}},
+description={},
+ sort=Sankarabharanam
+}
+
+\newglossaryentry{Saveri}
+{
+ name={S\={a}v\={e}ri},
+description={},
+ sort=Saveri
+}
+
+\newglossaryentry{Kamas}
+{
+ name={Kam\={a}s},
+description={},
+ sort=Kamas
+}
+
+\newglossaryentry{Todi}
+{
+ name={T\={o}\d{d}i},
+description={},
+ sort=Todi
+}
+
+\newglossaryentry{Begada}
+{
+ name={B\={e}ga\d{d}a},
+description={},
+ sort=Begada
+}
+
+\newglossaryentry{Harikambhoji}
+{
+ name={Harik\={a}mbh\={o}ji},
+description={},
+ sort=Harikambhoji
+}
+
+\newglossaryentry{Sri}
+{
+ name={\'{S}r\={i}},
+description={},
+ sort=Sri
+}
+
+\newglossaryentry{Kalyani}
+{
+ name={Kaly\={a}\d{n}i},
+description={},
+ sort=Kalyani
+}
+
+\newglossaryentry{Sama}
+{
+ name={S\={a}ma},
+description={},
+ sort=Sama
+}
+
+\newglossaryentry{Natakurinji}
+{
+ name={N\={a}\d{t}akurinji},
+description={},
+ sort=Natakurinji
+}
+
+\newglossaryentry{Purvikalyani}
+{
+ name={P\={u}rv\={i}ka\d{l}y\={a}\d{n}i},
+description={},
+ sort=Purvikalyani
+}
+
+\newglossaryentry{Yadukula kamboji}
+{
+ name={Yadukula k\={a}\.{m}b\={o}ji},
+description={},
+ sort=Yadukula kamboji
+}
+
+\newglossaryentry{Devagandhari}
+{
+ name={D\={e}vag\={a}ndh\={a}ri},
+description={},
+ sort=Devagandhari
+}
+
+\newglossaryentry{Kedaragaula}
+{
+ name={K\={e}d\={a}ragau\d{l}a},
+description={},
+ sort=Kedaragaula
+}
+
+\newglossaryentry{Anandabhairavi}
+{
+ name={\={A}nandabhairavi},
+description={},
+ sort=Anandabhairavi
+}
+
+\newglossaryentry{Gaula}
+{
+ name={Gau\d{l}a},
+description={},
+ sort=Gaula
+}
+
+\newglossaryentry{Varali}
+{
+ name={Var\={a}\d{l}i},
+description={},
+ sort=Varali
+}
+
+\newglossaryentry{Kambhoji}
+{
+ name={K\={a}\.{m}bh\={o}ji},
+description={},
+ sort=Kambhoji
+}
+
+\newglossaryentry{Karaharapriya}
+{
+ name={Karaharapriya},
+description={},
+ sort=Karaharapriya
+}
+

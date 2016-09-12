@@ -1,0 +1,210 @@
+\newglossaryentry{Jog}
+{
+ name={J\={o}g},
+description={},
+ sort=Jog
+}
+
+\newglossaryentry{Madhukauns}
+{
+ name={Madhukauns},
+description={},
+ sort=Madhukauns
+}
+
+\newglossaryentry{Darbari}
+{
+ name={Darb\={a}ri},
+description={},
+ sort=Darbari
+}
+
+\newglossaryentry{Miyan malhar}
+{
+ name={Miy\={a}n malh\={a}r},
+description={},
+ sort=Miyan malhar
+}
+
+\newglossaryentry{Bhairav}
+{
+ name={Bhairav},
+description={},
+ sort=Bhairav
+}
+
+\newglossaryentry{Madhuvanti}
+{
+ name={Madhuvanti},
+description={},
+ sort=Madhuvanti
+}
+
+\newglossaryentry{Alahaiya bilaval}
+{
+ name={Alahaiy\={a} bil\={a}val},
+description={},
+ sort=Alahaiya bilaval
+}
+
+\newglossaryentry{Marva}
+{
+ name={M\={a}rv\={a}},
+description={},
+ sort=Marva
+}
+
+\newglossaryentry{Suddh sarang}
+{
+ name={\'{S}uddh s\={a}ra\.{n}g},
+description={},
+ sort=Suddh sarang
+}
+
+\newglossaryentry{Sri}
+{
+ name={\'{S}r\={i}},
+description={},
+ sort=Sri
+}
+
+\newglossaryentry{Yaman kalyan}
+{
+ name={Yaman kaly\={a}\d{n}},
+description={},
+ sort=Yaman kalyan
+}
+
+\newglossaryentry{Marubihag}
+{
+ name={M\={a}r\={u}bih\={a}g},
+description={},
+ sort=Marubihag
+}
+
+\newglossaryentry{Hamsadhvani}
+{
+ name={Hamsadhv\={a}ni},
+description={},
+ sort=Hamsadhvani
+}
+
+\newglossaryentry{Des}
+{
+ name={D\={e}\'{s}},
+description={},
+ sort=Des
+}
+
+\newglossaryentry{Malkauns}
+{
+ name={M\={a}lkauns},
+description={},
+ sort=Malkauns
+}
+
+\newglossaryentry{Todi}
+{
+ name={T\={o}\d{d}\={i}},
+description={},
+ sort=Todi
+}
+
+\newglossaryentry{Bagesri}
+{
+ name={B\={a}g\={e}\'{s}r\={i}},
+description={},
+ sort=Bagesri
+}
+
+\newglossaryentry{Khamaj}
+{
+ name={Kham\={a}j},
+description={},
+ sort=Khamaj
+}
+
+\newglossaryentry{Bihag}
+{
+ name={Bih\={a}g},
+description={},
+ sort=Bihag
+}
+
+\newglossaryentry{Lalit}
+{
+ name={Lalit},
+description={},
+ sort=Lalit
+}
+
+\newglossaryentry{Kedar}
+{
+ name={K\={e}d\={a}r},
+description={},
+ sort=Kedar
+}
+
+\newglossaryentry{Bairagi}
+{
+ name={Bair\={a}gi},
+description={},
+ sort=Bairagi
+}
+
+\newglossaryentry{Gaud malhar}
+{
+ name={Gau\d{d} malh\={a}r},
+description={},
+ sort=Gaud malhar
+}
+
+\newglossaryentry{Abhogi}
+{
+ name={\={A}bh\={o}g\={i}},
+description={},
+ sort=Abhogi
+}
+
+\newglossaryentry{Bilasakhani todi}
+{
+ name={Bil\={a}sakh\={a}n\={i} t\={o}\d{d}\={i}},
+description={},
+ sort=Bilasakhani todi
+}
+
+\newglossaryentry{Bhup}
+{
+ name={Bh\={u}p},
+description={},
+ sort=Bhup
+}
+
+\newglossaryentry{Basant}
+{
+ name={Basant},
+description={},
+ sort=Basant
+}
+
+\newglossaryentry{Ahira bhairav}
+{
+ name={Ahira bhairav},
+description={},
+ sort=Ahira bhairav
+}
+
+\newglossaryentry{Ragesri}
+{
+ name={R\={a}g\={e}\'{s}r\={i}},
+description={},
+ sort=Ragesri
+}
+
+\newglossaryentry{Puriya dhanasri}
+{
+ name={Puriy\={a} dhana\'{s}r\={i}},
+description={},
+ sort=Puriya dhanasri
+}
+
