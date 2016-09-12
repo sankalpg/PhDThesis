@@ -168,80 +168,104 @@ Note that in our published work in~\cite{gulatiphrase_2016} we use a different e
 
 We compare our results with two state-of-the-art methods proposed in~\citep{chordia2013joint} and \citep{koduri2014intonation}. As an input to these methods, we use the same features, predominant pitch and tonic, as used in our method. The only difference is that the pitch contours fed to these methods are not post-processed (\secref{sec:data_preprocessing_pitch_postprocessing}). This is because these methods primarily exploit the intonation aspect of the \glspl{svara}, and therefore, performing a smoothening operation on pitch contours might degrade their performance. The method in~\cite{chordia2013joint} uses smoothened \acrfull{pcd} as the tonal feature and employs \acrfull{1nn} using Bhattacharyya distance for predicting \gls{raga} labels. We denote this method by \acrshort{sotaChordia}. The authors in~\cite{chordia2013joint} report a window size of 120\,s as an optimal duration for computing \glspl{pcd} (denoted here by $\mathrm{PCD}_{120}$). However, in our experiments we find that \glspl{pcd} computed over the entire audio recording (denoted here by~$\mathrm{PCD}_\mathrm{full}$) result in a significant improvement~\citep{gulatiphrase_2016}. We therefore use $\mathrm{PCD}_\mathrm{full}$ for comparison. Note that in~\cite{chordia2013joint} the authors do not experiment with a window size larger than 120\,s. 
 
-The method in~\cite{koduri2014intonation} is proposed primarily for Carnatic music. This method also uses features based on pitch distribution. However, unlike in \acrshort{sotaChordia}, the authors use parameterized pitch distribution of individual \glspl{svara} as features (denoted here by $\mathrm{PD}_\mathrm{param}$). We denote this method by \acrshort{sotaKoduri}. Note that \acrshort{sotaKoduri} utilizes specific intonation aspects of \glspl{svara} in Carnatic music, and is not devised to work with Hindustani music recordings. We therefore do not consider this method for comparing results on Hindustani music. The authors of both these papers courteously ran the experiments on our dataset using the original implementations of the methods. 
+The method in~\cite{koduri2014intonation} is proposed primarily for Carnatic music. This method also uses features based on pitch distribution. However, unlike in \acrshort{sotaChordia}, the authors use parameterized pitch distributions as features. We denote this method by \acrshort{sotaKoduri}. We consider two variants of this method. One in which the parameterization is done using a single pitch histogram that includes distribution of all the \glspl{svara} in the recording (denoted here by $\mathrm{PD}_\mathrm{param}$), and the other, wherein a separate histogram is constructed for each individual \gls{svara} in the recording (denoted here by $\mathrm{PD}_\mathrm{context}$). In the second variant the mapping of a pitch sample to a \gls{svara} is based on its local melodic context as explained in~\cite{koduri2014intonation}. Note that \acrshort{sotaKoduri} utilizes specific intonation aspects of \glspl{svara} in Carnatic music, and is not devised and tested for Hindustani music recordings. We therefore do not consider this method for comparing results on Hindustani music. 
+
+The authors of \acrshort{sotaChordia} courteously ran the experiments on our dataset using the original implementations of the method. For \acrshort{sotaKoduri}, the authors kindly extracted the features ($\mathrm{PD}_\mathrm{param}$ and $\mathrm{PD}_\mathrm{context}$) using the original implementation of their method and the experiments using different classification strategies were done by us.
 
 
-\subsection{Results and Discussion[SIGNIFICANT WORK TBD]}
+\subsection{Results and Discussion}
 \label{sec:vsm_eval_results}
 
-\TODO{1) Table with latest results, 2) CC curve against performance accuracy, 3) Confusion matrices of our approach and sota approaches, 4) Statistical sig 5) analysis of results and writing them.}
+Before we proceed to present our results, we notify readers that the accuracies reported in this section for different methods vary slightly from the ones reported in~\cite{gulatiphrase_2016}. As mentioned, the experimental setup used here is different compared to the paper. In addition, the parameters used for discovering melodic patterns are also different~(\secref{sec:vsm_feature_extraction_pattern_discovery}). Furthermore, we do not consider the dataset that comprise only 10\,\gls{raga} as done in~\cite{gulatiphrase_2016}, for which our method was shown to outperform the state of the art. 
 
 \begin{table}
-	\tabcolsep=.18cm
 	\centering
-	\begin{tabular}{c|c|c|c c c c c}
-		\hline
-		db & Mtd & Ftr & \acrshort{nbm} & \acrshort{nbb} & \acrshort{lr} & \acrshort{svml} & \acrshort{1nn}\tabularnewline
-		\hline \hline 
-		\multirow{5}{*}{\begin{turn}{90}DB10r\={a}ga\end{turn}} & \multirow{3}{*}{\acrshort{ragarecVSM}} & $\featureVSMOne$ & 90.6 & 74 & 84.1 & 81.2 & -\tabularnewline
-		
-		&  & $\featureVSMTwo$ & {\bf 91.7} & 73.8 & 84.8 & 81.2 & -\tabularnewline
-		
-		&  & $\featureVSMThree$ & 90.5 & 74.5 & 84.3 & 80.7 & -\tabularnewline
-		\cline{2-8} 
-		& \multirow{2}{*}{\acrshort{sotaChordia}} & $\mathrm{PCD}_{120}$ & - & - & - & - & 82.2\tabularnewline
-		& & $\mathrm{PCD}_\mathrm{full}$ & - & - & - & - & {\bf 89.5}\tabularnewline
-		\cline{2-8} 
-		& \acrshort{sotaKoduri} & $\mathrm{PD}_\mathrm{param}$ & 37.9 & 11.2 & {\bf 70.1} & 65.7 & -\tabularnewline
-		\hline \hline
-		\multirow{5}{*}{\begin{turn}{90}DB40r\={a}ga\end{turn}} & \multirow{3}{*}{\acrshort{ragarecVSM}} & $\featureVSMOne$ & 69.6 & 61.3 & 55.9 & 54.6 & -\tabularnewline
-		
-		&  & $\featureVSMTwo$ & {\bf 69.6} & 61.7 & 55.7 & 54.3 & -\tabularnewline
-		
-		&  & $\featureVSMThree$ & 69.5 & 61.5 & 55.9 & 54.5 & -\tabularnewline
-		\cline{2-8} 
-		& \multirow{2}{*}{\acrshort{sotaChordia}} & $\mathrm{PCD}_{120}$ & - & - & - & - & 66.4\tabularnewline
-		
-		& & $\mathrm{PCD}_\mathrm{full}$ & - & - & - & - & {\bf 74.1}\tabularnewline
-		\cline{2-8} 
-		& \acrshort{sotaKoduri} & $\mathrm{PD}_\mathrm{param}$ & 20.8 & 2.6 & {\bf 51.4} & 44.2 & -\tabularnewline
-		\hline \hline
-	\end{tabular}
-	
-	\caption{Accuracy (in percentage) of different methods (Mtd) for two datasets (db) using different classifiers and features (Ftr).} 
-	\label{tab:accuracies_for_variants}
+	\renewcommand{\arraystretch}{1.5}	
+\begin{tabular}{ c|c|c c c c c c c }
+\tabletop
+	Method & Feature & \acrshort{svml} & \acrshort{sgd} & \acrshort{nbm} & \acrshort{nbg} & \acrshort{randforest} & \acrshort{lr} & \acrshort{1nn}\tabularnewline
+\tablemid
+	\multirow{3}{*}{\acrshort{ragarecVSM}} & $\featureVSMOne$ & 51.04 & 55 & 37.5 & 54.37 & 25.41 & 55.83 & -\tabularnewline
+
+	& $\featureVSMTwo$ & 45.83 & 50.41 & 35.62 & 47.5 & 26.87 & 51.87 & -\tabularnewline
+
+	& $\featureVSMThree$ & 45.83 & 51.66 & \textbf{67.29} & 44.79 & 23.75 & 51.87 & -\tabularnewline
+\tablemid
+	\acrshort{sotaChordia} & $\mathrm{PCD}_\mathrm{full}$ & - & - & - & - & - & - & \textbf{73.12}\tabularnewline
+\tablemid
+	\multirow{2}{*}{\acrshort{sotaKoduri}} & $\mathrm{PD}_\mathrm{param}$ & 30.41 & 22.29 & 27.29 & 28.12 & 42.91 & 30.83 & 25.62\tabularnewline
+
+	 & $\mathrm{PD}_\mathrm{context}$ & 58.33 & 50.41 & 57.7 & 65.2 & \textbf{80} & 53.12 & 54.8\tabularnewline
+\tablebot
+\end{tabular}	
+	\caption{Accuracy (in percentage) of \gls{raga} recognition on \acrshort{rrds_cmd_big} dataset by \acrshort{ragarecVSM} and other methods methods using different features and classifiers. Bold text signifies the best accuracy by a method among all its variants.\TODO{replace gopala's number with the new ones after another round of exps}} 
+	\label{tab:accuracies_cmd_vsm}
 \end{table}
 
 
 
-In Table~\ref{tab:accuracies_for_variants}, we present the results of our proposed method \acrshort{ragarecVSM} and the two state of the art methods \acrshort{sotaChordia} and \acrshort{sotaKoduri} for the two datasets DB10r\={a}ga and DB40r\={a}ga. The highest accuracy for every method is highlighted in bold for both the datasets. Due to lack of space we present results only for the best performing classifiers. 
+\begin{table}
+	\centering
+	\renewcommand{\arraystretch}{1.5}	
+\begin{tabular}{c|c|ccccccc}
+\tabletop
+	Method & Feature & \acrshort{svml} & \acrshort{sgd} & \acrshort{nbm} & \acrshort{nbg} & \acrshort{randforest} & \acrshort{lr} & \acrshort{1nn}\tabularnewline
+\tablemid
+	\multirow{3}{*}{\acrshort{ragarecVSM}} & $\featureVSMOne$ & 71 & 72.33 & 69.33 & 79.33 & 38.66 & 74.33 & -\tabularnewline
+	& $\featureVSMTwo$ & 65.33 & 64.33 & 67.66 & 72.66 & 40.33 & 68 & -\tabularnewline
+	& $\featureVSMThree$ & 65.33 & 62.66 & \textbf{82.66} & 72 & 41.33 & 67.66 & -\tabularnewline
+	\hline 
+	\acrshort{sotaChordia} & $\mathrm{PCD}_\mathrm{full}$ & - & - & - & - & - & - & \textbf{91.66}\tabularnewline
+\tablebot
+\end{tabular}
+	\caption{Accuracy (in percentage) of \gls{raga} recognition on \acrshort{rrds_hmd_big} dataset by \acrshort{ragarecVSM} and other methods methods using different features and classifiers. Bold text signifies the best accuracy by a method among all its variants.} 
+	\label{tab:accuracies_hmd_vsm}
+\end{table}
 
-We start by analyzing the results of the variants of \acrshort{ragarecVSM}. From Table~\ref{tab:accuracies_for_variants}, we see that the highest accuracy obtained by \acrshort{ragarecVSM} for DB10r\={a}ga is 91.7\%. Compared to DB10r\={a}ga, there is a significant drop in the performance of every variant of \acrshort{ragarecVSM} for DB40r\={a}ga. The best performing variant in the latter achieves 69.6\% accuracy. We also see that for both the datasets, the accuracy obtained by \acrshort{ragarecVSM} across the feature sets is nearly the same for each classifier, with no statistically significant difference. This suggests that, considering just the presence or the absence of a melodic pattern, irrespective of its frequency of occurrence, is sufficient for \gls{raga} recognition. Interestingly, this finding is consistent with the fact that characteristic melodic patterns are unique to a \gls{raga} and a single occurrence of such patterns is sufficient to identify the \gls{raga}~\cite{krishna2012carnatic}. As seen in Table~\ref{tab:accuracies_for_variants}, the performance of the proposed method is very sensitive to the choice of the classifier. We notice that for both the datasets, the best accuracy is obtained using the NBM classifier, and the difference in its performance compared to any other classifier is statistically significant. Note that, the NBM classifier outperforming other classifiers is also well recognized in the text classification community~\cite{mccallum1998comparison}. We, therefore, only consider the NBM classifier for comparing \acrshort{ragarecVSM} with the other methods. It is worth noting that the feature weights assigned by a classifier can be used to identify the relevant melodic patterns for \gls{raga} recognition. These patterns can serve as a dictionary of semantically-meaningful melodic units for many computational tasks in IAM.
 
-In order to validate that the estimated similarity threshold $\simThsld^\star$ (Section~\ref{pattern_clustering}) produces the optimal results, we perform \gls{raga} recognition using different similarity thresholds $\simThsld$. 
+\TODO{1) Table with latest results, 2) CC curve against performance accuracy, 3) Confusion matrices of our approach and sota approaches, 4) Statistical sig 5) analysis of results and writing them.}
+
+In~\tabref{tab:accuracies_cmd_vsm} and~\tabref{tab:accuracies_hmd_vsm}, we present the results of our proposed method \acrshort{ragarecVSM} and the two state of the art methods \acrshort{sotaChordia} and \acrshort{sotaKoduri} for the two datasets \acrshort{rrds_cmd_big} and \acrshort{rrds_hmd_big}, respectively. The highest accuracy for every method is highlighted in bold for both the datasets. Due to the poor performance of \acrshort{svml} and \acrshort{nbb} classifiers in our experiments on we drop them from the tables and our analysis. 
+
+We start by analyzing the results of the variants of \acrshort{ragarecVSM} for both the datasets. From~\tabref{tab:accuracies_cmd_vsm} and~\tabref{tab:accuracies_hmd_vsm}, we see that the highest accuracy obtained by \acrshort{ragarecVSM} for \acrshort{rrds_cmd_big} is 67.29\%, and for \acrshort{rrds_hmd_big} is 82.66\%. The difference in the performance across the two datasets can be attributed to several factors. One of them being the difference in the number of \glspl{raga} across the two datasets; 40 in  \acrshort{rrds_cmd_big} and 30  \acrshort{rrds_hmd_big}. The performance difference can also be because of the difference in the overall length of the audio recordings. Recordings of the music pieces considered in our datasets are significantly longer in Hindustani music compared to Carnatic music (\secref{sec:corpus_raga_recognition_datasets}). However, since the melodic characteristics and complexity varies considerably across the two music traditions, a definite reason can only be identified by performing the experiments with equal number of \glspl{raga} in the dataset and equal duration of the music pieces, which is left for the future investigations. 
+
+From~\tabref{tab:accuracies_cmd_vsm} and~\tabref{tab:accuracies_hmd_vsm}, we see that for both the datasets, the accuracy obtained by \acrshort{ragarecVSM} across the feature sets differs substantially. We also see that their performance is very sensitive to the choice of the classifier. With the exceptions of the \acrshort{nbm} and \acrshort{lr} classifier, feature $\featureVSMOne$ in general performs better than the other two features and the difference is found to be statistically significant in each case. This suggests that, considering just the presence or the absence of a melodic pattern, irrespective of its frequency of occurrence, might be sufficient for \gls{raga} recognition. Interestingly, this finding is consistent with the fact that characteristic melodic patterns are unique to a \gls{raga} and a single occurrence of such patterns is sufficient to identify the \gls{raga}~\citep{krishna2012carnatic}. However, the best performance is obtained by the combination of $\featureVSMThree$ and \acrshort{nbm} classifier, and the difference in its performance compared to any other variant is statistically significant. The \acrshort{nbm} classifier outperforming other classifiers using appropriate features is also well recognized in the text classification community~\citep{mccallum1998comparison}. We, therefore, only consider the combination of $\featureVSMThree$ and the \acrshort{nbm} classifier for comparing \acrshort{ragarecVSM} with the other methods. Overall, the accuracies across different features indicate that normalizing the frequency of occurrence of melodic patterns (as done for $\featureVSMOne$ and $\featureVSMThree$) is beneficial for \gls{raga} recognition. A plausible reason can be that a normalization procedure reduces the weight of the type of melodic patterns that occur more frequently, such as the \glspl{gamaka} type patterns~(\secref{sec:melody_in_iam}), and are not the characteristic patterns of any particular \gls{raga}. It is worth noting that the feature weights assigned by a classifier can be used to identify the relevant melodic patterns for \gls{raga} recognition. These patterns can serve as a dictionary of semantically-meaningful melodic units for many computational tasks in \gls{iam}.
 
 \begin{figure}
-	\begin{center}
-		\includegraphics[width=\figSizeEighty]{ch07_ragaRecognition/figures/accuracy_Vs_thresold.pdf}
-	\end{center}
-	\caption{Accuracy of \acrshort{ragarecVSM} and $\clusCoff(\netUndirWght)-\clusCoff(\netUndirWght_r)$ for different similarity thresholds.}
-	\label{fig:performance_across_thresholds}
+
+	\begin{subfigure}{\textwidth}
+			\centering
+	\includegraphics[width=\figSizeEighty]{ch07_ragaRecognition/figures/CarnaticConfig3_Accuracy_vs_CCdiff.pdf}
+		\caption{For \acrshort{rrds_cmd_big} dataset}
+		\label{fig:performance_across_thresholds_cmd}
+	\end{subfigure}
+	\begin{subfigure}{\textwidth}
+			\centering
+		\includegraphics[width=\figSizeEighty]{ch07_ragaRecognition/figures/HindustaniConfig2_Accuracy_vs_CCdiff.pdf}
+		\caption{For \acrshort{rrds_hmd_big} dataset}
+		\label{fig:performance_across_thresholds_hmd}
+	\end{subfigure}
+		\caption{Accuracy of \acrshort{ragarecVSM} and $\clusCoff(\netUndirWght)-\clusCoff(\netUndirWght_r)$ for different similarity thresholds ($\simThsld$) for both the datasets.}
+		\label{fig:performance_across_thresholds}
 \end{figure}
+
+
+In addition to analyzing the final \gls{raga} recognition accuracies, we also verify our approach to obtain the optimal similarity threshold $\simThsld^\star$~(\secref{sec:vsm_feature_extraction_pattern_clustering}). For this, we perform \gls{raga} recognition using different similarity thresholds $\simThsld$. In~\figref{fig:performance_across_thresholds}, we show the accuracy obtained by \acrshort{ragarecVSM}, and  $C(\netUndirWght)-C(\netUndirWght_r)$ as a function of similarity threshold $\simThsld$ for both the datasets. We see that these curves are highly correlated for both the datasets. Thus, we see that our strategy to obtain the optimal threshold $\simThsld^\star$, which we defined in~\secref{sec:vsm_feature_extraction_pattern_clustering} as the distance ($\simThsld$) that maximizes the difference $C(\netUndirWght)-C(\netUndirWght_r)$, is successful and, it results in the best \gls{raga} recognition accuracy.
 
 \begin{figure}
 	\begin{center}
 		\includegraphics[width=\figSizeHundred]{ch07_ragaRecognition/figures/cnf_mtx_40raga_with_annotation.pdf}
 	\end{center}
-	\caption{Confusion matrix for the proposed method. The different shades of grey are mapped to different number of audio recordings.}
-	\label{fig:confusion_matrix}
+	\caption{Confusion matrix of the \gls{raga} predictions by \acrshort{ragarecVSM} on \acrshort{rrds_cmd_big} dataset. The different shades of grey are mapped to different number of audio recordings.}
+	\label{fig:confusion_matrix_cmd}
 \end{figure}
-
-Before further analyses of our results, we verify here our approach to obtain the optimal similarity threshold $\simThsld^\star$ (Section~\ref{pattern_clustering}). In Figure~\ref{fig:performance_across_thresholds}, we show the accuracy obtained by \acrshort{ragarecVSM}, and  $C(\netUndirWght)-C(\netUndirWght_r)$ as a function of similarity threshold $\simThsld$. We see that these curves are highly correlated. Thus, the optimal threshold $\simThsld^\star$, which we defined in Section~\ref{pattern_clustering} as the distance that maximizes the difference $C(\netUndirWght)-C(\netUndirWght_r)$, also results in the best accuracy for \gls{raga} recognition.
 
 We now analyze the confusion matrix, and understand the type of classification errors made by \acrshort{ragarecVSM}, (Figure~\ref{fig:confusion_matrix}). We observe that our method achieves near-perfect accuracy for several \glspl{raga} including Kaly\={a}\d{n}i, P\={u}rvikaly\={a}\d{n}i, T\={o}\d{d}i and Var\={a}\d{l}i. This is consistent with the fact that these are considered to be phrase-based \glspl{raga}, that is, their identity is predominantly derived from melodic phraseology~\cite{krishna2012carnatic}. At the same time, we observe low accuracy for some other phrase-based \glspl{raga} such as Madhyam\={a}vati, K\={a}na\d{d}a and \'{S}r\={i}. On investigating further we find that such \glspl{raga} are confused often with their allied \glspl{raga}\footnote{Allied \glspl{raga} have a common set of svaras and similar melodic movement}~\cite{krishna2012carnatic}. Distinguishing between allied \glspl{raga} is a challenging task, since it is based on subtle melodic nuances. We also note that, among the other \glspl{raga} for which the obtained accuracy is low, several are considered as scale-based \glspl{raga}. This is in line with~\cite{krishna2012carnatic}, where the authors remark that the identification of such \glspl{raga} is not based on melodic phraseology. Overall, this analysis of the classification errors indicates that our proposed method is more suitable for recognizing phrase-based \glspl{raga} compared to scale-based \glspl{raga}. 
 
 
 Finally, we compare \acrshort{ragarecVSM} with the state of the art methods \acrshort{sotaChordia} and \acrshort{sotaKoduri}. From Table~\ref{tab:accuracies_for_variants}, we see that \acrshort{ragarecVSM} outperforms \acrshort{sotaKoduri} for both the datasets, and the difference is found to be statistically significant. When compared with \acrshort{sotaChordia}, we see that \acrshort{ragarecVSM} performs significantly better than the $\mathrm{PCD}_{120}$ variant of \acrshort{sotaChordia} for both the datasets. However, the performance of the $\mathrm{PCD}_\mathrm{full}$ variant of \acrshort{sotaChordia} is comparable to \acrshort{ragarecVSM} for DB10r\={a}ga, and, significantly better for DB40r\={a}ga. A comparison of the results of \acrshort{ragarecVSM} and \acrshort{sotaChordia} for each \gls{raga} reveals that their performance is complementary. \acrshort{ragarecVSM} successfully recognizes several \glspl{raga} with high accuracy for which \acrshort{sotaChordia} performs poorly, and vice-versa. This suggests that the proposed pattern-based method can be combined with the pitch distribution-based methods to achieve a higher \gls{raga} recognition accuracy.
+
+[This comes after comparison with the sota] Overall, our results indicate that our phrase-based approach (\acrshort{ragarecVSM}) that uses melodic patterns discovered in an unsupervised setup is a successful strategy for \gls{raga} recognition. 
 
 
 
