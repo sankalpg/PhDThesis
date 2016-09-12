@@ -1,4 +1,4 @@
-newglossaryentry{sanmukhapriya}
+\newglossaryentry{sanmukhapriya}
 {
  name={\d{S}anmukhapriya},
 description={},
@@ -6,7 +6,7 @@ description={},
 type=ragaCMD
 }
 
-newglossaryentry{kapi}
+\newglossaryentry{kapi}
 {
  name={K\={a}pi},
 description={},
@@ -14,7 +14,7 @@ description={},
 type=ragaCMD
 }
 
-newglossaryentry{bhairavi}
+\newglossaryentry{bhairavi}
 {
  name={Bhairavi},
 description={},
@@ -22,7 +22,7 @@ description={},
 type=ragaCMD
 }
 
-newglossaryentry{madhyamavati}
+\newglossaryentry{madhyamavati}
 {
  name={Madhyam\={a}vati},
 description={},
@@ -30,7 +30,7 @@ description={},
 type=ragaCMD
 }
 
-newglossaryentry{bilahari}
+\newglossaryentry{bilahari}
 {
  name={Bilahari},
 description={},
@@ -38,7 +38,7 @@ description={},
 type=ragaCMD
 }
 
-newglossaryentry{mohanam}
+\newglossaryentry{mohanam}
 {
  name={M\={o}hana\.{m}},
 description={},
@@ -46,7 +46,7 @@ description={},
 type=ragaCMD
 }
 
-newglossaryentry{sencurutti}
+\newglossaryentry{sencurutti}
 {
  name={Sencuru\d{t}\d{t}i},
 description={},
@@ -54,7 +54,7 @@ description={},
 type=ragaCMD
 }
 
-newglossaryentry{sriranjani}
+\newglossaryentry{sriranjani}
 {
  name={\'{S}r\={i}ranjani},
 description={},
@@ -62,7 +62,7 @@ description={},
 type=ragaCMD
 }
 
-newglossaryentry{ritigaula}
+\newglossaryentry{ritigaula}
 {
  name={R\={i}tigau\d{l}a},
 description={},
@@ -70,7 +70,7 @@ description={},
 type=ragaCMD
 }
 
-newglossaryentry{husseni}
+\newglossaryentry{husseni}
 {
  name={Huss\={e}n\={i}},
 description={},
@@ -78,7 +78,7 @@ description={},
 type=ragaCMD
 }
 
-newglossaryentry{dhanyasi}
+\newglossaryentry{dhanyasi}
 {
  name={Dhany\={a}si},
 description={},
@@ -86,7 +86,7 @@ description={},
 type=ragaCMD
 }
 
-newglossaryentry{atana}
+\newglossaryentry{atana}
 {
  name={A\d{t}\={a}na},
 description={},
@@ -94,7 +94,7 @@ description={},
 type=ragaCMD
 }
 
-newglossaryentry{behag}
+\newglossaryentry{behag}
 {
  name={Beh\={a}g},
 description={},
@@ -102,7 +102,7 @@ description={},
 type=ragaCMD
 }
 
-newglossaryentry{surati}
+\newglossaryentry{surati}
 {
  name={Sura\d{t}i},
 description={},
@@ -110,7 +110,7 @@ description={},
 type=ragaCMD
 }
 
-newglossaryentry{kamavardani}
+\newglossaryentry{kamavardani}
 {
  name={K\={a}mavardani},
 description={},
@@ -118,7 +118,7 @@ description={},
 type=ragaCMD
 }
 
-newglossaryentry{mukhari}
+\newglossaryentry{mukhari}
 {
  name={Mukh\={a}ri},
 description={},
@@ -126,7 +126,7 @@ description={},
 type=ragaCMD
 }
 
-newglossaryentry{sindhubhairavi}
+\newglossaryentry{sindhubhairavi}
 {
  name={Sindhubhairavi},
 description={},
@@ -134,7 +134,7 @@ description={},
 type=ragaCMD
 }
 
-newglossaryentry{sahana}
+\newglossaryentry{sahana}
 {
  name={Sah\={a}n\={a}},
 description={},
@@ -142,7 +142,7 @@ description={},
 type=ragaCMD
 }
 
-newglossaryentry{kanada}
+\newglossaryentry{kanada}
 {
  name={K\={a}na\d{d}a},
 description={},
@@ -150,7 +150,7 @@ description={},
 type=ragaCMD
 }
 
-newglossaryentry{mayamalavagaula}
+\newglossaryentry{mayamalavagaula}
 {
  name={M\={a}y\={a}m\={a}\d{l}avagau\d{l}a},
 description={},
@@ -158,7 +158,7 @@ description={},
 type=ragaCMD
 }
 
-newglossaryentry{nata}
+\newglossaryentry{nata}
 {
  name={N\={a}\d{t}a},
 description={},
@@ -166,7 +166,7 @@ description={},
 type=ragaCMD
 }
 
-newglossaryentry{sankarabharanam}
+\newglossaryentry{sankarabharanam}
 {
  name={\'{S}ankar\={a}bhara\d{n}a\.{m}},
 description={},
@@ -174,7 +174,7 @@ description={},
 type=ragaCMD
 }
 
-newglossaryentry{saveri}
+\newglossaryentry{saveri}
 {
  name={S\={a}v\={e}ri},
 description={},
@@ -182,7 +182,7 @@ description={},
 type=ragaCMD
 }
 
-newglossaryentry{kamas}
+\newglossaryentry{kamas}
 {
  name={Kam\={a}s},
 description={},
@@ -190,7 +190,7 @@ description={},
 type=ragaCMD
 }
 
-newglossaryentry{todi}
+\newglossaryentry{todi}
 {
  name={T\={o}\d{d}i},
 description={},
@@ -198,7 +198,7 @@ description={},
 type=ragaCMD
 }
 
-newglossaryentry{begada}
+\newglossaryentry{begada}
 {
  name={B\={e}ga\d{d}a},
 description={},
@@ -206,7 +206,7 @@ description={},
 type=ragaCMD
 }
 
-newglossaryentry{harikambhoji}
+\newglossaryentry{harikambhoji}
 {
  name={Harik\={a}mbh\={o}ji},
 description={},
@@ -214,7 +214,7 @@ description={},
 type=ragaCMD
 }
 
-newglossaryentry{sri}
+\newglossaryentry{sri}
 {
  name={\'{S}r\={i}},
 description={},
@@ -222,7 +222,7 @@ description={},
 type=ragaCMD
 }
 
-newglossaryentry{kalyani}
+\newglossaryentry{kalyani}
 {
  name={Kaly\={a}\d{n}i},
 description={},
@@ -230,7 +230,7 @@ description={},
 type=ragaCMD
 }
 
-newglossaryentry{sama}
+\newglossaryentry{sama}
 {
  name={S\={a}ma},
 description={},
@@ -238,7 +238,7 @@ description={},
 type=ragaCMD
 }
 
-newglossaryentry{natakurinji}
+\newglossaryentry{natakurinji}
 {
  name={N\={a}\d{t}akurinji},
 description={},
@@ -246,7 +246,7 @@ description={},
 type=ragaCMD
 }
 
-newglossaryentry{purvikalyani}
+\newglossaryentry{purvikalyani}
 {
  name={P\={u}rv\={i}ka\d{l}y\={a}\d{n}i},
 description={},
@@ -254,7 +254,7 @@ description={},
 type=ragaCMD
 }
 
-newglossaryentry{yadukula_kamboji}
+\newglossaryentry{yadukula_kamboji}
 {
  name={Yadukula k\={a}\.{m}b\={o}ji},
 description={},
@@ -262,7 +262,7 @@ description={},
 type=ragaCMD
 }
 
-newglossaryentry{devagandhari}
+\newglossaryentry{devagandhari}
 {
  name={D\={e}vag\={a}ndh\={a}ri},
 description={},
@@ -270,7 +270,7 @@ description={},
 type=ragaCMD
 }
 
-newglossaryentry{kedaragaula}
+\newglossaryentry{kedaragaula}
 {
  name={K\={e}d\={a}ragau\d{l}a},
 description={},
@@ -278,7 +278,7 @@ description={},
 type=ragaCMD
 }
 
-newglossaryentry{anandabhairavi}
+\newglossaryentry{anandabhairavi}
 {
  name={\={A}nandabhairavi},
 description={},
@@ -286,7 +286,7 @@ description={},
 type=ragaCMD
 }
 
-newglossaryentry{gaula}
+\newglossaryentry{gaula}
 {
  name={Gau\d{l}a},
 description={},
@@ -294,7 +294,7 @@ description={},
 type=ragaCMD
 }
 
-newglossaryentry{varali}
+\newglossaryentry{varali}
 {
  name={Var\={a}\d{l}i},
 description={},
@@ -302,7 +302,7 @@ description={},
 type=ragaCMD
 }
 
-newglossaryentry{kambhoji}
+\newglossaryentry{kambhoji}
 {
  name={K\={a}\.{m}bh\={o}ji},
 description={},
@@ -310,7 +310,7 @@ description={},
 type=ragaCMD
 }
 
-newglossaryentry{karaharapriya}
+\newglossaryentry{karaharapriya}
 {
  name={Karaharapriya},
 description={},
