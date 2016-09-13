@@ -494,7 +494,12 @@ For \acrshort{rrds_hmd_big}, there are only seven incorrectly classified recordi
 \section{Effect of Dataset Size}
 \label{sec:ragarec_dataset_effect}
 
-\begin{figure}	
+From our review of the current approaches for \gls{raga} recognition in~\secref{sec:sota_raga_recognition}, we see that a direct comparison in terms of their performance is not meaningful. This is mainly due to the diversity in the datasets using which they are evaluated~(\tabref{tab:raga_recognition_methods_details}). These datasets differ in terms of the number of \glspl{raga} , specific set of chosen \glspl{raga}, the number of recordings per \gls{raga} and the type of audio (monophonic or polyphonic). A comprehensive comparison of the performance of these approaches requires a common evaluation on the same dataset and experimental setup, which is an arduous task. However, to begin with, even an assessment of the influence of the dataset size on \gls{raga} recognition accuracy for a particular method is worthwhile, which can give us several useful insights. Certainly, the trend in the accuracy across different dataset variants will be dependent on the chosen method. However, we hypothesize that using one of the most robust and the best performing methods will minimize this influence. In addition, we believe that it will act as a lower bound on the variations in the accuracies across dataset variants. 
+
+For this experiment we consider \acrshort{ragarecTDMS_KL} method, which as shown above achieves the highest accuracy on both the datasets, \acrshort{rrds_cmd_big} and \acrshort{rrds_hmd_big}. We want to assess the influence of the number of \glspl{raga} in the dataset and the specific combination of \glspl{raga} in a set. To achieve this, we perform evaluations on randomly sampled subsets of both the datasets. We randomly select sets of 5, 10, 20, and 30\,\glspl{raga} from \acrshort{rrds_cmd_big}  dataset that comprise 40 \glspl{raga} with 12\,recordings per raga. We maintain the same number of recordings (12) per \gls{raga} in all the sets. For \acrshort{rrds_hmd_big} dataset, the sizes of the subsets are 5, 10, 15, 20 and 25. We repeat this entire process of random selection 50 times and ensure that at each iteration the new subsets are maximally different from the previous ones in terms of the choice of \gls{raga}. We now proceed to present the results of our evaluations. 
+
+
+\begin{figure}	[h]
 	\begin{subfigure}{\textwidth}
 		\centering
 		\includegraphics[width=\figSizeEighty]{ch07_ragaRecognition/figures/Accuracy_Vs_Size_n_raagas_cmd.pdf}
@@ -511,6 +516,9 @@ For \acrshort{rrds_hmd_big}, there are only seven incorrectly classified recordi
 	\label{fig:performance_vs_n_raagas}
 \end{figure}
 
+In~\figref{fig:performance_vs_n_raagas} we show a boxplot of the \gls{raga} recognition accuracies obtained for different subsets of both the datasets over multiple iterations of the experiment. A general observation is that the accuracy decreases as the number of \glspl{raga} in the dataset increase, which is explicable as the task becomes more challenging. Notably, the decrease is more significant in the case of data subsets comprising Carnatic music~(\figref{fig:performance_vs_n_raagas}\,(a)) as compared to the Hindustani music. This indicates that the task of \gls{raga} recognition 
+
+In FIG XXX we show the accuracies for subsets of XXX. We notice that the accuray varies quite significantly and the difference between the minimum accuracy and the maximum accuracy for a particular number of ragas is around 10\%. That means that some subset of the XXX with the same number of ragas can result into 10\% more accuracy compared to another subset with the same number of ragas. This indicates that the performance isquite sensitive across different subsets. Over the number of ragas, we see that accuracy drops as the number of ragas increase. 
 
 \section{Conclusions}
 \label{sec:conclusions_raga_recognition}
