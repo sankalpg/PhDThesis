@@ -64,40 +64,51 @@ Most of the outcomes of the work presented in this document have been published 
 
 \TODO{Any overall big sentence, that we have opened out research area? Good datasets and spectrum of problems.}
 
-\section{Future Directions}
+\section{Future Perspectives}
 \label{sec:future_directions}
 
-One of the goals of this thesis was to open up the possibilities of different computational tasks in INdian art music. With the promising results we obtain and the potential areas of further improvement we identify we believe that our work will be helpful towards advancing mir for IAM. 
+There are several directions for future work in both improving the methodologies described in this thesis, and addressing unexplored research problems that can utilize our results and resources. The music corpora compiled and curated in the CompMusic project provides a strong base to address a variety of such research problems in the future.
+
+We start with enumerating different avenues for improvement in the patten processing methodologies discussed in our work. In~\chapref{chap:melodic_pattern_processing} we argued that the potential of pattern-based analysis and description of melodic aspects in \gls{iam} can be exploited by going beyond supervised methodologies for pattern processing. We successfully demonstrated the effectiveness and utility of an unsupervised approach for discovering melodic patterns. However, lack of a quantitative assessment of such an approach hampers its improvement. We believe that a balanced combination of both supervised and unsupervised methodologies would take pattern processing in \gls{iam} to the next level. One of the ways in which both these approaches can be combined is by using the output of the unsupervised approach for facilitating annotations of large amounts of melodic patterns. The biggest limitations of the supervised approaches as mentioned in~\secref{sec:patterns_introduction} are the difficulties in annotating large datasets and the presence of human bias in the annotations, resulting in only certain type of melodic patterns. Both these issues can be addressed to a large extent by utilizing the outcome of pattern discovery approach for annotations.
+
+With sizable annotated datasets of melodic patterns several valuable insights into perception of melodic similarity can be obtained. By sizable dataset we mean thousands of melodic patterns across different artists, compositions, forms, and \glspl{raga}. We here provide some concrete examples of analyses that can be done with such datasets. One of our learnings while working on the melodic similarity is that not every sample in the string representation of a melodic pattern contributes equally in establishing similarity. There are specific regions and characteristic pitch movements in the melodic patterns that are more important and often become the anchor points in determining similarity. Note that this observation is based on our informal discussions with musicians and this phenomenon is yet to be scientifically studied. A sizable corpora of melodic patterns can facilitate such investigations, which in turn would improve models for computing melodic similarity. Another interesting and important aspect to explore in pattern discovery is to take into account the local melodic context of a pattern. Since melodies in \gls{iam} are constructed in accordance with the \gls{raga} grammar, \gls{raga} motifs might bear a strong correlation with their melodic context, which can be exploited it to improve pattern discovery and and reduce its computational complexity. In addition, determining possible relation between the \gls{sama} locations (downbeat in rhythm cycle) and the locations of \gls{raga} motif is also an interesting subject of future investigations. All these analyses can benefit immensely from a well annotated sizable dataset of melodic patterns. 
+
+In our work we considered the predominant pitch in the audio recording as the low-level melody representation. However as illustrated by an example in  XXX timbral and loudness characteristics of melody are also important in establishing similarity. Incorporating those dimensions of melody into similarity computation is also something to be explored in the future.
+
+One of the negatives about our methodology is the ccompuational complexity. Since it was the first time when melodic patterns were mined at sucha large scale we did not want to impose top down knowledge to not loose any possible interesting patterns. However there can be several strategies applied to make it efficient. We can avoid sliding window awy, only consider those landmarks whih are possible stating points of patterns. It depends on the accuracy of segmentation method, but some obvkous things like not starting a pattern from the middle of a note is something we can try out. Another thing is to explore locality sensitive hashing techniques to make it faster. One kind of top down knowledge cna be incorporated in the form of a meldy transcription stage. By a reliable rich transcriptino of melodic nuances, if they can be converted to meaningful symbols it can improve melodic similarity manifold. The challenge here is to reliable detect and encode melodic ornaments and other melodic moements. Such an approach will not only make thecoputation faster but it will also make the similarity more meaningful. Also we can parametrically control the contribution of different types of symbols in the similarity computation. 
+
+As we saw from our results in XXX, a meaningful segmentaion of melodic pattens affects tremendously the accuracy of melodic similarty. Thus a reliable phrase segmentation can improve the system greatly :). We explored nyas based system, however we find that it is mainly applicable in slow tempo Hindustani melody. a more generic and transversal model is needed. This aspect is studied a lot for symbolic music case and is completely unexplored in the case of recorded performances. It is a promising direction of future work. Segmentation can benefir fro out work. There are examples of sementatino using parallelism. Since we can't formulate anything otherwise this can help us understand segmentatino issues. 
+
+Another limitation of our current approach is that we work with fix duration patterns. This was mainly due to the contraints posed by lower bounding methods and also without a segmentation model detecting such boundaries is not possible?. However, once the patterns are discovered there can be some work done to improve the boundaries of these patterns. For eample considering patten pairs and extending their boundaries till they are similar in melodies. Eventually utilizing multiple patterns of the same category (in a category) for this task can help ideantify meaningful segmentatino boundaries of the patterns. This step will also make ourpattern variable duration motifs. say that formally studying boundaries is a complex task. In fact segmentation can be studied using this method!!! yes
+
+In our charaterization step we discover that several patterns are gaaka typee paters. While at several step we followed a philosophy of removing trivial pattens at the pre-processing step. We removed tani patterns and flat regions in melodies. A similar thing can be done with gamaka type patterns since they follow an explicit model/shape it shouldbe easy to detect them beforehand. This would make our process more efficient and more probability of obtaining meaninful ptterns, In characteriation Specific improvements mentioned in the text, like considering compositions instead of recordings for improving goodness measure. Differnt community detection methods can be tried out while network anlaysis. We did not explore much. 
 
 
-Lots of them!
+Now going to raga recognition approaches. 
 
-Overall broad level approach to melodic analysis.
-Particular improvements in specific approaches..
+5) Raga recognition
+
+Ragawise a good model
+
+Study minimum duration needed to identify. Crucial in real-time applications. Due to linearity in exploration of svaras PCD will fail miserably
+
+Heirarchical model
 
 
 
 
+
+New analyses
+0) Characterization based on melodic features
+1) music similarity across recordings
+2) Corpora level characterization 
+3) Evolution of a music piece, discovery of melodic structures!!
+4) All these melodic elements combined in music ontology and knowledge databases
+
+
+%4) Pattern discovery - improving quality of the output patterns
 %
-%I am writing future work and possible conclusions in random order as they come 
-%
-%We wont go very far with an unsupervised approach without the mechanism of evaluating it. But if the annotation process was not tricky we would be using supervised. So a balanced approach would be to use discovery methods to generate evaluatino set and bootstrap the process. 
-%
-%Phrase boundary extension collectively within a community of phrases...to study a common defining length
-%
-%Exploiting melodic context in discovering and detecting phrases
-%
-%Exploiting if melodic characteristic of he phrase can tell us something about the phrase category
-%
-%Incorpotating segmentation models or using methods that does not require segmentation.
-%
-%In the future we plan to include other aspects of melody such as loudness and timbre in the similarity computation and use a bigger dataset consisting of many more melodic patterns for evaluation.
-%.
-%
-%In the future, we plan to investigate if both these methodologies can be successfully combined to improve r\={a}ga recognition.
-%
-%Hierarchical raga recognition model
-%
-%Temporally minimum duration needed
-%
-%INdexing techniques.
+%Boundaries of the pattern, extend ---however defining it formally is a complex task, since its always sung in a particular context, how to differentiate the context from the patter?
+%Boundaries will improve similarity, and improve the quality
+%Improving similarity -> improve this...
+%trying other community detection methods
