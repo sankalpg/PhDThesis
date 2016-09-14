@@ -502,13 +502,13 @@ For this experiment we consider \acrshort{ragarecTDMS_KL} method, which as shown
 \begin{figure}	[h]
 	\begin{subfigure}{\textwidth}
 		\centering
-		\includegraphics[width=\figSizeEighty]{ch07_ragaRecognition/figures/Accuracy_Vs_Size_n_raagas_cmd.pdf}
+		\includegraphics[width=\figSizeEightyFive]{ch07_ragaRecognition/figures/Accuracy_Vs_Size_n_raagas_cmd.pdf}
 		\caption{For subsets of \acrshort{rrds_cmd_big} dataset}
 		\label{fig:performance_vs_n_raagas_cmd}
 	\end{subfigure}
 	\begin{subfigure}{\textwidth}
 		\centering
-		\includegraphics[width=\figSizeEighty]{ch07_ragaRecognition/figures/Accuracy_Vs_Size_n_raagas_hmd.pdf}
+		\includegraphics[width=\figSizeEightyFive]{ch07_ragaRecognition/figures/Accuracy_Vs_Size_n_raagas_hmd.pdf}
 		\caption{For subsets of \acrshort{rrds_hmd_big} dataset}
 		\label{fig:performance_vs_n_raagas_hmd}
 	\end{subfigure}
@@ -516,9 +516,12 @@ For this experiment we consider \acrshort{ragarecTDMS_KL} method, which as shown
 	\label{fig:performance_vs_n_raagas}
 \end{figure}
 
-In~\figref{fig:performance_vs_n_raagas} we show a boxplot of the \gls{raga} recognition accuracies obtained for different subsets of both the datasets over multiple iterations of the experiment. A general observation is that the accuracy decreases as the number of \glspl{raga} in the dataset increase, which is explicable as the task becomes more challenging. Notably, the decrease is more significant in the case of data subsets comprising Carnatic music~(\figref{fig:performance_vs_n_raagas}\,(a)) as compared to the Hindustani music. This indicates that the task of \gls{raga} recognition 
+In~\figref{fig:performance_vs_n_raagas} we show a boxplot of the \gls{raga} recognition accuracies obtained for different subsets of the datasets over multiple iterations of the experiment. In general we observe that the accuracy decreases as the number of \glspl{raga} in the dataset increase.  This is explicable as the task becomes more and more challenging.  Notably, the drop in the performance is more significant in the case of the data subsets comprising Carnatic music~(\figref{fig:performance_vs_n_raagas}\,(a)) as compared to Hindustani music. In addition, the median accuracies on the subsets of Carnatic music is lower as compared to Hindustani music. Both these factors indicate that the task of \gls{raga} recognition is more challenging in the case of audio recordings in Carnatic music as compared to Hindustani music, and that more number of \glspl{raga} makes it even more difficult for the former. 
 
-In FIG XXX we show the accuracies for subsets of XXX. We notice that the accuray varies quite significantly and the difference between the minimum accuracy and the maximum accuracy for a particular number of ragas is around 10\%. That means that some subset of the XXX with the same number of ragas can result into 10\% more accuracy compared to another subset with the same number of ragas. This indicates that the performance isquite sensitive across different subsets. Over the number of ragas, we see that accuracy drops as the number of ragas increase. 
+Another interesting aspect is to look at is the performance across multiple iterations, i.e.~across different sets of a fix number of \glspl{raga}. We see that the accuracy varies by around 10\,\% for the case of Carnatic music dataset. This implies that the accuracy of a method for the same number of \glspl{raga} and the same number of recordings per \gls{raga} can vary by 10\% just because of a different set of chosen \glspl{raga}. This implies that that the complexity of the task of raga recognition depends on the ragas being differentiated. Thus, this should be an important information to be considered in interpreting the results of a method in raga recognition task. Note that for Hindustani music such variation is not as significant. 
+
+Overall, we see that the accuracy of \gls{raga} recognition is sensitive to the dataset size, both in terms of the number of \glspl{raga} and the specific set of chosen \glspl{raga}. What is even more important is that this experiment gives us an idea about the degree of performance variation across different dataset variants. This can help us to better interpret and compare the results of the existing studies on raga recognition. 
+
 
 \section{Conclusions}
 \label{sec:conclusions_raga_recognition}
