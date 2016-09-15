@@ -30,7 +30,7 @@
 %\usepackage{ae,aecompl}
 \usepackage[UKenglish]{isodate}
 
-\usepackage[british]{babel}
+\usepackage[british,catalan,spanish]{babel}
 \usepackage{url}
 \urlstyle{rm}
 \usepackage{enumitem}
@@ -417,40 +417,48 @@
 \makeglossaries
 
 \begin{document}
+
+
+% ----------------------------------------------
 \parindent0ex
 \selectlanguage{british}
 
-\include{ch00/titlePage}
+%%%% TITLE %%%%%
+\include{ch00/1_titlePage}
+
+
+% ----------------------------------------------
 
 \frontmatter
-\include{ch00/temp.tex}
-\include{ch00/license.tex}
 
+%%%% PRELIM %%%%%
 \include{ch00/preliminarystuff}
 
+%%%% TOC %%%%%
 \cleartorecto\tableofcontents
-%\cleartorecto\include{ch00/listOfMathSymbols}
 \cleartorecto\include{ch00/mathSymbols}
 \renewcommand*\listfigurename{List of figures}
 \cleartorecto\listoffigures
 \renewcommand*\listtablename{List of tables}
 \cleartorecto\listoftables 
 
-
-
+% ----------------------------------------------
 
 \mainmatter
 
-%
-%\cleartorecto\include{ch01_introduction/introduction_new}
-%\cleartorecto\include{ch02_background/background}
-%%%%%%%%\cleartorecto\include{ch03_problems/problems}
-%\cleartorecto\include{ch04_datasets/datasets}
-%\cleartorecto\include{ch05_preprocessing/preprocessing} 
-%\cleartorecto\include{ch06_patterns/patterns}
-%\cleartorecto\include{ch07_ragaRecognition/ragaRecognition}
-%\cleartorecto\include{ch08_applications/applications} 
-%\cleartorecto\include{ch09_conclusions/conclusions}
+
+\cleartorecto\include{ch01_introduction/introduction_new}
+\cleartorecto\include{ch02_background/background}
+%%%%%%%\cleartorecto\include{ch03_problems/problems}
+\cleartorecto\include{ch04_datasets/datasets}
+\cleartorecto\include{ch05_preprocessing/preprocessing} 
+\cleartorecto\include{ch06_patterns/patterns}
+\cleartorecto\include{ch07_ragaRecognition/ragaRecognition}
+\cleartorecto\include{ch08_applications/applications} 
+\cleartorecto\include{ch09_conclusions/conclusions}
+
+% ----------------------------------------------
+
 
 \TODO{CHECK TRANSLITERATIONS OF ALL THE TERMS, ORGANIZE GLOSSARY PER CONCEPT}
 
