@@ -13,67 +13,73 @@ The following is a list of different symbols used in the dissertation along with
 	\toprule
 	\textbf{Symbol} & \textbf{Description} \tabularnewline \midrule
 	\endhead % all the lines above this will be repeated on every page
-	\listSymbol{\timeScaFac}{\ensuremath{\Omega}}{Uniform time-scaling factor}
-	\listSymbol{\pitchHz}{\ensuremath{\mathfrak{p}}}{Predominant pitch (Hz)}
-	\listSymbol{\pitchCents}{\ensuremath{\hat{\pitchHz}}}{Predominant pitch (Cents)}	
-	\listSymbol{\toniRec}{\ensuremath{\mathfrak{T}}}{Tonic pitch of an audio recording (Hz)}	
-	\listSymbol{\sRate}{\ensuremath{S}}{Sampling rate of the pitch sequence (Hz)}
-	\listSymbol{\mNorm}{\ensuremath{N}}{Normalization type used in the melody representation}	
-	\listSymbol{\uTScaling}{\ensuremath{\timeScaFac}}{Uniform time-scaling factor}	
-	\listSymbol{\distPattMeasure}{\ensuremath{\mathrm{D}}}{Distance measure for computing melodic similarity}
-	\listSymbol{\distPatt}{\ensuremath{\Delta}}{Distance between melodic patterns}	
-	\listSymbol{\pVal}{\ensuremath{p}}{p-value in statistical hypothesis testing}	
+	\listSymbol{\corpus}{\ensuremath{\mathcal{A}}}{Corpus of audio recordings}		
+	\listSymbol{\nodesCommRaga}{\ensuremath{\alpha}}{Number of notes in a community belonging to a particular \gls{raga}}	
+	\listSymbol{\nodesCommRec}{\ensuremath{\beta}}{Number of notes in a community belonging to a particular audio recording}
+	\listSymbol{\binOp}{\ensuremath{\mathcal{B}}}{Octave wrapping integer binning operator}	
+	\listSymbol{\recDistCentroid}{\ensuremath{\mathbf{c}}}{Centroid of the distribution of nodes over recordings}				
+	\listSymbol{\clusCoff}{\ensuremath{C}}{Clustering coefficient of a network}	
+	\listSymbol{\community}{\ensuremath{\mathbfcal{C}}}{Community in a network}	
+	\listSymbol{\dtwCostFnc}{\ensuremath{d}}{DTW local cost function}		
+	\listSymbol{\distPattMeasure}{\ensuremath{\mathcal{D}}}{Distance measure for computing melodic similarity}	
+	\listSymbol{\awdErrorNyas}{\ensuremath{\varepsilon}}{Allowed pitch deviation used in ny\={a}s segmentation}			
+	\listSymbol{\netUndirWght}{\ensuremath{\mathcal{G}}}{Undirected weighted network}		
+	\listSymbol{\goodnessComm}{\ensuremath{\mathbf{G}}}{Goodness measure of a community in network}		
+	\listSymbol{\tdmsBase}{\ensuremath{\check{\mathrm{H}}}}{\acrfull{tdms}}
+	\listSymbol{\tdmsPower}{\ensuremath{\overline{\mathrm{H}}}}{Power compressed \acrshort{tdms}}
+	\listSymbol{\tdmsSmooth}{\ensuremath{\hat{\mathrm{H}}}}{Smoothened \acrshort{tdms}}	
+	\listSymbol{\tdmsNorm}{\ensuremath{{\mathrm{H}}}}{Normalized \acrshort{tdms}}	
+	\listSymbol{\tdmsElem}{\ensuremath{\check{\mathrm{h}}}}{One element of \acrfull{tdms}}		
+	\listSymbol{\indFnc}{\ensuremath{I}}{Indicator function}	
+	\listSymbol{\indFnc}{\ensuremath{i}}{Index}	
+	\listSymbol{\indFnc}{\ensuremath{j}}{Index}		
+	\listSymbol{\ragaLikelihood}{\ensuremath{\mathcal{L}}}{Likelihood of the representative \gls{raga} in a community}
+	\listSymbol{\indFnc}{\ensuremath{m}}{Index}		
 	\listSymbol{\nSvara}{\ensuremath{\mathcal{N}}}{Ny\={a}s svara segment}											%This is N in figures
-	\listSymbol{\freqSvara}{\ensuremath{\mathcal{s}}}{Svara frequency (Cents)}										%this is S in figures
-	\listSymbol{\timeStamp}{\ensuremath{T}}{Time stamp}																%this is S in figures
-	\listSymbol{\maxErrorPLS}{\ensuremath{\epsilon}}{Maximum error parameter in piece-wise linear segmentation method}
-	\listSymbol{\awdErrorNyas}{\ensuremath{\varepsilon}}{Allowed pitch deviation used in ny\={a}s segmentation}	
-	\listSymbol{\maxErrorNyas}{\ensuremath{\rho}}{Max pitch deviation used in ny\={a}s segmentation}
-	\listSymbol{\timeTshldNyas}{\ensuremath{\delta}}{Temporal threshold used in ny\={a}s segmentation}
-	\listSymbol{\binFlatNyas}{\ensuremath{\nu}}{Binary flatness measure used in ny\={a}s segmentation}
+	\listSymbol{\nRecCorpus}{\ensuremath{N_{\corpus}}}{Number of recordings in a corpus \corpus}	
+	\listSymbol{\bigO}{\ensuremath{\mathcal{O}}}{Big O notation}			
+	\listSymbol{\pVal}{\ensuremath{p}}{p-value in statistical hypothesis testing}	
+	\listSymbol{\pitchHz}{\ensuremath{\mathrm{p}}}{Predominant pitch in Hz}
+	\listSymbol{\pitchCents}{\ensuremath{\hat{\pitchHz}}}{Predominant pitch in Cents}		
 	\listSymbol{\pattern}{\ensuremath{\mathcal{P}}}{Melodic pattern}					
-	\listSymbol{\recording}{\ensuremath{\mathfrak{r}}}{Audio recording}	
-	\listSymbol{\corpus}{\ensuremath{\mathcal{R}}}{Corpus of music recordings}	
-	\listSymbol{\nRecCorpus}{\ensuremath{N_{\corpus}}}{Number of recordings in a corpus}			
-	\listSymbol{\patternArray}{\ensuremath{\mathbfcal{P}}}{Array of melodic patterns}						
-	\listSymbol{\svarTruncThsld}{\ensuremath{\Phi}}{Svara duration truncation threshold}
-	\listSymbol{\compWght}{\ensuremath{\Upsilon}}{Complexity weighting in melodic similarity computation}
-	\listSymbol{\compEst}{\ensuremath{\zeta}}{Complexity estimate of a melodic pattern}	
+	\listSymbol{\patternArray}{\ensuremath{\mathbfcal{P}}}{Array of melodic patterns}	
+	\listSymbol{\recording}{\ensuremath{{r}}}{Audio recording}	
+	\listSymbol{\sRate}{\ensuremath{\mathrm{s}}}{Sampling rate of the pitch sequence in Hz}
+	\listSymbol{\freqSvara}{\ensuremath{\mathcal{S}}}{Svara frequency in Cents}										%this is S in figures	
+	\listSymbol{\toniRec}{\ensuremath{\mathfrak{t}}}{Tonic pitch of an audio recording in Hz}	
+	\listSymbol{\timeStamp}{\ensuremath{\mathrm{T}}}{Time stamp}																%this is S in figures
+	\listSymbol{\pattVocab}{\ensuremath{\mathcal{V}}}{Vocabulary of melodic phrases}	
+	\listSymbol{\edgeWght}{\ensuremath{\mathbf{w}}}{Weight of a network edge}	
 	\listSymbol{\pattLenSec}{\ensuremath{{W}}}{Length of a melodic pattern in seconds}	
 	\listSymbol{\pattLenSym}{\ensuremath{\bar{{W}}}}{Length of a melodic pattern in samples}		
-	\listSymbol{\heaviside}{\ensuremath{\Theta}}{Heaviside step function}			
-	\listSymbol{\flatMeas}{\ensuremath{\Psi}}{Flatness measure}				
-	\listSymbol{\flatThsld}{\ensuremath{\psi}}{Flatness threshold}	
-	\listSymbol{\bigO}{\ensuremath{\mathcal{O}}}{Big O notation}			
-					
-	\listSymbol{\dtwCostFnc}{\ensuremath{d}}{DTW local cost function}		
-	\listSymbol{\netUndirWght}{\ensuremath{\mathcal{G}}}{Undirected weighted network}	
-	\listSymbol{\edgeWght}{\ensuremath{\mathit{w}}}{Weight of a network edge}	
-	\listSymbol{\simThsld}{\ensuremath{\distPatt''}}{Melodic similarity threshold}
-	\listSymbol{\clusCoff}{\ensuremath{C}}{Clustering coefficient of a network}	
-	\listSymbol{\pattVocab}{\ensuremath{\mathfrak{P}}}{Vocabulary of melodic phrases}	
+	\listSymbol{\mNorm}{\ensuremath{Z}}{Normalization type used in the melody representation}	
 	
-		
-	\listSymbol{\community}{\ensuremath{\mathcal{C}}}{Community in a network}	
-	\listSymbol{\nodesCommRaga}{\ensuremath{\alpha}}{Number of notes in a community $q$ belonging to a particular \gls{raga}}	
-	\listSymbol{\nodesCommRec}{\ensuremath{\beta}}{Number of notes in a community $q$ belonging to a particular audio recording}
-	\listSymbol{\goodnessComm}{\ensuremath{\mathfrak{G}}}{Goodness measure of a community in network}	
-	\listSymbol{\ragaLikelihood}{\ensuremath{\mathfrak{R}}}{Likelihood of the representative \gls{raga} in a community}
-	\listSymbol{\recDistCentroid}{\ensuremath{\mathfrak{C}}}{Centroid of the distribution of nodes over recordings}				
+									
 
-	\listSymbol{\tdmsBase}{\ensuremath{\check{\mathfrak{S}}}}{\acrfull{tdms}}
-	\listSymbol{\tdmsPower}{\ensuremath{\overline{\mathfrak{S}}}}{Power compressed \acrshort{tdms}}
-	\listSymbol{\tdmsSmooth}{\ensuremath{\hat{\mathfrak{S}}}}{Smoothened \acrshort{tdms}}	
-	\listSymbol{\tdmsNorm}{\ensuremath{{\mathfrak{S}}}}{Normalized \acrshort{tdms}}	
+	\listSymbol{\distPatt}{\ensuremath{\Delta}}{Distance between melodic patterns}	
+	\listSymbol{\simThsld}{\ensuremath{\tilde{\distPatt}}}{Melodic similarity threshold}
+
+	\listSymbol{\timeTshldNyas}{\ensuremath{\delta}}{Temporal threshold used in ny\={a}s segmentation}
 	\listSymbol{\tdmsPowFac}{\ensuremath{\Lambda}}{Power compression factor in \acrshort{tdms} computation}	
-		
-	\listSymbol{\tdmsElem}{\ensuremath{\check{\mathfrak{s}}}}{One element of \acrfull{tdms}}	
-	\listSymbol{\indFnc}{\ensuremath{I}}{Indicator function}
-	\listSymbol{\binOp}{\ensuremath{\mathcal{B}}}{Octave wrapping integer binning operator}	
-	\listSymbol{\sigmaTDMS}{\ensuremath{\sigma_g}}{Standard deviation of the Gaussian kernel used in the \acrshort{tdms} computation}		
-			
-	
 
+	\listSymbol{\binFlatNyas}{\ensuremath{\nu}}{Binary flatness measure used in ny\={a}s segmentation}
+	\listSymbol{\timeScaFac}{\ensuremath{\Omega}}{Uniform time-scaling factor}	
+	\listSymbol{\svarTruncThsld}{\ensuremath{\Phi}}{Svara duration truncation threshold}
+	\listSymbol{\maxErrorNyas}{\ensuremath{\rho}}{Max pitch deviation used in ny\={a}s segmentation}
+	\listSymbol{\sigmaTDMS}{\ensuremath{\sigma_g}}{Standard deviation of the Gaussian kernel used in the \acrshort{tdms} computation}	
+	\listSymbol{\heaviside}{\ensuremath{\Theta}}{Heaviside step function}			
+	\listSymbol{\flatMeas}{\ensuremath{\upsilon}}{Flatness measure}				
+	\listSymbol{\flatThsld}{\ensuremath{\tilde{\flatMeas}}}{Flatness threshold}	
+	\listSymbol{\compWght}{\ensuremath{\Upsilon}}{Complexity weighting in melodic similarity computation}
+	\listSymbol{\maxErrorPLS}{\ensuremath{\varsigma}}{Maximum error parameter in piece-wise linear segmentation method}	
+	\listSymbol{\compEst}{\ensuremath{\zeta}}{Complexity estimate of a melodic pattern}	
+		
+
+
+	
+%---------------------------------
+
+	\nolistSymbol{\uTScaling}{\ensuremath{\timeScaFac}}{Uniform time-scaling factor}	
 	\nolistSymbol{\RankRefVar}{\ensuremath{V}}{Prefix for the rank refinement method variants}			
 	\nolistSymbol{\seedPattCat}{\ensuremath{\mathtt{S}}}{Prefix for seed pattern category}
 		

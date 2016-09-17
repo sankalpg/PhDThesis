@@ -71,7 +71,7 @@ A more concrete definition specifically from an analytical point of view is give
 
 \blockquote{A \gls{raga} is most easily explained as a collection of melodic gestures, along with techniques for developing them. The gestures are sequences of notes that are often inflected with various micro-pitch alterations and articulated with an expressive sense of timing. Longer phrases are built by joining these melodic atoms together.}
 
-Overall, we see that a \gls{raga} being more than a scale, mode and a discrete note sequence is highlighted in all the definitions. For computational modeling of melodic aspects in \gls{iam}, the definition of \gls{raga} given by~\cite{chordia2013joint} appears appropriate. Another way to comprehend the concept of \gls{raga} is to understand the aspects or properties that characterize \glspl{raga} such as the set of \glspl{svara}, \gls{arohana}-\gls{avrohana}, calan and its characteristic melodic phrases. A brief description of these different melodic aspects is provided in the subsequent paragraphs. For a more comprehensive description of these concepts we refer to~citep{Danielou2010,Bagchee1998}.
+Overall, we see that a \gls{raga} being more than a scale, mode and a discrete note sequence is highlighted in all the definitions. For computational modeling of melodic aspects in \gls{iam}, the definition of \gls{raga} given by~\cite{chordia2013joint} appears appropriate. Another way to comprehend the concept of \gls{raga} is to understand the aspects or properties that characterize \glspl{raga} such as the set of \glspl{svara}, \gls{arohana}-\gls{avrohana}, calan and its characteristic melodic phrases. A brief description of these different melodic aspects is provided in the subsequent paragraphs. For a more comprehensive description of these concepts we refer to~\citep{Danielou2010,Bagchee1998,Viswanathan2004}.
 
 \COMMENT{if time permits put an image of a melody and describe defferent aspects. Probably we should do several images, one for svaras, tonic, aroh avroh. Another one for gamakas, ornaments, and motifs, and calan}
 
@@ -89,11 +89,11 @@ The allowed ascending and descending progression of \glspl{svara} in a melody of
 
 \paragraph{Gamakas and Alankars:} One of the characterizing aspects of melodies in \gls{iam} is the presence of continuous gliding melodic gestures. A particular category of characteristic melodic gestures around a \gls{svara} are commonly termed as \glspl{gamaka}~\citep{krishna2012carnatic}. A typical example of a \gls{gamaka} in Carnatic music is an oscillatory pitch movement around a \gls{svara}. Another example of a \gls{gamaka} could be a peculiar glide from one \gls{svara} to another. \cite{krishna2012carnatic} present an insightful discussion on different \glspl{gamaka} in Carnatic music. There are various ways in which \glspl{gamaka} can be classified. A commonly found classification strategy describes 15 different types of \glspl{gamaka} in Carnatic music~\cite{ramanathan1999musical,janakiraman2008essentials,narayanswami2011}. For a more detailed description of \glspl{gamaka} we refer to~\citep{narayanswami2011}. Note that \gls{gamaka} is an integral part of a \gls{svara} in Carnatic music, and is not an optional added ornamentation. \Glspl{gamaka} are also used in Hindustani music, though their usage and role is very different compared to that in Carnatic music. 
 
-There is another category of melodic gestures in Hindustani music called \glspl{alankar} (literally meaning ornaments), which are primarily regarded as melodic ornamentations. There are different types of \glspl{alankar} such as \gls{murki}, \gls{khatka}, Kan-\gls{svara} and \gls{meend}. A detailed description of these melodic gestures can be found in\TODO{Bagchee}. \TODO{check correct transliterations of these terms}
+There is another category of melodic gestures in Hindustani music called \glspl{alankar} (literally meaning ornaments), which are primarily regarded as melodic ornamentations. There are different types of \glspl{alankar} such as \gls{murki}, \gls{khatka}, Kan-\gls{svara} and \gls{meend}. A detailed description of these melodic gestures can be found in~\cite{Bagchee1998}.
 
 \COMMENT{Best explained with an illustration, do it if time permits}
 
-\paragraph{Characteristic Melodic Phrases (or \gls{raga} motifs):} Every \gls{raga} has a set of characteristic melodic phrases (also referred to as pakads in Hindustani music) that capture the essence of the \gls{raga}. These melodic phrases act as a building block to construct melodies. They provide a base for artists to express their creativity through improvisation within the \gls{raga} grammar. Characteristic melodic phrases are the prominent cues used by the human listeners for identification of the \glspl{raga}~\citep{krishna2012carnatic}. In this thesis we also sometimes refer to such melodic phrases as \gls{raga} motifs.
+\paragraph{Characteristic Melodic Phrases (or \gls{raga} motifs):} Every \gls{raga} has a set of characteristic melodic phrases (also referred to as pakads in Hindustani music) that capture the essence of the \gls{raga}~\citep{Bagchee1998,rao1999raga,Viswanathan2004}. These melodic phrases act as a building block to construct melodies. They provide a base for artists to express their creativity through improvisation within the \gls{raga} grammar. Characteristic melodic phrases are the prominent cues used by the human listeners for identification of the \glspl{raga}~\citep{krishna2012carnatic}. In this thesis we also sometimes refer to such melodic phrases as \gls{raga} motifs.
 
 \COMMENT{Since this is one of the core topics, if time permits a richer description should be provided.}
 
@@ -102,13 +102,15 @@ There is another category of melodic gestures in Hindustani music called \glspl{
 \subsubsection{Allied R\={a}gas}
 \label{sec:allied_ragas}
 
-\Glspl{raga} that share a common set of \glspl{svara} are referred to as allied \glspl{raga} in this thesis. At times, these \glspl{raga} also have a similar melodic phraseology REF. \TODO{Van der Meer}. 
+\Glspl{raga} that share a common set of \glspl{svara} and have a similar melodic phraseology are referred to as allied \glspl{raga}~\citep{krishna2012carnatic}. Typically, these \glspl{raga} are differentiated based on subtle melodic nuances and highly characteristic set of melodic phrases. \cite[p. 74-76]{meer1980hindustani} gives a detailed account of similarities across different sets of \glspl{raga} at various levels of melodic organization. He also describes in depth the phenomenon of temporary alliance of \glspl{raga}. Some relevant parts of the text from his book are as follows: 
 
-{Allied \glspl{raga} have a common set of svaras and similar melodic movement}~\cite{krishna2012carnatic}
+\blockquote{``\textit{...\Glspl{raga} can be mixed to produce a new one, a common process. Some \glspl{raga} still retain the traits of the parent \gls{raga} although the older mixtures stabilize into a definite character...The ideal of mixing \glspl{raga} is to combine two \glspl{raga} with a similar mood, but with no more than one or two common points, so that the contrast between the \glspl{raga} can be maintained and their union is only temporary...It appears from the foregoing that some \glspl{raga} are closely related whereas others are more independent. Of the latter again there are varying degrees; some \glspl{raga} belong mainly to one \gls{raga} but have some flavour of another, other \glspl{raga} are quite separate, again others have their own strong identity with another \gls{raga} mixed in. A classification should indicate these degrees of interrelation...}''}
 
-\subsubsection{Notation in IAM}
-\label{sec:notation_in_iam}
-\COMMENT{This issue is important, add if time permits}
+
+%\subsubsection{Notation in IAM}
+%\label{sec:notation_in_iam}
+
+\COMMENT{NOTATION ? This issue is important, add if time permits}
 
 %What is the notation in IAM, bhatkhande etc and there might be some used in Carnatic music. 
 %Provide some reposiroty..
