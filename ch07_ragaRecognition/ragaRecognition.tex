@@ -192,7 +192,7 @@ Before we proceed to present our results, we notify readers that the accuracies 
 	 & $\mathrm{PD}_\mathrm{context}$ & - & - & - & - & - & - & - \tabularnewline
 \tablebot
 \end{tabular}	
-	\caption{Accuracy (in percentage) of \gls{raga} recognition on \acrshort{rrds_cmd_big} dataset by \acrshort{ragarecVSM} and other methods methods using different features and classifiers. Bold text signifies the best accuracy by a method among all its variants.\COMMENT{replace gopala's number with the new ones after another round of exps}} 
+	\caption{Accuracy (in percentage) of \gls{raga} recognition on \acrshort{rrds_cmd_big} dataset by \acrshort{ragarecVSM} and other methods methods using different features and classifiers. Bold text signifies the best accuracy by a method among all its variants.\TODO{I am not able to reproduce Gopala's results, even after getting the original set of features from him. Waiting for his response.}} 
 	\label{tab:accuracies_cmd_vsm}
 \end{table}
 
@@ -247,7 +247,7 @@ In addition to analyzing the final \gls{raga} recognition accuracies, we also ve
 	\begin{center}
 		\includegraphics[width=\figSizeNinety]{ch07_ragaRecognition/figures/CM_vsm_cmd_var1.pdf}
 	\end{center}
-	\caption{Confusion matrix of the \gls{raga} predictions by \acrshort{ragarecVSM} on \acrshort{rrds_cmd_big} dataset. The different shades of grey are mapped to different number of audio recordings.\COMMENT{doublecheck the constrution of confusion matrix, be 200\% sure that it is error free, especially across methods.}}
+	\caption{Confusion matrix of the \gls{raga} predictions by \acrshort{ragarecVSM} on \acrshort{rrds_cmd_big} dataset. The different shades of grey are mapped to different number of audio recordings.}
 	\label{fig:confusion_matrix_cmd}
 \end{figure}
 
@@ -413,8 +413,6 @@ We again perform element-wise operations and sum over all the elements of the re
 \label{sec:tdms_comparison_other}
 
 In addition to \acrshort{ragarecTDMS}, we also evaluate and compare the method proposed by~\cite{chordia2013joint} (denoted by \acrshort{sotaChordia}) in the same way as explained before~(\secref{sec:raga_rec_pattern_comparison_sota}). \acrshort{sotaChordia} is regarded as the state-of-the-art in \gls{raga} recognition, which uses smoothened \acrfull{pcd} as the tonal feature and employs \acrfull{1nn} using Bhattacharyya distance for predicting \gls{raga} labels. We use the original implementation of these method obtained from the respective author. We also compare the performance of \acrshort{ragarecTDMS} with our melodic pattern-based method, \acrshort{ragarecVSM}~(\secref{sec:pattern_based_raga_recognition}).
-
-\TODO{It might be a good idea to move in all the comparisons to a common section.}
 
 
 \subsubsection{Experimental Setup}
