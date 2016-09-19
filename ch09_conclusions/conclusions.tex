@@ -6,7 +6,7 @@
 \section{Introduction}
 \label{sec:summary_thesis}
 
- In this thesis we have presented computational approaches for analyzing a number of melodic elements at different levels of melodic organization in \gls{iam}, which in tandem generate a higher-level melodic description of its audio collections. These approaches build upon each other to finally allow us to achieve the goals that we set at the beginning of this thesis, which are: 
+ In this thesis we have presented computational approaches for analyzing a number of melodic elements at different levels of melodic organization in \gls{iam}, which in tandem generate a high-level melodic description of its audio collections. These approaches build upon each other to finally allow us to achieve the goals that we set at the beginning of this thesis, which are: 
  
  \begin{itemize}
  	\item To curate and structure a representative music corpora of \gls{iam} that comprise audio recordings and associated metadata, and use that to compile sizable and well annotated tests datasets for melodic analyses.
@@ -39,11 +39,13 @@ One of the objectives of the CompMusic project was to build a quality research c
 	
 	\item The contributions to compiling corpora are mainly in Hindustani music corpus (\secref{sec:corpus_hindustani_music_corpus}), starting from the procurement of music CDs, ripping and structuring the audio collection and manually adding all the editorial metadata to MusicBrainz. 
 	
-	\item Compiling CompMusic Tonic Datasets (\acrshort{tds_cm1}, \acrshort{tds_cm2} and \acrshort{tds_cm3}), which collectively include tonic annotations for 716 audio recordings spanning. \TODO{Double check this number}
+	\item Compiling and annotating CompMusic Tonic Datasets (\acrshort{tds_cm1}, \acrshort{tds_cm2} and \acrshort{tds_cm3}), which collectively include tonic annotations for 716 audio recordings spanning. \TODO{Double check this number}
 	
-	\item Compiling \Gls{nyas} dataset (\acrshort{nds_cm}), which includes annotations of \gls{nyas} segments for 20 audio recordings spanning 1.5\,hours of audio, done in collaboration with Kaustuv Kanti Ganguli. 
-	\item Improving Melodic Similarity Dataset (\acrshort{msds}), which originally included 497 annotated instances of 10 different melodic patterns in 33\,audio recordings done by Kaustuv Kanti Ganguli and Vignesh Ishwar. In the revised version of the dataset that came after a detailed verification, 127\,instances of melodic patterns were added for the same audio recordings and pattern categories. 
-	\item Compiling \Gls{raga} recognition datasets (\acrshort{rrds_cmd_big} and \acrshort{rrds_hmd_big}), which contain \gls{raga} labels and associated editorial metadata for 780\, audio recordings, done in collaboration with Vignesh Ishwar and Kaustuv Kanti Ganguli. \acrshort{rrds_cmd_big} comprise 480\,full length recorded performances in 40\,\glspl{raga} with 12 recordings per \gls{raga} spanning a total of 124\,hours of audio. \acrshort{rrds_hmd_big} comprise 300\,full length recorded performances in 30\,\glspl{raga} with 10 recordings per raga spanning a total of 130\,hours of audio.
+	\item Compiling and annotating \Gls{nyas} dataset (\acrshort{nds_cm}), which includes annotations of \gls{nyas} segments for 20 audio recordings spanning 1.5\,hours of audio, done in collaboration with Kaustuv Kanti Ganguli. 
+	
+	\item Improving Melodic Similarity Dataset (\acrshort{msds}), which originally included 497 annotated instances of 10 different melodic patterns in 33\,audio recordings done by Kaustuv Kanti Ganguli and Vignesh Ishwar. In the revised version after a detailed verification, 127\,new instances of melodic patterns were added.
+	 
+	\item Building \Gls{raga} recognition datasets (\acrshort{rrds_cmd_big} and \acrshort{rrds_hmd_big}), which contain \gls{raga} labels and associated editorial metadata for 780\, audio recordings, done in collaboration with Vignesh Ishwar and Kaustuv Kanti Ganguli. They comprise nearly 240\,hours of commercial quality recordings with available metadata, which makes them the largest datasets ever compiled for this task.
 \end{itemize}
 
 \subsection*{Scientific and Technical Contributions}
@@ -56,13 +58,14 @@ One of the objectives of the CompMusic project was to build a quality research c
 	\item A partial transcription and complexity weighting-based approach for improving melodic similarity is devised that exploits peculiar characteristics of melodies in \gls{iam} .
 	\item Demonstration of the utility of an unsupervised approach for discovering repeated melodic patterns in sizable audio collections of \gls{iam}.
 	\item Characterization of the discovered melodic patterns by employing network analysis tools to identify musically significant patterns, the \gls{raga} motifs. 
-	\item Demonstration of the utility of a novel pattern-based approach for \gls{raga} recognition, which employs vector space modeling concepts to exploit discovered melodic patterns for this task. 
+	\item Development of a novel pattern-based approach for \gls{raga} recognition, which employs vector space modeling concepts to exploit discovered melodic patterns for this task. 
 	\item Development of  a novel feature, the \acrfull{tdms}, which captures both the tonal and the short-time temporal characteristics of a melody. This feature together with a simple \gls{1nn} classification strategy is shown to outperform state of the art in \gls{raga} recognition using the largest datasets ever used for this task. 
 \end{itemize}
 
-Most of the outcomes of the work presented in this document have been published in the form of papers in international conferences, and journals. The full list of the author’s publications is provided in~\appref{app:publications}. The code and tools developed during our work are made publicly available to facilitate reproducible research and comparative studies (). The set of tools and output of our approaches are also integrated in Dunya, a system that consolidates the corpora and computational tools for XXX. There are a number of online Web demos built to demonstrate the usefulness of the outcome of our approaches, which are discussed in~\secref{}. Furthermore, we have also exploited a number of the outcomes of our work for developing mobile applications that provide enhanced listening experience, and novel pedagogical tools in the context of \gls{iam} \secref{}.
+Most of the outcomes of the work presented in this document have been published in the form of papers in international conferences, and journals. The full list of the author’s publications is provided in~\appref{app:mypapers}. The code and tools developed during our work are made publicly available to facilitate reproducible research and comparative studies (\appref{app:resources}). The set of tools and output of our approaches are also integrated in Dunya, a system that consolidates the corpora and computational tools developed in the project (\secref{sec:applications_dunya}). There are a number of online Web demos built to demonstrate the usefulness of the outcome of our approaches, which are discussed in~\secref{sec:demos}. Furthermore, we have also exploited a number of the outcomes of our work for developing mobile applications that provide enhanced listening experience, and novel pedagogical tools in the context of \gls{iam} \secref{sec:mobile_apps_camut}.
 
 \TODO{Any overall big sentence, that we have opened out research area? Good datasets and spectrum of problems.}
+\XXX{S}{J}{The tweet about writing about the grant in the outcome was a fun joke, or you really meant it? and if yes, where  can I include it. }
 
 \section{Future Perspectives}
 \label{sec:future_directions}
@@ -91,4 +94,4 @@ We now proceed to enumerate some novel research problems in the context of \gls{
 
 The improvisatory nature of \gls{iam} also makes the study of the temporal evolution of melody in a music piece a relevant topic of research. This can be achieved through an intra-recording analysis based on melodic patterns, such as analyzing the degree of pitch and timing transformations across the occurrences of melodic patterns, the time difference between the adjacent recurrences of a melodic pattern and the chronology of the occurrence of melodic patterns. Such insights will help understand the nature of improvisatory \gls{raga} rendition in general and the related artist specific stylistic nuances.
 
-\TODO{All the different melodic elements studied in our work can be combined within a ontology framework to bulid knowledge bases, which can then enable musicological relevant analysis???}
+\TODO{All the different melodic elements studied in our work can be combined within a ontology framework to bulid knowledge bases, which can then enable musicological relevant analysis. I have to ask Xavier how to write this point.}
