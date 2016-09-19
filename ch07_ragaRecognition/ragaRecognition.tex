@@ -101,7 +101,7 @@ We start by building an undirected network $\netUndirWght$ using the discovered 
 	\begin{center}
 		\includegraphics[width=\figSizeEightyFive]{ch07_ragaRecognition/figures/ClusteringCoffs_40raga_2s.pdf}
 	\end{center}
-	\caption{Evolution of clustering coefficients of $\netUndirWght$ and $\netUndirWght_r$ and their difference for different similarity thresholds~($\simThsld$).}
+	\caption[Evolution of $\clusCoff(\netUndirWght)$, $\clusCoff(\netUndirWght_r)$ and $\clusCoff(\netUndirWght)$ - $\clusCoff(\netUndirWght_r)$ over values of $\simThsld$]{Evolution of clustering coefficients of $\netUndirWght$ and $\netUndirWght_r$ and their difference for different similarity thresholds~($\simThsld$).}
 	\label{fig:raga_rec_clustering_coff_evolution}
 \end{figure}
 
@@ -156,7 +156,7 @@ We use leave-one-out cross validation methodology for evaluations~\citep{Mitchel
 
 Note that in our published work in~\cite{gulatiphrase_2016} we use a different evaluation strategy (12-fold cross-validation methodology). Therefore the results provided in the article differ slightly form the ones presented in this thesis. In addition, the method for assessing statistical significance is also different (Mann-Whitney U test), which is due to the difference in the evaluation strategy. The evaluation strategy used here (eave-one-out cross validation) does not involve any random sampling (or split) of the evaluation set, which makes our experimental setup more definite.
 
-\subsubsection{Comparison with the State-of-the-art}
+\subsubsection{Comparison with the State of the art}
 \label{sec:raga_rec_pattern_comparison_sota}
 
 We compare our results with two state of the art methods proposed in~\citep{chordia2013joint} and \citep{koduri2014intonation}. As an input to these methods, we use the same features, predominant pitch and tonic, as used in our method. The only difference is that the pitch contours fed to these methods are not post-processed (\secref{sec:data_preprocessing_pitch_postprocessing}). This is because these methods primarily exploit the intonation aspect of the \glspl{svara}, and therefore, performing a smoothening operation on pitch contours might degrade their performance. The method in~\cite{chordia2013joint} uses smoothened \acrfull{pcd} as the tonal feature and employs \acrfull{1nn} using Bhattacharyya distance for predicting \gls{raga} labels. We denote this method by \acrshort{sotaChordia}. The authors in~\cite{chordia2013joint} report a window size of 120\,s as an optimal duration for computing \glspl{pcd} (denoted here by $\mathrm{PCD}_{120}$). However, in our experiments we find that \glspl{pcd} computed over the entire audio recording (denoted here by~$\mathrm{PCD}_\mathrm{full}$) result in a significant improvement~\citep{gulatiphrase_2016}. We therefore use $\mathrm{PCD}_\mathrm{full}$ for comparison. Note that in~\cite{chordia2013joint} the authors do not experiment with a window size larger than 120\,s. 
@@ -191,7 +191,7 @@ Before we proceed to present our results, we notify readers that the accuracies 
 	 & $\mathrm{PD}_\mathrm{context}$ & 54.16 & 43.75 & 5.2 & 33.12 & 49.37 & \textbf{54.79} &26.25 \tabularnewline
 \tablebot
 \end{tabular}	
-	\caption{Accuracy (in percentage) of \gls{raga} recognition on \acrshort{rrds_cmd_big} dataset by \acrshort{ragarecVSM} and other methods methods using different features and classifiers. Bold text signifies the best accuracy by a method among all its variants.\TODO{I am not able to reproduce Gopala's results, even after getting the original set of features from him. Waiting for his response.}} 
+	\caption[Accuracy of \acrshort{ragarecVSM}, \acrshort{sotaChordia} and \acrshort{sotaKoduri} on \acrshort{rrds_cmd_big}]{Accuracy (in percentage) of \gls{raga} recognition on \acrshort{rrds_cmd_big} dataset by \acrshort{ragarecVSM} and other methods methods using different features and classifiers. Bold text signifies the best accuracy by a method among all its variants.\TODO{I am not able to reproduce Gopala's results, even after getting the original set of features from him. Waiting for his response.}} 
 	\label{tab:accuracies_cmd_vsm}
 \end{table}
 
@@ -211,7 +211,7 @@ Before we proceed to present our results, we notify readers that the accuracies 
 	\acrshort{sotaChordia} & $\mathrm{PCD}_\mathrm{full}$ & - & - & - & - & - & - & \textbf{91.66}\tabularnewline
 \tablebot
 \end{tabular}
-	\caption{Accuracy (in percentage) of \gls{raga} recognition on \acrshort{rrds_hmd_big} dataset by \acrshort{ragarecVSM} and other methods methods using different features and classifiers. Bold text signifies the best accuracy by a method among all its variants.} 
+	\caption[Accuracy of \acrshort{ragarecVSM} and \acrshort{sotaChordia} on \acrshort{rrds_hmd_big}]{Accuracy (in percentage) of \gls{raga} recognition on \acrshort{rrds_hmd_big} dataset by \acrshort{ragarecVSM} and other methods methods using different features and classifiers. Bold text signifies the best accuracy by a method among all its variants.} 
 	\label{tab:accuracies_hmd_vsm}
 \end{table}
 
@@ -235,7 +235,7 @@ From~\tabref{tab:accuracies_cmd_vsm} and~\tabref{tab:accuracies_hmd_vsm}, we see
 		\caption{For \acrshort{rrds_hmd_big} dataset}
 		\label{fig:performance_across_thresholds_hmd}
 	\end{subfigure}
-		\caption{Accuracy of \acrshort{ragarecVSM} and $\clusCoff(\netUndirWght)-\clusCoff(\netUndirWght_r)$ for different similarity thresholds ($\simThsld$) for both the datasets.}
+		\caption[Accuracy of \acrshort{ragarecVSM} and $\clusCoff(\netUndirWght)-\clusCoff(\netUndirWght_r)$ for different values of $\simThsld$]{Accuracy of \acrshort{ragarecVSM} and $\clusCoff(\netUndirWght)-\clusCoff(\netUndirWght_r)$ for different similarity thresholds ($\simThsld$) for both the datasets.}
 		\label{fig:performance_across_thresholds}
 \end{figure}
 
@@ -246,7 +246,7 @@ In addition to analyzing the final \gls{raga} recognition accuracies, we also ve
 	\begin{center}
 		\includegraphics[width=\figSizeNinety]{ch07_ragaRecognition/figures/CM_vsm_cmd_var1.pdf}
 	\end{center}
-	\caption{Confusion matrix of the \gls{raga} predictions by \acrshort{ragarecVSM} on \acrshort{rrds_cmd_big} dataset. The different shades of grey are mapped to different number of audio recordings.}
+	\caption[Confusion matrix of classification results by \acrshort{ragarecVSM} on \acrshort{rrds_cmd_big}]{Confusion matrix of the \gls{raga} predictions by \acrshort{ragarecVSM} on \acrshort{rrds_cmd_big} dataset. The different shades of grey are mapped to different number of audio recordings.}
 	\label{fig:confusion_matrix_cmd}
 \end{figure}
 
@@ -254,7 +254,7 @@ In addition to analyzing the final \gls{raga} recognition accuracies, we also ve
 	\begin{center}
 		\includegraphics[width=\figSizeNinety]{ch07_ragaRecognition/figures/CM_vsm_hmd_var1.pdf}
 	\end{center}
-	\caption{Confusion matrix of the \gls{raga} predictions by \acrshort{ragarecVSM} on \acrshort{rrds_hmd_big} dataset. The different shades of grey are mapped to different number of audio recordings.}
+	\caption[Confusion matrix of classification results by \acrshort{ragarecVSM} on \acrshort{rrds_hmd_big}]{Confusion matrix of the \gls{raga} predictions by \acrshort{ragarecVSM} on \acrshort{rrds_hmd_big} dataset. The different shades of grey are mapped to different number of audio recordings.}
 	\label{fig:confusion_matrix_hmd}
 \end{figure}
 
@@ -295,7 +295,7 @@ We now proceed to describe \acrshort{ragarecTDMS},.which is largely based on the
 	\begin{center}
 		\includegraphics[width=\figSizeSixty]{ch07_ragaRecognition/figures/tdms_computation.pdf}
 	\end{center}
-	\caption{Block diagram for \gls{tdms} computation.}
+	\caption{Block diagram for \acrshort{tdms} computation.}
 	\label{fig:bd_tdms_computation}
 \end{figure}
 
@@ -341,7 +341,7 @@ An example of the generated surface $\tdmsBase$ for a music piece\footnote{\url{
 	\begin{center}
 		\includegraphics[width=\figSizeHundred]{ch07_ragaRecognition/figures/PSfeature_e59642ca-72bc-466b-bf4b-d82bfbc7b4af.pdf}
 	\end{center}
-	\caption{Generated surface for a music piece before (a) and after (b) applying post-processing ($\tdmsBase$ and $\tdmsSmooth$, respectively). For ease of visualization, both matrices are normalized here between 0 and 1.}
+	\caption[\acrfull{tdms} before and after post-processing]{Generated surface for a music piece before (a) and after (b) applying post-processing ($\tdmsBase$ and $\tdmsSmooth$, respectively). For ease of visualization, both matrices are normalized here between 0 and 1.}
 	\label{fig:phase_space_surface}
 \end{figure}
 
@@ -441,7 +441,8 @@ In Table~\ref{tab:main_results_tdms}, we show the results for all the variants o
 			\hline\hline
 		\end{tabular}
 	}
-	\caption{Accuracy (\%) of the three proposed variants, \acrshort{ragarecTDMS_F}, \acrshort{ragarecTDMS_KL} and $\mathcal{M}_{\mathrm{BC}}$, and two other methods \acrshort{sotaChordia} and \acrshort{ragarecVSM}. The random baseline ($\mathfrak{B}_\mathrm{r}$) for this task is 3.3\% for \acrshort{rrds_hmd_big} and 2.5\% for \acrshort{rrds_cmd_big}.}
+	\caption[\Gls{raga} recognition accuracy of \acrshort{tdms}-based method variants
+	]{Accuracy (\%) of the three proposed variants, \acrshort{ragarecTDMS_F}, \acrshort{ragarecTDMS_KL} and $\mathcal{M}_{\mathrm{BC}}$, and two other methods \acrshort{sotaChordia} and \acrshort{ragarecVSM}. The random baseline ($\mathfrak{B}_\mathrm{r}$) for this task is 3.3\% for \acrshort{rrds_hmd_big} and 2.5\% for \acrshort{rrds_cmd_big}.}
 	\label{tab:main_results_tdms}
 \end{table}
 
@@ -455,7 +456,7 @@ As mentioned earlier, the system parameters corresponding to the results in Tabl
 	\begin{center}
 		\includegraphics[width=\figSizeHundred]{ch07_ragaRecognition/figures/AccuracyVsParameters_tdms.pdf}
 	\end{center}
-	\caption{Accuracy of \acrshort{ragarecTDMS_KL} as a function of parameter values. Other methods \acrshort{sotaChordia} and \acrshort{ragarecVSM}, and random baseline $\mathfrak{B}_\mathrm{r}$ are also reported for comparison.\TODO{Match $\mathfrak{B}$, wasn't happening in matplotlib}} 
+	\caption[Accuracy of \acrshort{ragarecTDMS_KL} as a function of different parameter values]{Accuracy of \acrshort{ragarecTDMS_KL} as a function of parameter values. Other methods \acrshort{sotaChordia} and \acrshort{ragarecVSM}, and random baseline $\mathfrak{B}_\mathrm{r}$ are also reported for comparison.\TODO{Match $\mathfrak{B}$, wasn't happening in matplotlib}} 
 	\label{fig:accuracy_vs_parameter_values_tdms}
 \end{figure}
 
@@ -467,7 +468,7 @@ Overall, the method appears to be invariant to different parameter values to a l
 	\begin{center}
 		\includegraphics[width=\figSizeNinety]{ch07_ragaRecognition/figures/CM_tdms_cmd_var1.pdf}
 	\end{center}
-	\caption{Confusion matrix of the predicted \gls{raga} labels obtained by \acrshort{ragarecTDMS_KL} on \acrshort{rrds_cmd_big}. Shades of grey are mapped to the number of audio recordings.} 
+	\caption[Confusion matrix of classification results by \acrshort{ragarecTDMS_KL} on \acrshort{rrds_cmd_big}]{Confusion matrix of the predicted \gls{raga} labels obtained by \acrshort{ragarecTDMS_KL} on \acrshort{rrds_cmd_big}. Shades of grey are mapped to the number of audio recordings.} 
 	\label{confusion_mtx_carnatic_tdms}
 \end{figure}
 
@@ -501,7 +502,7 @@ For this experiment we consider \acrshort{ragarecTDMS_KL} method, which as shown
 		\caption{For subsets of \acrshort{rrds_hmd_big} dataset}
 		\label{fig:performance_vs_n_raagas_hmd}
 	\end{subfigure}
-	\caption{Accuracy of \acrshort{ragarecVSM} as a function number of \glspl{raga} in a subset of \acrshort{rrds_cmd_big}  and \acrshort{rrds_hmd_big}, respectively. For every case 50 randomly sampled selections of \glspl{raga}are done from the original datasets, wherein the number of recordings is maintained to be the same.}
+	\caption[Accuracy of \acrshort{ragarecVSM} as a function number of \glspl{raga} in a subset of \acrshort{rrds_cmd_big}  and \acrshort{rrds_hmd_big}]{Accuracy of \acrshort{ragarecVSM} as a function number of \glspl{raga} in a subset of \acrshort{rrds_cmd_big}  and \acrshort{rrds_hmd_big}, respectively. For every case 50 randomly sampled selections of \glspl{raga}are done from the original datasets.}
 	\label{fig:performance_vs_n_raagas}
 \end{figure}
 

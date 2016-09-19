@@ -91,7 +91,7 @@ only audio data.
 		\acrshort{tonicid_ashwin_3} & - & 86 & 61.1 & 80.5 & 67.8 & 79.9 & 72.7 & 72.7 & 94.7 & 94.7 & 85  & 86.6 \\
 \tablebot
 	\end{tabular}
-	\caption[Tonic identification accuracies of seven methods on six different datasets using only the audio data.][Tonic identification accuracies of seven methods on six different datasets. These accuracies are when no metadata is used in addition to audio data.]{Accuracies for tonic pitch (TP \%) and tonic pitch-class (TPC \%) identification by seven methods on six different datasets using only audio data. The best accuracy obtained for each dataset is
+	\caption[Tonic identification accuracies of seven methods on six different datasets using only audio data]{Accuracies for tonic pitch (TP \%) and tonic pitch-class (TPC \%) identification by seven methods on six different datasets using only audio data. The best accuracy obtained for each dataset is
 	highlighted using bold text. The dashed horizontal line divides the methods based on supervised learning (\acrshort{tonicid_justin} and \acrshort{tonicid_sankalp}) and those based on expert knowledge (\acrshort{tonicid_ranjani_1}, \acrshort{tonicid_ranjani_2}, \acrshort{tonicid_ashwin_1}, \acrshort{tonicid_ashwin_2} and \acrshort{tonicid_ashwin_3}). TP column for \acrshort{tds_cm1} is marked as `-', because it consists of only instrumental excerpts for which we not evaluate tonic pitch accuracy. \acrshort{tonicid_ashwin_1} is only evaluated on \acrshort{tds_iitm1} since it works on the whole concert recording.}
 	\label{tab:tonic_identification_accuracy_without_gender_info}
 \end{sidewaystable}
@@ -133,7 +133,7 @@ on performances by male singers compared to those by female singers. As in the c
 considerably more significant for the predominant pitch based methods, which make a lot of octave errors for performances by female singers. As noted earlier, in methods \acrshort{tonicid_ranjani_1}, \acrshort{tonicid_ranjani_2}, \acrshort{tonicid_ashwin_2} and \acrshort{tonicid_ashwin_3} a range of 100-250 Hz is considered for finding the tonic pitch when no additional metadata about the artists is available. In the case of female singers, the tonic usually resides in the higher end of this range. However, the presence of the drone, the tonal sounds produced by percussive instruments and the octave errors produced by the pitch tracker, all contribute to the appearance of a high peak one octave below the tonic of the female singer. This is especially the case for 3-minute excerpts where a limited amount of vocal pitch information is available. In the case of the approaches based on multi-pitch analysis and classification (\acrshort{tonicid_justin} and \acrshort{tonicid_sankalp}), a probable reason for obtaining better performance for male singers is the larger number of excerpts with male singers in the database. As a result, it is possible that the rules learned by the classifier are slightly biased towards the performances of male singers.
 
 
-\subsubsection{Results Obtained Using Metadata Together With the Audio}
+\subsubsection{Results Obtained Using Metadata Together with the Audio}
 \label{sec:pre_processing_tonic_id_results_with_metadata}
 
 One of the ways to reduce the amount of octave errors in tonic identification is to restrict the frequency range of the allowed tonic pitches. The frequency range can be optimized based on the additional information regarding the gender of the singer (when available) to guide the method. In this section we analyze the effect of including information regarding the gender of the singer and the performance type (vocal or instrumental) on the identification accuracy obtained by the different methods.
@@ -161,8 +161,7 @@ One of the ways to reduce the amount of octave errors in tonic identification is
 \tablebot		
 	\end{tabular}
 \par	\end{centering}
-	\caption[Tonic identification accuracies of seven methods on six different datasets using both the audio data and the metadata regarding the gender of the lead artist and the performance type (vocal or instrumental).]{Accuracies (tonic pitch-class (\%)) when using additional information regarding the gender of the lead singer (male/female) and performance type (vocal/instrumental). The dashed horizontal line divides the
-		methods based on supervised learning (\acrshort{tonicid_justin} and \acrshort{tonicid_sankalp}) and those based on expert knowledge (\acrshort{tonicid_ranjani_1}, \acrshort{tonicid_ranjani_2}, \acrshort{tonicid_ashwin_1}, \acrshort{tonicid_ashwin_2} and \acrshort{tonicid_ashwin_3}).}
+	\caption[Tonic identification accuracies of seven methods on six different datasets using both audio and editorial metadata]{Accuracies (tonic pitch-class (\%)) when additional information regarding the gender of the lead singer (male/female) and performance type (vocal/instrumental) is used. The dashed horizontal line divides the methods based on supervised learning (\acrshort{tonicid_justin} and \acrshort{tonicid_sankalp}) and those based on expert knowledge (\acrshort{tonicid_ranjani_1}, \acrshort{tonicid_ranjani_2}, \acrshort{tonicid_ashwin_1}, \acrshort{tonicid_ashwin_2} and \acrshort{tonicid_ashwin_3}).}
 	\label{tab:tonic_identification_accuracy_with_gender_info}
 \end{table}
 
@@ -232,7 +231,7 @@ Finally, we analyze the errors as a function of the different attributes of the 
 different methods and their underlying causes we refer the reader to the publications where these methods are discussed in depth \citep{salamon2012multipitch, SGulati_MThesis2012,bellur2012knowledge,ranjani2011carnatic}.
 
 
-\subsection{Summary of the Analysis }
+\subsection{Summary of the Comparative Evaluation }
 \label{sec:pre_processing_tonic_identification_summary}
 
 In the comparative evaluation presented above seven tonic identification methods are evaluated on six different datasets that are representative of the real-world collections of \gls{iam}. The evaluation is performed in two scenarios; first, when only audio data is input to the methods, and second, when the additional information about the gender of the singer (male or female) and  the performance type (vocal or instrumental) is given in addition to audio data. The obtained results are analyzed per dataset, and for the different characteristics of the music material. Along with the accuracies of the methods we presented an in-depth error analysis, describing the different kinds of errors for different scenarios and provided plausible explanations for them.
@@ -375,7 +374,7 @@ We describe this heuristic-based approach in~\algoref{alg:algorithmPitchCorrecti
 \end{algorithm}
 
 
-\subsubsection{Pitch smoothening}
+\subsubsection{Pitch Smoothening}
 \label{sec:data_processing_pitch_smoothening}
 
 
@@ -620,7 +619,7 @@ In addition, we also investigate per-class accuracies for label annotations. We 
 		& 	\acrshort{nyas_local_feature}+\acrshort{nyas_context_feature}		& 0.332 & 0.672 & 0.710 & \textbf{0.730} & 0.743 & 0.731\\
 \tablebot
 	\end{tabular}
-	\caption{F-scores for \gls{nyas} and non-\gls{nyas} label annotations task using \gls{pls} method (A) and the proposed segmentation method (B). Results are shown for different classifiers (\acrshort{tree}, \acrshort{knn}, \acrshort{nb}, \acrshort{lr}, \acrshort{svm}) and local (\acrshort{nyas_local_feature}), contextual (\acrshort{nyas_context_feature}) and local together with contextual (\acrshort{nyas_local_feature}+\acrshort{nyas_context_feature}) features. \acrshort{dtw} is the baseline method used for comparison. The best random baseline F-score is  0.153 obtained using \acrshort{nyas_randbase2}. } 
+	\caption[F-scores for \gls{nyas} and non-\gls{nyas} label annotation task]{F-scores for \gls{nyas} and non-\gls{nyas} label annotation task using \gls{pls} method (A) and the proposed segmentation method (B). Results are shown for different classifiers (\acrshort{tree}, \acrshort{knn}, \acrshort{nb}, \acrshort{lr}, \acrshort{svm}) and local (\acrshort{nyas_local_feature}), contextual (\acrshort{nyas_context_feature}) and local together with contextual (\acrshort{nyas_local_feature}+\acrshort{nyas_context_feature}) features. \acrshort{dtw} is the baseline method used for comparison. The best random baseline F-score is  0.153 obtained using \acrshort{nyas_randbase2}. } 
 	\label{tab:nyas_segmentation_label_accuracies}
 \par \end{centering}
 \end{table}

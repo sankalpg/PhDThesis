@@ -56,7 +56,7 @@ Reusability of a corpus is fundamental for reproducibility of the research resul
 CompMusic corpora for \gls{iam} comprises two corpus; Carnatic music corpus and Hindustani music corpus. We now proceed to describe the specificities of both these corpora. The description will include the type of data that constitute the corpus, the unit of a data sample, selected references for measuring the completeness and coverage of the data and resources for obtaining complementary information about musical concepts. 
 
 
-\subsection{Carnatic music corpus}
+\subsection{Carnatic Music corpus}
 \label{sec:corpus_carnatic_music_corpus}
 
 \TODO{Why the heck you dont provide a musicbrainz link?, Also talk about bootleg collection!}
@@ -82,7 +82,7 @@ As mentioned, vocal music constitute a significant part of Carnatic music and it
 In addition to the signal processing and machine learning based approaches, semantic analysis of \gls{iam} has been another topic of research in the CompMusic project. The music community and music concepts related information collected from various sources over the Internet comprise the input data to semantic anlaysis and is a part of the Carnatic music corpus. Kutcheries.com\footnote{\url{http://www.kutcheris.com/}} and Wikipedia\footnote{\url{https://en.wikipedia.org/wiki/Category:Carnatic_music}} are two sources utilized for obtaining such an information. Kutcheries.com is a good source of artist biographies and up-to-date information about music venues, concerts and other related events. The category of Carnatic music on Wikipedia is a good source of contextual information including music concepts. There has also been an effort to contribute to Wikipedia by adding information with the help of domain experts. In addition to these two sources, more opinion like data on different musical aspects is obtained from Rasikas.org\footnote{\url{http://www.rasikas.org}}, an active music forum dedicated to Carnatic music community. For the case of Carnatic music the data from rasikas.org can be considered as ideal for studying tasks such as community profiling.
 
 
-\subsubsection{Coverage of Carnatic music Corpus}
+\subsubsection{Coverage of Carnatic Music Corpus}
 \label{sec:corpus_coverage_of_carnatic_music_corpus}
 
 Coverage analysis of a corpus aims to measure the representativeness and comprehensiveness of a corpus with respect to the reference sources that represent real-world collections. For the case of the Carnatic music corpus coverage analysis is performed for \glspl{raga}, \glspl{tala}, performing artists and composers. Kutcheris.com is our primary source for measuring artist coverage since it is up-to-date with current artists and their performances. We use last 5 years of their concert listing from 2009-2014. Release catalog from Charsur, our main reference as a record label also provides information about \glspl{raga}, \glspl{tala}, artists and composers. Raaga.com\footnote{\url{http://play.raaga.com/carnatic}}, an Indian music streaming service with a channel dedicated to Carnatic music is another source we considered for this analysis. It should be noted that Raaga.com has several light music forms included in their Carnatic music channel, which we have purposefully not included in our corpus. Hence, the numbers derived from an analysis done on the data from Raaga.com will have an adverse influence because of these additional music forms. The procedure followed for obtaining information from these sources and the post-processing done before the analysis is explained in the article by~\cite{CM_Corpora_Ajay14}.
@@ -246,7 +246,7 @@ In \tabref{tab:completeness_hindustani_corpus} we show the completeness of the e
 \end{table}
 
 
-\subsection{Open-access Research Corpus}
+\subsection{Open-access Music Corpus}
 \label{sec:corpus_open_access_research_corpus}
 
 \begin{figure}
@@ -313,7 +313,7 @@ As explained earlier, a test dataset is a subset of a corpus used for studying a
 Since a majority of these datasets are a subset of the corpora described in previous sections, details regarding the quality of audio recordings and editorial metadata remain the same as that of the corpora. In case of exceptions, these details are provided in the section where the dataset is described. 
 
 
-\subsection{Tonic datasets}
+\subsection{Tonic Datasets}
 \label{sec:corpus_tonic_datasets}
 
 
@@ -337,7 +337,7 @@ Since a majority of these datasets are a subset of the corpora described in prev
 	\end{tabular}
 	
 	
-	\caption[Summary of the tonic datasets]{Summary of the tonic datasets, including average excerpt length (Avg. length),
+	\caption[Summary of the tonic identification datasets]{Summary of the tonic identification datasets, including average excerpt length (Avg. length),
 		number of excerpts (\#Excerpts), percentage of Hindustani music (Hi), Carnatic
 		music (Ca), vocal excerpts (Voc.), instrumental excerpts (Inst.), number of
 		unique songs (\#Usong) and number of unique artists (\#Uartists) in each dataset. For vocal
@@ -378,7 +378,7 @@ These six datasets represent the diversities present in real-world music collect
 
 
 
-\subsection{Nyas dataset}
+\subsection{Nyas Dataset}
 \label{sec:corpus_nyas_dataset}
 
 \Gls{nyas} dataset~(\acrshort{nds_cm}) is used for evaluating our proposed approach (described in \chapref{chap:data_preprocessing}) to identify \gls{nyas} \gls{svara} segments in melodies of \gls{iam}. \acrshort{nds_cm} comprises 20 audio music recordings of total duration of 1.5\,hours. All of these recordings are of vocal \gls{alap} performances of Hindustani music. \Gls{alap} is unmetered melodic improvisational, usually performed at the opening of a \gls{raga} rendition. We selected only \gls{alap} performances because the concept of \gls{nyas} is emphasized in these sections during a \gls{raga} rendition. Of the 20 audio recordings, 15 are polyphonic commercially available recordings taken from the Hindustani music research corpus (\secref{sec:corpus_hindustani_music_corpus}). The other 5 audio recordings in the data set are monophonic in-house studio recordings of the \glspl{alap} sung by a professional singer of Hindustani music. These in-house recordings are available under Creative Commons (CC) license in Freesound\footnote{http://www.freesound.org/people/sankalp/packs/12292/}. In total we have performances by 8 artists in 16 different \glspl{raga}. To avoid over-fitting of the data it is important to include different artists and \glspl{raga} as the \gls{nyas} characteristics highly depend on these aspects~\cite{Dey2008}.

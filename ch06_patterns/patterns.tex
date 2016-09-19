@@ -197,7 +197,7 @@ To quantify the performance of a melodic similarity variant considered in this s
 		& 	0.547 	&	$\sRate_{50}$		&	$\mNorm_{\mathrm{tonic}}$ 	&	$\uTScaling_{\mathrm{off}}$		&	$\distPattMeasure_{\mathrm{DTW\_L0\_G90}}$\\	
 \tablebot		
 	\end{tabular}
-	\caption{\acrshort{map} score and the details of parameter settings for the three best performing variants for \acrshort{msds_iitm_cmd} and \acrshort{msds_iitb_hmd}. Srate: sampling rate of the melody representation, Norm: normalization technique, TScale: uniform time-scaling and  Dist: distance measure.}
+	\caption[\acrshort{map} score and parameter details for the three best performing variants of the method for computing melodic similarity]{\acrshort{map} score and the details of parameter settings for the three best performing variants for \acrshort{msds_iitm_cmd} and \acrshort{msds_iitb_hmd}. Srate: sampling rate of the melody representation, Norm: normalization technique, TScale: uniform time-scaling and  Dist: distance measure.}
 	\label{tab:melodic_similarity_results}
 \par \end{centering}	
 \end{table}
@@ -212,7 +212,7 @@ In Table~\ref{tab:melodic_similarity_results} (top half), we show the \gls{map} 
 	\begin{center}
 		\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/SimilarityEvaluation/StatisticalDiff.png}
 	\end{center}
-	\caption[]{Matrix indicating the statistical significance of the performance difference between every variant pair for \acrshort{msds_iitm_cmd} and \acrshort{msds_iitb_hmd}. Variant pairs where the difference in the performance is statistically significant are marked by dots. Only the superscript in the name of the dataset is used in the labels.\TODO{This figure uses symbol, check if it matches the text}}
+	\caption[Matrix indicating the statistical significance of the performance difference between different method variants]{Matrix indicating the statistical significance of the performance difference between every variant pair for \acrshort{msds_iitm_cmd} and \acrshort{msds_iitb_hmd}. Variant pairs where the difference in the performance is statistically significant are marked by dots. Only the superscript in the name of the dataset is used in the labels.\TODO{This figure uses symbol, check if it matches the text}}
 	\label{fig:patterns_statistical_significance_similarity_evaluation}
 \end{figure}
 
@@ -252,7 +252,7 @@ To analyze the consistency in the performance across pattern types, we present t
 			& 	0.259 	&	$\sRate_{67}$		&	$\mNorm_{\mathrm{tonicQ12}}$ 	&	$\uTScaling_{\mathrm{on}}$		&	$\distPattMeasure_{\mathrm{DTW\_L1\_G90}}$\\	
 			\tablebot		
 		\end{tabular}
-		\caption{\acrshort{map} score and the details of parameter settings for the three best performing variants for \acrshort{msds_iitm_cmd} and \acrshort{msds_iitb_hmd} dataset. These results are corresponding to the experiment where target patterns' length is not read from the ground-truth annotations but is considered to be same as the query pattern length. Srate: sampling rate of the melody representation, Norm: normalization technique, TScale: uniform time-scaling and  Dist: distance measure.}
+		\caption[\acrshort{map} score and parameter details for the three best performing variants of the method for computing melodic similarity, without using groundth-truth segmentation]{\acrshort{map} score and the details of parameter settings for the three best performing variants for \acrshort{msds_iitm_cmd} and \acrshort{msds_iitb_hmd} dataset. These results are corresponding to the experiment where target patterns' length is not read from the ground-truth annotations but is considered to be same as the query pattern length. Srate: sampling rate of the melody representation, Norm: normalization technique, TScale: uniform time-scaling and  Dist: distance measure.}
 		\label{tab:melodic_similarity_results_var2}
 \par \end{centering}		
 \end{table}
@@ -441,7 +441,7 @@ In~\tabref{tab:patterns_improving_similarity_map_scores} we summarize the \gls{m
 \tablebot	
 		
 	\end{tabular}
-	\caption{\gls{map} scores for the two datasets \acrshort{msds_cm_hmd} and \acrshort{msds_cm_cmd} for the four method variants \acrshort{similarity_b}, \acrshort{similarity_dt}, \acrshort{similarity_cw1} and \acrshort{similarity_cw2} and for different normalization techniques. Standard deviation of average precision is reported within round brackets.}
+	\caption[\acrshort{map} scores for \acrshort{msds_cm_hmd} and \acrshort{msds_cm_cmd} datasets obtained by \acrshort{similarity_b}, \acrshort{similarity_dt}, \acrshort{similarity_cw1} and \acrshort{similarity_cw2}]{\acrshort{map} scores for the two datasets \acrshort{msds_cm_hmd} and \acrshort{msds_cm_cmd} for the four method variants \acrshort{similarity_b}, \acrshort{similarity_dt}, \acrshort{similarity_cw1} and \acrshort{similarity_cw2} and for different normalization techniques. Standard deviation of average precision is reported within round brackets.}
 	\label{tab:patterns_improving_similarity_map_scores}
 \par \end{centering}	
 \end{table}
@@ -742,7 +742,7 @@ Before presenting the results of the evaluation of the discovered patterns, we p
 			\acrshort{lbKeoghEC}   		& 1	&	3 \\
 			\tablebot
 		\end{tabular}
-		\caption{Percentage of exits after a lower bound computation with respect to the total number of distance computations.}
+		\caption[Percentage of exits after different lower bound computations]{Percentage of exits after a lower bound computation with respect to the total number of distance computations.}
 		\label{tab:computationalStats}	
 		\par \end{centering}	
 \end{table}
@@ -772,7 +772,7 @@ We now present our formal evaluations. We first evaluate the performance of the 
 			$\seedPattCat_3$ & 0.35    &	0.34    &	0.35    &	0.35\\
 			\tablebot
 		\end{tabular}
-		\caption{\gls{map} scores for four variants of rank refinement method ($\RankRefVar_i$) for each seed category ($\seedPattCat_1$, $\seedPattCat_2$ and $\seedPattCat_3$).}
+		\caption[\acrshort{map} scores for four variants of rank refinement method for each seed pattern category]{\acrshort{map} scores for four variants of rank refinement method ($\RankRefVar_i$) for each seed category ($\seedPattCat_1$, $\seedPattCat_2$ and $\seedPattCat_3$).}
 		\label{tab:meanAveragePrecision_pattern_discovery}
 		\par \end{centering}	
 \end{table}
@@ -781,7 +781,7 @@ We now present our formal evaluations. We first evaluate the performance of the 
 	\begin{center}
 		\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/discovery/boxPlot.pdf}
 	\end{center}
-	\caption[{Boxplot of average precision values for the different variants of the rank refinement method]{Boxplot of average precision values for the different variants of the rank refinement method ($\RankRefVar_i$) for each seed category.\TODO{This figure uses symbol, check if it matches the text}}
+	\caption[Boxplot of average precision values for the different variants of the rank refinement method]{Boxplot of average precision values for the different variants of the rank refinement method ($\RankRefVar_i$) for each seed category.\TODO{This figure uses symbol, check if it matches the text}}
 	\label{fig:boxPlotMAPPatternDiscovery}
 \end{figure}
 
@@ -968,7 +968,7 @@ we also notice that several \glspl{raga} such as Kaly\={a}\d{n}i, K\={a}mb\={o}j
 		Total 	& 	44.08 		&	106			&	57		&	-\\	
 \tablebot
 	\end{tabular}
-	\caption{Details of the dataset in terms of the duration (Dur) in hours, number of unique compositions (\#Com), unique lead artists (\#Art), and the svaras for each \gls{raga}. Here $s,r,$ $g,m,p,d,n$ denote the 7 svaras in IAM and the subscript indicates the variant of the svar for a particular \gls{raga} (cf.~\citep{Viswanathan2004}).}
+	\caption[Details of the dataset used for studying pattern characterization]{Details of the dataset in terms of the duration (Dur) in hours, number of unique compositions (\#Com), unique lead artists (\#Art), and the svaras for each \gls{raga}. Here $s,r,$ $g,m,p,d,n$ denote the 7 svaras in IAM and the subscript indicates the variant of the svar for a particular \gls{raga} (cf.~\citep{Viswanathan2004}).}
 	\label{tab:dataset_details_pattern_characterization}
 \end{table}
 
@@ -1030,7 +1030,7 @@ The results show that the proposed method successfully discovers \gls{raga} moti
 		%   			& 				& 		& 	Overall&0.85 		&	0.16\\ \cline{4-6}\cline{4-6}
 		%\hline\hline 
 	\end{tabular}
-	\caption{Mean $\mu_\recording$ and standard deviation $\sigma_\recording$ of $\mu_\pattern$ for each \gls{raga}. R\={a}gas with $\mu_\recording \geq 0.85$ are highlighted. }
+	\caption[Mean and standard deviation of $\mu_\pattern$ for each \gls{raga}]{Mean ($\mu_\recording$) and standard deviation ($\sigma_\recording$) of $\mu_\pattern$ for each \gls{raga}. R\={a}gas with $\mu_\recording \geq 0.85$ are highlighted. }
 	\label{tab:results_per_raaga_pattern_characterization}
 \end{table}
 

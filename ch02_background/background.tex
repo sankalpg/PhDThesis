@@ -152,7 +152,7 @@ In all the aforementioned approaches, the three main processing blocks are the f
 \begin{sidewaystable}
 	\begin{threeparttable} 
 		\ra{1.1}
-		\small
+%		\small
 		\begin{centering}
 			\begin{tabular}{l L{4.5cm} L{4.5cm} L{3.5cm} }
 				\tabletop			
@@ -287,7 +287,7 @@ As we see from this review on the task of tonic identification, a variety of met
 			\par \end{centering}
 		
 		\begin{tablenotes}
-			\tiny
+			\small
 			\item[h] Hindustani music collection
 			\item[c] Carnatic music collection
 			\vspace{0.20cm} \\
@@ -359,7 +359,7 @@ Based on our discussion above, we see that there are a variety of approaches pro
 		\begin{tablenotes}
 			\item[a] This method performs \gls{raga} verification and not recognition
 		\end{tablenotes}
-		\caption{\Gls{raga} recognition methods proposed in the literature along with the melodic characteristics they utilize to perform the task. We also indicate if a method uses a discrete \gls{svara} representation of melody. The methods are arranged in the chronological order. \TODO{review the approaches and verify, add abbreviations}}
+		\caption[Melodic characteristics utilized by the existing \gls{raga} recognition methods]{\Gls{raga} recognition methods proposed in the literature along with the melodic characteristics they utilize to perform the task. We also indicate if a method uses a discrete \gls{svara} representation of melody. The methods are arranged in the chronological order. \TODO{review the approaches and verify, add abbreviations}}
 		\label{tab:raga_recognition_methods_melodic_characteristics}
 	\end{threeparttable}
 \end{sidewaystable}
@@ -367,12 +367,12 @@ Based on our discussion above, we see that there are a variety of approaches pro
 
 \begin{sidewaystable}
 	\begin{threeparttable} 
-\small
+\scriptsize
 		\ra{1.1}
 		\begin{centering}
 			\begin{tabular}{l l P{2cm} P{3cm} P{2.5cm} L{1cm} P{1.5cm} P{2cm}}
 				\hline 
-				& \textbf{Tonal Feature} & \textbf{Tonic } & \textbf{Feature} & \textbf{Recognition Method} & \textbf{\#Ragas} & \textbf{Dataset Size (Dur./Num)}\tnote{i} & \textbf{Audio Type}\tabularnewline
+				& \textbf{Tonal Feature} & \textbf{Tonic } & \textbf{Feature} & \textbf{Recognition Method} & \textbf{\#Ragas} & \textbf{Dataset (Dur./Num)}\tnote{i} & \textbf{Audio Type}\tabularnewline
 				\hline 
 				\cite{pandey2003tansen} & \cite{BoersmaPaul2001}\tnote{p} & Fixed frequency & Svara sequence & \acrshort{hmm} and \acrshort{ngram} & 2 & NA / 31 & Monophonic\tabularnewline
 				\cite{chordia2007raag} & \cite{sun2000pitch}\tnote{p} & Manual & PCD, PCDD & \acrshort{svm} classifier & 31 & 20 / 127 & Monophonic\tabularnewline
@@ -398,7 +398,7 @@ Based on our discussion above, we see that there are a variety of approaches pro
 			\item[c] Chroma extraction algorithm
 			\item[*] This method performs \gls{raga} verification and not recognition
 		\end{tablenotes}
-		\caption{Summary of the \Gls{raga} recognition methods proposed in the literature. The methods are arranged in the chronological order. \TODO{review the approaches and verify. Put specific resolution of PCD and mark if they used KDE based PCD? also make it consistent the vocabulary. Clean it further and use more meaningful descriptor names. Both Dighe paper use chroma feature...chromagram types...not PCD variant. Verify all these details..add abbreviations}}
+		\caption[Summary of the existing \gls{raga} recognition methods]{Summary of the \Gls{raga} recognition methods proposed in the literature. The methods are arranged in the chronological order. \TODO{review the approaches and verify. Put specific resolution of PCD and mark if they used KDE based PCD? also make it consistent the vocabulary. Clean it further and use more meaningful descriptor names. Both Dighe paper use chroma feature...chromagram types...not PCD variant. Verify all these details..add abbreviations}}
 		\label{tab:raga_recognition_methods_details}
 	\end{threeparttable}
 \end{sidewaystable}
