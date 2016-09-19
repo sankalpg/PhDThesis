@@ -1,7 +1,7 @@
 % The list of symbols is a chapter, but without a number
 \chapter*{List of Symbols} 
 \addcontentsline{toc}{chapter}{List of Symbols}
-The following is a list of different symbols used in the dissertation along with a short description of each symbol. 
+The following is a list of different symbols used in the dissertation along with a short description of each symbol. \TODO{Improve the description}
 
 % Define symbol definitions
 \newcommand\listSymbol[3]{\protected\gdef#1{#2}#2 & #3 \tabularnewline \addlinespace[2pt]} 
@@ -14,21 +14,23 @@ The following is a list of different symbols used in the dissertation along with
 	\textbf{Symbol} & \textbf{Description} \tabularnewline \midrule
 	\endhead % all the lines above this will be repeated on every page
 	\listSymbol{\corpus}{\ensuremath{\mathcal{A}}}{Corpus of audio recordings}		
-	\listSymbol{\nodesCommRaga}{\ensuremath{\alpha}}{Number of notes in a community belonging to a particular \gls{raga}}	
-	\listSymbol{\nodesCommRec}{\ensuremath{\beta}}{Number of notes in a community belonging to a particular audio recording}
+	\listSymbol{\nodesCommRaga}{\ensuremath{\alpha}}{Ordered list of node counts in a community of network of patterns across \glspl{raga}}	
+	\listSymbol{\nodesCommRec}{\ensuremath{\beta}}{Ordered list of node counts in a community of network of patterns across recordings}
 	\listSymbol{\binOp}{\ensuremath{\mathcal{B}}}{Octave wrapping integer binning operator}	
 	\listSymbol{\recDistCentroid}{\ensuremath{\mathbf{c}}}{Centroid of the distribution of nodes over recordings}				
-	\listSymbol{\clusCoff}{\ensuremath{C}}{Clustering coefficient of a network}	
+	\listSymbol{\clusCoff}{\ensuremath{\mathbf{C}}}{Clustering coefficient of a network}	
+	\listSymbol{\pattCatCarn}{\ensuremath{C_i}}{Melodic Pattern categories in the Carnatic music dataset}		
 	\listSymbol{\community}{\ensuremath{\mathbfcal{C}}}{Community in a network}	
 	\listSymbol{\dtwCostFnc}{\ensuremath{d}}{DTW local cost function}		
 	\listSymbol{\distPattMeasure}{\ensuremath{\mathcal{D}}}{Distance measure for computing melodic similarity}	
 	\listSymbol{\awdErrorNyas}{\ensuremath{\varepsilon}}{Allowed pitch deviation used in ny\={a}s segmentation}			
 	\listSymbol{\netUndirWght}{\ensuremath{\mathcal{G}}}{Undirected weighted network}		
 	\listSymbol{\goodnessComm}{\ensuremath{\mathbf{G}}}{Goodness measure of a community in network}		
-	\listSymbol{\tdmsBase}{\ensuremath{\check{\mathrm{H}}}}{\acrfull{tdms}}
-	\listSymbol{\tdmsPower}{\ensuremath{\overline{\mathrm{H}}}}{Power compressed \acrshort{tdms}}
-	\listSymbol{\tdmsSmooth}{\ensuremath{\hat{\mathrm{H}}}}{Smoothened \acrshort{tdms}}	
-	\listSymbol{\tdmsNorm}{\ensuremath{{\mathrm{H}}}}{Normalized \acrshort{tdms}}	
+	\listSymbol{\pattCatHind}{\ensuremath{H_i}}{Melodic Pattern categories in the Hindustani music dataset}			
+	\listSymbol{\tdmsBase}{\ensuremath{\check{\mathbf{H}}}}{\acrfull{tdms}}
+	\listSymbol{\tdmsPower}{\ensuremath{\overline{\mathbf{H}}}}{Power compressed \acrshort{tdms}}
+	\listSymbol{\tdmsSmooth}{\ensuremath{\hat{\mathbf{H}}}}{Smoothened \acrshort{tdms}}	
+	\listSymbol{\tdmsNorm}{\ensuremath{{\mathbf{H}}}}{Normalized \acrshort{tdms}}	
 	\listSymbol{\tdmsElem}{\ensuremath{\check{\mathrm{h}}}}{One element of \acrfull{tdms}}		
 	\listSymbol{\indFnc}{\ensuremath{I}}{Indicator function}	
 	\listSymbol{\indFnc}{\ensuremath{i}}{Index}	

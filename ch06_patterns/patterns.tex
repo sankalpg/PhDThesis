@@ -70,7 +70,7 @@ Studying computational models for melodic similarity is particularly interesting
 	\begin{center}
 		\includegraphics[width=\figSizeSixty]{ch06_patterns/figures/SimilarityEvaluation/Hindustani3Patts.pdf}
 	\end{center}
-	\caption{Melodic fragments corresponding to three different renditions of the same characteristic \gls{raga} pattern in Hindustani music. For a better visualization, the patterns are transposed by a frequency offset of 600\,cents between them.}
+	\caption[Example of difference occurrences of a melodic pattern]{Melodic fragments corresponding to three different renditions of the same characteristic \gls{raga} pattern in Hindustani music. For a better visualization, the patterns are transposed by a frequency offset of 600\,cents between them.}
 	\label{fig:examples_3_phrases}
 \end{figure}
 
@@ -101,7 +101,7 @@ In this section we describe a string matching-based approach for computing simil
 	\begin{center}
 		\includegraphics[width=\figSizeSixty]{ch06_patterns/figures/SimilarityEvaluation/melodic_similarity_blockd.pdf}
 	\end{center}
-	\caption{Block diagram of the methodology followed for computing melodic similarity from audio recordings.}
+	\caption[Block diagram for computing melodic similarity]{Block diagram of the methodology followed for computing melodic similarity from audio recordings.}
 	\label{fig:block_diagram_melodic_similarity}
 \end{figure}
 
@@ -212,7 +212,7 @@ In Table~\ref{tab:melodic_similarity_results} (top half), we show the \gls{map} 
 	\begin{center}
 		\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/SimilarityEvaluation/StatisticalDiff.png}
 	\end{center}
-	\caption{Matrix indicating the statistical significance of the performance difference between every variant pair for \acrshort{msds_iitm_cmd} and \acrshort{msds_iitb_hmd}. Variant pairs where the difference in the performance is statistically significant are marked by dots. Only the superscript in the name of the dataset is used in the labels.\TODO{This figure uses symbol, check if it matches the text}}
+	\caption[]{Matrix indicating the statistical significance of the performance difference between every variant pair for \acrshort{msds_iitm_cmd} and \acrshort{msds_iitb_hmd}. Variant pairs where the difference in the performance is statistically significant are marked by dots. Only the superscript in the name of the dataset is used in the labels.\TODO{This figure uses symbol, check if it matches the text}}
 	\label{fig:patterns_statistical_significance_similarity_evaluation}
 \end{figure}
 
@@ -226,7 +226,7 @@ To assess the statistical significance of the results we compare every possible 
 	\begin{center}
 		\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/SimilarityEvaluation/CMD_HMD_CW_MAP.pdf}
 	\end{center}
-	\caption{Boxplot of the average precision values for each pattern type~(PT) in \acrshort{msds_iitm_cmd} and \acrshort{msds_iitb_hmd}. Only the superscript in the name of the dataset is used in the labels.\TODO{This figure uses symbol, check if it matches the text}}
+	\caption[Boxplot of average precision values for different types of melodic patterns]{Boxplot of the average precision values for each pattern type~(PT) in \acrshort{msds_iitm_cmd} and \acrshort{msds_iitb_hmd}. Only the superscript in the name of the dataset is used in the labels.\TODO{This figure uses symbol, check if it matches the text}}
 	\label{fig:patterns_similarity_evaluation_results_boxplot}
 \end{figure}
 
@@ -282,7 +282,7 @@ The approaches mentioned above are directed towards developing culturally inform
 	\begin{center}
 		\includegraphics[width=\figSizeHundred]{ch06_patterns/figures/ImprovingSimilarity/phraseClassesExample.pdf}
 	\end{center}
-	\caption{Pitch contours of occurrences of three different characteristic melodic phrases in Hindustani music. Contours are frequency transposed and time shifted for a better visualization.\TODO{diff aspect ratio?}}
+	\caption[Examples of different occurrences of the \gls{raga} motifs]{Pitch contours of occurrences of three different characteristic melodic phrases in Hindustani music. Contours are frequency transposed and time shifted for a better visualization.}
 	\label{fig:phraseComplexityExample}
 \end{figure}
 
@@ -304,7 +304,7 @@ We put forward an approach that abstracts the melodic representation and reduces
 	\begin{center}
 		\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/ImprovingSimilarity/Hindusani_flat_note_compression_example_reversed.pdf}
 	\end{center}
-	\caption{Original pitch contours ($\pattern_{1a}$, $\pattern_{2a}$) and duration truncated pitch contours ($\pattern_{1b}$, $\pattern_{2b}$) of two occurrences of a characteristic phrase of \gls{raga} Alhaiya Bilawal. The contours are transposed for a good visualization.\TODO{This figure uses symbol, check if it matches the text}}
+	\caption[Example of melodic patterns after duration truncation]{Original pitch contours ($\pattern_{1a}$, $\pattern_{2a}$) and duration truncated pitch contours ($\pattern_{1b}$, $\pattern_{2b}$) of two occurrences of a characteristic phrase of \gls{raga} Alhaiya Bilawal. The contours are transposed for a good visualization.\TODO{This figure uses symbol, check if it matches the text}}
 	\label{fig:flatCompressionExample}
 \end{figure}
 
@@ -312,7 +312,7 @@ We put forward an approach that abstracts the melodic representation and reduces
 	\begin{center}
 		\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/ImprovingSimilarity/CarnaticComplexityExample.pdf}
 	\end{center}
-	\caption{Pitch contours of three melodic phrases ($\pattern_1$, $\pattern_2$, $\pattern_3$). $\pattern_1$ and $\pattern_2$ are the occurrences of the same characteristic phrase and both are musically dissimilar to $\pattern_3$.\TODO{This figure uses symbol, check if it matches the text}} 
+	\caption[Illustration of an erroneous case of melodic similarity in Carnatic music]{Pitch contours of three melodic phrases ($\pattern_1$, $\pattern_2$, $\pattern_3$). $\pattern_1$ and $\pattern_2$ are the occurrences of the same characteristic phrase and both are musically dissimilar to $\pattern_3$.\TODO{This figure uses symbol, check if it matches the text}} 
 	\label{fig:carnaticComplexityExample}
 \end{figure}
 
@@ -325,7 +325,7 @@ We now proceed to describe our method in detail. The block diagram for computing
 	\begin{center}
 		\includegraphics[width=\figSizeSixty]{ch06_patterns/figures/ImprovingSimilarity/melodic_similarity_improve_blockd.pdf}
 	\end{center}
-	\caption{Block diagram of the improved methodology for computing melodic similarity} 
+	\caption[Block diagram for an improved melodic similarity computation]{Block diagram of the improved methodology for computing melodic similarity} 
 	\label{fig:block_diagram_melodic_similarity_improved}
 \end{figure}
 
@@ -454,7 +454,7 @@ We first analyse the results for the \acrshort{msds_cm_hmd} dataset. From~\tabre
 	\begin{center}
 		\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/ImprovingSimilarity/MAP_per_Duration_Truncation.pdf}
 	\end{center}
-	\caption{\gls{map} scores for different duration truncation values ($\svarTruncThsld$) for the \acrshort{msds_cm_hmd} and the \acrshort{msds_cm_cmd}.\TODO{This figure uses symbol, check if it matches the text}} 
+	\caption[\acrshort{map} score for different duration truncation values]{\gls{map} scores for different duration truncation values ($\svarTruncThsld$) for the \acrshort{msds_cm_hmd} and the \acrshort{msds_cm_cmd}.\TODO{This figure uses symbol, check if it matches the text}} 
 	\label{fig:map_per_duration_truncation}
 \end{figure}
 
@@ -462,7 +462,7 @@ We first analyse the results for the \acrshort{msds_cm_hmd} dataset. From~\tabre
 	\begin{center}
 		\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/ImprovingSimilarity/HindustaniPerCategoryPerformance_BOXPLOT.pdf}
 	\end{center}
-	\caption{Boxplot of average precision values obtained using \acrshort{similarity_b} and \acrshort{similarity_dt} for each melodic phrase category for the \acrshort{msds_cm_hmd}. These values correspond to $\mNorm_\mathrm{tonic}$.\TODO{This figure uses symbol, check if it matches the text}} 
+	\caption[Boxplot of average precision for different types of melodic patterns in the Hindustani music dataset]{Boxplot of average precision values obtained using \acrshort{similarity_b} and \acrshort{similarity_dt} for each melodic phrase category for the \acrshort{msds_cm_hmd}. These values correspond to $\mNorm_\mathrm{tonic}$.\TODO{This figure uses symbol, check if it matches the text}} 
 	\label{fig:hinudstaniPerCategoryPerformance}
 \end{figure}
 
@@ -473,7 +473,7 @@ We now analyse the results for the \acrshort{msds_cm_cmd} dataset. From~\tabref{
 	\begin{center}
 		\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/ImprovingSimilarity/CarnaticPerCategoryPerformance_BOXPLOT.pdf}
 	\end{center}
-	\caption{Boxplot of average precision values obtained using methods \acrshort{similarity_b}, \acrshort{similarity_dt} and $M_{CW}$ for each melodic phrase category for the \acrshort{msds_cm_cmd}. These values correspond to $\mNorm_\mathrm{tetra}$.\TODO{This figure uses symbol, check if it matches the text}}
+	\caption[Boxplot of average precision for different types of melodic patterns in the Carnatic music dataset]{Boxplot of average precision values obtained using methods \acrshort{similarity_b}, \acrshort{similarity_dt} and $M_{CW}$ for each melodic phrase category for the \acrshort{msds_cm_cmd}. These values correspond to $\mNorm_\mathrm{tetra}$.\TODO{This figure uses symbol, check if it matches the text}}
 	\label{fig:carnaticPerCategoryPerformance}
 \end{figure}
 
@@ -501,7 +501,7 @@ From our literature review presented in \secref{sec:background_relevant_work_oth
 	\begin{center}
 		\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/discovery/blockDiagram_Overall.pdf}
 	\end{center}
-	\caption{Block diagram of the proposed approach for melodic pattern discovery in large audio collections of \gls{iam}\TODO{Carnatic->IAM}}
+	\caption[Block diagram for melodic pattern discovery]{Block diagram of the proposed approach for melodic pattern discovery in large audio collections of \gls{iam}\TODO{Carnatic->IAM}}
 	\label{fig:pattern_discovery_overall_block_diagram}
 \end{figure}
 
@@ -519,7 +519,7 @@ Before we proceed to describe our method it should be noted that during the cour
 	\begin{center}
 		\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/discovery/blockDiagram_DataProc.pdf}
 	\end{center}
-	\caption{Block diagram of the data processing block in melodic pattern discovery task.}
+	\caption[Block diagram of data processing modules for melodic pattern discovery]{Block diagram of the data processing block in melodic pattern discovery task.}
 	\label{fig:pattern_discovery_preprocessing_block_diagram}
 \end{figure}
 
@@ -539,7 +539,7 @@ In the new variant of our method we post-process the predominant pitch contours 
 	\begin{center}
 		\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/discovery/ACRHistogram.pdf}
 	\end{center}
-	\caption{Histograms of ACR values (histogram value is indicated by the colormap on the right; for ease of visualization, we compress the range of the histogram values by taking its fourth root). Q1, Q2 and Q3 denote the three quartile boundaries of the histogram. }
+	\caption[Histogram of autocorrelation of the pitch subsequences for different lags]{Histograms of ACR values (histogram value is indicated by the colormap on the right; for ease of visualization, we compress the range of the histogram values by taking its fourth root). Q1, Q2 and Q3 denote the three quartile boundaries of the histogram. }
 	\label{fig:ACRHistogram}
 \end{figure}
 
@@ -587,7 +587,7 @@ Doing so, we found that $\stdDevWin=200$\,ms resulted in the best performance an
 	\begin{center}
 		\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/discovery/ROCFlatness.pdf}
 	\end{center}
-	\caption{ROC curves for `flat' and `non-flat' region classification for different values of window length ($\stdDevWin$) used for selecting an optimal value of standard deviation $\stdDevSubSeq_i$.}
+	\caption[ROC curve for `flat' and `non-flat' region classification]{ROC curves for `flat' and `non-flat' region classification for different values of window length ($\stdDevWin$) used for selecting an optimal value of standard deviation $\stdDevSubSeq_i$.}
 	\label{fig:ROC_pattern_discovery}
 \end{figure}
 
@@ -670,7 +670,7 @@ During rank refinement, we select a \gls{dtw} step condition of $\lbrace(1,2), (
 	\begin{center}
 		\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/discovery/distances.pdf}
 	\end{center}
-	\caption{Output of the four different distance measures ($\dtwCostFnc_i$, $i \in \lbrace 1\cdots4 \rbrace$) as a function of cityblock distance \pitchDiff.\TODO{This figure uses symbol, check if it matches the text}}
+	\caption[Illustration of output of different distance measures]{Output of the four different distance measures ($\dtwCostFnc_i$, $i \in \lbrace 1\cdots4 \rbrace$) as a function of cityblock distance \pitchDiff.\TODO{This figure uses symbol, check if it matches the text}}
 	\label{fig:Distances_DTW_discovery}
 \end{figure}
 
@@ -718,7 +718,7 @@ Expert evaluation is performed by a professional Carnatic musician who has recei
 	\begin{center}
 		\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/discovery/SeedDistribution.pdf}
 	\end{center}
-	\caption{Distance distribution of seed patterns. Three seed pattern categories are marked by $\seedPattCat_1$, $\seedPattCat_2$ and $\seedPattCat_3$.\TODO{This figure uses symbol, check if it matches the text}}
+	\caption[Distance distribution of seed melodic patterns]{Distance distribution of seed patterns. Three seed pattern categories are marked by $\seedPattCat_1$, $\seedPattCat_2$ and $\seedPattCat_3$.\TODO{This figure uses symbol, check if it matches the text}}
 	\label{fig:SeedPatternsDistanceDistribution}
 \end{figure}
 
@@ -756,7 +756,7 @@ We now present our formal evaluations. We first evaluate the performance of the 
 	\begin{center}
 		\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/discovery/seedROC.pdf}
 	\end{center}
-	\caption{ROC curve for seed pairs and search patterns (using $\RankRefVar_2$) in the evaluation set.\TODO{This figure uses symbol, check if it matches the text}}%\vspace{-1em}
+	\caption[ROC curve for seed pairs and search patterns]{ROC curve for seed pairs and search patterns (using $\RankRefVar_2$) in the evaluation set.\TODO{This figure uses symbol, check if it matches the text}}%\vspace{-1em}
 	\label{fig:combinedROCPatternDiscovery}
 \end{figure}
 
@@ -781,7 +781,7 @@ We now present our formal evaluations. We first evaluate the performance of the 
 	\begin{center}
 		\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/discovery/boxPlot.pdf}
 	\end{center}
-	\caption{Boxplot of average precision values for the different variants of the rank refinement method ($\RankRefVar_i$) for each seed category.\TODO{This figure uses symbol, check if it matches the text}}
+	\caption[{Boxplot of average precision values for the different variants of the rank refinement method]{Boxplot of average precision values for the different variants of the rank refinement method ($\RankRefVar_i$) for each seed category.\TODO{This figure uses symbol, check if it matches the text}}
 	\label{fig:boxPlotMAPPatternDiscovery}
 \end{figure}
 
@@ -831,7 +831,7 @@ The block diagram of the proposed approach is shown in~\figref{fig:block_diagram
 	\begin{center}
 		\includegraphics[width=\figSizeSeventy]{ch06_patterns/figures/Characterization/blockDiagram.pdf}
 	\end{center}
-	\caption{Block diagram of the proposed approach for characterizing melodic patterns.}
+	\caption[Block diagram for characterizing melodic patterns]{Block diagram of the proposed approach for characterizing melodic patterns.}
 	\label{fig:block_diagram_characterization}
 \end{figure}
 
@@ -881,7 +881,7 @@ The main objective of this processing block is to filter the network in order to
 	\begin{center}
 		\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/Characterization/CC_Curves_shrunk.pdf}
 	\end{center}
-	\caption{Evolution of the clustering coefficient of $\netUndirWght$ and $\netUndirWght_r$ over different thresholds and for different statistical confidence values used for disparity filtering (legend).\TODO{This figure uses symbol, check if it matches the text}}
+	\caption[Evolution of clustering coefficient of a network of melodic patterns]{Evolution of the clustering coefficient of $\netUndirWght$ and $\netUndirWght_r$ over different thresholds and for different statistical confidence values used for disparity filtering (legend).\TODO{This figure uses symbol, check if it matches the text}}
 	\label{fig:cc_curve_pattern_characterization}
 \end{figure}
 
@@ -900,14 +900,14 @@ We next take the unweighted undirected network that results from the previous st
 	\begin{center}
 		\includegraphics[width=\figSizeHundred]{ch06_patterns/figures/Characterization/networkWithClusters.pdf}
 	\end{center}
- \caption{Graphical representation of the melodic pattern network after filtering by threshold $\simThsld$. The detected communities in the network are indicated by different colors. Few examples of these communities are shown on the right.}
+ \caption[Graphical representation of a network of melodic patterns]{Graphical representation of the melodic pattern network after filtering by threshold $\simThsld$. The detected communities in the network are indicated by different colors. Few examples of these communities are shown on the right.}
  \label{fig:network_and_communities_pattern_characterization}
 \end{figure}
 
 To get a better understanding of the network obtained after filtering and the detected communities, we show a graphical representation of the network in~\figref{fig:network_and_communities_pattern_characterization}. We find that many communities comprising large number of nodes in the network correspond to Kampita melodic pattern, which is a kind of \gls{gamaka} that occur in several \glspl{raga} across compositions and hence have large number of occurrences. We also find that the communities with a relatively smaller number of nodes, which in~\figref{fig:network_and_communities_pattern_characterization} appear as isolated communities around the periphery often correspond to the \gls{raga} motifs. A few examples of such communities are shown in~\figref{fig:network_and_communities_pattern_characterization} on the right.
 
-We here define the notation used in the subsequent paragraphs for characterizing pattern communities. A community $\community_q$ is comprised of $N$ nodes, and the node count over different \glspl{raga} is given by the ordered list ${\boldsymbol{\nodesCommRaga}_q} = (\nodesCommRaga_{q,1}, \nodesCommRaga_{q,2},\dots$ $\nodesCommRaga_{q,\totalRagasComm})$ such that $\nodesCommRaga_{q,i} \geq \nodesCommRaga_{q,j}$, $\forall~ i < j$,
-where each element in $\nodesCommRaga_{q}$ denotes the number of nodes in a particular \gls{raga} and $\totalRagasComm$ is the total number of unique \glspl{raga} comprising the community. Similarly, the node count over the audio recordings is given by the ordered list ${\boldsymbol{\nodesCommRec}_q} = (\nodesCommRec_{q,1}, \nodesCommRec_{q,2},\cdots,\nodesCommRec_{q,\totalRecsComm})$ such that $\nodesCommRec_{q,l} \geq \nodesCommRec_{q,m}, \forall~l < m$,  where each element in $\nodesCommRec_{q}$ denotes the number of nodes belonging a particular audio recording and $\totalRecsComm$ is the total number of recordings comprising the community. For both these cases, $\sum_{i=1}^{\totalRagasComm}\nodesCommRaga_{q,i} = \sum_{l=1}^{\totalRecsComm}\nodesCommRec_{q,l} = N$.
+We here define the notation used in the subsequent paragraphs for characterizing pattern communities. A community $\community_q$ is comprised of $N$ nodes, and the node count over different \glspl{raga} is given by the ordered list ${{\nodesCommRaga}_q} = (\nodesCommRaga_{q,1}, \nodesCommRaga_{q,2},\dots$ $\nodesCommRaga_{q,\totalRagasComm})$ such that $\nodesCommRaga_{q,i} \geq \nodesCommRaga_{q,j}$, $\forall~ i < j$,
+where each element in $\nodesCommRaga_{q}$ denotes the number of nodes in a particular \gls{raga} and $\totalRagasComm$ is the total number of unique \glspl{raga} comprising the community. Similarly, the node count over the audio recordings is given by the ordered list ${{\nodesCommRec}_q} = (\nodesCommRec_{q,1}, \nodesCommRec_{q,2},\cdots,\nodesCommRec_{q,\totalRecsComm})$ such that $\nodesCommRec_{q,l} \geq \nodesCommRec_{q,m}, \forall~l < m$,  where each element in $\nodesCommRec_{q}$ denotes the number of nodes belonging a particular audio recording and $\totalRecsComm$ is the total number of recordings comprising the community. For both these cases, $\sum_{i=1}^{\totalRagasComm}\nodesCommRaga_{q,i} = \sum_{l=1}^{\totalRecsComm}\nodesCommRec_{q,l} = N$.
 
 We now proceed to characterize the detected communities in order to identify the ones that represent \gls{raga} motifs. For that we first categorize a community $C_q$ as belonging to the \gls{raga} $\RagaOfComm_q$ corresponding to the maximum number of nodes $\nodesCommRaga_{q,1}$ in that community. Subsequently, for each \gls{raga}, we rank all the communities belonging to that \gls{raga}. To rank the communities we empirically devise a goodness measure $\goodnessComm$, which denotes the likelihood that a community $C_q$ represents a \gls{raga} motif. We propose to use
 
@@ -930,7 +930,7 @@ and $\recDistCentroid$ indicates how uniformly the nodes of the community are di
 
 Higher $\recDistCentroid$ implies a more uniform distribution. Since a community that represents a \gls{raga} motif is expected to contain nodes from a single \gls{raga} (high value of $\ragaLikelihood$) and the nodes belong to many different recordings (high value of $\recDistCentroid$), the goodness measure $\goodnessComm$ is high for such a community. In general we prefer large communities, but, to avoid detecting large communities (high value of N) corresponding to \gls{gamaka} motifs (low value of $\ragaLikelihood$) we use a fourth power on $\ragaLikelihood$. Composition-specific motifs are expected to have a low $\recDistCentroid$, as they are not repeated across multiple recordings, assuming that different recordings correspond to different compositions. 
 
-Note that it might be possible that a music collection contains multiple recordings of the same composition. In such cases, differentiating composition-specific motifs and \gls{raga} motif becomes difficult using $\goodnessComm$ measure. This issue can be overcome with only a trivial modification in our approach, i.e.,~by considering the node distribution ${\boldsymbol{\nodesCommRec}_q}$ over compositions instead of recordings. In our current system this could not be implemented because for a number of recordings composition information was unavailable.
+Note that it might be possible that a music collection contains multiple recordings of the same composition. In such cases, differentiating composition-specific motifs and \gls{raga} motif becomes difficult using $\goodnessComm$ measure. This issue can be overcome with only a trivial modification in our approach, i.e.,~by considering the node distribution ${{\nodesCommRec}_q}$ over compositions instead of recordings. In our current system this could not be implemented because for a number of recordings composition information was unavailable.
 
 
 
@@ -993,14 +993,14 @@ We first analyze the musicians' ratings at the level of melodic phrases. In~\fig
 	\begin{center}
 		\includegraphics[width=\figSizeSixty]{ch06_patterns/figures/Characterization/per_raaga_per_phrase_rating.pdf}
 	\end{center}
-	\caption{Mean musician rating per melodic phrase for each \gls{raga}: K\={a}pi\,(Kp), Hamsadhvani\,(Hd), K\={a}mavardhini\,(Kv), Bhairavi\,(Bh), Beh\={a}g\,(Bg), T\={o}\d{d}i\,(Td), B\={e}ga\d{d}\={a}\,(Bd), Kaly\={a}\d{n}\={i}\,(Kl), Darb\={a}r\,(Db), K\={a}mb\={o}ji\,(Kb).}
+	\caption[Mean musician ratings for the discovered melodic phrases]{Mean musician rating per melodic phrase for each \gls{raga}: K\={a}pi\,(Kp), Hamsadhvani\,(Hd), K\={a}mavardhini\,(Kv), Bhairavi\,(Bh), Beh\={a}g\,(Bg), T\={o}\d{d}i\,(Td), B\={e}ga\d{d}\={a}\,(Bd), Kaly\={a}\d{n}\={i}\,(Kl), Darb\={a}r\,(Db), K\={a}mb\={o}ji\,(Kb).}
 	\label{fig:average_rating_pattern_characterization}
 \end{figure}
 
 
 We now proceed to analyze the results for different \glspl{raga}. In~\tabref{tab:results_per_raaga_pattern_characterization}, we summarize mean $\mu_\recording$ and standard deviation $\sigma_\recording$ of $\mu_\pattern$ for each \gls{raga}. We observe that there is a considerable amount of variation in $\mu_\recording$ across the \glspl{raga}. It ranges from 0.75 for \gls{raga} K\={a}pi to 0.92 in the case of \gls{raga} T\={o}\d{d}i. An interesting observation here is that the phrase-based \glspl{raga}\footnote{R\={a}gas whose identity is derived based on phraseology than svaras~\cite{krishna2012carnatic}.\TODO{put a section ref instead of the footnote}} are the top performing \glspl{raga} with the  exception of \gls{raga} Darb\={a}r. From~\tabref{tab:results_per_raaga_pattern_characterization} and \tabref{tab:dataset_details_pattern_characterization}, we notice a strong correlation between $\mu_\recording$ and the total duration of the audio recordings across \glspl{raga}. This suggests that longer music pieces are likely to facilitate the discovery of \gls{raga} motifs owing to more number of occurrences of such melodic phrases.
 
-We examine the melodic phrases with low scores. An investigation of 9 out of 100 phrases that obtain $\mu_\pattern\leq0.6$ reveals that many of these phrases are composition-specific phrases that do not characterize the \gls{raga}. The method wrongly identifies them as \gls{raga} motifs because their associated communities have a high $\goodnessComm$ score owing to a high $\recDistCentroid$ value. This can be attributed to the fact that these phrases are discovered from multiple recordings, since their corresponding compositions have several recordings in the dataset.  As described in~\secref{sec:patterns_characterization_community_detection}, in such a scenario, the goodness measure $\goodnessComm$ can be made more robust to such cases by computing $\recDistCentroid$ using the distribution of nodes ${\boldsymbol{\nodesCommRec}_q}$ over unique compositions rather than over audio recordings.
+We examine the melodic phrases with low scores. An investigation of 9 out of 100 phrases that obtain $\mu_\pattern\leq0.6$ reveals that many of these phrases are composition-specific phrases that do not characterize the \gls{raga}. The method wrongly identifies them as \gls{raga} motifs because their associated communities have a high $\goodnessComm$ score owing to a high $\recDistCentroid$ value. This can be attributed to the fact that these phrases are discovered from multiple recordings, since their corresponding compositions have several recordings in the dataset.  As described in~\secref{sec:patterns_characterization_community_detection}, in such a scenario, the goodness measure $\goodnessComm$ can be made more robust to such cases by computing $\recDistCentroid$ using the distribution of nodes ${{\nodesCommRec}_q}$ over unique compositions rather than over audio recordings.
 
 The results show that the proposed method successfully discovers \gls{raga} motifs with a high accuracy. We see that, even for the allied \glspl{raga} present in the dataset such as K\={a}mb\={o}ji and B\={e}gada (\secref{sec:patterns_characterization_music_collection}), the method is able to discover distinct characteristic \gls{raga} motifs. As mentioned, allied \glspl{raga} are challenging because they have a substantial overlap in the set of svaras that they comprise (see also~\tabref{tab:dataset_details_pattern_characterization}). Finally, on a more informal side, it is worth mentioning that musicians were impressed when, after the listening test, they came to know that the melodic phrases were discovered by a machine following an unsupervised approach. 
 
@@ -1009,7 +1009,7 @@ The results show that the proposed method successfully discovers \gls{raga} moti
 	\begin{center}
 		\includegraphics[width=\figSizeSixty]{ch06_patterns/figures/Characterization/histogram_musician_rating.pdf}
 	\end{center}
-	\caption{Histogram of $\mu_\pattern$ for all 100 melodic phrases selected for the listening test.}
+	\caption[Histogram of mean musician ratings for 100 melodic phrases]{Histogram of $\mu_\pattern$ for all 100 melodic phrases selected for the listening test.}
 	\label{fig:average_rating_histogram_pattern_characterization}
 \end{figure}
 

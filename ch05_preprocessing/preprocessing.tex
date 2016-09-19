@@ -107,7 +107,7 @@ tracking very difficult. Furthermore, the drone sound in the recordings is very 
 	\begin{center}
 		\includegraphics[width=\figSizeNinety]{ch05_preprocessing/figures/Accuracy_Length.pdf}
 	\end{center}
-	\caption[Tonic identification accuracies of different approaches on four datasets ordered by their mean recording duration]{Accuracy (\%) of different methods on four datasets arranged by increasing order of mean duration. Only the subscript in the names of the methods and datasets is used for labeling the axis and legends.}
+	\caption[Tonic identification accuracies of different approaches on four datasets]{Accuracy (\%) of different methods on four datasets arranged by increasing order of mean duration. Only the subscript in the names of the methods and datasets is used for labeling the axis and legends.}
 	\label{fig:tonic_id_accuracy_vs_length}
 \end{figure}
 
@@ -121,7 +121,7 @@ of the excerpts. Interestingly, the improvement is very significant for the pred
 	\begin{center}
 		\includegraphics[width=\figSizeHundred]{ch05_preprocessing/figures/Category_Performance.pdf}
 	\end{center}
-	\caption[Tonic identification accuracy of different approaches for Hindustani, Carnatic, male and female excerpts.]{Accuracy (\%) as a function of different attributes (Hindustani, Carnatic, male, female).Only the subscript in the names of the methods is used for labeling the axis.}
+	\caption[Tonic identification accuracies for Hindustani, Carnatic, male and female excerpts]{Accuracy (\%) as a function of different attributes (Hindustani, Carnatic, male, female).Only the subscript in the names of the methods is used for labeling the axis.}
 	\label{fig:tonic_id_categorywise_performance}
 \end{figure}
 
@@ -189,8 +189,7 @@ tonic). Since the octave errors are already discussed at length in previous para
 	\begin{center}
 		\includegraphics[width=\figSizeHundred]{ch05_preprocessing/figures/ErrorAnalysis_Without_MF.pdf}
 	\end{center}
-	\caption[Percentage of excerpts with Pa, Ma and `Other' type errors in tonic pitch identification by different approaches.]{Percentage of excerpts containing each of the three different
-		categories of errors (excluding octave errors): Pa, Ma and Other, when no additional metadata is used. Only the subscript in the names of the methods and datasets is used for labeling the axis.}
+	\caption[Percentage of Pa, Ma and `Other' type errors in tonic identification]{Percentage of excerpts containing each of the three different categories of errors (excluding octave errors): Pa, Ma and Other, when no additional metadata is used. Only the subscript in the names of the methods and datasets is used for labeling the axis.}
 	\label{fig:tonic_identification_errors_without_MF}
 \end{figure}
 
@@ -205,7 +204,7 @@ For the approaches based on multi-pitch analysis (\acrshort{tonicid_justin} and 
 	\begin{center}
 		\includegraphics[width=\figSizeHundred]{ch05_preprocessing/figures/ErrorAnalysis_With_MF.pdf}
 	\end{center}
-	\caption[Percentage of excerpts with Pa, Ma and `Other' type errors in tonic pitch identification by different approaches. In this configuration both the audio and the editorial metadata is used in the task.]{Percentage of different type of errors (Pa, Ma  and Others) by different methods on all the datasets using information regarding the gender of the singer and performance type. Only the subscript in the names of the methods and datasets is used for labeling the axis.}
+	\caption[Percentage of Pa, Ma and `Other' type errors in tonic identification, using editorial metadata]{Percentage of different type of errors (Pa, Ma  and Others) by different methods on all the datasets using information regarding the gender of the singer and performance type. Only the subscript in the names of the methods and datasets is used for labeling the axis.}
 	\label{fig:tonic_identification_errors_with_MF}
 \end{figure}
 
@@ -225,7 +224,7 @@ For \acrshort{tonicid_ranjani_1} and \acrshort{tonicid_ranjani_2} the percentage
 	\begin{center}
 		\includegraphics[width=\figSizeHundred]{ch05_preprocessing/figures/Category_Errors.pdf}
 	\end{center}
-	\caption[Percentage of excerpts with Pa, Ma and `Other' type errors in tonic pitch identification by different approaches for different categories such as Hindustani music, Carnatic music, male and female recordings.]{Percentage of excerpts with the different categories of errors (Pa, Ma and Others) for every method as a function of different excerpt attributes (Hindustani, Carnatic, male, female). Only the subscript in the names of the methods is used for labeling the axis.}
+	\caption[Percentage of Pa, Ma and `Other' type errors in tonic identification for different categories]{Percentage of excerpts with the different categories of errors (Pa, Ma and Others) for every method as a function of different excerpt attributes (Hindustani, Carnatic, male, female). Only the subscript in the names of the methods is used for labeling the axis.}
 	\label{fig:tonic_identification_categorywise_errors}
 \end{figure}
 
@@ -262,7 +261,7 @@ In this section we describe all the procedures followed in processing melody for
 	\begin{center}
 		\includegraphics[width=\figSizeHundred]{ch05_preprocessing/figures/predominantMelodyExample.png}
 	\end{center}
-	\caption{Example of a continuous pitch contour corresponding to the predominant melodic source extracted from a polyphonic audio excerpt}
+	\caption[Example of the predominant pitch representation of melody]{Example of a continuous pitch contour corresponding to the predominant melodic source extracted from a polyphonic audio excerpt}
 	\label{fig:predominant_melodic_fragment}
 \end{figure}
 
@@ -302,7 +301,7 @@ Predominant pitch estimation in polyphonic audio recordings is not yet a solved 
 	\begin{center}
 		\includegraphics[width=\figSizeHundred]{ch05_preprocessing/figures/octaveErrorIllustration.png}
 	\end{center}
-	\caption{Example of an octave error in estimated predominant pitch contour}
+	\caption{Example of an octave error in predominant pitch contour}
 	\label{fig:octave_error_pitch}
 \end{figure}
 
@@ -384,7 +383,7 @@ We describe this heuristic-based approach in~\algoref{alg:algorithmPitchCorrecti
 	\begin{center}
 		\includegraphics[width=\figSizeHundred]{ch05_preprocessing/figures/smootheningExample.png}
 	\end{center}
-	\caption{Example of a pitch segment before and after post-processing, which involve median filtering, Gaussian filtering and interpolation of the short unvoiced regions.}
+	\caption[Example of a post-processed predominant pitch segment]{Example of a pitch segment before and after post-processing, which involve median filtering, Gaussian filtering and interpolation of the short unvoiced regions.}
 	\label{fig:smoothening_example}
 \end{figure}
 
@@ -479,7 +478,7 @@ For estimating pitch of the the predominant melodic source we use the procedure 
 	\begin{center}
 		\includegraphics[width=\figSizeNinety]{ch05_preprocessing/figures/NyasSegmentationMethod.pdf}
 	\end{center}
-	\caption{Fragment of a pitch contour containing a \gls{nyas} segment ($\timeStamp_1-\timeStamp_9$), where $\timeStamp_i$s denote time stamps and $\freqSvara_n$s denote mean \gls{svara} frequencies. The pitch deviation within the \gls{nyas} segment ($\timeStamp_1-\timeStamp_9$) is almost 100\,Cents.\TODO{This figure uses symbol, check if it matches the text}}
+	\caption[Illustration of \gls{nyas} segmentation process]{Fragment of a pitch contour containing a \gls{nyas} segment ($\timeStamp_1-\timeStamp_9$), where $\timeStamp_i$s denote time stamps and $\freqSvara_n$s denote mean \gls{svara} frequencies. The pitch deviation within the \gls{nyas} segment ($\timeStamp_1-\timeStamp_9$) is almost 100\,Cents.\TODO{This figure uses symbol, check if it matches the text}}
 	\label{fig:nyas_segmentation_illustration}
 \end{figure}
 
@@ -492,7 +491,7 @@ To make the segmentation process robust to pitch deviations, we propose a method
 	\begin{center}
 		\includegraphics[width=\figSizeNinety]{ch05_preprocessing/figures/swarOnHistogramForNyasSegmentation.pdf}
 	\end{center}
-	\caption{Normalized octave folded pitch histogram used for estimating mean \gls{svara} frequencies. Estimated mean \gls{svara} frequencies are indicated by circles.\TODO{There should be no F0 in this figure}}
+	\caption[Example of a normalized octave folded pitch histogram]{Normalized octave folded pitch histogram used for estimating mean \gls{svara} frequencies. Estimated mean \gls{svara} frequencies are indicated by circles.\TODO{There should be no F0 in this figure}}
 	\label{fig:pitch_histogram_nyas_segmentation}
 \end{figure}
 
@@ -646,7 +645,7 @@ A concert of Carnatic music typically contains a solo percussion section towards
 	\begin{center}
 		\includegraphics[width=\figSizeNinety]{ch05_preprocessing/figures/taniPatterns.pdf}
 	\end{center}
-	\caption{Discovered pair of melodic patterns corresponding to \gls{mridangam} strokes in a \gls{tani} section.}
+	\caption[Melodic patterns corresponding to the \gls{mridangam} strokes]{Pitch contours of a pair of highly similar melodic patterns corresponding to the \gls{mridangam} strokes in a \gls{tani} section.}
 	\label{fig:pitch_pattern_tani}
 \end{figure}
 
@@ -656,7 +655,7 @@ Failing to detect \gls{tani} sections as non-voiced segments and tracking pitch 
 	\begin{center}
 		\includegraphics[width=\figSizeEighty]{ch05_preprocessing/figures/spectrogramTani.png}
 	\end{center}
-	\caption{Spectrogram of a voice (with percussion) and a \gls{tani} section in an audio recording of Carnatic music. Spectrogram spans 3\,minutes of audio.}
+	\caption[Illustration of spectrogram a vocal and a \gls{tani} section]{Spectrogram of a voice (with percussion) and a \gls{tani} section in an audio recording of Carnatic music. Spectrogram spans 3\,minutes of audio.}
 	\label{fig:spectrogram_of_tani_segment}
 \end{figure}
 
