@@ -13,32 +13,29 @@ The following is a list of different symbols used in the dissertation along with
 	\toprule
 	\textbf{Symbol} & \textbf{Description} \tabularnewline \midrule
 	\endhead % all the lines above this will be repeated on every page
-	\listSymbol{\corpus}{\ensuremath{\mathcal{A}}}{Corpus of audio recordings}		
-	\listSymbol{\nodesCommRaga}{\ensuremath{\alpha}}{Ordered list of node counts in a community of network of patterns across \glspl{raga}}	
-	\listSymbol{\nodesCommRec}{\ensuremath{\beta}}{Ordered list of node counts in a community of network of patterns across recordings}
-	\listSymbol{\binOp}{\ensuremath{\mathcal{B}}}{Octave wrapping integer binning operator}	
+
+	\listSymbol{\nodesCommRaga}{\ensuremath{\mathcal{A}}}{Ordered list of node counts in a community of network of patterns across \glspl{raga}}	
+	\listSymbol{\nodesCommRec}{\ensuremath{\mathcal{B}}}{Ordered list of node counts in a community of network of patterns across recordings}
+	\listSymbol{\binOp}{\ensuremath{\mathrm{B}}}{Octave wrapping integer binning operator}	
 	\listSymbol{\recDistCentroid}{\ensuremath{\mathbf{c}}}{Centroid of the distribution of nodes over recordings}				
 	\listSymbol{\clusCoff}{\ensuremath{\mathbf{C}}}{Clustering coefficient of a network}	
 	\listSymbol{\pattCatCarn}{\ensuremath{C_i}}{Melodic Pattern categories in the Carnatic music dataset}		
 	\listSymbol{\community}{\ensuremath{\mathbfcal{C}}}{Community in a network}	
 	\listSymbol{\dtwCostFnc}{\ensuremath{d}}{DTW local cost function}		
-	\listSymbol{\distPattMeasure}{\ensuremath{\mathcal{D}}}{Distance measure for computing melodic similarity}	
-	\listSymbol{\awdErrorNyas}{\ensuremath{\varepsilon}}{Allowed pitch deviation used in ny\={a}s segmentation}			
+	\listSymbol{\distPattMeasure}{\ensuremath{\mathrm{D}}}{Distance measure for computing melodic similarity}	
 	\listSymbol{\netUndirWght}{\ensuremath{\mathcal{G}}}{Undirected weighted network}		
 	\listSymbol{\goodnessComm}{\ensuremath{\mathbf{G}}}{Goodness measure of a community in network}		
-	\listSymbol{\pattCatHind}{\ensuremath{H_i}}{Melodic Pattern categories in the Hindustani music dataset}			
-	\listSymbol{\tdmsBase}{\ensuremath{\check{\mathbf{H}}}}{\acrfull{tdms}}
-	\listSymbol{\tdmsPower}{\ensuremath{\overline{\mathbf{H}}}}{Power compressed \acrshort{tdms}}
-	\listSymbol{\tdmsSmooth}{\ensuremath{\hat{\mathbf{H}}}}{Smoothened \acrshort{tdms}}	
-	\listSymbol{\tdmsNorm}{\ensuremath{{\mathbf{H}}}}{Normalized \acrshort{tdms}}	
-	\listSymbol{\tdmsElem}{\ensuremath{\check{\mathrm{h}}}}{One element of \acrfull{tdms}}		
+	\listSymbol{\pattCatHind}{\ensuremath{H_i}}{Melodic Pattern categories in the Hindustani music}			
 	\listSymbol{\indFnc}{\ensuremath{I}}{Indicator function}	
-	\listSymbol{\indFnc}{\ensuremath{i}}{Index}	
-	\listSymbol{\indFnc}{\ensuremath{j}}{Index}		
+	\listSymbol{\inds}{\ensuremath{i}}{Index}	
+	\listSymbol{\inds}{\ensuremath{j}}{Index}		
+	\listSymbol{\inds}{\ensuremath{k}}{Index}
+	\listSymbol{\numNearNgh}{\ensuremath{K}}{Number of nearest neighbors}
 	\listSymbol{\ragaLikelihood}{\ensuremath{\mathcal{L}}}{Likelihood of the representative \gls{raga} in a community}
-	\listSymbol{\indFnc}{\ensuremath{m}}{Index}		
+	\listSymbol{\inds}{\ensuremath{m}}{Index}		
+
 	\listSymbol{\nSvara}{\ensuremath{\mathcal{N}}}{Ny\={a}s svara segment}											%This is N in figures
-	\listSymbol{\nRecCorpus}{\ensuremath{N_{\corpus}}}{Number of recordings in a corpus \corpus}	
+
 	\listSymbol{\bigO}{\ensuremath{\mathcal{O}}}{Big O notation}			
 	\listSymbol{\pVal}{\ensuremath{p}}{p-value in statistical hypothesis testing}	
 	\listSymbol{\pitchHz}{\ensuremath{\mathrm{p}}}{Predominant pitch in Hz}
@@ -46,14 +43,20 @@ The following is a list of different symbols used in the dissertation along with
 	\listSymbol{\pattern}{\ensuremath{\mathcal{P}}}{Melodic pattern}					
 	\listSymbol{\patternArray}{\ensuremath{\mathbfcal{P}}}{Array of melodic patterns}	
 	\listSymbol{\recording}{\ensuremath{{r}}}{Audio recording}	
-	\listSymbol{\sRate}{\ensuremath{\mathrm{s}}}{Sampling rate of the pitch sequence in Hz}
+	\listSymbol{\corpus}{\ensuremath{\mathbfcal{R}}}{Corpus of audio recordings}			
 	\listSymbol{\freqSvara}{\ensuremath{\mathcal{S}}}{Svara frequency in Cents}										%this is S in figures	
+	\listSymbol{\tdmsBase}{\ensuremath{\check{\mathbf{S}}}}{\acrfull{tdms}}
+	\listSymbol{\tdmsPower}{\ensuremath{\overline{\mathbf{S}}}}{Power compressed \acrshort{tdms}}
+	\listSymbol{\tdmsSmooth}{\ensuremath{\hat{\mathbf{S}}}}{Smoothened \acrshort{tdms}}	
+	\listSymbol{\tdmsNorm}{\ensuremath{{\mathbf{S}}}}{Normalized \acrshort{tdms}}	
+	\listSymbol{\tdmsElem}{\ensuremath{\check{\mathrm{s}}}}{One element of \acrfull{tdms}}		
+	
 	\listSymbol{\toniRec}{\ensuremath{\mathfrak{t}}}{Tonic pitch of an audio recording in Hz}	
 	\listSymbol{\timeStamp}{\ensuremath{\mathrm{T}}}{Time stamp}																%this is S in figures
 	\listSymbol{\pattVocab}{\ensuremath{\mathcal{V}}}{Vocabulary of melodic phrases}	
 	\listSymbol{\edgeWght}{\ensuremath{\mathbf{w}}}{Weight of a network edge}	
-	\listSymbol{\pattLenSec}{\ensuremath{{W}}}{Length of a melodic pattern in seconds}	
-	\listSymbol{\pattLenSym}{\ensuremath{\bar{{W}}}}{Length of a melodic pattern in samples}		
+	\listSymbol{\pattLenSec}{\ensuremath{W}}{Length of a melodic pattern in seconds}	
+	\listSymbol{\pattLenSym}{\ensuremath{\hat{\pattLenSec}}}{Length of a melodic pattern in samples}		
 	\listSymbol{\mNorm}{\ensuremath{Z}}{Normalization type used in the melody representation}	
 	
 									
@@ -61,8 +64,9 @@ The following is a list of different symbols used in the dissertation along with
 	\listSymbol{\distPatt}{\ensuremath{\Delta}}{Distance between melodic patterns}	
 	\listSymbol{\simThsld}{\ensuremath{\tilde{\distPatt}}}{Melodic similarity threshold}
 
-	\listSymbol{\timeTshldNyas}{\ensuremath{\delta}}{Temporal threshold used in ny\={a}s segmentation}
-	\listSymbol{\tdmsPowFac}{\ensuremath{\Lambda}}{Power compression factor in \acrshort{tdms} computation}	
+	\listSymbol{\awdErrorNyas}{\ensuremath{\varepsilon}}{Allowed pitch deviation used in ny\={a}s segmentation}			
+	\listSymbol{\timeTshldNyas}{\ensuremath{\psi}}{Temporal threshold used in ny\={a}s segmentation}
+	\listSymbol{\tdmsPowFac}{\ensuremath{\alpha}}{Power compression factor in \acrshort{tdms} computation}	
 
 	\listSymbol{\binFlatNyas}{\ensuremath{\nu}}{Binary flatness measure used in ny\={a}s segmentation}
 	\listSymbol{\timeScaFac}{\ensuremath{\Omega}}{Uniform time-scaling factor}	
@@ -73,6 +77,7 @@ The following is a list of different symbols used in the dissertation along with
 	\listSymbol{\flatMeas}{\ensuremath{\upsilon}}{Flatness measure}				
 	\listSymbol{\flatThsld}{\ensuremath{\tilde{\flatMeas}}}{Flatness threshold}	
 	\listSymbol{\compWght}{\ensuremath{\Upsilon}}{Complexity weighting in melodic similarity computation}
+	\listSymbol{\sRate}{\ensuremath{\omega}}{Sampling rate of the pitch sequence in Hz}	
 	\listSymbol{\maxErrorPLS}{\ensuremath{\varsigma}}{Maximum error parameter in piece-wise linear segmentation method}	
 	\listSymbol{\compEst}{\ensuremath{\zeta}}{Complexity estimate of a melodic pattern}	
 		
@@ -80,26 +85,26 @@ The following is a list of different symbols used in the dissertation along with
 
 	
 %---------------------------------
-
-	\nolistSymbol{\uTScaling}{\ensuremath{\timeScaFac}}{Uniform time-scaling factor}	
+	\nolistSymbol{\nRecCorpus}{\ensuremath{N_{\corpus}}}{Number of recordings in a corpus \corpus}	
+	\nolistSymbol{\uTScaling}{\ensuremath{\timeScaFac}}{Uniform time-scaling}	
 	\nolistSymbol{\RankRefVar}{\ensuremath{V}}{Prefix for the rank refinement method variants}			
 	\nolistSymbol{\seedPattCat}{\ensuremath{\mathtt{S}}}{Prefix for seed pattern category}
 		
 	\nolistSymbol{\shortPauseDur}{\ensuremath{\phi}}{Short pause duration threshold}			
 	\nolistSymbol{\stdDevSubSeq}{\ensuremath{\sigma}}{Standard deviation of a subsequence}
-	\nolistSymbol{\stdDevThsld}{\ensuremath{\mathcal{T}_\sigma}}{Standard deviation threshold for determining flat regions}	
-	\nolistSymbol{\stdDevWin}{\ensuremath{\mathcal{W}_\sigma}}{Window for computing standard deviation}		
+	\nolistSymbol{\stdDevThsld}{\ensuremath{\tilde{\stdDevSubSeq_{\flatMeas}}}}{Standard deviation threshold for determining flat regions}	
+	\nolistSymbol{\stdDevWin}{\ensuremath{\mathrm{W}_\sigma}}{Window for computing standard deviation}		
 	\nolistSymbol{\pitchDiff}{\ensuremath{\delta}}{Pitch difference between two samples}	
 	
 	\nolistSymbol{\arbitTshldOne}{\ensuremath{\varphi_1}}{Threshold1 used in DTW local cost function}	
-	\nolistSymbol{\arbitTshldTwo}{\ensuremath{\varphi_2}}{Threshold1 used in DTW local cost function}	
+	\nolistSymbol{\arbitTshldTwo}{\ensuremath{\varphi_2}}{Threshold2 used in DTW local cost function}	
 	
 	\nolistSymbol{\topKIntra}{\ensuremath{K_\mathrm{intra}}}{Top K closest retrieved results in intra recording discovery}	
 	\nolistSymbol{\topKInter}{\ensuremath{K_\mathrm{inter}}}{Top K closest retrieved results in intra recording discovery}		
 	
-	\nolistSymbol{\totalRagasComm}{\ensuremath{L}}{Total number of \glspl{raga} in a community}		
-	\nolistSymbol{\totalRecsComm}{\ensuremath{H}}{Total number of recordings in a community}	
-	\nolistSymbol{\RagaOfComm}{\ensuremath{R}}{\Gls{raga} corresponding to the maximum number of nodes in a community}	
+	\nolistSymbol{\totalRagasComm}{\ensuremath{L_\mathrm{a}}}{Total number of \glspl{raga} in a community}		
+	\nolistSymbol{\totalRecsComm}{\ensuremath{L_\mathrm{b}}}{Total number of recordings in a community}	
+	\nolistSymbol{\RagaOfComm}{\ensuremath{{\mathrm{a}'}}}{\Gls{raga} corresponding to the maximum number of nodes in a community}	
 
 
 	\nolistSymbol{\featureVSMOne}{\ensuremath{\mathfrak{f}_1}}{Feature 1 in \acrshort{ragarecVSM} method}	
@@ -108,11 +113,11 @@ The following is a list of different symbols used in the dissertation along with
 	\nolistSymbol{\feaqPhRec}{\ensuremath{f}}{Frequency of occurrence of a pattern in a recording}
 	\nolistSymbol{\irf}{\ensuremath{\mathcal{I}}}{Inverse recording frequency}	
 
-	\nolistSymbol{\timeDelay}{\ensuremath{\tau}}{Time delay in \acrshort{TDMS} computation}
-	\nolistSymbol{\sizeTDMS}{\ensuremath{\eta}}{Size of the \acrshort{TDMS} feature}	
+	\nolistSymbol{\timeDelay}{\ensuremath{\tau}}{Time delay in \acrshort{tdms} computation}
+	\nolistSymbol{\sizeTDMS}{\ensuremath{\eta}}{Size of the \acrshort{tdms} feature}	
 
 	\nolistSymbol{\distTDMS}{\ensuremath{\eth}}{Distance between two \acrshort{tdms}s}	
-	\nolistSymbol{\numNearNgh}{\ensuremath{k}}{Number of nearest neighbors}	
+
 	
 		
 \end{longtable}	
