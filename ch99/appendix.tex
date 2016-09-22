@@ -161,15 +161,16 @@ An extended set of results, along with a few audio examples analyzed with the mo
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\figSizeNinety]{ch07_ragaRecognition/figures/CM_vsm_cmd_var1.pdf}
+		\includegraphics[width=\figSizeNinety]{ch07_ragaRecognition/figures/CM_pcd_cmd.pdf}
 	\end{center}
 	\caption[Confusion matrix of classification results by \acrshort{sotaChordia} on \acrshort{rrds_cmd_big}]{Confusion matrix of the \gls{raga} predictions by \acrshort{sotaChordia} on \acrshort{rrds_cmd_big} dataset. The different shades of grey are mapped to different number of audio recordings.\TODO{doublecheck the constrution of confusion matrix, make sure it is error free, speciailly across methods. + Sertan's method result in 0 accuracy for a raga, its not shown as 0, correct it}}
 	\label{fig:confusion_matrix_cmd_chordia}
 \end{figure}
 
+
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\figSizeNinety]{ch07_ragaRecognition/figures/CM_vsm_hmd_var1.pdf}
+		\includegraphics[width=\figSizeNinety]{ch07_ragaRecognition/figures/CM_pcd_hmd.pdf}
 	\end{center}
 	\caption[Confusion matrix of classification results by \acrshort{sotaChordia} on \acrshort{rrds_hmd_big}]{Confusion matrix of the \gls{raga} predictions by \acrshort{sotaChordia} on \acrshort{rrds_hmd_big} dataset. The different shades of grey are mapped to different number of audio recordings.\TODO{doublecheck the constrution of confusion matrix, make sure it is error free, speciailly across methods. + Sertan's method result in 0 accuracy for a raga, its not shown as 0, correct it}}
 	\label{fig:confusion_matrix_hmd_chordia}
@@ -184,7 +185,6 @@ An extended set of results, along with a few audio examples analyzed with the mo
 	\caption[Confusion matrix of classification results by \acrshort{ragarecTDMS} on \acrshort{rrds_hmd_big}]{Confusion matrix of the \gls{raga} predictions by \acrshort{ragarecTDMS} on \acrshort{rrds_hmd_big} dataset. The different shades of grey are mapped to different number of audio recordings.}
 	\label{fig:confusion_matrix_hmd_tdms}
 \end{figure}
-
 
 
 \begin{table} 
@@ -258,6 +258,7 @@ An extended set of results, along with a few audio examples analyzed with the mo
 		\end{tabular}
 
 \caption[List of \glspl{raga} in \acrshort{rrds_hmd_big} and the comprising set of \glspl{svara}]{List of \glspl{raga} in \acrshort{rrds_hmd_big} dataset along with the comprising set of \glspl{svara}. The contents of this table are verified by Kaustuv K. Ganguli, a professional performing musician of Hindustani music.}
+\label{tab:raga_svaras_hmd}
 \end{table}
 
 
@@ -265,7 +266,7 @@ An extended set of results, along with a few audio examples analyzed with the mo
 	\centering
 	\small
 	\ra{1.1}
-	\begin{tabular}{ l : L{0.25cm} : L{0.25cm} : L{0.25cm} : L{0.9cm} : L{0.3cm} : L{0.3cm} : L{0.3cm} : L{0.25cm} : L{0.3cm} : L{0.9cm} : L{0.9cm} : L{0.3cm}: }
+	\begin{tabular}{ l : L{0.25cm} : L{0.25cm} : L{0.25cm} : L{0.8cm} : L{0.3cm} : L{0.3cm} : L{0.3cm} : L{0.25cm} : L{0.3cm} : L{0.8cm} : L{0.9cm} : L{0.3cm}: }
 		%\begin{tabular}{ c | c : c : c : c : c : c : c : c : c : c : c : c  }
 \tabletop
 			\Gls{raga} & S & R1 & R2 & G2/R3 & G3 & M1 & M2 & P & D1 & D2/N1 & N2/D3 & N3\tabularnewline
@@ -353,6 +354,7 @@ An extended set of results, along with a few audio examples analyzed with the mo
 			\end{tabular}
 
 	\caption[List of \glspl{raga} in \acrshort{rrds_cmd_big} and the comprising set of \glspl{svara}]{List of \glspl{raga} in \acrshort{rrds_cmd_big} dataset along with the comprising set of \glspl{svara}. The \glspl{svara} are marked based on the performance practices in Carnatic music. The contents of this table are verified by Vignesh Ishwar, a professional performing musician of Carnatic music.}
+	\label{tab:raga_svaras_cmd}
 \end{table}
 
 

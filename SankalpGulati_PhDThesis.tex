@@ -47,7 +47,8 @@
 \usepackage[round,authoryear]{natbib}
 \usepackage{acronym}
 %\usepackage[style=long,nonumberlist,toc,acronym,nomain]{glossaries}
-\usepackage[section,numberedsection=autolabel,acronym,nonumberlist,nomain,nogroupskip=true]{glossaries}
+\usepackage[section,nopostdot,numberedsection=autolabel,acronym,nonumberlist,nomain,nogroupskip=true]{glossaries}
+\usepackage{glossary-superragged}
 \usepackage{mathtools}
 %\usepackage{longtable}
 \usepackage{rotating}
@@ -295,11 +296,11 @@
 \newcommand{\REM}[1]{{\color{red}#1}}
 \newcommand{\XXX}[3]{{\color{blue}{{[#1$\rightarrow$#2:} #3{]}}}}
 % Uncomment next line to hide all comments
-%\renewcommand{\XXX}[3]{}
-%\renewcommand{\TODO}[1]{}
-%\renewcommand{\COMMENT}[1]{}
-%\renewcommand{\REM}[1]{}
-%\renewcommand{\ADD}[1]{#1}
+\renewcommand{\XXX}[3]{}
+\renewcommand{\TODO}[1]{}
+\renewcommand{\COMMENT}[1]{}
+\renewcommand{\REM}[1]{}
+\renewcommand{\ADD}[1]{#1}
 
 \def\mathLarge#1{\mbox{\LARGE $#1$}}
 
@@ -415,6 +416,13 @@
 %------------------------------------------------------------------------------------------------
 %------------------------------------------------------------------------------------------------
 
+
+\newglossarystyle{mylong}{%
+	\setglossarystyle{long}%
+	\renewenvironment{theglossary}%
+	{\begin{longtable}[l]{@{}p{\dimexpr 2.5cm-\tabcolsep}p{0.8\hsize}}}% <-- change the value here
+		{\end{longtable}}%
+}
 \input{glossary/glossary.tex}
 \makeglossaries
 
@@ -449,15 +457,15 @@
 \mainmatter
 
 %%
-%\cleartorecto\include{ch01_introduction/introduction_new}
+\cleartorecto\include{ch01_introduction/introduction_new}
 \cleartorecto\include{ch02_background/background}
-%%%%%%\cleartorecto\include{ch03_problems/problems}
-%\cleartorecto\include{ch04_datasets/datasets}
+%%%%%\cleartorecto\include{ch03_problems/problems}
+\cleartorecto\include{ch04_datasets/datasets}
 \cleartorecto\include{ch05_preprocessing/preprocessing} 
-%\cleartorecto\include{ch06_patterns/patterns}
-%\cleartorecto\include{ch07_ragaRecognition/ragaRecognition}
-%\cleartorecto\include{ch08_applications/applications} 
-%\cleartorecto\include{ch09_conclusions/conclusions}
+\cleartorecto\include{ch06_patterns/patterns}
+\cleartorecto\include{ch07_ragaRecognition/ragaRecognition}
+\cleartorecto\include{ch08_applications/applications} 
+\cleartorecto\include{ch09_conclusions/conclusions}
 
 % ----------------------------------------------
 
@@ -466,8 +474,10 @@
 
 \appendix
 \cleartorecto\include{ch99/appendix}
-\chapter{Glossary}\label{app:glossary}
-\printglossary[type = \acronymtype]
+\chapter{Glossary}
+\label{app:glossary}
+\renewcommand{\arraystretch}{1}	
+\printglossary[type = \acronymtype, style = mylong]
 \printglossary[type=MU]
 
 %\cleartorecto\include{ch99/quotation}0
