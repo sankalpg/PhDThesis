@@ -424,7 +424,7 @@
 		{\end{longtable}}%
 }
 \input{glossary/glossary.tex}
-\makeglossaries
+\makeglossaries	
 
 \begin{document}
 
@@ -457,15 +457,15 @@
 \mainmatter
 
 %%
-%\cleartorecto\include{ch01_introduction/introduction_new}
-%\cleartorecto\include{ch02_background/background}
-%%%%%%\cleartorecto\include{ch03_problems/problems}
-%\cleartorecto\include{ch04_datasets/datasets}
-%\cleartorecto\include{ch05_preprocessing/preprocessing} 
-%\cleartorecto\include{ch06_patterns/patterns}
-%\cleartorecto\include{ch07_ragaRecognition/ragaRecognition}
-%\cleartorecto\include{ch08_applications/applications} 
-%\cleartorecto\include{ch09_conclusions/conclusions}
+\cleartorecto\include{ch01_introduction/introduction_new}
+\cleartorecto\include{ch02_background/background}
+%%%%%\cleartorecto\include{ch03_problems/problems}
+\cleartorecto\include{ch04_datasets/datasets}
+\cleartorecto\include{ch05_preprocessing/preprocessing} 
+\cleartorecto\include{ch06_patterns/patterns}
+\cleartorecto\include{ch07_ragaRecognition/ragaRecognition}
+\cleartorecto\include{ch08_applications/applications} 
+\cleartorecto\include{ch09_conclusions/conclusions}
 
 % ----------------------------------------------
 
@@ -477,8 +477,9 @@
 \chapter{Glossary}
 \label{app:glossary}
 \renewcommand{\arraystretch}{1}	
+%\renewcommand{\glsnamefont}[1]{\textbf{#1}}
 \printglossary[type = \acronymtype, style = mylong]
-\printglossary[type=MU]
+\printglossary[type=MU, style = mylong]
 
 %\cleartorecto\include{ch99/quotation}0
 %\cleartorecto\newpage\thispagestyle{empty}\mbox{}
