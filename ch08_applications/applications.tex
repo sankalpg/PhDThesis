@@ -180,21 +180,35 @@ Note that \gls{ragawise} is a team effort, made a part of the hackday, HAMR, in 
 	\label{fig:ragawise}
 \end{sidewaysfigure}
 
-\TODO{Please add musicological wala kaam yaar!}
 
-\section{Tools for Musicological Studies}
+\section{Computational Musicology}
 
-The research work presented in this thesis opens up doors for a number of interesting musicologically motivated studies that can be performed at the corpora level. We here provide an example of such a study from our recent work presented in XXX. The outcome of different methods described in our work are used to discover melodic structures in performances of IAM. As mentioned earlier, though improvised, performances in IAM have a definite structure, which is learned implicitely by years of musical training. Sometimes teaches describe these structures but the descriptino often is abstract. In XXX we studied 5 different musically relevant XXX. The temporal evolution of melodies over the performance in terms of the focus svara (which happens to be nyas) at each point in time. We found that an artist linearly explore the svaras of a raga ober the course of the performance largely independent of the duration of the performance. Inerestingly, even if the prominent svaras of a raga are towards the higher frequencey ones, they are explored when their turn arrives in a linear fashion. It becomes evident by looking at the ecolution of the prominent svara in a local melodic context a shown in XXX. 
+The research work presented in this thesis paves the way for a number of studies in the context of computational musicology in \gls{iam}, which can be performed at a large scale using corpora of recorded performances. We provide here an example of our preliminary work in this direction. 
 
-Another aspect we explored was the transition across nyas svaras. XXX put in more stuff??
+As mentioned, \gls{iam} is primarily an improvisatory music tradition, wherein compositions merely serve as the skeleton of a performance. However, at the same time, melodies are constructed in adherence with the \gls{raga} grammar, and therefore, they are bound by certain rules (or conventions). This fine distinction between what is `fixed' and what remains `free' is not clearly defined and is implicitly acquired by music students through years of musical training. With this as our motivation, in~\cite{kaustuv_ismir_2016}, we propose methods to discover melodic structures in recorded performances of \gls{iam}. In this study, we utilized several outcomes of the methods described in this thesis such as melody representations, tonic normalization and \gls{nyas} segmentation. We studied five different aspects related with the temporal evolution of melody in a music piece; the overall coarse evolution of melody in time, the transition characteristics of consecutive \gls{nyas} \glspl{svara}, the relationship between the functional roles of the \glspl{svara} and their duration in melody, the duration and position of \glspl{svara} in melody, and the presence of the possible pulsation in \gls{alap} melodies. 
 
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=\figSizeSixtyFive]{ch08_applications/figures/Fig-5.png}
+	\end{center}
+	\caption{Temporal evolution of long-term averaged melody contours for 37 performances. The length of the performances are normalized.}
+	\label{fig:temporal_evolution}
+\end{figure}
 
-\COMMENT{Write this section if you get time at the end}
+One of the interesting results from this study is related to the overall evolution of melody in a music piece. We found that, irrespective of the functional roles of the \glspl{svara}, they are explored in melodies in a linear manner by an artist, starting from the lowest frequency \gls{svara} going all the way to the highest. Interestingly, this trend appears to be largely independent of the duration of the performance. In~\figref{fig:temporal_evolution}, we illustrate this pattern by showing the trajectories of the highest salience bin in a long-time averaged pitch histogram computed across breath-phrases\footnote{Segment of the melody between two breath pauses (>300\,ms) by a singer}. 
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=\figSizeSixtyFive]{ch08_applications/figures/Fig-8.png}
+	\end{center}
+	\caption{Histogram of ratio of inter-onset-intervals of salience \glspl{svara} across breath-phrases.\TODO{Correct the figure axis}}
+	\label{fig:pulsation_example}
+\end{figure}
+
+Another interesting result is that although the \gls{alap} section is unmetered, a histogram of the ratio of the inter-onset-intervals between the salient \glspl{svara} across breath-phrases shows strong pulsation (\figref{fig:pulsation_example}). This corroborates with the existing musicological discussion that there is indeed a pulsation in \gls{alap} melodies. For a detailed description of the methodology used for the analysis and the results we refer to~\cite{kaustuv_ismir_2016}.
 
 \section{Summary}
 \label{sec:applications_summary}
 
-In this section we presented a few examples of concrete applications that utilize the output of the work presented in this thesis. We presented Dunya, which comprise all the data and software tools developed in the CompMusic project. We briefly described ways to access different types of data within the CompMusic corpora. A number of datasets can be created to study different aspects of \gls{iam} using these corpora and tools. Subsequently, we presented three demos that being forward the outcome of our approaches. They provide useful insights, which can be looped back to further improve our systems. We also presented two mobile applications that demonstrate the utility of our work in the context of commercial applications. These applications give an idea about the context in which our work is usable. Overall, we see that our work is useful in several ways, in different contexts and, there can be a number of interesting applications built on top of it. 
-
-
+In this section, we presented some concrete examples of different applications of our work in several contexts such as computational musicology, enhance music listening applications, and pedagogical tools for \gls{iam}. We presented Dunya, a research tool that comprise all the data and software tools developed in the CompMusic project. We briefly described two different ways to access the research corpora compiled in the project. Using this tool and the compiled corpora, a number of datasets can be created to study different aspects of \gls{iam}. Subsequently, we presented web-based demos that enable a user to browse and listen to the melodic patterns discovered by our approach through an intuitive user interface. Listening to and analyzing the relationships between these melodic patterns provide useful insights, which can be looped back to further improve our system. We also presented a web prototype of \gls{ragawise} that demonstrates the utility of an automatic raga-recognition system a real-time setup, which can further be exploited to develop tools to facilitate pedagogy in \gls{iam}. We presented two mobile applications (\gls{saraga} and \gls{riyaz}) that demonstrate the utility of our work in the context of enhance music listening experience and music pedagogy. We also presented our preliminary study as an example of how our work can be utilized in computational musicology. Overall, we see that our work has several interesting applications in a wide variety of contexts.
 
