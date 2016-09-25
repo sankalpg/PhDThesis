@@ -3,8 +3,6 @@
 \chapter{Music Corpora and Datasets}
 \label{chap:corpus_music_corpora_and_datasets}
 
-\TODO{Add how to access these corpora}
-
 \section{Introduction}
 \label{sec:corpus_intro}
 
@@ -247,6 +245,9 @@ In \tabref{tab:completeness_hindustani_corpus}, we show the completeness of the 
 \subsection{Open-access Music Corpus}
 \label{sec:corpus_open_access_research_corpus}
 
+The audio recordings in both Hindustani and Carnatic music corpus are ripped from commercially released music CDs. The copyright on these recordings does not allow for a redistributed of the music content, and therefore, they cannot be made publicly available. To promote the idea of open-access of research corpora and reproducibility of research results, in the CompMusic project there has been an effort to compile an open-access music collection. This open-access corpus comprises both Hindustani and Carnatic music. Like the other research corpora described in the previous sections, this corpus contains audio recordings and associated editorial metadata. In addition, this corpus also contains several annotations of different music attributes such as melodic phrases, sama locations and sections. Due permissions are taken from the artists for redistribution of these audio recordings. As a result of which, the corpus is made publicly available under creative commons license (CC BY-NC 4.0). The audio recordings in this corpus are hosted on Internet Archive\footnote{\url{https://archive.org/}} and made accessible through the Dunya web \gls{api} (\secref{sec:applications_dunya}). 
+
+
 \begin{figure}
 	\begin{center}
 		\includegraphics[width=\figSizeNinety]{ch04_datasets/figures/carnatic_corpus_cc.pdf}
@@ -257,36 +258,33 @@ In \tabref{tab:completeness_hindustani_corpus}, we show the completeness of the 
 
 \begin{figure}
 	\begin{center}
+		\includegraphics[width=\figSizeSeventyFive]{ch04_datasets/figures/carnatic_CC_details.pdf}
+	\end{center}
+	\caption[Details of the open-access Carnatic music corpus]{Details of the Carnatic open-access music corpus in terms of the number of annotations of different musical attributes and audio features.}
+	\label{fig:carnatic_open_access_corpus_details_annotations}
+\end{figure}
+
+
+The Carnatic music part of the open-access music corpus contains 19~releases comprising 197~recordings spanning over 41~hours of audio (see \figref{fig:carnatic_cc_corpus_details} for details). A majority of these releases are recordings of Carnatic music concerts performed in the \gls{acc} in Chennai, India. These are multi-track recordings later mixed and mastered by a professional. Individual music pieces of a concert are split into separate recordings that then comprise a release. In addition to the content procured from the \gls{acc}, a number of releases in this corpus are commercially released CDs with artists' due permissions to make them publicly available. Along with the audio recordings and the accompanying editorial metadata, this corpus contains carefully done annotations corresponding to melodic, rhythmic and sectional aspects of the music. Manually done annotations include characteristic melodic phrases and sections within each audio recording. Semi-automatically done annotations include time-aligned sama locations and tempo in a recording. Finally, automatically extracted mid-level audio features include predominant pitch contour and tonic frequency used in the recording by the lead artist. Since for several concerts their multi-track recordings are available, along with the predominant pitch estimated from the mix-down track we also compute pitch using the solo vocal track. These pitch contours from the solo vocal tracks can serve as ground-truth to evaluate pitch estimation algorithms for \gls{iam}. In \figref{fig:carnatic_open_access_corpus_details_annotations}, we show the number of available annotations of different musical attributes and audio features for the Carnatic music part of the corpus.
+
+
+\begin{figure}
+	\begin{center}
 		\includegraphics[width=\figSizeNinety]{ch04_datasets/figures/hindustani_corpus_cc.pdf}
 	\end{center}
 	\caption[Details of the Open-access Hindustani music corpus]{Details of the Open-access Hindustani music corpus in terms of the number of different musical entities and relationships between them}
 	\label{fig:hindustani_cc_corpus_details}
 \end{figure}
 
-
-The audio recordings in both Hindustani and Carnatic music corpus are ripped from commercially released music CDs. The copyright on these recordings does not allow for a redistributed of the music content, and therefore, they cannot be made publicly available. To promote the idea of open-access of research corpora and reproducibility of research results, in the CompMusic project there has been an effort to compile an open-access music collection. This open-access corpus comprises both Hindustani and Carnatic music. Like the other research corpora described in the previous sections, this corpus contains audio recordings and associated editorial metadata. In addition, this corpus also contains several annotations of different music attributes such as melodic phrases, sama locations and sections. Due permissions are taken from the artists for redistribution of these audio recordings. As a result of which, the corpus is made publicly available under creative commons license (CC BY-NC 4.0). The audio recordings in this corpus are hosted on Internet Archive\footnote{\url{https://archive.org/}} and made accessible through the Dunya Web \gls{api} (\secref{sec:applications_dunya}). 
-
-%Though these recordings are available in the market and are easily accessible, re-compiling the entire music corpus would practically require a lot of effort from a researcher who is trying to reproduce the research results. 
-\begin{figure}
-	\begin{center}
-		\includegraphics[width=\figSizeSeventyFive]{ch04_datasets/figures/carnatic_CC_details.pdf}
-	\end{center}
-	\caption[Details of the Carnatic open-access music corpus]{Details of the Carnatic open-access music corpus in terms of the number of annotations of different musical attributes and audio features.}
-	\label{fig:carnatic_open_access_corpus_details}
-\end{figure}
-
-The Carnatic music part of the open-access music corpus contains 19~releases comprising 197~recordings spanning over 41~hours of audio. A majority of these releases are recordings of Carnatic music concerts performed in the \gls{acc} in Chennai, India. These are multi-track recordings later mixed and mastered by a professional. Individual music pieces of a concert are split into separate recordings that then comprise a release. In addition to the content procured from the \gls{acc}, a number of releases in this corpus are commercially released CDs with artists' due permissions to make them publicly available. Along with the audio recordings and the accompanying editorial metadata, this corpus contains carefully done annotations corresponding to melodic, rhythmic and sectional aspects of the music. Manually done annotations include characteristic melodic phrases and sections within each audio recording. Semi-automatically done annotations include time-aligned sama locations and tempo in a recording. Finally, automatically extracted mid-level audio features include predominant pitch contour and tonic frequency used in the recording by the lead artist. Since for several concerts their multi-track recordings are available, along with the predominant pitch estimated from the mix-down track we also compute pitch using the solo vocal track. These pitch contours from the solo vocal tracks can serve as ground-truth to evaluate pitch estimation algorithms for \gls{iam}. In \figref{fig:carnatic_open_access_corpus_details}, we show the number of available annotations of different musical attributes and audio features for the Carnatic music part of the corpus.
-
-
 \begin{figure}
 	\begin{center}
 		\includegraphics[width=\figSizeSeventyFive]{ch04_datasets/figures/hindustani_CC_details.pdf}
 	\end{center}
-	\caption[Details of the Hindustani open-access music corpus]{Details of the Hindustani open-access music corpus in terms of the number of annotations of different musical attributes and audio features.}
-	\label{fig:hindustani_open_access_corpus_details}
+	\caption[Details of the open-access Hindustani music corpus]{Details of the Hindustani open-access music corpus in terms of the number of annotations of different musical attributes and audio features.}
+	\label{fig:hindustani_open_access_corpus_details_annotations}
 \end{figure}
 
-The Hindustani music part of the open-access music corpus contains 36~releases comprising 108~recordings that span 43.6~hours of music. A significant portion of this collection comprises commercial releases by maestros such as Pt.~Ajoy Chakbraborty and Pt.~Kumar Gandharva. The other portion of the collection comprises individual recordings procured from different professional musicians and grouped together into meaningful releases for each artist. The grouping is based on common performance practices clubbing the performances in the \glspl{raga} that are performed together in a concert. This corpus also contains annotations for characteristic melodic phrases, sections, time-aligned sama locations and tempo. It also contains mid-level audio features, which includes the predominant pitch contour and the tonic frequency for each recording. In \figref{fig:hindustani_open_access_corpus_details}, we show the number of available annotations of different musical attributes and audio features for the Hindustani music part of the corpus. 
+The Hindustani music part of the open-access music corpus contains 36~releases comprising 108~recordings that span 43.6~hours of music (see \figref{fig:hindustani_cc_corpus_details} for details). A significant portion of this collection comprises commercial releases by maestros such as Pt.~Ajoy Chakbraborty and Pt.~Kumar Gandharva. The other portion of the collection comprises individual recordings procured from different professional musicians and grouped together into meaningful releases for each artist. The grouping is based on common performance practices clubbing the performances in the \glspl{raga} that are performed together in a concert. This corpus also contains annotations for characteristic melodic phrases, sections, time-aligned sama locations and tempo. It also contains mid-level audio features, which includes the predominant pitch contour and the tonic frequency for each recording. In \figref{fig:hindustani_open_access_corpus_details_annotations}, we show the number of available annotations of different musical attributes and audio features for the Hindustani music part of the corpus. 
 
 \subsection{Storage and Access of Corpus}
 \label{sec:corpus_storage_and_access}
@@ -492,15 +490,20 @@ In \acrshort{msds}, we discovered a number of discrepancies where several occurr
 
 In our review of the existing studies on automatic \gls{raga} recognition we observed that every approach was evaluated on a different dataset (\secref{sec:sota_raga_recognition}). In addition, there is no sizable dataset available, which can be shared and used across studies. We therefore build two sizable \gls{raga} recognition datasets, Carnatic music \gls{raga} recognition dataset (\acrshort{rrds_cmd_big}) and Hindustani music \gls{raga} recognition dataset (\acrshort{rrds_hmd_big}), which we make publicly available online (\appref{app:resources}).
 
+ As mentioned before, there are considerable differences in the melodic characteristics of Carnatic and Hindustani music. We therefore consider two separate datasets, one for each music tradition. \acrshort{rrds_cmd_big} is a subset of Carnatic music research corpus (\secref{sec:corpus_carnatic_music_corpus}) and was introduced in~\cite{gulatiphrase_2016}. it primarily consists of vocal performances.  \acrshort{rrds_cmd_big} comprises 124\,hours of audio recordings and editorial metadata that includes carefully curated and verified \gls{raga} labels. It contains 480 recordings belonging to 40 \glspl{raga} with 12 recordings per \gls{raga}. In~\figref{fig:carnatic_ragaDB_details}, we show an overall summary of the relevant details of this dataset in terms of the different musical attributes. In~\tabref{tab:per_raga_stats_hmd}, we  further provide the details for each constituent \gls{raga}. There are a total of 311 different compositions belonging to diverse forms in Carnatic music (for example, k\={i}rtana, varnam, virtuttam). In~\tabref{tab:raga_svaras_cmd} we list all the \glspl{raga} in \acrshort{rrds_cmd_big} and their comprising set of \glspl{svara}. We see that the chosen \glspl{raga} contain diverse set of \glspl{svara}, both in terms of the number of \glspl{svara} and their pitch-classes (\glspl{svarsthana}).  Several selected \glspl{raga} share a common set of \glspl{svara}. This increases the complexity of the task, since the discrimination between these \glspl{raga} is mainly based on subtle melodic nuances and highly characteristic melodic phrases of \glspl{raga} (\secref{sec:melody_in_iam}). To have diversity in the dataset we selected both the phrase-based and the scale-based \glspl{raga}~\citep{krishna2012carnatic,meer1980hindustani}.
+
+ \begin{figure}
+ 	\begin{center}
+ 		\includegraphics[width=\figSizeNinety]{ch04_datasets/figures/carnatic_corpus_ragaDB.pdf}
+ 	\end{center}
+ 	\caption[Details of the \gls{raga} recognition dataset comprising Carnatic music]{Details of the \gls{raga} recognition dataset comprising Carnatic music in terms of the number of different musical entities and relationships between them}
+ 	\label{fig:carnatic_ragaDB_details}
+ \end{figure}
+
+\acrshort{rrds_hmd_big} is a subset of Hindustani music research corpus (\secref{sec:corpus_hindustani_music_corpus}) and was first introduced in~\cite{gulati_tdms_2016}. It comprises nearly 116\, hours of audio recordings and editorial metadata. \acrshort{rrds_hmd_big} contains full-length recordings of 300~Hindustani music performances belonging to 30~\glspl{raga} with 10~music pieces per \gls{raga}. In~\figref{fig:hindustani_ragaDB_details}, we show an overall summary of the relevant details of this dataset in terms of the different musical attributes. In~\tabref{tab:per_raga_stats_hmd}, we  further provide the details for each constituent \gls{raga}. We see that the dataset is diverse in terms of the number of artists, the number of forms, and the number of compositions. In~\tabref{tab:raga_svaras_hmd} we list all the \glspl{raga} in \acrshort{rrds_hmd_big} and their comprising set of \glspl{svara}. Similar to the case in \acrshort{rrds_cmd_big}, we see that in \acrshort{rrds_hmd_big} also several chosen \glspl{raga} share a common set of \glspl{svara}. 
 
 
-\begin{figure}
-	\begin{center}
-		\includegraphics[width=\figSizeNinety]{ch04_datasets/figures/carnatic_corpus_ragaDB.pdf}
-	\end{center}
-	\caption[Details of the \gls{raga} recognition dataset comprising Carnatic music]{Details of the \gls{raga} recognition dataset comprising Carnatic music in terms of the number of different musical entities and relationships between them}
-	\label{fig:carnatic_ragaDB_details}
-\end{figure}
+
 
 \begin{figure}
 	\begin{center}
@@ -509,10 +512,7 @@ In our review of the existing studies on automatic \gls{raga} recognition we obs
 	\caption[Details of the \gls{raga} recognition dataset comprising Hindustani music]{Details of the \gls{raga} recognition dataset comprising Hindustani music in terms of the number of different musical entities and relationships between them}
 	\label{fig:hindustani_ragaDB_details}
 \end{figure}
- 
- As mentioned before, there are considerable differences in the melodic characteristics of Carnatic and Hindustani music. We therefore consider two separate datasets, one for each music tradition. \acrshort{rrds_cmd_big} is a subset of Carnatic music research corpus (\secref{sec:corpus_carnatic_music_corpus}) and was introduced in~\cite{gulatiphrase_2016}. it primarily consists of vocal performances.  \acrshort{rrds_cmd_big} comprises 124\,hours of audio recordings and editorial metadata that includes carefully curated and verified \gls{raga} labels. It contains 480 recordings belonging to 40 \glspl{raga} with 12 recordings per \gls{raga}. In~\figref{fig:carnatic_ragaDB_details}, we show an overall summary of the relevant details of this dataset in terms of the different musical attributes. In~\tabref{tab:per_raga_stats_hmd}, we  further provide the details for each constituent \gls{raga}. There are a total of 311 different compositions belonging to diverse forms in Carnatic music (for example, k\={i}rtana, varnam, virtuttam). In~\tabref{tab:raga_svaras_cmd} we list all the \glspl{raga} in \acrshort{rrds_cmd_big} and their comprising set of \glspl{svara}. We see that the chosen \glspl{raga} contain diverse set of \glspl{svara}, both in terms of the number of \glspl{svara} and their pitch-classes (\glspl{svarsthana}).  Several selected \glspl{raga} share a common set of \glspl{svara}. This increases the complexity of the task, since the discrimination between these \glspl{raga} is mainly based on subtle melodic nuances and highly characteristic melodic phrases of \glspl{raga} (\secref{sec:melody_in_iam}). To have diversity in the dataset we selected both the phrase-based and the scale-based \glspl{raga}~\citep{krishna2012carnatic,meer1980hindustani}.
 
-\acrshort{rrds_hmd_big} is a subset of Hindustani music research corpus (\secref{sec:corpus_hindustani_music_corpus}) and was first introduced in~\cite{gulati_tdms_2016}. It comprises nearly 116\, hours of audio recordings and editorial metadata. \acrshort{rrds_hmd_big} contains full-length recordings of 300~Hindustani music performances belonging to 30~\glspl{raga} with 10~music pieces per \gls{raga}. In~\figref{fig:hindustani_ragaDB_details}, we show an overall summary of the relevant details of this dataset in terms of the different musical attributes. In~\tabref{tab:per_raga_stats_hmd}, we  further provide the details for each constituent \gls{raga}. We see that the dataset is diverse in terms of the number of artists, the number of forms, and the number of compositions. In~\tabref{tab:raga_svaras_hmd} we list all the \glspl{raga} in \acrshort{rrds_hmd_big} and their comprising set of \glspl{svara}. Similar to the case in \acrshort{rrds_cmd_big}, we see that in \acrshort{rrds_hmd_big} also several chosen \glspl{raga} share a common set of \glspl{svara}. 
 
 Given the diversities present in \acrshort{rrds_cmd_big} and \acrshort{rrds_hmd_big}, they can be regarded as the representative collections of \gls{iam}. To the best of our knowledge, these are the largest and the most comprehensive (in terms of the available metadata) datasets ever used for studying the task of automatic \gls{raga} recognition.
 
