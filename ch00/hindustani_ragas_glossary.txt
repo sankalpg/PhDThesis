@@ -238,3 +238,11 @@ description={},
 type=ragaHMD
 }
 
+\newglossaryentry{bhimpalasi}
+{
+name={bh\={\i}mapal\={a}s\={\i}},
+description={},
+sort=bhimpalasi,
+type=ragaHMD
+}
+
