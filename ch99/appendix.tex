@@ -93,66 +93,91 @@ We here provide a list of publications by the author related with the thesis wor
 
 \chapter{Resources}\label{app:resources}
 
-In this appendix we provide links to different resources related to the work presented in the thesis. Note that while we present the current URLs of these resources, they might change in the future, therefore, an up-to-date links are maintained on the companion webpage of this thesis XXX and XXX.
+In this appendix, we provide links to access the resources related to this thesis, which include the code and tools, the corpora and test datasets, and the applications and demos. An up-to-date links of all these resources are maintained on the companion web page of this thesis: \url{http://compmusic.upf.edu/node/304} (mirrored at \url{http://www.sankalpgulati.in/phd-thesis.html}).
 
 \section*{Code and Tools}
 
+\subsection*{Implementation of Methods}
+Implementation of the methods presented in this thesis are made publicly available for research purposes. We also indicate (in squared brackets) the language in which the implementation is available.
 
+\begin{itemize}
+	\item Tonic identification (\acrshort{tonicid_justin}) [C]
+	\item \Gls{nyas} segmentation and classification [Python]
+	\item Predominant pitch post-processing [Python]
+	\item \Gls{tani} Segmentation [Python]
+	\item Pattern processing: melodic similarity, and pattern search and discovery (including cascaded lower-bound computations) [C]
+	\item \Gls{dtw} variants [C, Python-wrapper]
+	\item Melodic pattern characterization [Python]
+	\item \Gls{raga} recognition using melodic patterns (\acrshort{ragarecVSM}) [Python]
+	\item \Gls{raga} recognition using \acrshort{tdms} (\acrshort{ragarecTDMS}) [Python]
+	\item Pitch estimation using the YIN algorithm [Javascript]
+\end{itemize}
 
-\begin{description}[style=nextline]
-	\item[Essentia audio analysis library] \url{http://essentia.upf.edu/}
-	\item[Dunya API] \url{https://github.com/MTG/pycompmusic}
-	\item[Dunya front end] \url{http://dunya.compmusic.upf.edu/}
-	\item[Dunya server and back end] \url{https://github.com/MTG/dunya}
-\end{description}
+\subsection*{Tools}
+
+\begin{itemize}
+	\item Essentia audio analysis library (\url{http://essentia.upf.edu/})
+	\item Dunya API  (\url{https://github.com/MTG/pycompmusic})
+	\item Dunya front end  (\url{http://dunya.compmusic.upf.edu/})
+	\item Dunya server and back end  (\url{https://github.com/MTG/dunya})
+\end{itemize}
 
 
 \section*{Corpora and Test-datasets}
 
+\subsection*{Corpora}
 
+All the research corpora described in this thesis, which include audio recordings, associated metadata and audio features can be accessed through the Dunya \acrshort{api} (\secref{sec:applications_dunya}). Every corpora has a corresponding collection in MusicBrainz.
+
+\begin{itemize}
+	\item `Dunya Carnatic' collection in MusicBrainz forms the Carnatic music corpus (\secref{sec:corpus_carnatic_music_corpus}) \\ \url{https://musicbrainz.org/collection/f96e7215-b2bd-4962-b8c9-2b40c17a1ec6}
+	\item `Dunya Hindustani' collection in MusicBrainz forms the Hindustani music corpus (\secref{sec:corpus_carnatic_music_corpus}) \\
+	\url{https://musicbrainz.org/collection/213347a9-e786-4297-8551-d61788c85c80}
+	\item `Dunya Carnatic CC' and `Dunya Hindustani CC' collection in MusicBrainz forms the open-access music corpus (\secref{sec:corpus_open_access_research_corpus}) \\
+	\url{https://musicbrainz.org/collection/a163c8f2-b75f-4655-86be-1504ea2944c2}\\
+	\url{https://musicbrainz.org/collection/6adc54c6-6605-4e57-8230-b85f1de5be2b}
+\end{itemize}
+
+\subsection*{Test Datasets}
+
+All the test datasets described in this thesis are shared as standalone archives (files) that contain relevant annotations and audio features. For the datasets that use audio recordings present in the corpora, the recordings can be accessed though the Dunya \acrshort{api}. Otherwise, they are bundled together with the annotations. List of all the datasets which are made publicly available.
+\begin{itemize}
+	\item Tonic identification datasets (\acrshort{tds_cm1}, \acrshort{tds_cm2}, \acrshort{tds_cm3}, \acrshort{tds_iitm1}, \acrshort{tds_iitm2}, and \acrshort{tds_iisc})
+	\item \Gls{nyas} detection dataset (\acrshort{nds_cm})
+	\item Melodic similarity datasets (\acrshort{msds_iitm_cmd}, \acrshort{msds_iitb_hmd}, \acrshort{msds_cm_cmd}, and \acrshort{msds_cm_hmd})
+	\item \Gls{raga} recognition datasets (\acrshort{rrds_cmd_big} and \acrshort{rrds_hmd_big})
+\end{itemize}
+
+The corpora and the test datasets compiled in the CompMusic project for all the music traditions are available at:
 \begin{description}[style=nextline]
-	\item[Research corpora] - \url{http://compmusic.upf.edu/corpora}
-	\item[Test datasets] - \url{http://compmusic.upf.edu/datasets}
+	\item[CompMusic music corpora] \url{http://compmusic.upf.edu/corpora}
+	\item[CompMusic test datasets] \url{http://compmusic.upf.edu/datasets}
 \end{description}
 
 
-Access to the corpora and datasets will be through the Dunya API that provides access to audio recordings, metadata and features. Standalone archives of datasets are also distributed in some cases outside of the Dunya API. All the research corpora and datasets related to the thesis are additionally listed at the links below. 
+\section*{Applications, and Demos}
 
-% 
-\resource{The Dunya Carnatic collection on MusicBrainz that forms the CompMusic Carnatic music research corpus}{http://musicbrainz.org/collection/f96e7215-b2bd-4962-b8c9-2b40c17a1ec6}
-% 
-\resource{The Dunya Hindustani collection on MusicBrainz that forms the CompMusic Hindustani music research corpus}{http://musicbrainz.org/collection/213347a9-e786-4297-8551-d61788c85c80}
-% 
-\resource{The  {CMDo} on MusicBrainz with openly accessible music}{http://musicbrainz.org/collection/a163c8f2-b75f-4655-86be-1504ea2944c2}
-%
-\resource{The  {HMDo} on MusicBrainz with openly accessible music}{http://musicbrainz.org/collection/6adc54c6-6605-4e57-8230-b85f1de5be2b}
-%
-DATASETS!!
+\begin{itemize}
+	\item Discovered melodic patterns:
+	\begin{itemize}
+		\item Metadata-wise browsing: \url{dunya.compmusic.upf.edu/motifdiscovery}
+		\item Network of melodic patterns: \url{dunya.compmusic.upf.edu/pattern_network/}
+		\item We also share the database of the discovered melodic patterns that contains the time-stamps, similarity with the other patterns, and the corresponding recording information for all the patterns.
+	\end{itemize}
+	\item \gls{ragawise}:
+	\begin{itemize}
+		\item Web interface: \url{https://dunya.compmusic.upf.edu/ragawise/}
+		\item Code: \url{https://github.com/sankalpg/ragawise}
+	\end{itemize}
+	
+	\item Mobile applications:
+	\begin{itemize}
+		\item \Gls{saraga}: \url{https://play.google.com/store/apps/details?id=com.musicmuni.saraga}
+		\item \Gls{riyaz}: \url{https://play.google.com/store/apps/details?id=com.musicmuni.riyaz}
+	\end{itemize}
+\end{itemize}
 
-\section*{Results: Applications and Demos}
-
-intermediate output 
-Demo links 
-Application links
-Dunya link
-
-
-
-
-
-
-% 
-\section*{Applications/Demos}
-An extended set of results, along with a few audio examples analyzed with the models and algorithms presented in the dissertation are available on the companion page.
-\begin{description}[style=nextline]
-	\item[Audio examples] {\small \url{http://compmusic.upf.edu/phd-thesis-ajay\#examples}}
-	\item[Extended results] {\small \url{http://compmusic.upf.edu/phd-thesis-ajay\#results}}
-\end{description}
-
-
-
-
-
+We reiterate that the links provided for some of these resources may change over time. An up-to-date links of all these resources are maintained on the companion web page of this thesis: \url{http://compmusic.upf.edu/node/304} (mirrored at \url{http://www.sankalpgulati.in/phd-thesis.html}).
 
 %%%%%%%%%%%%%%%%%%%%%% Another appendix!  %%%%%%%%%%%%%%%%%%%
 
