@@ -195,7 +195,7 @@ Before we proceed to present our results, we notify readers that the accuracies 
 	 & $\mathrm{PD}_\mathrm{context}$ & 54.16 & 43.75 & 5.2 & 33.12 & 49.37 & \textbf{54.79} &26.25 \tabularnewline
 \tablebot
 \end{tabular}	
-	\caption[Accuracy of \acrshort{ragarecVSM}, \acrshort{sotaChordia} and \acrshort{sotaKoduri} on \acrshort{rrds_cmd_big}]{Accuracy (in percentage) of \gls{raga} recognition on \acrshort{rrds_cmd_big} dataset by \acrshort{ragarecVSM} and other methods methods using different features and classifiers. Bold text signifies the best accuracy by a method among all its variants} 
+	\caption[Accuracy of \acrshort{ragarecVSM}, \acrshort{sotaChordia} and \acrshort{sotaKoduri} on \acrshort{rrds_cmd_big}]{Accuracy (\%) of \gls{raga} recognition on \acrshort{rrds_cmd_big} dataset by \acrshort{ragarecVSM} and other methods methods using different features and classifiers. Bold text signifies the best accuracy by a method among all its variants} 
 	\label{tab:accuracies_cmd_vsm}
 \end{table}
 
@@ -215,7 +215,7 @@ Before we proceed to present our results, we notify readers that the accuracies 
 	\acrshort{sotaChordia} & $\mathrm{PCD}_\mathrm{full}$ & - & - & - & - & - & - & \textbf{91.66}\tabularnewline
 \tablebot
 \end{tabular}
-	\caption[Accuracy of \acrshort{ragarecVSM} and \acrshort{sotaChordia} on \acrshort{rrds_hmd_big}]{Accuracy (in percentage) of \gls{raga} recognition on \acrshort{rrds_hmd_big} dataset by \acrshort{ragarecVSM} and other methods methods using different features and classifiers. Bold text signifies the best accuracy by a method among all its variants.} 
+	\caption[Accuracy of \acrshort{ragarecVSM} and \acrshort{sotaChordia} on \acrshort{rrds_hmd_big}]{Accuracy (\%) of \gls{raga} recognition on \acrshort{rrds_hmd_big} dataset by \acrshort{ragarecVSM} and other methods methods using different features and classifiers. Bold text signifies the best accuracy by a method among all its variants.} 
 	\label{tab:accuracies_hmd_vsm}
 \end{table}
 
@@ -254,6 +254,8 @@ In addition to analyzing the final \gls{raga} recognition accuracies, we also ve
 	\label{fig:confusion_matrix_cmd}
 \end{figure}
 
+We now analyze the confusion matrix to understand the type of classification errors made by \acrshort{ragarecVSM}. In~\figref{fig:confusion_matrix_cmd} we show the confusion matrix of the \gls{raga} predictions on \acrshort{rrds_cmd_big} dataset. We observe that our method achieves near-perfect accuracy for several \glspl{raga} including \gls{ritigaula}, \gls{behag}, \gls{mukhari}, \gls{mayamalavagaula}, \gls{sankarabharanam}, \gls{nata}, \gls{todi}, \gls{kalyani}, \gls{purvikalyani} and \gls{varali}. This is consistent with the fact that these are considered to be phrase-based \glspl{raga}, that is, their identity is predominantly derived from melodic phraseology~\citep{krishna2012carnatic}. From~\figref{fig:confusion_matrix_cmd} we notice that the frequent confusions are between \gls{raga} \gls{sindhubhairavi} and \gls{todi}, \gls{saveri} and \gls{mayamalavagaula}, \gls{sri} and \gls{madhyamavati}, \gls{atana} and \gls{madhyamavati}, \gls{sriranjani} and \gls{karaharapriya} and \gls{saama} and \gls{sahana}. On investigating it further we find that in almost every case of confusion the pair comprises allied \glspl{raga} (\secref{sec:allied_ragas}), i.e.~\glspl{raga} that have a common set of \glspl{svara} and similar melodic movements. Distinguishing between allied \glspl{raga} is a challenging task, since it is based on subtle melodic nuances. We also note that, some cases where the accuracy is relatively low correspond to scale-based \glspl{raga}. This is in line with~\cite{krishna2012carnatic}, where the authors remark that the identification of such \glspl{raga} is not based on melodic phraseology.
+ 
 \begin{figure}[h]
 	\begin{center}
 		\includegraphics[width=\figSizeNinety]{ch07_ragaRecognition/figures/CM_vsm_hmd_var1.pdf}
@@ -262,9 +264,8 @@ In addition to analyzing the final \gls{raga} recognition accuracies, we also ve
 	\label{fig:confusion_matrix_hmd}
 \end{figure}
 
-We now analyze the confusion matrix to understand the type of classification errors made by \acrshort{ragarecVSM}. In~\figref{fig:confusion_matrix_cmd} we show the confusion matrix of the \gls{raga} predictions on \acrshort{rrds_cmd_big} dataset. We observe that our method achieves near-perfect accuracy for several \glspl{raga} including \gls{ritigaula}, \gls{behag}, \gls{mukhari}, \gls{mayamalavagaula}, \gls{sankarabharanam}, \gls{nata}, \gls{todi}, \gls{kalyani}, \gls{purvikalyani} and \gls{varali}. This is consistent with the fact that these are considered to be phrase-based \glspl{raga}, that is, their identity is predominantly derived from melodic phraseology~\citep{krishna2012carnatic}. From~\figref{fig:confusion_matrix_cmd} we notice that the frequent confusions are between \gls{raga} \gls{sindhubhairavi} and \gls{todi}, \gls{saveri} and \gls{mayamalavagaula}, \gls{sri} and \gls{madhyamavati}, \gls{atana} and \gls{madhyamavati}, \gls{sriranjani} and \gls{karaharapriya} and \gls{saama} and \gls{sahana}. On investigating it further we find that in almost every case of confusion the pair comprises allied \glspl{raga} (\secref{sec:allied_ragas}), i.e.~\glspl{raga} that have a common set of \glspl{svara} and similar melodic movements. Distinguishing between allied \glspl{raga} is a challenging task, since it is based on subtle melodic nuances. We also note that, some cases where the accuracy is relatively low correspond to scale-based \glspl{raga}. This is in line with~\cite{krishna2012carnatic}, where the authors remark that the identification of such \glspl{raga} is not based on melodic phraseology. 
-
 We now analyze the confusion matrix of the \gls{raga} predictions on \acrshort{rrds_hmd_big} dataset (\figref{fig:confusion_matrix_hmd}). We observe that our method achieves good accuracy for \gls{raga} \gls{miyan_malhar}, \gls{suddh_sarang}, \gls{alahaiya_bilaval}, \gls{sri}, \gls{lalit}, \gls{yaman_kalyan}, \gls{kedar}, \gls{gaud_malhar} and \gls{bilasakhani_todi}. Similar to the case of Carnatic music, these \glspl{raga} are phrase-based \glspl{raga} of Hindustani music. For common confusions as well we find the same reason that most of them occur between allied \glspl{raga}. For example, we notice that \gls{ahira_bhairav} is confused with \gls{bhairav}. This is explicable since the former is derived from the latter \gls{raga} and they both share the same lower tetrachord structure. We see that \gls{raga} \gls{des} is confused with \gls{miyan_malhar}. Both these \glspl{raga} come within the malh\={a}r group of \glspl{raga} and bear commonalities. We find a similar explanation for most of the confusions in the predictions. Going ahead, we notice from~\figref{fig:confusion_matrix_hmd} that the performance of our method is poor for \glspl{raga} including \gls{abhogi}, \gls{jog} and \gls{madhukauns}. An interesting common factor across these \glspl{raga} is that they are pentatonic \glspl{raga} comprising five \glspl{svara} (\gls{jog} is pentatonic in ascending progression). This suggests that \glspl{raga} with less number of comprising \glspl{svara} are more prone to get confused with other \glspl{raga}. However, further instigation of this phenomenon is left for the future work. Overall, the analysis of the classification errors for both Carnatic and Hindustani music datasets suggests that the our proposed method is more suitable for recognizing the phrase-based \glspl{raga} compared to the scale-based \glspl{raga}. In addition, we see that the common mistakes done by the method are explicable from a musicological perspective. 
+
 
 
 Finally, we compare \acrshort{ragarecVSM} with the state of the art methods \acrshort{sotaChordia} and \acrshort{sotaKoduri}.  From~\tabref{tab:accuracies_cmd_vsm}, we see that \acrshort{ragarecVSM} outperforms \acrshort{sotaKoduri} and the difference is found to be statistically significant. When compared with \acrshort{sotaChordia}, the performance of \acrshort{ragarecVSM} is inferior on both the datasets, wherein it is worse on \acrshort{rrds_hmd_big} dataset. In both the cases the difference in the performance is statistically significant across the methods. One of the plausible reasons for this difference can be that \acrshort{sotaChordia} utilizes entire full length recordings for this task, whereas, \acrshort{ragarecVSM} uses only short-time melodic patterns which sum up to only a fraction of the total duration of the performances. Since the recordings are considerably longer in \acrshort{rrds_hmd_big} dataset, the difference in the accuracies is even more prominent. Note that for comparison in our study we use $\mathrm{PCD}_\mathrm{full}$  variant of \acrshort{sotaChordia}, which performs significantly better than the original variant proposed by the authors, $\mathrm{PCD}_{120}$~\citep{gulatiphrase_2016}. Interestingly, a further comparison of the results of \acrshort{ragarecVSM} and \acrshort{sotaChordia} for each \gls{raga} reveals that their performance is complementary. \acrshort{ragarecVSM} successfully recognizes several \glspl{raga} with high accuracy for which \acrshort{sotaChordia} performs poorly, and vice-versa. This becomes evident by comparing the confusion matrix of the \gls{raga} predictions by \acrshort{ragarecVSM}~(\figref{fig:confusion_matrix_cmd} and \figref{fig:confusion_matrix_hmd}) and \acrshort{sotaChordia}~(\figref{fig:confusion_matrix_cmd_chordia} and \figref{fig:confusion_matrix_hmd_chordia}). For example, for the case of \acrshort{rrds_cmd_big} dataset, \acrshort{ragarecVSM} performs better for \glspl{raga} \gls{madhyamavati}, \gls{mukhari} and \gls{harikambhoji} as compared to \acrshort{sotaChordia}. And,  \acrshort{sotaChordia} performs better for \glspl{raga} \gls{kapi}, \gls{sindhubhairavi} and \gls{anandabhairavi} as compared to \acrshort{ragarecVSM}. This suggests that the proposed pattern-based method can be combined with the \gls{pcd}-based methods to achieve a higher \gls{raga} recognition accuracy.
@@ -298,7 +299,7 @@ We now proceed to describe \acrshort{ragarecTDMS}, which is based on the \gls{td
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\figSizeSixty]{ch07_ragaRecognition/figures/tdms_computation.pdf}
+		\includegraphics[width=\figSizeSeventy]{ch07_ragaRecognition/figures/tdms_computation.pdf}
 	\end{center}
 	\caption{Block diagram for \acrshort{tdms} computation.}
 	\label{fig:bd_tdms_computation}
@@ -435,21 +436,22 @@ In the case of \acrshort{ragarecTDMS}, a test recording is assigned the majority
 
 In Table~\ref{tab:main_results_tdms}, we show the results for all the variants of the proposed method \acrshort{ragarecTDMS_F}, \acrshort{ragarecTDMS_KL} and \acrshort{ragarecTDMS_B}, and for \acrshort{sotaChordia} and \acrshort{ragarecVSM}, using \acrshort{rrds_hmd_big} and \acrshort{rrds_cmd_big} datasets. We see that the highest accuracy obtained on \acrshort{rrds_hmd_big} is 97.7\% by \acrshort{ragarecTDMS_KL} and \acrshort{ragarecTDMS_B}. This accuracy is considerably higher than the 91.7\% obtained by \acrshort{sotaChordia}, and the difference is found to be statistically significant. We also see that \acrshort{sotaChordia} performs significantly better than \acrshort{ragarecVSM}. Regarding the proposed variants, we see that, in \acrshort{rrds_hmd_big}, \acrshort{ragarecTDMS_KL} and \acrshort{ragarecTDMS_B} perform better than \acrshort{ragarecTDMS_F}, with a statistically significant difference. 
 
-\begin{table}[t] 
+\begin{table}
+	\ra{1.3}
 	\centering
 	{
-		\begin{tabular}{ c | c c c | c c}
-			\hline\hline
-			Dataset   	& 	\acrshort{ragarecTDMS_F} 	&	\acrshort{ragarecTDMS_KL}		&	\acrshort{ragarecTDMS_B}	&	\acrshort{sotaChordia}		&	\acrshort{ragarecVSM}\\	
-			\hline
-			\acrshort{rrds_hmd_big}   	& 	91.3 	&	{\bf 97.7}		&	{\bf 97.7} 	&	91.7		&	83.0\\	
+		\begin{tabular}{ c | c c c | c c c}
+\tabletop
+			Dataset   	& 	\acrshort{ragarecTDMS_F} 	&	\acrshort{ragarecTDMS_KL}		&	\acrshort{ragarecTDMS_B}	&	\acrshort{ragarecVSM}		& \acrshort{sotaChordia}& \acrshort{sotaKoduri}	\\	
+\tablemid
+			\acrshort{rrds_hmd_big}   	& 	91.3 	&	{\bf 97.7}		&	{\bf 97.7} 	&	83.0		&	91.7	& NA\\	
 			
-			\acrshort{rrds_cmd_big}   	& 	81.5	&	{\bf 86.7}		&	{\bf 86.7}	&	73.1		&	67.3\\	
-			\hline\hline
+			\acrshort{rrds_cmd_big}   	& 	81.5	&	{\bf 86.7}		&	{\bf 86.7}	&	67.3		&	73.1	& 54.8\\	
+\tablebot
 		\end{tabular}
 	}
 	\caption[\Gls{raga} recognition accuracy of \acrshort{tdms}-based method variants
-	]{Accuracy (\%) of the three proposed variants, \acrshort{ragarecTDMS_F}, \acrshort{ragarecTDMS_KL} and $\mathcal{M}_{\mathrm{BC}}$, and two other methods \acrshort{sotaChordia} and \acrshort{ragarecVSM}. The random baseline ($\mathfrak{B}_\mathrm{r}$) for this task is 3.3\% for \acrshort{rrds_hmd_big} and 2.5\% for \acrshort{rrds_cmd_big}.\TODO{Add gopalas method}}
+	]{Accuracy (\%) of the three proposed variants, \acrshort{ragarecTDMS_F}, \acrshort{ragarecTDMS_KL} and \acrshort{ragarecTDMS_B}, and other methods \acrshort{ragarecVSM}, \acrshort{sotaChordia} and \acrshort{sotaKoduri}. The random baseline ($\mathfrak{B}_\mathrm{r}$) for this task is 3.3\% for \acrshort{rrds_hmd_big} and 2.5\% for \acrshort{rrds_cmd_big}. NA stands for not applicable.}
 	\label{tab:main_results_tdms}
 \end{table}
 
@@ -463,7 +465,7 @@ As mentioned earlier, the system parameters corresponding to the results in Tabl
 	\begin{center}
 		\includegraphics[width=\figSizeHundred]{ch07_ragaRecognition/figures/AccuracyVsParameters_tdms.pdf}
 	\end{center}
-	\caption[Accuracy of \acrshort{ragarecTDMS_KL} as a function of different parameter values]{Accuracy of \acrshort{ragarecTDMS_KL} as a function of parameter values. Other methods \acrshort{sotaChordia} and \acrshort{ragarecVSM}, and random baseline $\mathfrak{B}_\mathrm{r}$ are also reported for comparison.\TODO{Match $\mathfrak{B}$, wasn't happening in matplotlib}} 
+	\caption[Accuracy of \acrshort{ragarecTDMS_KL} as a function of different parameter values]{Accuracy of \acrshort{ragarecTDMS_KL} as a function of parameter values. Other methods \acrshort{sotaChordia} and \acrshort{ragarecVSM}, and random baseline $\mathfrak{B}_\mathrm{r}$ are also reported for comparison.} 
 	\label{fig:accuracy_vs_parameter_values_tdms}
 \end{figure}
 
@@ -506,7 +508,7 @@ For this experiment we consider \acrshort{ragarecTDMS_KL} method, which as shown
 		\caption{For subsets of \acrshort{rrds_hmd_big} dataset}
 		\label{fig:performance_vs_n_raagas_hmd}
 	\end{subfigure}
-	\caption[Accuracy of \acrshort{ragarecVSM} as a function number of \glspl{raga} in a subset of \acrshort{rrds_cmd_big}  and \acrshort{rrds_hmd_big}]{Accuracy of \acrshort{ragarecVSM} as a function number of \glspl{raga} in a subset of \acrshort{rrds_cmd_big}  and \acrshort{rrds_hmd_big}, respectively. For every case 50 randomly sampled selections of \glspl{raga}are done from the original datasets.}
+	\caption[Accuracy of \acrshort{ragarecVSM} as a function number of \glspl{raga} in a subset of \acrshort{rrds_cmd_big}  and \acrshort{rrds_hmd_big}]{Accuracy of \acrshort{ragarecVSM} as a function number of \glspl{raga} in a subset of \acrshort{rrds_cmd_big}  and \acrshort{rrds_hmd_big}, respectively. For every case 50 randomly sampled selections of \glspl{raga} are done from the original datasets.}
 	\label{fig:performance_vs_n_raagas}
 \end{figure}
 
