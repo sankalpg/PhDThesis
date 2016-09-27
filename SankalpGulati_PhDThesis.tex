@@ -30,7 +30,7 @@
 %\usepackage{ae,aecompl}
 \usepackage[UKenglish]{isodate}
 
-\usepackage[british,catalan,spanish]{babel}
+\usepackage[british,catalan,spanish,es-nosectiondot]{babel}
 \usepackage{url}
 \urlstyle{rm}
 \usepackage{enumitem}
@@ -43,7 +43,7 @@
 \usepackage{nicefrac}
 \usepackage{titlecaps}
 \Addlcwords{for, is, on}
-\usepackage{titlesec}
+%\usepackage{titlesec}
 \usepackage[round,authoryear]{natbib}
 \usepackage{acronym}
 %\usepackage[style=long,nonumberlist,toc,acronym,nomain]{glossaries}
@@ -66,7 +66,6 @@
 \usepackage{listings}
 \usepackage[font=small,labelfont=bf]{caption}
 \usepackage{subcaption}
-\usepackage{soul}
 %
 %\let\footruleskip\undefined
 %\usepackage{fancyhdr}
@@ -460,14 +459,14 @@
 
 %%%
 \cleartorecto\include{ch01_introduction/introduction_new}
-\cleartorecto\include{ch02_background/background}
-%%%\cleartorecto\include{ch03_problems/problems}
-\cleartorecto\include{ch04_datasets/datasets}
-\cleartorecto\include{ch05_preprocessing/preprocessing} 
-\cleartorecto\include{ch06_patterns/patterns}
-\cleartorecto\include{ch07_ragaRecognition/ragaRecognition}
-\cleartorecto\include{ch08_applications/applications} 
-\cleartorecto\include{ch09_conclusions/conclusions}
+%\cleartorecto\include{ch02_background/background}
+%%%%\cleartorecto\include{ch03_problems/problems}
+%\cleartorecto\include{ch04_datasets/datasets}
+%\cleartorecto\include{ch05_preprocessing/preprocessing} 
+%\cleartorecto\include{ch06_patterns/patterns}
+%\cleartorecto\include{ch07_ragaRecognition/ragaRecognition}
+%\cleartorecto\include{ch08_applications/applications} 
+%\cleartorecto\include{ch09_conclusions/conclusions}
 
 % ----------------------------------------------
 
@@ -484,7 +483,9 @@
 
 %\cleartorecto\include{ch99/quotation}0
 %\cleartorecto\newpage\thispagestyle{empty}\mbox{}
-%\backmatter
+
+
+\backmatter
 %\cleartorecto\include{ch99/finalpage}nomain
 \bibliographystyle{apa_jserra2}
 \cleartorecto\bibliography{sankalp.bib,sankalp_myPubs.bib}
