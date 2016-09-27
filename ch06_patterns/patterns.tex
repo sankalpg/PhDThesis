@@ -788,19 +788,17 @@ Next, we evaluate the performance of inter-recording pattern detection task and 
 \end{figure}
 
 %It suggests that repeating patterns do have some significance, they are not a product of coincidence, and therefore, they are more likely to recur across recordings. Note that we do not imply that every repeating pattern is (equally) musically significant or is a characteristic phrase of a \gls{raga}. There are different types of repeating patterns in melodies of \gls{iam}. The task of characterizing the discovered patterns is addressed in~\secref{sec:patterns_characterization_of_melodic_patterns} \TODO{rehphrase this last part}
-\begin{figure}
-	\begin{center}
-		\includegraphics[width=\figSizeHundred]{ch06_patterns/figures/discovery/combinedPatterns.pdf}
-	\end{center}
-	\caption{Examples of the discovered melodic patterns.\TODO{make the annotations small in size}}
-	\label{fig:combinedPatternsDiscovered}
-\end{figure}
 
 Finally, we analyze the distance distributions of melodically similar and dissimilar search patterns. For this we use the best performing rank-refinement variant $\RankRefVar_2$. To examine the separation in the distance distribution, we compute the ROC curve as shown in~\ref{fig:combinedROCPatternDiscovery} (dashed red line). We observe that the separability between melodically similar and dissimilar subsequences in this case is poorer than the one obtained for the seed pairs (solid blue line). This suggests that it is much harder to differentiate melodically similar from dissimilar patterns when the search is performed across recordings. This can be attributed to the total number of melodically dissimilar subsequences (irrelevant documents) for every query subsequence, which is orders of magnitude higher in this task compared to the task of pattern discovery within a recording. In addition, one of the reasons can also be that the melodic phrases of two allied \glspl{raga} (\secref{sec:melody_in_iam}) are differentiated based on subtle melodic nuances~\citep{Viswanathan2004}. Hence, one faces a much more difficult task, which requires a superior melodic similarity measure.% Moreover, some of these melodic nuances might be specific to \glspl{raga}, learning which might be possible only under a supervised framework. 
 
 To demonstrate the capabilities of the approach, we show a few examples of the discovered melodic patterns in~\figref{fig:combinedPatternsDiscovered}. Our approach robustly extracts patterns in different scenarios such as large local time warpings~(b), uniform scaling~(c), patterns with silence regions~(d) and across different tonic pitches~(e and f). It is worth mentioning that, during the process of annotation, the musician found several musically interesting results. For example, striking similarity between phrases of two different \glspl{raga}, between phrases in sung melodies and the melodies played on instruments (Violin or \Gls{vina}), and phrases sung by different artists. Many of the discovered patterns are the characteristic melodic phrases of the \glspl{raga}, which are the primary cues for \gls{raga} recognition. All the discovered melodic patterns in this study can be browsed and listened to through a web interface (\appref{app:resources}).  Overall, we find that the obtained results are musically relevant and can be used to establish meaningful relationships between audio recordings. We explore the usability of these discovered patterns in the task of automatic \gls{raga} recognition in~\chapref{chap:raga_recognition}.
-
-
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=\figSizeHundred]{ch06_patterns/figures/discovery/combinedPatterns.pdf}
+	\end{center}
+	\caption{Examples of the discovered melodic patterns.}
+	\label{fig:combinedPatternsDiscovered}
+\end{figure}
 
 %################################################################################################################
 %########################################### IMPROVING MELODIC SIMILARITY #######################################
@@ -811,7 +809,6 @@ To demonstrate the capabilities of the approach, we show a few examples of the d
 \label{sec:patterns_characterization_of_melodic_patterns}
 
 In the previous section we described our approach to discover melodic patterns in sizable audio music collections of \gls{iam}. Our primary goal was to extract as many different types of repeating melodic patterns and as many occurrences of them as possible, irrespective of their musical relevance\footnote{Note that in our method in~\secref{sec:patterns_melodic_pattern_discovery}, we only removed melodically trivial patterns that comprise primarily single \gls{svara}.}. A well known problem with the computational approaches for musical pattern discovery is the large volume of discovered patterns, wherein a large fraction of them often tends to be musically uninteresting and irrelevant (\secref{sec:pattern_processin_in_music}). This aspect of automated methods for motivic analysis is studied by~\cite{marsden2012counselling}, who says:
-
 \blockquote{\textit{...computational approaches find many more motives and many more relationships between fragments than in traditional motivic analysis...these are then filtered by some mechanism which selects motives and relationships with privileged positions within the network of relationships.}}
 
 Thus, one of the main challenges of pattern discovery methods is to identify the musically meaningful patterns in the output. In the case of melodies in \gls{iam} as well recurring patterns differ drastically in terms of their musical relevance (\secref{sec:melody_in_iam}). Their functional role in melodies varies from being a melodic ornamentation to being a characteristic melodic phrase of a \gls{raga}. Thus, in order to effectively utilize the discovered melodic patterns in different melodic analyses and applications in \gls{iam}, characterization of these patterns in terms of their musical relevance and functional roles is crucial. In this section we address this issue and characterize discovered melodic patterns in order to identify one of the most interesting types of melodic patterns in \gls{iam}, the \gls{raga} motifs.
@@ -863,12 +860,10 @@ We now formally describe the processing block. As explained, in this block, we a
 \label{sec:network_generation}
 
 We start by building an undirected weighted network using the discovered melodic patterns from the previous step. The patterns are considered as the nodes of the network and the edge between any two patterns ($i$, $j$) is weighted based on the distance $\distPatt_{ij}$ between the patterns. Noticeably, $\distPatt_{ij}$ is computed using the same distance measure as used in the intra-recording pattern discovery block in~\secref{sec:intraRecordingPatternDiscovery}. The weight of the edge $\edgeWght_{ij}$ between the nodes $i$ and $j$ is given by \eqref{eq:edge_weight_in_network}. 
-
 \begin{equation}
 \edgeWght_{ij} = e^{\nicefrac{-\distPatt_{ij}}{\bar{\distPatt}}},
 \label{eq:edge_weight_in_network}
 \end{equation}
-
 \noindent where, $\bar{\distPatt}$ is the mean of $\distPatt_{ij}$ over every combination of $i$ and $j$. 
 
 
@@ -877,15 +872,15 @@ We start by building an undirected weighted network using the discovered melodic
 
 The main objective of this processing block is to filter the network in order to retain only the musically meaningful connections between the nodes. Since the edge weights between the pairs of melodically similar and dissimilar nodes may vary by orders of magnitude, we first consider to exploit this heterogeneity to extract the network's backbone. We therefore apply disparity filtering~\citep{Serrano09PNAS} to preserve only the edges that represent statistically significant deviations with respect to a null model of edge weight assignment for every node. The only parameter used in the disparity filtering is the statistical confidence value. We iterate over 5 different confidence values $\lbrace$99.99, 99, 90, 80, 50$\rbrace$. However, as we will show, the application of disparity filtering is found to be quite irrelevant for the present case.
 
+We next proceed to filter edges in the network based on a melodic similarity threshold $\simThsld$. As mentioned, determining a meaningful similarity threshold in an unsupervised setup is a challenging task. We propose to estimate $\simThsld$ based on the topological properties of the network. For this, we analyze the evolution of the clustering coefficient of both the obtained network $\netUndirWght$ and the corresponding randomized network $\netUndirWght_r$ over a range of similarity thresholds. Clustering coefficient measures the extent to which the nodes in a network tend to cluster together~\citep{newman2003structure}. The randomized network $\netUndirWght_r$ is obtained by swapping the edges between randomly selected node pairs such that the degree of each node is preserved~\citep{maslov2002specificity}. This way, $\netUndirWght_r$ can be considered as the maximally random network with that particular degree distribution. In~\figref{fig:cc_curve_pattern_characterization}, we show the evolution of the clustering coefficient of $\netUndirWght$ and $\netUndirWght_r$ over different similarity thresholds (indicated by exponentially spaced bins). In addition, we can also see the clustering coefficient curves for different statistical confidence values used for disparity filtering. The evolution of the clustering coefficients is used for obtaining a similarity threshold as explained below.
+
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/Characterization/CC_Curves_shrunk.pdf}
+		\includegraphics[width=\figSizeNinety]{ch06_patterns/figures/Characterization/CC_Curves_shrunk.pdf}
 	\end{center}
-	\caption[Evolution of clustering coefficient of a network of melodic patterns]{Evolution of the clustering coefficient of $\netUndirWght$ and $\netUndirWght_r$ over different thresholds and for different statistical confidence values used for disparity filtering (legend).\TODO{This figure uses symbol, check if it matches the text}}
+	\caption[Evolution of clustering coefficient of a network of melodic patterns]{Evolution of the clustering coefficient of $\netUndirWght$ and $\netUndirWght_r$ over different thresholds and for different statistical confidence values used for disparity filtering (legend).}
 	\label{fig:cc_curve_pattern_characterization}
 \end{figure}
-
-We next proceed to filter edges in the network based on a melodic similarity threshold $\simThsld$. As mentioned, determining a meaningful similarity threshold in an unsupervised setup is a challenging task. We propose to estimate $\simThsld$ based on the topological properties of the network. For this, we analyze the evolution of the clustering coefficient of both the obtained network $\netUndirWght$ and the corresponding randomized network $\netUndirWght_r$ over a range of similarity thresholds. Clustering coefficient measures the extent to which the nodes in a network tend to cluster together~\citep{newman2003structure}. The randomized network $\netUndirWght_r$ is obtained by swapping the edges between randomly selected node pairs such that the degree of each node is preserved~\citep{maslov2002specificity}. This way, $\netUndirWght_r$ can be considered as the maximally random network with that particular degree distribution. In~\figref{fig:cc_curve_pattern_characterization}, we show the evolution of the clustering coefficient of $\netUndirWght$ and $\netUndirWght_r$ over different similarity thresholds (indicated by exponentially spaced bins). In addition, we can also see the clustering coefficient curves for different statistical confidence values used for disparity filtering. The evolution of the clustering coefficients is used for obtaining a similarity threshold as explained below.
 
 We hypothesize that the more musically meaningful $\simThsld$ is, the higher is the difference between the clustering coefficients of $\netUndirWght$ and $\netUndirWght_r$. We therefore select $\simThsld=10$. Note that even though the similarity threshold corresponding to $\simThsld=1$ results in a higher value of the clustering coefficient, we reject it because the filtered network consists only of a small number of nodes. These nodes correspond to near-exact pattern repetitions discovered within the same recording. Such patterns typically represent composition-specific motifs, and hence are irrelevant in our context. In~\figref{fig:cc_curve_pattern_characterization}, we also observe that the disparity filtering using a confidence value higher than 80\% significantly lowers the clustering coefficient, which can be attributed to the removal of musically meaningful edges in the network. On the other hand, given $\simThsld=10$, the disparity filtering with a confidence value lower than 80\% does not significantly affect the clustering coefficient. We can thus conclude that, in the given scenario, disparity filtering does not bring in any clear advantage. Finally, after applying $\simThsld$, we transform $\netUndirWght$ to an unweighted network. 
 
@@ -944,8 +939,6 @@ The music collection used in this study is a subset of the CompMusic Carnatic mu
 The chosen \glspl{raga} contain diverse set of \glspl{svara} (notes) both in terms of the number of \glspl{svara} and their pitch classes (svarasth\={a}n\={a}s). From~\tabref{tab:dataset_details_pattern_characterization}, 
 we also notice that several \glspl{raga} such as Kaly\={a}\d{n}i, K\={a}mb\={o}ji and B\={e}gada have a large fraction of \glspl{svara} in common. We refer to them as allied \glspl{raga} (\secref{sec:melody_in_iam}). This further increases the complexity of the task at hand, since the discrimination between the phrases of allied \glspl{raga} may be based on subtle melodic nuances.
 
-\COMMENT{availability of the dataset?}
-
 \begin{table} 
 	%\tabcolsep = 0.1cm
 	\centering
@@ -975,7 +968,7 @@ we also notice that several \glspl{raga} such as Kaly\={a}\d{n}i, K\={a}mb\={o}j
 \subsubsection{Setup and Evaluation Measures}
 \label{sec:patterns_characterization_experimental_setup}
 
-Given the unsupervised nature of this study, we perform a listening test to formally evaluate the extent to which the selected melodic phrases correspond to \gls{raga} motifs. For each of the 10 \glspl{raga} in the dataset, we select the top 10 communities based on the goodness measure $\goodnessComm$ (\eqnref{eq:gamma_pattern_characterization}). From each of these communities, we select their representative melodic phrase based on the betweenness centrality of the nodes~\citep{newman2003structure}, i.e.,~the node with the highest betweenness centrality is considered as the representative melodic phrase of that community. In case of a tie, we select the one with the highest node degree~\citep{newman2003structure}. Finally, we  arrive at a set of 100 melodic phrases, which are then used to perform the listening test. These audio examples are also made available online\footnote{http://compmusic.upf.edu/node/277}.
+Given the unsupervised nature of this study, we perform a listening test to formally evaluate the extent to which the selected melodic phrases correspond to \gls{raga} motifs. For each of the 10 \glspl{raga} in the dataset, we select the top 10 communities based on the goodness measure $\goodnessComm$ (\eqnref{eq:gamma_pattern_characterization}). From each of these communities, we select their representative melodic phrase based on the betweenness centrality of the nodes~\citep{newman2003structure}, i.e.,~the node with the highest betweenness centrality is considered as the representative melodic phrase of that community. In case of a tie, we select the one with the highest node degree~\citep{newman2003structure}. Finally, we  arrive at a set of 100 melodic phrases, which are then used to perform the listening test. These audio examples are also made available online (see the companion page of the corresponding study in~\appref{app:mypapers}).
 
 For the listening test we select 10 professional Carnatic musicians with over 15 years of formal music training. Each musician is presented with the audio fragments corresponding to the selected melodic phrases in a random order. They are also presented with the \glspl{raga} corresponding to the melodic phrases. The musicians are asked to rate each melodic phrase based on whether it is a characteristic phrase of that \gls{raga}. We use binary ratings (`Yes' or `No'). 
 
@@ -991,28 +984,14 @@ We first analyze the musicians' ratings at the level of melodic phrases. In~\fig
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\figSizeSixty]{ch06_patterns/figures/Characterization/per_raaga_per_phrase_rating.pdf}
+		\includegraphics[width=\figSizeEighty]{ch06_patterns/figures/Characterization/per_raaga_per_phrase_rating.pdf}
 	\end{center}
 	\caption[Mean musician ratings for the discovered melodic phrases]{Mean musician rating per melodic phrase for each \gls{raga}: K\={a}pi\,(Kp), Hamsadhvani\,(Hd), K\={a}mavardhini\,(Kv), Bhairavi\,(Bh), Beh\={a}g\,(Bg), T\={o}\d{d}i\,(Td), B\={e}ga\d{d}\={a}\,(Bd), Kaly\={a}\d{n}\={i}\,(Kl), Darb\={a}r\,(Db), K\={a}mb\={o}ji\,(Kb).}
 	\label{fig:average_rating_pattern_characterization}
 \end{figure}
 
 
-We now proceed to analyze the results for different \glspl{raga}. In~\tabref{tab:results_per_raaga_pattern_characterization}, we summarize mean $\mu_\recording$ and standard deviation $\sigma_\recording$ of $\mu_\pattern$ for each \gls{raga}. We observe that there is a considerable amount of variation in $\mu_\recording$ across the \glspl{raga}. It ranges from 0.75 for \gls{raga} K\={a}pi to 0.92 in the case of \gls{raga} T\={o}\d{d}i. An interesting observation here is that the phrase-based \glspl{raga}\footnote{R\={a}gas whose identity is derived based on phraseology than svaras~\cite{krishna2012carnatic}.\TODO{put a section ref instead of the footnote}} are the top performing \glspl{raga} with the  exception of \gls{raga} Darb\={a}r. From~\tabref{tab:results_per_raaga_pattern_characterization} and \tabref{tab:dataset_details_pattern_characterization}, we notice a strong correlation between $\mu_\recording$ and the total duration of the audio recordings across \glspl{raga}. This suggests that longer music pieces are likely to facilitate the discovery of \gls{raga} motifs owing to more number of occurrences of such melodic phrases.
-
-We examine the melodic phrases with low scores. An investigation of 9 out of 100 phrases that obtain $\mu_\pattern\leq0.6$ reveals that many of these phrases are composition-specific phrases that do not characterize the \gls{raga}. The method wrongly identifies them as \gls{raga} motifs because their associated communities have a high $\goodnessComm$ score owing to a high $\recDistCentroid$ value. This can be attributed to the fact that these phrases are discovered from multiple recordings, since their corresponding compositions have several recordings in the dataset.  As described in~\secref{sec:patterns_characterization_community_detection}, in such a scenario, the goodness measure $\goodnessComm$ can be made more robust to such cases by computing $\recDistCentroid$ using the distribution of nodes ${{\nodesCommRec}_q}$ over unique compositions rather than over audio recordings.
-
-The results show that the proposed method successfully discovers \gls{raga} motifs with a high accuracy. We see that, even for the allied \glspl{raga} present in the dataset such as K\={a}mb\={o}ji and B\={e}gada (\secref{sec:patterns_characterization_music_collection}), the method is able to discover distinct characteristic \gls{raga} motifs. As mentioned, allied \glspl{raga} are challenging because they have a substantial overlap in the set of svaras that they comprise (see also~\tabref{tab:dataset_details_pattern_characterization}). Finally, on a more informal side, it is worth mentioning that musicians were impressed when, after the listening test, they came to know that the melodic phrases were discovered by a machine following an unsupervised approach. 
-
-
-\begin{figure}
-	\begin{center}
-		\includegraphics[width=\figSizeSixty]{ch06_patterns/figures/Characterization/histogram_musician_rating.pdf}
-	\end{center}
-	\caption[Histogram of mean musician ratings for 100 melodic phrases]{Histogram of $\mu_\pattern$ for all 100 melodic phrases selected for the listening test.}
-	\label{fig:average_rating_histogram_pattern_characterization}
-\end{figure}
-
+We now proceed to analyze the results for different \glspl{raga}. In~\tabref{tab:results_per_raaga_pattern_characterization}, we summarize mean $\mu_\recording$ and standard deviation $\sigma_\recording$ of $\mu_\pattern$ for each \gls{raga}. We observe that there is a considerable amount of variation in $\mu_\recording$ across the \glspl{raga}. It ranges from 0.75 for \gls{raga} K\={a}pi to 0.92 in the case of \gls{raga} T\={o}\d{d}i. An interesting observation here is that the phrase-based \glspl{raga}\footnote{\Glspl{raga} whose identity is primarily derived based on phraseology than the \glspl{svara}~\citep{krishna2012carnatic}} are the top performing \glspl{raga} with the  exception of \gls{raga} Darb\={a}r. From~\tabref{tab:results_per_raaga_pattern_characterization} and \tabref{tab:dataset_details_pattern_characterization}, we notice a strong correlation between $\mu_\recording$ and the total duration of the audio recordings across \glspl{raga}. This suggests that longer music pieces are likely to facilitate the discovery of \gls{raga} motifs owing to more number of occurrences of such melodic phrases.
 
 \begin{table} 
 	%\tabcolsep = 0.1cm
@@ -1033,6 +1012,22 @@ The results show that the proposed method successfully discovers \gls{raga} moti
 	\caption[Mean and standard deviation of $\mu_\pattern$ for each \gls{raga}]{Mean ($\mu_\recording$) and standard deviation ($\sigma_\recording$) of $\mu_\pattern$ for each \gls{raga}. R\={a}gas with $\mu_\recording \geq 0.85$ are highlighted. }
 	\label{tab:results_per_raaga_pattern_characterization}
 \end{table}
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=\figSizeSeventy]{ch06_patterns/figures/Characterization/histogram_musician_rating.pdf}
+	\end{center}
+	\caption[Histogram of mean musician ratings for 100 melodic phrases]{Histogram of $\mu_\pattern$ for all 100 melodic phrases selected for the listening test.}
+	\label{fig:average_rating_histogram_pattern_characterization}
+\end{figure}
+
+
+
+We examine the melodic phrases with low scores. An investigation of 9 out of 100 phrases that obtain $\mu_\pattern\leq0.6$ reveals that many of these phrases are composition-specific phrases that do not characterize the \gls{raga}. The method wrongly identifies them as \gls{raga} motifs because their associated communities have a high $\goodnessComm$ score owing to a high $\recDistCentroid$ value. This can be attributed to the fact that these phrases are discovered from multiple recordings, since their corresponding compositions have several recordings in the dataset.  As described in~\secref{sec:patterns_characterization_community_detection}, in such a scenario, the goodness measure $\goodnessComm$ can be made more robust to such cases by computing $\recDistCentroid$ using the distribution of nodes ${{\nodesCommRec}_q}$ over unique compositions rather than over audio recordings.
+
+The results show that the proposed method successfully discovers \gls{raga} motifs with a high accuracy. We see that, even for the allied \glspl{raga} present in the dataset such as K\={a}mb\={o}ji and B\={e}gada (\secref{sec:patterns_characterization_music_collection}), the method is able to discover distinct characteristic \gls{raga} motifs. As mentioned, allied \glspl{raga} are challenging because they have a substantial overlap in the set of svaras that they comprise (see also~\tabref{tab:dataset_details_pattern_characterization}). Finally, on a more informal side, it is worth mentioning that musicians were impressed when, after the listening test, they came to know that the melodic phrases were discovered by a machine following an unsupervised approach. 
+
+
+
 
 
 We consider this work as a preliminary study with a lot of scope for improvements. In particular, the approach can be extended to identify patterns belonging to other categories (\gls{gamaka} or composition-specific patterns), definition of the goodness measure $\goodnessComm$ can be improved as suggested in~\secref{sec:patterns_characterization_results_and_discussion}, listening test could be done more rigorously by including negative examples (\gls{gamaka} patterns), and the resultant patterns of the approach can be quantitatively evaluated by using them in tasks such as composition identification. On these lines, in~\secref{sec:phrase_based_feature_extraction} we present an approach that uses clustered melodic patterns to perform the task of automatic \gls{raga} recognition. That way, in addition to the qualitative assessment as done in this work, we can also quantitatively assess the musical relevance of the extracted and characterized melodic patterns.
