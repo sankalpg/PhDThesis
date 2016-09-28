@@ -14,7 +14,7 @@ In \gls{mir}, a considerable number of the computational approaches follow a dat
 
 In recent years, there have been various efforts to compile large collections of music related data to build a research corpus that can be used to study a number of computational tasks in \gls{mir}. One such example is the \gls{msd}~\citep{Bertin-Mahieux2011}, which is already used in several studies for a variety of computational tasks~\citep{serra2012measuring,sturm2012survey}. However, owing to copyright issues, the audio recordings in \gls{msd} is not available. Building a good representative research corpus, which in \gls{mir} would typically mean compiling a large collection of music recordings and their related metadata is a substantial effort. A successful and sustainable strategy could be to make it a community effort. An endeavor in this direction is AcousticBrainz~\citep{porter2015acousticbrainz}\footnote{\url{https://acousticbrainz.org/}}, which aims to crowd source acoustic information for music recordings and make them available under public domain. Data in AcousticBrainz is indexed by unique \gls{mbid}. MusicBrainz\footnote{\url{https://musicbrainz.org/}} is an open music encyclopedia that collects music metadata and makes it publicly available. Such open repositories can also serve as corpus for a variety of research problems in \gls{mir}. In addition to these, there have also been efforts to compile music corpus such as COFLA corpus\footnote{\url{http://www.cofla-project.com/?page_id=170}} in order to perform computational studies of specific music traditions~\citep{kroher2016corpus}.
 
-While there is an increasing effort towards building and using a representative research corpus in \gls{mir}, there are not many studies that address formally the task of building a good research corpus. There is a lack of studies that discuss the criterion for determining the goodness of a corpus for a particular task and systematic ways to compile and curate research corpus. Some recent efforts towards this direction include the work by~\cite{peeters2012towards} in which the authors present a unified way to describe annotated \Gls{mir} datasets. \cite{Humphrey:JAMS:ISMIR:14} define a specification to store annotations in a more unified way to promote reproducibility and easy access of the corpora. As a part of the CompMusic project, \cite{serra:14:corpus} presents a set of design criteria for building research corpora that is representative of a given domain of study. These criteria are based around considerations such as purpose, coverage, completeness, quality and reusability.
+While there is an increasing effort towards building and using a representative research corpus in \gls{mir}, there are not many studies that address formally the task of building a good research corpus. There is a lack of studies that discuss the criteria for determining the goodness of a corpus for a particular task and systematic ways to compile and curate research corpus. Some recent efforts towards this direction include the work by~\cite{peeters2012towards} in which the authors present a unified way to describe annotated \Gls{mir} datasets. \cite{Humphrey:JAMS:ISMIR:14} define a specification to store annotations in a more unified way to promote reproducibility and easy access of the corpora. As a part of the CompMusic project, \cite{serra:14:corpus} presents a set of design criteria for building research corpora that is representative of a given domain of study. These criteria are based around considerations such as purpose, coverage, completeness, quality and reusability.
 
 In this chapter, we describe the CompMusic research corpora built for studying a number of computational tasks in \gls{mir} of \gls{iam}. Before describing the corpora, we briefly discuss the methodology and the design criteria used to compile and curate the corpora. Note that the sources used for compiling the corpora are not comprehensive. Our primary aim is to present the approach that we used to build the corpora rather than to justify a specific data source. In addition to the corpora, we also describe the test datasets that we built for studying different melodic aspects in audio collections of \gls{iam} (\secref{sec:corpus_test_datasets}). These test datasets are used for the development and evaluation of a number of approaches described in the subsequent chapters. 
 
@@ -26,7 +26,7 @@ The compilation and curation of this research corpora has been a collective effo
 
 As mentioned in~\secref{sec:context}, the CompMusic project focuses on data-driven computational approaches to describe music recordings and emphasize the use of domain knowledge of a particular music tradition. The project considers five different music traditions: Arab-Andalusian (Maghreb), Beijing Opera (China), Turkish makam music (Turkey), Hindustani (North-India) and Carnatic (South-India) music. One of the key ideas in the project is that there are some universal music concepts such as melody and rhythm, which are common across different music traditions. But, many important aspects of a music piece can be better understood and appreciated by focusing on the specificities of the music tradition. Therefore, a significant effort in the CompMusic project has been to compile a representative research corpora that captures the specificities of different music traditions considered in the project. Furthermore, an effort is made to define the criteria that can be used to build and assess a good research corpora. In the subsequent section, we briefly describe these design principles.
 
-\subsection{Criterion for Building CompMusic Corpora}
+\subsection{Criteria for Building CompMusic Corpora}
 \label{sec:corpus_criterion_for_corpora}
 
 \cite{serra:14:corpus} enumerates a set of design criteria for building a representative research corpus. These are the principles used in the CompMusic project to build music corpora with which to computationally analyze different music traditions. For this dissertation to be self-contained, we here provide a brief description of these criteria based on the explanation given by~\cite{serra:14:corpus}.
@@ -124,7 +124,7 @@ have performed in evening concerts between November and January). Of the 2978 to
 
 In addition to the timing of the concerts, popularity of an artist can also be measured based on the number of concerts. Though there are a large number of artists listed in Kutcheris.com, we notice that the distribution of the number of concerts they have performed decreases exponentially (\figref{fig:number_artrist_vs_number_concerts}). We see that there are only about 200~artists of 2978~artists who have performed in over 50~concerts. To consider this aspect while measuring coverage, we compute the \textit{overlap} as defined in \eqnref{eq:coverage_measure} through different subsets of the artists in Kutcheris.com, sweeping over the number of concerts they have performed. Furthermore, we perform this analysis for different categories of the artists in the corpus as mentioned above.
 
-\begin{figure}
+\begin{figure}[h]
 	\begin{center}
 		\includegraphics[width=\figSizeSixtyFive]{ch04_datasets/figures/artist-coverage-vs-performances.pdf}
 	\end{center}
@@ -496,7 +496,7 @@ In our review of the existing studies on automatic \gls{raga} recognition we obs
  	\begin{center}
  		\includegraphics[width=\figSizeNinety]{ch04_datasets/figures/carnatic_corpus_ragaDB.pdf}
  	\end{center}
- 	\caption[Details of the \gls{raga} recognition dataset comprising Carnatic music]{Details of the \gls{raga} recognition dataset comprising Carnatic music in terms of the number of different musical entities and relationships between them}
+ 	\caption[Details of the \gls{raga} recognition dataset comprising Carnatic music]{Details of the \gls{raga} recognition dataset comprising Carnatic music (\acrshort{rrds_cmd_big}) in terms of the number of different musical entities and relationships between them}
  	\label{fig:carnatic_ragaDB_details}
  \end{figure}
 
@@ -509,7 +509,7 @@ In our review of the existing studies on automatic \gls{raga} recognition we obs
 	\begin{center}
 		\includegraphics[width=\figSizeNinety]{ch04_datasets/figures/hindustani_corpus_ragaDB.pdf}
 	\end{center}
-	\caption[Details of the \gls{raga} recognition dataset comprising Hindustani music]{Details of the \gls{raga} recognition dataset comprising Hindustani music in terms of the number of different musical entities and relationships between them}
+	\caption[Details of the \gls{raga} recognition dataset comprising Hindustani music]{Details of the \gls{raga} recognition dataset comprising Hindustani music (\acrshort{rrds_hmd_big}) in terms of the number of different musical entities and relationships between them}
 	\label{fig:hindustani_ragaDB_details}
 \end{figure}
 
