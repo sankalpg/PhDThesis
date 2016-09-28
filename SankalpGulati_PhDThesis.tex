@@ -297,11 +297,11 @@
 \newcommand{\REM}[1]{{\color{red}#1}}
 \newcommand{\XXX}[3]{{\color{blue}{{[#1$\rightarrow$#2:} #3{]}}}}
 % Uncomment next line to hide all comments
-%\renewcommand{\XXX}[3]{}
-%\renewcommand{\TODO}[1]{}
-%\renewcommand{\COMMENT}[1]{}
-%\renewcommand{\REM}[1]{}
-%\renewcommand{\ADD}[1]{#1}
+\renewcommand{\XXX}[3]{}
+\renewcommand{\TODO}[1]{}
+\renewcommand{\COMMENT}[1]{}
+\renewcommand{\REM}[1]{}
+\renewcommand{\ADD}[1]{#1}
 
 \def\mathLarge#1{\mbox{\LARGE $#1$}}
 
@@ -482,7 +482,7 @@
 \printglossary[type = \acronymtype, style = mylong]
 \printglossary[type=MU, style = mylong]
 
-%\cleartorecto\include{ch99/quotation}0
+%\cleartorecto\include{ch99/quotation}
 %\cleartorecto\newpage\thispagestyle{empty}\mbox{}
 
 
@@ -499,6 +499,11 @@
 %  \ifthenelse{\equal{#1}{lof}}{}%
 %  {\ifthenelse{\equal{#1}{lot}}{}{\svaddcontentsline{#1}{#2}{#3}}}}
 
-
+\ifdefined\PRINTVER 
+\cleartorecto
+\newpage\null\thispagestyle{empty}\newpage
+\newpage\null\thispagestyle{empty}\newpage
+\newpage\null\thispagestyle{empty}\newpage
+\fi
 
 \end{document}
