@@ -73,12 +73,12 @@ Studying computational models for melodic similarity is particularly interesting
 \begin{figure}
 	\begin{center}
 		\ifdefined\PRINTVER
-			\includegraphics[ width=\figSizeSeventyFive]{ch06_patterns/figures/SimilarityEvaluation/Hindustani3Patts_BW.pdf}
+			\includegraphics[ width=\figSizeSeventy]{ch06_patterns/figures/SimilarityEvaluation/Hindustani3Patts_BW.pdf}
 		\else
 			\includegraphics[width=\figSizeSeventyFive]{ch06_patterns/figures/SimilarityEvaluation/Hindustani3Patts.pdf}
 		\fi
 	\end{center}
-	\caption[Example of difference occurrences of a melodic pattern]{Melodic fragments corresponding to three different renditions of the same characteristic \gls{raga} pattern in Hindustani music. For a better visualization, the patterns are transposed by a frequency offset of 600\,cents between them.}
+	\caption[Examples of difference occurrences of a melodic pattern]{Melodic fragments corresponding to three different renditions of the same characteristic \gls{raga} pattern in Hindustani music. For a better visualization, the patterns are transposed by a frequency offset of 600\,cents between them.}
 	\label{fig:examples_3_phrases}
 \end{figure}
 
@@ -204,7 +204,7 @@ To quantify the performance of a melodic similarity variant considered in this s
 		& 	0.547 	&	$\sRate_{50}$		&	$\mNorm_{\mathrm{tonic}}$ 	&	$\uTScaling_{\mathrm{off}}$		&	$\distPattMeasure_{\mathrm{DTW\_L0\_G90}}$\\	
 \tablebot		
 	\end{tabular}
-	\caption[\acrshort{map} score and parameter details for the three best performing variants of the method for computing melodic similarity]{\acrshort{map} score and the details of parameter settings for the three best performing variants for \acrshort{msds_iitm_cmd} and \acrshort{msds_iitb_hmd}. Srate: sampling rate of the melody representation, Norm: normalization technique, TScale: uniform time-scaling and Dist: distance measure.}
+	\caption[\acrshort{map} scores and parameter details for the three best performing variants of the method for computing melodic similarity]{\acrshort{map} score and the details of parameter settings for the three best performing variants for \acrshort{msds_iitm_cmd} and \acrshort{msds_iitb_hmd}. Srate: sampling rate of the melody representation, Norm: normalization technique, TScale: uniform time-scaling and Dist: distance measure.}
 	\label{tab:melodic_similarity_results}
 \par \end{centering}	
 \end{table}
@@ -221,7 +221,7 @@ The \gls{map} scores and the details of parameter settings for \acrshort{msds_ii
 	\begin{center}
 		\includegraphics[width=\figSizeNinety]{ch06_patterns/figures/SimilarityEvaluation/StatisticalDiff.png}
 	\end{center}
-	\caption[Matrix indicating the statistical significance of the performance difference between different method variants]{Matrix indicating the statistical significance of the performance difference between every variant pair for \acrshort{msds_iitm_cmd} and \acrshort{msds_iitb_hmd}. Variant pairs where the difference in the performance is statistically significant are marked by blue dots. Only the superscript in the name of the dataset is used in the figure title.}
+	\caption[Matrix indicating the statistical significance of the performance difference between different method variants]{Matrix indicating the statistical significance of the performance difference between every variant pair for \acrshort{msds_iitm_cmd} and \acrshort{msds_iitb_hmd}. Variant pairs, where the difference in the performance is statistically significant, are marked by blue dots. Only the superscript in the name of the dataset is used in the figure title.}
 	\label{fig:patterns_statistical_significance_similarity_evaluation}
 \end{figure}
 
@@ -263,7 +263,7 @@ To analyse the consistency in the performance across pattern types, we present t
 			& 	0.259 	&	$\sRate_{67}$		&	$\mNorm_{\mathrm{tonicQ12}}$ 	&	$\uTScaling_{\mathrm{on}}$		&	$\distPattMeasure_{\mathrm{DTW\_L1\_G90}}$\\	
 			\tablebot		
 		\end{tabular}
-		\caption[\acrshort{map} score and parameter details for the three best performing variants of the method for computing melodic similarity, without using ground-truth segmentation]{\acrshort{map} score and the details of parameter settings for the three best performing variants for \acrshort{msds_iitm_cmd} and \acrshort{msds_iitb_hmd} dataset. These results are corresponding to the experiment where target patterns' length is not read from the ground-truth annotations but is considered to be same as the query pattern length. Srate: sampling rate of the melody representation, Norm: normalization technique, TScale: uniform time-scaling and Dist: distance measure.}
+		\caption[\acrshort{map} scores and parameter details for the three best performing variants of the method for computing melodic similarity, without using ground-truth segmentation]{\acrshort{map} score and the details of parameter settings for the three best performing variants for \acrshort{msds_iitm_cmd} and \acrshort{msds_iitb_hmd} dataset. These results are corresponding to the experiment where target patterns' length is not read from the ground-truth annotations but is considered to be same as the query pattern length. Srate: sampling rate of the melody representation, Norm: normalization technique, TScale: uniform time-scaling and Dist: distance measure.}
 		\label{tab:melodic_similarity_results_var2}
 \par \end{centering}		
 \end{table}
@@ -320,7 +320,7 @@ In this section, we present two approaches that utilize specific melodic charact
 			\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/ImprovingSimilarity/Hindusani_flat_note_compression_example_reversed.pdf}
 		\fi
 	\end{center}
-	\caption[Example of melodic patterns after duration truncation]{Original pitch contours ($\pattern_{1a}$, $\pattern_{2a}$) and duration truncated pitch contours ($\pattern_{1b}$, $\pattern_{2b}$) of two occurrences of a characteristic phrase of \gls{raga} \gls{alahaiya_bilaval}. The contours are transposed for a good visualization.}
+	\caption[Examples of melodic patterns after duration truncation]{Original pitch contours ($\pattern_{1a}$, $\pattern_{2a}$) and duration truncated pitch contours ($\pattern_{1b}$, $\pattern_{2b}$) of two occurrences of a characteristic phrase of \gls{raga} \gls{alahaiya_bilaval}. The contours are transposed for a good visualization.}
 	\label{fig:flatCompressionExample}
 \end{figure}
 
@@ -335,7 +335,7 @@ We put forward an approach that abstracts the melodic representation and reduces
 \begin{figure}
 	\begin{center}
 		\ifdefined\PRINTVER
-			\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/ImprovingSimilarity/CarnaticComplexityExample_BW.pdf}
+			\includegraphics[width=\figSizeEighty]{ch06_patterns/figures/ImprovingSimilarity/CarnaticComplexityExample_BW.pdf}
 		\else
 			\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/ImprovingSimilarity/CarnaticComplexityExample.pdf}
 		\fi		
@@ -482,7 +482,7 @@ In~\tabref{tab:patterns_improving_similarity_map_scores} we summarize the \gls{m
 			\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/ImprovingSimilarity/MAP_per_Duration_Truncation.pdf}
 		\fi
 	\end{center}
-	\caption[\acrshort{map} score for different duration truncation values]{\gls{map} scores for different duration truncation values ($\svarTruncThsld$) for the \acrshort{msds_cm_hmd} and the \acrshort{msds_cm_cmd}. Only the superscript in the name of the dataset is used in the figure legend.} 
+	\caption[\acrshort{map} scores for different duration truncation values]{\gls{map} scores for different duration truncation values ($\svarTruncThsld$) for the \acrshort{msds_cm_hmd} and the \acrshort{msds_cm_cmd}. Only the superscript in the name of the dataset is used in the figure legend.} 
 	\label{fig:map_per_duration_truncation}
 \end{figure}
 
@@ -578,7 +578,7 @@ In the new variant of our method we post-process the predominant pitch contours 
 	\begin{center}
 		\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/discovery/ACRHistogram.pdf}
 	\end{center}
-	\caption[Histogram of autocorrelation of the pitch subsequences for different lags]{Histograms of \gls{acr} values (histogram value is indicated by the colormap on the right: for ease of visualization, we compress the range of the histogram values by taking its fourth root). Q1, Q2 and Q3 denote the three quartile boundaries of the histogram. }
+	\caption[Histograms of autocorrelation of the pitch subsequences for different lags]{Histograms of \gls{acr} values (histogram value is indicated by the colormap on the right: for ease of visualization, we compress the range of the histogram values by taking its fourth root). Q1, Q2 and Q3 denote the three quartile boundaries of the histogram. }
 	\label{fig:ACRHistogram}
 \end{figure}
 
@@ -627,7 +627,7 @@ Doing so, we found that $\stdDevWin=200$\,ms resulted in the best performance an
 			\includegraphics[width=\figSizeSeventy]{ch06_patterns/figures/discovery/ROCFlatness.pdf}
 		\fi
 	\end{center}
-	\caption[\acrshort{roc} curve for `flat' and `non-flat' region classification]{\acrshort{roc} curves for `flat' and `non-flat' region classification for different values of window length ($\stdDevWin$) used for selecting an optimal value of standard deviation.}
+	\caption[\acrshort{roc} curve for `flat' and `non-flat' region classification]{\acrshort{roc} curves for `flat' and `non-flat' region classification for different values of window length ($\stdDevWin$) used for selecting an optimal value of the standard deviation.}
 	\label{fig:ROC_pattern_discovery}
 \end{figure}
 
@@ -930,7 +930,7 @@ We next proceed to filter edges in the network based on a melodic similarity thr
 	\begin{center}
 		\includegraphics[width=\figSizeNinety]{ch06_patterns/figures/Characterization/CC_Curves_shrunk.pdf}
 	\end{center}
-	\caption[Evolution of clustering coefficient of a network of melodic patterns]{Evolution of the clustering coefficient of $\netUndirWght$ and $\netUndirWght_r$ over different thresholds and for different statistical confidence values used for disparity filtering (legend).}
+	\caption[Evolution of the clustering coefficient of a network of melodic patterns]{Evolution of the clustering coefficient of $\netUndirWght$ and $\netUndirWght_r$ over different thresholds and for different statistical confidence values used for disparity filtering (see legend).}
 	\label{fig:cc_curve_pattern_characterization}
 \end{figure}
 
@@ -1013,7 +1013,7 @@ we also notice that several \glspl{raga} such as Kaly\={a}\d{n}i, K\={a}mb\={o}j
 		Total 	& 	44.08 		&	106			&	57		&	-\\	
 \tablebot
 	\end{tabular}
-	\caption[Details of the dataset used for studying pattern characterization]{Details of the dataset in terms of the duration (Dur) in hours, number of unique compositions (\#Com), unique lead artists (\#Art), and the \glspl{svara} for each \gls{raga}. Here $s,r,$ $g,m,p,d,n$ denote the 7~\glspl{svara} in \gls{iam} and the subscript indicates the variant of the \gls{svara} for a particular \gls{raga} (cf.~\citep{Viswanathan2004}).}
+	\caption[Details of the dataset used for studying pattern characterization]{Details of the dataset in terms of the duration (Dur) in hours, number of unique compositions (\#Com), unique lead artists (\#Art), and the \glspl{svara} for each \gls{raga}. Here $s,r,$ $g,m,p,d,n$ denote the seven \glspl{svara} in \gls{iam} and the subscript indicates the variant of the \gls{svara} for a particular \gls{raga} (cf.~\citep{Viswanathan2004}).}
 	\label{tab:dataset_details_pattern_characterization}
 \end{table}
 
@@ -1072,7 +1072,7 @@ We now proceed to analyse the results for different \glspl{raga}. In~\tabref{tab
 			\includegraphics[width=\figSizeSeventy]{ch06_patterns/figures/Characterization/histogram_musician_rating.pdf}
 		\fi
 	\end{center}
-	\caption[Histogram of mean musician ratings for 100 melodic phrases]{Histogram of $\mu_\pattern$ for all 100 melodic phrases selected for the listening test.}
+	\caption[Histogram of mean musician ratings for all of the 100 melodic phrases]{Histogram of $\mu_\pattern$ for all of the 100 melodic phrases selected for the listening test.}
 	\label{fig:average_rating_histogram_pattern_characterization}
 \end{figure}
 

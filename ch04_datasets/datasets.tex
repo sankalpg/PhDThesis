@@ -98,15 +98,15 @@ For each music entity we define a coverage measure, the \textit{overlap} ($O$) a
 	\hline
 					 & Corpus	& Raaga.com			& Kutcheris 	& Charsur\\
 	\hline
-	\Glspl{raga}	& 	246		& 	489 (42\%)		& 	N/A			& 301 (68\%)\\
-	\Glspl{tala}	& 	18		& 	16 (100\%)		& 	N/A			& 21 (85\%)\\
-	Composers		& 	131		& 	598 (17\%)		& 	N/A			& 256 (42\%)\\
+	\Glspl{raga}	& 	246		& 	489 (42\%)		& 	NA			& 301 (68\%)\\
+	\Glspl{tala}	& 	18		& 	16 (100\%)		& 	NA			& 21 (85\%)\\
+	Composers		& 	131		& 	598 (17\%)		& 	NA			& 256 (42\%)\\
 	Artists			& 	233		& 	501				& 	2978		& 264 (48\%)\\						
 	\hline
 	
 \end{tabular}
 \par \end{centering}	
-\caption[Coverage of the Carnatic music corpus]{Summary of the coverage of the Carnatic music corpus. The numbers in the parenthesis indicate the computed \textit{overlap} measure. N/A denotes data not available.} 
+\caption[Coverage of the Carnatic music corpus]{Summary of the coverage of the Carnatic music corpus. The numbers in the parenthesis indicate the computed \textit{overlap} measure. NA denotes not available.} 
 \label{tab:coverage_summary_carnatic_corpus}
 \end{table}
 
@@ -118,7 +118,7 @@ have performed in evening concerts between November and January). Of the 2978 to
 	\begin{center}
 		\includegraphics[width=\figSizeSixtyFive]{ch04_datasets/figures/performances-vs-artists.pdf}
 	\end{center}
-	\caption[Number of artists versus number of concerts]{The number of artists versus number of their concerts. These artists are the ones obtained from Kutcheris.com}
+	\caption[The number of artists versus the number of concerts]{The number of artists versus number of their concerts. The information about these artists is obtained from Kutcheris.com}
 	\label{fig:number_artrist_vs_number_concerts}
 \end{figure}
 
@@ -128,7 +128,7 @@ In addition to the timing of the concerts, popularity of an artist can also be m
 	\begin{center}
 		\includegraphics[width=\figSizeSixtyFive]{ch04_datasets/figures/artist-coverage-vs-performances.pdf}
 	\end{center}
-	\caption[Overlap between the artists in the Carnatic music corpus and Kutcheris.com]{The \textit{overlap} between the artists in the corpus and those listed in Kutcheris.com for different artist sets determined by the number of performed concerts. The analysis is performed for every category of artists in the corpus.}
+	\caption[Overlap between the artists in the Carnatic music corpus and Kutcheris.com]{The \textit{overlap} between the artists in the corpus and those listed in Kutcheris.com for different sets of artists determined by the number of performed concerts. The analysis is performed for every category of artists in the corpus.}
 	\label{fig:artist_coverage_vs_number_of_concerts}
 \end{figure}
 
@@ -252,7 +252,7 @@ The audio recordings in both Hindustani and Carnatic music corpus are ripped fro
 	\begin{center}
 		\includegraphics[width=\figSizeNinety]{ch04_datasets/figures/carnatic_corpus_cc.pdf}
 	\end{center}
-	\caption[Details of the Open-access Carnatic music corpus]{Details of the Open-access Carnatic music corpus in terms of the number of different musical entities and relationships between them}
+	\caption[Details of the open-access Carnatic music corpus]{Details of the open-access Carnatic music corpus in terms of the number of different musical entities and relationships between them.}
 	\label{fig:carnatic_cc_corpus_details}
 \end{figure}
 
@@ -260,7 +260,7 @@ The audio recordings in both Hindustani and Carnatic music corpus are ripped fro
 	\begin{center}
 		\includegraphics[width=\figSizeSeventyFive]{ch04_datasets/figures/carnatic_CC_details.pdf}
 	\end{center}
-	\caption[Details of the open-access Carnatic music corpus]{Details of the Carnatic open-access music corpus in terms of the number of annotations of different musical attributes and audio features.}
+	\caption[Details of the open-access Carnatic music corpus]{Details of the open-access Carnatic music corpus in terms of the number of annotations of different musical attributes and audio features.}
 	\label{fig:carnatic_open_access_corpus_details_annotations}
 \end{figure}
 
@@ -272,7 +272,7 @@ The Carnatic music part of the open-access music corpus contains 19~releases com
 	\begin{center}
 		\includegraphics[width=\figSizeNinety]{ch04_datasets/figures/hindustani_corpus_cc.pdf}
 	\end{center}
-	\caption[Details of the Open-access Hindustani music corpus]{Details of the Open-access Hindustani music corpus in terms of the number of different musical entities and relationships between them}
+	\caption[Details of the open-access Hindustani music corpus]{Details of the open-access Hindustani music corpus in terms of the number of different musical entities and relationships between them.}
 	\label{fig:hindustani_cc_corpus_details}
 \end{figure}
 
@@ -280,7 +280,7 @@ The Carnatic music part of the open-access music corpus contains 19~releases com
 	\begin{center}
 		\includegraphics[width=\figSizeSeventyFive]{ch04_datasets/figures/hindustani_CC_details.pdf}
 	\end{center}
-	\caption[Details of the open-access Hindustani music corpus]{Details of the Hindustani open-access music corpus in terms of the number of annotations of different musical attributes and audio features.}
+	\caption[Details of the open-access Hindustani music corpus]{Details of the open-access Hindustani music corpus in terms of the number of annotations of different musical attributes and audio features.}
 	\label{fig:hindustani_open_access_corpus_details_annotations}
 \end{figure}
 
@@ -496,7 +496,7 @@ In our review of the existing studies on automatic \gls{raga} recognition we obs
  	\begin{center}
  		\includegraphics[width=\figSizeNinety]{ch04_datasets/figures/carnatic_corpus_ragaDB.pdf}
  	\end{center}
- 	\caption[Details of the \gls{raga} recognition dataset comprising Carnatic music]{Details of the \gls{raga} recognition dataset comprising Carnatic music (\acrshort{rrds_cmd_big}) in terms of the number of different musical entities and relationships between them}
+ 	\caption[Details of the \gls{raga} recognition dataset comprising Carnatic music recordings]{Details of the \gls{raga} recognition dataset (\acrshort{rrds_cmd_big}) comprising Carnatic music recordings in terms of the number of different musical entities and relationships between them}
  	\label{fig:carnatic_ragaDB_details}
  \end{figure}
 
@@ -509,7 +509,7 @@ In our review of the existing studies on automatic \gls{raga} recognition we obs
 	\begin{center}
 		\includegraphics[width=\figSizeNinety]{ch04_datasets/figures/hindustani_corpus_ragaDB.pdf}
 	\end{center}
-	\caption[Details of the \gls{raga} recognition dataset comprising Hindustani music]{Details of the \gls{raga} recognition dataset comprising Hindustani music (\acrshort{rrds_hmd_big}) in terms of the number of different musical entities and relationships between them}
+	\caption[Details of the \gls{raga} recognition dataset comprising Hindustani music recordings]{Details of the \gls{raga} recognition dataset (\acrshort{rrds_hmd_big}) comprising Hindustani music recordings in terms of the number of different musical entities and relationships between them}
 	\label{fig:hindustani_ragaDB_details}
 \end{figure}
 

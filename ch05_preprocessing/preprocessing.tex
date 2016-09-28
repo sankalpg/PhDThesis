@@ -183,7 +183,7 @@ tonic). Since the octave errors are already discussed at length in the previous 
 	\begin{center}
 		\includegraphics[width=\figSizeHundred]{ch05_preprocessing/figures/ErrorAnalysis_Without_MF.pdf}
 	\end{center}
-	\caption[Percentage of Pa, Ma and `Other' type errors in tonic identification]{Percentage of excerpts containing each of the three different categories of errors (excluding octave errors): Pa, Ma and Other, when no additional metadata is used. Only the subscript in the names of the methods and datasets is used for labeling the axis.}
+	\caption[Percentage of Pa, Ma and `Other' type errors in tonic identification]{The percentage of audio excerpts containing each of the three different categories of errors (excluding octave errors): Pa, Ma and Other, when no additional metadata is used. Only the subscript in the names of the methods and datasets is used for labeling the axis.}
 	\label{fig:tonic_identification_errors_without_MF}
 \end{figure}
 
@@ -218,7 +218,7 @@ For \acrshort{tonicid_ranjani_1} and \acrshort{tonicid_ranjani_2} the percentage
 	\begin{center}
 		\includegraphics[width=\figSizeHundred]{ch05_preprocessing/figures/Category_Errors.pdf}
 	\end{center}
-	\caption[Percentage of Pa, Ma and `Other' type errors in tonic identification for different categories]{Percentage of excerpts with the different categories of errors (Pa, Ma and Others) for every method as a function of different excerpt attributes (Hindustani, Carnatic, male, female). Only the subscript in the names of the methods is used for labeling the axis.}
+	\caption[Percentage of Pa, Ma and `Other' type errors in tonic identification for different categories]{The percentage of audio excerpts with the different categories of errors (Pa, Ma and Others) for every method as a function of different excerpt attributes (Hindustani, Carnatic, male, female). Only the subscript in the names of the methods is used for labeling the axis.}
 	\label{fig:tonic_identification_categorywise_errors}
 \end{figure}
 
@@ -431,7 +431,7 @@ Occurrence of a \gls{nyas} in Hindustani music melodies is an example of such a 
 		\fi
 		
 	\end{center}
-	\caption[Fragment of a pitch contour showing \gls{nyas} segments]{Fragment of a pitch contour showing \gls{nyas} segments denoted by $\nSvara_i$ ($i={1...5}$)}
+	\caption[A fragment of a pitch contour showing \gls{nyas} segments]{A fragment of a pitch contour showing \gls{nyas} segments denoted by $\nSvara_i$ ($i={1...5}$)}
 	\label{fig:nyas_segments_example}
 \end{figure}
 
@@ -472,7 +472,7 @@ To estimate pitch of the predominant melodic source we use the procedure describ
 			\includegraphics[width=\figSizeNinety]{ch05_preprocessing/figures/NyasSegmentationMethod.pdf}
 		\fi
 	\end{center}
-	\caption[Illustration of \gls{nyas} segmentation process]{Fragment of a pitch contour containing a \gls{nyas} segment ($\timeStamp_1-\timeStamp_9$), where $\timeStamp_i$s denote time stamps and $\freqSvara_n$s denote mean \gls{svara} frequencies. The pitch deviation within the \gls{nyas} segment ($\timeStamp_1-\timeStamp_9$) is almost 100\,Cents.}
+	\caption[Illustration of the \gls{nyas} segmentation process]{Fragment of a pitch contour containing a \gls{nyas} segment ($\timeStamp_1-\timeStamp_9$), where $\timeStamp_i$s denote time stamps and $\freqSvara_n$s denote mean \gls{svara} frequencies. The pitch deviation within the \gls{nyas} segment ($\timeStamp_1-\timeStamp_9$) is almost 100\,Cents.}
 	\label{fig:nyas_segmentation_illustration}
 \end{figure}
 
@@ -587,7 +587,7 @@ In Table~\ref{tab:nyas_segmentation_boundary_accuracy}, we show the results of \
 		&	\acrshort{nyas_local_feature}+\acrshort{nyas_context_feature}		& 0.446 & \textbf{0.682} & 0.708 & 0.591 & 0.725 & 0.735\\  		
 \tablebot		
 	\end{tabular}	
-	\caption[F-scores for \gls{nyas} boundary detection task]{F-scores for \gls{nyas} boundary detection using \gls{pls} method (A) and the proposed segmentation method (B). Results are shown for different classifiers (\acrshort{tree}, \gls{knn}, \gls{nb}, \gls{lr}, \gls{svm}) and local (\acrshort{nyas_local_feature}), contextual (\acrshort{nyas_context_feature}) and local together with contextual (\acrshort{nyas_local_feature}+\acrshort{nyas_context_feature}) features. \gls{dtw} is the baseline method used for comparison. F-score for the random baseline obtained using \acrshort{nyas_randbase2} is 0.184.}
+	\caption[F-scores for the \gls{nyas} boundary detection task]{F-scores for \gls{nyas} boundary detection using \gls{pls} method (A) and the proposed segmentation method (B). Results are shown for different classifiers (\acrshort{tree}, \gls{knn}, \gls{nb}, \gls{lr}, \gls{svm}) and local (\acrshort{nyas_local_feature}), contextual (\acrshort{nyas_context_feature}) and local together with contextual (\acrshort{nyas_local_feature}+\acrshort{nyas_context_feature}) features. \gls{dtw} is the baseline method used for comparison. F-score for the random baseline obtained using \acrshort{nyas_randbase2} is 0.184.}
 	\label{tab:nyas_segmentation_boundary_accuracy}
 	\par	\end{centering}
 \end{table}
@@ -618,7 +618,7 @@ In addition, we also investigate per-class accuracies for the label annotations.
 		& 	\acrshort{nyas_local_feature}+\acrshort{nyas_context_feature}		& 0.332 & 0.672 & 0.710 & \textbf{0.730} & 0.743 & 0.731\\
 \tablebot
 	\end{tabular}
-	\caption[F-scores for \gls{nyas} and non-\gls{nyas} label annotation task]{F-scores for \gls{nyas} and non-\gls{nyas} label annotation task using \gls{pls} method (A) and the proposed segmentation method (B). Results are shown for different classifiers (\acrshort{tree}, \acrshort{knn}, \acrshort{nb}, \acrshort{lr}, \acrshort{svm}) and local (\acrshort{nyas_local_feature}), contextual (\acrshort{nyas_context_feature}) and local together with contextual (\acrshort{nyas_local_feature}+\acrshort{nyas_context_feature}) features. \acrshort{dtw} is the baseline method used for comparison. The best random baseline F-score is 0.153 obtained using \acrshort{nyas_randbase2}. } 
+	\caption[F-scores for the \gls{nyas} and non-\gls{nyas} label annotation task]{F-scores for \gls{nyas} and non-\gls{nyas} label annotation task using \gls{pls} method (A) and the proposed segmentation method (B). Results are shown for different classifiers (\acrshort{tree}, \acrshort{knn}, \acrshort{nb}, \acrshort{lr}, \acrshort{svm}) and local (\acrshort{nyas_local_feature}), contextual (\acrshort{nyas_context_feature}) and local together with contextual (\acrshort{nyas_local_feature}+\acrshort{nyas_context_feature}) features. \acrshort{dtw} is the baseline method used for comparison. The best random baseline F-score is 0.153 obtained using \acrshort{nyas_randbase2}. } 
 	\label{tab:nyas_segmentation_label_accuracies}
 \par \end{centering}
 \end{table}
@@ -657,7 +657,7 @@ Detecting pitch corresponding to the \gls{mridangam} strokes as predominant pitc
 	\begin{center}
 		\includegraphics[width=\figSizeEighty]{ch05_preprocessing/figures/spectrogramTani.png}
 	\end{center}
-	\caption[Illustration of spectrogram a vocal and a \gls{tani} section]{Spectrogram of a voice (with percussion) and a \gls{tani} section in an audio recording of Carnatic music. Spectrogram spans 3\,minutes of audio.}
+	\caption[Illustration of the spectrogram a vocal and a \gls{tani} section]{The spectrogram of a voice (with percussion) and a \gls{tani} section in an audio recording of Carnatic music. The excerpt spans 3\,minutes of audio.}
 	\label{fig:spectrogram_of_tani_segment}
 \end{figure}
 
