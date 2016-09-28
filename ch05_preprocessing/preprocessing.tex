@@ -424,7 +424,12 @@ Occurrence of a \gls{nyas} in Hindustani music melodies is an example of such a 
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\figSizeHundred]{ch05_preprocessing/figures/NyasFragmentChallenge.pdf}
+		\ifdefined\PRINTVER
+			\includegraphics[width=\figSizeHundred]{ch05_preprocessing/figures/NyasFragmentChallenge_BW.pdf}
+		\else
+			\includegraphics[width=\figSizeHundred]{ch05_preprocessing/figures/NyasFragmentChallenge.pdf}
+		\fi
+		
 	\end{center}
 	\caption[Fragment of a pitch contour showing \gls{nyas} segments]{Fragment of a pitch contour showing \gls{nyas} segments denoted by $\nSvara_i$ ($i={1...5}$)}
 	\label{fig:nyas_segments_example}
@@ -461,7 +466,11 @@ To estimate pitch of the predominant melodic source we use the procedure describ
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\figSizeNinety]{ch05_preprocessing/figures/NyasSegmentationMethod.pdf}
+		\ifdefined\PRINTVER
+			\includegraphics[width=\figSizeNinety]{ch05_preprocessing/figures/NyasSegmentationMethod_BW.pdf}
+		\else
+			\includegraphics[width=\figSizeNinety]{ch05_preprocessing/figures/NyasSegmentationMethod.pdf}
+		\fi
 	\end{center}
 	\caption[Illustration of \gls{nyas} segmentation process]{Fragment of a pitch contour containing a \gls{nyas} segment ($\timeStamp_1-\timeStamp_9$), where $\timeStamp_i$s denote time stamps and $\freqSvara_n$s denote mean \gls{svara} frequencies. The pitch deviation within the \gls{nyas} segment ($\timeStamp_1-\timeStamp_9$) is almost 100\,Cents.}
 	\label{fig:nyas_segmentation_illustration}
@@ -474,7 +483,11 @@ To make the segmentation process robust to pitch deviations, we propose a method
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\figSizeNinety]{ch05_preprocessing/figures/swarOnHistogramForNyasSegmentation.pdf}
+		\ifdefined\PRINTVER
+			\includegraphics[width=\figSizeEighty]{ch05_preprocessing/figures/swarOnHistogramForNyasSegmentation_BW.pdf}
+		\else
+			\includegraphics[width=\figSizeEighty]{ch05_preprocessing/figures/swarOnHistogramForNyasSegmentation.pdf}
+		\fi
 	\end{center}
 	\caption[Example of a normalized octave folded pitch histogram]{Normalized octave folded pitch histogram used for estimating mean \gls{svara} frequencies. Estimated mean \gls{svara} frequencies are indicated by circles.}
 	\label{fig:pitch_histogram_nyas_segmentation}
@@ -628,7 +641,11 @@ A concert of Carnatic music typically contains a solo percussion section towards
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\figSizeNinety]{ch05_preprocessing/figures/taniPatterns.pdf}
+		\ifdefined\PRINTVER
+			\includegraphics[width=\figSizeSeventy]{ch05_preprocessing/figures/taniPatterns_BW.pdf}
+		\else
+			\includegraphics[width=\figSizeSeventy]{ch05_preprocessing/figures/taniPatterns.pdf}
+		\fi
 	\end{center}
 	\caption[Melodic patterns corresponding to the \gls{mridangam} strokes]{Pitch contours of a pair of highly similar melodic patterns corresponding to the \gls{mridangam} strokes in a \gls{tani} section.}
 	\label{fig:pitch_pattern_tani}
@@ -653,7 +670,7 @@ The combination of the frame size of 46\,ms and the \gls{svm} classifier yielded
 
 %\XXX{S}{J}{I am finding it difficult to describe the contents of this chapter in a single concept (descriptors or representations). Strictly speaking, referring to nyas segmentation as melodic descriptors is misleading. Its already a higher level analysis. If you have any suggestion to change the way I introduce this chapter or to group these 4 different sections please let me know.}
 
-In this chapter, we described methods to obtain relevant melodic descriptors and melody representations from audio recordings. We presented algorithms used to extract and post-process the predominant pitch from these recordings. To match the tonal context of melodies across performances, the predominant pitch is normalized by the tonic used in the recordings. We presented an exhaustive evaluation of a number of tonic identification approaches, wherein we analyzed and compared their performance on different music material such as Hindustani and Carnatic music, male and female singers, and for instrumental and vocal music. We showed that our multipitch approach consistently outperformed all the other methods. Subsequently, we described our \gls{nyas}-based approach for segmenting melodies in Hindustani music. We saw that a knowledge driven segmentation approach performs better than a generic method for segmenting time-series data. In addition, we showed that our classification-based approach that uses abstracted melodic features performs better than a string matching based method for labeling \gls{nyas} segments. Furthermore, we demonstrated the utility of the context-based melodic features for \gls{nyas} detection task. At the end of the chapter, we explained our methodology for identifying \gls{tani} sections in audio recordings of Carnatic music. We showed that a classification-based approach that uses timbral features can successfully identify \gls{tani} sections with accuracy.
+In this chapter, we described methods to obtain relevant melodic descriptors and melody representations from audio recordings. We presented algorithms used to extract and post-process the predominant pitch from these recordings. To match the tonal context of melodies across performances, the predominant pitch is normalized by the tonic used in the recordings. We presented an exhaustive evaluation of a number of tonic identification approaches, wherein we analyzed and compared their performance on different music material such as Hindustani and Carnatic music, male and female singers, and for instrumental and vocal music. We showed that our multipitch approach consistently outperformed all the other methods. Subsequently, we described our \gls{nyas}-based approach for segmenting melodies in Hindustani music. We saw that a knowledge driven segmentation approach performs better than a generic method for segmenting time-series data. In addition, we showed that our classification-based approach that uses abstracted melodic features performs better than a string matching based method for labeling \gls{nyas} segments. Furthermore, we demonstrated the utility of the context-based melodic features for \gls{nyas} detection task. At the end of the chapter, we explained our methodology for identifying \gls{tani} sections in recordings of Carnatic music. We showed that a classification-based approach that uses timbral features can successfully identify \gls{tani} sections with accuracy.
 
 %\COMMENT{Somehow I am not able to write nicely a summary of this chapter. Please let me know if you clearly see what's missing.}
 %

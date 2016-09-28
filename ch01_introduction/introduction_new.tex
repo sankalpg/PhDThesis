@@ -58,7 +58,11 @@ Analysis of repeating melodic patterns has been instrumental in the description 
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\figSizeHundred]{ch01_introduction/figures/phraseClassesExample.pdf}
+		\ifdefined\PRINTVER
+			\includegraphics[width=\figSizeHundred]{ch01_introduction/figures/phraseClassesExample_BW.pdf}
+		\else
+			\includegraphics[width=\figSizeHundred]{ch01_introduction/figures/phraseClassesExample.pdf}
+		\fi
 	\end{center}
 	\caption[Examples of the characteristic melodic phrases in Hindustani Music]{Pitch contours of occurrences of three different characteristic melodic phrases in Hindustani music. Contours are frequency transposed and time shifted for a better visualization.}
 	\label{fig:phraseComplexityExample_intro}

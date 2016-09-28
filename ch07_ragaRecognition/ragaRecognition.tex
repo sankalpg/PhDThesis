@@ -105,7 +105,11 @@ As discussed in~\secref{sec:patterns_characterization_of_melodic_patterns} deter
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\figSizeEightyFive]{ch07_ragaRecognition/figures/ClusteringCoffs_40raga_2s.pdf}
+		\ifdefined\PRINTVER		
+			\includegraphics[width=\figSizeEightyFive]{ch07_ragaRecognition/figures/ClusteringCoffs_40raga_2s_BW.pdf}
+		\else
+			\includegraphics[width=\figSizeEightyFive]{ch07_ragaRecognition/figures/ClusteringCoffs_40raga_2s.pdf}
+		\fi
 	\end{center}
 	\caption[Evolution of $\clusCoff(\netUndirWght)$, $\clusCoff(\netUndirWght_r)$ and $\clusCoff(\netUndirWght)$ - $\clusCoff(\netUndirWght_r)$ over values of $\simThsld$]{Evolution of clustering coefficients of $\netUndirWght$ and $\netUndirWght_r$ and their difference for different similarity thresholds~($\simThsld$).}
 	\label{fig:raga_rec_clustering_coff_evolution}
@@ -228,13 +232,21 @@ From~\tabref{tab:accuracies_cmd_vsm} and~\tabref{tab:accuracies_hmd_vsm}, we see
 
 	\begin{subfigure}{\textwidth}
 			\centering
-	\includegraphics[width=\figSizeEighty]{ch07_ragaRecognition/figures/CarnaticConfig3_Accuracy_vs_CCdiff.pdf}
+		\ifdefined\PRINTVER	
+			\includegraphics[width=\figSizeEighty]{ch07_ragaRecognition/figures/CarnaticConfig3_Accuracy_vs_CCdiff_BW.pdf}
+		\else
+			\includegraphics[width=\figSizeEighty]{ch07_ragaRecognition/figures/CarnaticConfig3_Accuracy_vs_CCdiff.pdf}
+		\fi
 		\caption{For \acrshort{rrds_cmd_big} dataset}
 		\label{fig:performance_across_thresholds_cmd}
 	\end{subfigure}
 	\begin{subfigure}{\textwidth}
 			\centering
-		\includegraphics[width=\figSizeEighty]{ch07_ragaRecognition/figures/HindustaniConfig2_Accuracy_vs_CCdiff.pdf}
+		\ifdefined\PRINTVER
+			\includegraphics[width=\figSizeEighty]{ch07_ragaRecognition/figures/HindustaniConfig2_Accuracy_vs_CCdiff_BW.pdf}
+		\else
+			\includegraphics[width=\figSizeEighty]{ch07_ragaRecognition/figures/HindustaniConfig2_Accuracy_vs_CCdiff.pdf}
+		\fi
 		\caption{For \acrshort{rrds_hmd_big} dataset}
 		\label{fig:performance_across_thresholds_hmd}
 	\end{subfigure}
@@ -497,13 +509,21 @@ For this experiment we consider \acrshort{ragarecTDMS_KL} method, which as shown
 \begin{figure}
 	\begin{subfigure}{\textwidth}
 		\centering
-		\includegraphics[width=\figSizeEightyFive]{ch07_ragaRecognition/figures/Accuracy_Vs_Size_n_raagas_cmd.pdf}
+		\ifdefined\PRINTVER
+			\includegraphics[width=\figSizeEightyFive]{ch07_ragaRecognition/figures/Accuracy_Vs_Size_n_raagas_cmd_BW.pdf}
+		\else
+			\includegraphics[width=\figSizeEightyFive]{ch07_ragaRecognition/figures/Accuracy_Vs_Size_n_raagas_cmd.pdf}
+		\fi
 		\caption{For subsets of \acrshort{rrds_cmd_big} dataset}
 		\label{fig:performance_vs_n_raagas_cmd}
 	\end{subfigure}
 	\begin{subfigure}{\textwidth}
 		\centering
-		\includegraphics[width=\figSizeEightyFive]{ch07_ragaRecognition/figures/Accuracy_Vs_Size_n_raagas_hmd.pdf}
+		\ifdefined\PRINTVER
+			\includegraphics[width=\figSizeEightyFive]{ch07_ragaRecognition/figures/Accuracy_Vs_Size_n_raagas_hmd_BW.pdf}
+		\else
+			\includegraphics[width=\figSizeEightyFive]{ch07_ragaRecognition/figures/Accuracy_Vs_Size_n_raagas_hmd.pdf}
+		\fi
 		\caption{For subsets of \acrshort{rrds_hmd_big} dataset}
 		\label{fig:performance_vs_n_raagas_hmd}
 	\end{subfigure}

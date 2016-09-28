@@ -23,7 +23,11 @@ To recapitulate, from the literature review presented in~\secref{sec:sota_patter
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\figSizeEighty]{ch06_patterns/figures/discovery/TwoTypesOfMethodology.pdf}
+		\ifdefined\PRINTVER
+			\includegraphics[width=\figSizeEighty]{ch06_patterns/figures/discovery/TwoTypesOfMethodology_BW.pdf}
+		\else
+			\includegraphics[width=\figSizeEighty]{ch06_patterns/figures/discovery/TwoTypesOfMethodology.pdf}
+		\fi
 	\end{center}
 	\caption{Two types of approaches for pattern extraction in music recordings.}
 	\label{fig:types_of_methodologies_for_extraction}
@@ -68,7 +72,11 @@ Studying computational models for melodic similarity is particularly interesting
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\figSizeSeventyFive]{ch06_patterns/figures/SimilarityEvaluation/Hindustani3Patts.pdf}
+		\ifdefined\PRINTVER
+			\includegraphics[ width=\figSizeSeventyFive]{ch06_patterns/figures/SimilarityEvaluation/Hindustani3Patts_BW.pdf}
+		\else
+			\includegraphics[width=\figSizeSeventyFive]{ch06_patterns/figures/SimilarityEvaluation/Hindustani3Patts.pdf}
+		\fi
 	\end{center}
 	\caption[Example of difference occurrences of a melodic pattern]{Melodic fragments corresponding to three different renditions of the same characteristic \gls{raga} pattern in Hindustani music. For a better visualization, the patterns are transposed by a frequency offset of 600\,cents between them.}
 	\label{fig:examples_3_phrases}
@@ -222,7 +230,11 @@ To assess the statistical significance of the results we compare every possible 
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/SimilarityEvaluation/CMD_HMD_CW_MAP.pdf}
+		\ifdefined\PRINTVER
+			\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/SimilarityEvaluation/CMD_HMD_CW_MAP_BW.pdf}
+		\else
+			\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/SimilarityEvaluation/CMD_HMD_CW_MAP.pdf}
+		\fi
 	\end{center}
 	\caption[Boxplot of average precision values for different types of melodic patterns]{Boxplot of the average precision values for each pattern type~(PT) in \acrshort{msds_iitm_cmd} and \acrshort{msds_iitb_hmd}. Only the superscript in the name of the dataset is used for labeling.}
 	\label{fig:patterns_similarity_evaluation_results_boxplot}
@@ -280,7 +292,11 @@ The approaches mentioned above are directed towards developing culturally inform
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\figSizeHundred]{ch06_patterns/figures/ImprovingSimilarity/phraseClassesExample.pdf}
+		\ifdefined\PRINTVER
+			\includegraphics[width=\figSizeHundred]{ch06_patterns/figures/ImprovingSimilarity/phraseClassesExample_BW.pdf}
+		\else
+			\includegraphics[width=\figSizeHundred]{ch06_patterns/figures/ImprovingSimilarity/phraseClassesExample.pdf}
+		\fi
 	\end{center}
 	\caption[Examples of different occurrences of the \gls{raga} motifs]{Pitch contours of occurrences of three different characteristic melodic phrases in Hindustani music. Contours are frequency transposed and time shifted for a better visualization.}
 	\label{fig:phraseComplexityExample}
@@ -298,7 +314,11 @@ In this section, we present two approaches that utilize specific melodic charact
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/ImprovingSimilarity/Hindusani_flat_note_compression_example_reversed.pdf}
+		\ifdefined\PRINTVER
+			\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/ImprovingSimilarity/Hindusani_flat_note_compression_example_reversed_BW.pdf}
+		\else
+			\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/ImprovingSimilarity/Hindusani_flat_note_compression_example_reversed.pdf}
+		\fi
 	\end{center}
 	\caption[Example of melodic patterns after duration truncation]{Original pitch contours ($\pattern_{1a}$, $\pattern_{2a}$) and duration truncated pitch contours ($\pattern_{1b}$, $\pattern_{2b}$) of two occurrences of a characteristic phrase of \gls{raga} \gls{alahaiya_bilaval}. The contours are transposed for a good visualization.}
 	\label{fig:flatCompressionExample}
@@ -314,7 +334,11 @@ We put forward an approach that abstracts the melodic representation and reduces
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/ImprovingSimilarity/CarnaticComplexityExample.pdf}
+		\ifdefined\PRINTVER
+			\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/ImprovingSimilarity/CarnaticComplexityExample_BW.pdf}
+		\else
+			\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/ImprovingSimilarity/CarnaticComplexityExample.pdf}
+		\fi		
 	\end{center}
 	\caption[Illustration of an erroneous case of melodic similarity in Carnatic music]{Pitch contours of three melodic phrases ($\pattern_1$, $\pattern_2$, $\pattern_3$). $\pattern_1$ and $\pattern_2$ are the occurrences of the same characteristic phrase and both are musically dissimilar to $\pattern_3$.} 
 	\label{fig:carnaticComplexityExample}
@@ -452,7 +476,11 @@ In~\tabref{tab:patterns_improving_similarity_map_scores} we summarize the \gls{m
 
 \begin{figure}[h]
 	\begin{center}
-		\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/ImprovingSimilarity/MAP_per_Duration_Truncation.pdf}
+		\ifdefined\PRINTVER
+			\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/ImprovingSimilarity/MAP_per_Duration_Truncation_BW.pdf}
+		\else
+			\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/ImprovingSimilarity/MAP_per_Duration_Truncation.pdf}
+		\fi
 	\end{center}
 	\caption[\acrshort{map} score for different duration truncation values]{\gls{map} scores for different duration truncation values ($\svarTruncThsld$) for the \acrshort{msds_cm_hmd} and the \acrshort{msds_cm_cmd}. Only the superscript in the name of the dataset is used in the figure legend.} 
 	\label{fig:map_per_duration_truncation}
@@ -463,7 +491,11 @@ We first analyse the results for the \acrshort{msds_cm_hmd} dataset. From~\tabre
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\figSizeNinety]{ch06_patterns/figures/ImprovingSimilarity/HindustaniPerCategoryPerformance_BOXPLOT.pdf}
+		\ifdefined\PRINTVER
+			\includegraphics[width=\figSizeNinety]{ch06_patterns/figures/ImprovingSimilarity/HindustaniPerCategoryPerformance_BOXPLOT_BW.pdf}
+		\else
+			\includegraphics[width=\figSizeNinety]{ch06_patterns/figures/ImprovingSimilarity/HindustaniPerCategoryPerformance_BOXPLOT.pdf}
+		\fi
 	\end{center}
 	\caption[Boxplot of average precision for different types of melodic patterns in the Hindustani music dataset]{Boxplot of average precision values obtained using \acrshort{similarity_b} and \acrshort{similarity_dt} for each melodic phrase category for the \acrshort{msds_cm_hmd}. These values correspond to $\mNorm_\mathrm{tonic}$.} 
 	\label{fig:hinudstaniPerCategoryPerformance}
@@ -474,7 +506,11 @@ We now analyse the results for the \acrshort{msds_cm_cmd} dataset. From~\tabref{
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\figSizeHundred]{ch06_patterns/figures/ImprovingSimilarity/CarnaticPerCategoryPerformance_BOXPLOT.pdf}
+		\ifdefined\PRINTVER
+			\includegraphics[width=\figSizeHundred]{ch06_patterns/figures/ImprovingSimilarity/CarnaticPerCategoryPerformance_BOXPLOT_BW.pdf}
+		\else
+			\includegraphics[width=\figSizeHundred]{ch06_patterns/figures/ImprovingSimilarity/CarnaticPerCategoryPerformance_BOXPLOT.pdf}
+		\fi
 	\end{center}
 	\caption[Boxplot of average precision for different types of melodic patterns in the Carnatic music dataset]{Boxplot of average precision values obtained using methods \acrshort{similarity_b}, \acrshort{similarity_dt} and \acrshort{similarity_cw2} for each melodic phrase category for the \acrshort{msds_cm_cmd}. These values correspond to $\mNorm_\mathrm{tetra}$.}
 	\label{fig:carnaticPerCategoryPerformance}
@@ -669,7 +705,11 @@ As mentioned before, the lower bounds used for speeding up the distance computat
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\figSizeEighty]{ch06_patterns/figures/discovery/distances.pdf}
+		\ifdefined\PRINTVER
+			\includegraphics[width=\figSizeEighty]{ch06_patterns/figures/discovery/distances_BW.pdf}
+		\else
+			\includegraphics[width=\figSizeEighty]{ch06_patterns/figures/discovery/distances.pdf}
+		\fi
 	\end{center}
 	\caption[Illustration of output of different distance measures]{Output of the four different distance measures ($\dtwCostFnc_i$, $i \in \lbrace 1\cdots4 \rbrace$) as a function of cityblock distance \pitchDiff.}
 	\label{fig:Distances_DTW_discovery}
@@ -716,7 +756,11 @@ Expert evaluation is performed by a professional Carnatic musician who has recei
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/discovery/SeedDistribution.pdf}
+		\ifdefined\PRINTVER
+			\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/discovery/SeedDistribution_BW.pdf}
+		\else
+			\includegraphics[width=\figSizeEightyFive]{ch06_patterns/figures/discovery/SeedDistribution.pdf}
+		\fi
 	\end{center}
 	\caption[Distance distribution of seed melodic patterns]{Distance distribution of seed patterns. Three seed pattern categories are marked by $\seedPattCat_1$, $\seedPattCat_2$ and $\seedPattCat_3$.}
 	\label{fig:SeedPatternsDistanceDistribution}
@@ -754,7 +798,11 @@ We now present our formal evaluations. We first evaluate the performance of the 
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\figSizeSeventy]{ch06_patterns/figures/discovery/seedROC.pdf}
+		\ifdefined\PRINTVER
+			\includegraphics[width=\figSizeSeventy]{ch06_patterns/figures/discovery/seedROC_BW.pdf}
+		\else
+			\includegraphics[width=\figSizeSeventy]{ch06_patterns/figures/discovery/seedROC.pdf}
+		\fi
 	\end{center}
 	\caption[\acrshort{roc} curve for seed pairs and search patterns]{\acrshort{roc} curve for seed pairs and search patterns (using $\RankRefVar_2$) in the evaluation set.}%\vspace{-1em}
 	\label{fig:combinedROCPatternDiscovery}
@@ -781,7 +829,11 @@ Next, we evaluate the performance of inter-recording pattern detection task and 
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\figSizeNinety]{ch06_patterns/figures/discovery/boxPlot.pdf}
+		\ifdefined\PRINTVER
+			\includegraphics[width=\figSizeNinety]{ch06_patterns/figures/discovery/boxPlot_BW.pdf}
+		\else
+			\includegraphics[width=\figSizeNinety]{ch06_patterns/figures/discovery/boxPlot.pdf}
+		\fi
 	\end{center}
 	\caption[Boxplot of average precision values for the different variants of the rank refinement method]{Boxplot of average precision values for the different variants of the rank refinement method ($\RankRefVar_i$) for each seed category.}
 	\label{fig:boxPlotMAPPatternDiscovery}
@@ -1014,7 +1066,11 @@ We now proceed to analyse the results for different \glspl{raga}. In~\tabref{tab
 \end{table}
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\figSizeSeventy]{ch06_patterns/figures/Characterization/histogram_musician_rating.pdf}
+		\ifdefined\PRINTVER
+			\includegraphics[width=\figSizeSeventy]{ch06_patterns/figures/Characterization/histogram_musician_rating_BW.pdf}
+		\else
+			\includegraphics[width=\figSizeSeventy]{ch06_patterns/figures/Characterization/histogram_musician_rating.pdf}
+		\fi
 	\end{center}
 	\caption[Histogram of mean musician ratings for 100 melodic phrases]{Histogram of $\mu_\pattern$ for all 100 melodic phrases selected for the listening test.}
 	\label{fig:average_rating_histogram_pattern_characterization}

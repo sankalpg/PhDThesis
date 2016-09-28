@@ -194,7 +194,11 @@ One of the interesting results from this study is related to the overall evoluti
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\figSizeSeventy]{ch08_applications/figures/Fig-8.pdf}
+		\ifdefined\PRINTVER
+			\includegraphics[width=\figSizeSeventy]{ch08_applications/figures/Fig-8_BW.pdf}
+		\else
+			\includegraphics[width=\figSizeSeventy]{ch08_applications/figures/Fig-8.pdf}
+		\fi
 	\end{center}
 	\caption{Histogram of ratio of inter-onset-intervals of salience \glspl{svara} across breath-phrases.}
 	\label{fig:pulsation_example}
