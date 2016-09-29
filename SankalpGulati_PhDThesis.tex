@@ -2,7 +2,7 @@
 
 % What version of the document are you compiling
 %\def\DRAFTMODE{}   % Uncomment if generating the draft version
-\def\PRINTVER{}    % Uncomment if generating the final BOOK (print) version (The differences are in 1) Colors of hyperlinks, 2) Bleeds, 3) Trim marks + Size)
+%\def\PRINTVER{}    % Uncomment if generating the final BOOK (print) version (The differences are in 1) Colors of hyperlinks, 2) Bleeds, 3) Trim marks + Size)
 % If both the commands are comments it generates a final PDF version to be distributted electronically.
 
 %% Useful packages
@@ -46,6 +46,13 @@
 %\usepackage{titlesec}
 \usepackage[round,authoryear]{natbib}
 \usepackage{acronym}
+\usepackage[pdftex,backref=page,hyperfigures,breaklinks,colorlinks,bookmarksopenlevel=0,bookmarksdepth=2
+pdfpagemode=UseOutlines,
+pdftitle=Computational~Approaches~for~Melodic~Description~in~Indian~Art~Music~Corpora
+pdfauthor=Sankalp~Gulati,
+pdfsubject=PhD~Thesis,
+pdfkeywords=Melody~Motifs~Patterns~Raga~Phrases~Indian~art~music~Hindustani~Carnatic~MIR~Information~Retrieval~Analysis~Computation~AI~Signal~Processing
+]{hyperref}
 %\usepackage[style=long,nonumberlist,toc,acronym,nomain]{glossaries}
 \usepackage[section,nopostdot,numberedsection=autolabel,acronym,nonumberlist,nomain,nogroupskip=true]{glossaries}
 \usepackage{glossary-superragged}
@@ -56,13 +63,6 @@
 \usepackage{algorithm,algorithmicx}
 \usepackage[noend]{algpseudocode}
 \usepackage[threshold=0]{csquotes}
-\usepackage[pdftex,backref=page,hyperfigures,breaklinks,colorlinks,bookmarksopenlevel=0,bookmarksdepth=2
-  pdfpagemode=UseOutlines,
-  pdftitle=Computational~Approaches~for~Analysis~and~Description~of~Melodies~in~Indian~Art~Music
-  pdfauthor=Sankalp~Gulati,
-  pdfsubject=PhD~Thesis,
-  pdfkeywords=Melody~Motifs~Patterns~Raga~Phrases~Indian~art~music~Hindustani~Carnatic~MIR~Information~Retrieval
-]{hyperref}
 \usepackage{listings}
 \usepackage[font=small,labelfont=bf]{caption}
 \usepackage{subcaption}
@@ -458,15 +458,15 @@
 \mainmatter
 
 %%%
-\cleartorecto\include{ch01_introduction/introduction_new}
-\cleartorecto\include{ch02_background/background}
-%%%\cleartorecto\include{ch03_problems/problems}
-\cleartorecto\include{ch04_datasets/datasets}
-\cleartorecto\include{ch05_preprocessing/preprocessing} 
-\cleartorecto\include{ch06_patterns/patterns}
-\cleartorecto\include{ch07_ragaRecognition/ragaRecognition}
-\cleartorecto\include{ch08_applications/applications} 
-\cleartorecto\include{ch09_conclusions/conclusions}
+%\cleartorecto\include{ch01_introduction/introduction_new}
+%\cleartorecto\include{ch02_background/background}
+%%%%\cleartorecto\include{ch03_problems/problems}
+%\cleartorecto\include{ch04_datasets/datasets}
+%\cleartorecto\include{ch05_preprocessing/preprocessing} 
+%\cleartorecto\include{ch06_patterns/patterns}
+%\cleartorecto\include{ch07_ragaRecognition/ragaRecognition}
+%\cleartorecto\include{ch08_applications/applications} 
+%\cleartorecto\include{ch09_conclusions/conclusions}
 
 % ----------------------------------------------
 

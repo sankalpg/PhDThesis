@@ -408,9 +408,9 @@ Based on our discussion above, we see that there are a variety of approaches pro
 		\ra{1.3}
 		\begin{centering}
 			\begin{tabular}{l P{4cm} P{2cm} P{2.5cm} P{2.5cm} L{1cm} P{1.5cm} P{.75cm}}
-				\hline 
-				Method & \textbf{Tonal Feature} & \textbf{Tonic Identification } & \textbf{Feature} & \textbf{Recognition Method} & \textbf{\#\Glspl{raga}} & \textbf{Dataset (Dur./Num.)}\tnote{a} & \textbf{Audio Type}\tabularnewline
-				\hline 
+\tabletop
+				Method & Tonal Feature & Tonic Identification & Feature & Recognition Method & \#\Glspl{raga} & Dataset (Dur./Num.)\tnote{a} & Audio Type\tabularnewline
+\tablemid
 				\cite{pandey2003tansen} & Pitch \citep{BoersmaPaul2001} & NA & \Gls{svara} sequence & \acrshort{hmm} and \acrshort{ngram} & 2 & - / 31 & MP\tabularnewline
 				\cite{chordia2007raag} & Pitch \citep{sun2000pitch} & Manual & \acrshort{pcd}, \acrshort{pcdd} & \acrshort{svm} classifier & 31 & 20 / 127 & MP\tabularnewline
 				\cite{belle2009raga} & Pitch \citep{rao2009improving} & Manual & \acrshort{pcd} (parameterized) & \acrshort{knn} classifier & 4 & 0.6 / 10 & PP\tabularnewline
@@ -426,7 +426,7 @@ Based on our discussion above, we see that there are a variety of approaches pro
 				\cite{koduri2014intonation} & Predominant pitch \citep{Salamon2012} & Multipitch-based & \acrshort{pcd} (parameterized)  & Different classifiers & 45{$^\star$} & 93/424 & PP\tabularnewline
 				\cite{kumar2014identifying} & Predominant pitch \citep{Salamon2012} & Brute force & \acrshort{pcd} + \acrshort{ngram} distribution & \acrshort{svm} classifier  & 10 & 2.82 / 170 & PP\tabularnewline
 				\cite{shrey_ISMIR_2015}{*} & Predominant pitch \citep{Salamon2012} & Cepstrum-based & Pitch contours & \acrshort{lcss} with \acrshort{knn} & 30{$^\dagger$} & 3 / 254 & PP\tabularnewline
-				\hline 
+\tablebot
 			\end{tabular}
 			\par \end{centering}
 		\begin{tablenotes}
