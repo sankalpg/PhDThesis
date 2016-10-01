@@ -70,6 +70,12 @@ pdfkeywords=Melody~Motifs~Patterns~Raga~Phrases~Indian~art~music~Hindustani~Carn
 %\let\footruleskip\undefined
 %\usepackage{fancyhdr}
 %\pagestyle{fancy}
+\renewcommand*{\backrefalt}[4]{[{\footnotesize%
+		\ifcase #1 Not cited.%
+		\or Cited on page~#2.%
+		\else Cited on pages #2.%
+		\fi%
+	}]}
 
 \setlength{\epigraphwidth}{0.586\textwidth}
 \renewcommand{\textflush}{flushleftright}
