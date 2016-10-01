@@ -6,13 +6,13 @@
 \section{Introduction}
 \label{sec:corpus_intro}
 
-A research corpus is a collection of data compiled to study a research problem. A well designed research corpus is representative of the domain under study. It is practically infeasible to work with the entire universe of data. Therefore, to ensure scalability of information retrieval technologies to real-world scenarios, it is to important to develop and test computational approaches using a representative data corpus. Moreover, an easily accessible data corpus provides a common ground for researchers to evaluate their methods, and thus, accelerates the advancement of knowledge. 
+A research corpus is a collection of data compiled to study a research problem. A well designed research corpus is representative of the domain under study. It is practically infeasible to work with the entire universe of data. Therefore, to ensure scalability of information retrieval technologies to real-world scenarios, it is to important to develop and test computational approaches using a representative data corpus. Moreover, an easily accessible data corpus provides a common ground for researchers to evaluate their methods, and thus, accelerates knowledge sharing and advancement. 
 
 Not every computational task requires the entire research corpus for development and evaluation of approaches. Typically a subset of the corpus is used in a specific research task. We call this subset a test corpus or test dataset. The models built over a test dataset can later be extended to the entire research corpus. Test dataset is a static collection of data specific to an experiment, as opposed to a research corpus, which can evolve over time. Therefore, different versions of the test dataset used in a specific experiment should be retained for ensuring reproducibility of the research results. Note that a test dataset should not be confused with the training and testing split of a dataset, which are terms used in the context of a cross validation experimental setup.
 
 In \gls{mir}, a considerable number of the computational approaches follow a data-driven methodology, and hence, a well curated research corpus becomes a key factor in determining the success of these approaches. Due to the importance of a good data corpus in research, building a corpus in itself is a fundamental research task~\citep{macmullen2003requirements}. \Gls{mir} can be regarded as a relatively new research area within information retrieval, which has primarily gained popularity in last two decades. Even today, a significant number of the studies in \gls{mir} use ad-hoc procedures to build a collection of data to be used in the experiments. Quite often the audio recordings used in the experiments are taken from a researcher's personal music collection. Availability of a good representative research corpus has been a challenge in \gls{mir}~\citep{serra:14:corpus}. This can be attributed to an extent to the large variety of research problems studied within \gls{mir}, lack of standardized methodologies for data collection and annotation, and most of all, due to the constrains posed by the copyrighted content.
 
-In recent years, there have been various efforts to compile large collections of music related data to build a research corpus that can be used to study a number of computational tasks in \gls{mir}. One such example is the \gls{msd}~\citep{Bertin-Mahieux2011}, which is already used in several studies for a variety of computational tasks~\citep{serra2012measuring,sturm2012survey}. However, owing to copyright issues, the audio recordings in \gls{msd} is not available. Building a good representative research corpus, which in \gls{mir} would typically mean compiling a large collection of music recordings and their related metadata is a substantial effort. A successful and sustainable strategy could be to make it a community effort. An endeavor in this direction is AcousticBrainz~\citep{porter2015acousticbrainz}\footnote{\url{https://acousticbrainz.org/}}, which aims to crowd source acoustic information for music recordings and make them available under public domain. Data in AcousticBrainz is indexed by unique \gls{mbid}. MusicBrainz\footnote{\url{https://musicbrainz.org/}} is an open music encyclopedia that collects music metadata and makes it publicly available. Such open repositories can also serve as corpus for a variety of research problems in \gls{mir}. In addition to these, there have also been efforts to compile music corpus such as COFLA corpus\footnote{\url{http://www.cofla-project.com/?page_id=170}} in order to perform computational studies of specific music traditions~\citep{kroher2016corpus}.
+In recent years, there have been various efforts to compile large collections of music related data to build a research corpus that can be used to study a number of computational tasks in \gls{mir}. One such example is the \gls{msd}~\citep{Bertin-Mahieux2011}, which are already used in several studies for a variety of computational tasks~\citep{serra2012measuring,sturm2012survey}. However, owing to copyright issues, the audio recordings in \gls{msd} is not available. Building a good representative research corpus, which in \gls{mir} would typically mean compiling a large collection of music recordings and their related metadata is a substantial effort. A successful and sustainable strategy could be to make it a community effort. An endeavor in this direction is AcousticBrainz~\citep{porter2015acousticbrainz}\footnote{\url{https://acousticbrainz.org/}}, which aims to crowd source acoustic information for music recordings and make them available under public domain. Data in AcousticBrainz is indexed by unique \gls{mbid}. MusicBrainz\footnote{\url{https://musicbrainz.org/}} is an open music encyclopedia that collects music metadata and makes it publicly available. Such open repositories can also serve as corpus for a variety of research problems in \gls{mir}. In addition to these, there have also been efforts to compile music corpus such as COFLA corpus\footnote{\url{http://www.cofla-project.com/?page_id=170}} in order to perform computational studies of specific music traditions~\citep{kroher2016corpus}.
 
 While there is an increasing effort towards building and using a representative research corpus in \gls{mir}, there are not many studies that address formally the task of building a good research corpus. There is a lack of studies that discuss the criteria for determining the goodness of a corpus for a particular task and systematic ways to compile and curate research corpus. Some recent efforts towards this direction include the work by~\cite{peeters2012towards} in which the authors present a unified way to describe annotated \Gls{mir} datasets. \cite{Humphrey:JAMS:ISMIR:14} define a specification to store annotations in a more unified way to promote reproducibility and easy access of the corpora. As a part of the CompMusic project, \cite{serra:14:corpus} presents a set of design criteria for building research corpora that is representative of a given domain of study. These criteria are based around considerations such as purpose, coverage, completeness, quality and reusability.
 
@@ -31,39 +31,37 @@ As mentioned in~\secref{sec:context}, the CompMusic project focuses on data-driv
 
 \cite{serra:14:corpus} enumerates a set of design criteria for building a representative research corpus. These are the principles used in the CompMusic project to build music corpora with which to computationally analyze different music traditions. For this dissertation to be self-contained, we here provide a brief description of these criteria based on the explanation given by~\cite{serra:14:corpus}.
 
-\subsubsection{Purpose}
-
+\paragraph{Purpose:}
 The purpose for building a data corpus should be clearly specified at the onset. This includes defining the research problems that need to be addressed and the research methodologies that will be used. In the CompMusic project, one of the main objectives is to develop methodologies to extract musically meaningful melody and rhythm related features from audio music recordings. The approaches are mostly based on signal processing and machine learning techniques. A research corpus should take these factors into account.
 
-\subsubsection{Coverage}
-
+\paragraph{Coverage:}
 As mentioned, a good research corpus should be representative of the domain under study. Coverage is a measure of representativeness of a corpus with respect to the concepts to be studied. Given the focus on the quantitative approaches in the CompMusic project, we need sufficient instances of each concept for the data to be representative. For melodic analysis, we need audio recordings and accompanying metadata that represent the diversities present in the melodic aspects of Hindustani and Carnatic music such as different forms, sections, variety of \glspl{raga}, artists from different schools of music, and recordings in different \glspl{shruti}. 
 
-\subsubsection{Completeness}
+\paragraph{Completeness:}
 
 To successfully use data in a meaningful analyses it should be complemented by appropriate metadata. Completeness indicates the completeness of the associated information or metadata for each audio recording. For the CompMusic corpus it mainly refers to the completeness of the editorial metadata and of the descriptive information that accompany each audio recording. 
 
-\subsubsection{Quality}
+\paragraph{Quality:}
 
 The quality of the data in a research corpus should be good. In our case it means that the audio should be well recorded, and the accompanying metadata should be accurate. In the CompMusic project, we use good quality commercially produced audio recordings, and the accompanying information is obtained from reliable sources. However, at times, there are errors in this information even after using reliable sources such as editorial metadata on CD covers. In such cases, the metadata is validated and corrected with the help of domain experts. 
 
-\subsubsection{Reusability}
+\paragraph{Reusability:}
 
 Reusability of a corpus is fundamental for reproducibility of the research results. An important aspect that impacts reusability is the ease of access to the corpus. Ideally, a corpus should be easily accessible by the research community and it should be well structured for an easy integration into the work flow. In CompMusic, we address the issues regarding reusability and sharing by emphasizing the use of open repositories that are either already suitable or can be easily adapted to our needs. Following this philosophy, we use MusicBrainz for organizing the editorial metadata. In addition, we make the corpus accessible through a \acrshort{rest} Dunya web \gls{api}.
 
-CompMusic corpora for \gls{iam} comprises two corpus: Carnatic music corpus and Hindustani music corpus. \Gls{raga} is the melodic framework and \gls{tala} is the rhythmic framework in both Carnatic and Hindustani music~(\secref{sec:music_background_iam}). They are the two key musical concepts in \gls{iam} around which music is composed, performed, organized and taught. As a result, both the corpora are compiled based primarily on these concepts. We now proceed to describe the specificities of both these corpora. The description below includes the type of data that constitute a corpus, the unit of a data sample, selected references for measuring completeness and coverage of the data, and resources for obtaining complementary information about musical concepts. 
+The CompMusic corpora for \gls{iam} comprises two corpus: Carnatic music corpus and Hindustani music corpus. \Gls{raga} is the melodic framework and \gls{tala} is the rhythmic framework in both Carnatic and Hindustani music~(\secref{sec:music_background_iam}). They are the two key musical concepts in \gls{iam} around which music is composed, performed, organized and taught. As a result, both corpora are compiled based primarily on these concepts. We now proceed to describe the specificities of both these corpora. The description below includes the type of data that constitute a corpus, the unit of a data sample, selected references for measuring completeness and coverage of the data, and resources for obtaining complementary information about musical concepts. 
 
 
 \subsection{Carnatic Music Corpus}
 \label{sec:corpus_carnatic_music_corpus}
 
-Carnatic Music corpus primarily comprise audio recordings and its associated editorial metadata. This is the data mainly used by the signal processing and machine learning approaches. In addition, there is a small collection of lyrics, scores, contextual information on music concepts, and community (social) information from online music forums used mainly for semantic analysis. 
+The Carnatic Music corpus primarily comprises audio recordings and its associated editorial metadata. This is the data mainly used by the signal processing and machine learning approaches. In addition, there is a small collection of lyrics, scores, contextual information on music concepts, and community (social) information from online music forums used mainly for semantic analysis. 
 
-While building a representative music corpus there are several considerations specific to the music tradition that are taken into account. For Carnatic music, a concert, also referred as a (\gls{katcheri}), is the natural unit of music performance. It is the unit typically considered for organization and digital distribution of Carnatic music content. Though Carnatic music is improvisatory in nature, it is predominantly based on compositions. Most of the compositions are to be sung, as a result of which, vocal music is dominant in Carnatic music. Even in instrumental music, the lead artist aims to mimic vocal singing~\citep{Viswanathan2004}. Based on these considerations, we consulted expert musicologists and musicians such as Shri~T.~M.~Krishna to arrive at a representative audio collection of Carnatic music.
+While building a representative music corpus there are several considerations specific to the music tradition that are taken into account. For Carnatic music, a concert, also referred as a (\gls{katcheri}), is the natural unit of music performance. It is the unit typically considered for organization and digital distribution of Carnatic music content. Though Carnatic music is improvisatory in nature, it is predominantly based on compositions. Most of the compositions are to be sung, as a result of which, vocal music is dominant in Carnatic music. Even in instrumental music, the lead artist aims to mimic vocal singing~\citep{Viswanathan2004}. Based on these considerations, we consulted expert musicologists and musicians such as Shri~T.~M.~Krishna\footnote{\url{https://en.wikipedia.org/wiki/T._M._Krishna}} to arrive at a representative audio collection of Carnatic music.
 
 The main institutional reference for building Carnatic music collection bas been the \gls{mma}. The \Gls{mma} was conceived to be the institution that would set the standards for Carnatic music. Since 1929, the \Gls{mma} hosts annual conferences on music, which has eventually led to the December music festival of Madras, one of the largest cultural events of the world. The \gls{mma} has been driving the scholarly research in Carnatic music since a long time and has thus influenced the evolution of the musical concepts being used. The \gls{mma} has an expert panel that sets the standards and fixes procedures for selecting artists for the music festival. Since a long time the \gls{mma} has been recording Carnatic music performances and its archive is considered as one of the main references for Carnatic music. However, the archive is not openly available online. We therefore procured the audio recordings through other commercial sources while following the criteria used by the \gls{mma}. We started by collecting the releases of the artists who have performed in the \gls{mma} in the last five years. Subsequently, we expanded the collection to include their teachers and other musicians popular in their era. 
 
-One of the main record labels that specializes in Carnatic music recordings is Charsur, which has been publishing high quality commercial CDs for over 15 years now. The core of the Carnatic music audio collection is from their catalog of music concerts. The details of the corpus in terms of the unique number of recordings, releases, artists, \glspl{raga}, \glspl{tala} and compositions is shown in Figure~\ref{fig:carnatic_corpus_details}. In total, the corpus currently consists of 235~concerts comprising 2380~audio recordings spanning over 500~hours of audio data.
+One of the main record labels that specializes in Carnatic music recordings is Charsur\footnote{\url{http://charsur.com/home.php}}, which has been publishing high quality commercial CDs for over 15 years now. The core of the Carnatic music audio collection is from their catalog of music concerts. The details of the corpus in terms of the unique number of recordings, releases, artists, \glspl{raga}, \glspl{tala} and compositions is shown in Figure~\ref{fig:carnatic_corpus_details}. In total, the corpus currently consists of 235~concerts comprising 2380~audio recordings spanning over 500~hours of audio data.
 
 \begin{figure}
 	\begin{center}
@@ -75,7 +73,7 @@ One of the main record labels that specializes in Carnatic music recordings is C
 
 As mentioned, vocal music constitutes a significant part of Carnatic music and it is largely based around compositions. Therefore, lyrics play an important role in this music tradition. Scores, on the other hand, have a limited usability as the music is primarily improvisatory in nature. Nonetheless, for some computational analyses lyrics and scores might be useful, and hence, we make an effort to compile a small collection of them. For most of the currently performed compositions there exists several published compilations of lyrics and scores, for example, the ones by the three most recognized composers: Tyagaraja~\citep{TKG_Rao_Tyagaraja}, Syama Sastri~\citep{TKG_Rao_syama} and Dikshitar~\citep{TKG_Rao_Muddusvami}. However, this data is not available in machine readable format and hence is not directly accessible for computational analysis. There are some open repositories of lyrics such as sahityam.net\footnote{\url{http://sahityam.net/wiki/Main_Page}} that provide lyrics in machine readable format. Sahityam.net is considered as the Wikipedia of lyrics of Carnatic music and is our primary source for lyrics. It currently hosts lyrics for about 1820 compositions of Carnatic music. Sources that provide music scores of Carnatic music in a machine readable format are scarce. A compilation of scores done by Dr.~Shivkumar Kalyanaraman\footnote{\url{http://www.shivkumar.org/}} is our main source of scores for Carnatic music.
 
-In addition to the signal processing and machine learning based approaches, semantic analysis of \gls{iam} has been another topic of research in the CompMusic project. The music community and music concepts related information collected from various sources over the Internet comprise the input data to semantic analysis and is a part of the Carnatic music corpus. Kutcheries.com\footnote{\url{http://www.kutcheris.com/}} and Wikipedia\footnote{\url{https://en.wikipedia.org/wiki/Category:Carnatic_music}} are two sources utilized for obtaining such an information. Kutcheries.com is a good source of artist biographies and up-to-date information about music venues, concerts and other related events. The category of Carnatic music on Wikipedia is a good source of contextual information including music concepts. There has also been an effort to contribute to Wikipedia by adding information with the help of domain experts. In addition to these two sources, we refer to Rasikas.org\footnote{\url{http://www.rasikas.org}}, an active music forum for gathering views of the Carnatic music community on various facets of the music tradition. In the case of Carnatic music, the data from rasikas.org can be considered as ideal for studying tasks such as community profiling.
+In addition to the signal processing and machine learning based approaches, semantic analysis of \gls{iam} has been another topic of research in the CompMusic project. The music community and music concepts related information collected from various sources over the Internet comprise the input data to semantic analysis and is a part of the Carnatic music corpus. Kutcheries.com\footnote{\url{http://www.kutcheris.com/}} and Wikipedia\footnote{\url{https://en.wikipedia.org/wiki/Category:Carnatic_music}} are two sources utilized for obtaining such an information. Kutcheries.com is a good source of artist biographies and up-to-date information about music venues, concerts and other related events. The category of Carnatic music on Wikipedia is a good source of contextual information including music concepts. There has also been an effort to contribute to Wikipedia by adding information with the help of domain experts. In addition to these two sources, we refer to rasikas.org\footnote{\url{http://www.rasikas.org}}, an active music forum for gathering views of the Carnatic music community on various facets of the music tradition. In the case of Carnatic music, the data from rasikas.org can be considered as ideal for studying tasks such as community profiling.
 
 
 \subsubsection{Coverage of Carnatic Music Corpus}
@@ -83,31 +81,30 @@ In addition to the signal processing and machine learning based approaches, sema
 
 Coverage analysis of a corpus aims to measure the representativeness and comprehensiveness of a corpus with respect to the reference sources that represent the music tradition. For the case of the Carnatic music corpus, coverage analysis is performed for \glspl{raga}, \glspl{tala}, performing artists and composers. Kutcheris.com is our primary source for measuring artist coverage since it is up-to-date with current artists and their performances. We use the last five years of their concert listing from 2009-2014. Release catalog from Charsur, our main reference as a record label also provides information about \glspl{raga}, \glspl{tala}, artists and composers. Raaga.com\footnote{\url{http://play.raaga.com/carnatic}}, an Indian music streaming service with a channel dedicated to Carnatic music is another source we considered for this analysis. It should be noted that Raaga.com has several light music forms included in their Carnatic music channel, which we have purposefully not included in our corpus. Hence, the numbers derived from an analysis done on the data from Raaga.com will have an adverse influence because of these additional music forms. The procedure followed for obtaining information from these sources and the post-processing done before the analysis is explained in the article by~\cite{CM_Corpora_Ajay14}.
 
-For each music entity we define a coverage measure, the \textit{overlap} ($O$) as:
+\begin{table}
+	\begin{centering}
+		\begin{tabular}{ c c c c c }
+			\tabletop
+			& Corpus	& Raaga.com			& Kutcheris 	& Charsur\\
+			\tablemid
+			\Glspl{raga}	& 	246		& 	489 (42\%)		& 	NA			& 301 (68\%)\\
+			\Glspl{tala}	& 	18		& 	16 (100\%)		& 	NA			& 21 (85\%)\\
+			Composers		& 	131		& 	598 (17\%)		& 	NA			& 256 (42\%)\\
+			Artists			& 	233		& 	501				& 	2978		& 264 (48\%)\\						
+			\tablebot	
+		\end{tabular}
+		\par \end{centering}	
+	\caption[Coverage of the Carnatic music corpus]{Summary of the coverage of the Carnatic music corpus. The numbers in the parenthesis indicate the computed \textit{overlap} measure. NA denotes not available.} 
+	\label{tab:coverage_summary_carnatic_corpus}
+\end{table}
 
+For each music entity we define a coverage measure, the \textit{overlap} ($O$) as:
 \begin{equation}
 	O_{e}^{r} = \frac{ | X_{e}^{c} \cap X_{e}^{r} | }{ | X_{e}^{r} |}
 	\label{eq:coverage_measure}
 \end{equation}
-
 \noindent where $O_{e}^{r}$ is the \textit{overlap} measure of the musical entity $e$ with respect to the reference source $r$, $X_{e}^{c}$ is the set of entities in the corpus and $X_{e}^{r}$ is the set of entities in the reference source. $|X|$ denotes the cardinality of a set $X$. In Table~\ref{tab:coverage_summary_carnatic_corpus} we summarize the coverage of the musical entities along with the overlap measure with respect to the reference sources mentioned above. We see that the coverage of the \glspl{raga} in the corpus is satisfactory and of the \glspl{tala} is good. For composers and artists the numbers are low when compared to Raaga.com, which can be attributed to the presence of light Carnatic music forms in their database. 
 
-\begin{table}
-\begin{centering}
-\begin{tabular}{ c c c c c }
-\tabletop
-					 & Corpus	& Raaga.com			& Kutcheris 	& Charsur\\
-\tablemid
-	\Glspl{raga}	& 	246		& 	489 (42\%)		& 	NA			& 301 (68\%)\\
-	\Glspl{tala}	& 	18		& 	16 (100\%)		& 	NA			& 21 (85\%)\\
-	Composers		& 	131		& 	598 (17\%)		& 	NA			& 256 (42\%)\\
-	Artists			& 	233		& 	501				& 	2978		& 264 (48\%)\\						
-\tablebot	
-\end{tabular}
-\par \end{centering}	
-\caption[Coverage of the Carnatic music corpus]{Summary of the coverage of the Carnatic music corpus. The numbers in the parenthesis indicate the computed \textit{overlap} measure. NA denotes not available.} 
-\label{tab:coverage_summary_carnatic_corpus}
-\end{table}
 
 Not all the performing artists in the corpus (\tabref{tab:coverage_summary_carnatic_corpus}) are lead artists. Among these 233 artists 74 are lead artists (lead vocal or lead instrumental), 28 are accompanying violinists and 48 are percussionists. Since Carnatic music corpus predominantly comprises vocal music, coverage of lead or vocal artists becomes more important. Also not every lead artist is equally popular, that should also be a consideration in measuring the representativeness of the corpus. The concerts listed by Kutcheris.com span the whole year and all through the day. However, the evening concerts are more
 recognized, and we took that to be a measure of the popularity of an artist. For a better coverage analysis, we thus consider three categories of artists: Artists-Set-1 (all the artists), Artists-Set-2 (artists who have performed in the evening concerts, through the year) and Artists-Set-3 (artists who
@@ -141,26 +138,6 @@ values become unreliable. Overall, we notice that, the \textit{overlap} is bette
 As defined earlier, completeness of the corpus in the context of the CompMusic corpora refers mainly to the completeness of the associated metadata
 for each recording. The editorial metadata is stored at and accessed from MusicBrainz, as explained in~\secref{sec:corpus_storage_and_access}. There can be multiple reasons for missing and erroneous editorial metadata in the MusicBrainz. Many times commercially released CDs do not provide all the relevant editorial metadata on the cover-art. In several cases there is no mention of the accompanying artists or of the \gls{raga} and \gls{tala} of the musical piece. Very often composition information is missing on the CD cover. Another reason for incomplete metadata can be that the editorial metadata is not completely entered into the MusicBrainz. This happens quite frequently for the fields such as recording relationships. Several times the metadata entered is erroneous. This is either due to a mistake done by the person uploading the metadata to the MusicBrainz or that the editorial metadata provided on the CD cover itself is wrong. Multiplicity of languages used in Carnatic music further adds to these inconsistencies. There has been some effort to automatically complete the missing metadata based on the relationships on the release and the recordings using semantic web approaches. The missing metadata due to transliteration errors also has been addressed to an extent by making curated list of entities such as \gls{raga} and \gls{tala}, and using robust algorithm for matching and linking metadata. Despite these efforts, there are still a number of recordings and releases for which the metadata is incomplete.
 
-
-\begin{table}
-	\begin{centering}
-		\begin{tabular}{ c c c c}
-\tabletop
-			Metadata	 		&  \#Recordings	& completeness (\%)\\
-\tablemid
-			Lead artist			& 	1650	& 	100	\\						
-			Accompanying artist	& 	1221	& 	74	\\
-			\Glspl{raga}		& 	959		& 	58	\\
-			\Glspl{tala}		& 	917		& 	56	\\
-			Work (compositions)		& 	989		& 	60	\\
-\tablebot
-		\end{tabular}
-		\par \end{centering}	
-	\caption[Completeness of the Carnatic music corpus]{Completeness of the Carnatic music corpus showing the number of recordings for which the corresponding metadata is available and the percentage (\%) of such recordings. The percentage values are rounded off to the nearest integer.} 
-	\label{tab:completeness_carnatic_corpus}
-\end{table}
-
-
 In \tabref{tab:completeness_carnatic_corpus}, we show the completeness of the recordings in the Carnatic music corpus. We see that all the recordings are at least labeled with a lead artist, but about a quarter of the recordings (429/1650) do not have any accompanying artist information. \Gls{raga}, \gls{tala} and work (composition) labels are available for more than half the number of recordings. Note that there are some recordings that have the required editorial metadata but deemed incomplete because the names could not be accurately matched to any entity in the curated list. 
 
 
@@ -168,6 +145,25 @@ In \tabref{tab:completeness_carnatic_corpus}, we show the completeness of the re
 \label{sec:corpus_hindustani_music_corpus}
 
 Similar to Carnatic music, \gls{raga} and \gls{tala} are the fundamental music concepts with which to describe melodic and rhythmic aspects of Hindustani music. They thus become the primary consideration while building the Hindustani music corpus as well. In Hindustani music also, vocal music is predominant. However, compared to Carnatic music instrumental performances in Hindustani music are much more popular and prevalent. Hindustani music tradition as compared to Carnatic music is much more diverse and heterogeneous. One of the reasons for this can be the geographical spread of this music tradition. Hindustani music thus presents a significant challenge in compilation of a good research corpus. Another major difference between the two music traditions is that in Hindustani music, the compositions are very short. The compositions basically act as a base for improvisation, which is the main focus in a performance of Hindustani music. For compilation of the Hindustani music corpus we focus on two prominent vocal music styles, \gls{dhrupad} and \gls{khayal} (\secref{sec:music_background_iam}). %A Khy\={a}l performance typically has a lead vocals, a melodic accompaniment (typically given by harmonium or s\={a}ra\o{n}gi), a rhythm accompaniment (typically given by tabla) and a drone sound in the background (typically given by a t\={a}npura). 
+
+\begin{table}
+	\begin{centering}
+		\begin{tabular}{ c c c c}
+			\tabletop
+			Metadata	 		&  \#Recordings	& completeness (\%)\\
+			\tablemid
+			Lead artist			& 	1650	& 	100	\\						
+			Accompanying artist	& 	1221	& 	74	\\
+			\Glspl{raga}		& 	959		& 	58	\\
+			\Glspl{tala}		& 	917		& 	56	\\
+			Work (compositions)		& 	989		& 	60	\\
+			\tablebot
+		\end{tabular}
+		\par \end{centering}	
+	\caption[Completeness of the Carnatic music corpus]{Completeness of the Carnatic music corpus showing the number of recordings for which the corresponding metadata is available and the percentage (\%) of such recordings. The percentage values are rounded off to the nearest integer.} 
+	\label{tab:completeness_carnatic_corpus}
+\end{table}
+
 
 There are many institutions that have compiled large audio archives of Hindustani music. The prominent ones among them are the \gls{itc-sra}, Sangeet Natak Academy, and the \gls{air}. Each of these institutions own thousands of hours of expert curated music recordings that represent the performance practices in Hindustani music. \gls{itc-sra} is a premier music academy of Hindustani music and has taken up major efforts in the archival of music. Sangeet Natak Academy is India’s national academy for music, drama and dance. \gls{air} is the largest public broadcaster in India and has a large archive of Hindustani music curated over many decades. \gls{air} awards grades to performing musicians and its archives can be considered as a reference for Hindustani music. Like in most of the cases, none of these archives is publicly available. In such a situation, we gathered commercially released audio recordings from several music labels and compiled our own corpus using these institutions as a reference. During this process we also consulted expert musicians and musicologists, such as Dr. Suvarnalata Rao at the \gls{ncpa}, Mumbai, India, to curate the audio collection in the corpus. 
 
@@ -238,7 +234,7 @@ In \tabref{tab:completeness_hindustani_corpus}, we show the completeness of the 
 \subsection{Open-access Music Corpus}
 \label{sec:corpus_open_access_research_corpus}
 
-The audio recordings in both Hindustani and Carnatic music corpus are ripped from commercially released music CDs. The copyright on these recordings does not allow for a redistribution of the music content, and therefore, they cannot be made publicly available. There has been an effort to compile an open-access music collection in the CompMusic project in order to promote the idea of open-access of the research corpora, and reproducibility of the research results. This open-access corpus comprises both Hindustani and Carnatic music. Like the other research corpora described in the previous sections, this corpus contains audio recordings and the associated editorial metadata. In addition, this corpus also contains several annotations of different music attributes such as melodic phrases, sama locations and sections. Due permissions are taken from the artists for redistribution of these audio recordings. As a result of which, the corpus is made publicly available under creative commons license (CC BY-NC 4.0). The audio recordings in this corpus are hosted on Internet Archive\footnote{\url{https://archive.org/}} and made accessible through the Dunya web \gls{api} (\secref{sec:applications_dunya}). 
+The audio recordings in both Hindustani and Carnatic music corpus are ripped from commercially released music CDs. The copyright on these recordings does not allow for a redistribution of the music content, and therefore, they cannot be made publicly available. There has been an effort to compile an open-access music collection in the CompMusic project in order to promote the idea of open-access of the research corpora, and reproducibility of the research results. This open-access corpus comprises both Hindustani and Carnatic music. Like the other research corpora described in the previous sections, this corpus contains audio recordings and the associated editorial metadata. In addition, this corpus also contains several annotations of different music attributes such as melodic phrases, sama locations and sections. Due permissions are taken from the artists for redistribution of these audio recordings. As a result of which, the corpus is made publicly available under creative commons license (CC BY-NC 4.0) (\appref{app:resources}). The audio recordings in this corpus are hosted on Internet Archive\footnote{\url{https://archive.org/}} and made accessible through the Dunya web \gls{api} (\secref{sec:applications_dunya}). 
 
 
 \begin{figure}
@@ -294,7 +290,7 @@ All the data associated with an audio recording in the corpora: the audio file, 
 \section{Test Datasets}
 \label{sec:corpus_test_datasets}
 
-As explained earlier, a test dataset is a subset of a corpus used for studying a specific task. Typically a dataset is specific to an experiment and may contain additional information such as annotations. We here describe different datasets that are used to develop and evaluate computational approaches presented in this thesis. Though these datasets are compiled for studying specific research problems, some of them are essentially audio collections with comprehensive editorial metadata. And hence, we envision their usage in other melodic analysis tasks beyond the ones addressed in this thesis. Since a majority of these datasets are a subset of the corpora described in the previous sections, the details regarding the quality of the audio recordings and the editorial metadata remain the same. In case of exceptions, these details are provided in their respective sections. 
+As explained earlier, a test dataset is a subset of a corpus used for studying a specific task. Typically a dataset is specific to an experiment and may contain additional information such as annotations. We here describe different datasets that are used to develop and evaluate computational approaches presented in this thesis. Though these datasets are compiled for studying specific research problems, some of them are essentially audio collections with comprehensive editorial metadata. And hence, we envision their usage in other melodic analysis tasks beyond the ones addressed in this thesis. Since a majority of these datasets are a subset of the corpora described in the previous sections (with the exception of the dataset described in~\secref{sec:corpus_melodic_similarity_dataset}), the details regarding the quality of the audio recordings and the editorial metadata remain the same. In case of exceptions, these details are provided in their respective sections. 
 
 
 \subsection{Tonic Identification Datasets}
@@ -307,7 +303,7 @@ As explained earlier, a test dataset is a subset of a corpus used for studying a
 	\begin{tabular}{ c | c  c  c  c  c  c  c  c  c  c }
 \tabletop
 		Dataset 	&Avg. length (min)&\#Excerpts&	 	Hi.(\%) 	& 	Ca.(\%)	& 	Voc.
-		(M/F)(\%) & Inst. (\%)	& 	\#Usong   	& 	\#Uartists	\\
+		(M/F \%) & Inst. (\%)	& 	\#Usong   	& 	\#Uartists	\\
 \tablemid
 		\acrshort{tds_cm1}		&3 &271	&	 41		& 	59	&	0			& 	100		& 	169		&	33	\\
 		\acrshort{tds_cm2}		&3 &935	&	 45	 	& 	55	&	100 (68 / 32)		&	0		& 	547		&	81	\\
@@ -340,7 +336,7 @@ We use six different datasets with varied musical characteristics for a comparat
 \subsubsection{CompMusic Tonic Identification Datasets}
 \label{sec:corpus_compmusic_tonic_dataset}
 
-The first three datasets shown in \tabref{tab:tonic_datasets}: \acrshort{tds_cm1}, \acrshort{tds_cm2} and \acrshort{tds_cm3} are compiled by the author as a part of this thesis. They are derived from the Carnatic and the Hindustani research corpus described in the previous sections. These datasets contain audio excerpts, associated metadata (lead artist, lead instrument and gender of the lead artist in case of a vocal performance) and tonic frequency annotation for every audio recording. The main differences across these three datasets are in terms of the duration of the excerpts and the type of the music performance (vocal vs instrumental). These datasets comprise a diverse set of artists and music material such as gender of the singer, set of \glspl{raga} and music forms. Due to the diversity present in the datasets and the fact that these excerpts are taken from the commercial releases, they can be regarded as a representative collection of \gls{iam} performances for tonic identification. 
+The first three datasets shown in \tabref{tab:tonic_datasets}: \acrshort{tds_cm1}, \acrshort{tds_cm2} and \acrshort{tds_cm3} are compiled by the author as a part of this thesis. They are derived from the Carnatic and the Hindustani research corpora described in the previous sections. These datasets contain audio excerpts, associated metadata (lead artist, lead instrument and gender of the lead artist in case of a vocal performance) and tonic frequency annotation for every audio recording. The main differences across these three datasets are in terms of the duration of the excerpts and the type of the music performance (vocal vs instrumental). These datasets comprise a diverse set of artists and music material such as gender of the singer, set of \glspl{raga} and music forms. Due to the diversity present in the datasets and the fact that these excerpts are taken from the commercial releases, they can be regarded as a representative collection of \gls{iam} performances for tonic identification. 
 
 \acrshort{tds_cm1} and \acrshort{tds_cm2} comprise three minute long audio excerpts extracted from full length recordings in the Hindustani and Carnatic music corpus. If a recording is longer than 12\,minutes, we extracted 3 excerpts from the beginning, middle and end of the recording. If the recording was shorter than 12\,minutes only one excerpt from the beginning was extracted. By taking excerpts from different sections of a song, we ensure that the datasets are representative, since the musical characteristics can change significantly between different parts of a recording. \acrshort{tds_cm1} contains exclusively instrumental performances, and does not overlap with \acrshort{tds_cm2} and \acrshort{tds_cm3}. The latter two contain only vocal performances, where \acrshort{tds_cm3} contains full performances and \acrshort{tds_cm2} contains excerpts taken from these performances. 
 
@@ -364,9 +360,9 @@ These six datasets represent the diversities present in the \gls{iam} audio repe
 \subsection{Ny\={a}s Dataset}
 \label{sec:corpus_nyas_dataset}
 
-\Gls{nyas} dataset~(\acrshort{nds_cm}) is used for evaluating our proposed approach to identify \gls{nyas} \gls{svara} segments in melodies of \gls{iam} (\chapref{chap:data_preprocessing}). \acrshort{nds_cm} comprises 20~audio recordings of total duration of 1.5\,hours. All these recordings are of vocal \gls{alap} performances of Hindustani music. \gls{Alap} is an unmetered melodic improvisatory section, usually performed at the opening of a \gls{raga} rendition. We selected only \gls{alap} performances because the concept of \gls{nyas} is emphasized in these sections during a \gls{raga} rendition. Of the 20~audio recordings, 15~are commercially available polyphonic recordings taken from the Hindustani music research corpus (\secref{sec:corpus_hindustani_music_corpus}). The other 5 audio recordings are monophonic in-house studio recordings done by a professional singer of Hindustani music. These in-house recordings are available under Creative Commons (CC) license in Freesound\footnote{\url{http://www.freesound.org/people/sankalp/packs/12292/}}. In total, we have performances by 8 artists in 16 different \glspl{raga}.% To avoid over-fitting of the data it is important to include different artists and \glspl{raga} as the \gls{nyas} characteristics highly depend on these aspects~\cite{Dey2008}.
+\Gls{nyas} dataset~(\acrshort{nds_cm}) is used for evaluating our proposed approach to identify \gls{nyas} \gls{svara} segments in melodies of \gls{iam} (\chapref{chap:data_preprocessing}). \acrshort{nds_cm} comprises 20~audio recordings of total duration of 1.5\,hours. All these recordings are of vocal \gls{alap} performances of Hindustani music. \gls{Alap} is an unmetered melodic improvisatory section, usually performed at the opening of a \gls{raga} rendition. We selected only \gls{alap} performances because the concept of \gls{nyas} is emphasized in these sections during a \gls{raga} rendition. Of the 20~audio recordings, 15~are commercially available polyphonic recordings taken from the Hindustani music research corpus (\secref{sec:corpus_hindustani_music_corpus}). The other 5 audio recordings are monophonic in-house studio recordings done by a professional singer of Hindustani music. These in-house recordings are available under Creative Commons (CC) license in Freesound\footnote{\url{http://www.freesound.org/people/sankalp/packs/12292/}}. In total, we have performances by 8 artists in 16 different \glspl{raga}. To the best of our knowledge, there does not exist any other dataset compiled and annotated for studying \gls{nyas} segmentation in~\gls{iam}.
 
-\Gls{nyas} segments were annotated by a performing artist of Hindustani music (vocalist) who has received over 15 years of formal musical training. The musician marked all the \gls{nyas} segment boundaries and labeled them appropriately. This dataset contains 1257\,\gls{nyas} \gls{svara} segments. The duration of these segments vary from 150\,ms to 16.7\,s with a mean of 2.46\,s and a median of 1.47\,s.
+\Gls{nyas} segments were annotated by a performing artist of Hindustani music (vocalist) who has received over 15 years of formal musical training. The musician marked all the \gls{nyas} segment boundaries in the recordings and labeled them appropriately. This dataset contains 1257\,\gls{nyas} \gls{svara} segments. The duration of these segments vary from 150\,ms to 16.7\,s with a mean of 2.46\,s and a median of 1.47\,s.
 
 
 %%Things to include in description
@@ -434,7 +430,7 @@ The melodic phrases in \acrshort{msds} are annotated by two professional musicia
 					
 \tablebot
 		\end{tabular}
-		\caption[Details of the annotated characteristic melodic patterns in \acrshort{msds} dataset.]{Details of the annotated characteristic melodic patterns in \acrshort{msds} dataset. PT:~phrase type, \#Occ:~number of annotated occurrences of  patterns of a PT, and $L_{\mathrm{mean}}$, $L_{\mathrm{std}}$, $L_{\mathrm{median}}$, $L_{\mathrm{min}}$ and $L_{\mathrm{max}}$ are the mean, standard deviation, median, minimum and maximum value of the lengths of the phrases of a PT.} 
+		\caption[Details of the annotated characteristic melodic patterns in \acrshort{msds} dataset.]{Details of the annotated characteristic melodic patterns in \acrshort{msds} dataset. PT:~phrase type, \#Occ:~number of annotated occurrences of  patterns of a PT, and $L_{\mathrm{mean}}$, $L_{\mathrm{std}}$, $L_{\mathrm{median}}$, $L_{\mathrm{min}}$ and $L_{\mathrm{max}}$ are the mean, standard deviation, median, minimum and maximum value of the lengths of the phrases of a PT (in seconds).} 
 		\label{tab:categorywise_details_melodic_similarity_dataset}
 	\par \end{centering}
 \end{table}
@@ -513,6 +509,6 @@ Given the diversities present in \acrshort{rrds_cmd_big} and \acrshort{rrds_hmd_
 \section{Summary}
 \label{sec:corpora_summary}
 
-In this chapter, we described the music corpora and the test datasets that were compiled and curated as a part of our work within the CompMusic project. We started by enumerating the design criteria that we followed to gather and curate the corpora, and subsequently, evaluated the corpora in terms of these criteria. We saw that the musical concepts and entities in our corpora have a good coverage with respect to the reference institutes, and the corpora is representative of the audio collections in \gls{iam}. In addition to the corpora, we presented four different test datasets that we built to develop and evaluate our data-driven approaches described in this thesis. To the best of our knowledge, these are the largest corpora ever compiled for studying melodic aspects of \gls{iam} from a computational perspective. Both, the corpora, and the test datasets, are made publicly available ensuring easy access (\appref{app:resources}).
+In this chapter, we described the music corpora and the test datasets that were compiled and curated as a part of our work within the CompMusic project. We started by enumerating the design criteria that we followed to gather and curate the corpora, and subsequently, evaluated the corpora in terms of these criteria. We saw that the musical concepts and entities in our corpora have a good coverage with respect to the reference institutes, and the corpora is representative of the audio collections in \gls{iam}. In addition to the corpora, we presented four different test datasets that we built to develop and evaluate the approaches described in this thesis. To the best of our knowledge, these are the largest corpora ever compiled for studying melodic aspects of \gls{iam} from a computational perspective. Both the corpora and the test datasets, are made publicly available ensuring easy access (\appref{app:resources}).
 
 
