@@ -6,14 +6,14 @@
 \section{Introduction}
 \label{sec:data_preprocessing_intro}
 
-In this chapter, we describe methods for extracting relevant melodic descriptors and low-level melody representation from raw audio signals.  These melodic features are used as inputs to perform higher level melodic analysis by the methods described in the subsequent chapters. Since these features are used in a number of computational tasks, we consolidate and present these common processing blocks in the current chapter. This chapter is largely based on our published work presented in~\cite{Gulati2014Tonic,gulati2014Landmark,gulati_SITIS_2014}.
+In this chapter, we describe methods for extracting relevant melodic descriptors and low-level melody representation from raw audio signals.  These melodic features are used as inputs to perform higher level melodic analyses by the methods described in the subsequent chapters. Since these features are used in a number of computational tasks, we consolidate and present these common processing blocks in the current chapter. This chapter is largely based on our published work presented in~\cite{Gulati2014Tonic,gulati2014Landmark,gulati_SITIS_2014}.
 
 There are four sections in this chapter, and in each section, we describe the extraction of a different melodic descriptor or a representation.
 \begin{itemize}
 	\item In \secref{sec:data_preprocessing_tonic_identification}, we focus on the task of automatically identifying the tonic pitch in an audio recording. Our main objective is to perform a comparative evaluation of different existing methods and select the best method to be used in our work.
 	\item In \secref{sec:data_preprocessing_melody_processing}, we present the method used to extract the predominant pitch from audio signals, and describe the post-processing steps to reduce frequently occurring errors.
-	\item In \secref{sec:pre_processing_nyas_segmentation}, we describe our \gls{nyas}-based approach for segmenting melodies in Hindustani music. 
 	\item In \secref{sec:pre_processing_tani_segmentation}, we describe the process of segmenting the solo percussion regions (\Gls{tani} sections) in the audio recordings of Carnatic music.  
+	\item In \secref{sec:pre_processing_nyas_segmentation}, we describe our \gls{nyas}-based approach for segmenting melodies in Hindustani music. 	
 \end{itemize}
 	
 %Along with the description of these method we also provide relevant implementation details and their default parameter settings. 
@@ -37,7 +37,7 @@ evaluation and \acrshort{tonicid_chordia}~\citep{chordia2013joint} was not avail
 
 Each of the method mentioned above is evaluated using six different datasets, \acrshort{tds_cm1}, \acrshort{tds_cm2}, \acrshort{tds_cm3}, \acrshort{tds_iitm1}, \acrshort{tds_iitm2} and \acrshort{tds_iisc}. A detailed description of these datasets in terms the musical material and the audio quality is given in~\secref{sec:corpus_tonic_datasets}. A summary of the datasets can be obtained from~\tabref{tab:tonic_datasets}. The diversities present in \gls{iam} repertoire in terms of the musical and acoustical characteristics are well captured in these six datasets. Note that \acrshort{tonicid_ashwin_1} method requires several excerpts from the same concert as an input, which is only available in the case of \acrshort{tds_iitm1} dataset. Hence, \acrshort{tonicid_ashwin_1} is only evaluated using \acrshort{tds_iitm1} dataset.
 
-For vocal performances, we evaluate the accuracy of correctly identifying the tonic pitch, whereas, for instrumental music, we evaluate the accuracy of identifying the tonic pitch-class only (i.e.~the identified tonic pitch is allowed to be in any octave). This is because whilst for vocal music the concept of the tonic pitch being in a specific octave is clearly defined (because it is restricted by the pitch range of the singer), this notion is not as clear for instrumental music. For vocal performances, the tonic identified by a method is considered as correct if it lies within 50\,Cents of the ground truth annotation. For instrumental music, output of a method is considered as correct if it is within 50\,Cents of the correct tonic pitch-class.
+For vocal performances we evaluate the accuracy of correctly identifying the tonic pitch, whereas, for instrumental music we evaluate the accuracy of identifying the tonic pitch-class only (i.e.~the identified tonic pitch is allowed to be in any octave). This is because whilst for vocal music the concept of the tonic pitch being in a specific octave is clearly defined (because it is restricted by the pitch range of the singer), this notion is not as clear for instrumental music. For vocal performances, the tonic identified by a method is considered as correct if it lies within 50\,Cents of the ground truth annotation. For instrumental music, output of a method is considered as correct if it is within 50\,Cents of the correct tonic pitch-class.
 
 Classification-based methods (\acrshort{tonicid_justin} and \acrshort{tonicid_sankalp}) are evaluated by using 10-fold cross-validation methodology on every dataset. The experiments are repeated 10 times and the mean accuracy over the 10 repetitions are reported. Parameters for all the methods are kept fixed across all datasets. Since the tonic pitch range for male and female singers, and for instrumental music is different, editorial metadata regarding the gender of the singer and the type of music excerpt (vocal or instrumental) can be used to improve the accuracy of tonic identification. We therefore perform two sets of experiments, first one, using only the audio excerpts, and the other, in which the methods are also given information about the gender of the singer and the type of excerpt (vocal or instrumental). The results of these evaluations are presented in the subsequent section. We remind again that a brief description of the methods considered in this evaluation is provided in \secref{sec:background_relevant_work_tonic_identification}.
 
@@ -68,14 +68,6 @@ only audio data.
 		{} & TP & TPC    & TP & TPC & TP & TPC & TP & TPC
 		& TP & TPC & TP & TPC   \\
 \tablemid
-		\acrshort{tonicid_justin} & - & 88.9 & 87.4 & 90.1 & \textbf{88.4} & \textbf{91} & 75.6 & 77.5 & 	89.5 & \textbf{97.4} & 90.8 & \textbf{94.1}\\
-
-		\acrshort{tonicid_sankalp} & - & \textbf{92.2} & \textbf{87.8} & \textbf{90.9} & 87.7 & 90.5 &
-		79.8 & \textbf{85.3} & \textbf{97.4} & \textbf{97.4} & \textbf{93.6}
-		& 93.6  \\
-		
-		\hdashline
-		
 		\acrshort{tonicid_ranjani_1} & - & 81.4 & 69.6 & 84.9 & 73.2 & 90.8 & 81.8 & 83.6 & 92.1 & \textbf{97.4} &
 		80.2 & 86.9  \\
 		
@@ -87,9 +79,17 @@ only audio data.
 		\acrshort{tonicid_ashwin_2} & - & 88.9 & 74.5 & 82.9 & 78.5 & 83.4 & 72.7 & 76.4 & 92.1 & 92.1 & 86.6   & 89.1 \\
 		
 		\acrshort{tonicid_ashwin_3} & - & 86 & 61.1 & 80.5 & 67.8 & 79.9 & 72.7 & 72.7 & 94.7 & 94.7 & 85  & 86.6 \\
+
+		\hdashline
+		
+		\acrshort{tonicid_justin} & - & 88.9 & 87.4 & 90.1 & \textbf{88.4} & \textbf{91} & 75.6 & 77.5 & 	89.5 & \textbf{97.4} & 90.8 & \textbf{94.1}\\
+		
+		\acrshort{tonicid_sankalp} & - & \textbf{92.2} & \textbf{87.8} & \textbf{90.9} & 87.7 & 90.5 &
+		79.8 & \textbf{85.3} & \textbf{97.4} & \textbf{97.4} & \textbf{93.6}
+		& 93.6  \\
 \tablebot
 	\end{tabular}
-	\caption[Tonic identification accuracies of seven methods on six different datasets using only audio data]{Accuracies for tonic pitch (TP \%) and tonic pitch-class (TPC \%) identification by seven methods on six different datasets using only audio data. The best accuracy obtained for each dataset is
+	\caption[Tonic identification accuracies of seven methods on six different datasets using only audio data]{Accuracies (\%) for tonic pitch (TP) and tonic pitch-class (TPC) identification by seven methods on six different datasets using only audio data. The best accuracy obtained for each dataset is
 	highlighted using bold text. The dashed horizontal line divides the methods based on supervised learning (\acrshort{tonicid_justin} and \acrshort{tonicid_sankalp}) and those based on expert knowledge (\acrshort{tonicid_ranjani_1}, \acrshort{tonicid_ranjani_2}, \acrshort{tonicid_ashwin_1}, \acrshort{tonicid_ashwin_2} and \acrshort{tonicid_ashwin_3}). TP column for \acrshort{tds_cm1} is marked as `-', because it consists of only instrumental excerpts for which we not evaluate tonic pitch accuracy. \acrshort{tonicid_ashwin_1} is only evaluated on \acrshort{tds_iitm1} since it works on the whole concert recording.}
 	\label{tab:tonic_identification_accuracy_without_gender_info}
 \end{sidewaystable}
@@ -141,10 +141,6 @@ One of the ways to reduce the amount of octave errors in tonic identification is
 \tabletop
 		{Methods}  & \acrshort{tds_cm1} & \acrshort{tds_cm2} & \acrshort{tds_cm3} &	\acrshort{tds_iisc} & \acrshort{tds_iitm1} & \acrshort{tds_iitm2}\\
 \tablemid
-		\acrshort{tonicid_justin} & 88.9 & \textbf{93.6} & 92.4 & 80.9 & \textbf{97.4} & 92.3 \\
-		
-		\acrshort{tonicid_sankalp} & 92.2 & 90.9 & 90.5 & 85.3 & \textbf{97.4} & \textbf{93.6}  \\
-		\hdashline
 		\acrshort{tonicid_ranjani_1} & 87.7 & 83.5 & 88.9 & \textbf{87.3} &\textbf{ 97.4} & 91.7 \\
 		
 		\acrshort{tonicid_ranjani_2} & 79.55 & 76.3 & 82 & 85.5 & \textbf{97.4} & 91.5 \\
@@ -153,7 +149,11 @@ One of the ways to reduce the amount of octave errors in tonic identification is
 		
 		\acrshort{tonicid_ashwin_2} & \textbf{92.3} & 91.5 & \textbf{94.2} & 81.8 & \textbf{97.4} & 91.1 \\
 		
-		\acrshort{tonicid_ashwin_3} & 87.5 & 86.7 & 90.9 & 81.8 & \textbf{94.7} & 89.9 \\
+		\acrshort{tonicid_ashwin_3} & 87.5 & 86.7 & 90.9 & 81.8 & 94.7 & 89.9 \\
+		\hdashline
+		\acrshort{tonicid_justin} & 88.9 & \textbf{93.6} & 92.4 & 80.9 & \textbf{97.4} & 92.3 \\
+		
+		\acrshort{tonicid_sankalp} & 92.2 & 90.9 & 90.5 & 85.3 & \textbf{97.4} & \textbf{93.6}  \\		
 \tablebot		
 	\end{tabular}
 \par	\end{centering}
@@ -206,11 +206,7 @@ In many cases we observe that the percentage of Ma errors is greater than the pe
 attributed to the fact that in most excerpts the drone instrument is tuned to Pa tuning (lower Sa, middle Sa, middle Sa, lower Pa). This creates a
 bias in the training set and the rules learned by the classifier work better for Pa tuning. Ma errors are also common in \acrshort{tonicid_ranjani_2}, as the estimator looks for a Sa-Pa-higher Sa pitch relation, which would also fit a Ma-tuned performance. \acrshort{tonicid_ranjani_1} on the other hand does not search for a Sa-Pa-Sa template, resulting in a low proportion of Ma errors compared to the other methods. Finally we note that most methods do not make any Ma errors on the \acrshort{tds_iitm1} dataset. This is because the items in this dataset are full concerts, each concert consisting of several pieces. Whilst Ma may be included in the melody of some of the pieces, Pa and Sa are always present. As a result, the pitch histogram for the complete concert does not contain a prominent Ma peak, meaning that it is highly unlikely for it to be selected as the tonic.
 
-
-
-We examine how the errors are affected once we allow methods to use gender and performance metadata~(\figref{fig:tonic_identification_errors_with_MF}). If we compare the results to those in~\figref{fig:tonic_identification_errors_without_MF}, we see
-that Ma and Pa errors are reduced more than ``Other'' errors. By restricting the tonic frequency range to a single octave we prevent the
-appearance of a high Sa peak, thus avoiding the possible confusion between fourths and fifths explained earlier and reducing the amount of Pa and Ma errors.
+We now examine how the errors are affected once we allow the methods to use gender and performance metadata~(\figref{fig:tonic_identification_errors_with_MF}). In comparison to the method variants that do not utilize such metadata (\figref{fig:tonic_identification_errors_without_MF}), we see that Ma and Pa errors are reduced more than ``Other'' errors. By restricting the tonic frequency range to a single octave we prevent the appearance of a high Sa peak, thus avoiding the possible confusion between fourths and fifths explained earlier and reducing the amount of Pa and Ma errors.
 
 For \acrshort{tonicid_ranjani_1} and \acrshort{tonicid_ranjani_2} the percentage of Ma errors actually increases slightly after including male/female information. A large proportion of these errors were observed in excerpts with female singers. For these excerpts, the range for \gls{shadja} candidates is limited to 130-250 Hz. For this range, candidates fitting a lower Ma-middle Sa-middle Ma template would also satisfy the minimization criterion used in \acrshort{tonicid_ranjani_2}. In the case of \acrshort{tonicid_ranjani_1}, the reduced frequency range results in relatively weak peaks also being considered, and their small pitch variance can result in the wrong candidate being selected during the minimization process.
 
@@ -231,7 +227,7 @@ different methods and their underlying causes we refer the reader to the publica
 
 We evaluated seven tonic identification methods on six different and diverse datasets of \gls{iam}. The evaluation was performed in two scenarios: first, when only audio data is used as input to the methods, and second, when the additional information about the gender of the singer (male or female) and the performance type (vocal or instrumental) is given in addition to audio data. The results obtained are analyzed per dataset, and for different characteristics of the music material. Along with the accuracies of the methods, we presented an in-depth error analysis, describing the different kinds of errors for different scenarios and provided plausible explanations for them.
 
-Overall, we see that methods \acrshort{tonicid_justin} and \acrshort{tonicid_sankalp} that use multipitch-based audio feature and classification methodology for selecting tonic pitch perform better than the rest. Their performance is better on all but one datasets considered in the evaluation (the exceptional dataset is small in size and contains poor quality audio recordings). In addition, the performance of these two methods appears to be the most consistent across music traditions, gender of the singer (male or female) and type of music performance (vocal or instrumental). 
+Overall, we see that methods \acrshort{tonicid_justin} and \acrshort{tonicid_sankalp} that use multipitch-based audio feature and classification methodology for selecting tonic pitch perform better than the rest. Their performance is better on all but one of the considered datasets (the exceptional dataset is small in size and contains poor quality audio recordings). In addition, the performance of these two methods appears to be the most consistent across music traditions, gender of the singer (male or female) and type of music performance (vocal or instrumental). 
 
 Finally, we select \acrshort{tonicid_justin} method to identify tonic pitch from audio recordings in all the studies conducted as a part of this thesis. \acrshort{tonicid_justin} produces comparable results to \acrshort{tonicid_sankalp} and is relatively simpler to implement owing to a single stage processing. Furthermore, \acrshort{tonicid_justin} does not require any estimate of the predominant pitch, which makes it independent of the performance of the pitch estimation algorithms. The are two implementations of this method, which we make publicly available online~(\appref{app:resources}).
 
@@ -241,7 +237,7 @@ Finally, we select \acrshort{tonicid_justin} method to identify tonic pitch from
 
 As mentioned above, identification of the tonic pitch is a crucial first step required for nearly all meaningful melodic analyses of \gls{iam}. Any error in this step propagates through the processing chain and adversely affect the output of the melodic analyses. Though the accuracy of the most successful tonic identification method is nearly 90\% (\tabref{tab:tonic_identification_accuracy_without_gender_info}), even a 10\% error in tonic pitches can deteriorate the performance of melodic analyses described in the subsequent chapters. Moreover, it leads to an uncertainty, whether an error in the final output is caused due to a wrong tonic pitch or it is because of an error made in the later stages of the methods. 
 
-We here present an heuristic-based approach to correct frequently occurring errors in tonic identification. From \tabref{fig:tonic_identification_errors_without_MF}, we see that the majority of the errors are Ma and Pa errors. Also, we know from the music knowledge that the tonic pitch chosen by the lead performers in \gls{iam} does not change drastically over the years and it typically remains within two semitones (200\,Cents). Since the accuracy of the tonic identification is nearly 90\%, for the recordings of an artist in our music corpus there might only be a handful of recordings for which the tonic values are incorrectly identified. Moreover, these wrong estimates are either Ma or Pa. These errors typically correspond to a pitch value that cannot possibly be the true tonic of the singer. Thus, these erroneous cases can be automatically detected by employing a majority voting. Once detected, the wrongly estimated tonic values can be transposed (either by fifth, or fourth) to match the most frequent tonic value of that artist in the corpus. After we perform this step, we achieve close to perfect tonic estimates for the music collection. %As can be imagined, this approach would work for artists that have more than a certain number of recordings in the collection. Since the recordings are ripped from the complete CDs, most of the artists considered in the datasets do have reasonable number of recordings in our corpus.
+We here present an heuristic-based approach to correct frequently occurring errors in tonic identification. From \tabref{fig:tonic_identification_errors_without_MF}, we see that the majority of the errors are Ma and Pa errors. Also, we know from the music knowledge that the tonic pitch chosen by the lead performers in \gls{iam} does not change drastically over the years and it typically remains within two semitones (200\,Cents). Since the accuracy of the tonic identification is nearly 90\%, for the recordings of an artist in our music corpus there might only be a handful of recordings for which the tonic values are incorrectly identified. Moreover, these wrong estimates are either Ma or Pa. These errors typically correspond to a pitch value that cannot possibly be the true tonic of the singer. Thus, these erroneous cases can be automatically detected by employing a majority voting across tonic values. Once detected, the wrongly estimated tonic values can be transposed (either by fifth, or fourth) to match the most frequent tonic value of that artist in the corpus. After we perform this step, we achieve close to perfect tonic estimates for the music collection. %As can be imagined, this approach would work for artists that have more than a certain number of recordings in the collection. Since the recordings are ripped from the complete CDs, most of the artists considered in the datasets do have reasonable number of recordings in our corpus.
 
 
 \section{Melody Processing}
@@ -263,7 +259,7 @@ In this section, we present all the procedures applied in relation to the extrac
 
 In \secref{sec:background_terminology}, we presented our working definition of melody. In a nutshell, we consider the continuous pitch contour corresponding to the predominant melodic source (typically, the lead artist) in the audio recording as the low-level representation of melody. An example is shown in~\figref{fig:predominant_melodic_fragment}, wherein the contour represents the pitch of the lead singer at each instance in time. Usage of such a melody representation is a common practice in \gls{mir}, and is done for a variety of melody processing tasks across different music traditions~\citep{Dutta2014,Ishwar2013,Rao2014,koduri2014intonation,senturk2013score,pikrakis2012tracking,pikrakis2003recognition,moelants2009exploring}. 
 
-Pitch estimation, also commonly known as pitch tracking from audio signals has been an active research topic since several decades~\citep{salamon:phd:13}. The challenges in the estimation of a reliable pitch contour differ across the type of audio music signals (monophonic or polyphonic). As a result of which the performance of these algorithms vary significantly across different music genres, which also seems to be correlated with the extent of the polyphony in the music. A sparse polyphonic characteristic in audio recordings of \gls{iam} due to its heterophonic nature lessens the complexity of the task to an extent, when compared to several other western popular music genres. This trend is clearly visible from the past MIREX (an international MIR evaluation campaign) results\footnote{\url{http://www.music-ir.org/mirex/wiki/MIREX_HOME}}. For example, compare the accuracy obtained by different algorithms on INDIAN08\footnote{\url{http://nema.lis.illinois.edu/nema_out/mirex2011/results/ame/indian08/summary.html}},  MIREX05\footnote{\url{http://nema.lis.illinois.edu/nema_out/mirex2011/results/ame/mirex05/summary.html}} and  MIREX09~0dB\footnote{\url{http://nema.lis.illinois.edu/nema_out/mirex2011/results/ame/mirex09_0dB/summary.html}} datasets from MIREX-2011. 
+Pitch estimation, also commonly known as pitch tracking from audio signals has been an active research topic since several decades~\citep{salamon:phd:13}. The challenges in the estimation of a reliable pitch contour differ across the type of audio music signals (monophonic or polyphonic). As a result of which the performance of these algorithms vary significantly across different music genres, which also seems to be correlated with the extent of the polyphony in the music. In comparison to several western popular music genres, a fewer number of simultaneously playing instruments and prominence of lead artist in performances of \gls{iam} lessens the complexity of estimating the predominant pitch from audio recordings. This trend is clearly visible from the past MIREX (an international MIR evaluation campaign) results\footnote{\url{http://www.music-ir.org/mirex/wiki/MIREX_HOME}}. For example, compare the accuracy obtained by different algorithms on INDIAN08\footnote{\url{http://nema.lis.illinois.edu/nema_out/mirex2011/results/ame/indian08/summary.html}},  MIREX05\footnote{\url{http://nema.lis.illinois.edu/nema_out/mirex2011/results/ame/mirex05/summary.html}} and  MIREX09~0dB\footnote{\url{http://nema.lis.illinois.edu/nema_out/mirex2011/results/ame/mirex09_0dB/summary.html}} datasets from MIREX-2011. 
 
 In order to estimate the predominant pitch (denoted hereafter by $\pitchHz$) in the audio recordings of \gls{iam} we use \gls{melodia} algorithm, a state-of-the-art melody extraction method proposed by~\cite{Salamon2012}. This method performed favorably in MIREX~2011 on a variety of music genres, including \gls{iam}\footnote{\url{http://nema.lis.illinois.edu/nema_out/mirex2011/results/ame/indian08/summary.html}}. This method is used in several other studies that analyze melodies extracted from audio signals~\citep{Dutta2014,Ishwar2013,Rao2014,koduri2014intonation,senturk2013score,pikrakis2012tracking}.
 
@@ -271,11 +267,11 @@ Another motivation to use this algorithm is that it works on continuous pitch co
 
 Currently, there are two implementations of \gls{melodia} algorithm that are publicly available. We use its implementation as available in \Gls{essentia}~\citep{essentia}. \Gls{essentia}\footnote{https://github.com/MTG/essentia} is an open-source C++ library for audio analysis and content-based MIR. We use the default values of the parameters, except for the frame and hop sizes, which are set to 46 and 2.9\,ms, respectively. The other implementation of \Gls{melodia} is available as a Vamp plug-in\footnote{http://mtg.upf.edu/technologies/melodia}. 
 
-Prior to the predominant pitch estimation we apply an equal-loudness filter\footnote{\url{http://wiki.hydrogenaud.io/index.php?title=ReplayGain_1.0_specification}} to make the processing perceptually relevant~\citep{essentia}. For this operation as well we use Essentia with the default values of the parameters. 
+Prior to the predominant pitch estimation we apply an equal-loudness filter\footnote{\url{http://wiki.hydrogenaud.io/index.php?title=ReplayGain_1.0_specification}}~\citep{essentia} to make the processing perceptually relevant. For this operation as well we use Essentia with the default values of the parameters. 
 
-In every computational task addressed in this thesis we use the \Gls{melodia} algorithm to estimate the predominant pitch for all the datasets. There is only one exception, \acrshort{msds_iitb_hmd} dataset, which was introduced in~\cite{Ross2012b} for computing melodic similarity. \acrshort{msds_iitb_hmd} dataset along with audio recordings and melodic phrase annotations also includes semi-automatically extracted predominant pitch contours~(\secref{sec:corpus_melodic_similarity_dataset}). Using the pitch contours provided along with the dataset allows us to compare the output of our method with other studies. In addition, since these pitch contours are nearly free from any octave errors, we avoid propagating errors to subsequent stages, and thus, evaluate the task of melodic similarity more reliably. 
+In every computational task addressed in this thesis we use the \Gls{melodia} algorithm to estimate the predominant pitch for all the datasets. There is only one exception, the \acrshort{msds_iitb_hmd} dataset, which was introduced in~\cite{Ross2012b} for computing melodic similarity. The \acrshort{msds_iitb_hmd} dataset, along with its audio recordings and melodic phrase annotations, also includes semi-automatically extracted predominant pitch contours~(\secref{sec:corpus_melodic_similarity_dataset}). Using the pitch contours provided along with the dataset allows us to compare the output of our method with other studies. In addition, since these pitch contours are nearly free from any octave errors, we avoid propagating errors to subsequent stages, and thus, evaluate the task of melodic similarity more reliably. 
 
-In our work in this thesis we consider only the pitch dimension of melody in its representation. However, loudness and timbral dimensions of melody that largely capture the phonetics and expressive aspects are also informative and can be helpful in several tasks including computation of melodic similarity. To give an idea about the type of information captured in the loudness and timbral dimensions and their usefulness, we take an example. We synthesize the harmonic series corresponding to a voice extracted from an excerpt of Carnatic music. During the synthesis we force the pitch of the voice to a monotone while keeping the other aspects (loudness and timbre) intact. The original excerpt\footnote{\url{http://www.freesound.org/people/sankalp/sounds/352810/}}, synthesized predominant pitch\footnote{\url{http://www.freesound.org/people/sankalp/sounds/352809/}} and the synthesized monotone voice\footnote{\url{http://www.freesound.org/people/sankalp/sounds/352808/}} is made available for listening. After listening to this example, we get an idea about the nature of the melodic characteristics that are not utilized if we only consider the pitch dimension of melody in the analysis. Exploiting loudness and timbral dimensions for melodic analysis shall be taken up in the future endeavors.
+In this thesis we consider only the pitch dimension of melody in its representation. However, loudness and timbral dimensions of melody that largely capture the phonetics and expressive aspects are also informative and can be helpful in several tasks including computation of melodic similarity. To give an idea about the type of information captured in the loudness and timbral dimensions and their usefulness, we take an example. We synthesize the harmonic series corresponding to a voice extracted from an excerpt of Carnatic music. During the synthesis we force the pitch of the voice to a monotone while keeping the other aspects (loudness and timbre) intact. The original excerpt\footnote{\url{http://www.freesound.org/people/sankalp/sounds/352810/}}, synthesized predominant pitch\footnote{\url{http://www.freesound.org/people/sankalp/sounds/352809/}} and the synthesized monotone voice\footnote{\url{http://www.freesound.org/people/sankalp/sounds/352808/}} is made available for listening. After listening to this example, we get an idea about the nature of the melodic characteristics that are not utilized if we only consider the pitch dimension of melody in the analysis. Exploiting loudness and timbral dimensions for melodic analysis shall be taken up in the future endeavors.
 
 
 \subsection{Pitch Post-processing}
@@ -387,7 +383,7 @@ In the rendition of melodic phrases in \gls{iam}, there are often unvoiced segme
 \subsubsection{Pitch Resampling}
 \label{sec:data_processing_pitch_resampling}
 
-An optimal sampling rate of the predominant pitch might depend on the particular computational task under study. For tasks such as analysis of melodic ornaments in \gls{iam}, a high sampling rate might be desired, whereas, for computationally complex tasks such as melodic pattern discovery and search, a sampling rate as low as possible but sufficient to capture melodic nuances might be preferred. In order to avoid predominant melody computation for different sampling rates used across experiments, we resample the predominant melody contours extracted once at a high sampling rate. Pitch contours are decimated to a lower sampling rate by simply downsampling them by an integer factor. The downsampling factor is decided based on the sampling rate used in a particular experiment.
+The optimal sampling rate of the predominant pitch might depend on the particular computational task under study. For tasks such as analysis of melodic ornaments in \gls{iam}, a high sampling rate might be desired (for example, 5\,ms), whereas, for computationally complex tasks such as melodic pattern discovery and search, a sampling rate as low as possible but sufficient to capture melodic nuances might be preferred. In order to avoid predominant melody computation for different sampling rates used across experiments, we resample the predominant melody contours extracted once at a high sampling rate. Pitch contours are decimated to a lower sampling rate by simply downsampling them by an integer factor. The downsampling factor is decided based on the sampling rate used in a particular experiment.
 
 Note that, not all the post-processing steps described in this section are employed in all the experiments. The description of the specific methods in the subsequent chapters will contain details about the post-processing steps used in their respective experiments.
 
@@ -412,6 +408,39 @@ The perception of melodic intervals for human beings is logarithmic in nature wi
 \label{sec:tonic_normalization}
 
 As described in~\secref{sec:melody_in_iam} and in~\secref{sec:data_preprocessing_tonic_identification}, in a performance of \gls{iam}, the tonic pitch of the lead performer serves as the reference frequency. Every lead artist chooses a tonic pitch, using which the \gls{tanpura} and the rest of the instruments are tuned. To analyze a melody in the tonal context established by the tonic pitch in a recording ($\toniRec$), we normalize the predominant pitch by this frequency. We perform this normalization by considering the reference frequency $f_r=\toniRec$ in \eqnref{eq:hertz_to_cent_conversion}, which is estimated for every recording using \acrshort{tonicid_justin} method~(\secref{sec:pre_processing_tonic_identification_summary}).
+
+
+\section{Tani Segmentation}
+\label{sec:pre_processing_tani_segmentation}
+
+A concert of Carnatic music typically contains a solo percussion section towards the end of the concert, referred to as \gls{tani} avartanam or \gls{tani} in short. The duration of this section typically varies from 2 to 25\,min depending on the artist and the context. The main percussion instrument in Carnatic music is \gls{mridangam}, which becomes the lead instrument during this section. Along with the \gls{mridangam} there are other percussion instruments often played in \gls{tani} section such as \gls{kanjira} and \gls{ghatam}. Though \gls{mridangam} is a percussion instrument and is basically a kind of a barrel drum, its sound has tonal characteristics. Like the other accompanying instruments in Carnatic music such as \gls{tanpura} and violin, \gls{mridangam} is also tuned at the tonic of the lead artist. Due to the tonal acoustical characteristics of \gls{mridangam} sound, and because of the long duration of \gls{tani} sections, the pitch estimation algorithm detects and tracks pitch contours during the \gls{tani} sections, instead of detecting these sections as non-voiced segments. Notice that the \gls{mridangam} strokes during short (lasting over roughly 1-20 seconds) unvoiced segments such as breath-pauses are correctly detected as non-voiced by the predominant pitch estimation algorithm. This is due to the fact that during such sections the predominant pitch corresponds to the voice, which has significantly higher energy compared to the background percussion signal. 
+
+
+\begin{figure}
+	\begin{center}
+		\ifdefined\PRINTVER
+		\includegraphics[width=\figSizeSeventy]{ch05_preprocessing/figures/taniPatterns_BW.pdf}
+		\else
+		\includegraphics[width=\figSizeSeventy]{ch05_preprocessing/figures/taniPatterns.pdf}
+		\fi
+	\end{center}
+	\caption[Melodic patterns corresponding to the \gls{mridangam} strokes]{Pitch contours of a pair of highly similar melodic patterns corresponding to the \gls{mridangam} strokes in a \gls{tani} section.}
+	\label{fig:pitch_pattern_tani}
+\end{figure}
+
+Detecting pitch corresponding to the \gls{mridangam} strokes as predominant pitch in the audio poses several challenges in melodic analyses, specifically in the discovery of melodic patterns. Percussion patterns and rhythm cycles contain recurring strokes (or patterns), and therefore, pitch fragments from the \gls{tani} section are frequently discovered as highly similar patterns. An example of a discovered pair of pitch patterns that correspond to \gls{mridangam} strokes is shown in~\figref{fig:pitch_pattern_tani}. We see that the patterns are close to exact repetitions. Since we aim to discover patterns in melodies of \gls{iam} (\chapref{chap:melodic_pattern_processing}), patterns discovered from the \gls{tani} sections are undesired. There can be two approaches to avoid such unwanted patterns in the final output: 1) post-process the discovered pitch patterns and detect if they belong correspond to \gls{mridangam} strokes, 2) discard pitch contours corresponding to the \gls{tani} section in the pre-processing step. We follow the second approach and discard segments of the pitch contours that correspond to the \gls{tani} sections from the input given to the pattern discovery method. Discarding such segments upfront has several advantages. First, detection of the \gls{tani} sections in audio recording appears to be an easier task compared to characterizing pitch contours as belonging to the melody or \gls{mridangam} strokes. This is mainly because of the considerable amount of timbral differences across the sections where melody is present and where it is not. In addition, such computational tasks of classifying an audio segment based on its timbral characteristics is well studied in \gls{mir}~\citep{herrera2003automatic}. In~\figref{fig:spectrogram_of_tani_segment}, we show the spectrogram of a voice section and a \gls{tani} section. We see that the timbral characteristics between the two types of sections are considerably different. Another benefit of discarding the \gls{tani} sections upfront is that it reduces the computational complexity of the pattern discovery task (\gls{tani} sections may last up to 2-25\,minutes). %We therefore detect \gls{tani} sections directly in the audio recordings and discard the pitch segments corresponding to these sections in the pre-processing step.
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=\figSizeEighty]{ch05_preprocessing/figures/spectrogramTani.png}
+	\end{center}
+	\caption[Illustration of the spectrogram a vocal and a \gls{tani} section]{The spectrogram of a voice (with percussion) and a \gls{tani} section in an audio recording of Carnatic music. The excerpt spans 3\,minutes of audio.}
+	\label{fig:spectrogram_of_tani_segment}
+\end{figure}
+
+We detect \gls{tani} sections in audio recordings using a classification-based approach. To feed the classifiers we extract 13~\acrshort{mfcc} coefficients, spectral centroid, spectral flatness and pitch salience from the audio signal using Essentia~\citep{essentia} library. We iterate over 23, 46 and 92\,ms frame sizes and chose the one that results in the best classification accuracy. We set the hop size as half the frame size and all other parameters to their default values. Next, we compute the means and the variances of these features over 2\,s non-overlapping segments (sometimes referred to as texture window). For training, we use a labeled audio music dataset containing 1.5~hours of mixed voice and violin recordings and 1.5~hours of solo percussion recordings. To assess the performance of the extracted features, we perform a 10-fold cross-validation procedure and repeat the experiment 10 times. We experiment with five different algorithms exploiting diverse classification strategies~\citep{Hastie09BOOK}: decision trees (\acrshort{tree}), \gls{knn}, \gls{nb}, \gls{lr}, and \gls{svm} with a radial basis function kernel. We use the implementations of the classifiers as available in scikit-learn version~0.14.1~\citep{scikitlearn}. We used the default set of parameters with few exceptions to avoid over-fitting and to compensate for the uneven number of instances per class. We set \texttt{min\_} \texttt{samples\_split=10} for \acrshort{tree}, \texttt{fit\_prior=False} for \gls{nb}, \texttt{n\_neighbors=5} for \gls{knn}, and for \gls{lr} and \gls{svm} \texttt{class\_weight=`auto'}. 
+
+The combination of the frame size of 46\,ms and the \gls{svm} classifier yielded the best performance (96\% accuracy), with no statistically significant difference to the performance with the \acrshort{tree} (95.5\%) and the \gls{knn} (95\%), for the same frame size. We finally chose \gls{knn} because of its low complexity. Detection accuracy of the \gls{tani} sections can be improved further by a simple post-processing step. Since \gls{tani} is a single continuous section in an audio recording, class labels of the texture windows predicted by the classifier can be median filtered to remove the spurious labels lasting over a few frames. This ensures continuity of the class labels across texture windows and avoids short non-voiced regions during the vocal sections being classified as \gls{tani} segments. 
 
 
 \section{\titlecap{\glsentrytext{nyas} \glsentrytext{svara} Segmentation}}
@@ -444,8 +473,6 @@ In this section, we describe our method for detecting occurrences of \gls{nyas} 
 \subsection{Method}
 \label{sec:pre_processing_nyas_id_method}
 
-The block diagram of the proposed method for \gls{nyas} segmentation is shown in~\figref{fig:bd_nyas_segmentation}. It consists of four main processing blocks: predominant pitch estimation and representation, segmentation, feature extraction, and segment classification and fusion. These processing blocks are described in the following sections.
-
 \begin{figure}
 	\begin{center}
 		\includegraphics[width=\figSizeEightyFive]{ch05_preprocessing/figures/BlockDiagramNyasSegmentation.pdf}
@@ -453,6 +480,9 @@ The block diagram of the proposed method for \gls{nyas} segmentation is shown in
 	\caption{Block diagram of the proposed approach for \gls{nyas} segmentation.}
 	\label{fig:bd_nyas_segmentation}
 \end{figure}
+
+The block diagram of the proposed method for \gls{nyas} segmentation is shown in~\figref{fig:bd_nyas_segmentation}. It consists of four main processing blocks: predominant pitch estimation and representation, segmentation, feature extraction, and segment classification and fusion. These processing blocks are described in the following sections.
+
 
 \subsubsection{Predominant Pitch Estimation and Representation}
 
@@ -572,22 +602,22 @@ In Table~\ref{tab:nyas_segmentation_boundary_accuracy}, we show the results of \
 	\begin{centering}
 	\begin{tabular}{ c : c : c : c c c c c c }
 \tabletop
-		& Feat.		&	\gls{dtw} & \acrshort{tree}	 &	\gls{knn} 	&	\gls{nb}		& \gls{lr} 	&	\gls{svm}\\
+		Segmentation & Feat.		&	\gls{dtw} & \acrshort{tree}	 &	\gls{knn} 	&	\gls{nb}		& \gls{lr} 	&	\gls{svm}\\
 \tablemid
-		\multirow{3}{*}{A} & 	\acrshort{nyas_local_feature}		&  0.356 & 0.407 & 0.447 & 0.248 & 0.449 & 0.453\\ 
+		\multirow{3}{*}{\gls{pls}} & 	\acrshort{nyas_local_feature}		&  0.356 & 0.407 & 0.447 & 0.248 & 0.449 & 0.453\\ 
 		%\hline 	
 		&	\acrshort{nyas_context_feature}		& 0.284 & 0.394 & 0.387 & 0.383 & 0.389 & 0.406 \\
 		%\hline	
 		&	\acrshort{nyas_local_feature}+\acrshort{nyas_context_feature}		& 0.289 & 0.414 & 0.426 & 0.409 &0.432 & 0.437 \\
 \tablemid
-		\multirow{3}{*}{B} &	\acrshort{nyas_local_feature}		& \textbf{0.524} & 0.672 & \textbf{0.719} & 0.491 & \textbf{0.736} & \textbf{0.749}\\ 
+		\multirow{3}{*}{Proposed} &	\acrshort{nyas_local_feature}		& \textbf{0.524} & 0.672 & \textbf{0.719} & 0.491 & \textbf{0.736} & \textbf{0.749}\\ 
 		%\hline 	
 		&	\acrshort{nyas_context_feature}		& 0.436 & 0.629 & 0.615 & \textbf{0.641} & 0.621 & 0.673 \\
 		%\hline	
 		&	\acrshort{nyas_local_feature}+\acrshort{nyas_context_feature}		& 0.446 & \textbf{0.682} & 0.708 & 0.591 & 0.725 & 0.735\\  		
 \tablebot		
 	\end{tabular}	
-	\caption[F-scores for the \gls{nyas} boundary detection task]{F-scores for \gls{nyas} boundary detection using \gls{pls} method (A) and the proposed segmentation method (B). Results are shown for different classifiers (\acrshort{tree}, \gls{knn}, \gls{nb}, \gls{lr}, \gls{svm}) and local (\acrshort{nyas_local_feature}), contextual (\acrshort{nyas_context_feature}) and local together with contextual (\acrshort{nyas_local_feature}+\acrshort{nyas_context_feature}) features. \gls{dtw} is the baseline method used for comparison. F-score for the random baseline obtained using \acrshort{nyas_randbase2} is 0.184.}
+	\caption[F-scores for the \gls{nyas} boundary detection task]{F-scores for \gls{nyas} boundary detection using \gls{pls} method and the proposed segmentation method. Results are shown for different classifiers (\acrshort{tree}, \gls{knn}, \gls{nb}, \gls{lr}, \gls{svm}) and local (\acrshort{nyas_local_feature}), contextual (\acrshort{nyas_context_feature}) and local together with contextual (\acrshort{nyas_local_feature}+\acrshort{nyas_context_feature}) features. \gls{dtw} is the baseline method used for comparison. F-score for the random baseline obtained using \acrshort{nyas_randbase2} is 0.184.}
 	\label{tab:nyas_segmentation_boundary_accuracy}
 	\par	\end{centering}
 \end{table}
@@ -603,15 +633,15 @@ In addition, we also investigate per-class accuracies for the label annotations.
 \begin{centering}	
 	\begin{tabular}{ c : c : c : c  c  c  c  c  c }
 \tabletop
-		& Feat.	&	\acrshort{dtw} & \acrshort{tree}	 &	\acrshort{knn} 	&	\acrshort{nb}		& \acrshort{lr} 	&	\acrshort{svm}	\\
+		Segmentation & Feat.	&	\acrshort{dtw} & \acrshort{tree}	 &	\acrshort{knn} 	&	\acrshort{nb}		& \acrshort{lr} 	&	\acrshort{svm}	\\
 \tablemid		
-		\multirow{3}{*}{A} &   \acrshort{nyas_local_feature}		& \textbf{0.553} & 0.685 & 0.723 & 0.621 & 0.727 & 0.722	\\
+		\multirow{3}{*}{\gls{pls}} &   \acrshort{nyas_local_feature}		& \textbf{0.553} & 0.685 & 0.723 & 0.621 & 0.727 & 0.722	\\
 		%\hline         
 		&	\acrshort{nyas_context_feature}   		& 0.251 & 0.639 & 0.631  & 0.690 & 0.688 & 0.674	\\
 		%\hline 
 		& 	\acrshort{nyas_local_feature}+\acrshort{nyas_context_feature}		& 0.389 & 0.694 & 0.693 & 0.708 & 0.722 & 0.706	\\	
 		\hline
-		\multirow{3}{*}{B} & 	\acrshort{nyas_local_feature}		& 0.546 & \textbf{0.708} & \textbf{0.754} & 0.714 & \textbf{0.749} & \textbf{0.758} \\
+		\multirow{3}{*}{Proposed} & 	\acrshort{nyas_local_feature}		& 0.546 & \textbf{0.708} & \textbf{0.754} & 0.714 & \textbf{0.749} & \textbf{0.758} \\
 		%\hdashline 	
 		& 	\acrshort{nyas_context_feature}		&0.281 & 0.671 & 0.611 & 0.697 & 0.689 & 0.697\\
 		%\hline	
@@ -633,44 +663,11 @@ In general, we see that the proposed segmentation method improves the performanc
 We described a method for detecting \gls{nyas} segments in melodies of Hindustani music. We divided the task into two broad steps: melody segmentation and segment classification. For melody segmentation we proposed a method which incorporates domain knowledge to facilitate \gls{nyas} boundary annotations. We evaluated three feature sets: local, contextual and the combination of both. We showed that the performance of the proposed method is significantly better compared to a baseline method using standard \gls{dtw} based distance and a \gls{knn} classifier. Furthermore, we showed that the proposed segmentation method outperforms a standard approach based on \gls{pls}. A feature set that includes only the local features was found to perform best. However, we showed that using just the contextual information we could also achieve a reasonable accuracy. This indicates that \gls{nyas} segments have a defined melodic context which can be learned automatically. 
 
 
-\section{Tani Segmentation}
-\label{sec:pre_processing_tani_segmentation}
-
-A concert of Carnatic music typically contains a solo percussion section towards the end of the concert, referred to as \gls{tani} avartanam or \gls{tani} in short. The duration of this section typically varies from 2 to 25\,min depending on the artist and the context. The main percussion instrument in Carnatic music is \gls{mridangam}, which becomes the lead instrument during this section. Along with the \gls{mridangam} there are other percussion instruments often played in \gls{tani} section such as \gls{kanjira} and \gls{ghatam}. Though \gls{mridangam} is a percussion instrument and is basically a kind of a barrel drum, its sound has tonal characteristics. Like the other accompanying instruments in Carnatic music such as \gls{tanpura} and violin, \gls{mridangam} is also tuned at the tonic of the lead artist. Due to the tonal acoustical characteristics of \gls{mridangam} sound, and because of the long duration of \gls{tani} sections, the pitch estimation algorithm detects and tracks pitch contours during the \gls{tani} sections, instead of detecting these sections as non-voiced segments. Notice that the \gls{mridangam} strokes during short (lasting over roughly 1-20 seconds) unvoiced segments such as breath-pauses are correctly detected as non-voiced by the predominant pitch estimation algorithm. This is due to the fact that during such sections the predominant pitch corresponds to the voice, which has significantly higher energy compared to the background percussion signal. 
-
-
-\begin{figure}
-	\begin{center}
-		\ifdefined\PRINTVER
-			\includegraphics[width=\figSizeSeventy]{ch05_preprocessing/figures/taniPatterns_BW.pdf}
-		\else
-			\includegraphics[width=\figSizeSeventy]{ch05_preprocessing/figures/taniPatterns.pdf}
-		\fi
-	\end{center}
-	\caption[Melodic patterns corresponding to the \gls{mridangam} strokes]{Pitch contours of a pair of highly similar melodic patterns corresponding to the \gls{mridangam} strokes in a \gls{tani} section.}
-	\label{fig:pitch_pattern_tani}
-\end{figure}
-
-Detecting pitch corresponding to the \gls{mridangam} strokes as predominant pitch in the audio poses several challenges in melodic analyses, specifically in the discovery of melodic patterns. Percussion patterns and rhythm cycles contain recurring strokes (or patterns), and therefore, pitch fragments from the \gls{tani} section are frequently discovered as highly similar patterns. An example of a discovered pair of pitch patterns that correspond to \gls{mridangam} strokes is shown in~\figref{fig:pitch_pattern_tani}. We see that the patterns are close to exact repetitions. Since we aim to discover patterns in melodies of \gls{iam} (\chapref{chap:melodic_pattern_processing}), patterns discovered from the \gls{tani} sections are undesired. There can be two approaches to avoid such unwanted patterns in the final output: 1) post-process the discovered pitch patterns and detect if they belong correspond to \gls{mridangam} strokes, 2) discard pitch contours corresponding to the \gls{tani} section in the pre-processing step. We follow the second approach and discard segments of the pitch contours that correspond to the \gls{tani} sections from the input given to the pattern discovery method. Discarding such segments upfront has several advantages. First, detection of the \gls{tani} sections in audio recording appears to be an easier task compared to characterizing pitch contours as belonging to the melody or \gls{mridangam} strokes. This is mainly because of the considerable amount of timbral differences across the sections where melody is present and where it is not. In addition, such computational tasks of classifying an audio segment based on its timbral characteristics is well studied in \gls{mir}~\citep{herrera2003automatic}. In~\figref{fig:spectrogram_of_tani_segment}, we show the spectrogram of a voice section and a \gls{tani} section. We see that the timbral characteristics between the two types of sections are considerably different. Another benefit of discarding the \gls{tani} sections upfront is that it reduces the computational complexity of the pattern discovery task (\gls{tani} sections may last up to 2-25\,minutes). %We therefore detect \gls{tani} sections directly in the audio recordings and discard the pitch segments corresponding to these sections in the pre-processing step.
-
-\begin{figure}
-	\begin{center}
-		\includegraphics[width=\figSizeEighty]{ch05_preprocessing/figures/spectrogramTani.png}
-	\end{center}
-	\caption[Illustration of the spectrogram a vocal and a \gls{tani} section]{The spectrogram of a voice (with percussion) and a \gls{tani} section in an audio recording of Carnatic music. The excerpt spans 3\,minutes of audio.}
-	\label{fig:spectrogram_of_tani_segment}
-\end{figure}
-
-We detect \gls{tani} sections in audio recordings using a classification-based approach. To feed the classifiers we extract 13~\acrshort{mfcc} coefficients, spectral centroid, spectral flatness and pitch salience from the audio signal using Essentia~\citep{essentia} library. We iterate over 23, 46 and 92\,ms frame sizes and chose the one that results in the best classification accuracy. We set the hop size as half the frame size and all other parameters to their default values. Next, we compute the means and the variances of these features over 2\,s non-overlapping segments (sometimes referred to as texture window). For training, we use a labeled audio music dataset containing 1.5~hours of mixed voice and violin recordings and 1.5~hours of solo percussion recordings. To assess the performance of the extracted features, we perform a 10-fold cross-validation procedure and repeat the experiment 10 times. We experiment with five different algorithms exploiting diverse classification strategies~\citep{Hastie09BOOK}: decision trees (\acrshort{tree}), \gls{knn}, \gls{nb}, \gls{lr}, and \gls{svm} with a radial basis function kernel. We use the implementations of the classifiers as available in scikit-learn version~0.14.1~\citep{scikitlearn}. We used the default set of parameters with few exceptions to avoid over-fitting and to compensate for the uneven number of instances per class. We set \texttt{min\_} \texttt{samples\_split=10} for \acrshort{tree}, \texttt{fit\_prior=False} for \gls{nb}, \texttt{n\_neighbors=5} for \gls{knn}, and for \gls{lr} and \gls{svm} \texttt{class\_weight=`auto'}. 
-
-The combination of the frame size of 46\,ms and the \gls{svm} classifier yielded the best performance (96\% accuracy), with no statistically significant difference to the performance with the \acrshort{tree} (95.5\%) and the \gls{knn} (95\%), for the same frame size. We finally chose \gls{knn} because of its low complexity. Detection accuracy of the \gls{tani} sections can be improved further by a simple post-processing step. Since \gls{tani} is a single continuous section in an audio recording, class labels of the texture windows predicted by the classifier can be median filtered to remove the spurious labels lasting over a few frames. This ensures continuity of the class labels across texture windows and avoids short non-voiced regions during the vocal sections being classified as \gls{tani} segments. 
-
 \section{Summary}
 \label{sec:preprocessing_summary}
 
-%\XXX{S}{J}{I am finding it difficult to describe the contents of this chapter in a single concept (descriptors or representations). Strictly speaking, referring to nyas segmentation as melodic descriptors is misleading. Its already a higher level analysis. If you have any suggestion to change the way I introduce this chapter or to group these 4 different sections please let me know.}
+In this chapter, we described methods to obtain relevant melodic descriptors and melody representations from audio recordings. We presented algorithms used to extract and post-process the predominant pitch from these recordings. To match the tonal context of melodies across performances, the predominant pitch is normalized by the tonic used in the recordings. We presented an exhaustive evaluation of a number of tonic identification approaches, wherein we analyzed and compared their performance on different music material such as Hindustani and Carnatic music, male and female singers, and for instrumental and vocal music. We showed that our multipitch approach consistently outperformed all the other methods. Subsequently, we explained our methodology for identifying \gls{tani} sections in recordings of Carnatic music. We showed that a classification-based approach that uses timbral features can successfully identify \gls{tani} sections with accuracy. Finally, we described our \gls{nyas}-based approach for segmenting melodies in Hindustani music. We saw that a knowledge driven segmentation approach performs better than a generic method for segmenting time-series data. In addition, we showed that our classification-based approach that uses abstracted melodic features performs better than a string matching based method for labeling \gls{nyas} segments. Furthermore, we demonstrated the utility of the context-based melodic features for \gls{nyas} detection task. 
 
-In this chapter, we described methods to obtain relevant melodic descriptors and melody representations from audio recordings. We presented algorithms used to extract and post-process the predominant pitch from these recordings. To match the tonal context of melodies across performances, the predominant pitch is normalized by the tonic used in the recordings. We presented an exhaustive evaluation of a number of tonic identification approaches, wherein we analyzed and compared their performance on different music material such as Hindustani and Carnatic music, male and female singers, and for instrumental and vocal music. We showed that our multipitch approach consistently outperformed all the other methods. Subsequently, we described our \gls{nyas}-based approach for segmenting melodies in Hindustani music. We saw that a knowledge driven segmentation approach performs better than a generic method for segmenting time-series data. In addition, we showed that our classification-based approach that uses abstracted melodic features performs better than a string matching based method for labeling \gls{nyas} segments. Furthermore, we demonstrated the utility of the context-based melodic features for \gls{nyas} detection task. At the end of the chapter, we explained our methodology for identifying \gls{tani} sections in recordings of Carnatic music. We showed that a classification-based approach that uses timbral features can successfully identify \gls{tani} sections with accuracy.
 
 %\COMMENT{Somehow I am not able to write nicely a summary of this chapter. Please let me know if you clearly see what's missing.}
 %

@@ -117,7 +117,7 @@ As discussed in~\secref{sec:patterns_characterization_of_melodic_patterns} deter
 
 In the next step of our method we group together similar melodic patterns~(\figref{fig:bd_phasebased_raga_recognition}). To do so, we detect non-overlapping communities in the network of melodic patterns using the method proposed by~\cite{blondel2008fast}. This community detection method is based on optimizing the modularity of the network and is parameter-free from the user's point of view. This method is capable of handling very large networks and has been extensively used in various applications~\citep{fortunato2010community}. We use its implementation available in networkX~\citep{hagberg-2008-exploring}, a Python language package for exploration and analysis of networks and network algorithms. Note that, from now on, the melodic patterns grouped within a community are regarded as the occurrences of a single melodic phrase. Thus, a community essentially represents a melodic phrase or motif.
 
-\subsubsection{TFIDF Feature Extraction}
+\subsubsection{\acrshort{tfidf} Feature Extraction}
 \label{sec:vsm_feature_extraction_TFID_computation}
 
 As mentioned above, we draw an analogy between \gls{raga} rendition and textual description of a topic. Using this analogy we represent each audio recording using a vector space model, wherein melodic patterns are considered as words (or terms). This process is divided into three blocks (Figure~\ref{fig:bd_phasebased_raga_recognition}).
