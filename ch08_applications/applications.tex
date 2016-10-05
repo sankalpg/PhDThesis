@@ -165,7 +165,7 @@ In~\chapref{chap:raga_recognition}, we described our computational approaches fo
 
 \gls{ragawise} is a real-time \gls{raga} recognition prototype system~\citep{ragawise}. It uses \gls{pcp}, pitch transitions and melodic patterns to recognize \gls{raga} from an incoming audio stream. For each \gls{raga} it stores a dictionary of the \glspl{svara}, \gls{svara} transitions, and typical melodic patterns. It processes the input vocals in real-time to estimate pitch, and subsequently performs melody transcription. The likelihood of each \gls{raga} is updated in real-time based on the identified of \gls{raga} elements in the melody. In order to highlight the melodic events that are characteristic of a \gls{raga}, a dynamic visualization of the evolution of the likelihood of all the \glspl{raga} is performed. We present a screenshot of \gls{ragawise} in~\figref{fig:ragawise}, where different panels are marked by blue arrows. In the top panel (arrow~1) we display the transcribed melody symbols (\glspl{svara} in this case) using the pitch track obtained in real-time (arrow~2). We continuously process the transcribed melody to detect the presence of different melodic elements, and once detected, we highlight the associated \glspl{raga} (arrow~3,4,5). We also compute a cumulative salience score of each \gls{raga} based on the frequency of the detected melodic elements (arrow~6).
 
-Note that, building \gls{ragawise} was a team effort done as a part of the hackday, HAMR, in ISMIR-2015. It is done in collaboration with Kaustuv Kanti Ganguli, Swapnil Gupta and Ajay Srinivasamurthy. 
+Note that, building \gls{ragawise} was a team effort done as a part of the Hackday, HAMR, in ISMIR-2015. It is done in collaboration with Kaustuv Kanti Ganguli, Swapnil Gupta and Ajay Srinivasamurthy. 
 
 \begin{sidewaysfigure}
 	\begin{center}
@@ -186,7 +186,7 @@ As mentioned, \gls{iam} is primarily an improvisatory music tradition, wherein c
 	\begin{center}
 		\includegraphics[width=\figSizeSeventy]{ch08_applications/figures/Fig-5.png}
 	\end{center}
-	\caption{Temporal evolution of long-term averaged melody contours for 37 performances. The length of the performances are normalized.}
+	\caption[Trajectories of the highest salience bin in a long-time averaged pitch histogram computed across breath-phrases]{Trajectories of the highest salience bin in a long-time averaged pitch histogram computed across breath-phrases for 37 performances. The length of the performances are normalized.}
 	\label{fig:temporal_evolution}
 \end{figure}
 

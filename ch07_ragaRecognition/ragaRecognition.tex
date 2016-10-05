@@ -358,7 +358,7 @@ An example of the generated surface $\tdmsBase$ for a music piece\footnote{\url{
 	\begin{center}
 		\includegraphics[width=\figSizeHundred]{ch07_ragaRecognition/figures/PSfeature_e59642ca-72bc-466b-bf4b-d82bfbc7b4af.pdf}
 	\end{center}
-	\caption[\Acrfull{tdms} before and after post-processing]{Generated surface for a music piece before (a) and after (b) applying post-processing ($\tdmsBase$ and $\tdmsSmooth$, respectively). For ease of visualization, both matrices are normalized here between 0 and 1.}
+	\caption[\acrshort{tdms} before and after post-processing]{Generated surface for a music piece before (a) and after (b) applying post-processing ($\tdmsBase$ and $\tdmsSmooth$, respectively). For ease of visualization, both matrices are normalized here between 0 and 1.}
 	\label{fig:phase_space_surface}
 \end{figure}
 
@@ -445,7 +445,7 @@ In the case of \acrshort{ragarecTDMS}, a test recording is assigned the majority
 \subsection{Results and Discussion}
 \label{sec:tdms_results_and_discussion}
 
-In Table~\ref{tab:main_results_tdms}, we show the results for all the variants of the proposed method \acrshort{ragarecTDMS_F}, \acrshort{ragarecTDMS_KL} and \acrshort{ragarecTDMS_B}, and for \acrshort{sotaChordia} and \acrshort{ragarecVSM}, using \acrshort{rrds_hmd_big} and \acrshort{rrds_cmd_big} datasets. We see that the highest accuracy obtained on \acrshort{rrds_hmd_big} is 97.7\% by \acrshort{ragarecTDMS_KL} and \acrshort{ragarecTDMS_B}. This accuracy is considerably higher than the 91.7\% obtained by \acrshort{sotaChordia}, and the difference is found to be statistically significant. We also see that \acrshort{sotaChordia} performs significantly better than \acrshort{ragarecVSM}. Regarding the proposed variants, we see that, in \acrshort{rrds_hmd_big}, \acrshort{ragarecTDMS_KL} and \acrshort{ragarecTDMS_B} perform better than \acrshort{ragarecTDMS_F}, with a statistically significant difference. 
+In Table~\ref{tab:main_results_tdms}, we show the results for all the variants of the proposed method \acrshort{ragarecTDMS_F}, \acrshort{ragarecTDMS_KL} and \acrshort{ragarecTDMS_B}, and for \acrshort{sotaChordia} and \acrshort{ragarecVSM}, using \acrshort{rrds_hmd_big} and \acrshort{rrds_cmd_big} datasets. We see that the highest accuracy obtained on \acrshort{rrds_hmd_big} is 97.7\% by \acrshort{ragarecTDMS_KL} and \acrshort{ragarecTDMS_B}. This accuracy is considerably higher than the 91.7\% obtained by \acrshort{sotaChordia}, and the difference is found to be statistically significant. We also see that \acrshort{sotaChordia} performs significantly better than \acrshort{ragarecVSM}. Regarding the proposed variants, we see that, in \acrshort{rrds_hmd_big}, \acrshort{ragarecTDMS_KL} and \acrshort{ragarecTDMS_B} perform better than \acrshort{ragarecTDMS_F}, with a statistically significant difference.TODO{Compare it with all three baselines, and say the comparison within the baselines is done in details in Section XX} 
 
 \begin{table}
 	\ra{1.3}
@@ -476,7 +476,7 @@ As mentioned earlier, the system parameters corresponding to the results in Tabl
 	\begin{center}
 		\includegraphics[width=\figSizeHundred]{ch07_ragaRecognition/figures/AccuracyVsParameters_tdms.pdf}
 	\end{center}
-	\caption[Accuracy of \acrshort{ragarecTDMS_KL} as a function of different parameter values]{Accuracy of \acrshort{ragarecTDMS_KL} as a function of parameter values. Other methods \acrshort{sotaChordia} and \acrshort{ragarecVSM}, and random baseline $\mathfrak{B}_\mathrm{r}$ are also reported for comparison.} 
+	\caption[Accuracy of \acrshort{ragarecTDMS_KL} as a function of different parameter values]{Accuracy of \acrshort{ragarecTDMS_KL} as a function of parameter values. Other methods \acrshort{sotaChordia} and \acrshort{ragarecVSM}, and random baseline $\mathfrak{B}_\mathrm{r}$ are also reported for comparison.\TODO{Change Legends}} 
 	\label{fig:accuracy_vs_parameter_values_tdms}
 \end{figure}
 
@@ -488,7 +488,7 @@ Overall, the method appears to be invariant to different parameter values to a l
 	\begin{center}
 		\includegraphics[width=\figSizeNinety]{ch07_ragaRecognition/figures/CM_tdms_cmd_var1.pdf}
 	\end{center}
-	\caption[Confusion matrix of classification results by \acrshort{ragarecTDMS_KL} on \acrshort{rrds_cmd_big}]{Confusion matrix of the predicted \gls{raga} labels obtained by \acrshort{ragarecTDMS_KL} on \acrshort{rrds_cmd_big}. Shades of grey are mapped to the number of audio recordings.} 
+	\caption[Confusion matrix of the classification results by \acrshort{ragarecTDMS_KL} on \acrshort{rrds_cmd_big}]{Confusion matrix of the predicted \gls{raga} labels obtained by \acrshort{ragarecTDMS_KL} on \acrshort{rrds_cmd_big}. Shades of grey are mapped to the number of audio recordings.} 
 	\label{confusion_mtx_carnatic_tdms}
 \end{figure}
 
@@ -527,7 +527,7 @@ For this experiment we consider \acrshort{ragarecTDMS_KL} method, which as shown
 		\caption{For subsets of \acrshort{rrds_hmd_big} dataset}
 		\label{fig:performance_vs_n_raagas_hmd}
 	\end{subfigure}
-	\caption[Accuracy of \acrshort{ragarecVSM} as a function number of \glspl{raga} in a subset of \acrshort{rrds_cmd_big} and \acrshort{rrds_hmd_big}]{Accuracy of \acrshort{ragarecVSM} as a function number of \glspl{raga} in a subset of \acrshort{rrds_cmd_big} and \acrshort{rrds_hmd_big}, respectively. For every case 50 randomly sampled selections of \glspl{raga} are done from the original datasets.}
+	\caption[Accuracy of \acrshort{ragarecVSM} as a function of number of \glspl{raga} in a subset of \acrshort{rrds_cmd_big} and \acrshort{rrds_hmd_big}]{Accuracy of \acrshort{ragarecVSM} as a function number of \glspl{raga} in a subset of \acrshort{rrds_cmd_big} and \acrshort{rrds_hmd_big}, respectively. For every case 50 randomly sampled selections of \glspl{raga} are done from the original datasets.}
 	\label{fig:performance_vs_n_raagas}
 \end{figure}
 

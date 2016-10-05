@@ -706,7 +706,7 @@ Note that we have not described the initialization procedure of the cost matrix 
 
 In addition to the step size condition, another variants of the \gls{dtw} impose different kinds of constraints on the warping path. Such constraints are not only advantageous in terms of the computational complexity, but they also prevent pathological alignment problems. Two very well known global path constraints are the Sakoe-Chiba band~\citep{Sakoe78TASLP} and the Itakura parallelogram~\citep{itakura1975minimum}. In the subsequent chapters we use Sakoe-Chiba band constraint. More information about different variants of \gls{dtw} can be obtained from~\citep{rabiner1993fundamentals,muller2007dynamic}.
 
-\subsection{Lower-bounds for DTW distance}
+\subsection{Lower-bounds for \acrshort{dtw} distance}
 \label{sec:background_lowerbound}
 
 Time and space complexity of the classical \gls{dtw} variant is $\mathcal{O}(N\,M)$ for the two sequences $X$ and $Y$ considered above. Thus, a similarity search under \gls{dtw} is very demanding in terms of CPU time. As described in~\cite{Keogh2004} one of the ways to address this problem is to use efficient lower-bounds on the \gls{dtw} distance. Lower bounding functions felicitate in pruning the sequences candidates that could not possibly be the best matches. To understand it further we present a pseudo-code of a sequential scan search for query $Q$ in~\algoref{alg:sequential_scan_lower_bound}. Different possible subsequence candidates that can be possible matches are represented by $C_i$.% for $0 \leq i \leq N$.
