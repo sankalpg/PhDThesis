@@ -200,6 +200,14 @@ pdfkeywords=Melody~Motifs~Patterns~Raga~Phrases~Indian~art~music~Hindustani~Carn
 %\checkandfixthelayout
 %\fi
 
+
+\setstocksize{250mm}{176mm}  % The size of the stock paper (support), A4
+\settrimmedsize{\stockheight}{\stockwidth}{*} % B5, the size of the final copy, cut from the stock paper.
+\setlength{\trimtop}{0mm}   % Top margin: top_stock - top_page
+\setlength{\trimedge}{0mm}  % Outer later margin: lat_stock - lat_page
+\showtrimsoff
+\checkandfixthelayout
+
 % arreglar que floats al final de capitol no es centrin verticalment
 %\makeatletter% Set distance from top of page to first float
 %\setlength{\@fptop}{5pt}
