@@ -302,3 +302,10 @@ description={},
 type=ragaCMD
 }
 
+\newglossaryentry{darbar}
+{
+name={Darb\={a}r},
+description={},
+sort=darbar,
+type=ragaCMD
+}

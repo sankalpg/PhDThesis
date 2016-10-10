@@ -989,61 +989,60 @@ Note that it might be possible that a music collection contains multiple recordi
 
 The music collection used in this study is a subset of the CompMusic Carnatic music corpus (\secref{sec:corpus_carnatic_music_corpus}). The collection comprises 44 hours of polyphonic audio music recordings of Carnatic music across 10 different \glspl{raga}. For each \gls{raga} we select 16 music pieces, which amounts to a total of 160 recordings. There are 139 vocal music recordings and 21 instrumental recordings comprising violin, \gls{vina} and bamboo flute. In~\tabref{tab:dataset_details_pattern_characterization}, we summarize the relevant details of the dataset. We see that it is diverse in terms of the number of unique compositions and number of lead artists. Furthermore, it includes different forms of compositions (\gls{kirtana}, varnam and viruttam) and recordings containing varied improvised sections such as \gls{alapna}, nereval and kalpan\={a}-\glspl{svara}. %The \glspl{raga} selected here are amongst the most frequently performed \glspl{raga} in the CompMusic Carnatic music corpus, which in turn is representative of the Carnatic music repertoire~\cite{CM_Corpora_Ajay14}. 
 The chosen \glspl{raga} contain diverse set of \glspl{svara} (notes) both in terms of the number of \glspl{svara} and their pitch classes (svarasth\={a}n\={a}s). From~\tabref{tab:dataset_details_pattern_characterization}, 
-we also notice that several \glspl{raga} such as Kaly\={a}\d{n}i, K\={a}mb\={o}ji and B\={e}gada have a large fraction of \glspl{svara} in common. We refer to them as allied \glspl{raga} (\secref{sec:melody_in_iam}). This further increases the complexity of the task at hand, since the discrimination between the phrases of allied \glspl{raga} may be based on subtle melodic nuances.
+we also notice that several \glspl{raga} such as \gls{kalyani}, \gls{kambhoji} and \gls{begada} have a large fraction of \glspl{svara} in common. We refer to them as allied \glspl{raga} (\secref{sec:melody_in_iam}). This further increases the complexity of the task at hand, since the discrimination between the phrases of allied \glspl{raga} may be based on subtle melodic nuances.
 
 \begin{table} 
 	%\tabcolsep = 0.1cm
 	\centering
 	\begin{tabular}{ l  | c c c c}
 \tabletop
-		\Gls{raga}   		& 	Dur 	&	\#Com		&	\#Art	&	\Glspl{svara}\\	
+		\Gls{raga}   		& 	Dur 	&	\#Com		&	\#Art\\	
 \tablemid
-		Hamsadhvani 		& 	2.46 		&	12			&	14		&	$s\,r_2\,g_3\,p\,n_3$\\
-		K\={a}mavardhini 	& 	3.94 		&	13			&	16		&	$s\,r_1\,g_3\,m_2\,p\,d_1\,n_3$\\		
-		Darb\={a}r   		& 	2.59 		&	8			&	13		&	$s\,r_2\,g_2\,m_1\,p\,d_2\,n_2$\\	
-		Kaly\={a}\d{n}i   	& 	6.94 		&	9			&	16		&	$s\,r_2\,g_3\,m_2\,p\,d_2\,n_3$\\	
-		K\={a}mb\={o}ji   	& 	6.91 		&	12			&	13		&	$s\,r_2\,g_3\,m_1\,p\,d_2\,n_2\,n_3$\\	
-		B\={e}ga\d{d}a   	& 	3.41 		&	9			&	16		&	$s\,r_2\,g_3\,m_1\,p\,d_2\,n_2\,n_3$\\	
-		K\={a}pi   			& 	2.24 		&	12			&	16		&	$s\,r_2\,g_2\,g_3\,m_1\,p\,d_2\,n_2\,n_3$\\	
-		Bhairavi   			& 	5.33 		&	7			&	16		&	$s\,r_2\,g_2\,m_1\,p\,d_2\,d_3\,n_2$\\	
-		Beh\={a}g   		& 	1.51 		&	12			&	16		&	$s\,r_2\,g_3\,m_1\,m_2\,p\,d_2\,n_2\,n_3$\\	
-		
-		T\={o}\d{d}i   		& 	8.75 		&	12			&	16		&	$s\,r_1\,g_2\,m_1\,p\,d_1\,n_2$\\	
+		\gls{hamsadhvani} 		& 	2.46 		&	12			&	14\\
+		\gls{kamavardani} 	& 	3.94 		&	13			&	16\\		
+		\gls{darbar}   		& 	2.59 		&	8			&	13\\	
+		\gls{kalyani}   	& 	6.94 		&	9			&	16\\	
+		\gls{kambhoji}   	& 	6.91 		&	12			&	13\\	
+		\gls{begada}   	& 	3.41 		&	9			&	16\\	
+		\gls{kapi}   			& 	2.24 		&	12			&	16\\	
+		\gls{bhairavi}   			& 	5.33 		&	7			&	16\\	
+		\gls{behag}   		& 	1.51 		&	12			&	16\\	
+		\gls{todi}   		& 	8.75 		&	12			&	16\\	
 \tablebot
-		Total 	& 	44.08 		&	106			&	57		&	-\\	
+		Total 	& 	44.08 		&	106			&	57\\	
 \tablebot
 	\end{tabular}
-	\caption[Details of the dataset used for studying pattern characterization]{Details of the dataset in terms of the duration (Dur) in hours, number of unique compositions (\#Com), unique lead artists (\#Art), and the \glspl{svara} for each \gls{raga}. Here $s,r,$ $g,m,p,d,n$ denote the seven \glspl{svara} in \gls{iam} and the subscript indicates the variant of the \gls{svara} for a particular \gls{raga} (cf.~\citep{Viswanathan2004}).\TODO{Remove svaras and say its explained in Table XX.}}
+	\caption[Details of the dataset used for studying pattern characterization]{Details of the dataset in terms of the duration (Dur) in hours, number of unique compositions (\#Com) and unique lead artists (\#Art) for each \gls{raga}. \Glspl{svara} constituting these \glspl{raga} are listed in~\tabref{tab:raga_svaras_cmd}.}
 	\label{tab:dataset_details_pattern_characterization}
 \end{table}
 
 \subsubsection{Setup and Evaluation Measures}
 \label{sec:patterns_characterization_experimental_setup}
 
-Given the unsupervised nature of this study, we perform a listening test to formally evaluate the extent to which the selected melodic phrases correspond to \gls{raga} motifs. For each of the 10 \glspl{raga} in the dataset, we select the top 10 communities based on the goodness measure $\goodnessComm$ (\eqnref{eq:gamma_pattern_characterization}). From each of these communities, we select their representative melodic phrase based on the betweenness centrality of the nodes~\citep{newman2003structure}, i.e.,~the node with the highest betweenness centrality is considered as the representative melodic phrase of that community. In case of a tie, we select the one with the highest node degree~\citep{newman2003structure}. Finally, we arrive at a set of 100 melodic phrases, which are then used to perform the listening test. These audio examples are also made available online (see the companion page of the corresponding study in~\appref{app:mypapers}).
+Given the unsupervised nature of this study, we perform a listening test to formally evaluate the extent to which the selected melodic patterns correspond to \gls{raga} motifs. For each of the 10 \glspl{raga} in the dataset, we select the top 10 communities based on the goodness measure $\goodnessComm$ (\eqnref{eq:gamma_pattern_characterization}). From each of these communities, we select their representative melodic pattern based on the betweenness centrality of the nodes~\citep{newman2003structure}, i.e.,~the node with the highest betweenness centrality is considered as the representative melodic pattern of that community. In case of a tie, we select the one with the highest node degree~\citep{newman2003structure}. Finally, we arrive at a set of 100 melodic patterns, which are then used to perform the listening test. These audio examples are also made available online (see the companion page of the corresponding study in~\appref{app:mypapers}).
 
-For the listening test we select 10 professional Carnatic musicians with over 15 years of formal music training. Each musician is presented with the audio fragments corresponding to the selected melodic phrases in a random order. They are also presented with the \glspl{raga} corresponding to the melodic phrases. The musicians are asked to rate each melodic phrase based on whether it is a characteristic phrase of that \gls{raga}. We use binary ratings (`Yes' or `No'). 
+For the listening test we select 10 professional Carnatic musicians with over 15 years of formal music training. Each musician is presented with the audio fragments corresponding to the selected melodic patterns in a random order. They are also presented with the \glspl{raga} corresponding to the melodic patterns. The musicians are asked to rate each melodic pattern based on whether it is a characteristic phrase of that \gls{raga}. We use binary ratings (`Yes' or `No'). 
 
-The audio fragments were segmented with a one second buffer on either side of the phrase to offer some context and reduce the effect of abrupt boundaries. % Thus, a 4\,s audio fragment was presented to the musicians.  
-In order to quantify the musicians' assessment, we use mean ratings for each phrase $\pattern$, $\mu_\pattern$, considering `Yes' as 1 and `No' as 0. For analyzing the ratings per \gls{raga}, we study the mean and standard deviation of all $\mu_\pattern$ for phrases in every \gls{raga}, which we denote by $\mu_\recording$ and $\sigma_\recording$, respectively.
+The audio fragments were segmented with a one second buffer on either side of the pattern to offer some context and reduce the effect of abrupt boundaries. % Thus, a 4\,s audio fragment was presented to the musicians.  
+In order to quantify the musicians' assessment, we use mean ratings for each pattern $\pattern$, $\mu_\pattern$, considering `Yes' as 1 and `No' as 0. For analyzing the ratings per \gls{raga}, we study the mean and standard deviation of all $\mu_\pattern$ for patterns in every \gls{raga}, which we denote by $\mu_\recording$ and $\sigma_\recording$, respectively.
 
 
 \subsection{Results and Discussion}
 \label{sec:patterns_characterization_results_and_discussion}
 
-We first analyse the musicians' ratings at the level of melodic phrases. In~\figref{fig:average_rating_pattern_characterization}, we show $\mu_\pattern$ for the 100 selected melodic phrases, where the grouping is based on their corresponding \glspl{raga}. We find that the mean and the standard deviation of $\mu_\pattern$ for the melodic phrases is 0.85 and 0.16, respectively. For a better understanding of $\mu_\pattern$ across phrases and the overall musicians' agreement, we show the histogram of $\mu_\pattern$ in~\figref{fig:average_rating_histogram_pattern_characterization}. We see that 33 melodic phrases are rated as \gls{raga} motifs by all 10 musicians and 25 phrases are rated as \gls{raga} motifs by 9 out of 10 musicians. Similarly, the musicians' agreement can be inferred for the rest of the phrases from this histogram. We observe that 91\% of the phrases are always marked as \gls{raga} motifs by at least 7 out of 10 musicians. 
+We first analyse the musicians' ratings at the level of melodic patterns. In~\figref{fig:average_rating_pattern_characterization}, we show $\mu_\pattern$ for the 100 selected melodic patterns, where the grouping is based on their corresponding \glspl{raga}. We find that the mean and the standard deviation of $\mu_\pattern$ for the melodic patterns is 0.85 and 0.16, respectively. For a better understanding of $\mu_\pattern$ across patterns and the overall musicians' agreement, we show the histogram of $\mu_\pattern$ in~\figref{fig:average_rating_histogram_pattern_characterization}. We see that 33 melodic patterns are rated as \gls{raga} motifs by all 10 musicians and 25 patterns are rated as \gls{raga} motifs by 9 out of 10 musicians. Similarly, the musicians' agreement can be inferred for the rest of the patterns from this histogram. We observe that 91\% of the patterns are always marked as \gls{raga} motifs by at least 7 out of 10 musicians. 
 
 
 \begin{figure}
 	\begin{center}
 		\includegraphics[width=\figSizeEighty]{ch06_patterns/figures/Characterization/per_raaga_per_phrase_rating.pdf}
 	\end{center}
-	\caption[Mean musician ratings for the discovered melodic phrases]{Mean musician rating per melodic phrase for each \gls{raga}: K\={a}pi\,(Kp), Hamsadhvani\,(Hd), K\={a}mavardhini\,(Kv), Bhairavi\,(Bh), Beh\={a}g\,(Bg), T\={o}\d{d}i\,(Td), B\={e}ga\d{d}\={a}\,(Bd), Kaly\={a}\d{n}\={i}\,(Kl), Darb\={a}r\,(Db), K\={a}mb\={o}ji\,(Kb).}
+	\caption[Mean musician ratings for the discovered melodic patterns]{Mean musician rating per melodic pattern for each \gls{raga}: \gls{kapi}\,(Kp), \gls{hamsadhvani}\,(Hd), \gls{kamavardani}\,(Kv), \gls{bhairavi}\,(Bh), \gls{behag}\,(Bg), \gls{todi}\,(Td), \gls{begada}\,(Bd), \gls{kalyani}\,(Kl), \gls{darbar}\,(Db), \gls{kambhoji}\,(Kb).}
 	\label{fig:average_rating_pattern_characterization}
 \end{figure}
 
 
-We now proceed to analyse the results for different \glspl{raga}. In~\tabref{tab:results_per_raaga_pattern_characterization}, we summarize mean $\mu_\recording$ and standard deviation $\sigma_\recording$ of $\mu_\pattern$ for each \gls{raga}. We observe that there is a considerable amount of variation in $\mu_\recording$ across the \glspl{raga}. It ranges from 0.75 for \gls{raga} K\={a}pi to 0.92 in the case of \gls{raga} T\={o}\d{d}i. An interesting observation here is that the phrase-based \glspl{raga}\footnote{\Glspl{raga} whose identity is primarily derived based on phraseology than the \glspl{svara}~\citep{krishna2012carnatic}} are the top performing \glspl{raga} with the exception of \gls{raga} Darb\={a}r. From~\tabref{tab:results_per_raaga_pattern_characterization} and \tabref{tab:dataset_details_pattern_characterization}, we notice a strong correlation between $\mu_\recording$ and the total duration of the audio recordings across \glspl{raga}. This suggests that longer music pieces are likely to facilitate the discovery of \gls{raga} motifs owing to more number of occurrences of such melodic phrases.
+We now proceed to analyse the results for different \glspl{raga}. In~\tabref{tab:results_per_raaga_pattern_characterization}, we summarize mean $\mu_\recording$ and standard deviation $\sigma_\recording$ of $\mu_\pattern$ for each \gls{raga}. We observe that there is a considerable amount of variation in $\mu_\recording$ across the \glspl{raga}. It ranges from 0.75 for \gls{raga} \gls{kapi} to 0.92 in the case of \gls{raga} \gls{todi}. An interesting observation here is that the phrase-based \glspl{raga}\footnote{\Glspl{raga} whose identity is primarily derived based on phraseology than the \glspl{svara}~\citep{krishna2012carnatic}} are the top performing \glspl{raga} with the exception of \gls{raga} \gls{darbar}. From~\tabref{tab:results_per_raaga_pattern_characterization} and \tabref{tab:dataset_details_pattern_characterization}, we notice a strong correlation between $\mu_\recording$ and the total duration of the audio recordings across \glspl{raga}. This suggests that longer music pieces are likely to facilitate the discovery of \gls{raga} motifs owing to more number of occurrences of such melodic patterns.
 
 \begin{table} 
 	%\tabcolsep = 0.1cm
@@ -1052,16 +1051,16 @@ We now proceed to analyse the results for different \glspl{raga}. In~\tabref{tab
 		\hline\hline
 		\multicolumn{1}{ l|  }{\Gls{raga}}   			& 	$\mu_\recording$ 	&	$\sigma_\recording$	& \Gls{raga}   			& 	$\mu_\recording$ 	&	$\sigma_\recording$\\	
 		\hline
-		\multicolumn{1}{ l|  }{Hamsadhvani} 			& 	0.84 		&	0.23 & {\bf B\={e}ga\d{d}a}   	& 	0.88 		&	0.11	\\
-		\multicolumn{1}{ l|  }{K\={a}mavardhini} 	& 	0.78 		&	0.17 & K\={a}pi   			& 	0.75 		&	0.10\\	
-		\multicolumn{1}{ l|  }{Darb\={a}r}   		& 	0.81 		&	0.23 & {\bf Bhairavi}   			& 	0.91 		&	0.15\\	
-		\multicolumn{1}{ l|  }{\bf Kaly\={a}\d{n}i}  & 	0.90 		&	0.10 & Beh\={a}g   		& 	0.84 		&	0.16\\	
-		\multicolumn{1}{ l|  }{\bf K\={a}mb\={o}ji}   	& 	0.87 	&	0.12 & {\bf T\={o}\d{d}i}   		& 	0.92 		&	0.07\\	
+		\multicolumn{1}{ l|  }{\gls{hamsadhvani}} 			& 	0.84 		&	0.23 & {\bf \gls{begada}}   	& 	0.88 		&	0.11	\\
+		\multicolumn{1}{ l|  }{\gls{kamavardani}} 	& 	0.78 		&	0.17 & \gls{kapi}   			& 	0.75 		&	0.10\\	
+		\multicolumn{1}{ l|  }{\gls{darbar}}   		& 	0.81 		&	0.23 & {\bf \gls{bhairavi}}   			& 	0.91 		&	0.15\\	
+		\multicolumn{1}{ l|  }{\bf \gls{kalyani}}  & 	0.90 		&	0.10 & \gls{behag}   		& 	0.84 		&	0.16\\	
+		\multicolumn{1}{ l|  }{\bf \gls{kambhoji}}   	& 	0.87 	&	0.12 & {\bf \gls{todi}}   		& 	0.92 		&	0.07\\	
 		\hline\hline
 		%   			& 				& 		& 	Overall&0.85 		&	0.16\\ \cline{4-6}\cline{4-6}
 		%\hline\hline 
 	\end{tabular}
-	\caption[Mean and standard deviation of $\mu_\pattern$ for each \gls{raga}]{Mean ($\mu_\recording$) and standard deviation ($\sigma_\recording$) of $\mu_\pattern$ for each \gls{raga}. R\={a}gas with $\mu_\recording \geq 0.85$ are highlighted. }
+	\caption[Mean and standard deviation of $\mu_\pattern$ for each \gls{raga}]{Mean ($\mu_\recording$) and standard deviation ($\sigma_\recording$) of $\mu_\pattern$ for each \gls{raga}. \Glspl{raga} with $\mu_\recording \geq 0.85$ are highlighted. }
 	\label{tab:results_per_raaga_pattern_characterization}
 \end{table}
 \begin{figure}
@@ -1072,28 +1071,23 @@ We now proceed to analyse the results for different \glspl{raga}. In~\tabref{tab
 			\includegraphics[width=\figSizeSeventy]{ch06_patterns/figures/Characterization/histogram_musician_rating.pdf}
 		\fi
 	\end{center}
-	\caption[Histogram of mean musician ratings for all of the 100 melodic phrases]{Histogram of $\mu_\pattern$ for all of the 100 melodic phrases selected for the listening test.}
+	\caption[Histogram of mean musician ratings for all of the 100 melodic patterns]{Histogram of $\mu_\pattern$ for all of the 100 melodic patterns selected for the listening test.}
 	\label{fig:average_rating_histogram_pattern_characterization}
 \end{figure}
 
 
 
-We examine the melodic phrases with low scores. An investigation of 9 out of 100 phrases that obtain $\mu_\pattern\leq0.6$ reveals that many of these phrases are composition-specific phrases that do not characterize the \gls{raga}. The method wrongly identifies them as \gls{raga} motifs because their associated communities have a high $\goodnessComm$ score owing to a high $\recDistCentroid$ value. This can be attributed to the fact that these phrases are discovered from multiple recordings, since their corresponding compositions have several recordings in the dataset. As described in~\secref{sec:patterns_characterization_community_detection}, in such a scenario, the goodness measure $\goodnessComm$ can be made more robust to such cases by computing $\recDistCentroid$ using the distribution of nodes ${{\nodesCommRec}_q}$ over unique compositions rather than over audio recordings.
+We examine the melodic patterns with low scores. An investigation of 9 out of 100 patterns that obtain $\mu_\pattern\leq0.6$ reveals that many of these patterns correspond to the composition-specific phrases that do not characterize the \gls{raga}. The method wrongly identifies them as \gls{raga} motifs because their associated communities have a high $\goodnessComm$ score owing to a high $\recDistCentroid$ value. This can be attributed to the fact that these patterns are discovered from multiple recordings, since their corresponding compositions have several recordings in the dataset. As described in~\secref{sec:patterns_characterization_community_detection}, in such a scenario, the goodness measure $\goodnessComm$ can be made more robust to such cases by computing $\recDistCentroid$ using the distribution of nodes ${{\nodesCommRec}_q}$ over unique compositions rather than over audio recordings.
 
-The results show that the proposed method successfully discovers \gls{raga} motifs with a high accuracy. We see that, even for the allied \glspl{raga} present in the dataset such as K\={a}mb\={o}ji and B\={e}gada (\secref{sec:patterns_characterization_music_collection}), the method is able to discover distinct characteristic \gls{raga} motifs. As mentioned, allied \glspl{raga} are challenging because they have a substantial overlap in the set of \glspl{svara} that they comprise (see also~\tabref{tab:dataset_details_pattern_characterization}). Finally, on a more informal side, it is worth mentioning that musicians were impressed when, after the listening test, they came to know that the melodic phrases were discovered by a machine following an unsupervised approach. 
-
-
-
-
+The results show that the proposed method successfully discovers \gls{raga} motifs with a high accuracy. We see that, even for the allied \glspl{raga} present in the dataset such as \gls{kambhoji} and \gls{begada} (\secref{sec:patterns_characterization_music_collection}), the method is able to discover distinct characteristic \gls{raga} motifs. As mentioned, allied \glspl{raga} are challenging because they have a substantial overlap in the set of \glspl{svara} that they comprise (see also~\tabref{tab:dataset_details_pattern_characterization}). Finally, on a more informal side, it is worth mentioning that musicians were impressed when, after the listening test, they came to know that the melodic patterns were discovered by a machine following an unsupervised approach. 
 
 We consider this work as a preliminary study with a lot of scope for improvements. In particular, the approach can be extended to identify patterns belonging to other categories (\gls{gamaka} or composition-specific patterns), definition of the goodness measure $\goodnessComm$ can be improved as suggested in~\secref{sec:patterns_characterization_results_and_discussion}, listening test could be done more rigorously by including negative examples (\gls{gamaka} patterns), and the resultant patterns of the approach can be quantitatively evaluated by using them in tasks such as composition identification. On these lines, in~\secref{sec:pattern_based_raga_recognition} we present an approach that uses clustered melodic patterns to perform the task of automatic \gls{raga} recognition. That way, in addition to the qualitative assessment as done in this work, we can also quantitatively assess the musical relevance of the extracted and characterized melodic patterns.
-
 
 
 \section{Summary and Conclusions}
 \label{sec:conclusions_patterns}
 
-In this chapter we presented our methodology for discovering musically significant melodic patterns in sizable audio music collections of \gls{iam}. Our methods utilize the melodic representations and descriptors obtained in~\chapref{chap:data_preprocessing}, and combine concepts from music signal processing, time-series analysis, information retrieval, and complex networks to successfully extract musically meaningful melodic patterns in audio collections. We studied three main tasks involved in this process: melodic similarity, pattern discovery, and characterization of the discovered melodic patterns. 
+In this chapter, we presented our methodology for discovering musically significant melodic patterns in sizable audio music collections of \gls{iam}. Our methods utilize the melodic representations and descriptors obtained in~\chapref{chap:data_preprocessing}, and combine concepts from music signal processing, time-series analysis, information retrieval, and complex networks to successfully extract musically meaningful melodic patterns in audio collections. We studied three main tasks involved in this process: melodic similarity, pattern discovery, and characterization of the discovered melodic patterns. 
 
 We first carried out an in-depth supervised analysis of melodic similarity, which is a crucial component in pattern discovery. We evaluated 560 different combinations of various computational procedures and parameters values that are often used for this task. We showed that melodic similarity computation is very sensitive to the choice of parameters and processing steps. A higher sampling rate of the melody representation and mean normalization is desired for computing a reliable melodic similarity in Carnatic music. For Hindustani music, on the other hand, sampling rate (within the considered range) has no significant affect on the performance and tonic normalization of the melody results in a better performance. In general, \gls{dtw}-based distance measure performs better than the Euclidean distance, and the usage of local constraint in \gls{dtw} enhances the performance. The \gls{dtw} variant without any global constraint is preferred (specially for Hindustani music), which suggests that there are large non-linear timing variations across occurrences of the melodic pattern. We observed that an accurate segmentation of the melodic patterns has a huge positive impact on the computation of melodic similarity. The best methodology variant thus identified for melodic similarity is further improved by addressing two specific challenges that arise due to large non-linear timing variations and rapid melodic movements in melodic patterns. The solution we proposed exploits specific melodic characteristics that are particular to \gls{iam}. We showed that duration truncation of the steady \gls{svara} regions in melodic phrases results in a statistically significant improvement in the computation of melodic similarity. Furthermore, we showed that the complexity of a melodic pattern in Carnatic music is a distinguishing aspect of the pattern, and can be successfully utilized to improve melodic similarity.
 
@@ -1101,7 +1095,7 @@ Subsequently, we presented our data-driven unsupervised approach for discovering
 
 The output of the pattern discovery method contains different types of repeating patterns. We presented an approach to identify musically significant patterns, the \gls{raga} motifs, and specifically, to distinguish them from \gls{gamaka} and composition-specific patterns (\secref{sec:melody_in_iam}). We employed a network analysis and use a non-overlapping community detection algorithm to cluster melodic patterns. Using the topological properties of the network, we determined a musically meaningful similarity threshold. We devised a goodness measure for characterizing the detected communities. In a listening test with 10 professional Carnatic musicians we showed that the proposed method successfully discovers \gls{raga} motifs with accuracy, even in the presence of allied \glspl{raga} in the dataset. Thus, we demonstrated that the methodology we use to determine melodic similarity threshold and to define the goodness measure successfully identifies musically significant patterns. Our results show that the functional roles of different melodic phrases in \gls{iam} can be effectively exploited to identify them in an unsupervised manner. To the best of our knowledge, utilization of the functional roles of different melodic patterns in \gls{iam} in order to describe and characterize them is done for the first time.
 
-Overall, we showed that our unsupervised methodology that does not require any exemplar patterns can successfully discover musically significant melodic patterns (\gls{raga} motifs) in sizable music collections of \gls{iam}. These patterns can be used in a number of \gls{mir} tasks and applications for \gls{iam}. Due to their importance in characterizing \glspl{raga} they can immediately be utilized for automatic \gls{raga} recognition, a topic that we study in~\chapref{chap:raga_recognition}. These patterns can be used to interlink large volumes of audio recordings in order to define novel music similarity measures, and to perform musicologically relevant studies such as characterization of \glspl{raga}, artists, and compositions in \gls{iam}. Furthermore, there can be enhanced listening music applications, and pedagogical tools that can potentially utilize these melodic patterns. Concrete examples of such applications are provided in~\chapref{chap:applicatoins}.
+Overall, we showed that our unsupervised methodology that does not require any exemplar patterns can successfully discover musically significant melodic patterns (\gls{raga} motifs) in sizable music collections of \gls{iam}. These patterns can be used in a number of \gls{mir} tasks and applications for \gls{iam}. Due to their importance in characterizing \glspl{raga} they can immediately be utilized for automatic \gls{raga} recognition, a topic that we study in~\chapref{chap:raga_recognition}. These patterns can be used to interlink large volumes of audio recordings in order to define novel music similarity measures, and to perform musicologically relevant studies such as characterization of \glspl{raga}, artists, and compositions in \gls{iam}. Furthermore, there can be enhanced music listening applications, and pedagogical tools that can potentially utilize these melodic patterns. Concrete examples of such applications are provided in~\chapref{chap:applicatoins}.
 
 
 %FUTURE WORK
