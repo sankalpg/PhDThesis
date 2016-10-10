@@ -2,7 +2,8 @@
 
 % What version of the document are you compiling
 %\def\DRAFTMODE{}   % Uncomment if generating the draft version
-%\def\PRINTVER{}    % Uncomment if generating the final BOOK (print) version (The differences are in 1) Colors of hyperlinks, 2) Bleeds, 3) Trim marks + Size)
+%\def\PRINTVER{}    % Uncomment if generating the final BOOK (print) version (The differences are in 1) Colors of hyperlinks, 2) Bleeds, 3) Trim marks + Size) 4) BnW figures
+%\def\PRINTVERLINK{}    % Uncomment if generating the final BOOK (print) version (The differences are in 1) Colors of hyperlinks, 2) Bleeds, 3) Trim marks + Size)\textbf{}
 % If both the commands are comments it generates a final PDF version to be distributted electronically.
 
 %% Useful packages
@@ -311,11 +312,11 @@ pdfkeywords=Melody~Motifs~Patterns~Raga~Phrases~Indian~art~music~Hindustani~Carn
 \newcommand{\REM}[1]{{\color{red}#1}}
 \newcommand{\XXX}[3]{{\color{blue}{{[#1$\rightarrow$#2:} #3{]}}}}
 % Uncomment next line to hide all comments
-%\renewcommand{\XXX}[3]{}
-%\renewcommand{\TODO}[1]{}
-%\renewcommand{\COMMENT}[1]{}
-%\renewcommand{\REM}[1]{}
-%\renewcommand{\ADD}[1]{#1}
+\renewcommand{\XXX}[3]{}
+\renewcommand{\TODO}[1]{}
+\renewcommand{\COMMENT}[1]{}
+\renewcommand{\REM}[1]{}
+\renewcommand{\ADD}[1]{#1}
 
 \def\mathLarge#1{\mbox{\LARGE $#1$}}
 
