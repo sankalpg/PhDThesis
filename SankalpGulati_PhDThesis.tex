@@ -2,8 +2,8 @@
 
 % What version of the document are you compiling
 %\def\DRAFTMODE{}   % Uncomment if generating the draft version
-%\def\PRINTVER{}    % Uncomment if generating the final BOOK (print) version (The differences are in 1) Colors of hyperlinks, 2) Bleeds, 3) Trim marks + Size) 4) BnW figures
-%\def\PRINTVERLINK{}    % Uncomment if generating the final BOOK (print) version (The differences are in 1) Colors of hyperlinks, 2) Bleeds, 3) Trim marks + Size)\textbf{}
+\def\PRINTVER{}    % Uncomment if generating the final BOOK (print) version (The differences are in 1) Colors of hyperlinks, 2) Bleeds, 3) Trim marks + Size) 4) BnW figures
+\def\PRINTVERLINK{}    % Uncomment if generating the final BOOK (print) version (The differences are in 1) Colors of hyperlinks, 2) Bleeds, 3) Trim marks + Size)\textbf{}
 % If both the commands are comments it generates a final PDF version to be distributted electronically.
 
 %% Useful packages
@@ -161,7 +161,7 @@ pdfkeywords=Melody~Motifs~Patterns~Raga~Phrases~Indian~art~music~Hindustani~Carn
 % \definecolor{ExtLinkColor}{rgb}{0, 0.4, 0}
 \definecolor{ExtLinkColor}{rgb}{0, 0, 0.6}
 
-\ifdefined\PRINTVER
+\ifdefined\PRINTVERLINK
 \hypersetup{citecolor=black,linkcolor=black,urlcolor=black}
 \else
 \hypersetup{citecolor=CiteColor,linkcolor=LinkColor,urlcolor=ExtLinkColor}
@@ -202,12 +202,16 @@ pdfkeywords=Melody~Motifs~Patterns~Raga~Phrases~Indian~art~music~Hindustani~Carn
 %\fi
 
 
-\setstocksize{250mm}{176mm}  % The size of the stock paper (support), A4
-\settrimmedsize{\stockheight}{\stockwidth}{*} % B5, the size of the final copy, cut from the stock paper.
-\setlength{\trimtop}{0mm}   % Top margin: top_stock - top_page
-\setlength{\trimedge}{0mm}  % Outer later margin: lat_stock - lat_page
-\showtrimsoff
-\checkandfixthelayout
+
+%% UNCOMMENT THIS FOR ONLINE VERSION %%%%
+%\setstocksize{250mm}{176mm}  % The size of the stock paper (support), A4
+%\settrimmedsize{\stockheight}{\stockwidth}{*} % B5, the size of the final copy, cut from the stock paper.
+%\setlength{\trimtop}{0mm}   % Top margin: top_stock - top_page
+%\setlength{\trimedge}{0mm}  % Outer later margin: lat_stock - lat_page
+%\showtrimsoff
+%\checkandfixthelayout
+
+
 
 % arreglar que floats al final de capitol no es centrin verticalment
 %\makeatletter% Set distance from top of page to first float
@@ -513,7 +517,7 @@ pdfkeywords=Melody~Motifs~Patterns~Raga~Phrases~Indian~art~music~Hindustani~Carn
 %  \ifthenelse{\equal{#1}{lof}}{}%
 %  {\ifthenelse{\equal{#1}{lot}}{}{\svaddcontentsline{#1}{#2}{#3}}}}
 
-\ifdefined\PRINTVER 
+\ifdefined\PRINTVERLINK 
 \cleartorecto
 \newpage\null\thispagestyle{empty}\newpage
 \newpage\null\thispagestyle{empty}\newpage
