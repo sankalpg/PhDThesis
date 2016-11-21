@@ -156,7 +156,7 @@ To measure the melodic similarity between two patterns we consider two categorie
 In this study we consider the whole sequence matching \gls{dtw} variant and two possibilities of the local constraint~(\secref{sec_DTW_distance_measure}):
 
 \begin{itemize}
-	\item Where the \gls{dtw} step condition is $\lbrace(1,1), (1,1), (1,1)\rbrace$, which is without any local constraint. We denote this variant by~$\distPattMeasure_{\mathrm{DTW\_L0}}$. In this variant the \gls{dtw} accumulated cost matrix is computed using~\eqnref{eq:dtw_classic_cost_matrix_computation}.
+	\item Where the \gls{dtw} step condition is $\lbrace(1,0), (1,1), (0,1)\rbrace$, which is without any local constraint. We denote this variant by~$\distPattMeasure_{\mathrm{DTW\_L0}}$. In this variant the \gls{dtw} accumulated cost matrix is computed using~\eqnref{eq:dtw_classic_cost_matrix_computation}.
 	\item Where the \gls{dtw} step condition is $\lbrace(2,1), (1,1), (1,2)\rbrace$, which is with a local constraint. We denote this variant by~$\distPattMeasure_{\mathrm{DTW\_L1}}$. In this variant the \gls{dtw} accumulated cost matrix is computed using~\eqnref{eq:dtw_local_constraint_cost_matrix_computation}.
 \end{itemize}
 

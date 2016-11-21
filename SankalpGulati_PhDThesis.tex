@@ -2,8 +2,9 @@
 
 % What version of the document are you compiling
 %\def\DRAFTMODE{}   % Uncomment if generating the draft version
-\def\PRINTVER{}    % Uncomment if generating the final BOOK (print) version (The differences are in 1) Colors of hyperlinks, 2) Bleeds, 3) Trim marks + Size) 4) BnW figures
+%\def\PRINTVER{}    % Uncomment if generating the final BOOK (print) version (The differences are in 1) Colors of hyperlinks, 2) Bleeds, 3) Trim marks + Size) 4) BnW figures
 \def\PRINTVERLINK{}    % Uncomment if generating the final BOOK (print) version (The differences are in 1) Colors of hyperlinks, 2) Bleeds, 3) Trim marks + Size)\textbf{}
+%\def\WithoutTrimOnline{}
 % If both the commands are comments it generates a final PDF version to be distributted electronically.
 
 %% Useful packages
@@ -179,6 +180,20 @@ pdfkeywords=Melody~Motifs~Patterns~Raga~Phrases~Indian~art~music~Hindustani~Carn
 \setlrmarginsandblock{25mm}{*}{0.8}
 \checkandfixthelayout
 \trimLmarks % Marques de tall en forma de 'L'
+
+
+
+
+\ifdefined\WithoutTrimOnline
+\setstocksize{250mm}{176mm}  % The size of the stock paper (support), A4
+\settrimmedsize{\stockheight}{\stockwidth}{*} % B5, the size of the final copy, cut from the stock paper.
+\setlength{\trimtop}{0mm} % Alcada de la franja inferior a tallar.
+\setlength{\trimedge}{0mm} % Amplada de la franja interior a tallar per cada costat.
+\setulmarginsandblock{23mm}{23mm}{*} % used to be {25mm}{16mm}
+\setlrmarginsandblock{25mm}{*}{0.8}
+\showtrimsoff
+\checkandfixthelayout
+\fi
 
 %%%%%%%%% TAKEN FROM AJAY SEE IF THIS SIZE LOOKS BETTER OTHERWISE STICK TO WHAT IT IS 
 %\ifdefined\PRINTVER
