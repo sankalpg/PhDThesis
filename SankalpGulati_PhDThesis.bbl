@@ -1,0 +1,1737 @@
+\begin{thebibliography}{275}
+\providecommand{\natexlab}[1]{#1}
+
+\bibitem[{Akko{\c{c}}(2002)}]{akkocc2002non}
+Akko{\c{c}}, C. (2002).
+\newblock {Non-deterministic scales used in traditional Turkish music}.
+\newblock \emph{Journal of New Music Research}, \emph{31}(4), 285--293.
+
+\bibitem[{Aucouturier \& Sandler(2002)}]{aucouturier2002finding}
+Aucouturier, J.~J. \& Sandler, M. (2002).
+\newblock Finding repeating patterns in acoustic musical signals : Applications
+  for audio thumbnailing.
+\newblock In \emph{Audio Engineering Society Conference: 22nd International
+  Conference: Virtual, Synthetic, and Entertainment Audio}.
+
+\bibitem[{Baeza-Yates \& Perleberg(1992)}]{baeza1992fast}
+Baeza-Yates, R.~A. \& Perleberg, C.~H. (1992).
+\newblock Fast and practical approximate string matching.
+\newblock In \emph{Annual Symposium on Combinatorial Pattern Matching}, pp.
+  185--192. Springer.
+
+\bibitem[{Bagchee(1998)}]{Bagchee1998}
+Bagchee, S. (1998).
+\newblock \emph{N\={a}d understanding raga music}.
+\newblock Business Publications Inc.
+
+\bibitem[{Balkwill \& Thompson(1999)}]{balkwill1999cross}
+Balkwill, L.~L. \& Thompson, W.~F. (1999).
+\newblock A cross-cultural investigation of the perception of emotion in music:
+  Psychophysical and cultural cues.
+\newblock \emph{Music perception: an interdisciplinary journal}, \emph{17}(1),
+  43--64.
+
+\bibitem[{Bartsch \& Wakefield(2001)}]{bartsch2001catch}
+Bartsch, M.~A. \& Wakefield, G.~H. (2001).
+\newblock To catch a chorus: Using chroma-based representations for audio
+  thumbnailing.
+\newblock In \emph{IEEE Workshop on the Applications of Signal Processing to
+  Audio and Acoustics}, pp. 15--18.
+
+\bibitem[{Bartsch \& Wakefield(2005)}]{bartsch2005audio}
+Bartsch, M.~A. \& Wakefield, G.~H. (2005).
+\newblock Audio thumbnailing of popular music using chroma-based
+  representations.
+\newblock \emph{IEEE Transactions on multimedia}, \emph{7}(1), 96--104.
+
+\bibitem[{Batista et~al.(2011)Batista, Wang, \& Keogh}]{batista2011complexity}
+Batista, G.~E., Wang, X., \& Keogh, E.~J. (2011).
+\newblock A complexity-invariant distance measure for time series.
+\newblock In \emph{SDM}, vol.~11, pp. 699--710.
+
+\bibitem[{Belle et~al.(2009)Belle, Joshi, \& Rao}]{belle2009raga}
+Belle, S., Joshi, R., \& Rao, P. (2009).
+\newblock Raga identification by using swara intonation.
+\newblock \emph{Journal of ITC Sangeet Research Academy}, \emph{23}.
+
+\bibitem[{Bellur et~al.(2012)Bellur, Ishwar, Serra, \&
+  Murthy}]{bellur2012knowledge}
+Bellur, A., Ishwar, V., Serra, X., \& Murthy, H.~A. (2012).
+\newblock A knowledge based signal processing approach to tonic identification
+  in {I}ndian classical music.
+\newblock In \emph{2nd CompMusic Workshop}, pp. 113--118. Universitat Pompeu
+  Fabra.
+
+\bibitem[{Bertin-Mahieux et~al.(2011)Bertin-Mahieux, Ellis, Whitman, \&
+  Lamere}]{Bertin-Mahieux2011}
+Bertin-Mahieux, T., Ellis, D.~P., Whitman, B., \& Lamere, P. (2011).
+\newblock The million song dataset.
+\newblock In \emph{Int. Soc. for Music Information Retrieval Conf. (ISMIR)},
+  pp. 591--596.
+
+\bibitem[{Bhatkhande(1990)}]{Bhatkhande_1990}
+Bhatkhande, V.~N. (1990).
+\newblock \emph{{Hindustani Sangeet Paddhati: Kramik Pustak Maalika
+  Vol.~I-VI}}.
+\newblock Sangeet Karyalaya.
+
+\bibitem[{Bhattacharyya(1946)}]{bhattacharyya1946measure}
+Bhattacharyya, A. (1946).
+\newblock On a measure of divergence between two multinomial populations.
+\newblock \emph{Sankhy{\=a}: the {I}ndian journal of statistics}, pp. 401--406.
+
+\bibitem[{Bishop(2006)}]{Bishop}
+Bishop, C.~M. (2006).
+\newblock \emph{Pattern Recognition and Machine Learning (Information Science
+  and Statistics)}.
+\newblock Secaucus, NJ, USA: Springer-Verlag New York, Inc.
+
+\bibitem[{Blondel et~al.(2008)Blondel, Guillaume, Lambiotte, \&
+  Lefebvre}]{blondel2008fast}
+Blondel, V.~D., Guillaume, J.~L., Lambiotte, R., \& Lefebvre, E. (2008).
+\newblock Fast unfolding of communities in large networks.
+\newblock \emph{Journal of Statistical Mechanics: Theory and Experiment}, (10),
+  P10008.
+
+\bibitem[{Boersma(1993)}]{boersma1993accurate}
+Boersma, P. (1993).
+\newblock Accurate short-term analysis of the fundamental frequency and the
+  harmonics-to-noise ratio of a sampled sound.
+\newblock \emph{Proceedings of the institute of phonetic sciences},
+  \emph{17}(1193), 97--110.
+
+\bibitem[{Boersma \& Weenink(2001)}]{BoersmaPaul2001}
+Boersma, P. \& Weenink, D. (2001).
+\newblock Praat, a system for doing phonetics by computer.
+\newblock \emph{Glot International}, \emph{5}(9/10), 341--345.
+
+\bibitem[{Bogdanov et~al.(2013)Bogdanov, Wack, G{\'o}mez, Gulati, Herrera,
+  Mayor, Roma, Salamon, Zapata, \& Serra}]{essentia}
+Bogdanov, D., Wack, N., G{\'o}mez, E., Gulati, S., Herrera, P., Mayor, O.,
+  Roma, G., Salamon, J., Zapata, J., \& Serra, X. (2013).
+\newblock Essentia: an audio analysis library for music information retrieval.
+\newblock In \emph{Proc. of Int. Soc. for Music Information Retrieval Conf.
+  (ISMIR)}, pp. 493--498.
+
+\bibitem[{Bor et~al.(2010)Bor, Delvoye, Harvey, \& Nijenhuis}]{Bor2010}
+Bor, J., Delvoye, F.~N., Harvey, J., \& Nijenhuis, E.~T. (Eds.)  (2010).
+\newblock \emph{{Hindustani Music: Thirteenth to Twentieth Centuries}}.
+\newblock New Delhi: Manohar Publishers and Distributors, first edn.
+
+\bibitem[{Bozkurt(2008)}]{bozkurt2008automatic}
+Bozkurt, B. (2008).
+\newblock {An automatic pitch analysis method for Turkish Maqam music}.
+\newblock \emph{Journal of New Music Research}, \emph{37}(1), 1--13.
+
+\bibitem[{Bozkurt et~al.(2014)Bozkurt, Karaosmano{\u{g}}lu, Kara{\c{c}}al{\i},
+  \& {\"U}nal}]{bozkurt2014usul}
+Bozkurt, B., Karaosmano{\u{g}}lu, M.~K., Kara{\c{c}}al{\i}, B., \& {\"U}nal, E.
+  (2014).
+\newblock Usul and makam driven automatic melodic segmentation for turkish
+  music.
+\newblock \emph{Journal of New Music Research}, \emph{43}(4), 375--389.
+
+\bibitem[{Brown(1988)}]{Brown1988}
+Brown, H. (1988).
+\newblock {The interplay of set content and temporal context in a functional
+  theory of tonality perception}.
+\newblock \emph{Music Perception}, \emph{5}(3), 219--249.
+
+\bibitem[{Burgoyne et~al.(2015)Burgoyne, Fujinaga, \&
+  Downie}]{Burgoyne2016music}
+Burgoyne, J.~A., Fujinaga, I., \& Downie, J.~S. (2015).
+\newblock \emph{Music Information Retrieval}, pp. 213--228.
+\newblock John Wiley \& Sons, Ltd.
+
+\bibitem[{Camacho(2007)}]{camacho2007swipe}
+Camacho, A. (2007).
+\newblock \emph{SWIPE: A sawtooth waveform inspired pitch estimator for speech
+  and music}.
+\newblock Ph.D. thesis, University of Florida.
+
+\bibitem[{Cambouropoulos(1996)}]{cambouropoulos1996formal}
+Cambouropoulos, E. (1996).
+\newblock A formal theory for the discovery of local boundaries in a melodic
+  surface.
+\newblock \emph{Proceedings of the III Journ{\'e}es d’Informatique Musicale}.
+
+\bibitem[{Cambouropoulos(1997)}]{cambouropoulos1997towards}
+Cambouropoulos, E. (1997).
+\newblock \emph{Towards a general computational theory of musical structure}.
+\newblock Ph.D. thesis, University of Edinburgh.
+
+\bibitem[{Cambouropoulos(2001{\natexlab{a}})}]{cambouropoulos2001local}
+Cambouropoulos, E. (2001{\natexlab{a}}).
+\newblock The local boundary detection model (lbdm) and its application in the
+  study of expressive timing.
+\newblock In \emph{Proceedings of the international computer music conference},
+  pp. 17--22.
+
+\bibitem[{Cambouropoulos(2001{\natexlab{b}})}]{Cambouropoulos2001}
+Cambouropoulos, E. (2001{\natexlab{b}}).
+\newblock {Melodic Cue Abstraction, Similarity, and Category Formation: A
+  Formal Model}.
+\newblock \emph{Music Perception: An Interdisciplinary Journal}, \emph{18}(3),
+  347--370.
+
+\bibitem[{Cambouropoulos(2006)}]{Cambouropoulos2006}
+Cambouropoulos, E. (2006).
+\newblock {Musical parallelism and melodic segmentation: a computational
+  approach}.
+\newblock \emph{Music Perception}, \emph{23}(3), 249--268.
+
+\bibitem[{Cambouropoulos(2009)}]{Cambouropoulos2009}
+Cambouropoulos, E. (2009).
+\newblock {How similar is similar?}
+\newblock \emph{Musicae Scientiae}, \emph{13}(1 Suppl), 7--24.
+
+\bibitem[{Cambouropoulos et~al.(2001)Cambouropoulos, Crawford, \&
+  Iliopoulos}]{cambouropoulos2001pattern}
+Cambouropoulos, E., Crawford, T., \& Iliopoulos, C.~S. (2001).
+\newblock Pattern processing in melodic sequences: Challenges, caveats and
+  prospects.
+\newblock \emph{Computers and the Humanities}, \emph{35}(1), 9--21.
+
+\bibitem[{Casey et~al.(2008)Casey, Veltkamp, Goto, Leman, Rhodes, \&
+  Slaney}]{casey2008content}
+Casey, M.~A., Veltkamp, R., Goto, M., Leman, M., Rhodes, C., \& Slaney, M.
+  (2008).
+\newblock Content-based music information retrieval: Current directions and
+  future challenges.
+\newblock \emph{Proceedings of the IEEE}, \emph{96}(4), 668--696.
+
+\bibitem[{Celma(2006)}]{celma2006foafing}
+Celma, {\`O}. (2006).
+\newblock Foafing the music: Bridging the semantic gap in music recommendation.
+\newblock In \emph{International Semantic Web Conference}, pp. 927--934.
+  Springer.
+
+\bibitem[{Chai \& Vercoe(2003)}]{chai2003music}
+Chai, W. \& Vercoe, B. (2003).
+\newblock Music thumbnailing via structural analysis.
+\newblock In \emph{Proceedings of the eleventh ACM international conference on
+  Multimedia}, pp. 223--226. ACM.
+
+\bibitem[{Chakraborty \& De(2012)}]{chakraborty2012object}
+Chakraborty, S. \& De, D. (2012).
+\newblock Object oriented classification and pattern recognition of {I}ndian
+  classical ragas.
+\newblock In \emph{1st International Conference on Recent Advances in
+  Information Technology (RAIT)}, pp. 505--510.
+
+\bibitem[{Chen et~al.(2012)Chen, Yap, \& Zhang}]{Chen12ICASSP}
+Chen, T., Yap, K.-H., \& Zhang, D. (2012).
+\newblock {Discriminative bag-of-visual phrase learning for landmark
+  recognition}.
+\newblock In \emph{Proc. of the IEEE Int. Conf. on Acoustics, Speech and Signal
+  Processing (ICASSP)}, pp. 893--896.
+
+\bibitem[{Chew(2000)}]{chew2000towards}
+Chew, E. (2000).
+\newblock \emph{Towards a mathematical model of tonality}.
+\newblock Ph.D. thesis, Massachusetts Institute of Technology.
+
+\bibitem[{Chordia \& Rae(2007)}]{chordia2007raag}
+Chordia, P. \& Rae, A. (2007).
+\newblock Raag recognition using pitch-class and pitch-class dyad
+  distributions.
+\newblock In \emph{In Proc. of Int. Soc. for Music Information Retrieval
+  Conf.}, pp. 431--436.
+
+\bibitem[{Chordia \& {\c{S}}ent{\"u}rk(2013)}]{chordia2013joint}
+Chordia, P. \& {\c{S}}ent{\"u}rk, S. (2013).
+\newblock Joint recognition of raag and tonic in north {{I}}ndian music.
+\newblock \emph{Computer Music Journal}, \emph{37}(3), 82--98.
+
+\bibitem[{Cohen(1991)}]{cohen1991tonality}
+Cohen, A.~J. (1991).
+\newblock {Tonality and perception: Musical scales primed by excerpts from The
+  Well-Tempered Clavier of JS Bach}.
+\newblock \emph{Psychological Research}, \emph{53}(4), 305--314.
+
+\bibitem[{Collins(2011)}]{collins2011improved}
+Collins, T. (2011).
+\newblock \emph{Improved methods for pattern discovery in music, with
+  applications in automated stylistic composition}.
+\newblock Ph.D. thesis, Open University.
+
+\bibitem[{Collins et~al.(2013)Collins, Arzt, Flossmann, \&
+  Widmer}]{collins2013siarct}
+Collins, T., Arzt, A., Flossmann, S., \& Widmer, G. (2013).
+\newblock {SIARCT-CFP: Improving Precision and the Discovery of Inexact Musical
+  Patterns in Point-Set Representations.}
+\newblock In \emph{Proc. of Int. Soc. for Music Information Retrieval Conf.
+  (ISMIR)}, pp. 549--554.
+
+\bibitem[{Collins et~al.(2014)Collins, B{\"o}ck, Krebs, \&
+  Widmer}]{collins2014bridging}
+Collins, T., B{\"o}ck, S., Krebs, F., \& Widmer, G. (2014).
+\newblock Bridging the audio-symbolic gap: The discovery of repeated note
+  content directly from polyphonic music audio.
+\newblock In \emph{Audio Engineering Society Conference: 53rd International
+  Conference: Semantic Audio}. Audio Engineering Society.
+
+\bibitem[{Collins et~al.(2011)Collins, Laney, Willis, \&
+  Garthwaite}]{collins2011modeling}
+Collins, T., Laney, R., Willis, A., \& Garthwaite, P.~H. (2011).
+\newblock Modeling pattern importance in chopin's mazurkas.
+\newblock \emph{Music Perception: An Interdisciplinary Journal}, \emph{28}(4),
+  387--414.
+
+\bibitem[{Conklin(2010)}]{conklin2010discovery}
+Conklin, D. (2010).
+\newblock Discovery of distinctive patterns in music.
+\newblock \emph{Intelligent Data Analysis}, \emph{14}(5), 547--554.
+
+\bibitem[{Conklin \& Anagnostopoulou(2001)}]{conklin2001representation}
+Conklin, D. \& Anagnostopoulou, C. (2001).
+\newblock Representation and discovery of multiple viewpoint patterns.
+\newblock In \emph{Proceedings of the International Computer Music Conference},
+  pp. 479--485.
+
+\bibitem[{Conklin \& Anagnostopoulou(2011)}]{conklin2011comparative}
+Conklin, D. \& Anagnostopoulou, C. (2011).
+\newblock Comparative pattern analysis of cretan folk songs.
+\newblock \emph{Journal of New Music Research}, \emph{40}(2), 119--125.
+
+\bibitem[{Conklin \& Witten(1995)}]{conklin1995multiple}
+Conklin, D. \& Witten, I.~H. (1995).
+\newblock Multiple viewpoint systems for music prediction.
+\newblock \emph{Journal of New Music Research}, \emph{24}(1), 51--73.
+
+\bibitem[{Cremer(2004)}]{cremer2004a}
+Cremer, M. (2004).
+\newblock {A System for Harmonic Analysis of Polyphonic Music}.
+\newblock In \emph{25th Audio Engineering Society (AES) Conference}.
+
+\bibitem[{\c{S}ent{\"u}rk et~al.(2013)\c{S}ent{\"u}rk, Gulati, \&
+  Serra}]{senturk2013score}
+\c{S}ent{\"u}rk, S., Gulati, S., \& Serra, X. (2013).
+\newblock Score informed tonic identification for makam music of turkey.
+\newblock In \emph{Proc. of Int. Soc. for Music Information Retrieval Conf.
+  (ISMIR)}, pp. 175--180. Curitiba, Brazil.
+
+\bibitem[{Danielou(2010)}]{Danielou2010}
+Danielou, A. (2010).
+\newblock \emph{{The ragas of Northern {{I}}ndian music}}.
+\newblock New Delhi: Munshiram Manoharlal Publishers.
+
+\bibitem[{Dannenberg et~al.(2007)Dannenberg, Birmingham, Pardo, Hu, Meek, \&
+  Tzanetakis}]{dannenberg2007comparative}
+Dannenberg, R.~B., Birmingham, W.~P., Pardo, B., Hu, N., Meek, C., \&
+  Tzanetakis, G. (2007).
+\newblock A comparative evaluation of search techniques for query-by-humming
+  using the musart testbed.
+\newblock \emph{Journal of the American Society for Information Science and
+  Technology}, \emph{58}(5), 687--701.
+
+\bibitem[{Dannenberg \& Hu(2003)}]{dannenberg2003pattern}
+Dannenberg, R.~B. \& Hu, N. (2003).
+\newblock Pattern discovery techniques for music audio.
+\newblock \emph{Journal of New Music Research}, \emph{32}(2), 153--163.
+
+\bibitem[{Datta(1996)}]{AKDatta_1996}
+Datta, A.~K. (1996).
+\newblock Generation of musical notations from song using state-phase for pitch
+  detection algorithm.
+\newblock \emph{Journal of Acoustical Society of India}, \emph{24}.
+
+\bibitem[{Datta et~al.(2007)Datta, Sengupta, Dey, \& Nag}]{Datta2007}
+Datta, A.~K., Sengupta, R., Dey, N., \& Nag, D. (2007).
+\newblock A methodology for automatic extraction of `meend’ from the
+  performances in {H}industani vocal music.
+\newblock \emph{{Journal of ITC Sangeet Research Academy}}, \emph{21}, 24--31.
+
+\bibitem[{De~Cheveign{\'e} \& Kawahara(2002)}]{DeCheveigne2002}
+De~Cheveign{\'e}, A. \& Kawahara, H. (2002).
+\newblock Yin, a fundamental frequency estimator for speech and music.
+\newblock \emph{The Journal of the Acoustical Society of America},
+  \emph{111}(4), 1917--1930.
+
+\bibitem[{Deshpande(1989)}]{Deshpande1989}
+Deshpande, V.~H. (1989).
+\newblock \emph{{Indian Musical Traditions: An Aesthetic Study of the Gharanas
+  in Hindustani Music}}.
+\newblock Popular Prakashan, second edn.
+
+\bibitem[{Deva(1980)}]{Deva1980}
+Deva, B.~C. (1980).
+\newblock \emph{{The Music of India: A Scientific Study}}.
+\newblock Delhi: Munshiram Manoharlal Publishers.
+
+\bibitem[{Dey(2008)}]{Dey2008}
+Dey, A.~K. (2008).
+\newblock \emph{{Ny\={a}sa in r\={a}ga: the pleasant pause in {H}industani
+  music}}.
+\newblock Kanishka Publishers, Distributors.
+
+\bibitem[{Dighe et~al.(2013{\natexlab{a}})Dighe, Agrawal, Karnick, Thota, \&
+  Raj}]{dighe2013scale}
+Dighe, P., Agrawal, P., Karnick, H., Thota, S., \& Raj, B.
+  (2013{\natexlab{a}}).
+\newblock Scale independent raga identification using chromagram patterns and
+  swara based features.
+\newblock In \emph{IEEE Int. Conf. on Multimedia and Expo Workshops (ICMEW)},
+  pp. 1--4.
+
+\bibitem[{Dighe et~al.(2013{\natexlab{b}})Dighe, Karnick, \&
+  Raj}]{dighe2013swara}
+Dighe, P., Karnick, H., \& Raj, B. (2013{\natexlab{b}}).
+\newblock Swara histogram based structural analysis and identification of
+  {{I}}ndian classical ragas.
+\newblock In \emph{In Proc. of Int. Soc. for Music Information Retrieval Conf.
+  (ISMIR)}, pp. 35--40.
+
+\bibitem[{Duda et~al.(2000)Duda, Hart, \& Stork}]{DudaHart2000}
+Duda, R., Hart, P., \& Stork, D. (2000).
+\newblock \emph{Pattern Classification}.
+\newblock Wiley, New York, 2nd edition edn.
+
+\bibitem[{Duong \& Thudor(2013)}]{Duong13ICASSP}
+Duong, N. Q.~K. \& Thudor, F. (2013).
+\newblock {Movie synchronization by audio landmark matching}.
+\newblock In \emph{Proc. of the IEEE Int. Conf. on Acoustics, Speech and Signal
+  Processing (ICASSP)}, pp. 3632--3636.
+
+\bibitem[{Durey \& Clements(2001)}]{durey2001melody}
+Durey, A. \& Clements, M.~A. (2001).
+\newblock Melody spotting using hidden markov models.
+\newblock In \emph{Proc. of Int. Soc. for Music Information Retrieval Conf.
+  (ISMIR)}.
+
+\bibitem[{Dutta et~al.(2015)Dutta, Krishnaraj, \& Murthy}]{shrey_ISMIR_2015}
+Dutta, S., Krishnaraj, S.~P., \& Murthy, H.~A. (2015).
+\newblock Raga verification in {{C}}arnatic music using longest common segment
+  set.
+\newblock In \emph{Int. Soc. for Music Information Retrieval Conf. (ISMIR)},
+  pp. 605--611. M{\'a}laga, Spain.
+
+\bibitem[{Dutta \& Murthy(2014{\natexlab{a}})}]{Dutta2014}
+Dutta, S. \& Murthy, H.~A. (2014{\natexlab{a}}).
+\newblock {Discovering typical motifs of a raga from one-liners of songs in
+  {{C}}arnatic music}.
+\newblock In \emph{Int. Soc. for Music Information Retrieval (ISMIR)}, pp.
+  397--402. Taipei, Taiwan.
+
+\bibitem[{Dutta \& Murthy(2014{\natexlab{b}})}]{dutta2014modified}
+Dutta, S. \& Murthy, H.~A. (2014{\natexlab{b}}).
+\newblock A modified rough longest common subsequence algorithm for motif
+  spotting in an alapana of {C}arnatic music.
+\newblock In \emph{Twentieth National Conference on Communications (NCC)}, pp.
+  1--6.
+
+\bibitem[{Foote(2000)}]{foote2000automatic}
+Foote, J. (2000).
+\newblock Automatic audio segmentation using a measure of audio novelty.
+\newblock In \emph{Proc. of the IEEE Int. Conf. on Multimedia and Expo (ICME)},
+  vol.~1, pp. 452--455.
+
+\bibitem[{Fortunato(2010)}]{fortunato2010community}
+Fortunato, S. (2010).
+\newblock Community detection in graphs.
+\newblock \emph{Physics Reports}, \emph{486}(3), 75--174.
+
+\bibitem[{Ganguli et~al.(2016)Ganguli, Gulati, Serra, \&
+  Rao}]{kaustuv_ismir_2016}
+Ganguli, K.~K., Gulati, S., Serra, X., \& Rao, P. (2016).
+\newblock Data-driven exploration of melodic structures in {H}industani music.
+\newblock In \emph{Int. Soc. for Music Information Retrieval Conf. (ISMIR)},
+  pp. 605--611. New York, USA.
+
+\bibitem[{Ganguli et~al.(2015)Ganguli, Rastogi, Pandit, Kantan, \&
+  Rao}]{ganguli2015efficient}
+Ganguli, K.~K., Rastogi, A., Pandit, V., Kantan, P., \& Rao, P. (2015).
+\newblock Efficient melodic query based audio search for {{H}}industani vocal
+  compositions.
+\newblock In \emph{In Proc. of Int. Soc. for Music Information Retrieval Conf.
+  (ISMIR)}, pp. 591--597. Malaga, Spain.
+
+\bibitem[{Ganti(2013)}]{ganti2013bollywood}
+Ganti, T. (2013).
+\newblock \emph{Bollywood: a guidebook to popular Hindi cinema}.
+\newblock Routledge.
+
+\bibitem[{Gedik \& Bozkurt(2009)}]{gedik2009evaluation}
+Gedik, A.~C. \& Bozkurt, B. (2009).
+\newblock {Evaluation of the makam scale theory of Arel for music information
+  retrieval on traditional Turkish art music}.
+\newblock \emph{Journal of New Music Research}, \emph{38}(2), 103--116.
+
+\bibitem[{Gedik \& Bozkurt(2010)}]{gedik2010pitch}
+Gedik, A.~C. \& Bozkurt, B. (2010).
+\newblock {Pitch-frequency histogram-based music information retrieval for
+  Turkish music}.
+\newblock \emph{Signal Processing}, \emph{90}(4), 1049--1063.
+
+\bibitem[{Ghias et~al.(1995)Ghias, Logan, Chamberlin, \&
+  Smith}]{ghias1995query}
+Ghias, A., Logan, J., Chamberlin, D., \& Smith, B.~C. (1995).
+\newblock Query by humming: musical information retrieval in an audio database.
+\newblock In \emph{Proc. of the third ACM Int. Conf. on Multimedia}, pp.
+  231--236. ACM.
+
+\bibitem[{G{\'o}mez(2006)}]{gomez2006tonal}
+G{\'o}mez, E. (2006).
+\newblock Tonal description of polyphonic audio for music content processing.
+\newblock \emph{INFORMS Journal on Computing}, \emph{18}(3), 294--304.
+
+\bibitem[{G\'{o}mez \& Herrera(2004)}]{gomez2004estimating}
+G\'{o}mez, E. \& Herrera, P. (2004).
+\newblock {Estimating The Tonality Of Polyphonic Audio Files: Cognitive Versus
+  Machine Learning Modelling Strategies}.
+\newblock In \emph{Proc. of Int. Conf. on Music Information Retrieval (ISMIR)},
+  pp. 92--95.
+
+\bibitem[{G{\'o}mez et~al.(2003)G{\'o}mez, Klapuri, \&
+  Meudic}]{gomez2003melody}
+G{\'o}mez, E., Klapuri, A., \& Meudic, B. (2003).
+\newblock Melody description and extraction in the context of music content
+  processing.
+\newblock \emph{Journal of New Music Research}, \emph{32}(1), 23--40.
+
+\bibitem[{G{\'o}mez et~al.(2012)G{\'o}mez, Pikrakis, Mora,
+  D{\'\i}az-B{\'a}{\~n}ez, G{\'o}mez, Escobar, Oramas, \&
+  Salamon}]{gomez2012automatic}
+G{\'o}mez, F., Pikrakis, A., Mora, J., D{\'\i}az-B{\'a}{\~n}ez, J.~M.,
+  G{\'o}mez, E., Escobar, F., Oramas, S., \& Salamon, J. (2012).
+\newblock Automatic detection of melodic patterns in {F}lamenco singing by
+  analyzing polyphonic music recordings.
+\newblock In \emph{2nd International Workshop of Folk Music Analysis}, pp.
+  19--20.
+
+\bibitem[{Goto(2006)}]{Goto06TASLP}
+Goto, M. (2006).
+\newblock {A chorus section detection method for musical audio signals and its
+  application to a music listening station}.
+\newblock \emph{IEEE Trans. on Audio, Speech and Language Processing},
+  \emph{14}(5), 1783--1794.
+
+\bibitem[{Griffith(2004)}]{Griffith2004}
+Griffith, R.~T.~H. (2004).
+\newblock \emph{{Hymns of the Samaveda}}.
+\newblock Kessinger Publishing.
+
+\bibitem[{Gulati(2012)}]{SGulati_MThesis2012}
+Gulati, S. (2012).
+\newblock \emph{A tonic identification approach for {I}ndian art music}.
+\newblock Master's thesis, {Music Technology Group, Universitat Pompeu Fabra,
+  Barcelona, Spain}.
+
+\bibitem[{Gulati et~al.(2014{\natexlab{a}})Gulati, Bellur, Salamon, Ranjani,
+  Ishwar, Murthy, \& Serra}]{Gulati2014Tonic}
+Gulati, S., Bellur, A., Salamon, J., Ranjani, H.~G., Ishwar, V., Murthy, H.~A.,
+  \& Serra, X. (2014{\natexlab{a}}).
+\newblock {Automatic tonic identification in {I}ndian art music: approaches and
+  evaluation}.
+\newblock \emph{Journal of New Music Research}, \emph{43}(1), 53--71.
+
+\bibitem[{Gulati et~al.(2015{\natexlab{a}})Gulati, Ganguli, Gupta,
+  Srinivasamurthy, \& Serra}]{ragawise}
+Gulati, S., Ganguli, K.~K., Gupta, S., Srinivasamurthy, A., \& Serra, X.
+  (2015{\natexlab{a}}).
+\newblock A lightweight real-time \gls{raga} recognition system for {I}ndian
+  art music.
+\newblock In \emph{Late-Breaking Demo Session of Int. Soc. for Music
+  Information Retrieval Conf. (ISMIR)}. Malaga, Spain.
+
+\bibitem[{Gulati et~al.(2012)Gulati, Salamon, \& Serra}]{gulati2012two}
+Gulati, S., Salamon, J., \& Serra, X. (2012).
+\newblock A two-stage approach for tonic identification in indian art music.
+\newblock In \emph{Proc. of the 2nd CompMusic Workshop}, pp. 119--127.
+  Istanbul, Turkey: Universitat Pompeu Fabra.
+
+\bibitem[{Gulati et~al.(2016{\natexlab{a}})Gulati, Serr{\`a}, Ganguli,
+  \c{S}ent{\"u}rk, \& Serra}]{gulati_tdms_2016}
+Gulati, S., Serr{\`a}, J., Ganguli, K.~K., \c{S}ent{\"u}rk, S., \& Serra, X.
+  (2016{\natexlab{a}}).
+\newblock Time-delayed melody surfaces for r\={a}ga recognition.
+\newblock In \emph{Int. Soc. for Music Information Retrieval Conf. (ISMIR)},
+  pp. 751--757. New York, USA.
+
+\bibitem[{Gulati et~al.(2014{\natexlab{b}})Gulati, Serr{\`a}, Ganguli, \&
+  Serra}]{gulati2014Landmark}
+Gulati, S., Serr{\`a}, J., Ganguli, K.~K., \& Serra, X. (2014{\natexlab{b}}).
+\newblock Landmark detection in {{H}}industani music melodies.
+\newblock In \emph{International Computer Music Conference, Sound and Music
+  Computing Conference}, pp. 1062--1068. Athens, Greece.
+
+\bibitem[{Gulati et~al.(2016{\natexlab{b}})Gulati, Serr{\`a}, Ishwar,
+  \c{S}ent{\"u}rk, \& Serra}]{gulatiphrase_2016}
+Gulati, S., Serr{\`a}, J., Ishwar, V., \c{S}ent{\"u}rk, S., \& Serra, X.
+  (2016{\natexlab{b}}).
+\newblock Phrase-based r\={a}ga recognition using vector space modeling.
+\newblock In \emph{IEEE Int. Conf. on Acoustics, Speech and Signal Processing
+  (ICASSP)}, pp. 66--70. Shanghai, China.
+
+\bibitem[{Gulati et~al.(2014{\natexlab{c}})Gulati, Serr{\`a}, Ishwar, \&
+  Serra}]{gulati_SITIS_2014}
+Gulati, S., Serr{\`a}, J., Ishwar, V., \& Serra, X. (2014{\natexlab{c}}).
+\newblock Mining melodic patterns in large audio collections of {{I}}ndian art
+  music.
+\newblock In \emph{Int. Conf. on Signal Image Technology \& Internet Based
+  Systems (SITIS-MIRA)}, pp. 264--271. Morocco.
+
+\bibitem[{Gulati et~al.(2016{\natexlab{c}})Gulati, Serr{\`a}, Ishwar, \&
+  Serra}]{gulati_communities_2016}
+Gulati, S., Serr{\`a}, J., Ishwar, V., \& Serra, X. (2016{\natexlab{c}}).
+\newblock Discovering r\={a}ga motifs by characterizing communities in networks
+  of melodic patterns.
+\newblock In \emph{IEEE Int. Conf. on Acoustics, Speech and Signal Processing
+  (ICASSP)}, pp. 286--290. Shanghai, China.
+
+\bibitem[{Gulati et~al.(2015{\natexlab{b}})Gulati, Serr{\`a}, \&
+  Serra}]{gulati_ICASSP2015}
+Gulati, S., Serr{\`a}, J., \& Serra, X. (2015{\natexlab{b}}).
+\newblock An evaluation of methodologies for melodic similarity in audio
+  recordings of {{I}}ndian art music.
+\newblock In \emph{IEEE Int. Conf. on Acoustics, Speech and Signal Processing
+  (ICASSP)}, pp. 678--682. Brisbane, Australia.
+
+\bibitem[{Gulati et~al.(2015{\natexlab{c}})Gulati, Serr{\`a}, \&
+  Serra}]{gulati_ISMIR_2015}
+Gulati, S., Serr{\`a}, J., \& Serra, X. (2015{\natexlab{c}}).
+\newblock Improving melodic similarity in {{I}}ndian art music using
+  culture-specific melodic characteristics.
+\newblock In \emph{Int. Soc. for Music Information Retrieval Conf. (ISMIR)},
+  pp. 680--686. Spain.
+
+\bibitem[{Gupta \& Rao(2012)}]{gupta2012objective}
+Gupta, C. \& Rao, P. (2012).
+\newblock Objective assessment of ornamentation in {I}ndian classical singing.
+\newblock In \emph{Speech, Sound and Music Processing: Embracing Research in
+  India}, pp. 1--25. Springer.
+
+\bibitem[{Hagberg et~al.(2008)Hagberg, Schult, \&
+  Swart}]{hagberg-2008-exploring}
+Hagberg, A.~A., Schult, D.~A., \& Swart, P.~J. (2008).
+\newblock Exploring network structure, dynamics, and function using {NetworkX}.
+\newblock In \emph{In Proc. of the 7th Python in Science Conf.}, pp. 11--15.
+  Pasadena, CA USA.
+
+\bibitem[{Hastie et~al.(2009{\natexlab{a}})Hastie, Tibshirani, \&
+  Friedman}]{Hastie09BOOK}
+Hastie, T., Tibshirani, R., \& Friedman, J. (2009{\natexlab{a}}).
+\newblock \emph{{The elements of statistical learning}}.
+\newblock Berlin, Germany: Springer, 2nd edn.
+
+\bibitem[{Hastie et~al.(2009{\natexlab{b}})Hastie, Tibshirani, \&
+  Friedman}]{hastie2009unsupervised}
+Hastie, T., Tibshirani, R., \& Friedman, J. (2009{\natexlab{b}}).
+\newblock Unsupervised learning.
+\newblock In \emph{The elements of statistical learning}, pp. 485--585.
+  Springer.
+
+\bibitem[{Herley(2006)}]{Herley2006}
+Herley, C. (2006).
+\newblock {ARGOS: automatically extracting repeating objects from multimedia
+  streams}.
+\newblock \emph{IEEE Transactions on Multimedia}, \emph{8}(1), 115--129.
+
+\bibitem[{Herrera-Boyer et~al.(2003)Herrera-Boyer, Peeters, \&
+  Dubnov}]{herrera2003automatic}
+Herrera-Boyer, P., Peeters, G., \& Dubnov, S. (2003).
+\newblock Automatic classification of musical instrument sounds.
+\newblock \emph{Journal of New Music Research}, \emph{32}(1), 3--21.
+
+\bibitem[{Hiraga(1997)}]{hiraga1997structural}
+Hiraga, Y. (1997).
+\newblock Structural recognition of music by pattern matching.
+\newblock In \emph{Proceedings of International Computer Music Conference}, pp.
+  426--429.
+
+\bibitem[{Holm(1979)}]{holm1979simple}
+Holm, S. (1979).
+\newblock A simple sequentially rejective multiple test procedure.
+\newblock \emph{Scandinavian journal of statistics}, \emph{6}(2), 65--70.
+
+\bibitem[{Hsu et~al.(2001)Hsu, Liu, \& Chen}]{Hsu2001a}
+Hsu, J.~L., Liu, C.~C., \& Chen, A.~L.~P. (2001).
+\newblock {Discovering Nontrivial Repeating Patterns in Music Data}.
+\newblock \emph{IEEE Transactions on Multimedia}, \emph{3}(3), 311--325.
+
+\bibitem[{Huang et~al.(2001)Huang, Acero, \& Hon}]{Huang2001}
+Huang, X., Acero, A., \& Hon, H.~W. (2001).
+\newblock \emph{{Spoken Language Processing: A Guide to Theory, Algorithm and
+  System Development}}.
+\newblock Prentice Hall PTR.
+
+\bibitem[{Humphrey et~al.(2014)Humphrey, Salamon, Nieto, Forsyth, Bittner, \&
+  Bello}]{Humphrey:JAMS:ISMIR:14}
+Humphrey, E.~J., Salamon, J., Nieto, O., Forsyth, J., Bittner, R., \& Bello,
+  J.~P. (2014).
+\newblock {JAMS}: A {JSON} annotated music specification for reproducible {MIR}
+  research.
+\newblock In \emph{Int. Soc. for Music Info. Retrieval Conf.}, pp. 591--596.
+  Taipei, Taiwan.
+
+\bibitem[{Iliopoulos \& Kurokawa(2002)}]{iliopoulos2002string}
+Iliopoulos, C.~S. \& Kurokawa, M. (2002).
+\newblock String matching with gaps for musical melodic recognition.
+\newblock In \emph{Stringology}, pp. 55--64.
+
+\bibitem[{Ishwar et~al.(2012)Ishwar, Bellur, \& Murthy}]{ishwar2012motivic}
+Ishwar, V., Bellur, A., \& Murthy, H.~A. (2012).
+\newblock Motivic analysis and its relevance to raga identification in
+  {{C}}arnatic music.
+\newblock In \emph{Proceedings of the 2nd CompMusic Workshop}, pp. 153--157.
+
+\bibitem[{Ishwar et~al.(2013)Ishwar, Dutta, Bellur, \& Murthy}]{Ishwar2013}
+Ishwar, V., Dutta, S., Bellur, A., \& Murthy, H. (2013).
+\newblock Motif spotting in an {A}lapana in {C}arnatic music.
+\newblock In \emph{{Proc. of Int. Conf. on Music Information Retrieval
+  (ISMIR)}}, pp. 499--504.
+
+\bibitem[{Itakura(1975)}]{itakura1975minimum}
+Itakura, F. (1975).
+\newblock Minimum prediction residual principle applied to speech recognition.
+\newblock \emph{IEEE Transactions on Acoustics, Speech, and Signal Processing},
+  \emph{23}(1), 67--72.
+
+\bibitem[{Izmirli(2005)}]{izmirli2005template}
+Izmirli, O. (2005).
+\newblock {Template based key finding from audio}.
+\newblock In \emph{Proceedings of the International Computer Music Conference
+  (ICMC)}, pp. 211--214.
+
+\bibitem[{Janakiraman(2008)}]{janakiraman2008essentials}
+Janakiraman, S.~R. (2008).
+\newblock \emph{{Essentials of musicology in south Indian music}}.
+\newblock Madras: Indian Music Publishing House.
+
+\bibitem[{Jang \& Gao(2000)}]{jang2000query}
+Jang, J.~S.~R. \& Gao, M.~Y. (2000).
+\newblock A query-by-singing system based on dynamic programming.
+\newblock In \emph{Proceedings of international workshop on intelligent system
+  resolutions (8th bellman continuum), Hsinchu}, pp. 85--89.
+
+\bibitem[{Jang et~al.(2005)Jang, Hsu, \& Lee}]{jang2005continuous}
+Jang, J.~S.~R., Hsu, C.~L., \& Lee, H.~R. (2005).
+\newblock Continuous {HMM} and its enhancement for singing/humming query
+  retrieval.
+\newblock In \emph{Proc. of Int. Conf. on Music Information Retrieval (ISMIR)},
+  pp. 546--551.
+
+\bibitem[{Jansen \& Niyogi(2008)}]{Jansen08JASA}
+Jansen, A. \& Niyogi, P. (2008).
+\newblock {Modeling the temporal dynamics of distinctive feature landmark
+  detectors for speech recognition}.
+\newblock \emph{Journal of the Acoustical Society of America}, \emph{124}(3),
+  1739--1758.
+
+\bibitem[{Janssen et~al.(2013)Janssen, Haas, Volk, \& Kranenburg}]{Janssen2013}
+Janssen, B., Haas, W. B.~D., Volk, A., \& Kranenburg, P.~V. (2013).
+\newblock {Discovering repeated patterns in music: state of knowledge,
+  challenges, perspectives}.
+\newblock In \emph{Proc. of the 10th International Symposium on Computer Music
+  Multidisciplinary Research}, pp. 225--240. Marseille.
+
+\bibitem[{Jha(2001)}]{R_Jha_2001}
+Jha, R. (2001).
+\newblock \emph{{Abhinav Geetanjali Vol.~I-V}}.
+\newblock Sangeet Sadan.
+
+\bibitem[{Juh\'{a}sz(2009)}]{Juhasz2009a}
+Juh\'{a}sz, Z. (2009).
+\newblock {Motive identification in 22 folksong corpora using dynamic time
+  warping and self organizing maps}.
+\newblock In \emph{Int. Soc. for Music Information Retrieval}, pp. 171--176.
+
+\bibitem[{Kantz \& Schreiber(2004)}]{Kantz04BOOK}
+Kantz, H. \& Schreiber, T. (2004).
+\newblock \emph{{Nonlinear time series analysis}}.
+\newblock Cambridge, UK: Cambridge University Press.
+
+\bibitem[{Karydis et~al.(2006)Karydis, Nanopoulos, \&
+  Manolopoulos}]{Karydis2006}
+Karydis, I., Nanopoulos, A., \& Manolopoulos, Y. (2006).
+\newblock {Finding maximum-length repeating patterns in music databases}.
+\newblock \emph{Multimedia Tools and Applications}, \emph{32}(1), 49--71.
+
+\bibitem[{Kaul(2007)}]{Kaul2007}
+Kaul, D.~M. (2007).
+\newblock \emph{{Hindustani and Persio-Arabian Music}}.
+\newblock Kanishka Publishers, Distributors, first edn.
+
+\bibitem[{Keogh et~al.(2001)Keogh, Chakrabarti, Pazzani, \&
+  Mehrotra}]{keogh2001dimensionality}
+Keogh, E., Chakrabarti, K., Pazzani, M., \& Mehrotra, S. (2001).
+\newblock Dimensionality reduction for fast similarity search in large time
+  series databases.
+\newblock \emph{Knowledge and information Systems}, \emph{3}(3), 263--286.
+
+\bibitem[{Keogh et~al.(2004)Keogh, Chu, Hart, \& Pazzani}]{keogh2004segmenting}
+Keogh, E., Chu, S., Hart, D., \& Pazzani, M. (2004).
+\newblock Segmenting time series: A survey and novel approach.
+\newblock \emph{Data Mining in Time Series Databases}, \emph{57}, 1--22.
+
+\bibitem[{Keogh \& Ratanamahatana(2004)}]{Keogh2004}
+Keogh, E. \& Ratanamahatana, C.~A. (2004).
+\newblock {Exact indexing of dynamic time warping}.
+\newblock \emph{Knowledge and Information Systems}, \emph{7}(3), 358--386.
+
+\bibitem[{Kim et~al.(2001)Kim, Park, \& Chu}]{kim2001index}
+Kim, S.~W., Park, S., \& Chu, W.~W. (2001).
+\newblock An index-based approach for similarity search supporting time warping
+  in large sequence databases.
+\newblock In \emph{17th International Conference on Data Engineering}, pp.
+  607--614.
+
+\bibitem[{Klapuri(2010)}]{klapuri2010pattern}
+Klapuri, A. (2010).
+\newblock Pattern induction and matching in music signals.
+\newblock In \emph{International Symposium on Computer Music Modeling and
+  Retrieval}, pp. 188--204.
+
+\bibitem[{Knopke \& J\"{u}rgensen(2009)}]{Knopke2009}
+Knopke, I. \& J\"{u}rgensen, F. (2009).
+\newblock {A System for Identifying Common Melodic Phrases in the Masses of
+  Palestrina}.
+\newblock \emph{Journal of New Music Research}, \emph{38}(2), 171--181.
+
+\bibitem[{Koduri et~al.(2011)Koduri, Gulati, \& Rao}]{koduri2011survey}
+Koduri, G.~K., Gulati, S., \& Rao, P. (2011).
+\newblock A survey of raaga recognition techniques and improvements to the
+  state-of-the-art.
+\newblock In \emph{Sound and Music Computing}.
+
+\bibitem[{Koduri et~al.(2012)Koduri, Gulati, Rao, \& Serra}]{koduri2012raga}
+Koduri, G.~K., Gulati, S., Rao, P., \& Serra, X. (2012).
+\newblock R{\=a}ga recognition based on pitch distribution methods.
+\newblock \emph{Journal of New Music Research}, \emph{41}(4), 337--350.
+
+\bibitem[{Koduri et~al.(2014)Koduri, Ishwar, Serr{\`a}, \&
+  Serra}]{koduri2014intonation}
+Koduri, G.~K., Ishwar, V., Serr{\`a}, J., \& Serra, X. (2014).
+\newblock Intonation analysis of r{\=a}gas in {{C}}arnatic music.
+\newblock \emph{Journal of New Music Research}, \emph{43}(1), 72--93.
+
+\bibitem[{Kotsifakos et~al.(2011)Kotsifakos, Papapetrou, Hollm{\'e}n, \&
+  Gunopulos}]{kotsifakos2011subsequence}
+Kotsifakos, A., Papapetrou, P., Hollm{\'e}n, J., \& Gunopulos, D. (2011).
+\newblock A subsequence matching with gaps-range-tolerances framework: a
+  query-by-humming application.
+\newblock \emph{Proceedings of the VLDB Endowment}, \emph{4}(11), 761--771.
+
+\bibitem[{Kotsifakos et~al.(2012)Kotsifakos, Papapetrou, Hollm{\'e}n,
+  Gunopulos, \& Athitsos}]{kotsifakos2012survey}
+Kotsifakos, A., Papapetrou, P., Hollm{\'e}n, J., Gunopulos, D., \& Athitsos, V.
+  (2012).
+\newblock A survey of query-by-humming similarity methods.
+\newblock In \emph{Proc. of the 5th Int. Conf. on Pervasive Tech. Related to
+  Assistive Environments}, pp. 5:1--5:4.
+
+\bibitem[{Krishna \& Ishwar(2012)}]{krishna2012carnatic}
+Krishna, T.~M. \& Ishwar, V. (2012).
+\newblock Kar\d{n}\={a}\d{t}ic music: Svara, gamaka, motif and r\={a}ga
+  identity.
+\newblock In \emph{Proc. of the 2nd CompMusic Workshop}, pp. 12--18.
+
+\bibitem[{Krishnaswamy(2003{\natexlab{a}})}]{Krishnaswamyicassp2003}
+Krishnaswamy, A. (2003{\natexlab{a}}).
+\newblock Application of pitch tracking to {S}outh {I}ndian classical music.
+\newblock In \emph{{IEEE International Conference on Acoustics, Speech, and
+  Signal Processing}}, vol.~5, pp. 557--560.
+
+\bibitem[{Krishnaswamy(2003{\natexlab{b}})}]{Krishnaswamy2003}
+Krishnaswamy, A. (2003{\natexlab{b}}).
+\newblock On the twelve basic intervals in {S}outh {I}ndian classical music.
+\newblock In \emph{{Audio Engineering Society Convention 115}}. Audio
+  Engineering Society.
+
+\bibitem[{Kroher et~al.(2016)Kroher, D{\'\i}az-B{\'a}{\~n}ez, Mora, \&
+  G{\'o}mez}]{kroher2016corpus}
+Kroher, N., D{\'\i}az-B{\'a}{\~n}ez, J.~M., Mora, J., \& G{\'o}mez, E. (2016).
+\newblock Corpus {COFLA}: A research corpus for the computational study of
+  {F}lamenco music.
+\newblock \emph{Journal on Computing and Cultural Heritage (JOCCH)},
+  \emph{9}(2), 10:1--10:21.
+
+\bibitem[{Kroher et~al.(2015)Kroher, Pikrakis, Moreno, \&
+  D{\'\i}az-B{\'a}{\~n}ez}]{kroher2015discovery}
+Kroher, N., Pikrakis, A., Moreno, J., \& D{\'\i}az-B{\'a}{\~n}ez, J.~M. (2015).
+\newblock Discovery of repeated vocal patterns in polyphonic audio: A case
+  study on flamenco music.
+\newblock In \emph{23rd European Signal Processing Conference (EUSIPCO)}, pp.
+  41--45.
+
+\bibitem[{Krumhansl(2000)}]{krumhansl2000tonality}
+Krumhansl, C.~L. (2000).
+\newblock Tonality induction: A statistical approach applied cross-culturally.
+\newblock \emph{Music Perception: An Interdisciplinary Journal}, \emph{17}(4),
+  461--479.
+
+\bibitem[{Krumhansl(2001)}]{krumhansl2001cognitive}
+Krumhansl, C.~L. (2001).
+\newblock \emph{Cognitive foundations of musical pitch}.
+\newblock Oxford University Press.
+
+\bibitem[{Krumhansl \& Kessler(1982)}]{KrumhanslKessler82}
+Krumhansl, C.~L. \& Kessler, E.~J. (1982).
+\newblock {Tracing the dynamic changes in perceived tonal organization in a
+  spatial representation of musical keys}.
+\newblock \emph{Psychological review}, \emph{89}(4), 334--368.
+
+\bibitem[{Krumhansl \& Shepard(1979)}]{krumhansl1979quantification}
+Krumhansl, C.~L. \& Shepard, R.~N. (1979).
+\newblock {Quantification of the hierarchy of tonal functions within a diatonic
+  context}.
+\newblock \emph{Journal of experimental psychology: Human Perception and
+  Performance}, \emph{5}(4), 579--594.
+
+\bibitem[{Kullback \& Leibler(1951)}]{kullback1951information}
+Kullback, S. \& Leibler, R.~A. (1951).
+\newblock On information and sufficiency.
+\newblock \emph{The annals of mathematical statistics}, \emph{22}(1), 79--86.
+
+\bibitem[{Kumar et~al.(2014)Kumar, Pandya, \& Jawahar}]{kumar2014identifying}
+Kumar, V., Pandya, H., \& Jawahar, C.~V. (2014).
+\newblock Identifying ragas in indian music.
+\newblock In \emph{International Conference on Pattern Recognition}, pp.
+  767--772.
+
+\bibitem[{Lartillot(2005{\natexlab{a}})}]{Lartillot2005b}
+Lartillot, O. (2005{\natexlab{a}}).
+\newblock {An Efficient Algorithm For Motivic Pattern Extraction Based on a
+  Cognitive Modeling}.
+\newblock \emph{Journées d’Informatiques Musicales}.
+
+\bibitem[{Lartillot(2005{\natexlab{b}})}]{Lartillot2005}
+Lartillot, O. (2005{\natexlab{b}}).
+\newblock {Multi-dimensional motivic pattern extraction founded on adaptive
+  redundancy filtering}.
+\newblock \emph{Journal of New Music Research}, \emph{34}(4), 375--393.
+
+\bibitem[{Lartillot \& Ayari(2006)}]{Lartillot2006}
+Lartillot, O. \& Ayari, M. (2006).
+\newblock {Motivic pattern extraction in music, and application to the study of
+  Tunisian modal music}.
+\newblock \emph{South African Computer Journal}, \emph{36}, 16--28.
+
+\bibitem[{Lartillot et~al.(2008)Lartillot, Toiviainen, \&
+  Eerola}]{lartillot2008matlab}
+Lartillot, O., Toiviainen, P., \& Eerola, T. (2008).
+\newblock A matlab toolbox for music information retrieval.
+\newblock In \emph{Data analysis, machine learning and applications}, pp.
+  261--268. Springer.
+
+\bibitem[{Lee(2006)}]{lee2006automatic}
+Lee, K. (2006).
+\newblock Automatic chord recognition from audio using enhanced pitch class
+  profile.
+\newblock In \emph{International Computer Music Conference, (ICMC)}.
+
+\bibitem[{Lerdahl \& Jackendoff(1983)}]{Lerdahl1983}
+Lerdahl, F. \& Jackendoff, R. (1983).
+\newblock \emph{{A generative theory of tonal music}}.
+\newblock Cambridge: MIT Press.
+
+\bibitem[{Levitin(2002)}]{levitin2002memory}
+Levitin, D.~J. (2002).
+\newblock Memory for musical attributes.
+\newblock \emph{Foundations of cognitive psychology: Core readings}, pp.
+  295--310.
+
+\bibitem[{Levy \& Sandler(2008)}]{levy2008structural}
+Levy, M. \& Sandler, M. (2008).
+\newblock Structural segmentation of musical audio by constrained clustering.
+\newblock \emph{IEEE Transactions on Audio, Speech, and Language Processing},
+  \emph{16}(2), 318--326.
+
+\bibitem[{Lijffijt et~al.(2010)Lijffijt, Papapetrou, Hollm{\'e}n, \&
+  Athitsos}]{lijffijt2010benchmarking}
+Lijffijt, J., Papapetrou, P., Hollm{\'e}n, J., \& Athitsos, V. (2010).
+\newblock Benchmarking dynamic time warping for music retrieval.
+\newblock In \emph{Proceedings of the 3rd international conference on pervasive
+  technologies related to assistive environments}, pp. 59:1--59:7. ACM.
+
+\bibitem[{Lin et~al.(2011)Lin, Wu, \& Wang}]{lin2011music}
+Lin, H.~J., Wu, H.~H., \& Wang, C.~W. (2011).
+\newblock Music matching based on rough longest common subsequence.
+\newblock \emph{Journal of Information Science and Engineering}, \emph{27}(1),
+  95--110.
+
+\bibitem[{Lin et~al.(2003)Lin, Keogh, Lonardi, \& Chiu}]{Lin2003}
+Lin, J., Keogh, E., Lonardi, S., \& Chiu, B. (2003).
+\newblock {A symbolic representation of time series, with implications for
+  streaming algorithms}.
+\newblock In \emph{Proc. of the 8th ACM SIGMOD workshop on Research issues in
+  data mining and knowledge discovery}, pp. 2--11. New York, USA.
+
+\bibitem[{Longuet-Higgins \& Steedman(1971)}]{longuet1971interpreting}
+Longuet-Higgins, H.~C. \& Steedman, M.~J. (1971).
+\newblock On interpreting bach.
+\newblock \emph{Machine intelligence}, \emph{6}, 221--241.
+
+\bibitem[{MacMullen(2003)}]{macmullen2003requirements}
+MacMullen, W.~J. (2003).
+\newblock Requirements definition and design criteria for test corpora in
+  information science.
+\newblock Tech. rep., School of Information and Library Science, University of
+  North Carolina at Chapel Hill.
+
+\bibitem[{Manikandan(2004)}]{Manikandan2004}
+Manikandan, T.~V. (2004).
+\newblock \emph{Lakshana and Laksya of {C}arnatic Music: A Quest}.
+\newblock {New Delhi, India}: {Kanishka Publishers and Distributors}.
+
+\bibitem[{Mann \& Whitney(1947)}]{mann1947test}
+Mann, H.~B. \& Whitney, D.~R. (1947).
+\newblock On a test of whether one of two random variables is stochastically
+  larger than the other.
+\newblock \emph{The annals of mathematical statistics}, \emph{18}(1), 50--60.
+
+\bibitem[{Manning et~al.(2008)Manning, Raghavan, \&
+  Sch{\"u}tze}]{manning2008introduction}
+Manning, C.~D., Raghavan, P., \& Sch{\"u}tze, H. (2008).
+\newblock \emph{Introduction to information retrieval}, vol.~1.
+\newblock Cambridge university press Cambridge.
+
+\bibitem[{Marsden(2012{\natexlab{a}})}]{marsden2012counselling}
+Marsden, A. (2012{\natexlab{a}}).
+\newblock Counselling a better relationship between mathematics and musicology.
+\newblock \emph{Journal of Mathematics and Music}, \emph{6}(2), 145--153.
+
+\bibitem[{Marsden(2012{\natexlab{b}})}]{Marsden2012}
+Marsden, A. (2012{\natexlab{b}}).
+\newblock {Interrogating Melodic Similarity: A Definitive Phenomenon or the
+  Product of Interpretation?}
+\newblock \emph{Journal of New Music Research}, \emph{41}(4), 323--335.
+
+\bibitem[{Martinez(2001)}]{martinez2001semiosis}
+Martinez, J.~L. (2001).
+\newblock \emph{{Semiosis in Hindustani Music}}.
+\newblock Motilal Banarsidass Publishers.
+
+\bibitem[{Maslov \& Sneppen(2002)}]{maslov2002specificity}
+Maslov, S. \& Sneppen, K. (2002).
+\newblock Specificity and stability in topology of protein networks.
+\newblock \emph{Science}, \emph{296}(5569), 910--913.
+
+\bibitem[{Mazzoni \& Dannenberg(2001)}]{mazzoni2001melody}
+Mazzoni, D. \& Dannenberg, R.~B. (2001).
+\newblock Melody matching directly from audio.
+\newblock In \emph{2nd Annual International Symposium on Music Information
+  Retrieval}, pp. 17--18.
+
+\bibitem[{McCallum \& Nigam(1998)}]{mccallum1998comparison}
+McCallum, A. \& Nigam, K. (1998).
+\newblock A comparison of event models for naive bayes text classification.
+\newblock In \emph{AAAI Workshop on learning for text categorization}, vol.
+  752, pp. 41--48.
+
+\bibitem[{McNab et~al.(1996)McNab, Smith, \& Witten}]{McNab1996}
+McNab, R.~J., Smith, L.~A., \& Witten, I.~H. (1996).
+\newblock {Towards the digital music library: Tune retrieval from acoustic
+  input}.
+\newblock In \emph{Proceedings of the first ACM international conference on
+  Digital libraries}, pp. 11--18.
+
+\bibitem[{McNemar(1947)}]{mcnemar1947note}
+McNemar, Q. (1947).
+\newblock Note on the sampling error of the difference between correlated
+  proportions or percentages.
+\newblock \emph{Psychometrika}, \emph{12}(2), 153--157.
+
+\bibitem[{Meer(1980)}]{meer1980hindustani}
+Meer, W.~V.~D. (1980).
+\newblock Hindustani music in the twentieth century.
+
+\bibitem[{Mehta(2008)}]{Mehta2008}
+Mehta, R. (2008).
+\newblock \emph{{Indian Classical Music and Gharana Tradition}}.
+\newblock Readworthy Publications Pvt. Ltd., first edn.
+
+\bibitem[{Meredith(2006)}]{meredith2006point}
+Meredith, D. (2006).
+\newblock Point-set algorithms for pattern discovery and pattern matching in
+  music.
+\newblock In \emph{Dagstuhl Seminar Proceedings}. Schloss
+  Dagstuhl-Leibniz-Zentrum f{\"u}r Informatik.
+
+\bibitem[{Meredith et~al.(2002)Meredith, Lemstr{\"o}m, \&
+  Wiggins}]{meredith2002algorithms}
+Meredith, D., Lemstr{\"o}m, K., \& Wiggins, G.~A. (2002).
+\newblock Algorithms for discovering repeated patterns in multidimensional
+  representations of polyphonic music.
+\newblock \emph{Journal of New Music Research}, \emph{31}(4), 321--345.
+
+\bibitem[{Mitchell(1997)}]{Mitchell97BOOK}
+Mitchell, T.~M. (1997).
+\newblock \emph{{Machine Learning}}.
+\newblock New York, USA: McGraw-Hill.
+
+\bibitem[{Moelants et~al.(2009)Moelants, Cornelis, \&
+  Leman}]{moelants2009exploring}
+Moelants, D., Cornelis, O., \& Leman, M. (2009).
+\newblock Exploring african tone scales.
+\newblock In \emph{10th International Society for Music Information Retrieval
+  Conference (ISMIR-2009)}, pp. 489--494. International Society for music
+  Information Retrieval.
+
+\bibitem[{Mueen et~al.(2009)Mueen, Keogh, Zhu, Cash, \& Westover}]{Mueen2009}
+Mueen, A., Keogh, E., Zhu, Q., Cash, S., \& Westover, B. (2009).
+\newblock {Exact discovery of time series motifs}.
+\newblock In \emph{Proc. of SIAM Int. Con. on Data Mining (SDM)}, pp. 1--12.
+
+\bibitem[{M{\"u}ller(2007)}]{muller2007dynamic}
+M{\"u}ller, M. (2007).
+\newblock \emph{{Dynamic Time Warping}}, pp. 69--84.
+\newblock Berlin, Heidelberg: Springer.
+
+\bibitem[{M{\"u}ller et~al.(2009)M{\"u}ller, Grosche, \&
+  Wiering}]{muller2009robust}
+M{\"u}ller, M., Grosche, P., \& Wiering, F. (2009).
+\newblock Robust segmentation and annotation of folk song recordings.
+\newblock In \emph{Int. Soc. for Music Information Retrieval Conf. (ISMIR)},
+  pp. 735--740.
+
+\bibitem[{Muller et~al.(2013)Muller, Jiang, \& Grosche}]{muller2013robust}
+Muller, M., Jiang, N., \& Grosche, P. (2013).
+\newblock A robust fitness measure for capturing repetitions in music
+  recordings with applications to audio thumbnailing.
+\newblock \emph{IEEE Transactions on audio, speech, and language processing},
+  \emph{21}(3), 531--543.
+
+\bibitem[{M{\"u}ller \& Kurth(2006)}]{muller2006towards}
+M{\"u}ller, M. \& Kurth, F. (2006).
+\newblock Towards structural analysis of audio recordings in the presence of
+  musical variations.
+\newblock \emph{EURASIP Journal on Advances in Signal Processing},
+  \emph{2007}(1), 1--18.
+
+\bibitem[{Muscariello et~al.(2009)Muscariello, Gravier, \&
+  Bimbot}]{muscariello2009variability}
+Muscariello, A., Gravier, G., \& Bimbot, F. (2009).
+\newblock Variability tolerant audio motif discovery.
+\newblock In \emph{International Conference on Multimedia Modeling}, pp.
+  275--286. Springer.
+
+\bibitem[{Narayan \& Singh(2014)}]{narayan2014detection}
+Narayan, A. \& Singh, N. (2014).
+\newblock Detection of micro-tonal ornaments in dhrupad using dynamic
+  programming approach.
+\newblock In \emph{Proceedings of the 9th Conference on Interdisciplinary
+  Musicology--CIM14. Berlin, Germany}, pp. 388--391.
+
+\bibitem[{Narayanaswami \& Jayaraman(2011)}]{narayanswami2011}
+Narayanaswami, P.~P. \& Jayaraman, V. (2011).
+\newblock {Sangita Sampradaya Pradarsini}.
+
+\bibitem[{Needleman \& Wunsch(1970)}]{needleman1970general}
+Needleman, S.~B. \& Wunsch, C.~D. (1970).
+\newblock A general method applicable to the search for similarities in the
+  amino acid sequence of two proteins.
+\newblock \emph{Journal of molecular biology}, \emph{48}(3), 443--453.
+
+\bibitem[{Newman(2003)}]{newman2003structure}
+Newman, M.~E. (2003).
+\newblock The structure and function of complex networks.
+\newblock \emph{Society for Industrial and Applied Mathematics (SIAM) review},
+  \emph{45}(2), 167--256.
+
+\bibitem[{Nieto \& Farbood(2012)}]{nieto2012perceptual}
+Nieto, O. \& Farbood, M.~M. (2012).
+\newblock Perceptual evaluation of automatically extracted musical motives.
+\newblock In \emph{Proceedings of the 12th International Conference on Music
+  Perception and Cognition}, pp. 723--727.
+
+\bibitem[{Nieto et~al.(2012)Nieto, Humphrey, \& Bello}]{nieto2012compressing}
+Nieto, O., Humphrey, E.~J., \& Bello, P.~B. (2012).
+\newblock Compressing music recordings into audio summaries.
+\newblock In \emph{Proc. of Int. Soc. for Music Information Retrieval Conf.
+  (ISMIR)}, pp. 313--318.
+
+\bibitem[{Noland \& Sandler(2006)}]{noland2006key}
+Noland, K. \& Sandler, M.~B. (2006).
+\newblock Key estimation using a hidden markov model.
+\newblock In \emph{Proc. of Int. Soc. for Music Information Retrieval Conf.
+  (ISMIR)}, pp. 121--126.
+
+\bibitem[{Ong \& Herrera(2005)}]{Ong05ICMC}
+Ong, B.~S. \& Herrera, P. (2005).
+\newblock {Semantic segmentation of music audio contents}.
+\newblock In \emph{Proc. of the Int. Computer Music Conf. (ICMC)}.
+
+\bibitem[{Orio(2006)}]{orio2006music}
+Orio, N. (2006).
+\newblock Music retrieval: A tutorial and review.
+\newblock \emph{Foundations and Trends{\textregistered} in Information
+  Retrieval}, \emph{1}(1), 1--90.
+
+\bibitem[{Pachet \& Aucouturier(2004)}]{pachet2004improving}
+Pachet, F. \& Aucouturier, J.~J. (2004).
+\newblock Improving timbre similarity: How high is the sky.
+\newblock \emph{Journal of negative results in speech and audio sciences},
+  \emph{1}(1), 1--13.
+
+\bibitem[{Paiva et~al.(2006)Paiva, Mendes, \& Cardoso}]{paiva2006melody}
+Paiva, R.~P., Mendes, T., \& Cardoso, A. (2006).
+\newblock Melody detection in polyphonic musical signals: Exploiting perceptual
+  rules, note salience, and melodic smoothness.
+\newblock \emph{Computer Music Journal}, \emph{30}(4), 80--98.
+
+\bibitem[{Pandey et~al.(2003)Pandey, Mishra, \& Ipe}]{pandey2003tansen}
+Pandey, G., Mishra, C., \& Ipe, P. (2003).
+\newblock Tansen: A system for automatic raga identification.
+\newblock In \emph{In Proc. of the 1st {{I}}ndian Int. Conf. on Artificial
+  Intelligence}, pp. 1350--1363.
+
+\bibitem[{Papadopoulos \& Peeters(2007)}]{papadopoulos2007large}
+Papadopoulos, H. \& Peeters, G. (2007).
+\newblock Large-scale study of chord estimation algorithms based on chroma
+  representation and hmm.
+\newblock In \emph{2007 International Workshop on Content-Based Multimedia
+  Indexing}, pp. 53--60.
+
+\bibitem[{Pardo \& Birmingham(2002)}]{pardo2002encoding}
+Pardo, B. \& Birmingham, W.~P. (2002).
+\newblock Encoding timing information for musical query matching.
+\newblock In \emph{Proc. of Int. Conf. on Music Information Retrieval (ISMIR)},
+  pp. 267–--268.
+
+\bibitem[{Park \& Glass(2008)}]{Park2008}
+Park, A.~S. \& Glass, J.~R. (2008).
+\newblock {Unsupervised pattern discovery in speech}.
+\newblock \emph{IEEE Transactions on Audio, Speech, and Language Processing},
+  \emph{16}(1), 186--197.
+
+\bibitem[{Patel(2007)}]{Patel07BOOK}
+Patel, A.~D. (2007).
+\newblock \emph{{Music, language, and the brain}}.
+\newblock Oxford, UK: Oxford University Press.
+
+\bibitem[{Paulus \& Klapuri(2006)}]{paulus2006music}
+Paulus, J. \& Klapuri, A. (2006).
+\newblock Music structure analysis by finding repeated parts.
+\newblock In \emph{Proceedings of the 1st ACM workshop on Audio and music
+  computing multimedia}, pp. 59--68. ACM.
+
+\bibitem[{Paulus et~al.(2010)Paulus, M{\"u}ller, \& Klapuri}]{paulus2010state}
+Paulus, J., M{\"u}ller, M., \& Klapuri, A. (2010).
+\newblock Audio-based music structure analysis.
+\newblock In \emph{Int. Soc. for Music Information Retrieval Conf. (ISMIR)},
+  pp. 625--636.
+
+\bibitem[{Pauws(2004{\natexlab{a}})}]{pauws2004cubyhum}
+Pauws, S. (2004{\natexlab{a}}).
+\newblock Cubyhum: Algorithms for query by humming.
+\newblock In \emph{Algorithms in Ambient Intelligence}, pp. 71--87. Springer.
+
+\bibitem[{Pauws(2004{\natexlab{b}})}]{pauws2004musical}
+Pauws, S. (2004{\natexlab{b}}).
+\newblock Musical key extraction from audio.
+\newblock In \emph{Proc. of Int. Soc. for Music Information Retrieval Conf.
+  (ISMIR)}, pp. 96--99.
+
+\bibitem[{Pearce et~al.(2008)Pearce, M{\"u}llensiefen, \&
+  Wiggins}]{pearce2008comparison}
+Pearce, M., M{\"u}llensiefen, D., \& Wiggins, G.~A. (2008).
+\newblock A comparison of statistical and rule-based models of melodic
+  segmentation.
+\newblock In \emph{Int. Soc. for Music Information Retrieval Conf. (ISMIR)},
+  pp. 89--94.
+
+\bibitem[{Pedregosa et~al.(2011)Pedregosa, Varoquaux, Gramfort, Michel,
+  Thirion, Grisel, Blondel, Prettenhofer, Weiss, Dubourg, Vanderplas, Passos,
+  Cournapeau, Brucher, Perrot, \& Duchesnay}]{scikitlearn}
+Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel,
+  O., Blondel, M., Prettenhofer, P., Weiss, R., Dubourg, V., Vanderplas, J.,
+  Passos, A., Cournapeau, D., Brucher, M., Perrot, M., \& Duchesnay, E. (2011).
+\newblock Scikit-learn: machine learning in {P}ython.
+\newblock \emph{Journal of Machine Learning Research}, \emph{12}, 2825--2830.
+
+\bibitem[{Peeters(2006{\natexlab{a}})}]{peeters2006chroma}
+Peeters, G. (2006{\natexlab{a}}).
+\newblock Chroma-based estimation of musical key from audio-signal analysis.
+\newblock In \emph{Int. Soc. for Music Information Retrieval Conf. (ISMIR)},
+  pp. 115--120.
+
+\bibitem[{Peeters(2006{\natexlab{b}})}]{peeters2006musical}
+Peeters, G. (2006{\natexlab{b}}).
+\newblock Musical key estimation of audio signal based on hidden markov
+  modeling of chroma vectors.
+\newblock In \emph{Proceedings of the International Conference on Digital Audio
+  Effects (DAFx)}, pp. 127--131.
+
+\bibitem[{Peeters \& Fort(2012)}]{peeters2012towards}
+Peeters, G. \& Fort, K. (2012).
+\newblock Towards a (better) definition of the description of annotated {MIR}
+  corpora.
+\newblock In \emph{Int. Soc. for Music Information Retrieval Conf. (ISMIR)},
+  pp. 25--30.
+
+\bibitem[{Perng et~al.(2000)Perng, Wang, Zhang, \& Parker}]{Perng00ICDE}
+Perng, C.~S., Wang, H., Zhang, S.~R., \& Parker, D.~S. (2000).
+\newblock {Landmarks: a new model for similarity-based pattern querying in time
+  series databases}.
+\newblock In \emph{Proc. of the Int. Conf. on Data Engineering (ICDE)}, pp.
+  33--42.
+
+\bibitem[{Pikrakis et~al.(2012)Pikrakis, G{\'o}mez, Oramas,
+  D{\'\i}az-B{\'a}{\~n}ez, Mora, Escobar-Borrego, G{\'o}mez, \&
+  Salamon}]{pikrakis2012tracking}
+Pikrakis, A., G{\'o}mez, F., Oramas, S., D{\'\i}az-B{\'a}{\~n}ez, J.~M., Mora,
+  J., Escobar-Borrego, F., G{\'o}mez, E., \& Salamon, J. (2012).
+\newblock Tracking melodic patterns in {F}lamenco singing by analyzing
+  polyphonic music recordings.
+\newblock In \emph{Int. Soc. for Music Information Retrieval Conf. (ISMIR)},
+  pp. 421--426.
+
+\bibitem[{Pikrakis et~al.(2016)Pikrakis, Kroher, \&
+  D{\'\i}az-B{\'a}{\~n}ez}]{pikrakis2016detection}
+Pikrakis, A., Kroher, N., \& D{\'\i}az-B{\'a}{\~n}ez, J.~M. (2016).
+\newblock Detection of melodic patterns in automatic transcriptions of
+  {F}lamenco singing.
+\newblock In \emph{6th International Workshop on Folk Music Analysis}, pp.
+  14--17. Dublin: Dublin Institute of Technology.
+
+\bibitem[{Pikrakis et~al.(2003)Pikrakis, Theodoridis, \&
+  Kamarotos}]{pikrakis2003recognition}
+Pikrakis, A., Theodoridis, S., \& Kamarotos, D. (2003).
+\newblock Recognition of isolated musical patterns using context dependent
+  dynamic time warping.
+\newblock \emph{IEEE Transactions on Speech and Audio Processing},
+  \emph{11}(3), 175--183.
+
+\bibitem[{Porter et~al.(2015)Porter, Bogdanov, Kaye, Tsukanov, \&
+  Serra}]{porter2015acousticbrainz}
+Porter, A., Bogdanov, D., Kaye, R., Tsukanov, R., \& Serra, X. (2015).
+\newblock Acousticbrainz: a community platform for gathering music information
+  obtained from audio.
+\newblock In \emph{Int. Soc. for Music Information Retrieval Conf. (ISMIR)},
+  pp. 786--792.
+
+\bibitem[{Porter et~al.(2013)Porter, Sordo, \& Serra}]{dunya_porter}
+Porter, A., Sordo, M., \& Serra, X. (2013).
+\newblock Dunya: A system for browsing audio music collections exploiting
+  cultural context.
+\newblock In \emph{Proc. of Int. Conf. on Music Information Retrieval (ISMIR)},
+  pp. 101--106. Curitiba, Brazil.
+
+\bibitem[{Powers(1959)}]{powers1963background}
+Powers, H.~S. (1959).
+\newblock \emph{{The background of the South Indian R\={a}ga-System}}.
+\newblock Ph.D. thesis, Princeton Univer- sity, Barcelona, Spain.
+
+\bibitem[{Pratyush(2010)}]{pratyush_2010}
+Pratyush (2010).
+\newblock \emph{{Analysis and Classification of Ornaments in North Indian
+  (Hindustani) Classical Music}}.
+\newblock Master's thesis, Universitat Pompeu Fabra, Barcelona, Spain.
+
+\bibitem[{Quinlan(1993)}]{Quinlan:1993:CPM:152181}
+Quinlan, J.~R. (1993).
+\newblock \emph{C4.5: programs for machine learning}.
+\newblock San Francisco, CA, USA: Morgan Kaufmann Publishers Inc.
+
+\bibitem[{Rabiner \& Juang(1993)}]{rabiner1993fundamentals}
+Rabiner, L. \& Juang, B.~H. (1993).
+\newblock \emph{Fundamentals of speech recognition}.
+\newblock Prentice hall.
+
+\bibitem[{Raja(2012)}]{Raja2012}
+Raja, D.~S. (2012).
+\newblock \emph{{Hindustani Music Today}}.
+\newblock D.K. Printworld (P) Ltd., first edn.
+
+\bibitem[{Rakthanmanon et~al.(2013)Rakthanmanon, Campana, Mueen, Batista,
+  Westover, Zhu, Zakaria, \& Keogh}]{Rakthanmanon2013}
+Rakthanmanon, T., Campana, B., Mueen, A., Batista, G., Westover, B., Zhu, Q.,
+  Zakaria, J., \& Keogh, E. (2013).
+\newblock {Addressing big data time series: mining trillions of time series
+  subsequences under dynamic time warping}.
+\newblock \emph{ACM Transactions on Knowledge Discovery from Data (TKDD)},
+  \emph{7}(3), 10:1--10:31.
+
+\bibitem[{Ramanathan(1999)}]{ramanathan1999musical}
+Ramanathan, N. (1999).
+\newblock \emph{{Musical forms in the Sangita Ratnakara}}.
+\newblock Chennai: Sampradaya.
+
+\bibitem[{Ranjani et~al.(2011)Ranjani, Arthi, \&
+  Sreenivas}]{ranjani2011carnatic}
+Ranjani, H.~G., Arthi, S., \& Sreenivas, T.~V. (2011).
+\newblock {{C}}arnatic music analysis: Shadja, swara identification and raga
+  verification in alapana using stochastic models.
+\newblock In \emph{IEEE Workshop on applications of Signal Processing to Audio
+  and Acoustics (WASPAA)}, pp. 29--32.
+
+\bibitem[{Rao et~al.(2013)Rao, Ross, \& Ganguli}]{rao2013distinguishing}
+Rao, P., Ross, J.~C., \& Ganguli, K.~K. (2013).
+\newblock Distinguishing raga-specific intonation of phrases with audio
+  analysis.
+\newblock \emph{Nin\={a}d, Journal of ITC SRA}, \emph{26}, 64.
+
+\bibitem[{Rao et~al.(2014)Rao, Ross, Ganguli, Pandit, Ishwar, Bellur, \&
+  Murthy}]{Rao2014}
+Rao, P., Ross, J.~C., Ganguli, K.~K., Pandit, V., Ishwar, V., Bellur, A., \&
+  Murthy, H.~A. (2014).
+\newblock {Classification of melodic motifs in raga music with time-series
+  matching}.
+\newblock \emph{Journal of New Music Research}, \emph{43}(1), 115--131.
+
+\bibitem[{Rao et~al.(1999)Rao, Bor, van~der Meer, \& Harvey}]{rao1999raga}
+Rao, S., Bor, J., van~der Meer, W., \& Harvey, J. (1999).
+\newblock \emph{The raga guide: a survey of 74 {{H}}industani ragas}.
+\newblock Nimbus Records with Rotterdam Conservatory of Music.
+
+\bibitem[{Rao \& Rao(2014)}]{Suvarnalata2014}
+Rao, S. \& Rao, P. (2014).
+\newblock An overview of {{H}}industani music in the context of computational
+  musicology.
+\newblock \emph{Journal of New Music Research}, \emph{43}(1), 24--33.
+
+\bibitem[{Rao(1995{\natexlab{a}})}]{TKG_Rao_Muddusvami}
+Rao, T.~K.~G. (1995{\natexlab{a}}).
+\newblock \emph{{Compositions of Muddusvami Dikshitar}}.
+\newblock Chennai, India: Ganamandir Publications.
+
+\bibitem[{Rao(1995{\natexlab{b}})}]{TKG_Rao_Tyagaraja}
+Rao, T.~K.~G. (1995{\natexlab{b}}).
+\newblock \emph{{Compositions of Tyagaraja}}.
+\newblock Chennai, India: Ganamandir Publications.
+
+\bibitem[{Rao(1997)}]{TKG_Rao_syama}
+Rao, T.~K.~G. (1997).
+\newblock \emph{{Compositions of Syama Sastri}}.
+\newblock Chennai, India: Ganamandir Publications.
+
+\bibitem[{Rao et~al.(2009)Rao, Pant, Bhaskar, \& Rao}]{rao2009applications}
+Rao, V., Pant, S., Bhaskar, M., \& Rao, P. (2009).
+\newblock Applications of a semiautomatic melody extraction interface for
+  {I}ndian music.
+\newblock In \emph{International Symposium on Frontiers of Research in Speech
+  and Music (FRSM)}.
+
+\bibitem[{Rao \& Rao(2009)}]{rao2009improving}
+Rao, V. \& Rao, P. (2009).
+\newblock Improving polyphonic melody extraction by dynamic programming based
+  dual f0 tracking.
+\newblock In \emph{12th International Conference on Digital Audio Effects
+  (DAFx)}, pp. 78--84. Como, Italy.
+
+\bibitem[{Rao \& Rao(2010)}]{rao2010vocal}
+Rao, V. \& Rao, P. (2010).
+\newblock Vocal melody extraction in the presence of pitched accompaniment in
+  polyphonic music.
+\newblock \emph{IEEE Transactions on Audio, Speech, and Language Processing},
+  \emph{18}(8), 2145--2154.
+
+\bibitem[{Ratanamahatana \& Keogh(2004)}]{Ratanamahatana2004}
+Ratanamahatana, C.~A. \& Keogh, E. (2004).
+\newblock {Everything you know about dynamic time warping is wrong}.
+\newblock In \emph{Third Workshop on Mining Temporal and Sequential Data}, pp.
+  22--25.
+
+\bibitem[{Rockstro et~al.(2001)Rockstro, Dyson, Drabkin, Powers, \&
+  Rushton}]{GroveCadence}
+Rockstro, W.~S., Dyson, G., Drabkin, W., Powers, H.~S., \& Rushton, J. (2001).
+\newblock {Cadence}.
+\newblock In L.~Macy (Ed.) \emph{{Grove music online}}. Oxford University
+  Press.
+
+\bibitem[{Rodr{\'\i}guez~L. et~al.(2014)Rodr{\'\i}guez~L., Volk, \&
+  de~Haas}]{rodriguez2014comparing}
+Rodr{\'\i}guez~L., M., Volk, A., \& de~Haas, B. (2014).
+\newblock Comparing repetition-based melody segmentation models.
+\newblock In \emph{Proceedings of the 9th Conference on Interdisciplinary
+  Musicology (CIM14)}, pp. 143--148.
+
+\bibitem[{Rolland(1999)}]{rolland1999discovering}
+Rolland, P.~Y. (1999).
+\newblock Discovering patterns in musical sequences.
+\newblock \emph{Journal of New Music Research}, \emph{28}(4), 334--350.
+
+\bibitem[{Ross \& Rao(2012)}]{Ross2012}
+Ross, J.~C. \& Rao, P. (2012).
+\newblock Detection of raga-characteristic phrases from {H}industani classical
+  music audio.
+\newblock In \emph{{Proc. of 2nd CompMusic Workshop}}, pp. 133--138.
+
+\bibitem[{Ross et~al.(2012)Ross, Vinutha, \& Rao}]{Ross2012b}
+Ross, J.~C., Vinutha, T.~P., \& Rao, P. (2012).
+\newblock Detecting melodic motifs from audio for {H}industani classical music.
+\newblock In \emph{{Proc. of Int. Conf. on Music Information Retrieval
+  (ISMIR)}}, pp. 193--198.
+
+\bibitem[{Sakoe \& Chiba(1978)}]{Sakoe78TASLP}
+Sakoe, H. \& Chiba, S. (1978).
+\newblock {Dynamic programming algorithm optimization for spoken word
+  recognition}.
+\newblock \emph{IEEE Trans. on Acoustics, Speech, and Language Processing},
+  \emph{26}(1), 43--50.
+
+\bibitem[{Salamon(2013)}]{salamon:phd:13}
+Salamon, J. (2013).
+\newblock \emph{Melody Extraction from Polyphonic Music Signals}.
+\newblock Ph.D. thesis, Universitat Pompeu Fabra, Barcelona, Spain.
+
+\bibitem[{Salamon \& G\'omez(2012)}]{Salamon2012}
+Salamon, J. \& G\'omez, E. (2012).
+\newblock {Melody extraction from polyphonic music signals using pitch contour
+  characteristics}.
+\newblock \emph{IEEE Transactions on Audio, Speech, and Language Processing},
+  \emph{20}(6), 1759--1770.
+
+\bibitem[{Salamon et~al.(2011)Salamon, G\'{o}mez, \& Bonada}]{Salamon2011}
+Salamon, J., G\'{o}mez, E., \& Bonada, J. (2011).
+\newblock Sinusoid extraction and salience function design for predominant
+  melody estimation.
+\newblock In \emph{{Proc. of Int. Conf. on Digital Audio Effects (DAFx)}}, pp.
+  73--80.
+
+\bibitem[{Salamon et~al.(2012)Salamon, Gulati, \&
+  Serra}]{salamon2012multipitch}
+Salamon, J., Gulati, S., \& Serra, X. (2012).
+\newblock A multipitch approach to tonic identification in {I}ndian classical
+  music.
+\newblock In \emph{Proc. of Int. Soc. for Music Information Retrieval Conf.
+  (ISMIR)}, pp. 499--504. Porto, Portugal.
+
+\bibitem[{Salamon et~al.(2013)Salamon, Serr{\`a}, \&
+  G{\'o}mez}]{salamon2013tonal}
+Salamon, J., Serr{\`a}, J., \& G{\'o}mez, E. (2013).
+\newblock Tonal representations for music retrieval: from version
+  identification to query-by-humming.
+\newblock \emph{International Journal of Multimedia Information Retrieval},
+  \emph{2}(1), 45--58.
+
+\bibitem[{Sambamoorthy(1998)}]{sambamoorthy:1998}
+Sambamoorthy, P. (1998).
+\newblock \emph{{South {I}ndian music vol. I-VI}}.
+\newblock {The Indian Music Publishing House}.
+
+\bibitem[{Saraf(2011)}]{Saraf2011}
+Saraf, R. (2011).
+\newblock \emph{{Development of Hindustani Classical Music (19th \& 20th
+  centuries)}}.
+\newblock Vidyanidhi Prakashan, first edn.
+
+\bibitem[{Schenker et~al.(1980)Schenker, Jonas, \& B.}]{schenker1980harmony}
+Schenker, H., Jonas, O., \& B., E.~M. (1980).
+\newblock \emph{Harmony}.
+\newblock Neue musikalische Theorien und Phantasien. University of Chicago
+  Press.
+
+\bibitem[{Selfridge-Field(1998)}]{selfridge1998conceptual}
+Selfridge-Field, E. (1998).
+\newblock Conceptual and representational issues in melodic comparison.
+\newblock \emph{Computing in musicology: a directory of research}, (11), 3--64.
+
+\bibitem[{Sengupta(1990)}]{sengupta1990study}
+Sengupta, R. (1990).
+\newblock Study on some aspects of the singer's formant in north {I}ndian
+  classical singing.
+\newblock \emph{Journal of Voice}, \emph{4}(2), 129--134.
+
+\bibitem[{Sengupta et~al.(2005)Sengupta, Dey, Nag, Datta, \&
+  Mukerjee}]{Sengupta2005b}
+Sengupta, R., Dey, N., Nag, D., Datta, A.~K., \& Mukerjee, A. (2005).
+\newblock Automatic tonic ( {SA} ) detection algorithm in {I}ndian classical
+  vocal music.
+\newblock In \emph{{National Symposium on Acoustics}}, pp. 1--5.
+
+\bibitem[{Serr{\`a}(2011)}]{joan_thesis}
+Serr{\`a}, J. (2011).
+\newblock \emph{Identification of versions of the same musical composition by
+  processing audio descriptions}.
+\newblock Ph.D. thesis, Universitat Pompeu Fabra, Barcelona.
+
+\bibitem[{Serr{\`a} et~al.(2012)Serr{\`a}, Corral, Bogu{\~n}{\'a}, Haro, \&
+  Arcos}]{serra2012measuring}
+Serr{\`a}, J., Corral, A., Bogu{\~n}{\'a}, M., Haro, M., \& Arcos, J.~L.
+  (2012).
+\newblock Measuring the evolution of contemporary western popular music.
+\newblock \emph{Scientific reports}, \emph{2}, 521.
+
+\bibitem[{Serr\`{a} et~al.(2012)Serr\`{a}, M{\"u}ller, Grosche, \&
+  Arcos}]{serra2012unsupervised}
+Serr\`{a}, J., M{\"u}ller, M., Grosche, P., \& Arcos, J.~L.~l. (2012).
+\newblock Unsupervised detection of music boundaries by time series structure
+  features.
+\newblock In \emph{Proceedings of the Twenty-Sixth AAAI Conference on
+  Artificial Intelligence}, pp. 1613--1619. AAAI Press.
+
+\bibitem[{Serr\`{a} et~al.(2014)Serr\`{a}, M{\"u}ller, Grosche, \&
+  Arcos}]{serra2014unsupervised}
+Serr\`{a}, J., M{\"u}ller, M., Grosche, P., \& Arcos, J.~L.~l. (2014).
+\newblock Unsupervised music structure annotation by time series structure
+  features and segment similarity.
+\newblock \emph{IEEE Transactions on Multimedia}, \emph{16}(5), 1229--1240.
+
+\bibitem[{Serra(2011)}]{XavierSerra2011}
+Serra, X. (2011).
+\newblock A multicultural approach to music information research.
+\newblock In \emph{{Proc. of Int. Conf. on Music Information Retrieval
+  (ISMIR)}}, pp. 151--156.
+
+\bibitem[{Serra(2014)}]{serra:14:corpus}
+Serra, X. (2014).
+\newblock Creating research corpora for the computational study of music: the
+  case of the {C}ompmusic project.
+\newblock In \emph{Proc. of the 53rd AES Int. Conf. on Semantic Audio}. London.
+
+\bibitem[{Serra et~al.(2013)Serra, Magas, Benetos, Chudy, Dixon, Flexer,
+  G\'{o}mez, Gouyon, Herrera, Jord\`a, Paytuvi, Peeters, Schluter, Vinet, \&
+  Widmer}]{roadmap_mir}
+Serra, X., Magas, M., Benetos, E., Chudy, M., Dixon, S., Flexer, A., G\'{o}mez,
+  E., Gouyon, F., Herrera, P., Jord\`a, S., Paytuvi, O., Peeters, G., Schluter,
+  J., Vinet, H., \& Widmer, G. (2013).
+\newblock Roadmap for music information research.
+\newblock Creative Commons BY-NC-ND 3.0 license.
+
+\bibitem[{Serrano et~al.(2009)Serrano, Bogu\~{n}\'{a}, \&
+  Vespignani}]{Serrano09PNAS}
+Serrano, M.~A., Bogu\~{n}\'{a}, M., \& Vespignani, A. (2009).
+\newblock {Extracting the multiscale backbone of complex weighted networks}.
+\newblock \emph{in Proc. of the National Academy of Sciences of the USA},
+  \emph{106}(16), 6483--6488.
+
+\bibitem[{Shetty \& Achary(2009)}]{Shetty2009}
+Shetty, S. \& Achary, K.~K. (2009).
+\newblock Raga mining of {I}ndian music by extracting arohana-avarohana
+  pattern.
+\newblock \emph{Int. Journal of Recent Trends in Engineering}, \emph{1}(1),
+  362--366.
+
+\bibitem[{Singh(1995)}]{Singh1995}
+Singh, J. (1995).
+\newblock \emph{{Indian Music}}.
+\newblock Munshiram Manoharlal Publishers Pvt Ltd, first edn.
+
+\bibitem[{Smith \& Waterman(1981)}]{smith1981identification}
+Smith, T.~F. \& Waterman, M.~S. (1981).
+\newblock Identification of common molecular subsequences.
+\newblock \emph{Journal of molecular biology}, \emph{147}(1), 195--197.
+
+\bibitem[{Sridhar \& Geetha(2006)}]{sridhar_2006_svara}
+Sridhar, R. \& Geetha, T.~V. (2006).
+\newblock Swara indentification for south indian classical music.
+\newblock In \emph{9th International Conference on Information Technology
+  (ICIT)}, pp. 143--144.
+
+\bibitem[{Sridhar \& Geetha(2009)}]{sridhar2009raga}
+Sridhar, R. \& Geetha, T.~V. (2009).
+\newblock Raga identification of {{C}}arnatic music for music information
+  retrieval.
+\newblock \emph{International Journal of Recent Trends in Engineering},
+  \emph{1}(1), 571--574.
+
+\bibitem[{Srinivasamurthy et~al.(2014)Srinivasamurthy, Koduri, Gulati, Ishwar,
+  \& Serra}]{CM_Corpora_Ajay14}
+Srinivasamurthy, A., Koduri, G.~K., Gulati, S., Ishwar, V., \& Serra, X.
+  (2014).
+\newblock Corpora for music information research in {{I}}ndian art music.
+\newblock In \emph{Int. Computer Music Conf./Sound and Music Computing Conf.},
+  pp. 1029--1036. Athens, Greece.
+
+\bibitem[{Srinivasamurthy \& Serra(2014)}]{srinivasamurthy2014supervised}
+Srinivasamurthy, A. \& Serra, X. (2014).
+\newblock A supervised approach to hierarchical metrical cycle tracking from
+  audio music recordings.
+\newblock In \emph{IEEE International Conference on Acoustics, Speech and
+  Signal Processing (ICASSP)}, pp. 5217--5221. IEEE.
+
+\bibitem[{Sturm(2012)}]{sturm2012survey}
+Sturm, B.~L. (2012).
+\newblock A survey of evaluation in music genre recognition.
+\newblock In \emph{International Workshop on Adaptive Multimedia Retrieval},
+  pp. 29--66. Springer.
+
+\bibitem[{Subramanian et~al.(2012)Subramanian, Wyse, \&
+  Mcgee}]{Subramanian2012}
+Subramanian, S.~K., Wyse, L., \& Mcgee, K. (2012).
+\newblock {A Two-Component Representation For Modeling Gamakas Of Carnatic
+  Music}.
+\newblock In \emph{Proceedings of the 2nd CompMusic Workshop, Istanbul,
+  Turkey}, pp. 147--152.
+
+\bibitem[{Sun(2000)}]{sun2000pitch}
+Sun, X. (2000).
+\newblock A pitch determination algorithm based on subharmonic-to-harmonic
+  ratio.
+\newblock In \emph{the 6th International Conference of Spoken Language
+  Processing}, vol.~4, pp. 676--679.
+
+\bibitem[{Takens(1981)}]{takens1981detecting}
+Takens, F. (1981).
+\newblock Detecting strange attractors in turbulence.
+\newblock \emph{Dynamical Systems and Turbulence, Warwick 1980}, pp. 366--381.
+
+\bibitem[{Tanaka et~al.(2005)Tanaka, Iwamoto, \& Uehara}]{tanaka2005discovery}
+Tanaka, Y., Iwamoto, K., \& Uehara, K. (2005).
+\newblock Discovery of time-series motif from multi-dimensional data based on
+  mdl principle.
+\newblock \emph{Machine Learning}, \emph{58}(2-3), 269--300.
+
+\bibitem[{Temperley(1999)}]{temperley1999s}
+Temperley, D. (1999).
+\newblock What's key for key? the krumhansl-schmuckler key-finding algorithm
+  reconsidered.
+\newblock \emph{Music Perception: An Interdisciplinary Journal}, \emph{17}(1),
+  65--100.
+
+\bibitem[{Temperley \& Marvin(2008)}]{temperley2008pitch}
+Temperley, D. \& Marvin, E.~W. (2008).
+\newblock Pitch-class distribution and the identification of key.
+\newblock \emph{Music Perception: An Interdisciplinary Journal}, \emph{25}(3),
+  193--212.
+
+\bibitem[{Tenney \& Polansky(1980)}]{tenney1980temporal}
+Tenney, J. \& Polansky, L. (1980).
+\newblock Temporal gestalt perception in music.
+\newblock \emph{Journal of Music Theory}, \emph{24}(2), 205--241.
+
+\bibitem[{Trivedi(2008)}]{Trivedi2008}
+Trivedi, R. (Ed.)  (2008).
+\newblock \emph{{Bharatiya Shastriya Sangit: Shastra, Shikshan Va Prayog}}.
+\newblock Sahitya Sangam, New 100, Lookerganj, Allahabad. India, first edn.
+
+\bibitem[{Uitdenbogerd \& Zobel(1999)}]{uitdenbogerd1999melodic}
+Uitdenbogerd, A. \& Zobel, J. (1999).
+\newblock Melodic matching techniques for large music databases.
+\newblock In \emph{Proceedings of the seventh ACM international conference on
+  Multimedia (Part 1)}, pp. 57--66. ACM.
+
+\bibitem[{Uitdenbogerd \& Zobel(1998)}]{uitdenbogerd1998manipulation}
+Uitdenbogerd, A.~L. \& Zobel, J. (1998).
+\newblock Manipulation of music for melody matching.
+\newblock In \emph{Proceedings of the sixth ACM international conference on
+  Multimedia}, pp. 235--240. ACM.
+
+\bibitem[{Viswanathan \& Allen(2004)}]{Viswanathan2004}
+Viswanathan, T. \& Allen, M.~H. (2004).
+\newblock \emph{Music in {S}outh {I}ndia}.
+\newblock Oxford University Press.
+
+\bibitem[{Vlachos et~al.(2003)Vlachos, Hadjieleftheriou, Gunopulos, \&
+  Keogh}]{vlachos2003indexing}
+Vlachos, M., Hadjieleftheriou, M., Gunopulos, D., \& Keogh, E. (2003).
+\newblock Indexing multi-dimensional time-series with support for multiple
+  distance measures.
+\newblock In \emph{Proceedings of the ninth ACM SIGKDD international conference
+  on Knowledge discovery and data mining}, pp. 216--225. ACM.
+
+\bibitem[{Widdess(1994)}]{widdess1994involving}
+Widdess, R. (1994).
+\newblock Involving the performers in transcription and analysis: a
+  collaborative approach to {D}hrupad.
+\newblock \emph{Ethnomusicology}, \emph{38}(1), 59--79.
+
+\bibitem[{Wilcoxon(1945)}]{wilcoxon1945individual}
+Wilcoxon, F. (1945).
+\newblock Individual comparisons by ranking methods.
+\newblock \emph{Biometrics bulletin}, pp. 80--83.
+
+\bibitem[{Zhu \& Shasha(2003{\natexlab{a}})}]{zhu2003query}
+Zhu, Y. \& Shasha, D. (2003{\natexlab{a}}).
+\newblock Query by humming: a time series database approach.
+\newblock In \emph{Proc. of SIGMOD}, p. 675.
+
+\bibitem[{Zhu \& Shasha(2003{\natexlab{b}})}]{Zhu2003}
+Zhu, Y. \& Shasha, D. (2003{\natexlab{b}}).
+\newblock {Warping indexes with envelope transforms for query by humming}.
+\newblock \emph{In proc. of the ACM SIGMOD Int. Conf. on on Management of
+  data}, pp. 181--192.
+
+\end{thebibliography}

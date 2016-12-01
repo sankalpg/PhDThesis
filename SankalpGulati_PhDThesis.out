@@ -1,0 +1,112 @@
+\BOOKMARK [0][-]{chapter*.3}{Abstract}{}% 1
+\BOOKMARK [0][-]{chapter*.4}{Resum}{}% 2
+\BOOKMARK [0][-]{chapter*.5}{Resumen}{}% 3
+\BOOKMARK [0][-]{section*.6}{Contents}{}% 4
+\BOOKMARK [0][-]{chapter*.7}{List of Symbols}{}% 5
+\BOOKMARK [0][-]{section*.8}{List of Figures}{}% 6
+\BOOKMARK [0][-]{section*.9}{List of Tables}{}% 7
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 8
+\BOOKMARK [1][-]{section.1.1}{Motivation}{chapter.1}% 9
+\BOOKMARK [1][-]{section.1.2}{Scientific Context}{chapter.1}% 10
+\BOOKMARK [1][-]{section.1.3}{Opportunities and Challenges}{chapter.1}% 11
+\BOOKMARK [1][-]{section.1.4}{Scope and Objectives}{chapter.1}% 12
+\BOOKMARK [1][-]{section.1.5}{Thesis Outline}{chapter.1}% 13
+\BOOKMARK [0][-]{chapter.2}{Background}{}% 14
+\BOOKMARK [1][-]{section.2.1}{Introduction}{chapter.2}% 15
+\BOOKMARK [1][-]{section.2.2}{Terminology}{chapter.2}% 16
+\BOOKMARK [1][-]{section.2.3}{Music Background}{chapter.2}% 17
+\BOOKMARK [2][-]{subsection.2.3.1}{Indian Art Music}{section.2.3}% 18
+\BOOKMARK [2][-]{subsection.2.3.2}{Melody in Indian Art Music}{section.2.3}% 19
+\BOOKMARK [1][-]{section.2.4}{Related Work in Indian Art Music}{chapter.2}% 20
+\BOOKMARK [2][-]{subsection.2.4.1}{Tonic Identification}{section.2.4}% 21
+\BOOKMARK [2][-]{subsection.2.4.2}{Melodic Pattern Processing}{section.2.4}% 22
+\BOOKMARK [2][-]{subsection.2.4.3}{raga Recognition}{section.2.4}% 23
+\BOOKMARK [1][-]{section.2.5}{Related Work from Other Music Traditions}{chapter.2}% 24
+\BOOKMARK [2][-]{subsection.2.5.1}{Key and Tonality Modeling}{section.2.5}% 25
+\BOOKMARK [2][-]{subsection.2.5.2}{Pattern Processing in Music}{section.2.5}% 26
+\BOOKMARK [1][-]{section.2.6}{Mathematical Background}{chapter.2}% 27
+\BOOKMARK [2][-]{subsection.2.6.1}{Distance Measures}{section.2.6}% 28
+\BOOKMARK [2][-]{subsection.2.6.2}{Dynamic Time Warping}{section.2.6}% 29
+\BOOKMARK [2][-]{subsection.2.6.3}{Lower-bounds for dtw distance}{section.2.6}% 30
+\BOOKMARK [1][-]{section.2.7}{Summary}{chapter.2}% 31
+\BOOKMARK [0][-]{chapter.3}{Music Corpora and Datasets}{}% 32
+\BOOKMARK [1][-]{section.3.1}{Introduction}{chapter.3}% 33
+\BOOKMARK [1][-]{section.3.2}{CompMusic Research Corpora}{chapter.3}% 34
+\BOOKMARK [2][-]{subsection.3.2.1}{Criteria for Building CompMusic Corpora}{section.3.2}% 35
+\BOOKMARK [2][-]{subsection.3.2.2}{Carnatic Music Corpus}{section.3.2}% 36
+\BOOKMARK [2][-]{subsection.3.2.3}{Hindustani Music Corpus}{section.3.2}% 37
+\BOOKMARK [2][-]{subsection.3.2.4}{Open-access Music Corpus}{section.3.2}% 38
+\BOOKMARK [2][-]{subsection.3.2.5}{Storage and Access of Corpus}{section.3.2}% 39
+\BOOKMARK [1][-]{section.3.3}{Test Datasets}{chapter.3}% 40
+\BOOKMARK [2][-]{subsection.3.3.1}{Tonic Identification Datasets}{section.3.3}% 41
+\BOOKMARK [2][-]{subsection.3.3.2}{Nyas Dataset}{section.3.3}% 42
+\BOOKMARK [2][-]{subsection.3.3.3}{Melodic Similarity Dataset}{section.3.3}% 43
+\BOOKMARK [2][-]{subsection.3.3.4}{raga Recognition Datasets}{section.3.3}% 44
+\BOOKMARK [1][-]{section.3.4}{Summary}{chapter.3}% 45
+\BOOKMARK [0][-]{chapter.4}{Melody Descriptors and Representations}{}% 46
+\BOOKMARK [1][-]{section.4.1}{Introduction}{chapter.4}% 47
+\BOOKMARK [1][-]{section.4.2}{Tonic Identification: Approaches and Comparative Evaluation}{chapter.4}% 48
+\BOOKMARK [2][-]{subsection.4.2.1}{Comparative Evaluation Setup}{section.4.2}% 49
+\BOOKMARK [2][-]{subsection.4.2.2}{Results and Discussion}{section.4.2}% 50
+\BOOKMARK [2][-]{subsection.4.2.3}{Summary of the Comparative Evaluation }{section.4.2}% 51
+\BOOKMARK [2][-]{subsection.4.2.4}{Correcting Common Errors in Tonic Identification}{section.4.2}% 52
+\BOOKMARK [1][-]{section.4.3}{Melody Processing}{chapter.4}% 53
+\BOOKMARK [2][-]{subsection.4.3.1}{Predominant Pitch Estimation}{section.4.3}% 54
+\BOOKMARK [2][-]{subsection.4.3.2}{Pitch Post-processing}{section.4.3}% 55
+\BOOKMARK [2][-]{subsection.4.3.3}{Melody Representation}{section.4.3}% 56
+\BOOKMARK [1][-]{section.4.4}{Tani Segmentation}{chapter.4}% 57
+\BOOKMARK [1][-]{section.4.5}{nyas svara Segmentation}{chapter.4}% 58
+\BOOKMARK [2][-]{subsection.4.5.1}{Method}{section.4.5}% 59
+\BOOKMARK [2][-]{subsection.4.5.2}{Experimental Setup}{section.4.5}% 60
+\BOOKMARK [2][-]{subsection.4.5.3}{Results and Discussion}{section.4.5}% 61
+\BOOKMARK [2][-]{subsection.4.5.4}{Summary}{section.4.5}% 62
+\BOOKMARK [1][-]{section.4.6}{Summary}{chapter.4}% 63
+\BOOKMARK [0][-]{chapter.5}{Melodic Pattern Processing: Similarity, Discovery and Characterization}{}% 64
+\BOOKMARK [1][-]{section.5.1}{Introduction}{chapter.5}% 65
+\BOOKMARK [1][-]{section.5.2}{Melodic Similarity: Approaches and Evaluation}{chapter.5}% 66
+\BOOKMARK [2][-]{subsection.5.2.1}{Method}{section.5.2}% 67
+\BOOKMARK [2][-]{subsection.5.2.2}{Evaluation Methodology}{section.5.2}% 68
+\BOOKMARK [2][-]{subsection.5.2.3}{Results and Discussion}{section.5.2}% 69
+\BOOKMARK [1][-]{section.5.3}{Improving Melodic Similarity}{chapter.5}% 70
+\BOOKMARK [2][-]{subsection.5.3.1}{Method}{section.5.3}% 71
+\BOOKMARK [2][-]{subsection.5.3.2}{Evaluation}{section.5.3}% 72
+\BOOKMARK [2][-]{subsection.5.3.3}{Results and Discussion}{section.5.3}% 73
+\BOOKMARK [1][-]{section.5.4}{Melodic Pattern Discovery}{chapter.5}% 74
+\BOOKMARK [2][-]{subsection.5.4.1}{Method}{section.5.4}% 75
+\BOOKMARK [2][-]{subsection.5.4.2}{Evaluation}{section.5.4}% 76
+\BOOKMARK [2][-]{subsection.5.4.3}{Results and Discussion}{section.5.4}% 77
+\BOOKMARK [1][-]{section.5.5}{Characterization of Melodic Patterns}{chapter.5}% 78
+\BOOKMARK [2][-]{subsection.5.5.1}{Method}{section.5.5}% 79
+\BOOKMARK [2][-]{subsection.5.5.2}{Evaluation}{section.5.5}% 80
+\BOOKMARK [2][-]{subsection.5.5.3}{Results and Discussion}{section.5.5}% 81
+\BOOKMARK [1][-]{section.5.6}{Summary and Conclusions}{chapter.5}% 82
+\BOOKMARK [0][-]{chapter.6}{Automatic raga Recognition}{}% 83
+\BOOKMARK [1][-]{section.6.1}{Introduction}{chapter.6}% 84
+\BOOKMARK [1][-]{section.6.2}{Pattern-based raga Recognition}{chapter.6}% 85
+\BOOKMARK [2][-]{subsection.6.2.1}{Vector Space Modeling of Melodic Patterns}{section.6.2}% 86
+\BOOKMARK [2][-]{subsection.6.2.2}{Evaluation}{section.6.2}% 87
+\BOOKMARK [2][-]{subsection.6.2.3}{Results and Discussion}{section.6.2}% 88
+\BOOKMARK [1][-]{section.6.3}{time delayed melodic surface for raga recognition}{chapter.6}% 89
+\BOOKMARK [2][-]{subsection.6.3.1}{time delayed melodic surface}{section.6.3}% 90
+\BOOKMARK [2][-]{subsection.6.3.2}{Evaluation}{section.6.3}% 91
+\BOOKMARK [2][-]{subsection.6.3.3}{Results and Discussion}{section.6.3}% 92
+\BOOKMARK [1][-]{section.6.4}{Effect of Dataset on Accuracy}{chapter.6}% 93
+\BOOKMARK [1][-]{section.6.5}{Summary and Conclusions}{chapter.6}% 94
+\BOOKMARK [0][-]{chapter.7}{Applications}{}% 95
+\BOOKMARK [1][-]{section.7.1}{Introduction}{chapter.7}% 96
+\BOOKMARK [1][-]{section.7.2}{Dunya}{chapter.7}% 97
+\BOOKMARK [1][-]{section.7.3}{Mobile Applications: Saraga and Riyaz}{chapter.7}% 98
+\BOOKMARK [1][-]{section.7.4}{Demos}{chapter.7}% 99
+\BOOKMARK [1][-]{section.7.5}{Computational Musicology}{chapter.7}% 100
+\BOOKMARK [1][-]{section.7.6}{Summary}{chapter.7}% 101
+\BOOKMARK [0][-]{chapter.8}{Summary and Future Perspectives}{}% 102
+\BOOKMARK [1][-]{section.8.1}{Introduction}{chapter.8}% 103
+\BOOKMARK [1][-]{section.8.2}{Summary of Contributions}{chapter.8}% 104
+\BOOKMARK [1][-]{section.8.3}{Future Perspectives}{chapter.8}% 105
+\BOOKMARK [0][-]{appendix.Alph1}{Publications by the Author}{}% 106
+\BOOKMARK [0][-]{appendix.Alph2}{Resources}{}% 107
+\BOOKMARK [0][-]{appendix.Alph3}{Additional Figures and Tables}{}% 108
+\BOOKMARK [0][-]{appendix.Alph4}{Glossary}{}% 109
+\BOOKMARK [1][-]{section.Alph4.1}{Acronyms}{appendix.Alph4}% 110
+\BOOKMARK [1][-]{section.Alph4.2}{Music Terms}{appendix.Alph4}% 111
+\BOOKMARK [0][-]{section*.172}{Bibliography}{}% 112

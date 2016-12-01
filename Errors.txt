@@ -1,0 +1,15 @@
+
+MDS dataset, 9 or 10 files? in Hindustani
+
+
+Table2.1 (So many problems)
+
+- AB2 two times
+- What is the diff between AB3 and AB1?
+- CS there is no description?
+
+
+PyCOmpMusic example look at the quotation marks
+
+Jump conditions of DTW please correct.
+

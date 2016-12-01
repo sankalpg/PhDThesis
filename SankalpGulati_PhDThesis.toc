@@ -1,0 +1,219 @@
+\changetocdepth {2}
+\select@language {spanish}
+\select@language {spanish}
+\select@language {british}
+\select@language {british}
+\contentsline {chapter}{Abstract}{\es@scroman {xi}}{chapter*.3}
+\select@language {catalan}
+\contentsline {chapter}{Resum}{\es@scroman {xiii}}{chapter*.4}
+\select@language {spanish}
+\contentsline {chapter}{Resumen}{\es@scroman {xv}}{chapter*.5}
+\select@language {british}
+\contentsline {chapter}{Contents}{\es@scroman {xvii}}{section*.6}
+\contentsline {chapter}{List of Symbols}{\es@scroman {xxi}}{chapter*.7}
+\contentsline {chapter}{List of Figures}{\es@scroman {xxiii}}{section*.8}
+\contentsline {chapter}{List of Tables}{\es@scroman {xxvii}}{section*.9}
+\contentsline {chapter}{\chapternumberline {1}Introduction}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Motivation}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}Scientific Context}{3}{section.1.2}
+\contentsline {section}{\numberline {1.3}Opportunities and Challenges}{4}{section.1.3}
+\contentsline {section}{\numberline {1.4}Scope and Objectives}{7}{section.1.4}
+\contentsline {section}{\numberline {1.5}Thesis Outline}{9}{section.1.5}
+\contentsline {chapter}{\chapternumberline {2}Background}{13}{chapter.2}
+\contentsline {section}{\numberline {2.1}Introduction}{13}{section.2.1}
+\contentsline {section}{\numberline {2.2}Terminology}{13}{section.2.2}
+\contentsline {section}{\numberline {2.3}Music Background}{15}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Indian Art Music}{15}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Melody in Indian Art Music}{17}{subsection.2.3.2}
+\contentsline {paragraph}{\Glspl {svara}:}{18}{section*.13}
+\contentsline {paragraph}{Tonic pitch:}{18}{section*.14}
+\contentsline {paragraph}{\titlecap {ny\={a}s}:}{19}{section*.15}
+\contentsline {paragraph}{\titlecap {\={a}r\={o}hana-avr\={o}hana}:}{19}{section*.16}
+\contentsline {paragraph}{\titlecap {gamaka and alank\={a}r}:}{19}{section*.17}
+\contentsline {paragraph}{Characteristic Melodic Phrases (or \gls {raga} motifs):}{20}{section*.20}
+\contentsline {paragraph}{\Gls {chalan}:}{20}{section*.21}
+\contentsline {subsubsection}{\numberline {2.3.2.1}Allied R\={a}gas}{21}{subsubsection.2.3.2.1}
+\contentsline {subsubsection}{\numberline {2.3.2.2}Recurring Melodic Units in Indian Art Music}{22}{subsubsection.2.3.2.2}
+\contentsline {section}{\numberline {2.4}Related Work in Indian Art Music}{23}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Tonic Identification}{23}{subsection.2.4.1}
+\contentsline {subsubsection}{\numberline {2.4.1.1}Tonal Feature Extraction}{24}{subsubsection.2.4.1.1}
+\contentsline {subsubsection}{\numberline {2.4.1.2}Feature Distribution Estimation}{27}{subsubsection.2.4.1.2}
+\contentsline {subsubsection}{\numberline {2.4.1.3}Tonic selection}{29}{subsubsection.2.4.1.3}
+\contentsline {subsection}{\numberline {2.4.2}Melodic Pattern Processing}{31}{subsection.2.4.2}
+\contentsline {subsection}{\numberline {2.4.3}\Glsentrytext {raga} Recognition}{37}{subsection.2.4.3}
+\contentsline {section}{\numberline {2.5}Related Work from Other Music Traditions}{44}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}Key and Tonality Modeling}{45}{subsection.2.5.1}
+\contentsline {subsection}{\numberline {2.5.2}Pattern Processing in Music}{47}{subsection.2.5.2}
+\contentsline {subsubsection}{\numberline {2.5.2.1}Motif Discovery in Symbolic Music}{48}{subsubsection.2.5.2.1}
+\contentsline {subsubsection}{\numberline {2.5.2.2}Structural Segmentation}{50}{subsubsection.2.5.2.2}
+\contentsline {subsubsection}{\numberline {2.5.2.3}Query-by-humming}{51}{subsubsection.2.5.2.3}
+\contentsline {section}{\numberline {2.6}Mathematical Background}{55}{section.2.6}
+\contentsline {subsection}{\numberline {2.6.1}Distance Measures}{55}{subsection.2.6.1}
+\contentsline {subsubsection}{\numberline {2.6.1.1}Euclidean Distance}{55}{subsubsection.2.6.1.1}
+\contentsline {subsubsection}{\numberline {2.6.1.2}Bhattacharyya Distance}{55}{subsubsection.2.6.1.2}
+\contentsline {subsubsection}{\numberline {2.6.1.3}Kullback\IeC {\textendash }Leibler divergence}{55}{subsubsection.2.6.1.3}
+\contentsline {subsection}{\numberline {2.6.2}Dynamic Time Warping}{56}{subsection.2.6.2}
+\contentsline {subsection}{\numberline {2.6.3}Lower-bounds for \acrshort {dtw} distance}{57}{subsection.2.6.3}
+\contentsline {section}{\numberline {2.7}Summary}{58}{section.2.7}
+\contentsline {chapter}{\chapternumberline {3}Music Corpora and Datasets}{61}{chapter.3}
+\contentsline {section}{\numberline {3.1}Introduction}{61}{section.3.1}
+\contentsline {section}{\numberline {3.2}CompMusic Research Corpora}{63}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Criteria for Building CompMusic Corpora}{63}{subsection.3.2.1}
+\contentsline {paragraph}{Purpose:}{63}{section*.34}
+\contentsline {paragraph}{Coverage:}{64}{section*.35}
+\contentsline {paragraph}{Completeness:}{64}{section*.36}
+\contentsline {paragraph}{Quality:}{64}{section*.37}
+\contentsline {paragraph}{Reusability:}{64}{section*.38}
+\contentsline {subsection}{\numberline {3.2.2}Carnatic Music Corpus}{65}{subsection.3.2.2}
+\contentsline {subsubsection}{\numberline {3.2.2.1}Coverage of Carnatic Music Corpus}{67}{subsubsection.3.2.2.1}
+\contentsline {subsubsection}{\numberline {3.2.2.2}Completeness of the Carnatic Music Corpus}{70}{subsubsection.3.2.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Hindustani Music Corpus}{70}{subsection.3.2.3}
+\contentsline {subsubsection}{\numberline {3.2.3.1}Coverage of Hindustani Music Corpus}{72}{subsubsection.3.2.3.1}
+\contentsline {subsubsection}{\numberline {3.2.3.2}Completeness of Hindustani Music Corpus}{73}{subsubsection.3.2.3.2}
+\contentsline {subsection}{\numberline {3.2.4}Open-access Music Corpus}{74}{subsection.3.2.4}
+\contentsline {subsection}{\numberline {3.2.5}Storage and Access of Corpus}{77}{subsection.3.2.5}
+\contentsline {section}{\numberline {3.3}Test Datasets}{78}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Tonic Identification Datasets}{78}{subsection.3.3.1}
+\contentsline {subsubsection}{\numberline {3.3.1.1}CompMusic Tonic Identification Datasets}{78}{subsubsection.3.3.1.1}
+\contentsline {subsubsection}{\numberline {3.3.1.2}IITM Tonic Identification Datasets}{80}{subsubsection.3.3.1.2}
+\contentsline {subsubsection}{\numberline {3.3.1.3}IISc Tonic Identification Dataset}{80}{subsubsection.3.3.1.3}
+\contentsline {subsection}{\numberline {3.3.2}Ny\={a}s Dataset}{81}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.3}Melodic Similarity Dataset}{81}{subsection.3.3.3}
+\contentsline {subsection}{\numberline {3.3.4}\titlecap {r\={a}ga} Recognition Datasets}{83}{subsection.3.3.4}
+\contentsline {section}{\numberline {3.4}Summary}{85}{section.3.4}
+\contentsline {chapter}{\chapternumberline {4}Melody Descriptors and Representations}{87}{chapter.4}
+\contentsline {section}{\numberline {4.1}Introduction}{87}{section.4.1}
+\contentsline {section}{\numberline {4.2}Tonic Identification: Approaches and Comparative Evaluation}{88}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Comparative Evaluation Setup}{88}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Results and Discussion}{89}{subsection.4.2.2}
+\contentsline {subsubsection}{\numberline {4.2.2.1}Results Obtained Using Only Audio Data}{90}{subsubsection.4.2.2.1}
+\contentsline {subsubsection}{\numberline {4.2.2.2}Results Obtained Using Metadata Together with the Audio}{94}{subsubsection.4.2.2.2}
+\contentsline {subsubsection}{\numberline {4.2.2.3}Error Analysis}{95}{subsubsection.4.2.2.3}
+\contentsline {subsection}{\numberline {4.2.3}Summary of the Comparative Evaluation }{99}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.4}Correcting Common Errors in Tonic Identification}{99}{subsection.4.2.4}
+\contentsline {section}{\numberline {4.3}Melody Processing}{100}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Predominant Pitch Estimation}{100}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Pitch Post-processing}{102}{subsection.4.3.2}
+\contentsline {subsubsection}{\numberline {4.3.2.1}Correcting Spurious Pitch Jumps}{103}{subsubsection.4.3.2.1}
+\contentsline {subsubsection}{\numberline {4.3.2.2}Pitch Smoothening}{104}{subsubsection.4.3.2.2}
+\contentsline {subsubsection}{\numberline {4.3.2.3}Pitch Interpolation}{104}{subsubsection.4.3.2.3}
+\contentsline {subsubsection}{\numberline {4.3.2.4}Pitch Resampling}{106}{subsubsection.4.3.2.4}
+\contentsline {subsection}{\numberline {4.3.3}Melody Representation}{106}{subsection.4.3.3}
+\contentsline {subsubsection}{\numberline {4.3.3.1}Hertz to Cent Conversion}{106}{subsubsection.4.3.3.1}
+\contentsline {subsubsection}{\numberline {4.3.3.2}Tonic Normalization}{107}{subsubsection.4.3.3.2}
+\contentsline {section}{\numberline {4.4}Tani Segmentation}{107}{section.4.4}
+\contentsline {section}{\numberline {4.5}\titlecap {ny\={a}s svara Segmentation}}{109}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}Method}{111}{subsection.4.5.1}
+\contentsline {subsubsection}{\numberline {4.5.1.1}Predominant Pitch Estimation and Representation}{112}{subsubsection.4.5.1.1}
+\contentsline {subsubsection}{\numberline {4.5.1.2}Segmentation}{112}{subsubsection.4.5.1.2}
+\contentsline {subsubsection}{\numberline {4.5.1.3}Feature Extraction}{114}{subsubsection.4.5.1.3}
+\contentsline {subsubsection}{\numberline {4.5.1.4}Classification and Segment Fusion}{115}{subsubsection.4.5.1.4}
+\contentsline {subsection}{\numberline {4.5.2}Experimental Setup}{115}{subsection.4.5.2}
+\contentsline {subsubsection}{\numberline {4.5.2.1}Music Collection and Annotations}{115}{subsubsection.4.5.2.1}
+\contentsline {subsubsection}{\numberline {4.5.2.2}Evaluation Measures and Statistical Significance}{116}{subsubsection.4.5.2.2}
+\contentsline {subsubsection}{\numberline {4.5.2.3}Baselines}{116}{subsubsection.4.5.2.3}
+\contentsline {subsection}{\numberline {4.5.3}Results and Discussion}{117}{subsection.4.5.3}
+\contentsline {subsection}{\numberline {4.5.4}Summary}{119}{subsection.4.5.4}
+\contentsline {section}{\numberline {4.6}Summary}{119}{section.4.6}
+\contentsline {chapter}{\chapternumberline {5}Melodic Pattern Processing: Similarity, Discovery and Characterization}{121}{chapter.5}
+\contentsline {section}{\numberline {5.1}Introduction}{121}{section.5.1}
+\contentsline {section}{\numberline {5.2}Melodic Similarity: Approaches and Evaluation}{124}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Method}{126}{subsection.5.2.1}
+\contentsline {subsubsection}{\numberline {5.2.1.1}Predominant Pitch Estimation}{126}{subsubsection.5.2.1.1}
+\contentsline {subsubsection}{\numberline {5.2.1.2}Pitch Normalization}{128}{subsubsection.5.2.1.2}
+\contentsline {subsubsection}{\numberline {5.2.1.3}Uniform Time-scaling}{129}{subsubsection.5.2.1.3}
+\contentsline {subsubsection}{\numberline {5.2.1.4}Distance Computation}{129}{subsubsection.5.2.1.4}
+\contentsline {subsection}{\numberline {5.2.2}Evaluation Methodology}{130}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.3}Results and Discussion}{131}{subsection.5.2.3}
+\contentsline {section}{\numberline {5.3}Improving Melodic Similarity}{135}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Method}{137}{subsection.5.3.1}
+\contentsline {subsubsection}{\numberline {5.3.1.1}Predominant Pitch Estimation and post-processing}{139}{subsubsection.5.3.1.1}
+\contentsline {subsubsection}{\numberline {5.3.1.2}Pitch Normalization}{140}{subsubsection.5.3.1.2}
+\contentsline {subsubsection}{\numberline {5.3.1.3}Partial Transcription}{140}{subsubsection.5.3.1.3}
+\contentsline {subsubsection}{\numberline {5.3.1.4}Svara Duration Truncation}{141}{subsubsection.5.3.1.4}
+\contentsline {subsubsection}{\numberline {5.3.1.5}Distance Computation}{141}{subsubsection.5.3.1.5}
+\contentsline {subsubsection}{\numberline {5.3.1.6}Complexity Weighting}{141}{subsubsection.5.3.1.6}
+\contentsline {subsection}{\numberline {5.3.2}Evaluation}{142}{subsection.5.3.2}
+\contentsline {subsubsection}{\numberline {5.3.2.1}Dataset and Annotations}{142}{subsubsection.5.3.2.1}
+\contentsline {subsubsection}{\numberline {5.3.2.2}Setup, Measures and Statistical Significance}{142}{subsubsection.5.3.2.2}
+\contentsline {subsection}{\numberline {5.3.3}Results and Discussion}{143}{subsection.5.3.3}
+\contentsline {section}{\numberline {5.4}Melodic Pattern Discovery}{146}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.1}Method}{147}{subsection.5.4.1}
+\contentsline {subsubsection}{\numberline {5.4.1.1}Pre-processing}{149}{subsubsection.5.4.1.1}
+\contentsline {paragraph}{a) Predominant Pitch Estimation and Representation}{149}{section*.92}
+\contentsline {paragraph}{b) Downsampling}{149}{section*.94}
+\contentsline {paragraph}{c) Solo Percussion Removal}{150}{section*.95}
+\contentsline {subsubsection}{\numberline {5.4.1.2}Subsequence Generation}{151}{subsubsection.5.4.1.2}
+\contentsline {paragraph}{a) Segmentation}{151}{section*.96}
+\contentsline {paragraph}{b) Subsequence Filtering}{151}{section*.97}
+\contentsline {subsubsection}{\numberline {5.4.1.3}Intra-recording Pattern Discovery}{152}{subsubsection.5.4.1.3}
+\contentsline {paragraph}{Melodic Similarity}{153}{section*.99}
+\contentsline {paragraph}{Lower Bounding \gls {dtw}}{153}{section*.100}
+\contentsline {paragraph}{Pattern Length Compensation}{154}{section*.101}
+\contentsline {subsubsection}{\numberline {5.4.1.4}Inter-recording Pattern Detection}{155}{subsubsection.5.4.1.4}
+\contentsline {subsubsection}{\numberline {5.4.1.5}Rank Refinement}{155}{subsubsection.5.4.1.5}
+\contentsline {subsection}{\numberline {5.4.2}Evaluation}{157}{subsection.5.4.2}
+\contentsline {subsubsection}{\numberline {5.4.2.1}Music Collection}{157}{subsubsection.5.4.2.1}
+\contentsline {subsubsection}{\numberline {5.4.2.2}Evaluation Methodology}{157}{subsubsection.5.4.2.2}
+\contentsline {subsection}{\numberline {5.4.3}Results and Discussion}{158}{subsection.5.4.3}
+\contentsline {section}{\numberline {5.5}Characterization of Melodic Patterns}{161}{section.5.5}
+\contentsline {subsection}{\numberline {5.5.1}Method}{164}{subsection.5.5.1}
+\contentsline {subsubsection}{\numberline {5.5.1.1}Melodic Pattern Discovery}{164}{subsubsection.5.5.1.1}
+\contentsline {subsubsection}{\numberline {5.5.1.2}Melodic Pattern Characterization}{165}{subsubsection.5.5.1.2}
+\contentsline {paragraph}{Pattern Network Generation}{166}{section*.110}
+\contentsline {paragraph}{Network Filtering}{166}{section*.111}
+\contentsline {paragraph}{Community Detection and Characterization}{168}{section*.113}
+\contentsline {subsection}{\numberline {5.5.2}Evaluation}{170}{subsection.5.5.2}
+\contentsline {subsubsection}{\numberline {5.5.2.1}Music Collection}{170}{subsubsection.5.5.2.1}
+\contentsline {subsubsection}{\numberline {5.5.2.2}Setup and Evaluation Measures}{170}{subsubsection.5.5.2.2}
+\contentsline {subsection}{\numberline {5.5.3}Results and Discussion}{171}{subsection.5.5.3}
+\contentsline {section}{\numberline {5.6}Summary and Conclusions}{174}{section.5.6}
+\contentsline {chapter}{\chapternumberline {6}\titlecap {Automatic r\={a}ga Recognition}}{177}{chapter.6}
+\contentsline {section}{\numberline {6.1}Introduction}{177}{section.6.1}
+\contentsline {section}{\numberline {6.2}\titlecap {Pattern-based r\={a}ga Recognition}}{178}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Vector Space Modeling of Melodic Patterns}{179}{subsection.6.2.1}
+\contentsline {subsubsection}{\numberline {6.2.1.1}Melodic Pattern Discovery}{179}{subsubsection.6.2.1.1}
+\contentsline {subsubsection}{\numberline {6.2.1.2}Melodic Pattern Clustering}{181}{subsubsection.6.2.1.2}
+\contentsline {subsubsection}{\numberline {6.2.1.3}\acrshort {tfidf} Feature Extraction}{182}{subsubsection.6.2.1.3}
+\contentsline {subsection}{\numberline {6.2.2}Evaluation}{183}{subsection.6.2.2}
+\contentsline {subsubsection}{\numberline {6.2.2.1}Music Collection}{183}{subsubsection.6.2.2.1}
+\contentsline {subsubsection}{\numberline {6.2.2.2}Classification and Experimental Setup}{183}{subsubsection.6.2.2.2}
+\contentsline {subsubsection}{\numberline {6.2.2.3}Comparison with the State of the art}{184}{subsubsection.6.2.2.3}
+\contentsline {subsection}{\numberline {6.2.3}Results and Discussion}{185}{subsection.6.2.3}
+\contentsline {section}{\numberline {6.3}\titlecap {time delayed melodic surface for r\={a}ga recognition}}{191}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}\titlecap {time delayed melodic surface}}{192}{subsection.6.3.1}
+\contentsline {subsubsection}{\numberline {6.3.1.1}Pre-processing}{192}{subsubsection.6.3.1.1}
+\contentsline {paragraph}{Predominant Pitch Estimation:}{192}{section*.127}
+\contentsline {paragraph}{Tonic Normalization:}{193}{section*.128}
+\contentsline {subsubsection}{\numberline {6.3.1.2}Surface Generation}{193}{subsubsection.6.3.1.2}
+\contentsline {subsubsection}{\numberline {6.3.1.3}Post-processing}{194}{subsubsection.6.3.1.3}
+\contentsline {paragraph}{Power Compression:}{194}{section*.130}
+\contentsline {paragraph}{Gaussian Smoothening:}{195}{section*.131}
+\contentsline {subsection}{\numberline {6.3.2}Evaluation}{196}{subsection.6.3.2}
+\contentsline {subsubsection}{\numberline {6.3.2.1}Music Collection}{196}{subsubsection.6.3.2.1}
+\contentsline {subsubsection}{\numberline {6.3.2.2}Classification and Distance Measures}{196}{subsubsection.6.3.2.2}
+\contentsline {subsubsection}{\numberline {6.3.2.3}Comparison with Other Methods}{197}{subsubsection.6.3.2.3}
+\contentsline {subsubsection}{\numberline {6.3.2.4}Experimental Setup}{197}{subsubsection.6.3.2.4}
+\contentsline {subsection}{\numberline {6.3.3}Results and Discussion}{198}{subsection.6.3.3}
+\contentsline {section}{\numberline {6.4}Effect of Dataset on Accuracy}{202}{section.6.4}
+\contentsline {section}{\numberline {6.5}Summary and Conclusions}{204}{section.6.5}
+\contentsline {chapter}{\chapternumberline {7}Applications}{207}{chapter.7}
+\contentsline {section}{\numberline {7.1}Introduction}{207}{section.7.1}
+\contentsline {section}{\numberline {7.2}Dunya}{207}{section.7.2}
+\contentsline {section}{\numberline {7.3}Mobile Applications: Sar\={a}ga and Riy\={a}z}{210}{section.7.3}
+\contentsline {subsubsection}{\numberline {7.3.0.1}Sar\={a}ga}{211}{subsubsection.7.3.0.1}
+\contentsline {subsubsection}{\numberline {7.3.0.2}Riy\={a}z}{212}{subsubsection.7.3.0.2}
+\contentsline {section}{\numberline {7.4}Demos}{212}{section.7.4}
+\contentsline {section}{\numberline {7.5}Computational Musicology}{216}{section.7.5}
+\contentsline {section}{\numberline {7.6}Summary}{219}{section.7.6}
+\contentsline {chapter}{\chapternumberline {8}Summary and Future Perspectives}{221}{chapter.8}
+\contentsline {section}{\numberline {8.1}Introduction}{221}{section.8.1}
+\contentsline {section}{\numberline {8.2}Summary of Contributions}{222}{section.8.2}
+\contentsline {section}{\numberline {8.3}Future Perspectives}{225}{section.8.3}
+\contentsline {appendix}{\chapternumberline {A}Publications by the Author}{229}{appendix.Alph1}
+\contentsline {appendix}{\chapternumberline {B}Resources}{233}{appendix.Alph2}
+\contentsline {appendix}{\chapternumberline {C}Additional Figures and Tables}{237}{appendix.Alph3}
+\contentsline {appendix}{\chapternumberline {D}Glossary}{247}{appendix.Alph4}
+\contentsline {section}{\numberline {D.1}Acronyms}{247}{section.Alph4.1}
+\contentsline {section}{\numberline {D.2}Music Terms}{250}{section.Alph4.2}
+\contentsline {chapter}{Bibliography}{253}{section*.172}

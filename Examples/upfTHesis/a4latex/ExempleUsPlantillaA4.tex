@@ -1,0 +1,268 @@
+\documentclass[12pt, a4paper,twoside]{tesi_upf}
+
+
+%CODIFICACIÓ
+\usepackage[latin1]{inputenc}
+
+
+%IDIOMES
+\usepackage[catalan,english]{babel}
+
+%NOMÉS PER A OBTENIR INDICACIÓ DEL MARC EN MIDA A4
+\usepackage[cam,a4,center,frame]{crop}
+
+%PER A INCLOURE GRÀFICS I EL LOGO DE LA UPF
+\usepackage{graphicx}
+
+%FONTS TIMES O GARAMOND, 
+\usepackage{times}
+%\usepackage{garamond}
+
+%SENSE HEADINGS: NO MODIFICAR
+\pagestyle{plain}
+
+%PER A L'ÍNDEX DE MATÈRIES
+\usepackage{makeidx}
+\makeindex
+
+%ESTIL DE BIBLIOGRAFIA
+\bibliographystyle{apalike}
+
+
+%AQUEST DOCUMENT ÉS EN CATALÀ
+\selectlanguage{catalan}
+
+%EN COMPTES DE ÍNDEX, LA TAULA DE CONTINGUTS ES TITULA SUMARI
+\addto\captionscatalan
+  {\renewcommand{\contentsname}{\Large \sffamily Sumari}}
+
+
+%AFEGIU EN AQUESTA PART LES VOSTRES DADES
+\title{El títol de la tesi: Obligatori}
+\subtitle{El subtítol de la tesi: Opcional}
+\author{Autor: Obligatori}
+\thyear{L'any de la tesi: Obligatori}
+\department{Departament: Obligatori}
+\supervisor{Director: Obligatori}
+
+
+\begin{document}
+
+
+\frontmatter
+
+\maketitle
+
+\cleardoublepage
+
+
+%%%%%% Dedicatòria; si no es vol posar, comenteu fins a final de dedicatòria
+
+\noindent Escriviu aquí la vostra dedicatòria
+
+\cleardoublepage
+
+%%%%%% Final de dedicatòria
+
+
+%%%%%% Agraïments; si no es vol posar, comenteu fins a final de agraïments
+\noindent {\Large \sffamily Agraïments} Agraeixo....
+
+\cleardoublepage
+
+%%%%%% Final dels agraïments
+
+%ABSTRACT EN DOS IDIOMES. COM A MÍNIM CATALÀ. SI L'ALTRE ÉS EN CASTELLA CANVIEU EL QUE POSA ABSTRACT
+\selectlanguage{english}
+\section*{\Large \sffamily Abstract}
+This is the abstract of the thesis in English.  Please, use less
+than 150 words.
+
+\selectlanguage{catalan}
+\vspace*{\fill}
+\section*{\Large \sffamily  Resum}
+Vet aquí el resum de la tesi en català.  Si us plau, utilitzeu
+menys de 150 paraules.
+\vspace*{\fill}
+
+\cleardoublepage
+%FIN DE ABSTRACTE
+
+%PREFACI OPCIONAL. SI NO ES VOL, COMENTEU FINS EL FINAL DE PREFACI
+{\bf Prefaci}
+
+\cleardoublepage
+%FINAL DE PREFACI
+
+
+%TAULA DE CONTINGUTS: OBLIGATÒRIA
+\tableofcontents
+
+%INDEX DE FIGURES; NOMÉS ES POSA SI HI HA FIGURES
+\listoffigures
+%Fa que aparegui al sumari
+\addcontentsline{toc}{chapter}{Índex de figures}
+
+%INDEX DE TAULES; NOMÉS ES POSA SI HI HA TAULES
+\listoftables
+%Fa que aparegui al sumari
+\addcontentsline{toc}{chapter}{Índex de taules}
+
+%COMENÇA EL TEXT
+\mainmatter
+\chapter*{Introducció}
+
+Aquesta és una plantilla o estil provisional per a ser usada per a presentar tesis doctorals a la UPF en format A4. S'ha intentat simplificar-la al màxim per tal que els usuaris experimentats puguin adaptar fàcilment els seus propis estils i que els usuaris menys avesats a treballar amb estils puguin usar-la fàcilment. 
+
+Consta de
+\begin{description}
+\item[El fitxer tesi-upf.cls] És una modificació de l'estil {\tt book} amb les següents particularitats
+  \begin{enumerate}
+  \item Es redissenya la portada (en la instrucció \verb+\maketitle+).
+
+  \item Els títols dels capítols s'escriuen en majúscula.
+
+  \item Es redefineix {\tt cleardoublepage} perquè les pàgines en blanc no vagin numerades.
+  \end{enumerate}
+
+\item[El preàmbul] Conté diferents instruccions
+  \begin{enumerate}
+  \item La combinació dels paquets {\tt geometry} i {\tt crop} permet emmarcar el que serà la pàgina final que després es retallarà a mida {\tt A4}. Abans de portar-ho a tallar es convenient eliminar les marques, comentant les corresponents comandes, a no ser que a la impremta ens ho demanin.
+
+  \item En cas que la tesi estigui en català, es redefineix el títol de ``Índex'' per ``Sumari''.
+
+  \item S'usa el paquet {\tt times} per usar aquest tipus de lletra.
+
+  \item S'indica \verb+\pagestyle{plain}+ perquè no apareguin els headings.
+
+  \item  A les comandes {\tt title}, {\tt subtitle}, {\tt author}, {\tt thyear},{\tt department}, {\tt supervisor} s'han de posar els valors adequats. \LaTeX generarà la portada a partir d'ells.
+  \end{enumerate}
+
+\item[paquets] Per la comoditat de l'usuari s'incorporen els paquets {\tt crop} i {\tt geometry}. 
+
+\item[Bibliografia] Per comprovar el funcionament s'incorpora una petita base de dades bibliogràfica, de nom \verb+tesi_upf_bib.bib+
+
+
+\item[Taules] S'incorpora un \verb+figure+ i un \verb+tabular+ per a comprovar el funcionament dels índexs.
+
+\end{description}
+
+
+\section*{L'Índex}
+
+És aconsellable usar l'índex amb entrades com la següent, que fa referència a l'inventor de \LaTeX:  \verb+\index{Lamport}+ \index{Lamport}. Aquesta comanda juntament amb
+\begin{enumerate}
+\item Les comandes \verb+\usepackage{makeidx} \makeindex+ en el preàmbul del document i \verb+\printindex+ en el lloc on volem que apareguin les referències fan que es generi l'índex de matèries. Per generar-lo efectivament cal usar el programa \verb+makeindex+ (es fa de manera diferent segons la distribució i l'editor que usem).
+\end{enumerate}
+
+\section*{La bibliografia}
+Pes poder usar eficientment les referències bibliogràfiques, és convenient usar el programa BibTeX. Per fer-ho 
+\begin{enumerate}
+\item Escrivim en el preàmbul \verb+\bibliographystyle{plain}+ on en comptes de \verb+plain+ pot ser algun dels estils habituals, com per exemple \verb+vancouver+\ldots Per comoditat s'inclou també l'estil \verb+vancouver+.
+
+\item En el lloc del document on volem que aparegui la llista de referències escrivim \verb+ \bibliography{tesi_upf_bib}+ (o el nostre fitxer de referències.
+
+\item Podem usar ara expressions com 
+\begin{verbatim} 
+com es menciona en \cite[p. 56]{sartre1984ser}
+\end{verbatim}
+ i després de executar \LaTeX un parell de cops i el programa BibTeX (depenent de la distribució i l'editor) veurem com es generen les cites (quedarà ``com es menciona en \cite[p. 56]{sartre1984ser}'') i les referències al final del document (o on sigui que aparegui \verb+bibliography+).
+
+
+\item Una de les maneres de general el fitxer .bib és usar \verb+Mendeley+.
+
+\end{enumerate}
+
+
+
+
+\chapter{El primer capítol}
+Exemple del primer capítol usant alguna secció i subsecció.\footnote{Exemple de nota a peu} Observeu que es poden tenir els capítols en fitxers separats i usar \verb+\input{}+.
+
+
+\section{Una secció}
+Concretament la primera, que conté una taula
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|l|l|}
+   \hline
+    0 & 0 \\ \hline
+    0 & 0 \\ \hline    
+  \end{tabular}
+  \caption{Prova de taula}
+
+\end{table}
+
+\subsection{Una subsecció}
+La primera subsecció de la primera secció.
+
+\section{Una altra secció}
+que serà la segona... 
+
+Incorpora una figura amb el logo de la UPF (Figura \ref{fig:logo}) {perquè surti a l'índex de figures. 
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.5]{logo_upf.png}
+    \caption{Exemple de gràfic}
+    \label{fig:logo}
+\end{figure}
+
+
+\chapter{El segon capítol}
+
+Lorem ipsum dicam tation maiorum vel ea, an nam minimum pertinax vituperatoribus, mea no illud tibique nostrum. Odio aperiri dolorem in sit, utinam labore adipiscing cu vel. Nam porro choro cu, nam virtute maluisset voluptatum in, per te vero iuvaret praesent. Eos ut volumus pertinacia interesset, tota debitis abhorreant mei et, clita electram pri at. Ea fabulas admodum theophrastus sea, id nostro omnium periculis sed. Vim id nulla aliquando. Id mel habeo nostrud mandamus, laudem legimus fastidii quo ea, ut iriure utamur quo.
+
+Cu sit nobis omnesque scripserit, nec albucius perfecto salutatus ex. Novum debet propriae vis cu, sed ea suscipit accusata, nam minim salutandi voluptatum ut. Quaerendum definitiones est ut, no quo postea prompta scaevola. Nec at choro soleat causae, per ut docendi denique, discere veritus no sed. Ei sed sale delicatissimi mediocritatem, eligendi deterruisset ut mei, ignota offendit ocurreret at mel. Numquam blandit gubergren an pro, mei cu quot dolore recteque. Suscipit aliquyam principes eam ut, id error dicit perpetua qui.
+
+Eam mentitum noluisse instructior cu, ad scripta nonummy aliquyam eos. Augue possit gloriatur mel an, mea et dolorum suavitate assueverit. At ius dolores persecuti moderatius, id qui justo tantas dissentiet. Integre invenire imperdiet ut mea, harum alienum officiis te nam, integre qualisque conceptam in vis. Viderer consetetur vim id, sumo tempor complectitur vim an. His te aeterno tamquam integre, nec agam aliquando repudiandae id, te fabellas verterem sea.
+
+Per dicit veniam delicata ut, dicunt corpora mei eu. His no alienum accusata accommodare, eu nam clita audire invidunt. Mutat debitis mediocrem duo te, ex vis prima labore inermis. Usu eu dictas possim vocent. Suas meliore ancillae ad eum, eam ei cibo viderer similique.
+
+Usu ne apeirian deserunt expetendis, sed in iisque abhorreant definiebas, quo nulla inermis appareat cu. Ei nam possim docendi pertinax, ut duis veritus detracto pri. Animal percipit ius ne, ne iisque quaeque philosophia pro, ut sed nobis nullam adolescens. Persius principes omittantur per an. Mel quot nostrud labores at, ad vis latine persius petentium. Cum partiendo neglegentur mediocritatem ut, per simul aliquando tincidunt no, falli nominavi molestiae ex nam.
+
+Saperet inciderint in vim, vis quod civibus accusata in. Et ullum facilisi accommodare nec, decore utroque definitionem an vel, id duo kasd facer latine. Ea sumo ullamcorper per, ex pro nobis efficiendi concludaturque, vix eu verear luptatum ocurreret. Ocurreret intellegat te eum, ius ea cibo epicurei dignissim. Diam elit quaeque cum ut. Est dicat summo prodesset te, no vel harum saepe sensibus, et ignota altera doming qui.
+
+Sit altera regione feugiat in, vim ad augue mediocritatem, duo reque choro theophrastus ea. Ipsum apeirian voluptatum duo no, nam ut ornatus accumsan percipitur, est no posse suscipiantur vituperatoribus. Errem legendos partiendo est cu, est clita signiferumque cu. Ea nulla scripta signiferumque eam, sea vidit dolores officiis ei, nibh saepe in nam. Ad vim justo dolor reprimique, eum ad labitur dissentias scriptorem, cu tempor mentitum assentior eum. Id vis mucius percipit invidunt.
+
+Vel at ullum intellegam constituam, mea dicta affert perpetua ea. Eripuit blandit iracundia nec ea, tale timeam molestie cum te. Cum ei kasd mazim, per ei delenit ullamcorper, ad sale vocibus temporibus usu. An nonummy oporteat phaedrum sed, eu unum deserunt incorrupte mei. His an possim delicata, ei accumsan constituam mea. Ei viris constituam pro, cu inimicus argumentum duo.
+
+Cu regione veritus persequeris vis, tation nusquam percipit in pri, vis no labitur deseruisse. Ius in reque fierent. Quo et erant recusabo honestatis. Iusto accusam liberavisse ex mei, ut cum nobis primis accommodare, viderer vocibus assueverit ut nec. Id odio oporteat instructior pri. Nam sint illud vituperatoribus no, zzril ubique dissentias id nec.
+
+Cu est legimus reformidans. Nam cibo mucius dolores ad, prima posse similique vix te. Mea at nemore mandamus assueverit, sit viris option scaevola cu. At omnis decore nostro pro, aliquyam explicari salutatus ei mea, sea no falli incorrupte. Graeco bonorum lobortis ut sed, ut pro discere legimus, an sea volumus consetetur.
+
+
+
+
+\bibliography{exemple_bibtex}
+
+
+
+\backmatter
+\printindex
+
+
+
+
+
+\end{document}
+
+
+%NUMERACIÓ DE LA PÀGINA EXTERIOR EXCEPTE EN LA PRIMERA PÀGINA DE CADA CAPÍTOL
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyfoot{}
+\fancyfoot[RO]{\thepage}
+\fancyfoot[LE]{\thepage}
+
+
+%MUTIPLES ÍNDEX
+%En el preàmbul
+\usepackage{multind}
+\makeindex{authors}
+%Introducció d'entrades la forma
+\index{authors}{Einstein}
+%Situació de l'Índex
+\printindex{authors}{Author index}
+%Cal eliminar les comandes \usepakage{makeidx} \makeindex \printindex
+%cal exacutar des de la línia de comandes makeindex authors

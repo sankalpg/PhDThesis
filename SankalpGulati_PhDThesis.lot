@@ -1,0 +1,53 @@
+\select@language {spanish}
+\select@language {spanish}
+\select@language {british}
+\select@language {british}
+\addvspace {10pt}
+\select@language {catalan}
+\addvspace {10pt}
+\select@language {spanish}
+\addvspace {10pt}
+\select@language {british}
+\addvspace {10pt}
+\addvspace {10pt}
+\contentsline {table}{\numberline {2.1}{\ignorespaces Summary of the existing tonic identification approaches.}}{25}{table.caption.25}
+\contentsline {table}{\numberline {2.2}{\ignorespaces Summary of the melodic pattern processing methods for \gls {iam}}}{32}{table.caption.29}
+\contentsline {table}{\numberline {2.3}{\ignorespaces Melodic characteristics utilized by the existing \gls {raga} recognition methods}}{38}{table.caption.31}
+\contentsline {table}{\numberline {2.4}{\ignorespaces Summary of the existing \gls {raga} recognition methods}}{39}{table.caption.33}
+\addvspace {10pt}
+\contentsline {table}{\numberline {3.1}{\ignorespaces Coverage of the Carnatic music corpus}}{68}{table.caption.40}
+\contentsline {table}{\numberline {3.2}{\ignorespaces Completeness of the Carnatic music corpus}}{71}{table.caption.43}
+\contentsline {table}{\numberline {3.3}{\ignorespaces Coverage of the Hindustani music corpus}}{73}{table.caption.45}
+\contentsline {table}{\numberline {3.4}{\ignorespaces Completeness of the Hindustani music corpus}}{73}{table.caption.46}
+\contentsline {table}{\numberline {3.5}{\ignorespaces Summary of the tonic identification datasets}}{79}{table.caption.51}
+\contentsline {table}{\numberline {3.6}{\ignorespaces Details of the melodic similarity datasets}}{82}{table.caption.52}
+\contentsline {table}{\numberline {3.7}{\ignorespaces Details of the annotated characteristic melodic patterns in \acrshort {msds} dataset.}}{83}{table.caption.53}
+\contentsline {table}{\numberline {3.8}{\ignorespaces Details of the annotated characteristic melodic patterns in \acrshort {msds_cm} dataset.}}{84}{table.caption.54}
+\addvspace {10pt}
+\contentsline {table}{\numberline {4.1}{\ignorespaces Tonic identification accuracies of seven methods on six different datasets using only audio data}}{91}{table.caption.57}
+\contentsline {table}{\numberline {4.2}{\ignorespaces Tonic identification accuracies of seven methods on six different datasets using both audio and editorial metadata}}{94}{table.caption.60}
+\contentsline {table}{\numberline {4.3}{\ignorespaces F-scores for the \gls {nyas} boundary detection task}}{118}{table.caption.73}
+\contentsline {table}{\numberline {4.4}{\ignorespaces F-scores for the \gls {nyas} and non-\gls {nyas} label annotation task}}{118}{table.caption.74}
+\addvspace {10pt}
+\contentsline {table}{\numberline {5.1}{\ignorespaces \acrshort {map} score and parameter details for the three best performing variants of the method for computing melodic similarity}}{131}{table.caption.78}
+\contentsline {table}{\numberline {5.2}{\ignorespaces \acrshort {map} score and parameter details for the three best performing variants of the method for computing melodic similarity, without using ground-truth segmentation}}{134}{table.caption.81}
+\contentsline {table}{\numberline {5.3}{\ignorespaces \acrshort {map} scores for \acrshort {msds_cm_hmd} and \acrshort {msds_cm_cmd} datasets obtained by \acrshort {similarity_b}, \acrshort {similarity_dt}, \acrshort {similarity_cw1} and \acrshort {similarity_cw2}}}{144}{table.caption.86}
+\contentsline {table}{\numberline {5.4}{\ignorespaces Percentage of exits after different lower bound computations}}{159}{table.caption.104}
+\contentsline {table}{\numberline {5.5}{\ignorespaces \acrshort {map} scores for four variants of rank refinement method for each seed pattern category}}{160}{table.caption.106}
+\contentsline {table}{\numberline {5.6}{\ignorespaces Details of the dataset used for studying pattern characterization}}{171}{table.caption.115}
+\contentsline {table}{\numberline {5.7}{\ignorespaces Mean and standard deviation of $\mu _\pattern $ for each \gls {raga}}}{173}{table.caption.117}
+\addvspace {10pt}
+\contentsline {table}{\numberline {6.1}{\ignorespaces Accuracy of \acrshort {ragarecVSM}, \acrshort {sotaChordia} and \acrshort {sotaKoduri} on \acrshort {rrds_cmd_big}}}{185}{table.caption.121}
+\contentsline {table}{\numberline {6.2}{\ignorespaces Accuracy of \acrshort {ragarecVSM} and \acrshort {sotaChordia} on \acrshort {rrds_hmd_big}}}{186}{table.caption.122}
+\contentsline {table}{\numberline {6.3}{\ignorespaces \Gls {raga} recognition accuracy of the \acrshort {tdms}-based method variants }}{198}{table.caption.132}
+\addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}
+\contentsline {table}{\numberline {C.1}{\ignorespaces \Gls {svara} names and notations used in Carnatic and Hindustani music}}{241}{table.caption.164}
+\contentsline {table}{\numberline {C.2}{\ignorespaces List of the \glspl {raga} in \acrshort {rrds_hmd_big} along with their constituent set of \glspl {svara}}}{242}{table.caption.165}
+\contentsline {table}{\numberline {C.3}{\ignorespaces Details of \acrshort {rrds_hmd_big} dataset for each constituent \gls {raga}}}{243}{table.caption.166}
+\contentsline {table}{\numberline {C.4}{\ignorespaces List of the \glspl {raga} in \acrshort {rrds_cmd_big} along with their constituent set of \glspl {svara}}}{244}{table.caption.167}
+\contentsline {table}{\numberline {C.5}{\ignorespaces Details of \acrshort {rrds_cmd_big} dataset for each constituent \gls {raga}}}{245}{table.caption.168}
+\addvspace {10pt}

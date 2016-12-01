@@ -1,0 +1,69 @@
+This is BibTeX, Version 0.99d (TeX Live 2016)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: SankalpGulati_PhDThesis.aux
+A level-1 auxiliary file: ch00/1_titlePage.aux
+A level-1 auxiliary file: ch00/preliminarystuff.aux
+A level-1 auxiliary file: ch00/mathSymbols.aux
+A level-1 auxiliary file: ch01_introduction/introduction_new.aux
+A level-1 auxiliary file: ch02_background/background.aux
+A level-1 auxiliary file: ch04_datasets/datasets.aux
+A level-1 auxiliary file: ch05_preprocessing/preprocessing.aux
+A level-1 auxiliary file: ch06_patterns/patterns.aux
+A level-1 auxiliary file: ch07_ragaRecognition/ragaRecognition.aux
+A level-1 auxiliary file: ch08_applications/applications.aux
+A level-1 auxiliary file: ch09_conclusions/conclusions.aux
+A level-1 auxiliary file: ch99/appendix.aux
+The style file: apa_jserra2.bst
+Reallocated field_info (elt_size=4) to 11600 items from 5000.
+Database file #1: sankalp.bib.bib
+I was expecting a `,' or a `}'---line 1711 of file sankalp.bib.bib
+ :  
+ :  howpublished = {\url{http://ibiblio.org/guruguha/ssp.htm}},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Database file #2: sankalp_myPubs.bib.bib
+Warning--there's a number but no volume in blondel2008fast
+Warning--there's a number but no volume in selfridge1998conceptual
+Warning--empty booktitle in roadmap_mir
+You've used 275 entries,
+            2821 wiz_defined-function locations,
+            2068 strings with 49925 characters,
+and the built_in function-call counts, 170454 in all, are:
+= -- 14507
+> -- 6374
+< -- 287
++ -- 2403
+- -- 2047
+* -- 11998
+:= -- 25650
+add.period$ -- 871
+call.type$ -- 275
+change.case$ -- 2263
+chr.to.int$ -- 258
+cite$ -- 278
+duplicate$ -- 12556
+empty$ -- 13081
+format.name$ -- 2832
+if$ -- 34795
+int.to.chr$ -- 18
+int.to.str$ -- 1
+missing$ -- 2456
+newline$ -- 1377
+num.names$ -- 1104
+pop$ -- 5050
+preamble$ -- 1
+purify$ -- 1782
+quote$ -- 0
+skip$ -- 5418
+stack$ -- 0
+substring$ -- 8562
+swap$ -- 6813
+text.length$ -- 119
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 2352
+warning$ -- 3
+while$ -- 1343
+width$ -- 0
+write$ -- 3580
+(There was 1 error message)

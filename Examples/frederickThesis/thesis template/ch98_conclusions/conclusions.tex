@@ -1,0 +1,111 @@
+%!TEX root = ../thesis_a4.tex
+
+\chapter{Summary and future perspectives}
+\label{sec:conclusion}
+
+\section{Introduction}
+
+In this thesis we have described a number of computational approaches for helping the users of online sharing platforms to better annotate the content they generate.
+Our approaches are meant to be a step towards increasing the value of resources shared in online sharing platforms by improving their descriptions and enabling better organisation, browsing and searching functionalities. %, and ultimately leading to easier access and reuse.
+Throughout our thesis, we have contemplated one of the many ways in which the \emph{annotation problem} can be approached.
+We have focused on the particular task of tag recommendation, for which we advanced its state of the art by proposing novel folksonomy-based recommendation methods and empirically assessing their impact in a real-world sharing platform.
+In particular, we worked on the case of sound sharing. As explained in Sec.~\ref{sec:intro:sound_sharing}, sound sharing poses some particularly interesting challenges that highly motivated our research. Nevertheless, we strived for proposing methodologies that can be easily generalised to other multimedia domains. 
+
+We started with an introduction to tagging systems, tag recommendation, and the particular case of sound sharing (Chapter~\ref{sec:intro}). 
+We continued by summarising the existing literature on the characterisation of tagging systems and on tag recommendation approaches (Chapter~\ref{sec:SOA}).
+Then, we described and evaluated our first proposed folksonomy-based tag recommendation methods (Chapter~\ref{sec:general}). 
+We next proposed an improvement over these methods by incorporating some domain-specific knowledge in the form of an audio classifier (Chapter~\ref{sec:class}), and evaluated the impact of that recommendation method in the real-world tagging system of Freesound (Chapter~\ref{sec:impact}).
+Finally, and motivated by the findings reported in the previous chapters, we explored a new approach for tag recommendation in which we introduced an audio-specific ontology to inform the recommendation process and improve in this way the quality of produced annotations (Chapter~\ref{sec:ontology}). 
+
+In each chapter, we included a section summarising the relevant results and conclusions of the corresponding work. 
+Here, we provide a summary of our contributions from a global point of view (Sec.~\ref{sec:conclusion:summary}).
+We end this dissertation with a discussion about future research directions (Sec.~\ref{sec:conclusion:future}), not only related to the particular task of tag recommendation, but also to tagging systems in general.
+
+
+
+\section{Summary of contributions}
+\label{sec:conclusion:summary}
+
+This thesis contributes to the advancement of the state of the art in tagging systems and, more specifically, tag recommendation and folksonomy-based tag recommendation. The main contributions of this thesis can be summarised as follows:
+
+\begin{itemize}
+
+\item It provides a comprehensive overview of tagging systems and discusses about their typical problems and proposed solutions, with the main focus on tag recommendation and the particular case of sound sharing.
+
+\item It describes a general scheme for folksonomy-based tag recommendation systems, proposing several alternative strategies for computing each one of the steps of the scheme, as well as comparing the resulting recommendation methods against state of the art approaches. The proposed methods are not only evaluated using a large-scale dataset of audio resources from Freesound, but also using an alternative dataset of similar size composed of image resources from Flickr. Noticeably, the proposed scheme includes a novel step for selecting the number of tags to recommend, which is typically omitted in related research.
+
+\item It proposes a successful enhancement to the folksonomy-based tag recommendation scheme by introducing domain-specific knowledge in the form of resource categories that can be automatically detected through a classification step. Noticeably, this tag recommendation system has been deployed in a large-scale and real-world sound sharing platform.
+
+\item It explores a new perspective for tag recommendation by proposing a system in which a domain-specific ontology is used to provide tag recommendations. Using this ontology, the system is able to guide the annotation process and, at the same time, it preserves the flexibility of traditional tagging systems.
+
+\item It provides a number of methodologies for evaluating tag recommendation systems with and without the intervention of users. Standard information retrieval evaluation methodologies are used to quantitatively asses several aspects and parameter configurations of the proposed tag recommendation methods. 
+Additionally, user-based evaluations are carried out both in controlled environments and in real-world scenarios to analyse the systems from an empirical point of view. 
+
+\item It analyses the impact of a tag recommendation system into the folksonomy of a real-world and large-scale sound sharing platform. This analysis includes the definition of a number of metrics and a methodology which are also relevant contributions of this thesis. 
+To the best of our knowledge, this is the first analysis of its kind to be performed in a real-world and large-scale environment.
+
+
+\end{itemize}
+
+The research carried out in this thesis has been published in the form of several papers in top international conferences and journals. The outcomes of Chapter~\ref{sec:general} have been published in a conference paper and a journal paper~\citep{Font2012,Font2013}.
+%Similarly, the outcomes of Chapter~\ref{sec:class} have been also published in a conference and a journal article~\citep{Font2013a,Font2014}
+Similarly, the parts of the research presented in Chapter~\ref{sec:class} related with the classification step have been published in a conference paper~\citep{Font2013a}, and those related with the description and evaluation of the extended tag recommendation method have been published in a journal paper~\citep{Font2014}. 
+Furthermore, the outcome of the research carried out in Chapter~\ref{sec:impact} has been accepted for publication as a journal paper~\citep{Font2015}, and some parts of the definition of the ontology-based recommendation system of Chapter~\ref{sec:ontology} have also been published as a conference paper~\citep{Font2014a}.
+The full list of the author’s publications is provided in Appendix~\hyperref[sec:Pubs]{B}.
+
+
+\section{Directions for future research}
+\label{sec:conclusion:future}
+
+In the present thesis we have shown several tag recommendation methods which incrementally included more domain-specific knowledge. The approaches we followed have been mainly restricted to the analysis of the folksonomies of tagging systems, and have not included other typical sources of information such as the analysis of resources' content. 
+Even though in Chapter~\ref{sec:ontology} we introduced the use of an ontology to drive the recommendation process, we just started exploring the possibilities of using that ontology and the implications that it might have, not only in tag recommendation, but in tagging systems in general. 
+Hence, we devise two clear perspectives for future research which we now discuss.
+
+Firstly, we believe that the recommendation approaches described in this thesis could be improved with the inclusion of resources' content analysis in the tag recommendation process. 
+On the one hand, using content-based resource classification~\citep[e.g.,][]{Casey2002,Roma2010} combined with tag-based resource classification for the class-based recommendation method would allow to predict the resource category before the introduction of the first input tag. This would, for example, allow us to automatically suggest a tag describing that category, or even pre-fill the annotation with that tag.
+On the other hand, a content-based approach could also be used to select candidate tags based on resource similarity~\citep[e.g.,][]{turnbull2008,Wu2009}, or even by using content-based models to predict tags~\citep[e.g.,][]{martinez2009,ivanov2010}. 
+Using these strategies, the system would also be able to recommend tags before the introduction of the first input tag, and then combine content-based recommendations with folksonomy-based recommendations in later stages~\citep[e.g.,][]{Wu2009,Liu2010a}.
+In relation to that, the tag categories defined in the ontology could be used as a guideline for defining content-based approaches to recommend tags. 
+For example, content-based models could be built on a tag category basis. 
+Furthermore, this process could be automatically computed by using examples of already annotated resources in the tagging system, and be retrained automatically as new resources were uploaded in the sharing platform.
+
+Secondly, another research direction is the further exploitation of the ontology, not only for the task of tag recommendation, but also as an underlying element in tagging systems and sharing platforms in general.
+Important challenges in that direction are the definition of comprehensive yet easy to use domain-specific ontologies, and the design of automatic (or semi-automatic) methods for its population. 
+Such ontologies could include more complex and meaningful class hierarchies for resource and tag categories, and be able to represent more meaningful relations among them.
+To populate ontologies, we believe that approaches for automatically matching tags to concepts of external knowledge bases are a promising direction~\citep[e.g.,][]{Specia2007,Angeletou2008,Moro2014}.
+Using such mappings and proper disambiguation processes, it would be possible to populate the ontology with a comprehensive set of well-defined tags, thus being able to provide better recommendations. Note that such an approach is close to the idea of using a controlled vocabulary. However, the way in which we envision such systems would allow the flexibility of traditional tagging systems by still allowing the introduction of unknown (i.e.,~unmatched) tags. 
+The semantic meaning of these unkown tags could, nevertheless, be narrowed down with the usage of tag categories such as we demonstrated in the tagging interface described in Chapter~\ref{sec:ontology}.
+
+Another interesting research direction related to the use of tag categories in the annotation process is the evaluation of the capacity of such a tagging system for automatically populating its underlying ontology. Provided that users upload and describe new resources using tag categories, it would be possible to automatically further populate the ontology with previously unseen tags that would be introduced under existing tag categories.
+From that point of view, it would be interesting to analyse the impact of such a system in the folksonomies emerging from tagging systems, and see how these ``semi-structured'' folksonomies could be better exploited for knowledge mining or further ontology refinement~\citep{limpens2009linking}.
+In the same vein, another aspect to evaluate is if the usage of this limited number of tag categories in combination with free-form tags would pose significant limitations for making expressive annotations. In this case, it would be interesting to investigate whether an ontology that could be evolved and edited by users of a tagging platform could be effectively maintained and allow for flexible but structured annotations~\citep[e.g.,][]{Stojanovic2002,Braun2007}.
+A well-populated ontology could also be used to tackle the typical polysemy and synonymy problems found in folksonomies, by explicitly defining these relations among tag instances~\citep[e.g.,][]{Echarte2007,Lohmann2011}. 
+In addition, these explicit semantic relations between tags could be also used to provide domain-specific query expansion functionality in the search engines of sharing platforms~\citep{Bhogal2007}. For example, user queries could be automatically expanded by including synonym terms taken from the ontology, and results could be grouped in clusters according to alternative meanings of the query terms.
+
+In summary, we believe that the use of content-based strategies to help in resource annotation and the further exploitation of underlying ontologies in tagging systems allows for many improvements in the current functionalities of sharing platforms.
+For example, searching of content resources could be enhanced by defining complex queries operating over facets corresponding to tag and resource categories, and browsing could also be enhanced by hierarchically organising resources according to these categories.
+Also, similarity measures for multimedia resources could additionally use the concepts of tag and resource categories to define narrower scopes for the similarity search and, for example, provide complementary similarity scores by treating different tag categories as similarity facets~\citep{Bogdanov2011a}.
+Finally, we believe that the use of underlying ontologies, tightly coupled with the annotation systems of sharing platforms, would enable an almost direct publication of resources' metadata as meaningful linked data\footnote{\url{http://linkeddata.org}}~\citep{Bizer2009b}.
+Overall, such improvements would allow a better exploitation of the huge value of content resources in online sharing platforms. Also, these would represent a step towards conciliating the rate at which user generated content is being created with the ability of computational systems to properly index, organise, and make this information available.
+
+Essentially, for information systems to become more intelligent, they need to better represent and handle knowledge about their domain.
+By designing new algorithms and ways in which these can take advantage of available data, we will improve our capabilities for sharing information. 
+But perhaps more importantly, we need to focus on understanding and representing that information and its domain, and be able in this way to reason at a level which is presumably closer to how we humans process and share information.
+For example, a sound sharing platform with knowledge about musical instruments and genres might allow us to browse instrument sounds in a way that only those relevant for a particular music genre would be displayed. If the platform also embedded knowledge about musical theory, it could also group sounds according to the different musical functions (or roles) that these might play in a composition. Similarly, using this knowledge, such a system could help users in, for example, properly annotating a music loop by suggesting musical genres given some instruments present in the loop.
+However, to perform these kinds of \emph{reasoning}, an information system should be aware of the related knowledge or \emph{facts}.
+In this case, such a system should know, for example, that distorted guitars are very prominent in heavy metal music but not in classical music, or that reggae recordings often feature deep bass lines and other harmonic and rhythmic elements playing off beat.
+These are the kind of systems that we would like to interact with in the future.
+
+%Finally, to summarise the previous ideas and end this dissertation, we would like to take a small licence and leave the proper scientific register for presenting an adapted quote from Charles Dickens' \emph{Hard Times -- For These Times}. In our opinion, it closely illustrates the way in which future information systems could be approached: ``Now, what \emph{we} want is Facts. Teach these \emph{systems} and \emph{algorithms} nothing but Facts. Facts alone are wanted in life. Plant nothing else, and root out everything else. You can only form the minds of reasoning \emph{computers} upon Facts; nothing else will ever be of any service to them.''\footnote{Charles Dickens' \emph{Hard Times -- For These Times} was first published in 1854. The quote we allude here is found at the opening of the book, and it originally goes as follows: ``Now, what I want is Facts. Teach these boys and girls nothing but Facts. Facts alone are wanted in life. Plant nothing else, and root out everything else. You can only form the minds of reasoning animals upon Facts; nothing else will ever be of any service to them.''.}.
+
+\vspace{0.5cm}
+
+
+
+\begin{quotation}
+``Now, what \emph{we} want is Facts. Teach these \emph{systems} and \emph{algorithms} nothing but Facts. Facts alone are wanted in life. Plant nothing else, and root out everything else. You can only form the minds of reasoning \emph{computers} upon Facts; nothing else will ever be of any service to them.''
+\vspace{0.15cm}
+
+\hfill Charles Dickens, \emph{Hard Times -- For These Times}\footnote{Charles Dickens' \emph{Hard Times -- For These Times} was first published in 1854. The quote we allude here is found at the opening of the book, and it originally goes as follows: ``Now, what I want is Facts. Teach these boys and girls nothing but Facts. Facts alone are wanted in life. Plant nothing else, and root out everything else. You can only form the minds of reasoning animals upon Facts; nothing else will ever be of any service to them.''.}.
+\end{quotation}
+
